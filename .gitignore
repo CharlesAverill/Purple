@@ -1,6 +1,6 @@
 CMakeFiles/
-doc/html/
-doc/index/
+docs/html/
+docs/latex/
 bin/
 build/
 .vscode/
