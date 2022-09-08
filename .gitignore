@@ -1,9 +1,11 @@
-build/
-bin/
-.vscode/
 CMakeFiles/
+doc/html/
+doc/index/
+bin/
+build/
+.vscode/
 CMakeCache.txt
 core
+.gdb_history
 *.out
 *.s
-.gdb_history
