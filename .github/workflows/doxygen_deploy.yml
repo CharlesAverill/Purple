@@ -20,20 +20,16 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-        
-    - name: Doxygen Action
-      uses: mattnotmitt/doxygen-action@v1.1.0
+    - name: Doxygenize
+      # You may pin to the exact commit or the version.
+      # uses: langroodi/doxygenize@1d9cb9a12f2dca4e655e1f1f05d79739dd7d1071
+      uses: langroodi/doxygenize@v1.6.3
       with:
-        # Path to Doxyfile
-        doxyfile-path: "./.doxygen_cfg" # default is ./Doxyfile
-        # Working directory
-        working-directory: "." # default is .
-    
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        # Default Doxyfile build documentation to html directory. 
-        # Change the directory if changes in Doxyfile
-        publish_dir: html
+        # Doxygen configuration file path
+        doxygenconf: "./.doxygen_cfg" # default is ./Doxyfile
+        # Generated HTML documents output folder
+        htmloutput: "./docs" # default is ./docs/
+        # GitHub Pages branch name
+        ghpagesbranch: "gh-pages" # default is gh-pages
+        # GitHub Pages directory path
+        ghpagesdir: "./" # default is ./
