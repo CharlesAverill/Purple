@@ -1,0 +1,33 @@
+{
+    int i;
+    int j;
+    i = 6;
+    j = 12;
+
+    print i < j;
+    print j > i;
+    print i <= j;
+    print j >= i;
+    print i != j;
+
+    print i == j;
+
+    if(i < j){
+        print 1;
+    }
+    if(j > i){
+        print 2;
+    }
+    if(i <= j){
+        print 3;
+    }
+    if(j >= i){
+        print 4;
+    }
+    if(i == j){
+        print 5;
+    }
+    if(i != j){
+        print 6;
+    }
+}

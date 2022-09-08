@@ -1,0 +1,9 @@
+build/
+bin/
+.vscode/
+CMakeFiles/
+CMakeCache.txt
+core
+*.out
+*.s
+.gdb_history

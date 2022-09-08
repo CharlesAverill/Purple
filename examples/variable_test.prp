@@ -1,0 +1,13 @@
+{
+    int bob;
+    int alice;
+
+    bob = 5;
+    alice = 10;
+
+    print bob + alice;
+
+    int bob_alice;
+    bob_alice = 10 + 10 + bob + alice;
+    print bob_alice;
+}

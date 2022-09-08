@@ -1,0 +1,19 @@
+/**
+ * @file info.h.in
+ * @author Charles Averill
+ * @brief Input file for CMake configs
+ * @date 08-Sep-2022
+ */
+
+#ifndef INFO_H
+#define INFO_H
+
+#define PROJECT_NAME "@PROJECT_NAME@"
+#define PROJECT_VER "@PROJECT_VERSION@"
+#define PROJECT_VER_MAJOR "@PROJECT_VERSION_MAJOR@"
+#define PROJECT_VER_MINOR "@PROJECT_VERSION_MINOR@"
+#define PROJECT_VER_PATCH "@PROJECT_VERSION_PATCH@"
+
+#define PROJECT_NAME_AND_VERS "@PROJECT_NAME_AND_VERS@"
+
+#endif

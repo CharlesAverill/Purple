@@ -1,0 +1,13 @@
+{
+    int i;
+    i = 5;
+
+    with(5 as int j)
+    {
+        print i;
+        print j;
+        print i + j;
+    }
+
+    print i;
+}

@@ -1,0 +1,11 @@
+---
+BasedOnStyle: LLVM
+IndentWidth: 4
+---
+Language: Cpp
+DerivePointerAlignment: false
+PointerAlignment: Left
+ReflowComments: false
+BreakBeforeBraces: Linux
+ColumnLimit: 100
+---
