@@ -24,6 +24,8 @@ jobs:
           ref: "gh-pages"
         
       - name: "Doxygen Build"
+        # run: |
+          # sudo apt-get install -y doxygen
+          # doxygen Doxyfile
         run: |
-          sudo apt-get install -y doxygen
-          doxygen Doxyfile
+          ls ${{ github.workspace }}
