@@ -11,4 +11,4 @@ jobs:
     steps:
       - uses: mattnotmitt/doxygen-action@v1.9.4
         with:
-          doxyfile-path: .doxygen_cfg
+          doxyfile-path: ../../.doxygen_cfg
