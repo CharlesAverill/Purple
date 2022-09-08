@@ -19,8 +19,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Doxygenize
-      # You may pin to the exact commit or the version.
-      # uses: langroodi/doxygenize@1d9cb9a12f2dca4e655e1f1f05d79739dd7d1071
-      uses: langroodi/doxygenize@v1.6.3
+      - name: "Doxygen Build"
+        run: |
+          sudo apt-get install -y doxygen
+          doxygen Doxyfile
