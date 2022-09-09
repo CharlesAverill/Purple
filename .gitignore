@@ -1,8 +1,9 @@
+.antlr/
+bin/
+build/
 CMakeFiles/
 docs/html/
 docs/latex/
-bin/
-build/
 .vscode/
 CMakeCache.txt
 core
