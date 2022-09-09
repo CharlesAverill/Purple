@@ -27,9 +27,33 @@
 /**
  * @brief Severity levels of warnings raised by the compiler 
  */
-typedef enum { WARNING_LOW, WARNING_MED, WARNING_HIGH } WarningType;
+typedef enum {
+    WARNING_LOW,
+    WARNING_MED,
+    WARNING_HIGH
+} WarningType;
 
-void fatal(int rc, const char* fmt, ...);
+/**
+ * @brief Return codes used in different scenarios
+ */
+typedef enum {
+    RC_OK,
+    RC_ERROR,
+    RC_SYNTAX_ERROR,
+    RC_MEMORY_ERROR,
+    RC_FILE_ERROR,
+} ReturnCode;
+
+/**
+ * @brief String representation of return codes
+ */
+static const char* returnCodeStrings[] = {
+    "OK", "ERROR", "SYNTAX ERROR", "MEMORY ERROR", "FILE ERROR",
+};
+
+void fatal(ReturnCode rc, const char* fmt, ...);
+void syntax_error(const char* fn, const int line_number, const char* fmt, ...);
+
 void warning(WarningType level, const char* fmt, ...);
 
 #endif /* ERRORS_WARNINGS_H */

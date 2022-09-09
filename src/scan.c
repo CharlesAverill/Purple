@@ -6,6 +6,7 @@
  */
 
 #include "scan.h"
+#include "data.h"
 
 /**
  * @brief Get the next valid character from the current input file
@@ -136,7 +137,7 @@ bool scan(Token* t)
             t->type = T_INTEGER_LITERAL;
             break;
         } else {
-            fatal(1, "Unrecognized character %c on line %d\n", c, D_LINE_NUMBER);
+            syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unrecognized character %c", c);
         }
     }
 

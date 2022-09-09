@@ -11,6 +11,7 @@
 #include <stdio.h>
 
 #include "arguments.h"
+#include "scan.h"
 
 /**extern_ will be undefined in purple.c, causing purple.c to "own" these variables*/
 #ifndef extern_
@@ -23,6 +24,8 @@ extern_ int D_LINE_NUMBER;
 extern_ char D_PUT_BACK;
 /**The pointer to the open filestream for the Scanner*/
 extern_ FILE* D_INPUT_FILE;
+/**Filename corresponding to D_INPUT_FILE*/
+extern_ char* D_INPUT_FN;
 
 #define D_MAX_IDENTIFIER_LENGTH 63
 /**Buffer to read identifiers into*/
@@ -33,5 +36,8 @@ extern_ int D_DEBUG;
 
 /**Command line arguments*/
 extern_ purple_args* args;
+
+/**Most recently-parsed token*/
+extern_ struct Token D_GLOBAL_TOKEN;
 
 #endif /* DATA_H */
