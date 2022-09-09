@@ -10,11 +10,11 @@ string(CONCAT PROJECT_NAME_AND_VERS ${CMAKE_PROJECT_NAME} " " ${CMAKE_PROJECT_VE
 
 file (GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS "src/*.c")
 
-add_compile_options(-D_FILE_OFFSET_BITS=64)
+add_compile_options(-D_FILE_OFFSET_BITS=64 -pedantic-errors)
 
 configure_file(include/info.h.in info.h @ONLY)
-include_directories(${CMAKE_SOURCE_DIR}/build)
+include_directories(build)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(include)
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})

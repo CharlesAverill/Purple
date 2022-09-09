@@ -7,8 +7,8 @@
 
 #include "arguments.h"
 
-const char *argp_program_version = PROJECT_NAME_AND_VERS;
-const char *argp_program_bug_address = "charlesaverill20@gmail.com";
+const char* argp_program_version = PROJECT_NAME_AND_VERS;
+const char* argp_program_bug_address = "charlesaverill20@gmail.com";
 static char doc[] = "The standard compiler for the Purple programming language";
 static char args_doc[] = "PROGRAM";
 
@@ -18,9 +18,9 @@ static struct argp_option options[] = {
     {0},
 };
 
-error_t parse_opt(int key, char *arg, struct argp_state *state)
+error_t parse_opt(int key, char* arg, struct argp_state* state)
 {
-    purple_args *arguments = state->input;
+    purple_args* arguments = state->input;
 
     int found = 0;
 
@@ -55,7 +55,7 @@ error_t parse_opt(int key, char *arg, struct argp_state *state)
 
 static struct argp argp = {options, parse_opt, args_doc, doc, 0, 0, 0};
 
-void parse_args(purple_args *args, int argc, char *argv[])
+void parse_args(purple_args* args, int argc, char* argv[])
 {
     args->quiet = 0;
     args->filenames[1] = "a.s";

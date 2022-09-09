@@ -1,47 +1,53 @@
 /**
  * @file purple.c
  * @author Charles Averill
- * @brief Compiler entrypoint
+ * @brief Compiler entrypoint and setup
  * @date 08-Sep-2022
  */
 
 #include <stdio.h>
 
-#include "arguments.h"
-
-/**Define, then undef extern_ to transfer ownership to purple.c*/
+// Define, then undef extern_ to transfer ownership to purple.c
 #define extern_
 #include "data.h"
 #undef extern_
 
+#include "arguments.h"
+#include "errors_warnings.h"
+
 static void init(int argc, char* argv[]);
-void shutdown(int exit_code);
+void shutdown(void);
 
 /**
- * Initialize compiler values
+ * @brief Parse compiler arguments, open input file, and allocate memory 
+ * 
+ * @param argc 
+ * @param argv 
  */
-static void init(int argc, char *argv[])
+static void init(int argc, char* argv[])
 {
     // Argument parsing
     args = malloc(sizeof(purple_args));
     if (args == NULL) {
-        fprintf(stderr, "Unable to allocate memory for command line arguments");
-        shutdown(1);
+        fatal(1, "Unable to allocate memory for command line arguments");
     }
 
     parse_args(args, argc, argv);
 
     D_INPUT_FILE = fopen(args->filenames[0], "r");
     if (D_INPUT_FILE == NULL) {
-        fprintf(stderr, "Unable to open %s: %s\n", args->filenames[0], strerror(errno));
-        shutdown(1);
+        fatal(1, "Unable to open %s: %s\n", args->filenames[0], strerror(errno));
     }
 }
 
-void shutdown(int exit_code)
+/**
+ * @brief Tie up any loose ends that may have arisen
+ */
+void shutdown(void)
 {
-    fclose(D_INPUT_FILE);
-    exit(exit_code);
+    if (D_INPUT_FILE) {
+        fclose(D_INPUT_FILE);
+    }
 }
 
 /**
@@ -51,8 +57,11 @@ void shutdown(int exit_code)
  * @param argv Array of command line arguments
  * @return int Compiler return code
  */
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
     init(argc, argv);
-    
+
+    shutdown();
+
     return 0;
 }

@@ -22,7 +22,7 @@ extern_ int D_LINE_NUMBER;
 /**If defined, this character will be put back into the input stream*/
 extern_ char D_PUT_BACK;
 /**The pointer to the open filestream for the Scanner*/
-extern_ FILE *D_INPUT_FILE;
+extern_ FILE* D_INPUT_FILE;
 
 #define D_MAX_IDENTIFIER_LENGTH 63
 /**Buffer to read identifiers into*/
@@ -32,6 +32,6 @@ extern_ char D_IDENTIFIER_BUFFER[D_MAX_IDENTIFIER_LENGTH + 1];
 extern_ int D_DEBUG;
 
 /**Command line arguments*/
-extern_ purple_args *args;
+extern_ purple_args* args;
 
-#endif
+#endif /* DATA_H */

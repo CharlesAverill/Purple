@@ -16,4 +16,4 @@
 
 #define PROJECT_NAME_AND_VERS "TestName TestVersion"
 
-#endif
+#endif /* INFO_H */

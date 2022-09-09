@@ -2,7 +2,7 @@
  * @file
  * @author CharlesAverill
  * @date   12-Oct-2021
- * @brief File headers and global variables for command line arguments
+ * @brief Function headers for command line argument parsing
 */
 
 #ifndef ARGUMENTS_H
@@ -21,9 +21,9 @@
 typedef struct purple_args {
     int quiet;
     /**Input filename followed by output ASM filename*/
-    char *filenames[2]; 
+    char* filenames[2];
 } purple_args;
 
-void parse_args(purple_args *args, int argc, char *argv[]);
+void parse_args(purple_args* args, int argc, char* argv[]);
 
 #endif
