@@ -14,6 +14,7 @@
 
 #include "arguments.h"
 #include "errors_warnings.h"
+#include "scan.h"
 
 static void init(int argc, char* argv[]);
 void shutdown(void);
@@ -26,6 +27,10 @@ void shutdown(void);
  */
 static void init(int argc, char* argv[])
 {
+    // Global data
+    D_LINE_NUMBER = 1;
+    D_PUT_BACK = '\n';
+
     // Argument parsing
     args = malloc(sizeof(purple_args));
     if (args == NULL) {
@@ -60,6 +65,16 @@ void shutdown(void)
 int main(int argc, char* argv[])
 {
     init(argc, argv);
+
+    Token T;
+
+    while (scan(&T)) {
+        printf("Token %s", token_strings[T.type]);
+        if (T.type == T_INTEGER_LITERAL) {
+            printf(", value %d", T.value);
+        }
+        printf("\n");
+    }
 
     shutdown();
 
