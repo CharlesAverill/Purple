@@ -1,0 +1,176 @@
+\hypertarget{scan_8h}{}\doxysection{include/scan.h File Reference}
+\label{scan_8h}\index{include/scan.h@{include/scan.h}}
+
+
+Lexical Scanner function headers.  
+
+
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}errors\+\_\+warnings.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structToken}{Token}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structToken}{Token}} \mbox{\hyperlink{scan_8h_ae88d5c0259051080fda097b92d99d7ee}{Token}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \{ \newline
+\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a9882ff017eb83e311ec8ad12ab646455}{T\+\_\+\+EOF}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2}{T\+\_\+\+PLUS}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aeabbf9419f82ec47ab35d6931784dfb4}{T\+\_\+\+MINUS}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a6fad6b41ffee1efe0dfc7b12a19c0672}{T\+\_\+\+STAR}}
+, \newline
+\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a}{T\+\_\+\+SLASH}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad}{T\+\_\+\+EQ}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af7c934b483e2a65d6212722999121c0e}{T\+\_\+\+NEQ}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a9e53bc57aabd3d3baa91aed85cb9f0fc}{T\+\_\+\+LT}}
+, \newline
+\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ac869f90f0fc081ae0e4a1c7746c11f3d}{T\+\_\+\+GT}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aa2fbee07f3776bb841fe1ac13629eb9d}{T\+\_\+\+LE}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df}{T\+\_\+\+GE}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}} (\mbox{\hyperlink{structToken}{Token}} $\ast$t)
+\begin{DoxyCompactList}\small\item\em Scan tokens into the \mbox{\hyperlink{structToken}{Token}} struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static char $\ast$ \mbox{\hyperlink{scan_8h_aac4b727eb90bfc1375ac629aa9e69398}{token\+\_\+strings}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lexical Scanner function headers. 
+
+\begin{DoxyAuthor}{Author}
+Charles\+Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+05-\/Oct-\/2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{scan_8h_ae88d5c0259051080fda097b92d99d7ee}\label{scan_8h_ae88d5c0259051080fda097b92d99d7ee}} 
+\index{scan.h@{scan.h}!Token@{Token}}
+\index{Token@{Token}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{Token}{Token}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structToken}{Token}} \mbox{\hyperlink{structToken}{Token}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921}} 
+\index{scan.h@{scan.h}!TokenType@{TokenType}}
+\index{TokenType@{TokenType}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{TokenType}{TokenType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_EOF@{T\_EOF}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_EOF@{T\_EOF}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921a9882ff017eb83e311ec8ad12ab646455}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921a9882ff017eb83e311ec8ad12ab646455}} 
+T\+\_\+\+EOF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_PLUS@{T\_PLUS}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_PLUS@{T\_PLUS}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2}} 
+T\+\_\+\+PLUS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_MINUS@{T\_MINUS}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_MINUS@{T\_MINUS}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921aeabbf9419f82ec47ab35d6931784dfb4}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921aeabbf9419f82ec47ab35d6931784dfb4}} 
+T\+\_\+\+MINUS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_STAR@{T\_STAR}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_STAR@{T\_STAR}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921a6fad6b41ffee1efe0dfc7b12a19c0672}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921a6fad6b41ffee1efe0dfc7b12a19c0672}} 
+T\+\_\+\+STAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_SLASH@{T\_SLASH}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_SLASH@{T\_SLASH}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a}} 
+T\+\_\+\+SLASH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_EQ@{T\_EQ}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_EQ@{T\_EQ}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad}} 
+T\+\_\+\+EQ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_NEQ@{T\_NEQ}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_NEQ@{T\_NEQ}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921af7c934b483e2a65d6212722999121c0e}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921af7c934b483e2a65d6212722999121c0e}} 
+T\+\_\+\+NEQ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_LT@{T\_LT}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_LT@{T\_LT}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921a9e53bc57aabd3d3baa91aed85cb9f0fc}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921a9e53bc57aabd3d3baa91aed85cb9f0fc}} 
+T\+\_\+\+LT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_GT@{T\_GT}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_GT@{T\_GT}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921ac869f90f0fc081ae0e4a1c7746c11f3d}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921ac869f90f0fc081ae0e4a1c7746c11f3d}} 
+T\+\_\+\+GT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_LE@{T\_LE}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_LE@{T\_LE}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921aa2fbee07f3776bb841fe1ac13629eb9d}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921aa2fbee07f3776bb841fe1ac13629eb9d}} 
+T\+\_\+\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_GE@{T\_GE}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_GE@{T\_GE}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df}} 
+T\+\_\+\+GE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_INTEGER\_LITERAL@{T\_INTEGER\_LITERAL}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_INTEGER\_LITERAL@{T\_INTEGER\_LITERAL}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}} 
+T\+\_\+\+INTEGER\+\_\+\+LITERAL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}\label{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}} 
+\index{scan.h@{scan.h}!scan@{scan}}
+\index{scan@{scan}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{scan()}{scan()}}
+{\footnotesize\ttfamily bool scan (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structToken}{Token}} $\ast$}]{t }\end{DoxyParamCaption})}
+
+
+
+Scan tokens into the \mbox{\hyperlink{structToken}{Token}} struct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \mbox{\hyperlink{structToken}{Token}} to scan data into \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Returns true if a \mbox{\hyperlink{structToken}{Token}} was scanned successfully 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{scan_8h_aac4b727eb90bfc1375ac629aa9e69398}\label{scan_8h_aac4b727eb90bfc1375ac629aa9e69398}} 
+\index{scan.h@{scan.h}!token\_strings@{token\_strings}}
+\index{token\_strings@{token\_strings}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{token\_strings}{token\_strings}}
+{\footnotesize\ttfamily char$\ast$ token\+\_\+strings\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{\textcolor{stringliteral}{"{}EOF"{}},      \textcolor{stringliteral}{"{}+"{}},     \textcolor{stringliteral}{"{}-\/"{}},          \textcolor{stringliteral}{"{}*"{}},}
+\DoxyCodeLine{                                \textcolor{stringliteral}{"{}/"{}},        \textcolor{stringliteral}{"{}=="{}},    \textcolor{stringliteral}{"{}!="{}},         \textcolor{stringliteral}{"{}<"{}},}
+\DoxyCodeLine{                                \textcolor{stringliteral}{"{}>"{}},        \textcolor{stringliteral}{"{}<="{}},    \textcolor{stringliteral}{"{}>="{}},         \textcolor{stringliteral}{"{}integer literal"{}},}
+\DoxyCodeLine{                                \textcolor{stringliteral}{"{};"{}},        \textcolor{stringliteral}{"{}="{}},     \textcolor{stringliteral}{"{}("{}},          \textcolor{stringliteral}{"{})"{}},}
+\DoxyCodeLine{                                \textcolor{stringliteral}{"{}\{"{}},        \textcolor{stringliteral}{"{}\}"{}},     \textcolor{stringliteral}{"{}identifier"{}}, \textcolor{stringliteral}{"{}int"{}},}
+\DoxyCodeLine{                                \textcolor{stringliteral}{"{}as"{}},       \textcolor{stringliteral}{"{}if"{}},    \textcolor{stringliteral}{"{}else"{}},       \textcolor{stringliteral}{"{}for"{}},}
+\DoxyCodeLine{                                \textcolor{stringliteral}{"{}print"{}},    \textcolor{stringliteral}{"{}while"{}}, \textcolor{stringliteral}{"{}with"{}},       \textcolor{stringliteral}{"{}LValue Identifier"{}},}
+\DoxyCodeLine{                                \textcolor{stringliteral}{"{}AST Glue"{}}, \textcolor{stringliteral}{"{}Scope"{}}\}}
+
+\end{DoxyCode}
+\mbox{\hyperlink{structToken}{Token}} string equivalents 
