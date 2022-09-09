@@ -17,6 +17,9 @@
 #include "data.h"
 #include "errors_warnings.h"
 
+/**
+ * @brief Types of scannable tokens
+ */
 typedef enum {
     T_EOF,
     // Arithmetic Operators
@@ -36,7 +39,7 @@ typedef enum {
 } TokenType;
 
 /**
- * Token string equivalents
+ * @brief Token string equivalents
  */
 static char* token_strings[] = {"EOF",      "+",     "-",          "*",
                                 "/",        "==",    "!=",         "<",
@@ -47,8 +50,13 @@ static char* token_strings[] = {"EOF",      "+",     "-",          "*",
                                 "print",    "while", "with",       "LValue Identifier",
                                 "AST Glue", "Scope"};
 
+/**
+ * @brief Structure containing information about individual scannable tokens
+ */
 typedef struct Token {
+    /**Type of token*/
     TokenType type;
+    /**Value of integer token*/
     int value;
 } Token;
 

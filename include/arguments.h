@@ -19,6 +19,7 @@
  * @brief Structure containing command line arguments
  */
 typedef struct purple_args {
+    /**Silences all compiler output*/
     int quiet;
     /**Input filename followed by output ASM filename*/
     char* filenames[2];

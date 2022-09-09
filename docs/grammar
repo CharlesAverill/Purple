@@ -1,0 +1,12 @@
+/**
+ * @file grammar.html
+ * @brief Grammar Documentation
+ *
+ * @page grammar Purple Grammar Documentation
+ * 
+ * @section Grammar
+ *
+ * This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
+ * 
+ * @include purple.g
+*/

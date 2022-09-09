@@ -13,3 +13,6 @@ binaryExpression: number
                 | binaryExpression '*' binaryExpression
                 | binaryExpression '/' binaryExpression
                 ;
+
+expression: binaryExpression
+          ;

@@ -21,6 +21,22 @@
  * 
  * -->
  *
+ * @section Installation
+ *
+ * View the source <a href="https://github.com/CharlesAverill/Purple" target="_blank">here</a>.
+ *
+ * Purple may be built with cmake:
+ * ```bash
+ * cmake -B build
+ * cmake --build build
+ *
+ * bin/purple example_file.prp
+ * ```
+ * 
+ * @section Grammar
+ * 
+ * BNF-formatted grammar for Purple can be found here: @ref grammar
+ *
  * @section Examples
  *
  * Purple uses C-style syntax, although this may change as the compiler is built
@@ -53,15 +69,4 @@
  *
  * More examples can be viewed <a href="https://github.com/CharlesAverill/Purple/tree/main/examples" target="_blank">here</a>.
  *
- * @section Installation
- *
- * View the source <a href="https://github.com/CharlesAverill/Purple" target="_blank">here</a>.
- *
- * Purple may be built with cmake:
- * ```bash
- * cmake -B build
- * cmake --build build
- *
- * bin/purple example_file.prp
- * ```
 */

@@ -21,7 +21,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: doc-files
-          path: doc
+          path: docs
           retention-days: 1
   copy:
     runs-on: ubuntu-latest
