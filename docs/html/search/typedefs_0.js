@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['purple_5fargs_0',['purple_args',['../arguments_8h.html#a67900464553150264a2ca70441aefe39',1,'arguments.h']]]
+  ['astnode_0',['ASTNode',['../tree_8h.html#a6b9026f45e950e06b76db629f9563f3a',1,'tree.h']]]
 ];

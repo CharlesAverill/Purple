@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quiet_0',['quiet',['../structpurple__args.html#a6b79528b098f74a0b9586277e0ed038a',1,'purple_args']]]
+  ['options_0',['options',['../arguments_8c.html#abc1fd3a47aea6a8944038c9100eb9135',1,'arguments.c']]]
 ];

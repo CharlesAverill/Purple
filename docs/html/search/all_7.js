@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['next_0',['next',['../scan_8c.html#aba19733986b2193569abfcc4951d480f',1,'scan.c']]]
+  ['left_0',['left',['../structASTNode.html#a7e8efcf6431aca1ee186e775443abfcc',1,'ASTNode']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['index_5fof_0',['index_of',['../scan_8c.html#afe176fe0d1142633375951f2e45831bc',1,'scan.c']]],
-  ['init_1',['init',['../purple_8c.html#a04900abd2e06f2bb8f7aa0edd9e2e8e2',1,'purple.c']]]
+  ['fatal_0',['fatal',['../errors__warnings_8h.html#a3e2e8dc1bc2143b8356e8e13798b0c42',1,'fatal(ReturnCode rc, const char *fmt,...):&#160;errors_warnings.c'],['../errors__warnings_8c.html#a3e2e8dc1bc2143b8356e8e13798b0c42',1,'fatal(ReturnCode rc, const char *fmt,...):&#160;errors_warnings.c']]]
 ];

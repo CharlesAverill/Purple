@@ -9,8 +9,10 @@ Warnings and fatal error handling.
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{errors__warnings_8c_a4cc1b2a1a7ca2ae89f298ef5c48ab8b8}{fatal}} (int rc, const char $\ast$fmt,...)
+void \mbox{\hyperlink{errors__warnings_8c_a3e2e8dc1bc2143b8356e8e13798b0c42}{fatal}} (\mbox{\hyperlink{errors__warnings_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{Return\+Code}} rc, const char $\ast$fmt,...)
 \begin{DoxyCompactList}\small\item\em Raises a fatal error that will exit the compiler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors__warnings_8c_ad3f93e9c7f297c7b02098203e676fb47}{syntax\+\_\+error}} (const char $\ast$fn, const int line\+\_\+number, const char $\ast$fmt,...)
+\begin{DoxyCompactList}\small\item\em Raises a fatal syntax error. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{errors__warnings_8c_a8700cba09b2c4338f3285af2e2bf1e98}{warning}} (\mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}{Warning\+Type}} level, const char $\ast$fmt,...)
 \begin{DoxyCompactList}\small\item\em Raises a non-\/fatal warning. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -27,11 +29,11 @@ Charles Averill
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{errors__warnings_8c_a4cc1b2a1a7ca2ae89f298ef5c48ab8b8}\label{errors__warnings_8c_a4cc1b2a1a7ca2ae89f298ef5c48ab8b8}} 
+\mbox{\Hypertarget{errors__warnings_8c_a3e2e8dc1bc2143b8356e8e13798b0c42}\label{errors__warnings_8c_a3e2e8dc1bc2143b8356e8e13798b0c42}} 
 \index{errors\_warnings.c@{errors\_warnings.c}!fatal@{fatal}}
 \index{fatal@{fatal}!errors\_warnings.c@{errors\_warnings.c}}
 \doxysubsubsection{\texorpdfstring{fatal()}{fatal()}}
-{\footnotesize\ttfamily void fatal (\begin{DoxyParamCaption}\item[{int}]{rc,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void fatal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{errors__warnings_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{Return\+Code}}}]{rc,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
 
 
 
@@ -44,6 +46,27 @@ Raises a fatal error that will exit the compiler.
 {\em fmt} & Format string for printed error \\
 \hline
 {\em ...} & Varargs for printed error \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{errors__warnings_8c_ad3f93e9c7f297c7b02098203e676fb47}\label{errors__warnings_8c_ad3f93e9c7f297c7b02098203e676fb47}} 
+\index{errors\_warnings.c@{errors\_warnings.c}!syntax\_error@{syntax\_error}}
+\index{syntax\_error@{syntax\_error}!errors\_warnings.c@{errors\_warnings.c}}
+\doxysubsubsection{\texorpdfstring{syntax\_error()}{syntax\_error()}}
+{\footnotesize\ttfamily void syntax\+\_\+error (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fn,  }\item[{const int}]{line\+\_\+number,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Raises a fatal syntax error. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fn} & Filename in which syntax error occurs \\
+\hline
+{\em line\+\_\+number} & Line number on which syntax error occurs \\
+\hline
+{\em fmt} & Format string for details printed before fatal error \\
+\hline
+{\em ...} & Varargs for details printed before fatal error \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{errors__warnings_8c_a8700cba09b2c4338f3285af2e2bf1e98}\label{errors__warnings_8c_a8700cba09b2c4338f3285af2e2bf1e98}} 

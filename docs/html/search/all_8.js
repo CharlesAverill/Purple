@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['options_0',['options',['../arguments_8c.html#abc1fd3a47aea6a8944038c9100eb9135',1,'arguments.c']]]
+  ['main_0',['main',['../purple_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'purple.c']]],
+  ['mid_1',['mid',['../structASTNode.html#ae1b629d9a274de8b4afbe2382b81e072',1,'ASTNode']]]
 ];

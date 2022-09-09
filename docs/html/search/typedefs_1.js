@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['token_0',['Token',['../scan_8h.html#ae88d5c0259051080fda097b92d99d7ee',1,'scan.h']]]
+  ['purple_5fargs_0',['purple_args',['../arguments_8h.html#a67900464553150264a2ca70441aefe39',1,'arguments.h']]]
 ];

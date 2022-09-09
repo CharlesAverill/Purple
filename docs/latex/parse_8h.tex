@@ -1,0 +1,38 @@
+\hypertarget{parse_8h}{}\doxysection{include/parse.h File Reference}
+\label{parse_8h}\index{include/parse.h@{include/parse.h}}
+
+
+Function headers for parsing.  
+
+
+{\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tree.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_ac8d04db5938aa126d0a5e6b9bbeca016}{parse\+\_\+binary\+\_\+expression}} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function headers for parsing. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+09-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{parse_8h_ac8d04db5938aa126d0a5e6b9bbeca016}\label{parse_8h_ac8d04db5938aa126d0a5e6b9bbeca016}} 
+\index{parse.h@{parse.h}!parse\_binary\_expression@{parse\_binary\_expression}}
+\index{parse\_binary\_expression@{parse\_binary\_expression}!parse.h@{parse.h}}
+\doxysubsubsection{\texorpdfstring{parse\_binary\_expression()}{parse\_binary\_expression()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ parse\+\_\+binary\+\_\+expression (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Recursively parse binary expressions into an AST \begin{DoxyReturn}{Returns}
+ASTNode$\ast$ An AST or AST Subtree of the binary expressions in D\+\_\+\+INPUT\+\_\+\+FILE 
+\end{DoxyReturn}

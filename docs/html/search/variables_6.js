@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_0',['value',['../structToken.html#a041346a45c6c5571a78a6af3394a2756',1,'Token']]]
+  ['quiet_0',['quiet',['../structpurple__args.html#a6b79528b098f74a0b9586277e0ed038a',1,'purple_args']]]
 ];

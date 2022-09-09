@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tokentype_0',['TokenType',['../scan_8h.html#aa520fbf142ba1e7e659590c07da31921',1,'scan.h']]]
+  ['returncode_0',['ReturnCode',['../errors__warnings_8h.html#a5a2236a3693e3930b2c9fbe1fe7144ec',1,'errors_warnings.h']]]
 ];
