@@ -1,0 +1,67 @@
+\hypertarget{errors__warnings_8c}{}\doxysection{src/errors\+\_\+warnings.c File Reference}
+\label{errors__warnings_8c}\index{src/errors\_warnings.c@{src/errors\_warnings.c}}
+
+
+Warnings and fatal error handling.  
+
+
+{\ttfamily \#include \char`\"{}errors\+\_\+warnings.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{errors__warnings_8c_a4cc1b2a1a7ca2ae89f298ef5c48ab8b8}{fatal}} (int rc, const char $\ast$fmt,...)
+\begin{DoxyCompactList}\small\item\em Raises a fatal error that will exit the compiler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors__warnings_8c_a8700cba09b2c4338f3285af2e2bf1e98}{warning}} (\mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}{Warning\+Type}} level, const char $\ast$fmt,...)
+\begin{DoxyCompactList}\small\item\em Raises a non-\/fatal warning. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Warnings and fatal error handling. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+08-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{errors__warnings_8c_a4cc1b2a1a7ca2ae89f298ef5c48ab8b8}\label{errors__warnings_8c_a4cc1b2a1a7ca2ae89f298ef5c48ab8b8}} 
+\index{errors\_warnings.c@{errors\_warnings.c}!fatal@{fatal}}
+\index{fatal@{fatal}!errors\_warnings.c@{errors\_warnings.c}}
+\doxysubsubsection{\texorpdfstring{fatal()}{fatal()}}
+{\footnotesize\ttfamily void fatal (\begin{DoxyParamCaption}\item[{int}]{rc,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Raises a fatal error that will exit the compiler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rc} & Return code to exit with \\
+\hline
+{\em fmt} & Format string for printed error \\
+\hline
+{\em ...} & Varargs for printed error \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{errors__warnings_8c_a8700cba09b2c4338f3285af2e2bf1e98}\label{errors__warnings_8c_a8700cba09b2c4338f3285af2e2bf1e98}} 
+\index{errors\_warnings.c@{errors\_warnings.c}!warning@{warning}}
+\index{warning@{warning}!errors\_warnings.c@{errors\_warnings.c}}
+\doxysubsubsection{\texorpdfstring{warning()}{warning()}}
+{\footnotesize\ttfamily void warning (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}{Warning\+Type}}}]{level,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Raises a non-\/fatal warning. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & Severity of warning \\
+\hline
+{\em fmt} & Format string for printed warning \\
+\hline
+{\em ...} & Varargs for printed warning \\
+\hline
+\end{DoxyParams}

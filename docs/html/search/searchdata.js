@@ -1,13 +1,15 @@
 var indexSectionsWithContent =
 {
-  0: "adefimopqs",
+  0: "adefimopqsw",
   1: "p",
-  2: "adip",
-  3: "imps",
+  2: "adeip",
+  3: "fimpsw",
   4: "adfoq",
   5: "p",
-  6: "dep",
-  7: "p"
+  6: "w",
+  7: "w",
+  8: "adep",
+  9: "p"
 };
 
 var indexSectionNames =
@@ -18,8 +20,10 @@ var indexSectionNames =
   3: "functions",
   4: "variables",
   5: "typedefs",
-  6: "defines",
-  7: "pages"
+  6: "enums",
+  7: "enumvalues",
+  8: "defines",
+  9: "pages"
 };
 
 var indexSectionLabels =
@@ -30,7 +34,9 @@ var indexSectionLabels =
   3: "Functions",
   4: "Variables",
   5: "Typedefs",
-  6: "Macros",
-  7: "Pages"
+  6: "Enumerations",
+  7: "Enumerator",
+  8: "Macros",
+  9: "Pages"
 };
 

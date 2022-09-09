@@ -2,12 +2,13 @@
 \label{purple_8c}\index{src/purple.c@{src/purple.c}}
 
 
-Compiler entrypoint.  
+Compiler entrypoint and setup.  
 
 
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}arguments.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}arguments.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}errors\+\_\+warnings.\+h\char`\"{}}\newline
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -17,15 +18,15 @@ Compiler entrypoint.
 \begin{DoxyCompactItemize}
 \item 
 static void \mbox{\hyperlink{purple_8c_a04900abd2e06f2bb8f7aa0edd9e2e8e2}{init}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
-\item 
-void \mbox{\hyperlink{purple_8c_a24e21ab6715200a0c1986e40c5acfa19}{shutdown}} (int exit\+\_\+code)
-\item 
+\begin{DoxyCompactList}\small\item\em Parse compiler arguments, open input file, and allocate memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{purple_8c_a1c9d5e29ad8899afe0c34571ddee18f9}{shutdown}} (void)
+\begin{DoxyCompactList}\small\item\em Tie up any loose ends that may have arisen. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{purple_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Compiler entrypoint. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Compiler entrypoint. 
+Compiler entrypoint and setup. 
 
 \begin{DoxyAuthor}{Author}
 Charles Averill 
@@ -42,7 +43,7 @@ Charles Averill
 \doxysubsubsection{\texorpdfstring{extern\_}{extern\_}}
 {\footnotesize\ttfamily \#define extern\+\_\+}
 
-Define, then undef extern\+\_\+ to transfer ownership to \mbox{\hyperlink{purple_8c}{purple.\+c}} 
+
 
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{purple_8c_a04900abd2e06f2bb8f7aa0edd9e2e8e2}\label{purple_8c_a04900abd2e06f2bb8f7aa0edd9e2e8e2}} 
@@ -51,7 +52,18 @@ Define, then undef extern\+\_\+ to transfer ownership to \mbox{\hyperlink{purple
 \doxysubsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily static void init (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-Initialize compiler values \mbox{\Hypertarget{purple_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{purple_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+
+
+Parse compiler arguments, open input file, and allocate memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & \\
+\hline
+{\em argv} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{purple_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{purple_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
 \index{purple.c@{purple.c}!main@{main}}
 \index{main@{main}!purple.c@{purple.c}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
@@ -71,9 +83,13 @@ Compiler entrypoint.
 \begin{DoxyReturn}{Returns}
 int Compiler return code 
 \end{DoxyReturn}
-\mbox{\Hypertarget{purple_8c_a24e21ab6715200a0c1986e40c5acfa19}\label{purple_8c_a24e21ab6715200a0c1986e40c5acfa19}} 
+\mbox{\Hypertarget{purple_8c_a1c9d5e29ad8899afe0c34571ddee18f9}\label{purple_8c_a1c9d5e29ad8899afe0c34571ddee18f9}} 
 \index{purple.c@{purple.c}!shutdown@{shutdown}}
 \index{shutdown@{shutdown}!purple.c@{purple.c}}
 \doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
-{\footnotesize\ttfamily void shutdown (\begin{DoxyParamCaption}\item[{int}]{exit\+\_\+code }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void shutdown (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Tie up any loose ends that may have arisen. 
 

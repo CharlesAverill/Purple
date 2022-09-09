@@ -1,0 +1,175 @@
+\hypertarget{errors__warnings_8h}{}\doxysection{include/errors\+\_\+warnings.h File Reference}
+\label{errors__warnings_8h}\index{include/errors\_warnings.h@{include/errors\_warnings.h}}
+
+
+Function headers, ANSI defines, and enums for raising internal warnings and errors.  
+
+
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{errors__warnings_8h_a46587b83544b8e9be045bb93f644ac82}{ANSI\+\_\+\+BOLD}}~\char`\"{}\textbackslash{}033\mbox{[}1m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{errors__warnings_8h_a7f026776e12ac1b5e7736c24b756085d}{ANSI\+\_\+\+RED}}~\char`\"{}\textbackslash{}033\mbox{[}38\+:5\+:196m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{errors__warnings_8h_a7abd01983a396871db34d8af6c2234da}{ANSI\+\_\+\+ORANGE}}~\char`\"{}\textbackslash{}033\mbox{[}38\+:5\+:208m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{errors__warnings_8h_af6e8b5c7b35e8bff4c581efd8019c798}{ANSI\+\_\+\+YELLOW}}~\char`\"{}\textbackslash{}033\mbox{[}38\+:5\+:178m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{errors__warnings_8h_af77a445894f2f750d43cf2182cd29e55}{ANSI\+\_\+\+RESET}}~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{errors__warnings_8h_ae0109f39fbbe4a4da9374d72d7031803}{ERROR\+\_\+\+RED}}~\mbox{\hyperlink{errors__warnings_8h_a7f026776e12ac1b5e7736c24b756085d}{ANSI\+\_\+\+RED}} \mbox{\hyperlink{errors__warnings_8h_a46587b83544b8e9be045bb93f644ac82}{ANSI\+\_\+\+BOLD}}
+\item 
+\#define \mbox{\hyperlink{errors__warnings_8h_ad3710c2a6321d971d356253ec4c82547}{ERROR\+\_\+\+ORANGE}}~\mbox{\hyperlink{errors__warnings_8h_a7abd01983a396871db34d8af6c2234da}{ANSI\+\_\+\+ORANGE}} \mbox{\hyperlink{errors__warnings_8h_a46587b83544b8e9be045bb93f644ac82}{ANSI\+\_\+\+BOLD}}
+\item 
+\#define \mbox{\hyperlink{errors__warnings_8h_a76992c2036c8b83702af9dab809f79f7}{ERROR\+\_\+\+YELLOW}}~\mbox{\hyperlink{errors__warnings_8h_af6e8b5c7b35e8bff4c581efd8019c798}{ANSI\+\_\+\+YELLOW}} \mbox{\hyperlink{errors__warnings_8h_a46587b83544b8e9be045bb93f644ac82}{ANSI\+\_\+\+BOLD}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}{Warning\+Type}} \{ \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aea895e363a4530ca31dd231216f6510c16}{WARNING\+\_\+\+LOW}}
+, \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aeaad566a84651b0c62b708aaf899ae5b84}{WARNING\+\_\+\+MED}}
+, \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aea9032915fa7228fd3168ddea70008fc77}{WARNING\+\_\+\+HIGH}}
+ \}
+\begin{DoxyCompactList}\small\item\em Severity levels of warnings raised by the compiler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{errors__warnings_8h_a4cc1b2a1a7ca2ae89f298ef5c48ab8b8}{fatal}} (int rc, const char $\ast$fmt,...)
+\begin{DoxyCompactList}\small\item\em Raises a fatal error that will exit the compiler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{errors__warnings_8h_a8700cba09b2c4338f3285af2e2bf1e98}{warning}} (\mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}{Warning\+Type}} level, const char $\ast$fmt,...)
+\begin{DoxyCompactList}\small\item\em Raises a non-\/fatal warning. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function headers, ANSI defines, and enums for raising internal warnings and errors. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+08-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{errors__warnings_8h_a46587b83544b8e9be045bb93f644ac82}\label{errors__warnings_8h_a46587b83544b8e9be045bb93f644ac82}} 
+\index{errors\_warnings.h@{errors\_warnings.h}!ANSI\_BOLD@{ANSI\_BOLD}}
+\index{ANSI\_BOLD@{ANSI\_BOLD}!errors\_warnings.h@{errors\_warnings.h}}
+\doxysubsubsection{\texorpdfstring{ANSI\_BOLD}{ANSI\_BOLD}}
+{\footnotesize\ttfamily \#define ANSI\+\_\+\+BOLD~\char`\"{}\textbackslash{}033\mbox{[}1m\char`\"{}}
+
+\mbox{\Hypertarget{errors__warnings_8h_a7abd01983a396871db34d8af6c2234da}\label{errors__warnings_8h_a7abd01983a396871db34d8af6c2234da}} 
+\index{errors\_warnings.h@{errors\_warnings.h}!ANSI\_ORANGE@{ANSI\_ORANGE}}
+\index{ANSI\_ORANGE@{ANSI\_ORANGE}!errors\_warnings.h@{errors\_warnings.h}}
+\doxysubsubsection{\texorpdfstring{ANSI\_ORANGE}{ANSI\_ORANGE}}
+{\footnotesize\ttfamily \#define ANSI\+\_\+\+ORANGE~\char`\"{}\textbackslash{}033\mbox{[}38\+:5\+:208m\char`\"{}}
+
+\mbox{\Hypertarget{errors__warnings_8h_a7f026776e12ac1b5e7736c24b756085d}\label{errors__warnings_8h_a7f026776e12ac1b5e7736c24b756085d}} 
+\index{errors\_warnings.h@{errors\_warnings.h}!ANSI\_RED@{ANSI\_RED}}
+\index{ANSI\_RED@{ANSI\_RED}!errors\_warnings.h@{errors\_warnings.h}}
+\doxysubsubsection{\texorpdfstring{ANSI\_RED}{ANSI\_RED}}
+{\footnotesize\ttfamily \#define ANSI\+\_\+\+RED~\char`\"{}\textbackslash{}033\mbox{[}38\+:5\+:196m\char`\"{}}
+
+\mbox{\Hypertarget{errors__warnings_8h_af77a445894f2f750d43cf2182cd29e55}\label{errors__warnings_8h_af77a445894f2f750d43cf2182cd29e55}} 
+\index{errors\_warnings.h@{errors\_warnings.h}!ANSI\_RESET@{ANSI\_RESET}}
+\index{ANSI\_RESET@{ANSI\_RESET}!errors\_warnings.h@{errors\_warnings.h}}
+\doxysubsubsection{\texorpdfstring{ANSI\_RESET}{ANSI\_RESET}}
+{\footnotesize\ttfamily \#define ANSI\+\_\+\+RESET~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}}
+
+\mbox{\Hypertarget{errors__warnings_8h_af6e8b5c7b35e8bff4c581efd8019c798}\label{errors__warnings_8h_af6e8b5c7b35e8bff4c581efd8019c798}} 
+\index{errors\_warnings.h@{errors\_warnings.h}!ANSI\_YELLOW@{ANSI\_YELLOW}}
+\index{ANSI\_YELLOW@{ANSI\_YELLOW}!errors\_warnings.h@{errors\_warnings.h}}
+\doxysubsubsection{\texorpdfstring{ANSI\_YELLOW}{ANSI\_YELLOW}}
+{\footnotesize\ttfamily \#define ANSI\+\_\+\+YELLOW~\char`\"{}\textbackslash{}033\mbox{[}38\+:5\+:178m\char`\"{}}
+
+\mbox{\Hypertarget{errors__warnings_8h_ad3710c2a6321d971d356253ec4c82547}\label{errors__warnings_8h_ad3710c2a6321d971d356253ec4c82547}} 
+\index{errors\_warnings.h@{errors\_warnings.h}!ERROR\_ORANGE@{ERROR\_ORANGE}}
+\index{ERROR\_ORANGE@{ERROR\_ORANGE}!errors\_warnings.h@{errors\_warnings.h}}
+\doxysubsubsection{\texorpdfstring{ERROR\_ORANGE}{ERROR\_ORANGE}}
+{\footnotesize\ttfamily \#define ERROR\+\_\+\+ORANGE~\mbox{\hyperlink{errors__warnings_8h_a7abd01983a396871db34d8af6c2234da}{ANSI\+\_\+\+ORANGE}} \mbox{\hyperlink{errors__warnings_8h_a46587b83544b8e9be045bb93f644ac82}{ANSI\+\_\+\+BOLD}}}
+
+\mbox{\Hypertarget{errors__warnings_8h_ae0109f39fbbe4a4da9374d72d7031803}\label{errors__warnings_8h_ae0109f39fbbe4a4da9374d72d7031803}} 
+\index{errors\_warnings.h@{errors\_warnings.h}!ERROR\_RED@{ERROR\_RED}}
+\index{ERROR\_RED@{ERROR\_RED}!errors\_warnings.h@{errors\_warnings.h}}
+\doxysubsubsection{\texorpdfstring{ERROR\_RED}{ERROR\_RED}}
+{\footnotesize\ttfamily \#define ERROR\+\_\+\+RED~\mbox{\hyperlink{errors__warnings_8h_a7f026776e12ac1b5e7736c24b756085d}{ANSI\+\_\+\+RED}} \mbox{\hyperlink{errors__warnings_8h_a46587b83544b8e9be045bb93f644ac82}{ANSI\+\_\+\+BOLD}}}
+
+\mbox{\Hypertarget{errors__warnings_8h_a76992c2036c8b83702af9dab809f79f7}\label{errors__warnings_8h_a76992c2036c8b83702af9dab809f79f7}} 
+\index{errors\_warnings.h@{errors\_warnings.h}!ERROR\_YELLOW@{ERROR\_YELLOW}}
+\index{ERROR\_YELLOW@{ERROR\_YELLOW}!errors\_warnings.h@{errors\_warnings.h}}
+\doxysubsubsection{\texorpdfstring{ERROR\_YELLOW}{ERROR\_YELLOW}}
+{\footnotesize\ttfamily \#define ERROR\+\_\+\+YELLOW~\mbox{\hyperlink{errors__warnings_8h_af6e8b5c7b35e8bff4c581efd8019c798}{ANSI\+\_\+\+YELLOW}} \mbox{\hyperlink{errors__warnings_8h_a46587b83544b8e9be045bb93f644ac82}{ANSI\+\_\+\+BOLD}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}\label{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}} 
+\index{errors\_warnings.h@{errors\_warnings.h}!WarningType@{WarningType}}
+\index{WarningType@{WarningType}!errors\_warnings.h@{errors\_warnings.h}}
+\doxysubsubsection{\texorpdfstring{WarningType}{WarningType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}{Warning\+Type}}}
+
+
+
+Severity levels of warnings raised by the compiler. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARNING\_LOW@{WARNING\_LOW}!errors\_warnings.h@{errors\_warnings.h}}\index{errors\_warnings.h@{errors\_warnings.h}!WARNING\_LOW@{WARNING\_LOW}}}\mbox{\Hypertarget{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aea895e363a4530ca31dd231216f6510c16}\label{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aea895e363a4530ca31dd231216f6510c16}} 
+WARNING\+\_\+\+LOW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARNING\_MED@{WARNING\_MED}!errors\_warnings.h@{errors\_warnings.h}}\index{errors\_warnings.h@{errors\_warnings.h}!WARNING\_MED@{WARNING\_MED}}}\mbox{\Hypertarget{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aeaad566a84651b0c62b708aaf899ae5b84}\label{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aeaad566a84651b0c62b708aaf899ae5b84}} 
+WARNING\+\_\+\+MED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARNING\_HIGH@{WARNING\_HIGH}!errors\_warnings.h@{errors\_warnings.h}}\index{errors\_warnings.h@{errors\_warnings.h}!WARNING\_HIGH@{WARNING\_HIGH}}}\mbox{\Hypertarget{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aea9032915fa7228fd3168ddea70008fc77}\label{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aea9032915fa7228fd3168ddea70008fc77}} 
+WARNING\+\_\+\+HIGH&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{errors__warnings_8h_a4cc1b2a1a7ca2ae89f298ef5c48ab8b8}\label{errors__warnings_8h_a4cc1b2a1a7ca2ae89f298ef5c48ab8b8}} 
+\index{errors\_warnings.h@{errors\_warnings.h}!fatal@{fatal}}
+\index{fatal@{fatal}!errors\_warnings.h@{errors\_warnings.h}}
+\doxysubsubsection{\texorpdfstring{fatal()}{fatal()}}
+{\footnotesize\ttfamily void fatal (\begin{DoxyParamCaption}\item[{int}]{rc,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Raises a fatal error that will exit the compiler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rc} & Return code to exit with \\
+\hline
+{\em fmt} & Format string for printed error \\
+\hline
+{\em ...} & Varargs for printed error \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{errors__warnings_8h_a8700cba09b2c4338f3285af2e2bf1e98}\label{errors__warnings_8h_a8700cba09b2c4338f3285af2e2bf1e98}} 
+\index{errors\_warnings.h@{errors\_warnings.h}!warning@{warning}}
+\index{warning@{warning}!errors\_warnings.h@{errors\_warnings.h}}
+\doxysubsubsection{\texorpdfstring{warning()}{warning()}}
+{\footnotesize\ttfamily void warning (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}{Warning\+Type}}}]{level,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Raises a non-\/fatal warning. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & Severity of warning \\
+\hline
+{\em fmt} & Format string for printed warning \\
+\hline
+{\em ...} & Varargs for printed warning \\
+\hline
+\end{DoxyParams}

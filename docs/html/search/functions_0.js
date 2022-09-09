@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['init_0',['init',['../purple_8c.html#a04900abd2e06f2bb8f7aa0edd9e2e8e2',1,'purple.c']]]
+  ['fatal_0',['fatal',['../errors__warnings_8h.html#a4cc1b2a1a7ca2ae89f298ef5c48ab8b8',1,'fatal(int rc, const char *fmt,...):&#160;errors_warnings.c'],['../errors__warnings_8c.html#a4cc1b2a1a7ca2ae89f298ef5c48ab8b8',1,'fatal(int rc, const char *fmt,...):&#160;errors_warnings.c']]]
 ];

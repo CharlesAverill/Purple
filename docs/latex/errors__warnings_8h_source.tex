@@ -1,0 +1,32 @@
+\hypertarget{errors__warnings_8h_source}{}\doxysection{errors\+\_\+warnings.\+h}
+\label{errors__warnings_8h_source}\index{include/errors\_warnings.h@{include/errors\_warnings.h}}
+\mbox{\hyperlink{errors__warnings_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef ERRORS\_WARNINGS\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define ERRORS\_WARNINGS\_H}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <stdarg.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{data_8h}{data.h}}"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define ANSI\_BOLD "{}\(\backslash\)033[1m"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define ANSI\_RED "{}\(\backslash\)033[38:5:196m"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define ANSI\_ORANGE "{}\(\backslash\)033[38:5:208m"{}}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define ANSI\_YELLOW "{}\(\backslash\)033[38:5:178m"{}}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define ANSI\_RESET "{}\(\backslash\)033[0m"{}}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define ERROR\_RED ANSI\_RED ANSI\_BOLD}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define ERROR\_ORANGE ANSI\_ORANGE ANSI\_BOLD}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define ERROR\_YELLOW ANSI\_YELLOW ANSI\_BOLD}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{30 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{ \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aea895e363a4530ca31dd231216f6510c16}{WARNING\_LOW}}, \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aeaad566a84651b0c62b708aaf899ae5b84}{WARNING\_MED}}, \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aea9032915fa7228fd3168ddea70008fc77}{WARNING\_HIGH}} \} \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}{WarningType}};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{keywordtype}{void} \mbox{\hyperlink{errors__warnings_8h_a4cc1b2a1a7ca2ae89f298ef5c48ab8b8}{fatal}}(\textcolor{keywordtype}{int} rc, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
+\DoxyCodeLine{33 \textcolor{keywordtype}{void} \mbox{\hyperlink{errors__warnings_8h_a8700cba09b2c4338f3285af2e2bf1e98}{warning}}(\mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}{WarningType}} level, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* ERRORS\_WARNINGS\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['extern_5f_0',['extern_',['../data_8h.html#a7e774264afdce4a653327473a9563e4d',1,'extern_():&#160;data.h'],['../purple_8c.html#a7e774264afdce4a653327473a9563e4d',1,'extern_():&#160;purple.c']]]
+  ['d_5fmax_5fidentifier_5flength_0',['D_MAX_IDENTIFIER_LENGTH',['../data_8h.html#afdefd4da733213509f3ca91a81945044',1,'data.h']]]
 ];

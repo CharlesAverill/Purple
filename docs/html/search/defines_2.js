@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['project_5fname_0',['PROJECT_NAME',['../info_8h.html#ae73053051efbb45c3a39751f5ce9fb36',1,'info.h']]],
-  ['project_5fname_5fand_5fvers_1',['PROJECT_NAME_AND_VERS',['../info_8h.html#ad41a6ae9272f069ba953cfc269adbf19',1,'info.h']]],
-  ['project_5fver_2',['PROJECT_VER',['../info_8h.html#ab6dbc0b8f5e2da90bed8c9efc19d042f',1,'info.h']]],
-  ['project_5fver_5fmajor_3',['PROJECT_VER_MAJOR',['../info_8h.html#a8499ba1e5631acd6376d329b93d8d28b',1,'info.h']]],
-  ['project_5fver_5fminor_4',['PROJECT_VER_MINOR',['../info_8h.html#a5b1736c20e7e4b4780bbcda7ccb87706',1,'info.h']]],
-  ['project_5fver_5fpatch_5',['PROJECT_VER_PATCH',['../info_8h.html#afee21e9699ad9d07592c9332ac3ffe7c',1,'info.h']]]
+  ['error_5forange_0',['ERROR_ORANGE',['../errors__warnings_8h.html#ad3710c2a6321d971d356253ec4c82547',1,'errors_warnings.h']]],
+  ['error_5fred_1',['ERROR_RED',['../errors__warnings_8h.html#ae0109f39fbbe4a4da9374d72d7031803',1,'errors_warnings.h']]],
+  ['error_5fyellow_2',['ERROR_YELLOW',['../errors__warnings_8h.html#a76992c2036c8b83702af9dab809f79f7',1,'errors_warnings.h']]],
+  ['extern_5f_3',['extern_',['../data_8h.html#a7e774264afdce4a653327473a9563e4d',1,'extern_():&#160;data.h'],['../purple_8c.html#a7e774264afdce4a653327473a9563e4d',1,'extern_():&#160;purple.c']]]
 ];
