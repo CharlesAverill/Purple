@@ -16,12 +16,12 @@ Lexical Scanner function headers.
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structToken}{Token}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Structure containing information about individual scannable tokens. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 typedef struct \mbox{\hyperlink{structToken}{Token}} \mbox{\hyperlink{scan_8h_ae88d5c0259051080fda097b92d99d7ee}{Token}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Structure containing information about individual scannable tokens. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,7 +41,7 @@ enum \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \
 , \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df}{T\+\_\+\+GE}}
 , \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Types of scannable tokens. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,7 +51,7 @@ bool \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}} (\mbox{\
 \begin{DoxyCompactItemize}
 \item 
 static char $\ast$ \mbox{\hyperlink{scan_8h_aac4b727eb90bfc1375ac629aa9e69398}{token\+\_\+strings}} \mbox{[}$\,$\mbox{]}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structToken}{Token}} string equivalents. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -74,12 +74,20 @@ Charles\+Averill
 
 
 
+Structure containing information about individual scannable tokens. 
+
+
+
 \doxysubsection{Enumeration Type Documentation}
 \mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921}} 
 \index{scan.h@{scan.h}!TokenType@{TokenType}}
 \index{TokenType@{TokenType}!scan.h@{scan.h}}
 \doxysubsubsection{\texorpdfstring{TokenType}{TokenType}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}
+
+
+
+Types of scannable tokens. 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{T\_EOF@{T\_EOF}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_EOF@{T\_EOF}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921a9882ff017eb83e311ec8ad12ab646455}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921a9882ff017eb83e311ec8ad12ab646455}} 
@@ -173,4 +181,7 @@ bool Returns true if a \mbox{\hyperlink{structToken}{Token}} was scanned success
 \DoxyCodeLine{                                \textcolor{stringliteral}{"{}AST Glue"{}}, \textcolor{stringliteral}{"{}Scope"{}}\}}
 
 \end{DoxyCode}
-\mbox{\hyperlink{structToken}{Token}} string equivalents 
+
+
+\mbox{\hyperlink{structToken}{Token}} string equivalents. 
+

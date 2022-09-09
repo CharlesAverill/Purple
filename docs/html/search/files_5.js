@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['scan_2ec_0',['scan.c',['../scan_8c.html',1,'']]],
-  ['scan_2eh_1',['scan.h',['../scan_8h.html',1,'']]]
+  ['purple_2ec_0',['purple.c',['../purple_8c.html',1,'']]]
 ];

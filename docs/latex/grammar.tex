@@ -1,0 +1,26 @@
+\hypertarget{index_Grammar}{}\doxysection{Grammar}\label{index_Grammar}
+This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{grammar purple;}
+\DoxyCodeLine{}
+\DoxyCodeLine{tokens \{}
+\DoxyCodeLine{    T\_INTEGER\_LITERAL}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{number: T\_INTEGER\_LITERAL}
+\DoxyCodeLine{        ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{binaryExpression: number}
+\DoxyCodeLine{                | binaryExpression '+' binaryExpression}
+\DoxyCodeLine{                | binaryExpression '-\/' binaryExpression}
+\DoxyCodeLine{                | binaryExpression '*' binaryExpression}
+\DoxyCodeLine{                | binaryExpression '/' binaryExpression}
+\DoxyCodeLine{                ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{expression: binaryExpression}
+\DoxyCodeLine{          ;}
+
+\end{DoxyCodeInclude}
+ 

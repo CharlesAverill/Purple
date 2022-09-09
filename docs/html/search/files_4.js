@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['purple_2ec_0',['purple.c',['../purple_8c.html',1,'']]]
+  ['index_0',['index',['../index.html',1,'']]],
+  ['info_2eh_1',['info.h',['../info_8h.html',1,'']]]
 ];
