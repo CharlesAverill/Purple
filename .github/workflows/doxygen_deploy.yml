@@ -52,4 +52,4 @@ jobs:
           author_email: charlesaverill20@gmail.com
           message: "Latest docs - ${{ github.event.repository.updated_at}}"
           branch: gh-pages
-          add: '[docs/*]'
+          add: '[./*]'
