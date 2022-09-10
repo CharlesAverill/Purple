@@ -36,7 +36,14 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: doc-files
-          path: docs
+          path: .
+        
+      - name: Move HTML files to root
+        uses: canastro/copy-file-action@master
+        with:
+          source: "html/."
+          target: "."
+          flags: '-r'
       
       - name: Commit
         uses: EndBug/add-and-commit@v7
@@ -45,4 +52,4 @@ jobs:
           author_email: charlesaverill20@gmail.com
           message: "Latest docs - ${{ github.event.repository.updated_at}}"
           branch: gh-pages
-          add: '[docs/*]'
+          add: '[./*]'
