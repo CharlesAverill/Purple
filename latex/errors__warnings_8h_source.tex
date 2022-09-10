@@ -1,0 +1,50 @@
+\hypertarget{errors__warnings_8h_source}{}\doxysection{errors\+\_\+warnings.\+h}
+\label{errors__warnings_8h_source}\index{include/errors\_warnings.h@{include/errors\_warnings.h}}
+\mbox{\hyperlink{errors__warnings_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef ERRORS\_WARNINGS\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define ERRORS\_WARNINGS\_H}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <stdarg.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{data_8h}{data.h}}"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define ANSI\_BOLD "{}\(\backslash\)033[1m"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define ANSI\_RED "{}\(\backslash\)033[38:5:196m"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define ANSI\_ORANGE "{}\(\backslash\)033[38:5:208m"{}}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define ANSI\_YELLOW "{}\(\backslash\)033[38:5:178m"{}}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define ANSI\_RESET "{}\(\backslash\)033[0m"{}}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define ERROR\_RED ANSI\_RED ANSI\_BOLD}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define ERROR\_ORANGE ANSI\_ORANGE ANSI\_BOLD}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define ERROR\_YELLOW ANSI\_YELLOW ANSI\_BOLD}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{30 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{31     \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aea895e363a4530ca31dd231216f6510c16}{WARNING\_LOW}},}
+\DoxyCodeLine{32     \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aeaad566a84651b0c62b708aaf899ae5b84}{WARNING\_MED}},}
+\DoxyCodeLine{33     \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312aea9032915fa7228fd3168ddea70008fc77}{WARNING\_HIGH}}}
+\DoxyCodeLine{34 \} \mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}{WarningType}};}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{39 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{40     \mbox{\hyperlink{errors__warnings_8h_a5a2236a3693e3930b2c9fbe1fe7144ecab834a5bb2ce6d97c2831fe3d71103c14}{RC\_OK}},}
+\DoxyCodeLine{41     \mbox{\hyperlink{errors__warnings_8h_a5a2236a3693e3930b2c9fbe1fe7144ecaae4a23b560d56fcf0981a9636f58edeb}{RC\_ERROR}},}
+\DoxyCodeLine{42     \mbox{\hyperlink{errors__warnings_8h_a5a2236a3693e3930b2c9fbe1fe7144ecab88f61475ecc583f660cd937529e15e8}{RC\_SYNTAX\_ERROR}},}
+\DoxyCodeLine{43     \mbox{\hyperlink{errors__warnings_8h_a5a2236a3693e3930b2c9fbe1fe7144eca8ad91f9a2f61be46941a7dd9145d66c2}{RC\_MEMORY\_ERROR}},}
+\DoxyCodeLine{44     \mbox{\hyperlink{errors__warnings_8h_a5a2236a3693e3930b2c9fbe1fe7144eca616c2bf4e696b3b321995bbe1776945b}{RC\_FILE\_ERROR}},}
+\DoxyCodeLine{45 \} \mbox{\hyperlink{errors__warnings_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{ReturnCode}};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{50 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{errors__warnings_8h_ac056197f8b96c1d78e1858c19eadcb0a}{returnCodeStrings}}[] = \{}
+\DoxyCodeLine{51     \textcolor{stringliteral}{"{}OK"{}}, \textcolor{stringliteral}{"{}ERROR"{}}, \textcolor{stringliteral}{"{}SYNTAX ERROR"{}}, \textcolor{stringliteral}{"{}MEMORY ERROR"{}}, \textcolor{stringliteral}{"{}FILE ERROR"{}},}
+\DoxyCodeLine{52 \};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keywordtype}{void} \mbox{\hyperlink{errors__warnings_8h_a3e2e8dc1bc2143b8356e8e13798b0c42}{fatal}}(\mbox{\hyperlink{errors__warnings_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{ReturnCode}} rc, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
+\DoxyCodeLine{55 \textcolor{keywordtype}{void} \mbox{\hyperlink{errors__warnings_8h_ad3f93e9c7f297c7b02098203e676fb47}{syntax\_error}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* fn, \textcolor{keyword}{const} \textcolor{keywordtype}{int} line\_number, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{keywordtype}{void} \mbox{\hyperlink{errors__warnings_8h_a8700cba09b2c4338f3285af2e2bf1e98}{warning}}(\mbox{\hyperlink{errors__warnings_8h_aa278aa207bdeddc8432b560d1e1312ae}{WarningType}} level, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* ERRORS\_WARNINGS\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

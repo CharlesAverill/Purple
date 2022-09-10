@@ -1,0 +1,143 @@
+\hypertarget{parse_8h}{}\doxysection{include/parse.h File Reference}
+\label{parse_8h}\index{include/parse.h@{include/parse.h}}
+
+
+Function headers for parsing and operator precedence values.  
+
+
+{\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tree.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}{parse\+\_\+binary\+\_\+expression}} (int previous\+\_\+token\+\_\+precedence)
+\begin{DoxyCompactList}\small\item\em Recursively parse binary expressions into an AST. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{parse_8h_ae1f2c41870484fe7b125fcf91dafecbf}{operator\+\_\+precedence}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function headers for parsing and operator precedence values. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+09-\/Sep-\/2022
+\end{DoxyDate}
+\hypertarget{parse_8h_operator_precedence}{}\doxysubsubsection{Operator Precedence}\label{parse_8h_operator_precedence}
+This table outlines Purple\textquotesingle{}s operator precedence values. A higher precedence value is computed before a lower precedence value. \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Precedence   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Operator   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Associativity    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Precedence   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Operator   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Associativity    }\\\cline{1-4}
+\endhead
+15   &{\ttfamily ++ -\/-\/} ~\newline
+ {\ttfamily ()} ~\newline
+ {\ttfamily \mbox{[}\mbox{]}} ~\newline
+ {\ttfamily .} ~\newline
+ {\ttfamily -\/\texorpdfstring{$>$}{>}} ~\newline
+ {\itshape {\ttfamily (type)\{list\}}}    &Postfix increment/decrement ~\newline
+ Function call ~\newline
+ Array subscript ~\newline
+ Structure and Union member access ~\newline
+ Structure and union pointer member access ~\newline
+ Compound literal   &Left-\/to-\/\+Right    \\\cline{1-4}
+14   &{\ttfamily ++ -\/-\/} ~\newline
+ {\ttfamily -\/} ~\newline
+ {\ttfamily ! $\sim$} ~\newline
+ {\itshape {\ttfamily (type)}} ~\newline
+ {\ttfamily $\ast$} ~\newline
+ {\ttfamily \&} ~\newline
+ {\ttfamily bytesize}   &Prefix increment/decrement ~\newline
+ Unary negative ~\newline
+ Logical NOT, bitwise NOT ~\newline
+ Cast ~\newline
+ Dereference ~\newline
+ Address-\/of ~\newline
+ Size in bytes   &Right-\/to-\/\+Left    \\\cline{1-4}
+13   &{\ttfamily $\ast$ / \%}   &Multiplication, division, modulus   &Left-\/to-\/\+Right    \\\cline{1-4}
+12   &{\ttfamily + -\/}   &Addition, Subtraction   &\\\cline{1-4}
+11   &{\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}   &Bitwise shifts   &\\\cline{1-4}
+10   &{\ttfamily \texorpdfstring{$<$}{<} \texorpdfstring{$<$}{<}=} ~\newline
+ {\ttfamily \texorpdfstring{$>$}{>} \texorpdfstring{$>$}{>}=}   &\char`\"{}\+Less than\char`\"{}, \char`\"{}\+Less than or equal to\char`\"{} relational operators ~\newline
+ \char`\"{}\+Greater than\char`\"{}, \char`\"{}\+Greater than or equal to\char`\"{} relational operators   &\\\cline{1-4}
+9   &{\ttfamily == !=}   &\char`\"{}\+Is equal\char`\"{}, \char`\"{}\+Is not equal\char`\"{} relational operators   &\\\cline{1-4}
+8   &{\ttfamily \&}   &Bitwise AND   &\\\cline{1-4}
+7   &{\ttfamily $^\wedge$}   &Bitwise XOR   &\\\cline{1-4}
+6   &$|$   &Bitwise OR   &\\\cline{1-4}
+5   &{\ttfamily \&\&}   &Logical AND   &\\\cline{1-4}
+4   &$|$$|$   &Logical OR   &\\\cline{1-4}
+3   &{\ttfamily ? ... \+:}   &Ternary condition   &Right-\/to-\/\+Left    \\\cline{1-4}
+2   &{\ttfamily =} ~\newline
+ {\ttfamily += -\/=} ~\newline
+ {\ttfamily $\ast$= /= \%=} ~\newline
+ {\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}= \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}=} ~\newline
+ {\ttfamily \&=} $|${\ttfamily =} {\ttfamily $^\wedge$=}   &Assignment ~\newline
+ Sum, Difference Assignments ~\newline
+ Product, Quotient, Modulus Assignments ~\newline
+ Bitshift Assignments ~\newline
+ Bitwise AND, OR, XOR Assignments   &\\\cline{1-4}
+1   &{\ttfamily ,}   &Comma   &Left-\/to-\/\+Right   \\\cline{1-4}
+\end{longtabu}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}\label{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}} 
+\index{parse.h@{parse.h}!parse\_binary\_expression@{parse\_binary\_expression}}
+\index{parse\_binary\_expression@{parse\_binary\_expression}!parse.h@{parse.h}}
+\doxysubsubsection{\texorpdfstring{parse\_binary\_expression()}{parse\_binary\_expression()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ parse\+\_\+binary\+\_\+expression (\begin{DoxyParamCaption}\item[{int}]{previous\+\_\+token\+\_\+precedence }\end{DoxyParamCaption})}
+
+
+
+Recursively parse binary expressions into an AST. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em previous\+\_\+token\+\_\+precedence} & The integer precedence value of the previous \mbox{\hyperlink{structToken}{Token}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ASTNode$\ast$ An AST or AST Subtree of the binary expressions in D\+\_\+\+INPUT\+\_\+\+FILE 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{parse_8h_ae1f2c41870484fe7b125fcf91dafecbf}\label{parse_8h_ae1f2c41870484fe7b125fcf91dafecbf}} 
+\index{parse.h@{parse.h}!operator\_precedence@{operator\_precedence}}
+\index{operator\_precedence@{operator\_precedence}!parse.h@{parse.h}}
+\doxysubsubsection{\texorpdfstring{operator\_precedence}{operator\_precedence}}
+{\footnotesize\ttfamily int operator\+\_\+precedence\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    0, }
+\DoxyCodeLine{}
+\DoxyCodeLine{    11, }
+\DoxyCodeLine{    11, }
+\DoxyCodeLine{    12, }
+\DoxyCodeLine{    12, }
+\DoxyCodeLine{}
+\DoxyCodeLine{    8, }
+\DoxyCodeLine{    8, }
+\DoxyCodeLine{}
+\DoxyCodeLine{    9, }
+\DoxyCodeLine{    9, }
+\DoxyCodeLine{    9, }
+\DoxyCodeLine{    9, }
+\DoxyCodeLine{}
+\DoxyCodeLine{    0, }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+Operator precedence values. Precedence ranges from 0-\/15, 15 being the first to be computed 

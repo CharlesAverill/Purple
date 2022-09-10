@@ -1,0 +1,69 @@
+\hypertarget{structASTNode}{}\doxysection{ASTNode Struct Reference}
+\label{structASTNode}\index{ASTNode@{ASTNode}}
+
+
+Component of the abstract syntax tree built during parsing.  
+
+
+
+
+{\ttfamily \#include $<$tree.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \mbox{\hyperlink{structASTNode_ac71a4bb0085044ea339b9021a8c0c820}{ttype}}
+\begin{DoxyCompactList}\small\item\em The Token\+Type of the given token. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}{left}}
+\item 
+struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{structASTNode_ae1b629d9a274de8b4afbe2382b81e072}{mid}}
+\item 
+struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{structASTNode_ab3fac314ab87bbccda872cde9678b5b3}{right}}
+\item 
+int \mbox{\hyperlink{structASTNode_a136d1712e8cfdeb4908aceb22abc3de7}{value}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Component of the abstract syntax tree built during parsing. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}\label{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}} 
+\index{ASTNode@{ASTNode}!left@{left}}
+\index{left@{left}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{left}{left}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structASTNode}{ASTNode}}$\ast$ ASTNode\+::left}
+
+The left child of the AST Node \mbox{\Hypertarget{structASTNode_ae1b629d9a274de8b4afbe2382b81e072}\label{structASTNode_ae1b629d9a274de8b4afbe2382b81e072}} 
+\index{ASTNode@{ASTNode}!mid@{mid}}
+\index{mid@{mid}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{mid}{mid}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structASTNode}{ASTNode}}$\ast$ ASTNode\+::mid}
+
+The middle child of the AST Node \mbox{\Hypertarget{structASTNode_ab3fac314ab87bbccda872cde9678b5b3}\label{structASTNode_ab3fac314ab87bbccda872cde9678b5b3}} 
+\index{ASTNode@{ASTNode}!right@{right}}
+\index{right@{right}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{right}{right}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structASTNode}{ASTNode}}$\ast$ ASTNode\+::right}
+
+The right child of the AST Node \mbox{\Hypertarget{structASTNode_ac71a4bb0085044ea339b9021a8c0c820}\label{structASTNode_ac71a4bb0085044ea339b9021a8c0c820}} 
+\index{ASTNode@{ASTNode}!ttype@{ttype}}
+\index{ttype@{ttype}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{ttype}{ttype}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ASTNode\+::ttype}
+
+
+
+The Token\+Type of the given token. 
+
+\mbox{\Hypertarget{structASTNode_a136d1712e8cfdeb4908aceb22abc3de7}\label{structASTNode_a136d1712e8cfdeb4908aceb22abc3de7}} 
+\index{ASTNode@{ASTNode}!value@{value}}
+\index{value@{value}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily int ASTNode\+::value}
+
+Union containing either the value of an integer literal, or the identifier of a symbol 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{tree_8h}{tree.\+h}}\end{DoxyCompactItemize}
