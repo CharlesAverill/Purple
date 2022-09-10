@@ -104,7 +104,7 @@ int main(int argc, char* argv[])
     init(argc, argv);
 
     struct ASTNode* n;
-    n = parse_binary_expression();
+    n = parse_binary_expression(0);
     printf("%d\n", interpretAST(n));
 
     shutdown();

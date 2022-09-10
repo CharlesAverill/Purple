@@ -1,4 +1,4 @@
-clang-format -i src/* include/*
+clang-format -i $(find src include)
 
 # cmake --target clean
 cmake -B build

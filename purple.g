@@ -7,11 +7,17 @@ tokens {
 number: T_INTEGER_LITERAL
         ;
 
-binaryExpression: number
-                | binaryExpression '+' binaryExpression
-                | binaryExpression '-' binaryExpression
-                | binaryExpression '*' binaryExpression
-                | binaryExpression '/' binaryExpression
+multiplicativeExpression: number
+                        | number '*' multiplicativeExpression
+                        | number '/' multiplicativeExpression
+                        ;
+
+additiveExpression: multiplicativeExpression
+                  | additiveExpression '+' multiplicativeExpression
+                  | additiveExpression '-' multiplicativeExpression
+                  ;
+
+binaryExpression: additiveExpression
                 ;
 
 expression: binaryExpression

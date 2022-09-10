@@ -8,51 +8,81 @@
 #include "parse.h"
 
 /**
- * Build a terminal AST Node for a given token, exit if not a valid primary token
- * @param  t The token to check and build
- * @return An AST Node built from the provided token, or an error if the token is non-terminal
+ * @brief Get the integer operator precedence value of a Token
+ * 
+ * @param t Token to check preference of
+ * @return int Precedence of Token's type
  */
-static ASTNode *create_terminal_node(Token t)
+static int get_operator_precedence(Token t)
 {
-    ASTNode *out;
+    int prec = operator_precedence[t.type];
+
+    if (prec == 0) {
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Expected operator but got %s \"%d\"",
+                     token_strings[t.type], t.value);
+    }
+
+    return prec;
+}
+
+/**
+ * @brief Build a terminal AST Node for a given Token, exit if not a valid primary Token
+ * 
+ * @param t The Token to check and build
+ * @return An AST Node built from the provided Token, or an error if the Token is non-terminal
+ */
+static ASTNode* create_terminal_node(Token t)
+{
+    ASTNode* out;
 
     switch (D_GLOBAL_TOKEN.type) {
     case T_INTEGER_LITERAL:
         out = create_ast_leaf(T_INTEGER_LITERAL, D_GLOBAL_TOKEN.value);
         scan(&D_GLOBAL_TOKEN);
-        return out;
+        break;
     default:
         syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Token: \"%s\"", token_strings[t.type]);
     }
 
-    return NULL;
+    return out;
 }
 
 /**
- * Recursively parse binary expressions into an AST
- * @return ASTNode* An AST or AST Subtree of the binary expressions in D_INPUT_FILE
+ * @brief Recursively parse binary expressions into an AST
+ * 
+ * @param previous_token_precedence The integer precedence value of the previous Token
+ * @return ASTNode*  An AST or AST Subtree of the binary expressions in D_INPUT_FILE
  */
-ASTNode *parse_binary_expression(void)
+ASTNode* parse_binary_expression(int previous_token_precedence)
 {
-    ASTNode *left;
-    ASTNode *right;
-    ASTNode *parent;
-    TokenType ttype;
+    ASTNode* left;
+    ASTNode* right;
+    TokenType current_ttype;
 
-    // Get the integer literal on the left and scan the next token
+    // Get the intlit on the left and scan the next Token
     left = create_terminal_node(D_GLOBAL_TOKEN);
-
-    if(D_GLOBAL_TOKEN.type == T_EOF) {
+    current_ttype = D_GLOBAL_TOKEN.type;
+    if (current_ttype == T_EOF) {
         return left;
     }
 
-    ttype = D_GLOBAL_TOKEN.type;
+    // While current Token has greater precedence than previous Token
+    while (get_operator_precedence(D_GLOBAL_TOKEN) > previous_token_precedence) {
+        // Scan the next Token
+        scan(&D_GLOBAL_TOKEN);
 
-    scan(&D_GLOBAL_TOKEN);
+        // Recursively build the right AST subtree
+        right = parse_binary_expression(operator_precedence[current_ttype]);
 
-    right = parse_binary_expression();
+        // Join right subtree with current left subtree
+        left = create_ast_node(current_ttype, left, NULL, right, 0);
 
-    parent = create_ast_node(ttype, left, NULL, right, 0);
+        // Update current_ttype and check for EOF
+        current_ttype = D_GLOBAL_TOKEN.type;
+        if (current_ttype == T_EOF) {
+            return left;
+        }
+    }
 
-    return parent;
+    return left;
 }
