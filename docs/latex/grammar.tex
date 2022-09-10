@@ -12,11 +12,17 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{number: T\_INTEGER\_LITERAL}
 \DoxyCodeLine{        ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{binaryExpression: number}
-\DoxyCodeLine{                | binaryExpression '+' binaryExpression}
-\DoxyCodeLine{                | binaryExpression '-\/' binaryExpression}
-\DoxyCodeLine{                | binaryExpression '*' binaryExpression}
-\DoxyCodeLine{                | binaryExpression '/' binaryExpression}
+\DoxyCodeLine{multiplicativeExpression: number}
+\DoxyCodeLine{                        | number '*' multiplicativeExpression}
+\DoxyCodeLine{                        | number '/' multiplicativeExpression}
+\DoxyCodeLine{                        ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{additiveExpression: multiplicativeExpression}
+\DoxyCodeLine{                  | additiveExpression '+' multiplicativeExpression}
+\DoxyCodeLine{                  | additiveExpression '-\/' multiplicativeExpression}
+\DoxyCodeLine{                  ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{binaryExpression: additiveExpression}
 \DoxyCodeLine{                ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{expression: binaryExpression}

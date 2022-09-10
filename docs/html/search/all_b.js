@@ -2,7 +2,7 @@ var searchData=
 [
   ['parse_2eh_0',['parse.h',['../parse_8h.html',1,'']]],
   ['parse_5fargs_1',['parse_args',['../arguments_8h.html#a64a2af01587f9f57fae6ff8cca8bda43',1,'parse_args(purple_args *args, int argc, char *argv[]):&#160;arguments.c'],['../arguments_8c.html#a64a2af01587f9f57fae6ff8cca8bda43',1,'parse_args(purple_args *args, int argc, char *argv[]):&#160;arguments.c']]],
-  ['parse_5fbinary_5fexpression_2',['parse_binary_expression',['../parse_8h.html#ac8d04db5938aa126d0a5e6b9bbeca016',1,'parse_binary_expression(void):&#160;expression.c'],['../expression_8c.html#ac8d04db5938aa126d0a5e6b9bbeca016',1,'parse_binary_expression(void):&#160;expression.c']]],
+  ['parse_5fbinary_5fexpression_2',['parse_binary_expression',['../parse_8h.html#a5289c1f11df62361e6a30e7bec3309c8',1,'parse_binary_expression(int previous_token_precedence):&#160;expression.c'],['../expression_8c.html#a5289c1f11df62361e6a30e7bec3309c8',1,'parse_binary_expression(int previous_token_precedence):&#160;expression.c']]],
   ['parse_5fopt_3',['parse_opt',['../arguments_8c.html#a5fb6abc38ef248ec154591e0dd392c1b',1,'arguments.c']]],
   ['project_5fname_4',['PROJECT_NAME',['../info_8h.html#ae73053051efbb45c3a39751f5ce9fb36',1,'info.h']]],
   ['project_5fname_5fand_5fvers_5',['PROJECT_NAME_AND_VERS',['../info_8h.html#ad41a6ae9272f069ba953cfc269adbf19',1,'info.h']]],

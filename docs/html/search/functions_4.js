@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['next_0',['next',['../scan_8c.html#aba19733986b2193569abfcc4951d480f',1,'scan.c']]]
+  ['main_0',['main',['../purple_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'purple.c']]]
 ];

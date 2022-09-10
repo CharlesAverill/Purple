@@ -79,10 +79,15 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a3894f429297d723b0874c729e033242b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="expression_8c.html#a3894f429297d723b0874c729e033242b">get_operator_precedence</a> (<a class="el" href="structToken.html">Token</a> t)</td></tr>
+<tr class="memdesc:a3894f429297d723b0874c729e033242b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the integer operator precedence value of a <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>.  <a href="expression_8c.html#a3894f429297d723b0874c729e033242b">More...</a><br /></td></tr>
+<tr class="separator:a3894f429297d723b0874c729e033242b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fbedbaeaeae1c04a8138e171cd91f05"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="expression_8c.html#a4fbedbaeaeae1c04a8138e171cd91f05">create_terminal_node</a> (<a class="el" href="structToken.html">Token</a> t)</td></tr>
+<tr class="memdesc:a4fbedbaeaeae1c04a8138e171cd91f05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a terminal AST Node for a given <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>, exit if not a valid primary <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>.  <a href="expression_8c.html#a4fbedbaeaeae1c04a8138e171cd91f05">More...</a><br /></td></tr>
 <tr class="separator:a4fbedbaeaeae1c04a8138e171cd91f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8d04db5938aa126d0a5e6b9bbeca016"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="expression_8c.html#ac8d04db5938aa126d0a5e6b9bbeca016">parse_binary_expression</a> (void)</td></tr>
-<tr class="separator:ac8d04db5938aa126d0a5e6b9bbeca016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5289c1f11df62361e6a30e7bec3309c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="expression_8c.html#a5289c1f11df62361e6a30e7bec3309c8">parse_binary_expression</a> (int previous_token_precedence)</td></tr>
+<tr class="memdesc:a5289c1f11df62361e6a30e7bec3309c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively parse binary expressions into an AST.  <a href="expression_8c.html#a5289c1f11df62361e6a30e7bec3309c8">More...</a><br /></td></tr>
+<tr class="separator:a5289c1f11df62361e6a30e7bec3309c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Logic for parsing into an AST. </p>
@@ -112,18 +117,55 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Build a terminal AST Node for a given token, exit if not a valid primary token </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Build a terminal AST Node for a given <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>, exit if not a valid primary <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>The token to check and build </td></tr>
+    <tr><td class="paramname">t</td><td>The <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> to check and build </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An AST Node built from the provided token, or an error if the token is non-terminal </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An AST Node built from the provided <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>, or an error if the <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> is non-terminal </dd></dl>
 
 </div>
 </div>
-<a id="ac8d04db5938aa126d0a5e6b9bbeca016" name="ac8d04db5938aa126d0a5e6b9bbeca016"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8d04db5938aa126d0a5e6b9bbeca016">&#9670;&nbsp;</a></span>parse_binary_expression()</h2>
+<a id="a3894f429297d723b0874c729e033242b" name="a3894f429297d723b0874c729e033242b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3894f429297d723b0874c729e033242b">&#9670;&nbsp;</a></span>get_operator_precedence()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int get_operator_precedence </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structToken.html">Token</a>&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the integer operator precedence value of a <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td><a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> to check preference of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int Precedence of <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>'s type </dd></dl>
+
+</div>
+</div>
+<a id="a5289c1f11df62361e6a30e7bec3309c8" name="a5289c1f11df62361e6a30e7bec3309c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5289c1f11df62361e6a30e7bec3309c8">&#9670;&nbsp;</a></span>parse_binary_expression()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,13 +173,21 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structASTNode.html">ASTNode</a> * parse_binary_expression </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>previous_token_precedence</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Recursively parse binary expressions into an AST </p><dl class="section return"><dt>Returns</dt><dd>ASTNode* An AST or AST Subtree of the binary expressions in D_INPUT_FILE </dd></dl>
+
+<p>Recursively parse binary expressions into an AST. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">previous_token_precedence</td><td>The integer precedence value of the previous <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTNode* An AST or AST Subtree of the binary expressions in D_INPUT_FILE </dd></dl>
 
 </div>
 </div>

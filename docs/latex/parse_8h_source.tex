@@ -3,15 +3,34 @@
 \mbox{\hyperlink{parse_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef PARSE\_H}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define PARSE\_H}}
-\DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{data_8h}{data.h}}"{}}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{scan_8h}{scan.h}}"{}}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tree_8h}{tree.h}}"{}}}
-\DoxyCodeLine{14 }
-\DoxyCodeLine{15 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{parse_8h_ac8d04db5938aa126d0a5e6b9bbeca016}{parse\_binary\_expression}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{16 }
-\DoxyCodeLine{17 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#ifndef PARSE\_H}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define PARSE\_H}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{data_8h}{data.h}}"{}}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{scan_8h}{scan.h}}"{}}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tree_8h}{tree.h}}"{}}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{39 \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{parse_8h_ae1f2c41870484fe7b125fcf91dafecbf}{operator\_precedence}}[] = \{}
+\DoxyCodeLine{40     0, \textcolor{comment}{// EOF}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     11, \textcolor{comment}{// PLUS}}
+\DoxyCodeLine{43     11, \textcolor{comment}{// MINUS}}
+\DoxyCodeLine{44     12, \textcolor{comment}{// STAR}}
+\DoxyCodeLine{45     12, \textcolor{comment}{// SLASH}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     8, \textcolor{comment}{// EQUALS}}
+\DoxyCodeLine{48     8, \textcolor{comment}{// NOT EQUALS}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     9, \textcolor{comment}{// LESS}}
+\DoxyCodeLine{51     9, \textcolor{comment}{// GREATER}}
+\DoxyCodeLine{52     9, \textcolor{comment}{// LESS EQUAL}}
+\DoxyCodeLine{53     9, \textcolor{comment}{// GREATER EQUAL}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     0, \textcolor{comment}{// INTLIT}}
+\DoxyCodeLine{56 \};}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}{parse\_binary\_expression}}(\textcolor{keywordtype}{int} previous\_token\_precedence);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PARSE\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

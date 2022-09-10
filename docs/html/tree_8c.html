@@ -80,10 +80,13 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a915e772bd69ae842cad589acf8fb3ad5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a915e772bd69ae842cad589acf8fb3ad5">create_ast_node</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, <a class="el" href="structASTNode.html">ASTNode</a> *left, <a class="el" href="structASTNode.html">ASTNode</a> *mid, <a class="el" href="structASTNode.html">ASTNode</a> *right, long value)</td></tr>
+<tr class="memdesc:a915e772bd69ae842cad589acf8fb3ad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Node with the provided values.  <a href="tree_8c.html#a915e772bd69ae842cad589acf8fb3ad5">More...</a><br /></td></tr>
 <tr class="separator:a915e772bd69ae842cad589acf8fb3ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b486a5b3aa6f1d3405d5fc2d7272732"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a0b486a5b3aa6f1d3405d5fc2d7272732">create_ast_leaf</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, long value)</td></tr>
+<tr class="memdesc:a0b486a5b3aa6f1d3405d5fc2d7272732"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Leaf Node with the provided values.  <a href="tree_8c.html#a0b486a5b3aa6f1d3405d5fc2d7272732">More...</a><br /></td></tr>
 <tr class="separator:a0b486a5b3aa6f1d3405d5fc2d7272732"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9794c678cd8461862083fa041a50463e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a9794c678cd8461862083fa041a50463e">create_unary_ast_node</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, <a class="el" href="structASTNode.html">ASTNode</a> *child, int value)</td></tr>
+<tr class="memdesc:a9794c678cd8461862083fa041a50463e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Unary Parent Node with the provided values.  <a href="tree_8c.html#a9794c678cd8461862083fa041a50463e">More...</a><br /></td></tr>
 <tr class="separator:a9794c678cd8461862083fa041a50463e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -116,7 +119,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Constructs a new AST Leaf Node with the provided values </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Constructs a new AST Leaf Node with the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ttype</td><td>TokenType of the new AST Node </td></tr>
     <tr><td class="paramname">value</td><td>If TokenType == T_INTEGER_LITERAL, then the value of the integer literal </td></tr>
@@ -170,7 +175,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Constructs a new AST Node with the provided values </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Constructs a new AST Node with the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ttype</td><td>TokenType of the new AST Node </td></tr>
     <tr><td class="paramname">left</td><td>Left child subtree of the new AST Node </td></tr>
@@ -215,7 +222,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Constructs a new AST Unary Parent Node with the provided values </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Constructs a new AST Unary Parent Node with the provided values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ttype</td><td>TokenType of the new AST Node </td></tr>
     <tr><td class="paramname">child</td><td>The AST Node's single child </td></tr>

@@ -68,12 +68,13 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">parse.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Function headers for parsing.  
+<p>Function headers for parsing and operator precedence values.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="data_8h_source.html">data.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="scan_8h_source.html">scan.h</a>&quot;</code><br />
@@ -83,16 +84,90 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac8d04db5938aa126d0a5e6b9bbeca016"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#ac8d04db5938aa126d0a5e6b9bbeca016">parse_binary_expression</a> (void)</td></tr>
-<tr class="separator:ac8d04db5938aa126d0a5e6b9bbeca016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5289c1f11df62361e6a30e7bec3309c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a5289c1f11df62361e6a30e7bec3309c8">parse_binary_expression</a> (int previous_token_precedence)</td></tr>
+<tr class="memdesc:a5289c1f11df62361e6a30e7bec3309c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively parse binary expressions into an AST.  <a href="parse_8h.html#a5289c1f11df62361e6a30e7bec3309c8">More...</a><br /></td></tr>
+<tr class="separator:a5289c1f11df62361e6a30e7bec3309c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ae1f2c41870484fe7b125fcf91dafecbf"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#ae1f2c41870484fe7b125fcf91dafecbf">operator_precedence</a> []</td></tr>
+<tr class="separator:ae1f2c41870484fe7b125fcf91dafecbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Function headers for parsing. </p>
+<div class="textblock"><p >Function headers for parsing and operator precedence values. </p>
 <dl class="section author"><dt>Author</dt><dd>Charles Averill </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>09-Sep-2022 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>09-Sep-2022</dd></dl>
+<h2><a class="anchor" id="operator_precedence"></a>
+Operator Precedence</h2>
+<p >This table outlines Purple's operator precedence values. A higher precedence value is computed before a lower precedence value. </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Precedence   </th><th class="markdownTableHeadNone">Operator   </th><th class="markdownTableHeadNone">Description   </th><th class="markdownTableHeadNone">Associativity    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">15   </td><td class="markdownTableBodyNone"><code>++ --</code> <br  />
+ <code>()</code> <br  />
+ <code>[]</code> <br  />
+ <code>.</code> <br  />
+ <code>-&gt;</code> <br  />
+ <em><code>(type){list}</code></em>    </td><td class="markdownTableBodyNone">Postfix increment/decrement <br  />
+ Function call <br  />
+ Array subscript <br  />
+ Structure and Union member access <br  />
+ Structure and union pointer member access <br  />
+ Compound literal   </td><td class="markdownTableBodyNone">Left-to-Right    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">14   </td><td class="markdownTableBodyNone"><code>++ --</code> <br  />
+ <code>-</code> <br  />
+ <code>! ~</code> <br  />
+ <em><code>(type)</code></em> <br  />
+ <code>*</code> <br  />
+ <code>&amp;</code> <br  />
+ <code>bytesize</code>   </td><td class="markdownTableBodyNone">Prefix increment/decrement <br  />
+ Unary negative <br  />
+ Logical NOT, bitwise NOT <br  />
+ Cast <br  />
+ Dereference <br  />
+ Address-of <br  />
+ Size in bytes   </td><td class="markdownTableBodyNone">Right-to-Left    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">13   </td><td class="markdownTableBodyNone"><code>* / %</code>   </td><td class="markdownTableBodyNone">Multiplication, division, modulus   </td><td class="markdownTableBodyNone">Left-to-Right    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">12   </td><td class="markdownTableBodyNone"><code>+ -</code>   </td><td class="markdownTableBodyNone">Addition, Subtraction   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">11   </td><td class="markdownTableBodyNone"><code>&lt;&lt; &gt;&gt;</code>   </td><td class="markdownTableBodyNone">Bitwise shifts   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10   </td><td class="markdownTableBodyNone"><code>&lt; &lt;=</code> <br  />
+ <code>&gt; &gt;=</code>   </td><td class="markdownTableBodyNone">"Less than", "Less than or equal to" relational operators <br  />
+ "Greater than", "Greater than or equal to" relational operators   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">9   </td><td class="markdownTableBodyNone"><code>== !=</code>   </td><td class="markdownTableBodyNone">"Is equal", "Is not equal" relational operators   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">8   </td><td class="markdownTableBodyNone"><code>&amp;</code>   </td><td class="markdownTableBodyNone">Bitwise AND   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">7   </td><td class="markdownTableBodyNone"><code>^</code>   </td><td class="markdownTableBodyNone">Bitwise XOR   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone">|   </td><td class="markdownTableBodyNone">Bitwise OR   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone"><code>&amp;&amp;</code>   </td><td class="markdownTableBodyNone">Logical AND   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">||   </td><td class="markdownTableBodyNone">Logical OR   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone"><code>? ... :</code>   </td><td class="markdownTableBodyNone">Ternary condition   </td><td class="markdownTableBodyNone">Right-to-Left    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone"><code>=</code> <br  />
+ <code>+= -=</code> <br  />
+ <code>*= /= %=</code> <br  />
+ <code>&lt;&lt;= &gt;&gt;=</code> <br  />
+ <code>&amp;=</code> |<code>=</code> <code>^=</code>   </td><td class="markdownTableBodyNone">Assignment <br  />
+ Sum, Difference Assignments <br  />
+ Product, Quotient, Modulus Assignments <br  />
+ Bitshift Assignments <br  />
+ Bitwise AND, OR, XOR Assignments   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone"><code>,</code>   </td><td class="markdownTableBodyNone">Comma   </td><td class="markdownTableBodyNone">Left-to-Right   </td></tr>
+</table>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ac8d04db5938aa126d0a5e6b9bbeca016" name="ac8d04db5938aa126d0a5e6b9bbeca016"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8d04db5938aa126d0a5e6b9bbeca016">&#9670;&nbsp;</a></span>parse_binary_expression()</h2>
+<a id="a5289c1f11df62361e6a30e7bec3309c8" name="a5289c1f11df62361e6a30e7bec3309c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5289c1f11df62361e6a30e7bec3309c8">&#9670;&nbsp;</a></span>parse_binary_expression()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -100,13 +175,63 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structASTNode.html">ASTNode</a> * parse_binary_expression </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>previous_token_precedence</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Recursively parse binary expressions into an AST </p><dl class="section return"><dt>Returns</dt><dd>ASTNode* An AST or AST Subtree of the binary expressions in D_INPUT_FILE </dd></dl>
+
+<p>Recursively parse binary expressions into an AST. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">previous_token_precedence</td><td>The integer precedence value of the previous <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTNode* An AST or AST Subtree of the binary expressions in D_INPUT_FILE </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ae1f2c41870484fe7b125fcf91dafecbf" name="ae1f2c41870484fe7b125fcf91dafecbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1f2c41870484fe7b125fcf91dafecbf">&#9670;&nbsp;</a></span>operator_precedence</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int operator_precedence[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    0, </div>
+<div class="line"> </div>
+<div class="line">    11, </div>
+<div class="line">    11, </div>
+<div class="line">    12, </div>
+<div class="line">    12, </div>
+<div class="line"> </div>
+<div class="line">    8, </div>
+<div class="line">    8, </div>
+<div class="line"> </div>
+<div class="line">    9, </div>
+<div class="line">    9, </div>
+<div class="line">    9, </div>
+<div class="line">    9, </div>
+<div class="line"> </div>
+<div class="line">    0, </div>
+<div class="line">}</div>
+</div><!-- fragment --><p >Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed </p>
 
 </div>
 </div>
