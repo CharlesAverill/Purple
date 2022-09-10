@@ -37,6 +37,12 @@ jobs:
         with:
           name: doc-files
           path: .
+        
+      - name: Move HTML files to root
+        uses: canastro/copy-file-action@master
+        with:
+          source: "html/*"
+          target: "."
       
       - name: Commit
         uses: EndBug/add-and-commit@v7
