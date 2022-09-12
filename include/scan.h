@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "errors_warnings.h"
+#include "utils/logging.h"
 
 /**
  * @brief Types of scannable tokens
@@ -40,14 +40,24 @@ typedef enum {
 /**
  * @brief Token string equivalents
  */
-static char* token_strings[] = {"EOF",      "+",     "-",          "*",
-                                "/",        "==",    "!=",         "<",
-                                ">",        "<=",    ">=",         "integer literal",
-                                ";",        "=",     "(",          ")",
-                                "{",        "}",     "identifier", "int",
-                                "as",       "if",    "else",       "for",
-                                "print",    "while", "with",       "LValue Identifier",
-                                "AST Glue", "Scope"};
+static char* tokenStrings[] = {"EOF",      "+",     "-",          "*",
+                               "/",        "==",    "!=",         "<",
+                               ">",        "<=",    ">=",         "integer literal",
+                               ";",        "=",     "(",          ")",
+                               "{",        "}",     "identifier", "int",
+                               "as",       "if",    "else",       "for",
+                               "print",    "while", "with",       "LValue Identifier",
+                               "AST Glue", "Scope"};
+
+/**
+ * @brief Macro to determine if a TokenType is associated with a terminal AST Node
+ */
+#define TOKENTYPE_IS_TERMINAL(type) (type >= T_INTEGER_LITERAL && type <= T_INTEGER_LITERAL)
+
+/**
+ * @brief Macro to determine if a TokenType is associated with a binary arithmetic operation
+ */
+#define TOKENTYPE_IS_BINARY_ARITHMETIC(type) (type >= T_PLUS && type <= T_SLASH)
 
 /**
  * @brief Structure containing information about individual scannable tokens

@@ -1,11 +1,12 @@
 /**
- * @file errors_warnings.c
+ * @file logging.c
  * @author Charles Averill
  * @brief Warnings and fatal error handling
  * @date 08-Sep-2022
  */
 
-#include "errors_warnings.h"
+#include "utils/logging.h"
+#include "utils/arguments.h"
 
 /**
  * @brief Raises a fatal error that will exit the compiler
@@ -16,12 +17,12 @@
  */
 void fatal(ReturnCode rc, const char* fmt, ...)
 {
-    va_list args;
+    va_list func_args;
 
-    va_start(args, fmt);
+    va_start(func_args, fmt);
     fprintf(stderr, "%s%s%s", ERROR_RED "[", returnCodeStrings[rc], "] - " ANSI_RESET);
-    vfprintf(stderr, fmt, args);
-    va_end(args);
+    vfprintf(stderr, fmt, func_args);
+    va_end(func_args);
 
     // Print fence for error distinguishing
     fprintf(stderr, "\n----------------------------------------\n");
@@ -43,15 +44,15 @@ void fatal(ReturnCode rc, const char* fmt, ...)
  */
 void syntax_error(const char* fn, const int line_number, const char* fmt, ...)
 {
-    va_list args;
+    va_list func_args;
 
     // Print fence for error distinguishing
     fprintf(stderr, "----------------------------------------\n");
 
     // Print details of error
-    va_start(args, fmt);
-    vfprintf(stderr, fmt, args);
-    va_end(args);
+    va_start(func_args, fmt);
+    vfprintf(stderr, fmt, func_args);
+    va_end(func_args);
 
     fprintf(stderr, "\n");
 
@@ -59,30 +60,31 @@ void syntax_error(const char* fn, const int line_number, const char* fmt, ...)
 }
 
 /**
- * @brief Raises a non-fatal warning
+ * @brief Raises a non-fatal logging statement
  * 
- * @param level Severity of warning
- * @param fmt Format string for printed warning
- * @param ... Varargs for printed warning
+ * @param level Severity of statement
+ * @param fmt Format string for printed statement
+ * @param ... Varargs for printed statement
  */
-void warning(WarningType level, const char* fmt, ...)
+void purple_log(LogLevel level, const char* fmt, ...)
 {
-    va_list args;
-    char* warning_color;
+    va_list func_args;
+    FILE* output_stream;
 
-    va_start(args, fmt);
-    switch (level) {
-    case WARNING_LOW:
-        warning_color = ERROR_YELLOW;
-        break;
-    case WARNING_MED:
-        warning_color = ERROR_ORANGE;
-        break;
-    case WARNING_HIGH:
-        warning_color = ERROR_RED;
-        break;
+    if (args->logging == LOG_NONE || args->logging > level) {
+        return;
     }
-    fprintf(stderr, "%s%s", warning_color, "[WARNING] - " ANSI_RESET);
-    vfprintf(stderr, fmt, args);
-    va_end(args);
+
+    if (args->logging > LOG_INFO) {
+        output_stream = stderr;
+    } else {
+        output_stream = stdout;
+    }
+
+    va_start(func_args, fmt);
+    fprintf(output_stream, "LOG:%s%s%s", logInfoLevels[level].color, logInfoLevels[level].name,
+            " - " ANSI_RESET);
+    vfprintf(output_stream, fmt, func_args);
+    fprintf(output_stream, "\n");
+    va_end(func_args);
 }

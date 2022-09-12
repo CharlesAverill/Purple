@@ -12,10 +12,10 @@
 #include "data.h"
 #undef extern_
 
-#include "arguments.h"
-#include "errors_warnings.h"
 #include "parse.h"
 #include "scan.h"
+#include "utils/arguments.h"
+#include "utils/logging.h"
 
 static void init(int argc, char* argv[]);
 void shutdown(void);
@@ -33,7 +33,7 @@ static void init(int argc, char* argv[])
     D_PUT_BACK = '\n';
 
     // Argument parsing
-    args = malloc(sizeof(purple_args));
+    args = malloc(sizeof(PurpleArgs));
     if (args == NULL) {
         fatal(RC_MEMORY_ERROR, "Unable to allocate memory for command line arguments");
     }
@@ -58,6 +58,9 @@ void shutdown(void)
     if (D_INPUT_FILE) {
         fclose(D_INPUT_FILE);
     }
+    if (D_LLVM_FILE) {
+        fclose(D_LLVM_FILE);
+    }
 }
 
 int interpretAST(struct ASTNode* n)
@@ -74,7 +77,7 @@ int interpretAST(struct ASTNode* n)
     if (n->ttype == T_INTEGER_LITERAL)
         printf("int %d\n", n->value);
     else
-        printf("%d %s %d\n", leftval, token_strings[n->ttype], rightval);
+        printf("%d %s %d\n", leftval, tokenStrings[n->ttype], rightval);
 
     switch (n->ttype) {
     case T_PLUS:
@@ -101,11 +104,11 @@ int interpretAST(struct ASTNode* n)
  */
 int main(int argc, char* argv[])
 {
+    struct ASTNode* n;
+
     init(argc, argv);
 
-    struct ASTNode* n;
     n = parse_binary_expression(0);
-    printf("%d\n", interpretAST(n));
 
     shutdown();
 

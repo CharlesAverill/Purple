@@ -10,8 +10,8 @@
 
 #include <stdlib.h>
 
-#include "errors_warnings.h"
 #include "scan.h"
+#include "utils/logging.h"
 
 /**
  * @brief Component of the abstract syntax tree built during parsing
