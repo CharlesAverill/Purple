@@ -9,24 +9,6 @@
 #include "utils/arguments.h"
 
 /**
- * @brief Tie up any loose ends that may have arisen
- */
-void shutdown(void)
-{
-    if (D_INPUT_FILE) {
-        fclose(D_INPUT_FILE);
-        D_INPUT_FILE = NULL;
-    }
-    if (D_LLVM_FILE) {
-        fclose(D_LLVM_FILE);
-        D_LLVM_FILE = NULL;
-    }
-    if (args) {
-        free(args);
-    }
-}
-
-/**
  * @brief Raises a fatal error that will exit the compiler
  * 
  * @param rc Return code to exit with

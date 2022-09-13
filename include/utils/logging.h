@@ -5,14 +5,15 @@
  * @date 08-Sep-2022
  */
 
-#ifndef LOGGING_H
-#define LOGGING_H
+#ifndef LOGGING
+#define LOGGING
 
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "data.h"
+#include "utils/shutdown.h"
 
 #define ANSI_BOLD "\033[1m"
 #define ANSI_RED "\033[38:5:196m"
@@ -71,11 +72,9 @@ typedef enum {
 static const char* returnCodeStrings[] = {"OK",           "ERROR",      "SYNTAX ERROR",
                                           "MEMORY ERROR", "FILE ERROR", "COMPILER ERROR"};
 
-void shutdown(void);
-
 void fatal(ReturnCode rc, const char* fmt, ...);
 void syntax_error(const char* fn, const int line_number, const char* fmt, ...);
 
 void purple_log(LogLevel level, const char* fmt, ...);
 
-#endif /* LOGGING_H */
+#endif /* LOGGING */

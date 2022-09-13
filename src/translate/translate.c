@@ -148,6 +148,8 @@ static void free_llvm_stack_entry_node_list(LLVMStackEntryNode* head)
  */
 void generate_llvm(ASTNode* root)
 {
+    purple_log(LOG_DEBUG, "Generating LLVM from AST");
+
     translate_init();
 
     LLVMStackEntryNode* stack_entries = determine_binary_expression_stack_allocation(root);
@@ -167,5 +169,5 @@ void generate_llvm(ASTNode* root)
 
     free_llvm_stack_entry_node_list(loadedRegistersHead);
 
-    purple_log(LOG_DEBUG, "LLVM written to %s", args->filenames[1]);
+    purple_log(LOG_DEBUG, "LLVM written to %s", D_LLVM_FN);
 }

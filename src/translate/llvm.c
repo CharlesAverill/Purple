@@ -258,7 +258,7 @@ type_register get_next_local_virtual_register(void)
 void llvm_print_int(type_register print_vr)
 {
     fprintf(D_LLVM_FILE,
-            TAB "call i32 (i8*, ...) @printf(i8* noundef getelementptr inbounds ([4 x i8], [4 x "
-                "i8]* @print_int_fstring , i32 0, i32 0), i32 noundef %%%llu)" NEWLINE,
+            TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
+                "i8]* @print_int_fstring , i32 0, i32 0), i32 %%%llu)" NEWLINE,
             print_vr);
 }
