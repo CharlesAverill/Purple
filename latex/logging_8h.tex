@@ -9,6 +9,7 @@ Function headers, ANSI defines, and enums for raising internal warnings and erro
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils/shutdown.\+h\char`\"{}}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -59,8 +60,6 @@ enum \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{Return\+Code
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{logging_8h_a1c9d5e29ad8899afe0c34571ddee18f9}{shutdown}} (void)
-\begin{DoxyCompactList}\small\item\em Tie up any loose ends that may have arisen. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{logging_8h_a3e2e8dc1bc2143b8356e8e13798b0c42}{fatal}} (\mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{Return\+Code}} rc, const char $\ast$fmt,...)
 \begin{DoxyCompactList}\small\item\em Raises a fatal error that will exit the compiler. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{logging_8h_ad3f93e9c7f297c7b02098203e676fb47}{syntax\+\_\+error}} (const char $\ast$fn, const int line\+\_\+number, const char $\ast$fmt,...)
@@ -252,16 +251,6 @@ Raises a non-\/fatal logging statement.
 {\em ...} & Varargs for printed statement \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{logging_8h_a1c9d5e29ad8899afe0c34571ddee18f9}\label{logging_8h_a1c9d5e29ad8899afe0c34571ddee18f9}} 
-\index{logging.h@{logging.h}!shutdown@{shutdown}}
-\index{shutdown@{shutdown}!logging.h@{logging.h}}
-\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
-{\footnotesize\ttfamily void shutdown (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Tie up any loose ends that may have arisen. 
-
 \mbox{\Hypertarget{logging_8h_ad3f93e9c7f297c7b02098203e676fb47}\label{logging_8h_ad3f93e9c7f297c7b02098203e676fb47}} 
 \index{logging.h@{logging.h}!syntax\_error@{syntax\_error}}
 \index{syntax\_error@{syntax\_error}!logging.h@{logging.h}}

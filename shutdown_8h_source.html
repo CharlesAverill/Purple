@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Purple: include/utils Directory Reference</title>
+<title>Purple: include/utils/shutdown.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,26 +67,20 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">utils Directory Reference</div></div>
+  <div class="headertitle"><div class="title">shutdown.h</div></div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8h.html">arguments.h</a> <a href="arguments_8h_source.html">[code]</a></td></tr>
-<tr class="memdesc:arguments_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function headers for command line argument parsing. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formatting_8h.html">formatting.h</a> <a href="formatting_8h_source.html">[code]</a></td></tr>
-<tr class="memdesc:formatting_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definitions for string formatting. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logging_8h.html">logging.h</a> <a href="logging_8h_source.html">[code]</a></td></tr>
-<tr class="memdesc:logging_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function headers, ANSI defines, and enums for raising internal warnings and errors. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shutdown_8h.html">shutdown.h</a> <a href="shutdown_8h_source.html">[code]</a></td></tr>
-<tr class="memdesc:shutdown_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function headers for shutting down the compiler. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+<a href="shutdown_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef SHUTDOWN_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define SHUTDOWN_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keywordtype">void</span> <a class="code hl_function" href="shutdown_8h.html#af6d534ef321583c45d9e559795d40001">close_files</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keywordtype">void</span> <a class="code hl_function" href="shutdown_8h.html#a1c9d5e29ad8899afe0c34571ddee18f9">shutdown</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif </span><span class="comment">/* SHUTDOWN_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="ashutdown_8h_html_a1c9d5e29ad8899afe0c34571ddee18f9"><div class="ttname"><a href="shutdown_8h.html#a1c9d5e29ad8899afe0c34571ddee18f9">shutdown</a></div><div class="ttdeci">void shutdown(void)</div><div class="ttdoc">Tie up any loose ends that may have arisen.</div><div class="ttdef"><b>Definition:</b> shutdown.c:30</div></div>
+<div class="ttc" id="ashutdown_8h_html_af6d534ef321583c45d9e559795d40001"><div class="ttname"><a href="shutdown_8h.html#af6d534ef321583c45d9e559795d40001">close_files</a></div><div class="ttdeci">void close_files(void)</div><div class="ttdoc">Close any open input/output files.</div><div class="ttdef"><b>Definition:</b> shutdown.c:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
