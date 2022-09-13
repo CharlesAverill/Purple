@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['warningtype_0',['WarningType',['../errors__warnings_8h.html#aa278aa207bdeddc8432b560d1e1312ae',1,'errors_warnings.h']]]
+  ['returncode_0',['ReturnCode',['../logging_8h.html#a5a2236a3693e3930b2c9fbe1fe7144ec',1,'logging.h']]]
 ];

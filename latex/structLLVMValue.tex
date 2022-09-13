@@ -1,0 +1,60 @@
+\hypertarget{structLLVMValue}{}\doxysection{LLVMValue Struct Reference}
+\label{structLLVMValue}\index{LLVMValue@{LLVMValue}}
+
+
+Value returned by ast\+\_\+to\+\_\+llvm.  
+
+
+
+
+{\ttfamily \#include $<$llvm.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79c}{LLVMValue\+Type}} \mbox{\hyperlink{structLLVMValue_af6e542062574556a83ffd8b23bc86fd0}{value\+\_\+type}}
+\item 
+bool \mbox{\hyperlink{structLLVMValue_a781b99846c8053f0557e5db87b954296}{stores\+\_\+pointer}}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\_register}} \mbox{\hyperlink{structLLVMValue_a94c070541eb94e80a2639e53bcb26e04}{virtual\_register\_index}}\\
+\} \mbox{\hyperlink{structLLVMValue_a67100c0e8c1dea2403fe7bf5a93dba1a}{value}}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Value returned by ast\+\_\+to\+\_\+llvm. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structLLVMValue_a781b99846c8053f0557e5db87b954296}\label{structLLVMValue_a781b99846c8053f0557e5db87b954296}} 
+\index{LLVMValue@{LLVMValue}!stores\_pointer@{stores\_pointer}}
+\index{stores\_pointer@{stores\_pointer}!LLVMValue@{LLVMValue}}
+\doxysubsubsection{\texorpdfstring{stores\_pointer}{stores\_pointer}}
+{\footnotesize\ttfamily bool LLVMValue\+::stores\+\_\+pointer}
+
+Stores a pointer? \mbox{\Hypertarget{structLLVMValue_a67100c0e8c1dea2403fe7bf5a93dba1a}\label{structLLVMValue_a67100c0e8c1dea2403fe7bf5a93dba1a}} 
+\index{LLVMValue@{LLVMValue}!value@{value}}
+\index{value@{value}!LLVMValue@{LLVMValue}}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily union  \{ ... \}  LLVMValue\+::value}
+
+Contents of the value returned \mbox{\Hypertarget{structLLVMValue_af6e542062574556a83ffd8b23bc86fd0}\label{structLLVMValue_af6e542062574556a83ffd8b23bc86fd0}} 
+\index{LLVMValue@{LLVMValue}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!LLVMValue@{LLVMValue}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79c}{LLVMValue\+Type}} LLVMValue\+::value\+\_\+type}
+
+What kind of value is being returned \mbox{\Hypertarget{structLLVMValue_a94c070541eb94e80a2639e53bcb26e04}\label{structLLVMValue_a94c070541eb94e80a2639e53bcb26e04}} 
+\index{LLVMValue@{LLVMValue}!virtual\_register\_index@{virtual\_register\_index}}
+\index{virtual\_register\_index@{virtual\_register\_index}!LLVMValue@{LLVMValue}}
+\doxysubsubsection{\texorpdfstring{virtual\_register\_index}{virtual\_register\_index}}
+{\footnotesize\ttfamily \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} LLVMValue\+::virtual\+\_\+register\+\_\+index}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/translate/\mbox{\hyperlink{llvm_8h}{llvm.\+h}}\end{DoxyCompactItemize}

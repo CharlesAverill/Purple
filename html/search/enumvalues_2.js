@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['warning_5fhigh_0',['WARNING_HIGH',['../errors__warnings_8h.html#aa278aa207bdeddc8432b560d1e1312aea9032915fa7228fd3168ddea70008fc77',1,'errors_warnings.h']]],
-  ['warning_5flow_1',['WARNING_LOW',['../errors__warnings_8h.html#aa278aa207bdeddc8432b560d1e1312aea895e363a4530ca31dd231216f6510c16',1,'errors_warnings.h']]],
-  ['warning_5fmed_2',['WARNING_MED',['../errors__warnings_8h.html#aa278aa207bdeddc8432b560d1e1312aeaad566a84651b0c62b708aaf899ae5b84',1,'errors_warnings.h']]]
+  ['rc_5fcompiler_5ferror_0',['RC_COMPILER_ERROR',['../logging_8h.html#a5a2236a3693e3930b2c9fbe1fe7144ecaa62f5654268c12e7157b106038efc6cb',1,'logging.h']]],
+  ['rc_5ferror_1',['RC_ERROR',['../logging_8h.html#a5a2236a3693e3930b2c9fbe1fe7144ecaae4a23b560d56fcf0981a9636f58edeb',1,'logging.h']]],
+  ['rc_5ffile_5ferror_2',['RC_FILE_ERROR',['../logging_8h.html#a5a2236a3693e3930b2c9fbe1fe7144eca616c2bf4e696b3b321995bbe1776945b',1,'logging.h']]],
+  ['rc_5fmemory_5ferror_3',['RC_MEMORY_ERROR',['../logging_8h.html#a5a2236a3693e3930b2c9fbe1fe7144eca8ad91f9a2f61be46941a7dd9145d66c2',1,'logging.h']]],
+  ['rc_5fok_4',['RC_OK',['../logging_8h.html#a5a2236a3693e3930b2c9fbe1fe7144ecab834a5bb2ce6d97c2831fe3d71103c14',1,'logging.h']]],
+  ['rc_5fsyntax_5ferror_5',['RC_SYNTAX_ERROR',['../logging_8h.html#a5a2236a3693e3930b2c9fbe1fe7144ecab88f61475ecc583f660cd937529e15e8',1,'logging.h']]]
 ];

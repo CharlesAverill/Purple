@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mid_0',['mid',['../structASTNode.html#ae1b629d9a274de8b4afbe2382b81e072',1,'ASTNode']]]
+  ['int_5fvalue_0',['int_value',['../structNumber.html#ac38ba38977fa4ff09c1b23ecb358a125',1,'Number']]]
 ];

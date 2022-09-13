@@ -69,6 +69,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
@@ -84,7 +85,7 @@ $(function() {
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="errors__warnings_8h_source.html">errors_warnings.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="logging_8h_source.html">utils/logging.h</a>&quot;</code><br />
 </div>
 <p><a href="scan_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -93,6 +94,15 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structToken.html">Token</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about individual scannable tokens.  <a href="structToken.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:affec33daf918f96ba231bf8564fffbe0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#affec33daf918f96ba231bf8564fffbe0">TOKENTYPE_IS_TERMINAL</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a>)</td></tr>
+<tr class="memdesc:affec33daf918f96ba231bf8564fffbe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to determine if a TokenType is associated with a terminal AST Node.  <a href="scan_8h.html#affec33daf918f96ba231bf8564fffbe0">More...</a><br /></td></tr>
+<tr class="separator:affec33daf918f96ba231bf8564fffbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58f4872f7a38784336953acff530cb27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a58f4872f7a38784336953acff530cb27">TOKENTYPE_IS_BINARY_ARITHMETIC</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2">T_PLUS</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a">T_SLASH</a>)</td></tr>
+<tr class="memdesc:a58f4872f7a38784336953acff530cb27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to determine if a TokenType is associated with a binary arithmetic operation.  <a href="scan_8h.html#a58f4872f7a38784336953acff530cb27">More...</a><br /></td></tr>
+<tr class="separator:a58f4872f7a38784336953acff530cb27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -130,15 +140,56 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aac4b727eb90bfc1375ac629aa9e69398"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#aac4b727eb90bfc1375ac629aa9e69398">token_strings</a> []</td></tr>
-<tr class="memdesc:aac4b727eb90bfc1375ac629aa9e69398"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> string equivalents.  <a href="scan_8h.html#aac4b727eb90bfc1375ac629aa9e69398">More...</a><br /></td></tr>
-<tr class="separator:aac4b727eb90bfc1375ac629aa9e69398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cef8f6f6c1a827c5f882dc5ab2024e7"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a3cef8f6f6c1a827c5f882dc5ab2024e7">tokenStrings</a> []</td></tr>
+<tr class="memdesc:a3cef8f6f6c1a827c5f882dc5ab2024e7"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> string equivalents.  <a href="scan_8h.html#a3cef8f6f6c1a827c5f882dc5ab2024e7">More...</a><br /></td></tr>
+<tr class="separator:a3cef8f6f6c1a827c5f882dc5ab2024e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Lexical Scanner function headers. </p>
 <dl class="section author"><dt>Author</dt><dd>CharlesAverill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>05-Oct-2021 </dd></dl>
-</div><h2 class="groupheader">Typedef Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a58f4872f7a38784336953acff530cb27" name="a58f4872f7a38784336953acff530cb27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58f4872f7a38784336953acff530cb27">&#9670;&nbsp;</a></span>TOKENTYPE_IS_BINARY_ARITHMETIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOKENTYPE_IS_BINARY_ARITHMETIC</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type</td><td>)</td>
+          <td>&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2">T_PLUS</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a">T_SLASH</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Macro to determine if a TokenType is associated with a binary arithmetic operation. </p>
+
+</div>
+</div>
+<a id="affec33daf918f96ba231bf8564fffbe0" name="affec33daf918f96ba231bf8564fffbe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affec33daf918f96ba231bf8564fffbe0">&#9670;&nbsp;</a></span>TOKENTYPE_IS_TERMINAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOKENTYPE_IS_TERMINAL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type</td><td>)</td>
+          <td>&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Macro to determine if a TokenType is associated with a terminal AST Node. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
 <a id="ae88d5c0259051080fda097b92d99d7ee" name="ae88d5c0259051080fda097b92d99d7ee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae88d5c0259051080fda097b92d99d7ee">&#9670;&nbsp;</a></span>Token</h2>
 
@@ -215,8 +266,8 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="aac4b727eb90bfc1375ac629aa9e69398" name="aac4b727eb90bfc1375ac629aa9e69398"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac4b727eb90bfc1375ac629aa9e69398">&#9670;&nbsp;</a></span>token_strings</h2>
+<a id="a3cef8f6f6c1a827c5f882dc5ab2024e7" name="a3cef8f6f6c1a827c5f882dc5ab2024e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cef8f6f6c1a827c5f882dc5ab2024e7">&#9670;&nbsp;</a></span>tokenStrings</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,7 +276,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">char* token_strings[]</td>
+          <td class="memname">char* tokenStrings[]</td>
         </tr>
       </table>
   </td>
@@ -235,13 +286,13 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {<span class="stringliteral">&quot;EOF&quot;</span>,      <span class="stringliteral">&quot;+&quot;</span>,     <span class="stringliteral">&quot;-&quot;</span>,          <span class="stringliteral">&quot;*&quot;</span>,</div>
-<div class="line">                                <span class="stringliteral">&quot;/&quot;</span>,        <span class="stringliteral">&quot;==&quot;</span>,    <span class="stringliteral">&quot;!=&quot;</span>,         <span class="stringliteral">&quot;&lt;&quot;</span>,</div>
-<div class="line">                                <span class="stringliteral">&quot;&gt;&quot;</span>,        <span class="stringliteral">&quot;&lt;=&quot;</span>,    <span class="stringliteral">&quot;&gt;=&quot;</span>,         <span class="stringliteral">&quot;integer literal&quot;</span>,</div>
-<div class="line">                                <span class="stringliteral">&quot;;&quot;</span>,        <span class="stringliteral">&quot;=&quot;</span>,     <span class="stringliteral">&quot;(&quot;</span>,          <span class="stringliteral">&quot;)&quot;</span>,</div>
-<div class="line">                                <span class="stringliteral">&quot;{&quot;</span>,        <span class="stringliteral">&quot;}&quot;</span>,     <span class="stringliteral">&quot;identifier&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>,</div>
-<div class="line">                                <span class="stringliteral">&quot;as&quot;</span>,       <span class="stringliteral">&quot;if&quot;</span>,    <span class="stringliteral">&quot;else&quot;</span>,       <span class="stringliteral">&quot;for&quot;</span>,</div>
-<div class="line">                                <span class="stringliteral">&quot;print&quot;</span>,    <span class="stringliteral">&quot;while&quot;</span>, <span class="stringliteral">&quot;with&quot;</span>,       <span class="stringliteral">&quot;LValue Identifier&quot;</span>,</div>
-<div class="line">                                <span class="stringliteral">&quot;AST Glue&quot;</span>, <span class="stringliteral">&quot;Scope&quot;</span>}</div>
+<div class="line">                               <span class="stringliteral">&quot;/&quot;</span>,        <span class="stringliteral">&quot;==&quot;</span>,    <span class="stringliteral">&quot;!=&quot;</span>,         <span class="stringliteral">&quot;&lt;&quot;</span>,</div>
+<div class="line">                               <span class="stringliteral">&quot;&gt;&quot;</span>,        <span class="stringliteral">&quot;&lt;=&quot;</span>,    <span class="stringliteral">&quot;&gt;=&quot;</span>,         <span class="stringliteral">&quot;integer literal&quot;</span>,</div>
+<div class="line">                               <span class="stringliteral">&quot;;&quot;</span>,        <span class="stringliteral">&quot;=&quot;</span>,     <span class="stringliteral">&quot;(&quot;</span>,          <span class="stringliteral">&quot;)&quot;</span>,</div>
+<div class="line">                               <span class="stringliteral">&quot;{&quot;</span>,        <span class="stringliteral">&quot;}&quot;</span>,     <span class="stringliteral">&quot;identifier&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>,</div>
+<div class="line">                               <span class="stringliteral">&quot;as&quot;</span>,       <span class="stringliteral">&quot;if&quot;</span>,    <span class="stringliteral">&quot;else&quot;</span>,       <span class="stringliteral">&quot;for&quot;</span>,</div>
+<div class="line">                               <span class="stringliteral">&quot;print&quot;</span>,    <span class="stringliteral">&quot;while&quot;</span>, <span class="stringliteral">&quot;with&quot;</span>,       <span class="stringliteral">&quot;LValue Identifier&quot;</span>,</div>
+<div class="line">                               <span class="stringliteral">&quot;AST Glue&quot;</span>, <span class="stringliteral">&quot;Scope&quot;</span>}</div>
 </div><!-- fragment -->
 <p><a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> string equivalents. </p>
 

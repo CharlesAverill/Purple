@@ -1,0 +1,82 @@
+\hypertarget{translate_8h}{}\doxysection{include/translate/translate.h File Reference}
+\label{translate_8h}\index{include/translate/translate.h@{include/translate/translate.h}}
+
+
+Function headers and definitions for translation of an AST into LLVM-\/\+IR.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}parse.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}translate/llvm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tree.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}types/number.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{translate_8h_a7abbf5b5f5d3fc9d561f7e080077bb9e}{determine\+\_\+binary\+\_\+expression\+\_\+stack\+\_\+allocation}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Perform a DFS on an AST to determine the stack allocation needed for a binary expression. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8h_ab4bb4871076aa73ec76e957aececfa8f}{ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n)
+\begin{DoxyCompactList}\small\item\em Generates LLVM-\/\+IR from a given AST. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{translate_8h_adfbc27d31aa9042e542ed3ffdb363bf5}{generate\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Wrapper function for generating LLVM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function headers and definitions for translation of an AST into LLVM-\/\+IR. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{translate_8h_ab4bb4871076aa73ec76e957aececfa8f}\label{translate_8h_ab4bb4871076aa73ec76e957aececfa8f}} 
+\index{translate.h@{translate.h}!ast\_to\_llvm@{ast\_to\_llvm}}
+\index{ast\_to\_llvm@{ast\_to\_llvm}!translate.h@{translate.h}}
+\doxysubsubsection{\texorpdfstring{ast\_to\_llvm()}{ast\_to\_llvm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} ast\+\_\+to\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{n }\end{DoxyParamCaption})}
+
+
+
+Generates LLVM-\/\+IR from a given AST. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The AST Node from which LLVM will be generated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{structLLVMValue}{LLVMValue}} struct containing information about what code this AST Node generated 
+\end{DoxyReturn}
+\mbox{\Hypertarget{translate_8h_a7abbf5b5f5d3fc9d561f7e080077bb9e}\label{translate_8h_a7abbf5b5f5d3fc9d561f7e080077bb9e}} 
+\index{translate.h@{translate.h}!determine\_binary\_expression\_stack\_allocation@{determine\_binary\_expression\_stack\_allocation}}
+\index{determine\_binary\_expression\_stack\_allocation@{determine\_binary\_expression\_stack\_allocation}!translate.h@{translate.h}}
+\doxysubsubsection{\texorpdfstring{determine\_binary\_expression\_stack\_allocation()}{determine\_binary\_expression\_stack\_allocation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ determine\+\_\+binary\+\_\+expression\+\_\+stack\+\_\+allocation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Perform a DFS on an AST to determine the stack allocation needed for a binary expression. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & Root of AST to find stack allocation for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+LLVMStack\+Entry\+Node$\ast$ Pointer to front of the stack allocation linked list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{translate_8h_adfbc27d31aa9042e542ed3ffdb363bf5}\label{translate_8h_adfbc27d31aa9042e542ed3ffdb363bf5}} 
+\index{translate.h@{translate.h}!generate\_llvm@{generate\_llvm}}
+\index{generate\_llvm@{generate\_llvm}!translate.h@{translate.h}}
+\doxysubsubsection{\texorpdfstring{generate\_llvm()}{generate\_llvm()}}
+{\footnotesize\ttfamily void generate\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Wrapper function for generating LLVM. 
+

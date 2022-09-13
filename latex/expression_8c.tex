@@ -9,7 +9,7 @@ Logic for parsing into an AST.
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-static int \mbox{\hyperlink{expression_8c_a3894f429297d723b0874c729e033242b}{get\+\_\+operator\+\_\+precedence}} (\mbox{\hyperlink{structToken}{Token}} t)
+static int \mbox{\hyperlink{expression_8c_ace021c537d1a5bacc6190333c1b5dcd4}{get\+\_\+operator\+Precedence}} (\mbox{\hyperlink{structToken}{Token}} t)
 \begin{DoxyCompactList}\small\item\em Get the integer operator precedence value of a \mbox{\hyperlink{structToken}{Token}}. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{expression_8c_a4fbedbaeaeae1c04a8138e171cd91f05}{create\+\_\+terminal\+\_\+node}} (\mbox{\hyperlink{structToken}{Token}} t)
 \begin{DoxyCompactList}\small\item\em Build a terminal AST Node for a given \mbox{\hyperlink{structToken}{Token}}, exit if not a valid primary \mbox{\hyperlink{structToken}{Token}}. \end{DoxyCompactList}\item 
@@ -47,11 +47,11 @@ Build a terminal AST Node for a given \mbox{\hyperlink{structToken}{Token}}, exi
 \begin{DoxyReturn}{Returns}
 An AST Node built from the provided \mbox{\hyperlink{structToken}{Token}}, or an error if the \mbox{\hyperlink{structToken}{Token}} is non-\/terminal 
 \end{DoxyReturn}
-\mbox{\Hypertarget{expression_8c_a3894f429297d723b0874c729e033242b}\label{expression_8c_a3894f429297d723b0874c729e033242b}} 
-\index{expression.c@{expression.c}!get\_operator\_precedence@{get\_operator\_precedence}}
-\index{get\_operator\_precedence@{get\_operator\_precedence}!expression.c@{expression.c}}
-\doxysubsubsection{\texorpdfstring{get\_operator\_precedence()}{get\_operator\_precedence()}}
-{\footnotesize\ttfamily static int get\+\_\+operator\+\_\+precedence (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structToken}{Token}}}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\mbox{\Hypertarget{expression_8c_ace021c537d1a5bacc6190333c1b5dcd4}\label{expression_8c_ace021c537d1a5bacc6190333c1b5dcd4}} 
+\index{expression.c@{expression.c}!get\_operatorPrecedence@{get\_operatorPrecedence}}
+\index{get\_operatorPrecedence@{get\_operatorPrecedence}!expression.c@{expression.c}}
+\doxysubsubsection{\texorpdfstring{get\_operatorPrecedence()}{get\_operatorPrecedence()}}
+{\footnotesize\ttfamily static int get\+\_\+operator\+Precedence (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structToken}{Token}}}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 

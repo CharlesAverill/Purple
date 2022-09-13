@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['left_0',['left',['../structASTNode.html#a7e8efcf6431aca1ee186e775443abfcc',1,'ASTNode']]]
+  ['filenames_0',['filenames',['../structPurpleArgs.html#a472dbb5a4f9205da6be8af0239e38272',1,'PurpleArgs']]]
 ];

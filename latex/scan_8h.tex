@@ -10,12 +10,19 @@ Lexical Scanner function headers.
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}errors\+\_\+warnings.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils/logging.\+h\char`\"{}}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structToken}{Token}}
 \begin{DoxyCompactList}\small\item\em Structure containing information about individual scannable tokens. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{scan_8h_affec33daf918f96ba231bf8564fffbe0}{TOKENTYPE\+\_\+\+IS\+\_\+\+TERMINAL}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}})
+\begin{DoxyCompactList}\small\item\em Macro to determine if a Token\+Type is associated with a terminal AST Node. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{scan_8h_a58f4872f7a38784336953acff530cb27}{TOKENTYPE\+\_\+\+IS\+\_\+\+BINARY\+\_\+\+ARITHMETIC}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2}{T\+\_\+\+PLUS}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a}{T\+\_\+\+SLASH}})
+\begin{DoxyCompactList}\small\item\em Macro to determine if a Token\+Type is associated with a binary arithmetic operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -49,7 +56,7 @@ bool \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}} (\mbox{\
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-static char $\ast$ \mbox{\hyperlink{scan_8h_aac4b727eb90bfc1375ac629aa9e69398}{token\+\_\+strings}} \mbox{[}$\,$\mbox{]}
+static char $\ast$ \mbox{\hyperlink{scan_8h_a3cef8f6f6c1a827c5f882dc5ab2024e7}{token\+Strings}} \mbox{[}$\,$\mbox{]}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structToken}{Token}} string equivalents. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -62,6 +69,29 @@ Charles\+Averill
 \begin{DoxyDate}{Date}
 05-\/Oct-\/2021 
 \end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{scan_8h_a58f4872f7a38784336953acff530cb27}\label{scan_8h_a58f4872f7a38784336953acff530cb27}} 
+\index{scan.h@{scan.h}!TOKENTYPE\_IS\_BINARY\_ARITHMETIC@{TOKENTYPE\_IS\_BINARY\_ARITHMETIC}}
+\index{TOKENTYPE\_IS\_BINARY\_ARITHMETIC@{TOKENTYPE\_IS\_BINARY\_ARITHMETIC}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{TOKENTYPE\_IS\_BINARY\_ARITHMETIC}{TOKENTYPE\_IS\_BINARY\_ARITHMETIC}}
+{\footnotesize\ttfamily \#define TOKENTYPE\+\_\+\+IS\+\_\+\+BINARY\+\_\+\+ARITHMETIC(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2}{T\+\_\+\+PLUS}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a}{T\+\_\+\+SLASH}})}
+
+
+
+Macro to determine if a Token\+Type is associated with a binary arithmetic operation. 
+
+\mbox{\Hypertarget{scan_8h_affec33daf918f96ba231bf8564fffbe0}\label{scan_8h_affec33daf918f96ba231bf8564fffbe0}} 
+\index{scan.h@{scan.h}!TOKENTYPE\_IS\_TERMINAL@{TOKENTYPE\_IS\_TERMINAL}}
+\index{TOKENTYPE\_IS\_TERMINAL@{TOKENTYPE\_IS\_TERMINAL}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{TOKENTYPE\_IS\_TERMINAL}{TOKENTYPE\_IS\_TERMINAL}}
+{\footnotesize\ttfamily \#define TOKENTYPE\+\_\+\+IS\+\_\+\+TERMINAL(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}})}
+
+
+
+Macro to determine if a Token\+Type is associated with a terminal AST Node. 
+
 
 
 \doxysubsection{Typedef Documentation}
@@ -162,22 +192,22 @@ bool Returns true if a \mbox{\hyperlink{structToken}{Token}} was scanned success
 
 
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{scan_8h_aac4b727eb90bfc1375ac629aa9e69398}\label{scan_8h_aac4b727eb90bfc1375ac629aa9e69398}} 
-\index{scan.h@{scan.h}!token\_strings@{token\_strings}}
-\index{token\_strings@{token\_strings}!scan.h@{scan.h}}
-\doxysubsubsection{\texorpdfstring{token\_strings}{token\_strings}}
-{\footnotesize\ttfamily char$\ast$ token\+\_\+strings\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+\mbox{\Hypertarget{scan_8h_a3cef8f6f6c1a827c5f882dc5ab2024e7}\label{scan_8h_a3cef8f6f6c1a827c5f882dc5ab2024e7}} 
+\index{scan.h@{scan.h}!tokenStrings@{tokenStrings}}
+\index{tokenStrings@{tokenStrings}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{tokenStrings}{tokenStrings}}
+{\footnotesize\ttfamily char$\ast$ token\+Strings\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{= \{\textcolor{stringliteral}{"{}EOF"{}},      \textcolor{stringliteral}{"{}+"{}},     \textcolor{stringliteral}{"{}-\/"{}},          \textcolor{stringliteral}{"{}*"{}},}
-\DoxyCodeLine{                                \textcolor{stringliteral}{"{}/"{}},        \textcolor{stringliteral}{"{}=="{}},    \textcolor{stringliteral}{"{}!="{}},         \textcolor{stringliteral}{"{}<"{}},}
-\DoxyCodeLine{                                \textcolor{stringliteral}{"{}>"{}},        \textcolor{stringliteral}{"{}<="{}},    \textcolor{stringliteral}{"{}>="{}},         \textcolor{stringliteral}{"{}integer literal"{}},}
-\DoxyCodeLine{                                \textcolor{stringliteral}{"{};"{}},        \textcolor{stringliteral}{"{}="{}},     \textcolor{stringliteral}{"{}("{}},          \textcolor{stringliteral}{"{})"{}},}
-\DoxyCodeLine{                                \textcolor{stringliteral}{"{}\{"{}},        \textcolor{stringliteral}{"{}\}"{}},     \textcolor{stringliteral}{"{}identifier"{}}, \textcolor{stringliteral}{"{}int"{}},}
-\DoxyCodeLine{                                \textcolor{stringliteral}{"{}as"{}},       \textcolor{stringliteral}{"{}if"{}},    \textcolor{stringliteral}{"{}else"{}},       \textcolor{stringliteral}{"{}for"{}},}
-\DoxyCodeLine{                                \textcolor{stringliteral}{"{}print"{}},    \textcolor{stringliteral}{"{}while"{}}, \textcolor{stringliteral}{"{}with"{}},       \textcolor{stringliteral}{"{}LValue Identifier"{}},}
-\DoxyCodeLine{                                \textcolor{stringliteral}{"{}AST Glue"{}}, \textcolor{stringliteral}{"{}Scope"{}}\}}
+\DoxyCodeLine{                               \textcolor{stringliteral}{"{}/"{}},        \textcolor{stringliteral}{"{}=="{}},    \textcolor{stringliteral}{"{}!="{}},         \textcolor{stringliteral}{"{}<"{}},}
+\DoxyCodeLine{                               \textcolor{stringliteral}{"{}>"{}},        \textcolor{stringliteral}{"{}<="{}},    \textcolor{stringliteral}{"{}>="{}},         \textcolor{stringliteral}{"{}integer literal"{}},}
+\DoxyCodeLine{                               \textcolor{stringliteral}{"{};"{}},        \textcolor{stringliteral}{"{}="{}},     \textcolor{stringliteral}{"{}("{}},          \textcolor{stringliteral}{"{})"{}},}
+\DoxyCodeLine{                               \textcolor{stringliteral}{"{}\{"{}},        \textcolor{stringliteral}{"{}\}"{}},     \textcolor{stringliteral}{"{}identifier"{}}, \textcolor{stringliteral}{"{}int"{}},}
+\DoxyCodeLine{                               \textcolor{stringliteral}{"{}as"{}},       \textcolor{stringliteral}{"{}if"{}},    \textcolor{stringliteral}{"{}else"{}},       \textcolor{stringliteral}{"{}for"{}},}
+\DoxyCodeLine{                               \textcolor{stringliteral}{"{}print"{}},    \textcolor{stringliteral}{"{}while"{}}, \textcolor{stringliteral}{"{}with"{}},       \textcolor{stringliteral}{"{}LValue Identifier"{}},}
+\DoxyCodeLine{                               \textcolor{stringliteral}{"{}AST Glue"{}}, \textcolor{stringliteral}{"{}Scope"{}}\}}
 
 \end{DoxyCode}
 

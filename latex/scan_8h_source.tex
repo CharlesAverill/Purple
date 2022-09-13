@@ -12,7 +12,7 @@
 \DoxyCodeLine{14 \textcolor{preprocessor}{\#include <stdlib.h>}}
 \DoxyCodeLine{15 \textcolor{preprocessor}{\#include <string.h>}}
 \DoxyCodeLine{16 }
-\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{errors__warnings_8h}{errors\_warnings.h}}"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{logging_8h}{utils/logging.h}}"{}}}
 \DoxyCodeLine{18 }
 \DoxyCodeLine{22 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
 \DoxyCodeLine{23     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a9882ff017eb83e311ec8ad12ab646455}{T\_EOF}},}
@@ -32,22 +32,26 @@
 \DoxyCodeLine{37     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\_INTEGER\_LITERAL}}}
 \DoxyCodeLine{38 \} \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}};}
 \DoxyCodeLine{39 }
-\DoxyCodeLine{43 \textcolor{keyword}{static} \textcolor{keywordtype}{char}* \mbox{\hyperlink{scan_8h_aac4b727eb90bfc1375ac629aa9e69398}{token\_strings}}[] = \{\textcolor{stringliteral}{"{}EOF"{}},      \textcolor{stringliteral}{"{}+"{}},     \textcolor{stringliteral}{"{}-\/"{}},          \textcolor{stringliteral}{"{}*"{}},}
-\DoxyCodeLine{44                                 \textcolor{stringliteral}{"{}/"{}},        \textcolor{stringliteral}{"{}=="{}},    \textcolor{stringliteral}{"{}!="{}},         \textcolor{stringliteral}{"{}<"{}},}
-\DoxyCodeLine{45                                 \textcolor{stringliteral}{"{}>"{}},        \textcolor{stringliteral}{"{}<="{}},    \textcolor{stringliteral}{"{}>="{}},         \textcolor{stringliteral}{"{}integer literal"{}},}
-\DoxyCodeLine{46                                 \textcolor{stringliteral}{"{};"{}},        \textcolor{stringliteral}{"{}="{}},     \textcolor{stringliteral}{"{}("{}},          \textcolor{stringliteral}{"{})"{}},}
-\DoxyCodeLine{47                                 \textcolor{stringliteral}{"{}\{"{}},        \textcolor{stringliteral}{"{}\}"{}},     \textcolor{stringliteral}{"{}identifier"{}}, \textcolor{stringliteral}{"{}int"{}},}
-\DoxyCodeLine{48                                 \textcolor{stringliteral}{"{}as"{}},       \textcolor{stringliteral}{"{}if"{}},    \textcolor{stringliteral}{"{}else"{}},       \textcolor{stringliteral}{"{}for"{}},}
-\DoxyCodeLine{49                                 \textcolor{stringliteral}{"{}print"{}},    \textcolor{stringliteral}{"{}while"{}}, \textcolor{stringliteral}{"{}with"{}},       \textcolor{stringliteral}{"{}LValue Identifier"{}},}
-\DoxyCodeLine{50                                 \textcolor{stringliteral}{"{}AST Glue"{}}, \textcolor{stringliteral}{"{}Scope"{}}\};}
+\DoxyCodeLine{43 \textcolor{keyword}{static} \textcolor{keywordtype}{char}* \mbox{\hyperlink{scan_8h_a3cef8f6f6c1a827c5f882dc5ab2024e7}{tokenStrings}}[] = \{\textcolor{stringliteral}{"{}EOF"{}},      \textcolor{stringliteral}{"{}+"{}},     \textcolor{stringliteral}{"{}-\/"{}},          \textcolor{stringliteral}{"{}*"{}},}
+\DoxyCodeLine{44                                \textcolor{stringliteral}{"{}/"{}},        \textcolor{stringliteral}{"{}=="{}},    \textcolor{stringliteral}{"{}!="{}},         \textcolor{stringliteral}{"{}<"{}},}
+\DoxyCodeLine{45                                \textcolor{stringliteral}{"{}>"{}},        \textcolor{stringliteral}{"{}<="{}},    \textcolor{stringliteral}{"{}>="{}},         \textcolor{stringliteral}{"{}integer literal"{}},}
+\DoxyCodeLine{46                                \textcolor{stringliteral}{"{};"{}},        \textcolor{stringliteral}{"{}="{}},     \textcolor{stringliteral}{"{}("{}},          \textcolor{stringliteral}{"{})"{}},}
+\DoxyCodeLine{47                                \textcolor{stringliteral}{"{}\{"{}},        \textcolor{stringliteral}{"{}\}"{}},     \textcolor{stringliteral}{"{}identifier"{}}, \textcolor{stringliteral}{"{}int"{}},}
+\DoxyCodeLine{48                                \textcolor{stringliteral}{"{}as"{}},       \textcolor{stringliteral}{"{}if"{}},    \textcolor{stringliteral}{"{}else"{}},       \textcolor{stringliteral}{"{}for"{}},}
+\DoxyCodeLine{49                                \textcolor{stringliteral}{"{}print"{}},    \textcolor{stringliteral}{"{}while"{}}, \textcolor{stringliteral}{"{}with"{}},       \textcolor{stringliteral}{"{}LValue Identifier"{}},}
+\DoxyCodeLine{50                                \textcolor{stringliteral}{"{}AST Glue"{}}, \textcolor{stringliteral}{"{}Scope"{}}\};}
 \DoxyCodeLine{51 }
-\DoxyCodeLine{55 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structToken}{Token}} \{}
-\DoxyCodeLine{57     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}{type}};}
-\DoxyCodeLine{59     \textcolor{keywordtype}{int} \mbox{\hyperlink{structToken_a041346a45c6c5571a78a6af3394a2756}{value}};}
-\DoxyCodeLine{60 \} \mbox{\hyperlink{scan_8h_ae88d5c0259051080fda097b92d99d7ee}{Token}};}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_TERMINAL(type) (type >= T\_INTEGER\_LITERAL \&\& type <= T\_INTEGER\_LITERAL)}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_BINARY\_ARITHMETIC(type) (type >= T\_PLUS \&\& type <= T\_SLASH)}}
 \DoxyCodeLine{61 }
-\DoxyCodeLine{62 \textcolor{keywordtype}{bool} \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}}(\mbox{\hyperlink{structToken}{Token}}* t);}
-\DoxyCodeLine{63 }
-\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SCAN\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{65 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structToken}{Token}} \{}
+\DoxyCodeLine{67     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}{type}};}
+\DoxyCodeLine{69     \textcolor{keywordtype}{int} \mbox{\hyperlink{structToken_a041346a45c6c5571a78a6af3394a2756}{value}};}
+\DoxyCodeLine{70 \} \mbox{\hyperlink{scan_8h_ae88d5c0259051080fda097b92d99d7ee}{Token}};}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{keywordtype}{bool} \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}}(\mbox{\hyperlink{structToken}{Token}}* t);}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SCAN\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -1,0 +1,57 @@
+\hypertarget{structLLVMStackEntryNode}{}\doxysection{LLVMStack\+Entry\+Node Struct Reference}
+\label{structLLVMStackEntryNode}\index{LLVMStackEntryNode@{LLVMStackEntryNode}}
+
+
+Node of a linked list containing information about required stack allocation for a function.  
+
+
+
+
+{\ttfamily \#include $<$llvm.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{structLLVMStackEntryNode_aaff603b17fe1999a2f722998c3b47387}{reg}}
+\item 
+\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \mbox{\hyperlink{structLLVMStackEntryNode_aa6c8f96e14ee1679c7ee60f818f02941}{type}}
+\item 
+int \mbox{\hyperlink{structLLVMStackEntryNode_ab78e4f0785ccaad88dce16d7f6ad7b46}{align\+\_\+bytes}}
+\item 
+struct \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{structLLVMStackEntryNode_af41081ec828f9c96779a56043a9fef04}{next}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Node of a linked list containing information about required stack allocation for a function. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structLLVMStackEntryNode_ab78e4f0785ccaad88dce16d7f6ad7b46}\label{structLLVMStackEntryNode_ab78e4f0785ccaad88dce16d7f6ad7b46}} 
+\index{LLVMStackEntryNode@{LLVMStackEntryNode}!align\_bytes@{align\_bytes}}
+\index{align\_bytes@{align\_bytes}!LLVMStackEntryNode@{LLVMStackEntryNode}}
+\doxysubsubsection{\texorpdfstring{align\_bytes}{align\_bytes}}
+{\footnotesize\ttfamily int LLVMStack\+Entry\+Node\+::align\+\_\+bytes}
+
+\mbox{\hyperlink{structNumber}{Number}} of bytes to align stack to for this data \mbox{\Hypertarget{structLLVMStackEntryNode_af41081ec828f9c96779a56043a9fef04}\label{structLLVMStackEntryNode_af41081ec828f9c96779a56043a9fef04}} 
+\index{LLVMStackEntryNode@{LLVMStackEntryNode}!next@{next}}
+\index{next@{next}!LLVMStackEntryNode@{LLVMStackEntryNode}}
+\doxysubsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}}$\ast$ LLVMStack\+Entry\+Node\+::next}
+
+Next node in linked list \mbox{\Hypertarget{structLLVMStackEntryNode_aaff603b17fe1999a2f722998c3b47387}\label{structLLVMStackEntryNode_aaff603b17fe1999a2f722998c3b47387}} 
+\index{LLVMStackEntryNode@{LLVMStackEntryNode}!reg@{reg}}
+\index{reg@{reg}!LLVMStackEntryNode@{LLVMStackEntryNode}}
+\doxysubsubsection{\texorpdfstring{reg}{reg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} LLVMStack\+Entry\+Node\+::reg}
+
+Register number of the current node \mbox{\Hypertarget{structLLVMStackEntryNode_aa6c8f96e14ee1679c7ee60f818f02941}\label{structLLVMStackEntryNode_aa6c8f96e14ee1679c7ee60f818f02941}} 
+\index{LLVMStackEntryNode@{LLVMStackEntryNode}!type@{type}}
+\index{type@{type}!LLVMStackEntryNode@{LLVMStackEntryNode}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} LLVMStack\+Entry\+Node\+::type}
+
+Data type of the current node 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/translate/\mbox{\hyperlink{llvm_8h}{llvm.\+h}}\end{DoxyCompactItemize}

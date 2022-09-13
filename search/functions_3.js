@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['index_5fof_0',['index_of',['../scan_8c.html#afe176fe0d1142633375951f2e45831bc',1,'scan.c']]],
-  ['init_1',['init',['../purple_8c.html#a04900abd2e06f2bb8f7aa0edd9e2e8e2',1,'purple.c']]],
-  ['interpretast_2',['interpretAST',['../purple_8c.html#a24549a20b486e8cc061803e07df03b7a',1,'purple.c']]]
+  ['fatal_0',['fatal',['../logging_8h.html#a3e2e8dc1bc2143b8356e8e13798b0c42',1,'fatal(ReturnCode rc, const char *fmt,...):&#160;logging.c'],['../logging_8c.html#a3e2e8dc1bc2143b8356e8e13798b0c42',1,'fatal(ReturnCode rc, const char *fmt,...):&#160;logging.c']]],
+  ['free_5fllvm_5fstack_5fentry_5fnode_5flist_1',['free_llvm_stack_entry_node_list',['../translate_8c.html#aca5e0ac30f889ce8ca56e0e258f4d772',1,'translate.c']]]
 ];

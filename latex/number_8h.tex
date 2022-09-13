@@ -1,0 +1,154 @@
+\hypertarget{number_8h}{}\doxysection{include/types/number.h File Reference}
+\label{number_8h}\index{include/types/number.h@{include/types/number.h}}
+
+
+Definitions and function headers for the internal \char`\"{}\+Number\char`\"{} type.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structNumber}{Number}}
+\begin{DoxyCompactList}\small\item\em Container for various kinds of number data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{number_8h_a24ab2edce77238f47f3602f11764386b}{NUMBER\+\_\+\+INT32}}(v)~    (\mbox{\hyperlink{structNumber}{Number}}) \{ .type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}{NT\+\_\+\+INT32}}, .value.\+int\+\_\+value = v \}
+\begin{DoxyCompactList}\small\item\em Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT32. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}}
+\begin{DoxyCompactList}\small\item\em Container for various kinds of number data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \{ \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}{NT\+\_\+\+INT32}}
+ \}
+\begin{DoxyCompactList}\small\item\em Types of numbers supported by Purple. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \mbox{\hyperlink{number_8h_a242dd91fc5b139e8048fb50fac323dee}{token\+\_\+type\+\_\+to\+\_\+number\+\_\+type}} (int token\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Convert a Token\+Type to a Number\+Type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{number_8h_a7be529595168c4c54f828029dd48f054}{number\+Type\+Byte\+Sizes}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Size of each Number\+Type. \end{DoxyCompactList}\item 
+static const char $\ast$ \mbox{\hyperlink{number_8h_a5d1eb1fc26fc937144216a3cd0cc0b4e}{number\+Type\+Format\+Strings}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Format strings for each data type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definitions and function headers for the internal \char`\"{}\+Number\char`\"{} type. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+12-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{number_8h_a24ab2edce77238f47f3602f11764386b}\label{number_8h_a24ab2edce77238f47f3602f11764386b}} 
+\index{number.h@{number.h}!NUMBER\_INT32@{NUMBER\_INT32}}
+\index{NUMBER\_INT32@{NUMBER\_INT32}!number.h@{number.h}}
+\doxysubsubsection{\texorpdfstring{NUMBER\_INT32}{NUMBER\_INT32}}
+{\footnotesize\ttfamily \#define NUMBER\+\_\+\+INT32(\begin{DoxyParamCaption}\item[{}]{v }\end{DoxyParamCaption})~    (\mbox{\hyperlink{structNumber}{Number}}) \{ .type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}{NT\+\_\+\+INT32}}, .value.\+int\+\_\+value = v \}}
+
+
+
+Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT32. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}\label{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}} 
+\index{number.h@{number.h}!Number@{Number}}
+\index{Number@{Number}!number.h@{number.h}}
+\doxysubsubsection{\texorpdfstring{Number}{Number}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{structNumber}{Number}}}
+
+
+
+Container for various kinds of number data. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{number_8h_ae33bf5f4db440a147780b796497d1ef5}\label{number_8h_ae33bf5f4db440a147780b796497d1ef5}} 
+\index{number.h@{number.h}!NumberType@{NumberType}}
+\index{NumberType@{NumberType}!number.h@{number.h}}
+\doxysubsubsection{\texorpdfstring{NumberType}{NumberType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}
+
+
+
+Types of numbers supported by Purple. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_INT32@{NT\_INT32}!number.h@{number.h}}\index{number.h@{number.h}!NT\_INT32@{NT\_INT32}}}\mbox{\Hypertarget{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}\label{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}} 
+NT\+\_\+\+INT32&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{number_8h_a242dd91fc5b139e8048fb50fac323dee}\label{number_8h_a242dd91fc5b139e8048fb50fac323dee}} 
+\index{number.h@{number.h}!token\_type\_to\_number\_type@{token\_type\_to\_number\_type}}
+\index{token\_type\_to\_number\_type@{token\_type\_to\_number\_type}!number.h@{number.h}}
+\doxysubsubsection{\texorpdfstring{token\_type\_to\_number\_type()}{token\_type\_to\_number\_type()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} token\+\_\+type\+\_\+to\+\_\+number\+\_\+type (\begin{DoxyParamCaption}\item[{int}]{token\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Convert a Token\+Type to a Number\+Type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em token\+\_\+type} & Token\+Type to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number\+Type Converted Token\+Type 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{number_8h_a7be529595168c4c54f828029dd48f054}\label{number_8h_a7be529595168c4c54f828029dd48f054}} 
+\index{number.h@{number.h}!numberTypeByteSizes@{numberTypeByteSizes}}
+\index{numberTypeByteSizes@{numberTypeByteSizes}!number.h@{number.h}}
+\doxysubsubsection{\texorpdfstring{numberTypeByteSizes}{numberTypeByteSizes}}
+{\footnotesize\ttfamily const int number\+Type\+Byte\+Sizes\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    4,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Size of each Number\+Type. 
+
+\mbox{\Hypertarget{number_8h_a5d1eb1fc26fc937144216a3cd0cc0b4e}\label{number_8h_a5d1eb1fc26fc937144216a3cd0cc0b4e}} 
+\index{number.h@{number.h}!numberTypeFormatStrings@{numberTypeFormatStrings}}
+\index{numberTypeFormatStrings@{numberTypeFormatStrings}!number.h@{number.h}}
+\doxysubsubsection{\texorpdfstring{numberTypeFormatStrings}{numberTypeFormatStrings}}
+{\footnotesize\ttfamily const char$\ast$ number\+Type\+Format\+Strings\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}\%d"{}},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Format strings for each data type. 
+

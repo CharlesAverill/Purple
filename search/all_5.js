@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['get_5foperator_5fprecedence_0',['get_operator_precedence',['../expression_8c.html#a3894f429297d723b0874c729e033242b',1,'expression.c']]],
-  ['grammar_1',['grammar',['../grammar.html',1,'']]]
+  ['generate_5fllvm_0',['generate_llvm',['../translate_8h.html#adfbc27d31aa9042e542ed3ffdb363bf5',1,'generate_llvm(ASTNode *root):&#160;translate.c'],['../translate_8c.html#adfbc27d31aa9042e542ed3ffdb363bf5',1,'generate_llvm(ASTNode *root):&#160;translate.c']]],
+  ['get_5fnext_5flocal_5fvirtual_5fregister_1',['get_next_local_virtual_register',['../llvm_8h.html#acf6ffab57a0d67bd99dc3caa06a9e1d6',1,'get_next_local_virtual_register(void):&#160;llvm.c'],['../llvm_8c.html#acf6ffab57a0d67bd99dc3caa06a9e1d6',1,'get_next_local_virtual_register(void):&#160;llvm.c']]],
+  ['get_5foperatorprecedence_2',['get_operatorPrecedence',['../expression_8c.html#ace021c537d1a5bacc6190333c1b5dcd4',1,'expression.c']]],
+  ['grammar_3',['grammar',['../grammar.html',1,'']]]
 ];
