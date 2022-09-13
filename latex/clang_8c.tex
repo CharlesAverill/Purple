@@ -1,0 +1,116 @@
+\hypertarget{clang_8c}{}\doxysection{src/utils/clang.c File Reference}
+\label{clang_8c}\index{src/utils/clang.c@{src/utils/clang.c}}
+
+
+Functions for interacting with clang.  
+
+
+{\ttfamily \#include $<$regex.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils/clang.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils/logging.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{clang_8c_ad757e0b452602859654ba026c29b5024}{get\+\_\+temp\+\_\+dir}} (void)
+\begin{DoxyCompactList}\small\item\em Get the default temporary directory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{clang_8c_a3b369fac9808777478e63f68f41d5270}{create\+\_\+tmp\+\_\+generator\+\_\+program}} ()
+\begin{DoxyCompactList}\small\item\em Create a temporary file for a generator program used to determine compilation information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{clang_8c_a3ef9aa60f9d1860c6a5b0ce0c983dedd}{clang\+\_\+compile\+\_\+llvm}} (const char $\ast$fn)
+\begin{DoxyCompactList}\small\item\em Starts up the clang compiler to compile the generated LLVM-\/\+IR into a binary. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{clang_8c_aad50747c930d7d8fe05d741b81501f5c}{get\+\_\+target\+\_\+datalayout}} ()
+\item 
+char $\ast$ \mbox{\hyperlink{clang_8c_ae6b73131bb54576584f6bdb9dc6378a7}{get\+\_\+target\+\_\+triple}} ()
+\begin{DoxyCompactList}\small\item\em Get the target triple for the current target. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{clang_8c_a90aaa0f0e2c76dc8c5631842644b5282}{regex\+\_\+match}} (const char $\ast$regex, char $\ast$target\+\_\+str, int len, int group\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Simple regex parser. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for interacting with clang. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+13-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{clang_8c_a3ef9aa60f9d1860c6a5b0ce0c983dedd}\label{clang_8c_a3ef9aa60f9d1860c6a5b0ce0c983dedd}} 
+\index{clang.c@{clang.c}!clang\_compile\_llvm@{clang\_compile\_llvm}}
+\index{clang\_compile\_llvm@{clang\_compile\_llvm}!clang.c@{clang.c}}
+\doxysubsubsection{\texorpdfstring{clang\_compile\_llvm()}{clang\_compile\_llvm()}}
+{\footnotesize\ttfamily void clang\+\_\+compile\+\_\+llvm (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fn }\end{DoxyParamCaption})}
+
+
+
+Starts up the clang compiler to compile the generated LLVM-\/\+IR into a binary. 
+
+\mbox{\Hypertarget{clang_8c_a3b369fac9808777478e63f68f41d5270}\label{clang_8c_a3b369fac9808777478e63f68f41d5270}} 
+\index{clang.c@{clang.c}!create\_tmp\_generator\_program@{create\_tmp\_generator\_program}}
+\index{create\_tmp\_generator\_program@{create\_tmp\_generator\_program}!clang.c@{clang.c}}
+\doxysubsubsection{\texorpdfstring{create\_tmp\_generator\_program()}{create\_tmp\_generator\_program()}}
+{\footnotesize\ttfamily void create\+\_\+tmp\+\_\+generator\+\_\+program (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create a temporary file for a generator program used to determine compilation information. 
+
+\mbox{\Hypertarget{clang_8c_aad50747c930d7d8fe05d741b81501f5c}\label{clang_8c_aad50747c930d7d8fe05d741b81501f5c}} 
+\index{clang.c@{clang.c}!get\_target\_datalayout@{get\_target\_datalayout}}
+\index{get\_target\_datalayout@{get\_target\_datalayout}!clang.c@{clang.c}}
+\doxysubsubsection{\texorpdfstring{get\_target\_datalayout()}{get\_target\_datalayout()}}
+{\footnotesize\ttfamily char $\ast$ get\+\_\+target\+\_\+datalayout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{clang_8c_ae6b73131bb54576584f6bdb9dc6378a7}\label{clang_8c_ae6b73131bb54576584f6bdb9dc6378a7}} 
+\index{clang.c@{clang.c}!get\_target\_triple@{get\_target\_triple}}
+\index{get\_target\_triple@{get\_target\_triple}!clang.c@{clang.c}}
+\doxysubsubsection{\texorpdfstring{get\_target\_triple()}{get\_target\_triple()}}
+{\footnotesize\ttfamily char $\ast$ get\+\_\+target\+\_\+triple (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the target triple for the current target. 
+
+\begin{DoxyReturn}{Returns}
+char$\ast$ Pointer to the target triple string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{clang_8c_ad757e0b452602859654ba026c29b5024}\label{clang_8c_ad757e0b452602859654ba026c29b5024}} 
+\index{clang.c@{clang.c}!get\_temp\_dir@{get\_temp\_dir}}
+\index{get\_temp\_dir@{get\_temp\_dir}!clang.c@{clang.c}}
+\doxysubsubsection{\texorpdfstring{get\_temp\_dir()}{get\_temp\_dir()}}
+{\footnotesize\ttfamily const char $\ast$ get\+\_\+temp\+\_\+dir (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get the default temporary directory. 
+
+\begin{DoxyReturn}{Returns}
+const char$\ast$ String containing temporary directory name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{clang_8c_a90aaa0f0e2c76dc8c5631842644b5282}\label{clang_8c_a90aaa0f0e2c76dc8c5631842644b5282}} 
+\index{clang.c@{clang.c}!regex\_match@{regex\_match}}
+\index{regex\_match@{regex\_match}!clang.c@{clang.c}}
+\doxysubsubsection{\texorpdfstring{regex\_match()}{regex\_match()}}
+{\footnotesize\ttfamily char $\ast$ regex\+\_\+match (\begin{DoxyParamCaption}\item[{const char $\ast$}]{regex,  }\item[{char $\ast$}]{target\+\_\+str,  }\item[{int}]{len,  }\item[{int}]{group\+\_\+index }\end{DoxyParamCaption})}
+
+
+
+Simple regex parser. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em regex} & Regular expression to compile \\
+\hline
+{\em target\+\_\+str} & String to search in \\
+\hline
+{\em len} & Maximum length of the output match, if found \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ Pointer to the match text if match found, else NULL 
+\end{DoxyReturn}

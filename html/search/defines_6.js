@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['tab_0',['TAB',['../formatting_8h.html#ad58a1fbfc85c7e4790fc55e654f50221',1,'formatting.h']]],
-  ['tokentype_5fis_5fbinary_5farithmetic_1',['TOKENTYPE_IS_BINARY_ARITHMETIC',['../scan_8h.html#a58f4872f7a38784336953acff530cb27',1,'scan.h']]],
-  ['tokentype_5fis_5fterminal_2',['TOKENTYPE_IS_TERMINAL',['../scan_8h.html#affec33daf918f96ba231bf8564fffbe0',1,'scan.h']]],
-  ['type_5fregister_3',['type_register',['../llvm_8h.html#a03da1d5061280400be8365177df15c4e',1,'llvm.h']]]
+  ['project_5fname_0',['PROJECT_NAME',['../info_8h.html#ae73053051efbb45c3a39751f5ce9fb36',1,'info.h']]],
+  ['project_5fname_5fand_5fvers_1',['PROJECT_NAME_AND_VERS',['../info_8h.html#ad41a6ae9272f069ba953cfc269adbf19',1,'info.h']]],
+  ['project_5fver_2',['PROJECT_VER',['../info_8h.html#ab6dbc0b8f5e2da90bed8c9efc19d042f',1,'info.h']]],
+  ['project_5fver_5fmajor_3',['PROJECT_VER_MAJOR',['../info_8h.html#a8499ba1e5631acd6376d329b93d8d28b',1,'info.h']]],
+  ['project_5fver_5fminor_4',['PROJECT_VER_MINOR',['../info_8h.html#a5b1736c20e7e4b4780bbcda7ccb87706',1,'info.h']]],
+  ['project_5fver_5fpatch_5',['PROJECT_VER_PATCH',['../info_8h.html#afee21e9699ad9d07592c9332ac3ffe7c',1,'info.h']]]
 ];
