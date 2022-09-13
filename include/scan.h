@@ -19,7 +19,8 @@
 /**
  * @brief Types of scannable tokens
  */
-typedef enum {
+typedef enum
+{
     T_EOF,
     // Arithmetic Operators
     T_PLUS,

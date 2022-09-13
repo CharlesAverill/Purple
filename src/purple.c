@@ -48,11 +48,12 @@ static void init(int argc, char* argv[])
 
     // Global Token
     scan(&D_GLOBAL_TOKEN);
-    
+
     purple_log(LOG_DEBUG, "Compiler initialized");
 }
 
-static void compile_llvm() {
+static void compile_llvm()
+{
     purple_log(LOG_DEBUG, "Compiling LLVM with clang");
 
     int clang_status;
@@ -62,23 +63,23 @@ static void compile_llvm() {
 
     strcat(cmd, "clang ");
     strcat(cmd, D_LLVM_FN);
-    
+
     // Open the process
     purple_log(LOG_DEBUG, "Running clang with \"%s\"", cmd);
     FILE* clang_process = popen(cmd, "r");
 
     // Let process run
     while (fgets(process_out, 256, clang_process) != NULL) {
-        if(args->logging <= LOG_DEBUG) {
+        if (args->logging <= LOG_DEBUG) {
             printf("%s", process_out);
         }
     }
 
     // Finish up
     clang_status = pclose(clang_process);
-    if(clang_status == -1) {
+    if (clang_status == -1) {
         purple_log(LOG_ERROR, "clang failed with errno %d", errno);
-    } 
+    }
     /*
     else if(clang_status != 0){
         purple_log(LOG_ERROR, "clang exited with return code %d", clang_status);

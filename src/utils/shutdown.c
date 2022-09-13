@@ -11,7 +11,8 @@
 /**
  * @brief Close any open input/output files
  */
-void close_files(void) {
+void close_files(void)
+{
     purple_log(LOG_DEBUG, "Closing input and output files");
 
     if (D_INPUT_FILE) {
@@ -30,7 +31,7 @@ void close_files(void) {
 void shutdown(void)
 {
     purple_log(LOG_DEBUG, "Shutting down");
-    
+
     close_files();
 
     if (args) {

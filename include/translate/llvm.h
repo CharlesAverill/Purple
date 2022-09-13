@@ -45,7 +45,8 @@ extern LLVMStackEntryNode* loadedRegistersHead;
 /**
  * @brief Types of values possibly returned by ast_to_llvm
  */
-typedef enum {
+typedef enum
+{
     LLVMVALUETYPE_NONE,
     LLVMVALUETYPE_VIRTUAL_REGISTER,
 } LLVMValueType;
