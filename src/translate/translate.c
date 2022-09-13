@@ -8,6 +8,8 @@
 #include "translate/translate.h"
 #include "utils/logging.h"
 
+LLVMStackEntryNode* loadedRegistersHead = NULL;
+
 /**
  * @brief Initialize any values required for LLVM translation
  */
@@ -22,6 +24,8 @@ static void translate_init(void)
     D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 1;
 
     D_FREE_REGISTER_COUNT = 0;
+
+    loadedRegistersHead = NULL;
 }
 
 /**
@@ -73,7 +77,7 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
 */
 LLVMValue ast_to_llvm(ASTNode* n)
 {
-    int virtual_registers[2] = {-1, -1};
+    type_register virtual_registers[2] = {0, 0};
     LLVMValue temp_values[2];
 
     // Make sure we aren't trying to generate from a null node
@@ -97,22 +101,40 @@ LLVMValue ast_to_llvm(ASTNode* n)
         }
     }
 
-    int left_vr = virtual_registers[0];
-    int right_vr = virtual_registers[1];
-
-    printf("%d %d\n", left_vr, right_vr);
+    type_register left_vr = virtual_registers[0];
+    type_register right_vr = virtual_registers[1];
 
     if (TOKENTYPE_IS_BINARY_ARITHMETIC(n->ttype)) {
-        return LLVMVALUE_VIRTUAL_REGISTER(llvm_binary_arithmetic(n->ttype, left_vr, right_vr));
+        type_register* loaded_registers =
+            llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr});
+        if (loaded_registers != NULL) {
+            left_vr = loaded_registers[0];
+            right_vr = loaded_registers[1];
+            free(loaded_registers);
+        }
+
+        return llvm_binary_arithmetic(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr),
+                                      LLVMVALUE_VIRTUAL_REGISTER(right_vr));
     } else if (TOKENTYPE_IS_TERMINAL(n->ttype)) {
         switch (n->ttype) {
         case T_INTEGER_LITERAL:
-            return LLVMVALUE_VIRTUAL_REGISTER(llvm_load_constant(NUMBER_INT32(n->value)));
+            return llvm_store_constant(NUMBER_INT32(n->value));
         default:
             break;
         }
     } else {
         syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unknown operator \"%s\"", tokenStrings[n->ttype]);
+    }
+}
+
+static void free_llvm_stack_entry_node_list(LLVMStackEntryNode* head)
+{
+    LLVMStackEntryNode* current = head;
+    LLVMStackEntryNode* next;
+    while (current) {
+        next = current->next;
+        free(current);
+        current = next;
     }
 }
 
@@ -129,10 +151,16 @@ void generate_llvm(ASTNode* root)
 
     llvm_stack_allocation(stack_entries);
 
+    free_llvm_stack_entry_node_list(stack_entries);
+
     // Parse everything into a single AST
-    ast_to_llvm(root);
+    type_register print_vr = ast_to_llvm(root).value.virtual_register_index;
+
+    llvm_print_int(print_vr);
 
     llvm_postamble();
+
+    free_llvm_stack_entry_node_list(loadedRegistersHead);
 
     purple_log(LOG_DEBUG, "LLVM written to %s", args->filenames[1]);
 }
