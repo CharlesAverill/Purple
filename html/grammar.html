@@ -93,6 +93,16 @@ Grammar</h1>
 <div class="line"> </div>
 <div class="line">expression: binaryExpression</div>
 <div class="line">          ;</div>
+<div class="line"> </div>
+<div class="line">print_statement: &#39;print(&#39; expression &#39;)&#39;</div>
+<div class="line">               ;</div>
+<div class="line"> </div>
+<div class="line">statement: print_statement &#39;;&#39;</div>
+<div class="line">         ;</div>
+<div class="line"> </div>
+<div class="line">statements: statement</div>
+<div class="line">          | statement statements</div>
+<div class="line">          ;</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

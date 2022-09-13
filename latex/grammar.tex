@@ -27,6 +27,16 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{}
 \DoxyCodeLine{expression: binaryExpression}
 \DoxyCodeLine{          ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{print\_statement: 'print(' expression ')'}
+\DoxyCodeLine{               ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{statement: print\_statement ';'}
+\DoxyCodeLine{         ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{statements: statement}
+\DoxyCodeLine{          | statement statements}
+\DoxyCodeLine{          ;}
 
 \end{DoxyCodeInclude}
  
