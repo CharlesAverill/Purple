@@ -15,16 +15,16 @@
 #include "info.h"
 
 /**
- * @struct purple_args
+ * @struct PurpleArgs
  * @brief Structure containing command line arguments
  */
-typedef struct purple_args {
-    /**Silences all compiler output*/
-    int quiet;
+typedef struct PurpleArgs {
+    /**Logging level to use*/
+    int logging;
     /**Input filename followed by output ASM filename*/
     char* filenames[2];
-} purple_args;
+} PurpleArgs;
 
-void parse_args(purple_args* args, int argc, char* argv[]);
+void parse_args(PurpleArgs* args, int argc, char* argv[]);
 
-#endif
+#endif /* ARGUMENTS_H */

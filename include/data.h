@@ -10,8 +10,8 @@
 
 #include <stdio.h>
 
-#include "arguments.h"
 #include "scan.h"
+#include "utils/arguments.h"
 
 /**extern_ will be undefined in purple.c, causing purple.c to "own" these variables*/
 #ifndef extern_
@@ -22,10 +22,18 @@
 extern_ int D_LINE_NUMBER;
 /**If defined, this character will be put back into the input stream*/
 extern_ char D_PUT_BACK;
-/**The pointer to the open filestream for the Scanner*/
+/**The file pointer to the open filestream for the Scanner*/
 extern_ FILE* D_INPUT_FILE;
+/**The file pointer to the open filestream for the output LLVM-IR file*/
+extern_ FILE* D_LLVM_FILE;
 /**Filename corresponding to D_INPUT_FILE*/
 extern_ char* D_INPUT_FN;
+/**Filename corresponding to D_+LLVM_FILE*/
+extern_ char* D_LLVM_FN;
+/**Current number of the latest-used LLVM virtual register within a function*/
+extern_ unsigned long long int D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER;
+/**Number of allocated free virtual registers available*/
+extern_ unsigned long long int D_FREE_REGISTER_COUNT;
 
 #define D_MAX_IDENTIFIER_LENGTH 63
 /**Buffer to read identifiers into*/
@@ -35,7 +43,7 @@ extern_ char D_IDENTIFIER_BUFFER[D_MAX_IDENTIFIER_LENGTH + 1];
 extern_ int D_DEBUG;
 
 /**Command line arguments*/
-extern_ purple_args* args;
+extern_ PurpleArgs* args;
 
 /**Most recently-parsed token*/
 extern_ struct Token D_GLOBAL_TOKEN;

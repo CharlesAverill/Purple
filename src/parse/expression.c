@@ -13,13 +13,13 @@
  * @param t Token to check preference of
  * @return int Precedence of Token's type
  */
-static int get_operator_precedence(Token t)
+static int get_operatorPrecedence(Token t)
 {
-    int prec = operator_precedence[t.type];
+    int prec = operatorPrecedence[t.type];
 
     if (prec == 0) {
         syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Expected operator but got %s \"%d\"",
-                     token_strings[t.type], t.value);
+                     tokenStrings[t.type], t.value);
     }
 
     return prec;
@@ -41,7 +41,7 @@ static ASTNode* create_terminal_node(Token t)
         scan(&D_GLOBAL_TOKEN);
         break;
     default:
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Token: \"%s\"", token_strings[t.type]);
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Token: \"%s\"", tokenStrings[t.type]);
     }
 
     return out;
@@ -67,12 +67,12 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
     }
 
     // While current Token has greater precedence than previous Token
-    while (get_operator_precedence(D_GLOBAL_TOKEN) > previous_token_precedence) {
+    while (get_operatorPrecedence(D_GLOBAL_TOKEN) > previous_token_precedence) {
         // Scan the next Token
         scan(&D_GLOBAL_TOKEN);
 
         // Recursively build the right AST subtree
-        right = parse_binary_expression(operator_precedence[current_ttype]);
+        right = parse_binary_expression(operatorPrecedence[current_ttype]);
 
         // Join right subtree with current left subtree
         left = create_ast_node(current_ttype, left, NULL, right, 0);

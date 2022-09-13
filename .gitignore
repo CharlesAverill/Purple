@@ -10,4 +10,5 @@ core
 .gdb_history
 *.out
 *.s
+*.ll
 scratch.prp

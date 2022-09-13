@@ -12,10 +12,11 @@
 #include "data.h"
 #undef extern_
 
-#include "arguments.h"
-#include "errors_warnings.h"
 #include "parse.h"
 #include "scan.h"
+#include "translate/translate.h"
+#include "utils/arguments.h"
+#include "utils/logging.h"
 
 static void init(int argc, char* argv[]);
 void shutdown(void);
@@ -33,7 +34,7 @@ static void init(int argc, char* argv[])
     D_PUT_BACK = '\n';
 
     // Argument parsing
-    args = malloc(sizeof(purple_args));
+    args = malloc(sizeof(PurpleArgs));
     if (args == NULL) {
         fatal(RC_MEMORY_ERROR, "Unable to allocate memory for command line arguments");
     }
@@ -51,48 +52,6 @@ static void init(int argc, char* argv[])
 }
 
 /**
- * @brief Tie up any loose ends that may have arisen
- */
-void shutdown(void)
-{
-    if (D_INPUT_FILE) {
-        fclose(D_INPUT_FILE);
-    }
-}
-
-int interpretAST(struct ASTNode* n)
-{
-    int leftval, rightval;
-
-    // Get the left and right sub-tree values
-    if (n->left)
-        leftval = interpretAST(n->left);
-    if (n->right)
-        rightval = interpretAST(n->right);
-
-    // Debug: Print what we are about to do
-    if (n->ttype == T_INTEGER_LITERAL)
-        printf("int %d\n", n->value);
-    else
-        printf("%d %s %d\n", leftval, token_strings[n->ttype], rightval);
-
-    switch (n->ttype) {
-    case T_PLUS:
-        return (leftval + rightval);
-    case T_MINUS:
-        return (leftval - rightval);
-    case T_STAR:
-        return (leftval * rightval);
-    case T_SLASH:
-        return (leftval / rightval);
-    case T_INTEGER_LITERAL:
-        return (n->value);
-    default:
-        fatal(RC_ERROR, "Unknown AST operator %d\n", n->ttype);
-    }
-}
-
-/**
  * @brief Compiler entrypoint
  * 
  * @param argc Number of command line arguments
@@ -101,12 +60,18 @@ int interpretAST(struct ASTNode* n)
  */
 int main(int argc, char* argv[])
 {
-    init(argc, argv);
-
     struct ASTNode* n;
-    n = parse_binary_expression(0);
-    printf("%d\n", interpretAST(n));
 
+    init(argc, argv);
+    purple_log(LOG_DEBUG, "Compiler initialized");
+
+    purple_log(LOG_DEBUG, "Parsing binary expression");
+    n = parse_binary_expression(0);
+
+    purple_log(LOG_DEBUG, "Generating LLVM from AST");
+    generate_llvm(n);
+
+    purple_log(LOG_DEBUG, "Code generation finished, shutting down");
     shutdown();
 
     return 0;

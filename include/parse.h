@@ -4,7 +4,7 @@
  * @brief Function headers for parsing and operator precedence values
  * @date 09-Sep-2022
  * 
- * @subsection operator_precedence Operator Precedence
+ * @subsection operatorPrecedence Operator Precedence
  * This table outlines Purple's operator precedence values. 
  * A higher precedence value is computed before a lower precedence value.
  * | Precedence | Operator | Description | Associativity |
@@ -36,7 +36,7 @@
 /**
  * Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed
  */
-static int operator_precedence[] = {
+static int operatorPrecedence[] = {
     0, // EOF
 
     11, // PLUS
