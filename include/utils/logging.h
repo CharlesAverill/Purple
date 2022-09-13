@@ -27,7 +27,14 @@
 /**
  * @brief Severity levels of logging statements emitted by the compiler 
  */
-typedef enum { LOG_NONE, LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR, LOG_CRITICAL } LogLevel;
+typedef enum {
+    LOG_NONE,
+    LOG_DEBUG,
+    LOG_INFO,
+    LOG_WARNING,
+    LOG_ERROR,
+    LOG_CRITICAL
+} LogLevel;
 
 /**
  * @brief Maps LogLevels to text and color for displaying
