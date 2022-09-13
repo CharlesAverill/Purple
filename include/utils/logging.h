@@ -27,14 +27,7 @@
 /**
  * @brief Severity levels of logging statements emitted by the compiler 
  */
-typedef enum {
-    LOG_NONE,
-    LOG_DEBUG,
-    LOG_INFO,
-    LOG_WARNING,
-    LOG_ERROR,
-    LOG_CRITICAL
-} LogLevel;
+typedef enum { LOG_NONE, LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR, LOG_CRITICAL } LogLevel;
 
 typedef struct {
     LogLevel level;
@@ -64,6 +57,8 @@ typedef enum {
  */
 static const char* returnCodeStrings[] = {"OK",           "ERROR",      "SYNTAX ERROR",
                                           "MEMORY ERROR", "FILE ERROR", "COMPILER ERROR"};
+
+void shutdown(void);
 
 void fatal(ReturnCode rc, const char* fmt, ...);
 void syntax_error(const char* fn, const int line_number, const char* fmt, ...);

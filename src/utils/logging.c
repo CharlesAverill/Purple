@@ -9,6 +9,21 @@
 #include "utils/arguments.h"
 
 /**
+ * @brief Tie up any loose ends that may have arisen
+ */
+void shutdown(void)
+{
+    if (D_INPUT_FILE) {
+        fclose(D_INPUT_FILE);
+        D_INPUT_FILE = NULL;
+    }
+    if (D_LLVM_FILE) {
+        fclose(D_LLVM_FILE);
+        D_LLVM_FILE = NULL;
+    }
+}
+
+/**
  * @brief Raises a fatal error that will exit the compiler
  * 
  * @param rc Return code to exit with
@@ -27,9 +42,7 @@ void fatal(ReturnCode rc, const char* fmt, ...)
     // Print fence for error distinguishing
     fprintf(stderr, "\n----------------------------------------\n");
 
-    if (D_INPUT_FILE) {
-        fclose(D_INPUT_FILE);
-    }
+    shutdown();
 
     exit(rc);
 }
@@ -71,12 +84,16 @@ void purple_log(LogLevel level, const char* fmt, ...)
     va_list func_args;
     FILE* output_stream;
 
-    if (args->logging == LOG_NONE || args->logging > level) {
-        return;
-    }
+    if (args) {
+        if (args->logging == LOG_NONE || args->logging > level) {
+            return;
+        }
 
-    if (args->logging > LOG_INFO) {
-        output_stream = stderr;
+        if (args->logging > LOG_INFO) {
+            output_stream = stderr;
+        } else {
+            output_stream = stdout;
+        }
     } else {
         output_stream = stdout;
     }

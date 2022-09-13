@@ -6,8 +6,6 @@
  */
 
 #include "translate/translate.h"
-#include "translate/llvm.h"
-#include "types/number.h"
 #include "utils/logging.h"
 
 /**
@@ -21,13 +19,52 @@ static void translate_init(void)
         fatal(RC_FILE_ERROR, "Could not open %s for writing LLVM", args->filenames[1]);
     }
 
-    D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 0;
+    D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 1;
+
+    D_FREE_REGISTER_COUNT = 0;
 }
 
 /**
- * @brief Exit code for the translator including freeing registers and closing the ASM file
+ * @brief Perform a DFS on an AST to determine the stack allocation needed for a binary expression
+ * 
+ * @param root Root of AST to find stack allocation for
+ * @return LLVMStackEntryNode* Pointer to front of the stack allocation linked list
  */
-static void exit_translator(void) { fclose(D_LLVM_FILE); }
+LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
+{
+    LLVMStackEntryNode* temp_left;
+    LLVMStackEntryNode* temp_right;
+
+    if (root == NULL) {
+        return NULL;
+    }
+
+    if (root->left || root->right) {
+        if (root->left) {
+            temp_left = determine_binary_expression_stack_allocation(root->left);
+        }
+        if (root->right) {
+            temp_right = determine_binary_expression_stack_allocation(root->right);
+        }
+
+        if (temp_left && temp_left->next) {
+            temp_left->next->next = temp_right;
+        } else if (temp_left) {
+            temp_left->next = temp_right;
+        } else {
+            temp_left = temp_right;
+        }
+
+        return temp_left;
+    } else {
+        LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
+        current->reg = get_next_local_virtual_register();
+        D_FREE_REGISTER_COUNT++;
+        current->type = token_type_to_number_type(root->ttype);
+        current->align_bytes = numberTypeByteSizes[current->type];
+        return current;
+    }
+}
 
 /**
  * @brief Generates LLVM-IR from a given AST
@@ -63,14 +100,16 @@ LLVMValue ast_to_llvm(ASTNode* n)
     int left_vr = virtual_registers[0];
     int right_vr = virtual_registers[1];
 
+    printf("%d %d\n", left_vr, right_vr);
+
     if (TOKENTYPE_IS_BINARY_ARITHMETIC(n->ttype)) {
         return LLVMVALUE_VIRTUAL_REGISTER(llvm_binary_arithmetic(n->ttype, left_vr, right_vr));
-    } else if(TOKENTYPE_IS_TERMINAL(n->ttype)) {
-        switch(n->ttype) {
-            case T_INTEGER_LITERAL:
-                return LLVMVALUE_VIRTUAL_REGISTER(llvm_load_constant(NUMBER_INT32(n->value)));
-            default:
-                break;
+    } else if (TOKENTYPE_IS_TERMINAL(n->ttype)) {
+        switch (n->ttype) {
+        case T_INTEGER_LITERAL:
+            return LLVMVALUE_VIRTUAL_REGISTER(llvm_load_constant(NUMBER_INT32(n->value)));
+        default:
+            break;
         }
     } else {
         syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unknown operator \"%s\"", tokenStrings[n->ttype]);
@@ -84,10 +123,16 @@ void generate_llvm(ASTNode* root)
 {
     translate_init();
 
+    LLVMStackEntryNode* stack_entries = determine_binary_expression_stack_allocation(root);
+
+    llvm_preamble();
+
+    llvm_stack_allocation(stack_entries);
+
     // Parse everything into a single AST
     ast_to_llvm(root);
 
-    exit_translator();
+    llvm_postamble();
 
     purple_log(LOG_DEBUG, "LLVM written to %s", args->filenames[1]);
 }

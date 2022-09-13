@@ -16,6 +16,20 @@ typedef enum {
 } NumberType;
 
 /**
+ * @brief Size of each NumberType
+ */
+static const int numberTypeByteSizes[] = {
+    4,
+};
+
+/**
+ * @brief Format strings for each data type
+ */
+static const char* numberTypeFormatStrings[] = {
+    "%d",
+};
+
+/**
  * @brief Container for various kinds of number data
  */
 typedef struct Number {
@@ -30,6 +44,9 @@ typedef struct Number {
 /**
  * @brief Generates a Number struct with type INT32
  */
-#define NUMBER_INT32(v) (Number){.type=NT_INT32, .value.int_value = v}
+#define NUMBER_INT32(v)                                                                            \
+    (Number) { .type = NT_INT32, .value.int_value = v }
+
+NumberType token_type_to_number_type(int token_type);
 
 #endif /* NUMBER_H */

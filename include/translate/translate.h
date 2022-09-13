@@ -12,7 +12,9 @@
 #include <stdlib.h>
 
 #include "parse.h"
+#include "translate/llvm.h"
 #include "tree.h"
+#include "types/number.h"
 
 /**
  * @brief Types of values possibly returned by ast_to_llvm
@@ -49,6 +51,8 @@ typedef struct LLVMValue {
         .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER,                                              \
         .value.virtual_register_index = register_number                                            \
     }
+
+LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root);
 
 LLVMValue ast_to_llvm(ASTNode* n);
 void generate_llvm(ASTNode* root);

@@ -38,17 +38,17 @@ error_t parse_opt(int key, char* arg, struct argp_state* state)
         arguments->logging = LOG_DEBUG;
         break;
     case 'l':
-        if (strcmp("NONE", arg)) {
+        if (!strcmp("NONE", arg)) {
             arguments->logging = LOG_NONE;
-        } else if (strcmp("DEBUG", arg)) {
+        } else if (!strcmp("DEBUG", arg)) {
             arguments->logging = LOG_DEBUG;
-        } else if (strcmp("INFO", arg)) {
+        } else if (!strcmp("INFO", arg)) {
             arguments->logging = LOG_INFO;
-        } else if (strcmp("WARNING", arg)) {
+        } else if (!strcmp("WARNING", arg)) {
             arguments->logging = LOG_WARNING;
-        } else if (strcmp("ERROR", arg)) {
+        } else if (!strcmp("ERROR", arg)) {
             arguments->logging = LOG_ERROR;
-        } else if (strcmp("CRITICAL", arg)) {
+        } else if (!strcmp("CRITICAL", arg)) {
             arguments->logging = LOG_CRITICAL;
         }
         break;
@@ -82,7 +82,7 @@ static struct argp argp = {options, parse_opt, args_doc, doc, 0, 0, 0};
 void parse_args(PurpleArgs* args, int argc, char* argv[])
 {
     args->logging = LOG_INFO;
-    args->filenames[1] = "a.s";
+    args->filenames[1] = "a.ll";
 
     argp_parse(&argp, argc, argv, 0, 0, args);
 }
