@@ -7,6 +7,7 @@
 
 #include "translate/llvm.h"
 #include "data.h"
+#include "utils/clang.h"
 #include "utils/formatting.h"
 #include "utils/logging.h"
 
@@ -69,10 +70,16 @@ type_register* llvm_ensure_registers_loaded(int n_registers, type_register regis
 void llvm_preamble()
 {
     fprintf(D_LLVM_FILE, "; ModuleID = '%s'" NEWLINE, D_INPUT_FN);
-    fprintf(D_LLVM_FILE,
-            "target datalayout = "
-            "\"e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128\"" NEWLINE);
-    fprintf(D_LLVM_FILE, "target triple = \"%s\"" NEWLINE NEWLINE, "x86_64-pc-linux-gnu");
+
+    // Target layout
+    char* target_datalayout = get_target_datalayout();
+    fprintf(D_LLVM_FILE, "target datalayout = \"%s\"" NEWLINE, target_datalayout);
+    free(target_datalayout);
+    // Target triple
+    char* target_triple = get_target_triple();
+    fprintf(D_LLVM_FILE, "target triple = \"%s\"" NEWLINE NEWLINE, target_triple);
+    free(target_triple);
+
     fprintf(D_LLVM_FILE, "@print_int_fstring = private unnamed_addr constant [4 x i8] "
                          "c\"%%d\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "; Function Attrs: noinline nounwind optnone uwtable" NEWLINE);

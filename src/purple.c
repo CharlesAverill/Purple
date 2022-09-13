@@ -16,6 +16,7 @@
 #include "scan.h"
 #include "translate/translate.h"
 #include "utils/arguments.h"
+#include "utils/clang.h"
 #include "utils/logging.h"
 
 static void init(int argc, char* argv[]);
@@ -52,41 +53,6 @@ static void init(int argc, char* argv[])
     purple_log(LOG_DEBUG, "Compiler initialized");
 }
 
-static void compile_llvm()
-{
-    purple_log(LOG_DEBUG, "Compiling LLVM with clang");
-
-    int clang_status;
-    char process_out[256];
-    // Generate the clang command
-    char cmd[270] = {0};
-
-    strcat(cmd, "clang ");
-    strcat(cmd, D_LLVM_FN);
-
-    // Open the process
-    purple_log(LOG_DEBUG, "Running clang with \"%s\"", cmd);
-    FILE* clang_process = popen(cmd, "r");
-
-    // Let process run
-    while (fgets(process_out, 256, clang_process) != NULL) {
-        if (args->logging <= LOG_DEBUG) {
-            printf("%s", process_out);
-        }
-    }
-
-    // Finish up
-    clang_status = pclose(clang_process);
-    if (clang_status == -1) {
-        purple_log(LOG_ERROR, "clang failed with errno %d", errno);
-    }
-    /*
-    else if(clang_status != 0){
-        purple_log(LOG_ERROR, "clang exited with return code %d", clang_status);
-    }
-    */
-}
-
 /**
  * @brief Compiler entrypoint
  * 
@@ -107,7 +73,7 @@ int main(int argc, char* argv[])
 
     close_files();
 
-    compile_llvm();
+    clang_compile_llvm(D_LLVM_FN);
 
     shutdown();
 
