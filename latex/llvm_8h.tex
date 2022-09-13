@@ -11,14 +11,14 @@ Function headers for LLVM-\/\+IR emission.
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}}
-\begin{DoxyCompactList}\small\item\em Node of a linked list containing information about required stack allocation for a function. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Node of a linked list containing information about required stack allocation for a function. Also used as a general-\/purpose linked list of registers with loaded values. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structLLVMValue}{LLVMValue}}
 \begin{DoxyCompactList}\small\item\em Value returned by ast\+\_\+to\+\_\+llvm. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}~unsigned long long int
-\item 
+\begin{DoxyCompactList}\small\item\em A too-\/big data type for register indices in case of stress testing. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{llvm_8h_a0a7343e65b9eb01a2c42da63bd9b3964}{LLVMVALUE\+\_\+\+NULL}}~    (\mbox{\hyperlink{structLLVMValue}{LLVMValue}}) \{ .value\+\_\+type = \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79ca904a5cacf68c6ec7a9f9685372a334f0}{LLVMVALUETYPE\+\_\+\+NONE}}, .value = 0 \}
 \begin{DoxyCompactList}\small\item\em A standard \char`\"{}null\char`\"{} \mbox{\hyperlink{structLLVMValue}{LLVMValue}} struct returned in some scenarios. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{llvm_8h_a44f42eede9aa8d1841a8222f42f8cf9d}{LLVMVALUE\+\_\+\+VIRTUAL\+\_\+\+REGISTER}}(register\+\_\+number)
@@ -29,7 +29,7 @@ struct \mbox{\hyperlink{structLLVMValue}{LLVMValue}}
 \begin{DoxyCompactItemize}
 \item 
 typedef struct \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} \mbox{\hyperlink{llvm_8h_a73e6e02db92b4cae40010589065ac79a}{LLVMStack\+Entry\+Node}}
-\begin{DoxyCompactList}\small\item\em Node of a linked list containing information about required stack allocation for a function. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Node of a linked list containing information about required stack allocation for a function. Also used as a general-\/purpose linked list of registers with loaded values. \end{DoxyCompactList}\item 
 typedef struct \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a996ef903919a3c100bb6c98f81a47a48}{LLVMValue}}
 \begin{DoxyCompactList}\small\item\em Value returned by ast\+\_\+to\+\_\+llvm. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
@@ -55,16 +55,16 @@ void \mbox{\hyperlink{llvm_8h_a9c7b432e690cb422483d20eaacdcfaf0}{llvm\+\_\+stack
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a408ac9e98b8ae3637789a3bc92275246}{llvm\+\_\+store\+\_\+constant}} (\mbox{\hyperlink{structNumber}{Number}} value)
 \begin{DoxyCompactList}\small\item\em Store a constant number value into a register. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{llvm_8h_acf6ffab57a0d67bd99dc3caa06a9e1d6}{get\+\_\+next\+\_\+local\+\_\+virtual\+\_\+register}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves the next valid virtual register index. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8h_afc2182252bf20257b60928774df28665}{llvm\+\_\+print\+\_\+int}} (\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} reg)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generate code to print an integer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 static const char $\ast$ \mbox{\hyperlink{llvm_8h_ac126174f25ba15725681e50ce7a7d558}{number\+Type\+LLVMReprs}} \mbox{[}$\,$\mbox{]}
 \begin{DoxyCompactList}\small\item\em LLVM-\/\+IR representations of data types. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{llvm_8h_a34ca54a9e8ecfdea8744a76677de7325}{loaded\+Registers\+Head}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Head node of linked list containing register indices that have loaded values. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -135,6 +135,10 @@ Inline-\/initializes an \mbox{\hyperlink{structLLVMValue}{LLVMValue}} struct fro
 
 
 
+A too-\/big data type for register indices in case of stress testing. 
+
+
+
 \doxysubsection{Typedef Documentation}
 \mbox{\Hypertarget{llvm_8h_a73e6e02db92b4cae40010589065ac79a}\label{llvm_8h_a73e6e02db92b4cae40010589065ac79a}} 
 \index{llvm.h@{llvm.h}!LLVMStackEntryNode@{LLVMStackEntryNode}}
@@ -144,7 +148,7 @@ Inline-\/initializes an \mbox{\hyperlink{structLLVMValue}{LLVMValue}} struct fro
 
 
 
-Node of a linked list containing information about required stack allocation for a function. 
+Node of a linked list containing information about required stack allocation for a function. Also used as a general-\/purpose linked list of registers with loaded values. 
 
 \mbox{\Hypertarget{llvm_8h_a996ef903919a3c100bb6c98f81a47a48}\label{llvm_8h_a996ef903919a3c100bb6c98f81a47a48}} 
 \index{llvm.h@{llvm.h}!LLVMValue@{LLVMValue}}
@@ -188,6 +192,13 @@ LLVMVALUETYPE\+\_\+\+VIRTUAL\+\_\+\+REGISTER&\\
 \doxysubsubsection{\texorpdfstring{get\_next\_local\_virtual\_register()}{get\_next\_local\_virtual\_register()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} get\+\_\+next\+\_\+local\+\_\+virtual\+\_\+register (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
+
+
+Retrieves the next valid virtual register index. 
+
+\begin{DoxyReturn}{Returns}
+type\+\_\+register Index of next unused virtual register 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8h_a97aad8c45b9a419a7ff7475921996a3a}\label{llvm_8h_a97aad8c45b9a419a7ff7475921996a3a}} 
 \index{llvm.h@{llvm.h}!llvm\_binary\_arithmetic@{llvm\_binary\_arithmetic}}
 \index{llvm\_binary\_arithmetic@{llvm\_binary\_arithmetic}!llvm.h@{llvm.h}}
@@ -240,8 +251,17 @@ Generated program\textquotesingle{}s preamble.
 \index{llvm.h@{llvm.h}!llvm\_print\_int@{llvm\_print\_int}}
 \index{llvm\_print\_int@{llvm\_print\_int}!llvm.h@{llvm.h}}
 \doxysubsubsection{\texorpdfstring{llvm\_print\_int()}{llvm\_print\_int()}}
-{\footnotesize\ttfamily void llvm\+\_\+print\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{reg }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void llvm\+\_\+print\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{print\+\_\+vr }\end{DoxyParamCaption})}
 
+
+
+Generate code to print an integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em print\+\_\+vr} & Register holding value to print \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{llvm_8h_a9c7b432e690cb422483d20eaacdcfaf0}\label{llvm_8h_a9c7b432e690cb422483d20eaacdcfaf0}} 
 \index{llvm.h@{llvm.h}!llvm\_stack\_allocation@{llvm\_stack\_allocation}}
 \index{llvm\_stack\_allocation@{llvm\_stack\_allocation}!llvm.h@{llvm.h}}
@@ -283,6 +303,10 @@ int Register number value is held in
 \index{loadedRegistersHead@{loadedRegistersHead}!llvm.h@{llvm.h}}
 \doxysubsubsection{\texorpdfstring{loadedRegistersHead}{loadedRegistersHead}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}}$\ast$ loaded\+Registers\+Head\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Head node of linked list containing register indices that have loaded values. 
 
 \mbox{\Hypertarget{llvm_8h_ac126174f25ba15725681e50ce7a7d558}\label{llvm_8h_ac126174f25ba15725681e50ce7a7d558}} 
 \index{llvm.h@{llvm.h}!numberTypeLLVMReprs@{numberTypeLLVMReprs}}

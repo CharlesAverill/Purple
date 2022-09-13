@@ -91,6 +91,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ab4bb4871076aa73ec76e957aececfa8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates LLVM-IR from a given AST.  <a href="translate_8c.html#ab4bb4871076aa73ec76e957aececfa8f">More...</a><br /></td></tr>
 <tr class="separator:ab4bb4871076aa73ec76e957aececfa8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca5e0ac30f889ce8ca56e0e258f4d772"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#aca5e0ac30f889ce8ca56e0e258f4d772">free_llvm_stack_entry_node_list</a> (<a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> *head)</td></tr>
+<tr class="memdesc:aca5e0ac30f889ce8ca56e0e258f4d772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free memory used by <a class="el" href="structLLVMStackEntryNode.html" title="Node of a linked list containing information about required stack allocation for a function....">LLVMStackEntryNode</a> linked lists.  <a href="translate_8c.html#aca5e0ac30f889ce8ca56e0e258f4d772">More...</a><br /></td></tr>
 <tr class="separator:aca5e0ac30f889ce8ca56e0e258f4d772"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfbc27d31aa9042e542ed3ffdb363bf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#adfbc27d31aa9042e542ed3ffdb363bf5">generate_llvm</a> (<a class="el" href="structASTNode.html">ASTNode</a> *root)</td></tr>
 <tr class="memdesc:adfbc27d31aa9042e542ed3ffdb363bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper function for generating LLVM.  <a href="translate_8c.html#adfbc27d31aa9042e542ed3ffdb363bf5">More...</a><br /></td></tr>
@@ -99,6 +100,7 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a34ca54a9e8ecfdea8744a76677de7325"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#a34ca54a9e8ecfdea8744a76677de7325">loadedRegistersHead</a> = NULL</td></tr>
+<tr class="memdesc:a34ca54a9e8ecfdea8744a76677de7325"><td class="mdescLeft">&#160;</td><td class="mdescRight">Head node of linked list containing register indices that have loaded values.  <a href="translate_8c.html#a34ca54a9e8ecfdea8744a76677de7325">More...</a><br /></td></tr>
 <tr class="separator:a34ca54a9e8ecfdea8744a76677de7325"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -184,6 +186,14 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Free memory used by <a class="el" href="structLLVMStackEntryNode.html" title="Node of a linked list containing information about required stack allocation for a function....">LLVMStackEntryNode</a> linked lists. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">head</td><td>Head of list to free </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="adfbc27d31aa9042e542ed3ffdb363bf5" name="adfbc27d31aa9042e542ed3ffdb363bf5"></a>
@@ -246,6 +256,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Head node of linked list containing register indices that have loaded values. </p>
 
 </div>
 </div>

@@ -12,8 +12,8 @@ LLVM-\/\+IR emission.
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{llvm_8c_a93ed5095c63c5e965623499aa9572d33}{append\+\_\+loaded}} (\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} reg)
-\item 
+void \mbox{\hyperlink{llvm_8c_ac977d1d6aef44e3b2087f9b231723342}{prepend\+\_\+loaded}} (\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} reg)
+\begin{DoxyCompactList}\small\item\em Update loaded register linked list to include new register. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} $\ast$ \mbox{\hyperlink{llvm_8c_aa1d4242202590d641a4086aa55379945}{llvm\+\_\+ensure\+\_\+registers\+\_\+loaded}} (int n\+\_\+registers, \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} registers\mbox{[}$\,$\mbox{]})
 \item 
 void \mbox{\hyperlink{llvm_8c_a2a71cd943c755c45ce34a623e8a9b6c2}{llvm\+\_\+preamble}} ()
@@ -23,21 +23,21 @@ void \mbox{\hyperlink{llvm_8c_a6f43471ff369b4c5cc066b16f61ebbf3}{llvm\+\_\+posta
 void \mbox{\hyperlink{llvm_8c_a9c7b432e690cb422483d20eaacdcfaf0}{llvm\+\_\+stack\+\_\+allocation}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$stack\+\_\+entries)
 \begin{DoxyCompactList}\small\item\em Allocate space on stack for variables. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{llvm_8c_a39b0f77b688032e044257c39856e0b2f}{llvm\+\_\+add}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
-\item 
+\begin{DoxyCompactList}\small\item\em Generate code for binary addition. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{llvm_8c_a545b04fbe85bada4bd4dce439e79657e}{llvm\+\_\+subtract}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
-\item 
+\begin{DoxyCompactList}\small\item\em Generate code for binary subtraction. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{llvm_8c_a2c2dccceabde01686501452f369bc2ab}{llvm\+\_\+multiply}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
-\item 
+\begin{DoxyCompactList}\small\item\em Generate code for binary multiplication. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{llvm_8c_ad7d21a07173aa3106a5681932d128ad6}{llvm\+\_\+divide}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
-\item 
+\begin{DoxyCompactList}\small\item\em Generate code for unsigned binary division. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_a97aad8c45b9a419a7ff7475921996a3a}{llvm\+\_\+binary\+\_\+arithmetic}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} operation, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
 \begin{DoxyCompactList}\small\item\em Generates LLVM-\/\+IR for various binary arithmetic expressions. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_a408ac9e98b8ae3637789a3bc92275246}{llvm\+\_\+store\+\_\+constant}} (\mbox{\hyperlink{structNumber}{Number}} value)
 \begin{DoxyCompactList}\small\item\em Store a constant number value into a register. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{llvm_8c_acf6ffab57a0d67bd99dc3caa06a9e1d6}{get\+\_\+next\+\_\+local\+\_\+virtual\+\_\+register}} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves the next valid virtual register index. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a6db2b93d744734ee439ed511ab5b83a6}{llvm\+\_\+print\+\_\+int}} (\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} print\+\_\+vr)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generate code to print an integer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -52,24 +52,39 @@ Charles Averill
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{llvm_8c_a93ed5095c63c5e965623499aa9572d33}\label{llvm_8c_a93ed5095c63c5e965623499aa9572d33}} 
-\index{llvm.c@{llvm.c}!append\_loaded@{append\_loaded}}
-\index{append\_loaded@{append\_loaded}!llvm.c@{llvm.c}}
-\doxysubsubsection{\texorpdfstring{append\_loaded()}{append\_loaded()}}
-{\footnotesize\ttfamily void append\+\_\+loaded (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{reg }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{llvm_8c_acf6ffab57a0d67bd99dc3caa06a9e1d6}\label{llvm_8c_acf6ffab57a0d67bd99dc3caa06a9e1d6}} 
 \index{llvm.c@{llvm.c}!get\_next\_local\_virtual\_register@{get\_next\_local\_virtual\_register}}
 \index{get\_next\_local\_virtual\_register@{get\_next\_local\_virtual\_register}!llvm.c@{llvm.c}}
 \doxysubsubsection{\texorpdfstring{get\_next\_local\_virtual\_register()}{get\_next\_local\_virtual\_register()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} get\+\_\+next\+\_\+local\+\_\+virtual\+\_\+register (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
+
+
+Retrieves the next valid virtual register index. 
+
+\begin{DoxyReturn}{Returns}
+type\+\_\+register Index of next unused virtual register 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_a39b0f77b688032e044257c39856e0b2f}\label{llvm_8c_a39b0f77b688032e044257c39856e0b2f}} 
 \index{llvm.c@{llvm.c}!llvm\_add@{llvm\_add}}
 \index{llvm\_add@{llvm\_add}!llvm.c@{llvm.c}}
 \doxysubsubsection{\texorpdfstring{llvm\_add()}{llvm\_add()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} llvm\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{left\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{right\+\_\+virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Generate code for binary addition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left\+\_\+virtual\+\_\+register} & Lvalue to be added \\
+\hline
+{\em right\+\_\+virtual\+\_\+register} & Rvalue to be added \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+type\+\_\+register Virtual register holding result 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_a97aad8c45b9a419a7ff7475921996a3a}\label{llvm_8c_a97aad8c45b9a419a7ff7475921996a3a}} 
 \index{llvm.c@{llvm.c}!llvm\_binary\_arithmetic@{llvm\_binary\_arithmetic}}
 \index{llvm\_binary\_arithmetic@{llvm\_binary\_arithmetic}!llvm.c@{llvm.c}}
@@ -98,6 +113,20 @@ int \mbox{\hyperlink{structNumber}{Number}} of virtual register in which the res
 \doxysubsubsection{\texorpdfstring{llvm\_divide()}{llvm\_divide()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} llvm\+\_\+divide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{left\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{right\+\_\+virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Generate code for unsigned binary division. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left\+\_\+virtual\+\_\+register} & Lvalue to be divided \\
+\hline
+{\em right\+\_\+virtual\+\_\+register} & Rvalue to be divided \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+type\+\_\+register Virtual register holding result 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_aa1d4242202590d641a4086aa55379945}\label{llvm_8c_aa1d4242202590d641a4086aa55379945}} 
 \index{llvm.c@{llvm.c}!llvm\_ensure\_registers\_loaded@{llvm\_ensure\_registers\_loaded}}
 \index{llvm\_ensure\_registers\_loaded@{llvm\_ensure\_registers\_loaded}!llvm.c@{llvm.c}}
@@ -110,6 +139,20 @@ int \mbox{\hyperlink{structNumber}{Number}} of virtual register in which the res
 \doxysubsubsection{\texorpdfstring{llvm\_multiply()}{llvm\_multiply()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} llvm\+\_\+multiply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{left\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{right\+\_\+virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Generate code for binary multiplication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left\+\_\+virtual\+\_\+register} & Lvalue to be multiplied \\
+\hline
+{\em right\+\_\+virtual\+\_\+register} & Rvalue to be multiplied \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+type\+\_\+register Virtual register holding result 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_a6f43471ff369b4c5cc066b16f61ebbf3}\label{llvm_8c_a6f43471ff369b4c5cc066b16f61ebbf3}} 
 \index{llvm.c@{llvm.c}!llvm\_postamble@{llvm\_postamble}}
 \index{llvm\_postamble@{llvm\_postamble}!llvm.c@{llvm.c}}
@@ -136,6 +179,15 @@ Generated program\textquotesingle{}s preamble.
 \doxysubsubsection{\texorpdfstring{llvm\_print\_int()}{llvm\_print\_int()}}
 {\footnotesize\ttfamily void llvm\+\_\+print\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{print\+\_\+vr }\end{DoxyParamCaption})}
 
+
+
+Generate code to print an integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em print\+\_\+vr} & Register holding value to print \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{llvm_8c_a9c7b432e690cb422483d20eaacdcfaf0}\label{llvm_8c_a9c7b432e690cb422483d20eaacdcfaf0}} 
 \index{llvm.c@{llvm.c}!llvm\_stack\_allocation@{llvm\_stack\_allocation}}
 \index{llvm\_stack\_allocation@{llvm\_stack\_allocation}!llvm.c@{llvm.c}}
@@ -175,3 +227,32 @@ int Register number value is held in
 \doxysubsubsection{\texorpdfstring{llvm\_subtract()}{llvm\_subtract()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} llvm\+\_\+subtract (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{left\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{right\+\_\+virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Generate code for binary subtraction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left\+\_\+virtual\+\_\+register} & Lvalue to be subtracted \\
+\hline
+{\em right\+\_\+virtual\+\_\+register} & Rvalue to be subtracted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+type\+\_\+register Virtual register holding result 
+\end{DoxyReturn}
+\mbox{\Hypertarget{llvm_8c_ac977d1d6aef44e3b2087f9b231723342}\label{llvm_8c_ac977d1d6aef44e3b2087f9b231723342}} 
+\index{llvm.c@{llvm.c}!prepend\_loaded@{prepend\_loaded}}
+\index{prepend\_loaded@{prepend\_loaded}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{prepend\_loaded()}{prepend\_loaded()}}
+{\footnotesize\ttfamily void prepend\+\_\+loaded (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{reg }\end{DoxyParamCaption})}
+
+
+
+Update loaded register linked list to include new register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & \\
+\hline
+\end{DoxyParams}

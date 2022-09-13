@@ -13,7 +13,7 @@ Function headers, ANSI defines, and enums for raising internal warnings and erro
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structLogInfo}{Log\+Info}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Maps Log\+Levels to text and color for displaying. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -71,7 +71,7 @@ void \mbox{\hyperlink{logging_8h_a9cfd6399b1995d4e620bcb1aa53f4764}{purple\+\_\+
 \begin{DoxyCompactItemize}
 \item 
 static const \mbox{\hyperlink{structLogInfo}{Log\+Info}} \mbox{\hyperlink{logging_8h_a59e149c6933a5ab3ce3d7820c755e882}{log\+Info\+Levels}} \mbox{[}$\,$\mbox{]}
-\item 
+\begin{DoxyCompactList}\small\item\em Collection of Log\+Infos for standard logging purposes. \end{DoxyCompactList}\item 
 static const char $\ast$ \mbox{\hyperlink{logging_8h_ac056197f8b96c1d78e1858c19eadcb0a}{return\+Code\+Strings}} \mbox{[}$\,$\mbox{]}
 \begin{DoxyCompactList}\small\item\em String representation of return codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -300,6 +300,10 @@ Raises a fatal syntax error.
 \DoxyCodeLine{    \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}{LOG\_ERROR}}, \textcolor{stringliteral}{"{}[ERROR]"{}}, \mbox{\hyperlink{logging_8h_a7abd01983a396871db34d8af6c2234da}{ANSI\_ORANGE}}\}, \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a065aa62cc0698301fbbe7b5448990708}{LOG\_CRITICAL}}, \textcolor{stringliteral}{"{}[CRITICAL]"{}}, \mbox{\hyperlink{logging_8h_a7f026776e12ac1b5e7736c24b756085d}{ANSI\_RED}}\}\}}
 
 \end{DoxyCode}
+
+
+Collection of Log\+Infos for standard logging purposes. 
+
 \mbox{\Hypertarget{logging_8h_ac056197f8b96c1d78e1858c19eadcb0a}\label{logging_8h_ac056197f8b96c1d78e1858c19eadcb0a}} 
 \index{logging.h@{logging.h}!returnCodeStrings@{returnCodeStrings}}
 \index{returnCodeStrings@{returnCodeStrings}!logging.h@{logging.h}}

@@ -77,7 +77,9 @@ $(function() {
 <p>Command line interface logic.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="info_8h_source.html">info.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="arguments_8h_source.html">utils/arguments.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="formatting_8h_source.html">utils/formatting.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="logging_8h_source.html">utils/logging.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -292,9 +294,9 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    {<span class="stringliteral">&quot;logging&quot;</span>, <span class="charliteral">&#39;l&#39;</span>, <span class="stringliteral">&quot;LEVEL&quot;</span>, 0,</div>
 <div class="line">     <span class="stringliteral">&quot;Level of log statements to print (NONE, DEBUG, INFO, WARNING, ERROR, CRITICAL)&quot;</span>, 0},</div>
+<div class="line">    {<span class="stringliteral">&quot;output&quot;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="stringliteral">&quot;FILE&quot;</span>, 0, <span class="stringliteral">&quot;Path to the generated LLVM file&quot;</span>, 0},</div>
 <div class="line">    {<span class="stringliteral">&quot;quiet&quot;</span>, <span class="charliteral">&#39;q&#39;</span>, 0, 0, <span class="stringliteral">&quot;Equivalent to --logging=NONE&quot;</span>, 0},</div>
 <div class="line">    {<span class="stringliteral">&quot;verbose&quot;</span>, <span class="charliteral">&#39;v&#39;</span>, 0, 0, <span class="stringliteral">&quot;Equivalent to --logging=DEBUG&quot;</span>, 0},</div>
-<div class="line">    {<span class="stringliteral">&quot;output&quot;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="stringliteral">&quot;FILE&quot;</span>, 0, <span class="stringliteral">&quot;Path to the generated assembly file&quot;</span>, 0},</div>
 <div class="line">    {0},</div>
 <div class="line">}</div>
 </div><!-- fragment -->

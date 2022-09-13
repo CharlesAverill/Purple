@@ -17,14 +17,14 @@ static void \mbox{\hyperlink{translate_8c_ae80e343df46fde6686f722d2b1c3e6a6}{tra
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_ab4bb4871076aa73ec76e957aececfa8f}{ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n)
 \begin{DoxyCompactList}\small\item\em Generates LLVM-\/\+IR from a given AST. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{translate_8c_aca5e0ac30f889ce8ca56e0e258f4d772}{free\+\_\+llvm\+\_\+stack\+\_\+entry\+\_\+node\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$head)
-\item 
+\begin{DoxyCompactList}\small\item\em Free memory used by \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} linked lists. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{translate_8c_adfbc27d31aa9042e542ed3ffdb363bf5}{generate\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root)
 \begin{DoxyCompactList}\small\item\em Wrapper function for generating LLVM. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{translate_8c_a34ca54a9e8ecfdea8744a76677de7325}{loaded\+Registers\+Head}} = NULL
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Head node of linked list containing register indices that have loaded values. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -81,6 +81,15 @@ LLVMStack\+Entry\+Node$\ast$ Pointer to front of the stack allocation linked lis
 \doxysubsubsection{\texorpdfstring{free\_llvm\_stack\_entry\_node\_list()}{free\_llvm\_stack\_entry\_node\_list()}}
 {\footnotesize\ttfamily static void free\+\_\+llvm\+\_\+stack\+\_\+entry\+\_\+node\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$}]{head }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Free memory used by \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} linked lists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & Head of list to free \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{translate_8c_adfbc27d31aa9042e542ed3ffdb363bf5}\label{translate_8c_adfbc27d31aa9042e542ed3ffdb363bf5}} 
 \index{translate.c@{translate.c}!generate\_llvm@{generate\_llvm}}
 \index{generate\_llvm@{generate\_llvm}!translate.c@{translate.c}}
@@ -109,4 +118,8 @@ Initialize any values required for LLVM translation.
 \index{loadedRegistersHead@{loadedRegistersHead}!translate.c@{translate.c}}
 \doxysubsubsection{\texorpdfstring{loadedRegistersHead}{loadedRegistersHead}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}}$\ast$ loaded\+Registers\+Head = NULL}
+
+
+
+Head node of linked list containing register indices that have loaded values. 
 

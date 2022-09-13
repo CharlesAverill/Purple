@@ -6,7 +6,9 @@ Command line interface logic.
 
 
 {\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}info.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils/arguments.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils/formatting.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils/logging.\+h\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -100,9 +102,9 @@ Charles Averill
 \DoxyCodeLine{= \{}
 \DoxyCodeLine{    \{\textcolor{stringliteral}{"{}logging"{}}, \textcolor{charliteral}{'l'}, \textcolor{stringliteral}{"{}LEVEL"{}}, 0,}
 \DoxyCodeLine{     \textcolor{stringliteral}{"{}Level of log statements to print (NONE, DEBUG, INFO, WARNING, ERROR, CRITICAL)"{}}, 0\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}output"{}}, \textcolor{charliteral}{'o'}, \textcolor{stringliteral}{"{}FILE"{}}, 0, \textcolor{stringliteral}{"{}Path to the generated LLVM file"{}}, 0\},}
 \DoxyCodeLine{    \{\textcolor{stringliteral}{"{}quiet"{}}, \textcolor{charliteral}{'q'}, 0, 0, \textcolor{stringliteral}{"{}Equivalent to -\/-\/logging=NONE"{}}, 0\},}
 \DoxyCodeLine{    \{\textcolor{stringliteral}{"{}verbose"{}}, \textcolor{charliteral}{'v'}, 0, 0, \textcolor{stringliteral}{"{}Equivalent to -\/-\/logging=DEBUG"{}}, 0\},}
-\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}output"{}}, \textcolor{charliteral}{'o'}, \textcolor{stringliteral}{"{}FILE"{}}, 0, \textcolor{stringliteral}{"{}Path to the generated assembly file"{}}, 0\},}
 \DoxyCodeLine{    \{0\},}
 \DoxyCodeLine{\}}
 
