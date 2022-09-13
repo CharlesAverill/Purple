@@ -127,6 +127,11 @@ LLVMValue ast_to_llvm(ASTNode* n)
     }
 }
 
+/**
+ * @brief Free memory used by LLVMStackEntryNode linked lists
+ * 
+ * @param head Head of list to free
+ */
 static void free_llvm_stack_entry_node_list(LLVMStackEntryNode* head)
 {
     LLVMStackEntryNode* current = head;

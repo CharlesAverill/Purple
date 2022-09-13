@@ -21,6 +21,9 @@ void shutdown(void)
         fclose(D_LLVM_FILE);
         D_LLVM_FILE = NULL;
     }
+    if (args) {
+        free(args);
+    }
 }
 
 /**

@@ -19,7 +19,6 @@
 #include "utils/logging.h"
 
 static void init(int argc, char* argv[]);
-void shutdown(void);
 
 /**
  * @brief Parse compiler arguments, open input file, and allocate memory 

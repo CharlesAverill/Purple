@@ -10,8 +10,17 @@
 #include "utils/formatting.h"
 #include "utils/logging.h"
 
-void append_loaded(type_register reg)
+/**
+ * @brief Update loaded register linked list to include new register
+ * 
+ * @param reg 
+ */
+void prepend_loaded(type_register reg)
 {
+    if (loadedRegistersHead && loadedRegistersHead->reg == reg) {
+        return;
+    }
+
     LLVMStackEntryNode* new = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
     new->reg = reg;
 
@@ -40,15 +49,14 @@ type_register* llvm_ensure_registers_loaded(int n_registers, type_register regis
     }
 
     // Haven't loaded all of our registers yet
-    type_register* loaded_registers =
-        (type_register*)malloc(sizeof(type_register) * (n_registers - found));
+    type_register* loaded_registers = (type_register*)malloc(sizeof(type_register) * n_registers);
     for (int i = 0; i < n_registers; i++) {
+        loaded_registers[i] = registers[i];
         if (!found_registers[i]) {
-            loaded_registers[found] = get_next_local_virtual_register();
+            loaded_registers[i] = get_next_local_virtual_register();
             fprintf(D_LLVM_FILE, TAB "%%%llu = load i32, i32* %%%llu, align 4" NEWLINE,
-                    loaded_registers[found], registers[i]);
-            append_loaded(loaded_registers[found]);
-            found++;
+                    loaded_registers[i], registers[i]);
+            prepend_loaded(loaded_registers[i]);
         }
     }
 
@@ -118,6 +126,13 @@ void llvm_stack_allocation(LLVMStackEntryNode* stack_entries)
     }
 }
 
+/**
+ * @brief Generate code for binary addition
+ * 
+ * @param left_virtual_register Lvalue to be added
+ * @param right_virtual_register Rvalue to be added
+ * @return type_register Virtual register holding result
+ */
 static type_register llvm_add(LLVMValue left_virtual_register, LLVMValue right_virtual_register)
 {
     fprintf(D_LLVM_FILE, TAB "%%%llu = add nsw i32 %%%llu, %%%llu" NEWLINE,
@@ -126,6 +141,13 @@ static type_register llvm_add(LLVMValue left_virtual_register, LLVMValue right_v
     return D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER - 1;
 }
 
+/**
+ * @brief Generate code for binary subtraction
+ * 
+ * @param left_virtual_register Lvalue to be subtracted
+ * @param right_virtual_register Rvalue to be subtracted
+ * @return type_register Virtual register holding result
+ */
 static type_register llvm_subtract(LLVMValue left_virtual_register,
                                    LLVMValue right_virtual_register)
 {
@@ -135,6 +157,13 @@ static type_register llvm_subtract(LLVMValue left_virtual_register,
     return D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER - 1;
 }
 
+/**
+ * @brief Generate code for binary multiplication
+ * 
+ * @param left_virtual_register Lvalue to be multiplied
+ * @param right_virtual_register Rvalue to be multiplied
+ * @return type_register Virtual register holding result
+ */
 static type_register llvm_multiply(LLVMValue left_virtual_register,
                                    LLVMValue right_virtual_register)
 {
@@ -144,6 +173,13 @@ static type_register llvm_multiply(LLVMValue left_virtual_register,
     return D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER - 1;
 }
 
+/**
+ * @brief Generate code for unsigned binary division
+ * 
+ * @param left_virtual_register Lvalue to be divided
+ * @param right_virtual_register Rvalue to be divided
+ * @return type_register Virtual register holding result
+ */
 static type_register llvm_divide(LLVMValue left_virtual_register, LLVMValue right_virtual_register)
 {
     fprintf(D_LLVM_FILE, TAB "%%%llu = udiv i32 %%%llu, %%%llu" NEWLINE,
@@ -184,7 +220,7 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
               tokenStrings[operation]);
     }
 
-    append_loaded(out_register);
+    prepend_loaded(out_register);
 
     return LLVMVALUE_VIRTUAL_REGISTER(out_register);
 }
@@ -204,11 +240,21 @@ LLVMValue llvm_store_constant(Number value)
     return LLVMVALUE_VIRTUAL_REGISTER_POINTER(D_FREE_REGISTER_COUNT + 1);
 }
 
+/**
+ * @brief Retrieves the next valid virtual register index
+ * 
+ * @return type_register Index of next unused virtual register
+ */
 type_register get_next_local_virtual_register(void)
 {
     return D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER++;
 }
 
+/**
+ * @brief Generate code to print an integer
+ * 
+ * @param print_vr Register holding value to print
+ */
 void llvm_print_int(type_register print_vr)
 {
     fprintf(D_LLVM_FILE,

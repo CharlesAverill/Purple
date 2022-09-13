@@ -29,12 +29,18 @@
  */
 typedef enum { LOG_NONE, LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR, LOG_CRITICAL } LogLevel;
 
+/**
+ * @brief Maps LogLevels to text and color for displaying
+ */
 typedef struct {
     LogLevel level;
     char* name;
     char* color;
 } LogInfo;
 
+/**
+ * @brief Collection of LogInfos for standard logging purposes
+ */
 static const LogInfo logInfoLevels[] = {
     {LOG_NONE, "", ANSI_RESET},          {LOG_DEBUG, "[DEBUG]", ANSI_BOLD},
     {LOG_INFO, "[INFO]", ANSI_BOLD},     {LOG_WARNING, "[WARNING]", ANSI_YELLOW},

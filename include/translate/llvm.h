@@ -11,10 +11,13 @@
 #include "scan.h"
 #include "types/number.h"
 
+/**
+ * @brief A too-big data type for register indices in case of stress testing
+ */
 #define type_register unsigned long long int
 
 /**
- * @brief Node of a linked list containing information about required stack allocation for a function
+ * @brief Node of a linked list containing information about required stack allocation for a function. Also used as a general-purpose linked list of registers with loaded values
  */
 typedef struct LLVMStackEntryNode {
     /**Register number of the current node*/
@@ -34,6 +37,9 @@ static const char* numberTypeLLVMReprs[] = {
     "i32",
 };
 
+/**
+ * @brief Head node of linked list containing register indices that have loaded values
+ */
 extern LLVMStackEntryNode* loadedRegistersHead;
 
 /**

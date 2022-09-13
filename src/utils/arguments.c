@@ -7,7 +7,9 @@
 
 #include <string.h>
 
+#include "info.h"
 #include "utils/arguments.h"
+#include "utils/formatting.h"
 #include "utils/logging.h"
 
 const char* argp_program_version = PROJECT_NAME_AND_VERS;
@@ -18,9 +20,9 @@ static char args_doc[] = "PROGRAM";
 static struct argp_option options[] = {
     {"logging", 'l', "LEVEL", 0,
      "Level of log statements to print (NONE, DEBUG, INFO, WARNING, ERROR, CRITICAL)", 0},
+    {"output", 'o', "FILE", 0, "Path to the generated LLVM file", 0},
     {"quiet", 'q', 0, 0, "Equivalent to --logging=NONE", 0},
     {"verbose", 'v', 0, 0, "Equivalent to --logging=DEBUG", 0},
-    {"output", 'o', "FILE", 0, "Path to the generated assembly file", 0},
     {0},
 };
 

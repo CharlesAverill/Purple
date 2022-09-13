@@ -35,7 +35,8 @@ extern_ unsigned long long int D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER;
 /**Number of allocated free virtual registers available*/
 extern_ unsigned long long int D_FREE_REGISTER_COUNT;
 
-#define D_MAX_IDENTIFIER_LENGTH 63
+/**Purple identifiers can be a maximum of 255 bytes in length*/
+#define D_MAX_IDENTIFIER_LENGTH 255
 /**Buffer to read identifiers into*/
 extern_ char D_IDENTIFIER_BUFFER[D_MAX_IDENTIFIER_LENGTH + 1];
 
