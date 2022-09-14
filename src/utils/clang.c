@@ -136,6 +136,11 @@ void clang_compile_llvm(const char* fn)
     }
 }
 
+/**
+ * @brief Search through GENERATOR_PROGRAM for the target datalayout
+ * 
+ * @return char* Pointer to target datalayout string
+ */
 char* get_target_datalayout()
 {
     char* out = NULL;
@@ -208,6 +213,7 @@ char* get_target_triple()
  * @param regex Regular expression to compile
  * @param target_str String to search in
  * @param len Maximum length of the output match, if found
+ * @param group_index Index of group to match (0 for no group)
  * @return char* Pointer to the match text if match found, else NULL
  */
 char* regex_match(const char* regex, char* target_str, int len, int group_index)
