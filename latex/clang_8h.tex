@@ -24,7 +24,7 @@ void \mbox{\hyperlink{clang_8h_a3ef9aa60f9d1860c6a5b0ce0c983dedd}{clang\+\_\+com
 void \mbox{\hyperlink{clang_8h_a3b369fac9808777478e63f68f41d5270}{create\+\_\+tmp\+\_\+generator\+\_\+program}} ()
 \begin{DoxyCompactList}\small\item\em Create a temporary file for a generator program used to determine compilation information. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{clang_8h_aad50747c930d7d8fe05d741b81501f5c}{get\+\_\+target\+\_\+datalayout}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Search through GENERATOR\+\_\+\+PROGRAM for the target datalayout. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{clang_8h_ae6b73131bb54576584f6bdb9dc6378a7}{get\+\_\+target\+\_\+triple}} ()
 \begin{DoxyCompactList}\small\item\em Get the target triple for the current target. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{clang_8h_a05c1a47a02bdbc3937ea103b8a6eae63}{get\+\_\+postamble}} ()
@@ -129,6 +129,13 @@ Create a temporary file for a generator program used to determine compilation in
 \doxysubsubsection{\texorpdfstring{get\_target\_datalayout()}{get\_target\_datalayout()}}
 {\footnotesize\ttfamily char $\ast$ get\+\_\+target\+\_\+datalayout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Search through GENERATOR\+\_\+\+PROGRAM for the target datalayout. 
+
+\begin{DoxyReturn}{Returns}
+char$\ast$ Pointer to target datalayout string 
+\end{DoxyReturn}
 \mbox{\Hypertarget{clang_8h_ae6b73131bb54576584f6bdb9dc6378a7}\label{clang_8h_ae6b73131bb54576584f6bdb9dc6378a7}} 
 \index{clang.h@{clang.h}!get\_target\_triple@{get\_target\_triple}}
 \index{get\_target\_triple@{get\_target\_triple}!clang.h@{clang.h}}
@@ -159,6 +166,8 @@ Simple regex parser.
 {\em target\+\_\+str} & String to search in \\
 \hline
 {\em len} & Maximum length of the output match, if found \\
+\hline
+{\em group\+\_\+index} & Index of group to match (0 for no group) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

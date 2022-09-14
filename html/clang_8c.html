@@ -94,6 +94,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a3ef9aa60f9d1860c6a5b0ce0c983dedd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts up the clang compiler to compile the generated LLVM-IR into a binary.  <a href="clang_8c.html#a3ef9aa60f9d1860c6a5b0ce0c983dedd">More...</a><br /></td></tr>
 <tr class="separator:a3ef9aa60f9d1860c6a5b0ce0c983dedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad50747c930d7d8fe05d741b81501f5c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clang_8c.html#aad50747c930d7d8fe05d741b81501f5c">get_target_datalayout</a> ()</td></tr>
+<tr class="memdesc:aad50747c930d7d8fe05d741b81501f5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search through GENERATOR_PROGRAM for the target datalayout.  <a href="clang_8c.html#aad50747c930d7d8fe05d741b81501f5c">More...</a><br /></td></tr>
 <tr class="separator:aad50747c930d7d8fe05d741b81501f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6b73131bb54576584f6bdb9dc6378a7"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clang_8c.html#ae6b73131bb54576584f6bdb9dc6378a7">get_target_triple</a> ()</td></tr>
 <tr class="memdesc:ae6b73131bb54576584f6bdb9dc6378a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the target triple for the current target.  <a href="clang_8c.html#ae6b73131bb54576584f6bdb9dc6378a7">More...</a><br /></td></tr>
@@ -160,6 +161,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Search through GENERATOR_PROGRAM for the target datalayout. </p>
+<dl class="section return"><dt>Returns</dt><dd>char* Pointer to target datalayout string </dd></dl>
 
 </div>
 </div>
@@ -248,6 +252,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">regex</td><td>Regular expression to compile </td></tr>
     <tr><td class="paramname">target_str</td><td>String to search in </td></tr>
     <tr><td class="paramname">len</td><td>Maximum length of the output match, if found </td></tr>
+    <tr><td class="paramname">group_index</td><td>Index of group to match (0 for no group) </td></tr>
   </table>
   </dd>
 </dl>
