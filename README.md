@@ -31,7 +31,7 @@ bin/purple example_file.prp
 
 ## Grammar
 
-BNF-formatted grammar for Purple can be found here: [Purple Grammar Documentation](docs/grammar)
+BNF-formatted grammar for Purple can be found here: [Purple Grammar Documentation](purple.g)
 
 ## Examples
 
