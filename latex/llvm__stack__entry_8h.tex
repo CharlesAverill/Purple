@@ -1,0 +1,100 @@
+\hypertarget{llvm__stack__entry_8h}{}\doxysection{include/utils/llvm\+\_\+stack\+\_\+entry.h File Reference}
+\label{llvm__stack__entry_8h}\index{include/utils/llvm\_stack\_entry.h@{include/utils/llvm\_stack\_entry.h}}
+{\ttfamily \#include \char`\"{}types/number.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}}
+\begin{DoxyCompactList}\small\item\em Node of a linked list containing information about required stack allocation for a piece of data. Used in the symbol table linked list. Also used as a general-\/purpose linked list of virtual registers with loaded values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}~unsigned long long int
+\begin{DoxyCompactList}\small\item\em A too-\/big data type for register indices in case of stress testing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} \mbox{\hyperlink{llvm__stack__entry_8h_a73e6e02db92b4cae40010589065ac79a}{LLVMStack\+Entry\+Node}}
+\begin{DoxyCompactList}\small\item\em Node of a linked list containing information about required stack allocation for a piece of data. Used in the symbol table linked list. Also used as a general-\/purpose linked list of virtual registers with loaded values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{llvm__stack__entry_8h_a8fa2f2bf229b53383166e64c9f631cd6}{initialize\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$head)
+\item 
+void \mbox{\hyperlink{llvm__stack__entry_8h_a687e029c1aee69283c86cca194374eb1}{prepend\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$head, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} register\+\_\+index)
+\item 
+\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{llvm__stack__entry_8h_aa9f09b232b9d0e2e3b2e0de2f012aa4f}{pop\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$head)
+\item 
+void \mbox{\hyperlink{llvm__stack__entry_8h_a24f6f1959edad4155dc0418b5f041948}{free\+\_\+llvm\+\_\+stack\+\_\+entry\+\_\+node\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$head)
+\begin{DoxyCompactList}\small\item\em Free memory used by \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} linked lists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+15-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}\label{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}} 
+\index{llvm\_stack\_entry.h@{llvm\_stack\_entry.h}!type\_register@{type\_register}}
+\index{type\_register@{type\_register}!llvm\_stack\_entry.h@{llvm\_stack\_entry.h}}
+\doxysubsubsection{\texorpdfstring{type\_register}{type\_register}}
+{\footnotesize\ttfamily \#define type\+\_\+register~unsigned long long int}
+
+
+
+A too-\/big data type for register indices in case of stress testing. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{llvm__stack__entry_8h_a73e6e02db92b4cae40010589065ac79a}\label{llvm__stack__entry_8h_a73e6e02db92b4cae40010589065ac79a}} 
+\index{llvm\_stack\_entry.h@{llvm\_stack\_entry.h}!LLVMStackEntryNode@{LLVMStackEntryNode}}
+\index{LLVMStackEntryNode@{LLVMStackEntryNode}!llvm\_stack\_entry.h@{llvm\_stack\_entry.h}}
+\doxysubsubsection{\texorpdfstring{LLVMStackEntryNode}{LLVMStackEntryNode}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}}}
+
+
+
+Node of a linked list containing information about required stack allocation for a piece of data. Used in the symbol table linked list. Also used as a general-\/purpose linked list of virtual registers with loaded values. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{llvm__stack__entry_8h_a24f6f1959edad4155dc0418b5f041948}\label{llvm__stack__entry_8h_a24f6f1959edad4155dc0418b5f041948}} 
+\index{llvm\_stack\_entry.h@{llvm\_stack\_entry.h}!free\_llvm\_stack\_entry\_node\_list@{free\_llvm\_stack\_entry\_node\_list}}
+\index{free\_llvm\_stack\_entry\_node\_list@{free\_llvm\_stack\_entry\_node\_list}!llvm\_stack\_entry.h@{llvm\_stack\_entry.h}}
+\doxysubsubsection{\texorpdfstring{free\_llvm\_stack\_entry\_node\_list()}{free\_llvm\_stack\_entry\_node\_list()}}
+{\footnotesize\ttfamily void free\+\_\+llvm\+\_\+stack\+\_\+entry\+\_\+node\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$}]{head }\end{DoxyParamCaption})}
+
+
+
+Free memory used by \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} linked lists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & Head of list to free \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{llvm__stack__entry_8h_a8fa2f2bf229b53383166e64c9f631cd6}\label{llvm__stack__entry_8h_a8fa2f2bf229b53383166e64c9f631cd6}} 
+\index{llvm\_stack\_entry.h@{llvm\_stack\_entry.h}!initialize\_stack\_entry\_linked\_list@{initialize\_stack\_entry\_linked\_list}}
+\index{initialize\_stack\_entry\_linked\_list@{initialize\_stack\_entry\_linked\_list}!llvm\_stack\_entry.h@{llvm\_stack\_entry.h}}
+\doxysubsubsection{\texorpdfstring{initialize\_stack\_entry\_linked\_list()}{initialize\_stack\_entry\_linked\_list()}}
+{\footnotesize\ttfamily void initialize\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{llvm__stack__entry_8h_aa9f09b232b9d0e2e3b2e0de2f012aa4f}\label{llvm__stack__entry_8h_aa9f09b232b9d0e2e3b2e0de2f012aa4f}} 
+\index{llvm\_stack\_entry.h@{llvm\_stack\_entry.h}!pop\_stack\_entry\_linked\_list@{pop\_stack\_entry\_linked\_list}}
+\index{pop\_stack\_entry\_linked\_list@{pop\_stack\_entry\_linked\_list}!llvm\_stack\_entry.h@{llvm\_stack\_entry.h}}
+\doxysubsubsection{\texorpdfstring{pop\_stack\_entry\_linked\_list()}{pop\_stack\_entry\_linked\_list()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} pop\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{llvm__stack__entry_8h_a687e029c1aee69283c86cca194374eb1}\label{llvm__stack__entry_8h_a687e029c1aee69283c86cca194374eb1}} 
+\index{llvm\_stack\_entry.h@{llvm\_stack\_entry.h}!prepend\_stack\_entry\_linked\_list@{prepend\_stack\_entry\_linked\_list}}
+\index{prepend\_stack\_entry\_linked\_list@{prepend\_stack\_entry\_linked\_list}!llvm\_stack\_entry.h@{llvm\_stack\_entry.h}}
+\doxysubsubsection{\texorpdfstring{prepend\_stack\_entry\_linked\_list()}{prepend\_stack\_entry\_linked\_list()}}
+{\footnotesize\ttfamily void prepend\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$}]{head,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{register\+\_\+index }\end{DoxyParamCaption})}
+

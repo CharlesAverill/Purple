@@ -18,5 +18,5 @@ var searchData=
   ['tts_5fsemicolon_15',['TTS_SEMICOLON',['../scan_8h.html#a0dee619cbc594f611dc45bc837c0253b',1,'scan.h']]],
   ['tts_5fslash_16',['TTS_SLASH',['../scan_8h.html#ab2974cb4da4d5b0174b395c10b6f7bcd',1,'scan.h']]],
   ['tts_5fstar_17',['TTS_STAR',['../scan_8h.html#a035a192d545d9e2fae66af59d98c2e30',1,'scan.h']]],
-  ['type_5fregister_18',['type_register',['../llvm_8h.html#a03da1d5061280400be8365177df15c4e',1,'llvm.h']]]
+  ['type_5fregister_18',['type_register',['../llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e',1,'llvm_stack_entry.h']]]
 ];

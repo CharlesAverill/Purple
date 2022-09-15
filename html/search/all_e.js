@@ -43,6 +43,6 @@ var searchData=
   ['tts_5fslash_40',['TTS_SLASH',['../scan_8h.html#ab2974cb4da4d5b0174b395c10b6f7bcd',1,'scan.h']]],
   ['tts_5fstar_41',['TTS_STAR',['../scan_8h.html#a035a192d545d9e2fae66af59d98c2e30',1,'scan.h']]],
   ['ttype_42',['ttype',['../structASTNode.html#ac71a4bb0085044ea339b9021a8c0c820',1,'ASTNode']]],
-  ['type_43',['type',['../structLLVMStackEntryNode.html#aa6c8f96e14ee1679c7ee60f818f02941',1,'LLVMStackEntryNode::type()'],['../structToken.html#a67919af9f3a80dc0b28a0ab1e6d5bf8a',1,'Token::type()'],['../structNumber.html#ace28dcb37d2be0e9b881744c1e0c01d1',1,'Number::type()']]],
-  ['type_5fregister_44',['type_register',['../llvm_8h.html#a03da1d5061280400be8365177df15c4e',1,'llvm.h']]]
+  ['type_43',['type',['../structNumber.html#ace28dcb37d2be0e9b881744c1e0c01d1',1,'Number::type()'],['../structToken.html#a67919af9f3a80dc0b28a0ab1e6d5bf8a',1,'Token::type()'],['../structLLVMStackEntryNode.html#aa6c8f96e14ee1679c7ee60f818f02941',1,'LLVMStackEntryNode::type()']]],
+  ['type_5fregister_44',['type_register',['../llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e',1,'llvm_stack_entry.h']]]
 ];

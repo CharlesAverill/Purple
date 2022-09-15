@@ -2,17 +2,17 @@
 \label{structLLVMStackEntryNode}\index{LLVMStackEntryNode@{LLVMStackEntryNode}}
 
 
-Node of a linked list containing information about required stack allocation for a function. Also used as a general-\/purpose linked list of registers with loaded values.  
+Node of a linked list containing information about required stack allocation for a piece of data. Used in the symbol table linked list. Also used as a general-\/purpose linked list of virtual registers with loaded values.  
 
 
 
 
-{\ttfamily \#include $<$llvm.\+h$>$}
+{\ttfamily \#include $<$llvm\+\_\+stack\+\_\+entry.\+h$>$}
 
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{structLLVMStackEntryNode_aaff603b17fe1999a2f722998c3b47387}{reg}}
+\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{structLLVMStackEntryNode_aaff603b17fe1999a2f722998c3b47387}{reg}}
 \item 
 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \mbox{\hyperlink{structLLVMStackEntryNode_aa6c8f96e14ee1679c7ee60f818f02941}{type}}
 \item 
@@ -23,7 +23,7 @@ struct \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast
 
 
 \doxysubsection{Detailed Description}
-Node of a linked list containing information about required stack allocation for a function. Also used as a general-\/purpose linked list of registers with loaded values. 
+Node of a linked list containing information about required stack allocation for a piece of data. Used in the symbol table linked list. Also used as a general-\/purpose linked list of virtual registers with loaded values. 
 
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{structLLVMStackEntryNode_ab78e4f0785ccaad88dce16d7f6ad7b46}\label{structLLVMStackEntryNode_ab78e4f0785ccaad88dce16d7f6ad7b46}} 
@@ -42,7 +42,7 @@ Next node in linked list \mbox{\Hypertarget{structLLVMStackEntryNode_aaff603b17f
 \index{LLVMStackEntryNode@{LLVMStackEntryNode}!reg@{reg}}
 \index{reg@{reg}!LLVMStackEntryNode@{LLVMStackEntryNode}}
 \doxysubsubsection{\texorpdfstring{reg}{reg}}
-{\footnotesize\ttfamily \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} LLVMStack\+Entry\+Node\+::reg}
+{\footnotesize\ttfamily \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} LLVMStack\+Entry\+Node\+::reg}
 
 Register number of the current node \mbox{\Hypertarget{structLLVMStackEntryNode_aa6c8f96e14ee1679c7ee60f818f02941}\label{structLLVMStackEntryNode_aa6c8f96e14ee1679c7ee60f818f02941}} 
 \index{LLVMStackEntryNode@{LLVMStackEntryNode}!type@{type}}
@@ -54,4 +54,4 @@ Data type of the current node
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/translate/\mbox{\hyperlink{llvm_8h}{llvm.\+h}}\end{DoxyCompactItemize}
+include/utils/\mbox{\hyperlink{llvm__stack__entry_8h}{llvm\+\_\+stack\+\_\+entry.\+h}}\end{DoxyCompactItemize}

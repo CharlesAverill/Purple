@@ -85,21 +85,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ae80e343df46fde6686f722d2b1c3e6a6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#ae80e343df46fde6686f722d2b1c3e6a6">translate_init</a> (void)</td></tr>
 <tr class="memdesc:ae80e343df46fde6686f722d2b1c3e6a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize any values required for LLVM translation.  <a href="translate_8c.html#ae80e343df46fde6686f722d2b1c3e6a6">More...</a><br /></td></tr>
 <tr class="separator:ae80e343df46fde6686f722d2b1c3e6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fa2f2bf229b53383166e64c9f631cd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#a8fa2f2bf229b53383166e64c9f631cd6">initialize_stack_entry_linked_list</a> (<a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> **head)</td></tr>
-<tr class="separator:a8fa2f2bf229b53383166e64c9f631cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a687e029c1aee69283c86cca194374eb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#a687e029c1aee69283c86cca194374eb1">prepend_stack_entry_linked_list</a> (<a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> **head, <a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> register_index)</td></tr>
-<tr class="separator:a687e029c1aee69283c86cca194374eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9f09b232b9d0e2e3b2e0de2f012aa4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#aa9f09b232b9d0e2e3b2e0de2f012aa4f">pop_stack_entry_linked_list</a> (<a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> **head)</td></tr>
-<tr class="separator:aa9f09b232b9d0e2e3b2e0de2f012aa4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7abbf5b5f5d3fc9d561f7e080077bb9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#a7abbf5b5f5d3fc9d561f7e080077bb9e">determine_binary_expression_stack_allocation</a> (<a class="el" href="structASTNode.html">ASTNode</a> *root)</td></tr>
 <tr class="memdesc:a7abbf5b5f5d3fc9d561f7e080077bb9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a DFS on an AST to determine the stack allocation needed for a binary expression.  <a href="translate_8c.html#a7abbf5b5f5d3fc9d561f7e080077bb9e">More...</a><br /></td></tr>
 <tr class="separator:a7abbf5b5f5d3fc9d561f7e080077bb9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4bb4871076aa73ec76e957aececfa8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#ab4bb4871076aa73ec76e957aececfa8f">ast_to_llvm</a> (<a class="el" href="structASTNode.html">ASTNode</a> *n)</td></tr>
 <tr class="memdesc:ab4bb4871076aa73ec76e957aececfa8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates LLVM-IR from a given AST.  <a href="translate_8c.html#ab4bb4871076aa73ec76e957aececfa8f">More...</a><br /></td></tr>
 <tr class="separator:ab4bb4871076aa73ec76e957aececfa8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24f6f1959edad4155dc0418b5f041948"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#a24f6f1959edad4155dc0418b5f041948">free_llvm_stack_entry_node_list</a> (<a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> *head)</td></tr>
-<tr class="memdesc:a24f6f1959edad4155dc0418b5f041948"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free memory used by <a class="el" href="structLLVMStackEntryNode.html" title="Node of a linked list containing information about required stack allocation for a function....">LLVMStackEntryNode</a> linked lists.  <a href="translate_8c.html#a24f6f1959edad4155dc0418b5f041948">More...</a><br /></td></tr>
-<tr class="separator:a24f6f1959edad4155dc0418b5f041948"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2560f9333db7b4bc4b0dd4ef15b3dcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#ac2560f9333db7b4bc4b0dd4ef15b3dcc">generate_llvm</a> (void)</td></tr>
 <tr class="memdesc:ac2560f9333db7b4bc4b0dd4ef15b3dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper function for generating LLVM.  <a href="translate_8c.html#ac2560f9333db7b4bc4b0dd4ef15b3dcc">More...</a><br /></td></tr>
 <tr class="separator:ac2560f9333db7b4bc4b0dd4ef15b3dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,32 +163,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a24f6f1959edad4155dc0418b5f041948" name="a24f6f1959edad4155dc0418b5f041948"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24f6f1959edad4155dc0418b5f041948">&#9670;&nbsp;</a></span>free_llvm_stack_entry_node_list()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void free_llvm_stack_entry_node_list </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> *&#160;</td>
-          <td class="paramname"><em>head</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Free memory used by <a class="el" href="structLLVMStackEntryNode.html" title="Node of a linked list containing information about required stack allocation for a function....">LLVMStackEntryNode</a> linked lists. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">head</td><td>Head of list to free </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ac2560f9333db7b4bc4b0dd4ef15b3dcc" name="ac2560f9333db7b4bc4b0dd4ef15b3dcc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac2560f9333db7b4bc4b0dd4ef15b3dcc">&#9670;&nbsp;</a></span>generate_llvm()</h2>
 
@@ -215,70 +180,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Wrapper function for generating LLVM. </p>
-
-</div>
-</div>
-<a id="a8fa2f2bf229b53383166e64c9f631cd6" name="a8fa2f2bf229b53383166e64c9f631cd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fa2f2bf229b53383166e64c9f631cd6">&#9670;&nbsp;</a></span>initialize_stack_entry_linked_list()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void initialize_stack_entry_linked_list </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> **&#160;</td>
-          <td class="paramname"><em>head</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa9f09b232b9d0e2e3b2e0de2f012aa4f" name="aa9f09b232b9d0e2e3b2e0de2f012aa4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9f09b232b9d0e2e3b2e0de2f012aa4f">&#9670;&nbsp;</a></span>pop_stack_entry_linked_list()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> pop_stack_entry_linked_list </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> **&#160;</td>
-          <td class="paramname"><em>head</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a687e029c1aee69283c86cca194374eb1" name="a687e029c1aee69283c86cca194374eb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a687e029c1aee69283c86cca194374eb1">&#9670;&nbsp;</a></span>prepend_stack_entry_linked_list()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void prepend_stack_entry_linked_list </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> **&#160;</td>
-          <td class="paramname"><em>head</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
-          <td class="paramname"><em>register_index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>

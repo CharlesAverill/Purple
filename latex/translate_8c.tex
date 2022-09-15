@@ -12,18 +12,10 @@ Functions for LLVM-\/\+IR translation.
 \item 
 static void \mbox{\hyperlink{translate_8c_ae80e343df46fde6686f722d2b1c3e6a6}{translate\+\_\+init}} (void)
 \begin{DoxyCompactList}\small\item\em Initialize any values required for LLVM translation. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{translate_8c_a8fa2f2bf229b53383166e64c9f631cd6}{initialize\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$head)
-\item 
-void \mbox{\hyperlink{translate_8c_a687e029c1aee69283c86cca194374eb1}{prepend\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$head, \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} register\+\_\+index)
-\item 
-\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{translate_8c_aa9f09b232b9d0e2e3b2e0de2f012aa4f}{pop\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$head)
-\item 
 \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{translate_8c_a7abbf5b5f5d3fc9d561f7e080077bb9e}{determine\+\_\+binary\+\_\+expression\+\_\+stack\+\_\+allocation}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root)
 \begin{DoxyCompactList}\small\item\em Perform a DFS on an AST to determine the stack allocation needed for a binary expression. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_ab4bb4871076aa73ec76e957aececfa8f}{ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n)
 \begin{DoxyCompactList}\small\item\em Generates LLVM-\/\+IR from a given AST. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{translate_8c_a24f6f1959edad4155dc0418b5f041948}{free\+\_\+llvm\+\_\+stack\+\_\+entry\+\_\+node\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$head)
-\begin{DoxyCompactList}\small\item\em Free memory used by \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} linked lists. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{translate_8c_ac2560f9333db7b4bc4b0dd4ef15b3dcc}{generate\+\_\+llvm}} (void)
 \begin{DoxyCompactList}\small\item\em Wrapper function for generating LLVM. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
@@ -83,21 +75,6 @@ Perform a DFS on an AST to determine the stack allocation needed for a binary ex
 \begin{DoxyReturn}{Returns}
 LLVMStack\+Entry\+Node$\ast$ Pointer to front of the stack allocation linked list 
 \end{DoxyReturn}
-\mbox{\Hypertarget{translate_8c_a24f6f1959edad4155dc0418b5f041948}\label{translate_8c_a24f6f1959edad4155dc0418b5f041948}} 
-\index{translate.c@{translate.c}!free\_llvm\_stack\_entry\_node\_list@{free\_llvm\_stack\_entry\_node\_list}}
-\index{free\_llvm\_stack\_entry\_node\_list@{free\_llvm\_stack\_entry\_node\_list}!translate.c@{translate.c}}
-\doxysubsubsection{\texorpdfstring{free\_llvm\_stack\_entry\_node\_list()}{free\_llvm\_stack\_entry\_node\_list()}}
-{\footnotesize\ttfamily void free\+\_\+llvm\+\_\+stack\+\_\+entry\+\_\+node\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$}]{head }\end{DoxyParamCaption})}
-
-
-
-Free memory used by \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} linked lists. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em head} & Head of list to free \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{translate_8c_ac2560f9333db7b4bc4b0dd4ef15b3dcc}\label{translate_8c_ac2560f9333db7b4bc4b0dd4ef15b3dcc}} 
 \index{translate.c@{translate.c}!generate\_llvm@{generate\_llvm}}
 \index{generate\_llvm@{generate\_llvm}!translate.c@{translate.c}}
@@ -107,24 +84,6 @@ Free memory used by \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\
 
 
 Wrapper function for generating LLVM. 
-
-\mbox{\Hypertarget{translate_8c_a8fa2f2bf229b53383166e64c9f631cd6}\label{translate_8c_a8fa2f2bf229b53383166e64c9f631cd6}} 
-\index{translate.c@{translate.c}!initialize\_stack\_entry\_linked\_list@{initialize\_stack\_entry\_linked\_list}}
-\index{initialize\_stack\_entry\_linked\_list@{initialize\_stack\_entry\_linked\_list}!translate.c@{translate.c}}
-\doxysubsubsection{\texorpdfstring{initialize\_stack\_entry\_linked\_list()}{initialize\_stack\_entry\_linked\_list()}}
-{\footnotesize\ttfamily void initialize\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{translate_8c_aa9f09b232b9d0e2e3b2e0de2f012aa4f}\label{translate_8c_aa9f09b232b9d0e2e3b2e0de2f012aa4f}} 
-\index{translate.c@{translate.c}!pop\_stack\_entry\_linked\_list@{pop\_stack\_entry\_linked\_list}}
-\index{pop\_stack\_entry\_linked\_list@{pop\_stack\_entry\_linked\_list}!translate.c@{translate.c}}
-\doxysubsubsection{\texorpdfstring{pop\_stack\_entry\_linked\_list()}{pop\_stack\_entry\_linked\_list()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} pop\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{translate_8c_a687e029c1aee69283c86cca194374eb1}\label{translate_8c_a687e029c1aee69283c86cca194374eb1}} 
-\index{translate.c@{translate.c}!prepend\_stack\_entry\_linked\_list@{prepend\_stack\_entry\_linked\_list}}
-\index{prepend\_stack\_entry\_linked\_list@{prepend\_stack\_entry\_linked\_list}!translate.c@{translate.c}}
-\doxysubsubsection{\texorpdfstring{prepend\_stack\_entry\_linked\_list()}{prepend\_stack\_entry\_linked\_list()}}
-{\footnotesize\ttfamily void prepend\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$}]{head,  }\item[{\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{register\+\_\+index }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{translate_8c_ae80e343df46fde6686f722d2b1c3e6a6}\label{translate_8c_ae80e343df46fde6686f722d2b1c3e6a6}} 
 \index{translate.c@{translate.c}!translate\_init@{translate\_init}}

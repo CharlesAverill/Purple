@@ -83,23 +83,18 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="scan_8h_source.html">scan.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="number_8h_source.html">types/number.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="llvm__stack__entry_8h_source.html">utils/llvm_stack_entry.h</a>&quot;</code><br />
 </div>
 <p><a href="llvm_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node of a linked list containing information about required stack allocation for a function. Also used as a general-purpose linked list of registers with loaded values.  <a href="structLLVMStackEntryNode.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLLVMValue.html">LLVMValue</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value returned by ast_to_llvm.  <a href="structLLVMValue.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a03da1d5061280400be8365177df15c4e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;&#160;&#160;unsigned long long int</td></tr>
-<tr class="memdesc:a03da1d5061280400be8365177df15c4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A too-big data type for register indices in case of stress testing.  <a href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">More...</a><br /></td></tr>
-<tr class="separator:a03da1d5061280400be8365177df15c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a7343e65b9eb01a2c42da63bd9b3964"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#a0a7343e65b9eb01a2c42da63bd9b3964">LLVMVALUE_NULL</a>&#160;&#160;&#160;    (<a class="el" href="structLLVMValue.html">LLVMValue</a>) { .value_type = <a class="el" href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca904a5cacf68c6ec7a9f9685372a334f0">LLVMVALUETYPE_NONE</a>, .value = 0 }</td></tr>
 <tr class="memdesc:a0a7343e65b9eb01a2c42da63bd9b3964"><td class="mdescLeft">&#160;</td><td class="mdescRight">A standard "null" <a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> struct returned in some scenarios.  <a href="llvm_8h.html#a0a7343e65b9eb01a2c42da63bd9b3964">More...</a><br /></td></tr>
 <tr class="separator:a0a7343e65b9eb01a2c42da63bd9b3964"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,9 +107,6 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a73e6e02db92b4cae40010589065ac79a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#a73e6e02db92b4cae40010589065ac79a">LLVMStackEntryNode</a></td></tr>
-<tr class="memdesc:a73e6e02db92b4cae40010589065ac79a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node of a linked list containing information about required stack allocation for a function. Also used as a general-purpose linked list of registers with loaded values.  <a href="llvm_8h.html#a73e6e02db92b4cae40010589065ac79a">More...</a><br /></td></tr>
-<tr class="separator:a73e6e02db92b4cae40010589065ac79a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a996ef903919a3c100bb6c98f81a47a48"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#a996ef903919a3c100bb6c98f81a47a48">LLVMValue</a></td></tr>
 <tr class="memdesc:a996ef903919a3c100bb6c98f81a47a48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value returned by ast_to_llvm.  <a href="llvm_8h.html#a996ef903919a3c100bb6c98f81a47a48">More...</a><br /></td></tr>
 <tr class="separator:a996ef903919a3c100bb6c98f81a47a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,7 +121,7 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa1d4242202590d641a4086aa55379945"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#aa1d4242202590d641a4086aa55379945">llvm_ensure_registers_loaded</a> (int n_registers, <a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> registers[])</td></tr>
+<tr class="memitem:aa1d4242202590d641a4086aa55379945"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#aa1d4242202590d641a4086aa55379945">llvm_ensure_registers_loaded</a> (int n_registers, <a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> registers[])</td></tr>
 <tr class="separator:aa1d4242202590d641a4086aa55379945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a71cd943c755c45ce34a623e8a9b6c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#a2a71cd943c755c45ce34a623e8a9b6c2">llvm_preamble</a> ()</td></tr>
 <tr class="memdesc:a2a71cd943c755c45ce34a623e8a9b6c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generated program's preamble.  <a href="llvm_8h.html#a2a71cd943c755c45ce34a623e8a9b6c2">More...</a><br /></td></tr>
@@ -146,10 +138,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a408ac9e98b8ae3637789a3bc92275246"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#a408ac9e98b8ae3637789a3bc92275246">llvm_store_constant</a> (<a class="el" href="structNumber.html">Number</a> value)</td></tr>
 <tr class="memdesc:a408ac9e98b8ae3637789a3bc92275246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store a constant number value into a register.  <a href="llvm_8h.html#a408ac9e98b8ae3637789a3bc92275246">More...</a><br /></td></tr>
 <tr class="separator:a408ac9e98b8ae3637789a3bc92275246"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf6ffab57a0d67bd99dc3caa06a9e1d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#acf6ffab57a0d67bd99dc3caa06a9e1d6">get_next_local_virtual_register</a> (void)</td></tr>
+<tr class="memitem:acf6ffab57a0d67bd99dc3caa06a9e1d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#acf6ffab57a0d67bd99dc3caa06a9e1d6">get_next_local_virtual_register</a> (void)</td></tr>
 <tr class="memdesc:acf6ffab57a0d67bd99dc3caa06a9e1d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the next valid virtual register index.  <a href="llvm_8h.html#acf6ffab57a0d67bd99dc3caa06a9e1d6">More...</a><br /></td></tr>
 <tr class="separator:acf6ffab57a0d67bd99dc3caa06a9e1d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc2182252bf20257b60928774df28665"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#afc2182252bf20257b60928774df28665">llvm_print_int</a> (<a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> reg)</td></tr>
+<tr class="memitem:afc2182252bf20257b60928774df28665"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#afc2182252bf20257b60928774df28665">llvm_print_int</a> (<a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> reg)</td></tr>
 <tr class="memdesc:afc2182252bf20257b60928774df28665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print an integer.  <a href="llvm_8h.html#afc2182252bf20257b60928774df28665">More...</a><br /></td></tr>
 <tr class="separator:afc2182252bf20257b60928774df28665"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -206,7 +198,7 @@ Variables</h2></td></tr>
 <div class="line">        .value_type = <a class="code hl_enumvalue" href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f">LLVMVALUETYPE_VIRTUAL_REGISTER</a>, .stores_pointer = <span class="keyword">false</span>,                     \</div>
 <div class="line">        .value.virtual_register_index = register_number                                            \</div>
 <div class="line">    }</div>
-<div class="ttc" id="allvm_8h_html_a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f"><div class="ttname"><a href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f">LLVMVALUETYPE_VIRTUAL_REGISTER</a></div><div class="ttdeci">@ LLVMVALUETYPE_VIRTUAL_REGISTER</div><div class="ttdef"><b>Definition:</b> llvm.h:56</div></div>
+<div class="ttc" id="allvm_8h_html_a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f"><div class="ttname"><a href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f">LLVMVALUETYPE_VIRTUAL_REGISTER</a></div><div class="ttdeci">@ LLVMVALUETYPE_VIRTUAL_REGISTER</div><div class="ttdef"><b>Definition:</b> llvm.h:38</div></div>
 <div class="ttc" id="allvm_8h_html_a996ef903919a3c100bb6c98f81a47a48"><div class="ttname"><a href="llvm_8h.html#a996ef903919a3c100bb6c98f81a47a48">LLVMValue</a></div><div class="ttdeci">struct LLVMValue LLVMValue</div><div class="ttdoc">Value returned by ast_to_llvm.</div></div>
 </div><!-- fragment -->
 <p>Inline-initializes an <a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> struct from a virtual register number. </p>
@@ -238,39 +230,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a03da1d5061280400be8365177df15c4e" name="a03da1d5061280400be8365177df15c4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03da1d5061280400be8365177df15c4e">&#9670;&nbsp;</a></span>type_register</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define type_register&#160;&#160;&#160;unsigned long long int</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>A too-big data type for register indices in case of stress testing. </p>
-
-</div>
-</div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a73e6e02db92b4cae40010589065ac79a" name="a73e6e02db92b4cae40010589065ac79a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73e6e02db92b4cae40010589065ac79a">&#9670;&nbsp;</a></span>LLVMStackEntryNode</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> <a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Node of a linked list containing information about required stack allocation for a function. Also used as a general-purpose linked list of registers with loaded values. </p>
-
-</div>
-</div>
 <a id="a996ef903919a3c100bb6c98f81a47a48" name="a996ef903919a3c100bb6c98f81a47a48"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a996ef903919a3c100bb6c98f81a47a48">&#9670;&nbsp;</a></span>LLVMValue</h2>
 
@@ -316,7 +276,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> get_next_local_virtual_register </td>
+          <td class="memname"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> get_next_local_virtual_register </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -382,7 +342,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> * llvm_ensure_registers_loaded </td>
+          <td class="memname"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> * llvm_ensure_registers_loaded </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>n_registers</em>, </td>
@@ -390,7 +350,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
           <td class="paramname"><em>registers</em>[]&#160;</td>
         </tr>
         <tr>
@@ -450,7 +410,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void llvm_print_int </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="llvm_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
           <td class="paramname"><em>print_vr</em></td><td>)</td>
           <td></td>
         </tr>
@@ -486,7 +446,7 @@ Variables</h2></td></tr>
 <p>Allocate space on stack for variables. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stack_entries</td><td><a class="el" href="structLLVMStackEntryNode.html" title="Node of a linked list containing information about required stack allocation for a function....">LLVMStackEntryNode</a> pointers holding stack allocation information </td></tr>
+    <tr><td class="paramname">stack_entries</td><td><a class="el" href="structLLVMStackEntryNode.html" title="Node of a linked list containing information about required stack allocation for a piece of data....">LLVMStackEntryNode</a> pointers holding stack allocation information </td></tr>
   </table>
   </dd>
 </dl>
