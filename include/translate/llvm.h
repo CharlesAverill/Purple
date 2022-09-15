@@ -43,9 +43,15 @@ static const char* numberTypeLLVMReprs[] = {
 extern LLVMStackEntryNode* loadedRegistersHead;
 
 /**
+ * @brief Head node of linked list containing register indices that are free to have values stored in them
+ */
+extern LLVMStackEntryNode* freeVirtualRegistersHead;
+
+/**
  * @brief Types of values possibly returned by ast_to_llvm
  */
-typedef enum {
+typedef enum
+{
     LLVMVALUETYPE_NONE,
     LLVMVALUETYPE_VIRTUAL_REGISTER,
 } LLVMValueType;

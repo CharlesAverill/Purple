@@ -62,14 +62,9 @@ static void init(int argc, char* argv[])
  */
 int main(int argc, char* argv[])
 {
-    struct ASTNode* n;
-
     init(argc, argv);
 
-    purple_log(LOG_DEBUG, "Parsing binary expression");
-    n = parse_binary_expression(0);
-
-    generate_llvm(n);
+    generate_llvm();
 
     close_files();
 

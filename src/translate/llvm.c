@@ -7,6 +7,7 @@
 
 #include "translate/llvm.h"
 #include "data.h"
+#include "translate/translate.h"
 #include "utils/clang.h"
 #include "utils/formatting.h"
 #include "utils/logging.h"
@@ -14,19 +15,20 @@
 /**
  * @brief Update loaded register linked list to include new register
  * 
- * @param reg 
+ * @param reg Register to include in list
  */
 void prepend_loaded(type_register reg)
 {
-    if (loadedRegistersHead && loadedRegistersHead->reg == reg) {
-        return;
-    }
-
     LLVMStackEntryNode* new = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
     new->reg = reg;
+    new->next = NULL;
 
-    new->next = loadedRegistersHead;
-    loadedRegistersHead = new;
+    if (loadedRegistersHead == NULL) {
+        loadedRegistersHead = new;
+    } else {
+        new->next = loadedRegistersHead;
+        loadedRegistersHead = new;
+    }
 }
 
 type_register* llvm_ensure_registers_loaded(int n_registers, type_register registers[])
@@ -78,7 +80,6 @@ void llvm_preamble()
     // Target triple
     char* target_triple = get_target_triple();
     fprintf(D_LLVM_FILE, "target triple = \"%s\"" NEWLINE NEWLINE, target_triple);
-    free(target_triple);
 
     fprintf(D_LLVM_FILE, "@print_int_fstring = private unnamed_addr constant [4 x i8] "
                          "c\"%%d\\0A\\00\", align 1" NEWLINE NEWLINE);
@@ -221,6 +222,10 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
     case T_SLASH:
         out_register = llvm_divide(left_virtual_register, right_virtual_register);
         break;
+    case T_EXPONENT:
+        fatal(RC_COMPILER_ERROR,
+              "Exponent not yet supported, as libc pow only takes floating-point types");
+        break;
     default:
         fatal(RC_COMPILER_ERROR,
               "llvm_binary_arithmetic receieved non-binary-arithmetic operator \"%s\"",
@@ -240,11 +245,12 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
  */
 LLVMValue llvm_store_constant(Number value)
 {
+    type_register out_register_number = get_free_virtual_register();
     fprintf(D_LLVM_FILE, TAB "store %s ", numberTypeLLVMReprs[value.type]);
     fprintf(D_LLVM_FILE, numberTypeFormatStrings[value.type], value.value);
     fprintf(D_LLVM_FILE, ", %s* %%%llu, align %d" NEWLINE, numberTypeLLVMReprs[value.type],
-            D_FREE_REGISTER_COUNT--, numberTypeByteSizes[value.type]);
-    return LLVMVALUE_VIRTUAL_REGISTER_POINTER(D_FREE_REGISTER_COUNT + 1);
+            out_register_number, numberTypeByteSizes[value.type]);
+    return LLVMVALUE_VIRTUAL_REGISTER_POINTER(out_register_number);
 }
 
 /**
@@ -264,6 +270,7 @@ type_register get_next_local_virtual_register(void)
  */
 void llvm_print_int(type_register print_vr)
 {
+    get_next_local_virtual_register();
     fprintf(D_LLVM_FILE,
             TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
                 "i8]* @print_int_fstring , i32 0, i32 0), i32 %%%llu)" NEWLINE,
