@@ -1,0 +1,57 @@
+\hypertarget{statement_8c}{}\doxysection{src/parse/statement.c File Reference}
+\label{statement_8c}\index{src/parse/statement.c@{src/parse/statement.c}}
+
+
+Logic for parsing statements into an AST.  
+
+
+{\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}parse.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}translate/llvm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}translate/translate.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{statement_8c_aa5cb8c2f1ebc18701e7c4fa5e8894876}{match\+\_\+token}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Ensure current token is of a given type, and scan the next token if so. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{statement_8c_a36e413083d2a6e7a8b561e22e141b811}{parse\+\_\+statements}} (void)
+\begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Logic for parsing statements into an AST. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+14-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{statement_8c_aa5cb8c2f1ebc18701e7c4fa5e8894876}\label{statement_8c_aa5cb8c2f1ebc18701e7c4fa5e8894876}} 
+\index{statement.c@{statement.c}!match\_token@{match\_token}}
+\index{match\_token@{match\_token}!statement.c@{statement.c}}
+\doxysubsubsection{\texorpdfstring{match\_token()}{match\_token()}}
+{\footnotesize\ttfamily static void match\+\_\+token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Ensure current token is of a given type, and scan the next token if so. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Token\+Type to ensure \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{statement_8c_a36e413083d2a6e7a8b561e22e141b811}\label{statement_8c_a36e413083d2a6e7a8b561e22e141b811}} 
+\index{statement.c@{statement.c}!parse\_statements@{parse\_statements}}
+\index{parse\_statements@{parse\_statements}!statement.c@{statement.c}}
+\doxysubsubsection{\texorpdfstring{parse\_statements()}{parse\_statements()}}
+{\footnotesize\ttfamily void parse\+\_\+statements (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. 
+

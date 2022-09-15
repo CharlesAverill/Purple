@@ -14,7 +14,7 @@ Function headers for parsing and operator precedence values.
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}{parse\+\_\+binary\+\_\+expression}} (int previous\+\_\+token\+\_\+precedence)
 \begin{DoxyCompactList}\small\item\em Recursively parse binary expressions into an AST. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{parse_8h_a36e413083d2a6e7a8b561e22e141b811}{parse\+\_\+statements}} (void)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -118,6 +118,10 @@ ASTNode$\ast$ An AST or AST Subtree of the binary expressions in D\+\_\+\+INPUT\
 \index{parse\_statements@{parse\_statements}!parse.h@{parse.h}}
 \doxysubsubsection{\texorpdfstring{parse\_statements()}{parse\_statements()}}
 {\footnotesize\ttfamily void parse\+\_\+statements (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. 
 
 
 
