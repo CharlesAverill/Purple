@@ -28,38 +28,6 @@ static void translate_init(void)
     initialize_stack_entry_linked_list(&loadedRegistersHead);
 }
 
-void initialize_stack_entry_linked_list(LLVMStackEntryNode** head) { *head = NULL; }
-
-void prepend_stack_entry_linked_list(LLVMStackEntryNode** head, type_register register_index)
-{
-    LLVMStackEntryNode* temp = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
-    temp->reg = register_index;
-    temp->next = NULL;
-
-    if (*head == NULL) {
-        *head = temp;
-    } else {
-        temp->next = *head;
-        *head = temp;
-    }
-}
-
-type_register pop_stack_entry_linked_list(LLVMStackEntryNode** head)
-{
-    LLVMStackEntryNode* temp;
-
-    if (*head == NULL) {
-        fatal(RC_COMPILER_ERROR, "Tried to pop from an LLVMStackEntryNode List when it was empty");
-    }
-
-    type_register out = (*head)->reg;
-    temp = (*head)->next;
-    free(*head);
-    *head = temp;
-
-    return out;
-}
-
 /**
  * @brief Perform a DFS on an AST to determine the stack allocation needed for a binary expression
  * 
@@ -161,23 +129,6 @@ LLVMValue ast_to_llvm(ASTNode* n)
     } else {
         syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unknown operator \"%s\"", tokenStrings[n->ttype]);
     }
-}
-
-/**
- * @brief Free memory used by LLVMStackEntryNode linked lists
- * 
- * @param head Head of list to free
- */
-void free_llvm_stack_entry_node_list(LLVMStackEntryNode* head)
-{
-    LLVMStackEntryNode* current = head;
-    LLVMStackEntryNode* prev;
-    while (current) {
-        prev = current;
-        current = current->next;
-        free(prev);
-    }
-    head = NULL;
 }
 
 /**
