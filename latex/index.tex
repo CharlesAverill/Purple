@@ -20,27 +20,27 @@ Purple uses C-\/style syntax, although this may change as the compiler is built
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    int bob;}
-\DoxyCodeLine{    int alice;}
+\DoxyCodeLine{    \textcolor{keywordtype}{int} bob;}
+\DoxyCodeLine{    \textcolor{keywordtype}{int} alice;}
 \DoxyCodeLine{}
 \DoxyCodeLine{    bob = 5;}
 \DoxyCodeLine{    alice = 10;}
 \DoxyCodeLine{}
-\DoxyCodeLine{    print bob + alice; // 15}
-\DoxyCodeLine{    print bob > alice; // 0}
+\DoxyCodeLine{    print bob + alice; \textcolor{comment}{// 15}}
+\DoxyCodeLine{    print bob > alice; \textcolor{comment}{// 0}}
 \DoxyCodeLine{}
-\DoxyCodeLine{    int bob\_alice;}
-\DoxyCodeLine{    bob\_alice = 10 + 10 + bob + alice; // 35}
-\DoxyCodeLine{    if(bob\_alice > 30)\{}
+\DoxyCodeLine{    \textcolor{keywordtype}{int} bob\_alice;}
+\DoxyCodeLine{    bob\_alice = 10 + 10 + bob + alice; \textcolor{comment}{// 35}}
+\DoxyCodeLine{    \textcolor{keywordflow}{if}(bob\_alice > 30)\{}
 \DoxyCodeLine{        print bob\_alice;}
 \DoxyCodeLine{    \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{    int i;}
+\DoxyCodeLine{    \textcolor{keywordtype}{int} i;}
 \DoxyCodeLine{    i = 0;}
-\DoxyCodeLine{    while (i < 20) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{while} (i < 20) \{}
 \DoxyCodeLine{        print i;}
 \DoxyCodeLine{        i = i + 1;}
-\DoxyCodeLine{       \}}
+\DoxyCodeLine{    \}}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
