@@ -1,5 +1,8 @@
-\hypertarget{index_Introduction}{}\doxysection{Introduction}\label{index_Introduction}
-This project defines the standard language specification and compiler for Purple, a general-\/purpose, C-\/like language intended to introduce higher-\/level functionality and lower-\/level memory access.\hypertarget{index_Installation}{}\doxysection{Installation}\label{index_Installation}
+\label{index_md_README}%
+\Hypertarget{index_md_README}%
+ The standard language specification and compiler for Purple, a general-\/purpose, C-\/like language intended to introduce higher-\/level functionality and lower-\/level memory access.
+
+\href{https://github.com/CharlesAverill/purple_archive/}{\texttt{ Original Implementation}}\hypertarget{index_autotoc_md1}{}\doxysection{Installation}\label{index_autotoc_md1}
 View the source \href{https://github.com/CharlesAverill/Purple}{\texttt{ here}}.
 
 Purple may be built with cmake\+: 
@@ -10,34 +13,34 @@ Purple may be built with cmake\+:
 \DoxyCodeLine{bin/purple example\_file.prp}
 
 \end{DoxyCode}
-\hypertarget{index_Grammar}{}\doxysection{Grammar}\label{index_Grammar}
-BNF-\/formatted grammar for Purple can be found here\+: \mbox{\hyperlink{grammar}{Purple Grammar Documentation}}\hypertarget{index_Examples}{}\doxysection{Examples}\label{index_Examples}
+\hypertarget{index_autotoc_md2}{}\doxysection{Grammar}\label{index_autotoc_md2}
+BNF-\/formatted grammar for Purple can be found here\+: \href{docs/grammar}{\texttt{ Purple Grammar Documentation}}\hypertarget{index_autotoc_md3}{}\doxysection{Examples}\label{index_autotoc_md3}
 Purple uses C-\/style syntax, although this may change as the compiler is built
 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{    \textcolor{keywordtype}{int} bob;}
-\DoxyCodeLine{    \textcolor{keywordtype}{int} alice;}
+\DoxyCodeLine{    int bob;}
+\DoxyCodeLine{    int alice;}
 \DoxyCodeLine{}
 \DoxyCodeLine{    bob = 5;}
 \DoxyCodeLine{    alice = 10;}
 \DoxyCodeLine{}
-\DoxyCodeLine{    print bob + alice; \textcolor{comment}{// 15}}
-\DoxyCodeLine{    print bob > alice; \textcolor{comment}{// 0}}
+\DoxyCodeLine{    print bob + alice; // 15}
+\DoxyCodeLine{    print bob > alice; // 0}
 \DoxyCodeLine{}
-\DoxyCodeLine{    \textcolor{keywordtype}{int} bob\_alice;}
-\DoxyCodeLine{    bob\_alice = 10 + 10 + bob + alice; \textcolor{comment}{// 35}}
-\DoxyCodeLine{    \textcolor{keywordflow}{if}(bob\_alice > 30)\{}
+\DoxyCodeLine{    int bob\_alice;}
+\DoxyCodeLine{    bob\_alice = 10 + 10 + bob + alice; // 35}
+\DoxyCodeLine{    if(bob\_alice > 30)\{}
 \DoxyCodeLine{        print bob\_alice;}
 \DoxyCodeLine{    \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{    \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{    int i;}
 \DoxyCodeLine{    i = 0;}
-\DoxyCodeLine{    \textcolor{keywordflow}{while} (i < 20) \{}
+\DoxyCodeLine{    while (i < 20) \{}
 \DoxyCodeLine{        print i;}
 \DoxyCodeLine{        i = i + 1;}
-\DoxyCodeLine{    \}}
+\DoxyCodeLine{       \}}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
