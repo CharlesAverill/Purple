@@ -23,7 +23,7 @@ binaryExpression: additiveExpression
 expression: binaryExpression
           ;
 
-print_statement: 'print(' expression ')'
+print_statement: 'print' expression 
                ;
 
 statement: print_statement ';'

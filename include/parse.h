@@ -10,7 +10,7 @@
  * | Precedence | Operator | Description | Associativity |
  * | ---------- | -------- | ----------- | ------------- |
  * | 15         | `++ --` <br> `()` <br> `[]` <br> `.` <br> `->` <br> <i>`(type){list}`</i> </br> | Postfix increment/decrement <br> Function call <br> Array subscript <br> Structure and Union member access <br> Structure and union pointer member access <br> Compound literal | Left-to-Right |
- * | 14         | `++ --` <br> `-` <br> `! ~` <br> <i>`(type)`</i> <br> `*` <br> `&` <br> `bytesize` | Prefix increment/decrement <br> Unary negative <br> Logical NOT, bitwise NOT <br> Cast <br> Dereference <br> Address-of <br> Size in bytes | Right-to-Left |
+ * | 14         | `**` <br> `++ --` <br> `-` <br> `! ~` <br> <i>`(type)`</i> <br> `*` <br> `&` <br> `bytesize` | Exponent <br> Prefix increment/decrement <br> Unary negative <br> Logical NOT, bitwise NOT <br> Cast <br> Dereference <br> Address-of <br> Size in bytes | Right-to-Left |
  * | 13         | `* / %`  | Multiplication, division, modulus | Left-to-Right |
  * | 12         | `+ -` | Addition, Subtraction | |
  * | 11         | `<< >>` | Bitwise shifts | |
@@ -43,6 +43,7 @@ static int operatorPrecedence[] = {
     11, // MINUS
     12, // STAR
     12, // SLASH
+    14, // EXPONENT
 
     8, // EQUALS
     8, // NOT EQUALS
@@ -56,5 +57,6 @@ static int operatorPrecedence[] = {
 };
 
 ASTNode* parse_binary_expression(int previous_token_precedence);
+void parse_statements(void);
 
 #endif /* PARSE_H */
