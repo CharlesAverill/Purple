@@ -13,3 +13,8 @@ if [[ ! -d "$SCRIPT_DIR/bin" ]] || [[ ! -f "$PURPLE_EXECUTABLE" ]]; then
 fi
 
 ${PURPLE_EXECUTABLE} "$@"
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+
+./a.out

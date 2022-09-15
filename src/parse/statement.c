@@ -52,8 +52,8 @@ void parse_statements(void)
         cg_output = ast_to_llvm(root);
         llvm_print_int(cg_output.value.virtual_register_index);
 
-        loadedRegistersHead = NULL;
-        initialize_virtual_registers();
+        initialize_stack_entry_linked_list(&loadedRegistersHead);
+        initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
 
         match_token(T_SEMICOLON);
     } while (D_GLOBAL_TOKEN.type != T_EOF);

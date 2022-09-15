@@ -17,9 +17,9 @@
 #include "types/number.h"
 
 LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root);
-void initialize_virtual_registers();
-void add_free_virtual_register(type_register register_index);
-type_register get_free_virtual_register(void);
+void initialize_stack_entry_linked_list(LLVMStackEntryNode** head);
+void prepend_stack_entry_linked_list(LLVMStackEntryNode** head, type_register register_index);
+type_register pop_stack_entry_linked_list(LLVMStackEntryNode** head);
 void free_llvm_stack_entry_node_list(LLVMStackEntryNode* head);
 
 LLVMValue ast_to_llvm(ASTNode* n);

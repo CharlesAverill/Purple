@@ -245,7 +245,7 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
  */
 LLVMValue llvm_store_constant(Number value)
 {
-    type_register out_register_number = get_free_virtual_register();
+    type_register out_register_number = pop_stack_entry_linked_list(&freeVirtualRegistersHead);
     fprintf(D_LLVM_FILE, TAB "store %s ", numberTypeLLVMReprs[value.type]);
     fprintf(D_LLVM_FILE, numberTypeFormatStrings[value.type], value.value);
     fprintf(D_LLVM_FILE, ", %s* %%%llu, align %d" NEWLINE, numberTypeLLVMReprs[value.type],

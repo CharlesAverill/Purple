@@ -24,39 +24,38 @@ static void translate_init(void)
 
     D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 1;
 
-    initialize_virtual_registers();
-
-    loadedRegistersHead = NULL;
+    initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
+    initialize_stack_entry_linked_list(&loadedRegistersHead);
 }
 
-void initialize_virtual_registers() { freeVirtualRegistersHead = NULL; }
+void initialize_stack_entry_linked_list(LLVMStackEntryNode** head) { *head = NULL; }
 
-void add_free_virtual_register(type_register register_index)
+void prepend_stack_entry_linked_list(LLVMStackEntryNode** head, type_register register_index)
 {
     LLVMStackEntryNode* temp = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
     temp->reg = register_index;
     temp->next = NULL;
 
-    if (freeVirtualRegistersHead == NULL) {
-        freeVirtualRegistersHead = temp;
+    if (*head == NULL) {
+        *head = temp;
     } else {
-        temp->next = freeVirtualRegistersHead;
-        freeVirtualRegistersHead = temp;
+        temp->next = *head;
+        *head = temp;
     }
 }
 
-type_register get_free_virtual_register(void)
+type_register pop_stack_entry_linked_list(LLVMStackEntryNode** head)
 {
     LLVMStackEntryNode* temp;
 
-    if (freeVirtualRegistersHead == NULL) {
-        fatal(RC_COMPILER_ERROR, "Tried to get a free virtual register when there are none left");
+    if (*head == NULL) {
+        fatal(RC_COMPILER_ERROR, "Tried to pop from an LLVMStackEntryNode List when it was empty");
     }
 
-    type_register out = freeVirtualRegistersHead->reg;
-    temp = freeVirtualRegistersHead->next;
-    free(freeVirtualRegistersHead);
-    freeVirtualRegistersHead = temp;
+    type_register out = (*head)->reg;
+    temp = (*head)->next;
+    free(*head);
+    *head = temp;
 
     return out;
 }
@@ -99,7 +98,7 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
     } else {
         LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
         current->reg = get_next_local_virtual_register();
-        add_free_virtual_register(current->reg);
+        prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
         current->type = token_type_to_number_type(root->ttype);
         current->align_bytes = numberTypeByteSizes[current->type];
         current->next = NULL;
