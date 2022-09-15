@@ -10,6 +10,9 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+        
+      - name: Replace links with references
+        run: sed -i 's/\[Purple Grammar Documentation\]\(.*\)/@ref grammar/' README.md
       
       - name: Build Doxygen documentation
         uses: mattnotmitt/doxygen-action@v1.9.4
