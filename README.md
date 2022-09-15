@@ -37,7 +37,7 @@ BNF-formatted grammar for Purple can be found here: [Purple Grammar Documentatio
 
 Purple uses C-style syntax, although this may change as the compiler is built
 
-```
+```c
 {
     int bob;
     int alice;
@@ -59,7 +59,7 @@ Purple uses C-style syntax, although this may change as the compiler is built
     while (i < 20) {
         print i;
         i = i + 1;
-       }
+    }
 }
 ```
 
