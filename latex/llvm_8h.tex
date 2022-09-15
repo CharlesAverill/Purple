@@ -64,7 +64,9 @@ void \mbox{\hyperlink{llvm_8h_afc2182252bf20257b60928774df28665}{llvm\+\_\+print
 static const char $\ast$ \mbox{\hyperlink{llvm_8h_ac126174f25ba15725681e50ce7a7d558}{number\+Type\+LLVMReprs}} \mbox{[}$\,$\mbox{]}
 \begin{DoxyCompactList}\small\item\em LLVM-\/\+IR representations of data types. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{llvm_8h_a34ca54a9e8ecfdea8744a76677de7325}{loaded\+Registers\+Head}}
-\begin{DoxyCompactList}\small\item\em Head node of linked list containing register indices that have loaded values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Head node of linked list containing register indices that have loaded values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{llvm_8h_a14931181b0e852af3c22f3d9f3678e48}{free\+Virtual\+Registers\+Head}}
+\begin{DoxyCompactList}\small\item\em Head node of linked list containing register indices that are free to have values stored in them. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -298,6 +300,16 @@ int Register number value is held in
 
 
 \doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{llvm_8h_a14931181b0e852af3c22f3d9f3678e48}\label{llvm_8h_a14931181b0e852af3c22f3d9f3678e48}} 
+\index{llvm.h@{llvm.h}!freeVirtualRegistersHead@{freeVirtualRegistersHead}}
+\index{freeVirtualRegistersHead@{freeVirtualRegistersHead}!llvm.h@{llvm.h}}
+\doxysubsubsection{\texorpdfstring{freeVirtualRegistersHead}{freeVirtualRegistersHead}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}}$\ast$ free\+Virtual\+Registers\+Head\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Head node of linked list containing register indices that are free to have values stored in them. 
+
 \mbox{\Hypertarget{llvm_8h_a34ca54a9e8ecfdea8744a76677de7325}\label{llvm_8h_a34ca54a9e8ecfdea8744a76677de7325}} 
 \index{llvm.h@{llvm.h}!loadedRegistersHead@{loadedRegistersHead}}
 \index{loadedRegistersHead@{loadedRegistersHead}!llvm.h@{llvm.h}}

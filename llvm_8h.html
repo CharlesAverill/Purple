@@ -161,6 +161,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a34ca54a9e8ecfdea8744a76677de7325"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#a34ca54a9e8ecfdea8744a76677de7325">loadedRegistersHead</a></td></tr>
 <tr class="memdesc:a34ca54a9e8ecfdea8744a76677de7325"><td class="mdescLeft">&#160;</td><td class="mdescRight">Head node of linked list containing register indices that have loaded values.  <a href="llvm_8h.html#a34ca54a9e8ecfdea8744a76677de7325">More...</a><br /></td></tr>
 <tr class="separator:a34ca54a9e8ecfdea8744a76677de7325"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14931181b0e852af3c22f3d9f3678e48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8h.html#a14931181b0e852af3c22f3d9f3678e48">freeVirtualRegistersHead</a></td></tr>
+<tr class="memdesc:a14931181b0e852af3c22f3d9f3678e48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Head node of linked list containing register indices that are free to have values stored in them.  <a href="llvm_8h.html#a14931181b0e852af3c22f3d9f3678e48">More...</a><br /></td></tr>
+<tr class="separator:a14931181b0e852af3c22f3d9f3678e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Function headers for LLVM-IR emission. </p>
@@ -203,7 +206,7 @@ Variables</h2></td></tr>
 <div class="line">        .value_type = <a class="code hl_enumvalue" href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f">LLVMVALUETYPE_VIRTUAL_REGISTER</a>, .stores_pointer = <span class="keyword">false</span>,                     \</div>
 <div class="line">        .value.virtual_register_index = register_number                                            \</div>
 <div class="line">    }</div>
-<div class="ttc" id="allvm_8h_html_a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f"><div class="ttname"><a href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f">LLVMVALUETYPE_VIRTUAL_REGISTER</a></div><div class="ttdeci">@ LLVMVALUETYPE_VIRTUAL_REGISTER</div><div class="ttdef"><b>Definition:</b> llvm.h:50</div></div>
+<div class="ttc" id="allvm_8h_html_a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f"><div class="ttname"><a href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f">LLVMVALUETYPE_VIRTUAL_REGISTER</a></div><div class="ttdeci">@ LLVMVALUETYPE_VIRTUAL_REGISTER</div><div class="ttdef"><b>Definition:</b> llvm.h:56</div></div>
 <div class="ttc" id="allvm_8h_html_a996ef903919a3c100bb6c98f81a47a48"><div class="ttname"><a href="llvm_8h.html#a996ef903919a3c100bb6c98f81a47a48">LLVMValue</a></div><div class="ttdeci">struct LLVMValue LLVMValue</div><div class="ttdoc">Value returned by ast_to_llvm.</div></div>
 </div><!-- fragment -->
 <p>Inline-initializes an <a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> struct from a virtual register number. </p>
@@ -518,6 +521,30 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a14931181b0e852af3c22f3d9f3678e48" name="a14931181b0e852af3c22f3d9f3678e48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14931181b0e852af3c22f3d9f3678e48">&#9670;&nbsp;</a></span>freeVirtualRegistersHead</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a>* freeVirtualRegistersHead</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Head node of linked list containing register indices that are free to have values stored in them. </p>
+
+</div>
+</div>
 <a id="a34ca54a9e8ecfdea8744a76677de7325" name="a34ca54a9e8ecfdea8744a76677de7325"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34ca54a9e8ecfdea8744a76677de7325">&#9670;&nbsp;</a></span>loadedRegistersHead</h2>
 

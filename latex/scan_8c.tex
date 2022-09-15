@@ -5,8 +5,9 @@
 Functions for lexical scanning from input source files.  
 
 
-{\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -20,6 +21,16 @@ static int \mbox{\hyperlink{scan_8c_afe176fe0d1142633375951f2e45831bc}{index\+\_
 \begin{DoxyCompactList}\small\item\em Return the index of char c in string s. \end{DoxyCompactList}\item 
 static int \mbox{\hyperlink{scan_8c_afaef79548b221cbef5702e4b9957aeb8}{scanint}} (char c)
 \begin{DoxyCompactList}\small\item\em Scan and return an integer literal from the input stream. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{scan_8c_a266d26db82d5dbb4136042baf955f5ad}{is\+\_\+valid\+\_\+identifier\+\_\+char}} (char c, int index)
+\begin{DoxyCompactList}\small\item\em Determine if a character in an identifier is a permitted character. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{scan_8c_aaf27dd9fab48a452d205e5f7e1e4274e}{scan\+\_\+identifier}} (char c, char $\ast$buf, int max\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Scan an alphanumeric identifier. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \mbox{\hyperlink{scan_8c_ab893f90acad700becd950dc1d089dd67}{parse\+\_\+keyword}} (char $\ast$keyword\+\_\+string)
+\begin{DoxyCompactList}\small\item\em Retrieve the Token\+Type value corresponding to a keyword string. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{scan_8c_a19c617b4a85050eaeabc8070ae57d6de}{scan\+\_\+check\+\_\+integer\+\_\+literal}} (char c)
+\begin{DoxyCompactList}\small\item\em Check if the current character is the start of an integer literal. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{scan_8c_aaf98163176a0561ae72bdecf28763636}{scan\+\_\+check\+\_\+keyword\+\_\+identifier}} (char c)
+\begin{DoxyCompactList}\small\item\em Check if the current character is the start of a keyword or identifier. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{scan_8c_ab0c54e61d886e8dfe989cfc440c57a35}{scan}} (\mbox{\hyperlink{structToken}{Token}} $\ast$t)
 \begin{DoxyCompactList}\small\item\em Scan tokens into the \mbox{\hyperlink{structToken}{Token}} struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -56,6 +67,26 @@ Return the index of char c in string s.
 \begin{DoxyReturn}{Returns}
 int Index of c in s if s contains c, else -\/1 
 \end{DoxyReturn}
+\mbox{\Hypertarget{scan_8c_a266d26db82d5dbb4136042baf955f5ad}\label{scan_8c_a266d26db82d5dbb4136042baf955f5ad}} 
+\index{scan.c@{scan.c}!is\_valid\_identifier\_char@{is\_valid\_identifier\_char}}
+\index{is\_valid\_identifier\_char@{is\_valid\_identifier\_char}!scan.c@{scan.c}}
+\doxysubsubsection{\texorpdfstring{is\_valid\_identifier\_char()}{is\_valid\_identifier\_char()}}
+{\footnotesize\ttfamily static bool is\+\_\+valid\+\_\+identifier\+\_\+char (\begin{DoxyParamCaption}\item[{char}]{c,  }\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Determine if a character in an identifier is a permitted character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Character to check \\
+\hline
+{\em index} & Index of character in identifier string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if character is permitted 
+\end{DoxyReturn}
 \mbox{\Hypertarget{scan_8c_aba19733986b2193569abfcc4951d480f}\label{scan_8c_aba19733986b2193569abfcc4951d480f}} 
 \index{scan.c@{scan.c}!next@{next}}
 \index{next@{next}!scan.c@{scan.c}}
@@ -68,6 +99,24 @@ Get the next valid character from the current input file.
 
 \begin{DoxyReturn}{Returns}
 char Next valid character from the current input file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scan_8c_ab893f90acad700becd950dc1d089dd67}\label{scan_8c_ab893f90acad700becd950dc1d089dd67}} 
+\index{scan.c@{scan.c}!parse\_keyword@{parse\_keyword}}
+\index{parse\_keyword@{parse\_keyword}!scan.c@{scan.c}}
+\doxysubsubsection{\texorpdfstring{parse\_keyword()}{parse\_keyword()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} parse\+\_\+keyword (\begin{DoxyParamCaption}\item[{char $\ast$}]{keyword\+\_\+string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieve the Token\+Type value corresponding to a keyword string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyword\+\_\+string} & String to convert to Token\+Type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Token\+Type Token\+Type of the keyword, or 0 if the keyword is not recognized 
 \end{DoxyReturn}
 \mbox{\Hypertarget{scan_8c_aa675e2a79ca95a2b6861a587655eef81}\label{scan_8c_aa675e2a79ca95a2b6861a587655eef81}} 
 \index{scan.c@{scan.c}!put\_back\_into\_stream@{put\_back\_into\_stream}}
@@ -101,6 +150,64 @@ Scan tokens into the \mbox{\hyperlink{structToken}{Token}} struct.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 bool Returns true if a \mbox{\hyperlink{structToken}{Token}} was scanned successfully 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scan_8c_a19c617b4a85050eaeabc8070ae57d6de}\label{scan_8c_a19c617b4a85050eaeabc8070ae57d6de}} 
+\index{scan.c@{scan.c}!scan\_check\_integer\_literal@{scan\_check\_integer\_literal}}
+\index{scan\_check\_integer\_literal@{scan\_check\_integer\_literal}!scan.c@{scan.c}}
+\doxysubsubsection{\texorpdfstring{scan\_check\_integer\_literal()}{scan\_check\_integer\_literal()}}
+{\footnotesize\ttfamily static bool scan\+\_\+check\+\_\+integer\+\_\+literal (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check if the current character is the start of an integer literal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Character to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the current character is the start of an integer literal 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scan_8c_aaf98163176a0561ae72bdecf28763636}\label{scan_8c_aaf98163176a0561ae72bdecf28763636}} 
+\index{scan.c@{scan.c}!scan\_check\_keyword\_identifier@{scan\_check\_keyword\_identifier}}
+\index{scan\_check\_keyword\_identifier@{scan\_check\_keyword\_identifier}!scan.c@{scan.c}}
+\doxysubsubsection{\texorpdfstring{scan\_check\_keyword\_identifier()}{scan\_check\_keyword\_identifier()}}
+{\footnotesize\ttfamily static bool scan\+\_\+check\+\_\+keyword\+\_\+identifier (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check if the current character is the start of a keyword or identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Character to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the current character is the start of a keyword or identifier 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scan_8c_aaf27dd9fab48a452d205e5f7e1e4274e}\label{scan_8c_aaf27dd9fab48a452d205e5f7e1e4274e}} 
+\index{scan.c@{scan.c}!scan\_identifier@{scan\_identifier}}
+\index{scan\_identifier@{scan\_identifier}!scan.c@{scan.c}}
+\doxysubsubsection{\texorpdfstring{scan\_identifier()}{scan\_identifier()}}
+{\footnotesize\ttfamily static int scan\+\_\+identifier (\begin{DoxyParamCaption}\item[{char}]{c,  }\item[{char $\ast$}]{buf,  }\item[{int}]{max\+\_\+len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Scan an alphanumeric identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & First character in identifier \\
+\hline
+{\em buf} & Buffer to read identifier into \\
+\hline
+{\em max\+\_\+len} & Maximum length of the identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Length of the identifier 
 \end{DoxyReturn}
 \mbox{\Hypertarget{scan_8c_afaef79548b221cbef5702e4b9957aeb8}\label{scan_8c_afaef79548b221cbef5702e4b9957aeb8}} 
 \index{scan.c@{scan.c}!scanint@{scanint}}

@@ -12,7 +12,9 @@ Function headers for parsing and operator precedence values.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}{parse\+\_\+binary\+\_\+expression}} (int previous\+\_\+token\+\_\+precedence)
-\begin{DoxyCompactList}\small\item\em Recursively parse binary expressions into an AST. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Recursively parse binary expressions into an AST. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parse_8h_a36e413083d2a6e7a8b561e22e141b811}{parse\+\_\+statements}} (void)
+\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,13 +53,15 @@ This table outlines Purple\textquotesingle{}s operator precedence values. A high
  Structure and Union member access ~\newline
  Structure and union pointer member access ~\newline
  Compound literal   &Left-\/to-\/\+Right    \\\cline{1-4}
-14   &{\ttfamily ++ -\/-\/} ~\newline
+14   &{\ttfamily $\ast$$\ast$} ~\newline
+ {\ttfamily ++ -\/-\/} ~\newline
  {\ttfamily -\/} ~\newline
  {\ttfamily ! $\sim$} ~\newline
  {\itshape {\ttfamily (type)}} ~\newline
  {\ttfamily $\ast$} ~\newline
  {\ttfamily \&} ~\newline
- {\ttfamily bytesize}   &Prefix increment/decrement ~\newline
+ {\ttfamily bytesize}   &Exponent ~\newline
+ Prefix increment/decrement ~\newline
  Unary negative ~\newline
  Logical NOT, bitwise NOT ~\newline
  Cast ~\newline
@@ -109,6 +113,12 @@ Recursively parse binary expressions into an AST.
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ An AST or AST Subtree of the binary expressions in D\+\_\+\+INPUT\+\_\+\+FILE 
 \end{DoxyReturn}
+\mbox{\Hypertarget{parse_8h_a36e413083d2a6e7a8b561e22e141b811}\label{parse_8h_a36e413083d2a6e7a8b561e22e141b811}} 
+\index{parse.h@{parse.h}!parse\_statements@{parse\_statements}}
+\index{parse\_statements@{parse\_statements}!parse.h@{parse.h}}
+\doxysubsubsection{\texorpdfstring{parse\_statements()}{parse\_statements()}}
+{\footnotesize\ttfamily void parse\+\_\+statements (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
 
 
 \doxysubsection{Variable Documentation}
@@ -127,6 +137,7 @@ ASTNode$\ast$ An AST or AST Subtree of the binary expressions in D\+\_\+\+INPUT\
 \DoxyCodeLine{    11, }
 \DoxyCodeLine{    12, }
 \DoxyCodeLine{    12, }
+\DoxyCodeLine{    14, }
 \DoxyCodeLine{}
 \DoxyCodeLine{    8, }
 \DoxyCodeLine{    8, }

@@ -76,8 +76,9 @@ $(function() {
 
 <p>Functions for lexical scanning from input source files.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="scan_8h_source.html">scan.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;ctype.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="data_8h_source.html">data.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="scan_8h_source.html">scan.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -96,6 +97,21 @@ Functions</h2></td></tr>
 <tr class="memitem:afaef79548b221cbef5702e4b9957aeb8"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#afaef79548b221cbef5702e4b9957aeb8">scanint</a> (char c)</td></tr>
 <tr class="memdesc:afaef79548b221cbef5702e4b9957aeb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scan and return an integer literal from the input stream.  <a href="scan_8c.html#afaef79548b221cbef5702e4b9957aeb8">More...</a><br /></td></tr>
 <tr class="separator:afaef79548b221cbef5702e4b9957aeb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a266d26db82d5dbb4136042baf955f5ad"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#a266d26db82d5dbb4136042baf955f5ad">is_valid_identifier_char</a> (char c, int index)</td></tr>
+<tr class="memdesc:a266d26db82d5dbb4136042baf955f5ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if a character in an identifier is a permitted character.  <a href="scan_8c.html#a266d26db82d5dbb4136042baf955f5ad">More...</a><br /></td></tr>
+<tr class="separator:a266d26db82d5dbb4136042baf955f5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf27dd9fab48a452d205e5f7e1e4274e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#aaf27dd9fab48a452d205e5f7e1e4274e">scan_identifier</a> (char c, char *buf, int max_len)</td></tr>
+<tr class="memdesc:aaf27dd9fab48a452d205e5f7e1e4274e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scan an alphanumeric identifier.  <a href="scan_8c.html#aaf27dd9fab48a452d205e5f7e1e4274e">More...</a><br /></td></tr>
+<tr class="separator:aaf27dd9fab48a452d205e5f7e1e4274e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab893f90acad700becd950dc1d089dd67"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#ab893f90acad700becd950dc1d089dd67">parse_keyword</a> (char *keyword_string)</td></tr>
+<tr class="memdesc:ab893f90acad700becd950dc1d089dd67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the TokenType value corresponding to a keyword string.  <a href="scan_8c.html#ab893f90acad700becd950dc1d089dd67">More...</a><br /></td></tr>
+<tr class="separator:ab893f90acad700becd950dc1d089dd67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19c617b4a85050eaeabc8070ae57d6de"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#a19c617b4a85050eaeabc8070ae57d6de">scan_check_integer_literal</a> (char c)</td></tr>
+<tr class="memdesc:a19c617b4a85050eaeabc8070ae57d6de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the current character is the start of an integer literal.  <a href="scan_8c.html#a19c617b4a85050eaeabc8070ae57d6de">More...</a><br /></td></tr>
+<tr class="separator:a19c617b4a85050eaeabc8070ae57d6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf98163176a0561ae72bdecf28763636"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#aaf98163176a0561ae72bdecf28763636">scan_check_keyword_identifier</a> (char c)</td></tr>
+<tr class="memdesc:aaf98163176a0561ae72bdecf28763636"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the current character is the start of a keyword or identifier.  <a href="scan_8c.html#aaf98163176a0561ae72bdecf28763636">More...</a><br /></td></tr>
+<tr class="separator:aaf98163176a0561ae72bdecf28763636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0c54e61d886e8dfe989cfc440c57a35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#ab0c54e61d886e8dfe989cfc440c57a35">scan</a> (<a class="el" href="structToken.html">Token</a> *t)</td></tr>
 <tr class="memdesc:ab0c54e61d886e8dfe989cfc440c57a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scan tokens into the <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> struct.  <a href="scan_8c.html#ab0c54e61d886e8dfe989cfc440c57a35">More...</a><br /></td></tr>
 <tr class="separator:ab0c54e61d886e8dfe989cfc440c57a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,6 +167,52 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a266d26db82d5dbb4136042baf955f5ad" name="a266d26db82d5dbb4136042baf955f5ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a266d26db82d5dbb4136042baf955f5ad">&#9670;&nbsp;</a></span>is_valid_identifier_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool is_valid_identifier_char </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determine if a character in an identifier is a permitted character. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Character to check </td></tr>
+    <tr><td class="paramname">index</td><td>Index of character in identifier string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if character is permitted </dd></dl>
+
+</div>
+</div>
 <a id="aba19733986b2193569abfcc4951d480f" name="aba19733986b2193569abfcc4951d480f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aba19733986b2193569abfcc4951d480f">&#9670;&nbsp;</a></span>next()</h2>
 
@@ -177,6 +239,41 @@ Functions</h2></td></tr>
 
 <p>Get the next valid character from the current input file. </p>
 <dl class="section return"><dt>Returns</dt><dd>char Next valid character from the current input file </dd></dl>
+
+</div>
+</div>
+<a id="ab893f90acad700becd950dc1d089dd67" name="ab893f90acad700becd950dc1d089dd67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab893f90acad700becd950dc1d089dd67">&#9670;&nbsp;</a></span>parse_keyword()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> parse_keyword </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>keyword_string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the TokenType value corresponding to a keyword string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyword_string</td><td>String to convert to TokenType </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TokenType TokenType of the keyword, or 0 if the keyword is not recognized </dd></dl>
 
 </div>
 </div>
@@ -238,6 +335,129 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>bool Returns true if a <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> was scanned successfully </dd></dl>
+
+</div>
+</div>
+<a id="a19c617b4a85050eaeabc8070ae57d6de" name="a19c617b4a85050eaeabc8070ae57d6de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19c617b4a85050eaeabc8070ae57d6de">&#9670;&nbsp;</a></span>scan_check_integer_literal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool scan_check_integer_literal </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the current character is the start of an integer literal. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Character to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if the current character is the start of an integer literal </dd></dl>
+
+</div>
+</div>
+<a id="aaf98163176a0561ae72bdecf28763636" name="aaf98163176a0561ae72bdecf28763636"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf98163176a0561ae72bdecf28763636">&#9670;&nbsp;</a></span>scan_check_keyword_identifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool scan_check_keyword_identifier </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the current character is the start of a keyword or identifier. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Character to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if the current character is the start of a keyword or identifier </dd></dl>
+
+</div>
+</div>
+<a id="aaf27dd9fab48a452d205e5f7e1e4274e" name="aaf27dd9fab48a452d205e5f7e1e4274e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf27dd9fab48a452d205e5f7e1e4274e">&#9670;&nbsp;</a></span>scan_identifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int scan_identifier </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Scan an alphanumeric identifier. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>First character in identifier </td></tr>
+    <tr><td class="paramname">buf</td><td>Buffer to read identifier into </td></tr>
+    <tr><td class="paramname">max_len</td><td>Maximum length of the identifier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int Length of the identifier </dd></dl>
 
 </div>
 </div>

@@ -12,19 +12,27 @@ Functions for LLVM-\/\+IR translation.
 \item 
 static void \mbox{\hyperlink{translate_8c_ae80e343df46fde6686f722d2b1c3e6a6}{translate\+\_\+init}} (void)
 \begin{DoxyCompactList}\small\item\em Initialize any values required for LLVM translation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{translate_8c_aa256716721f9c5bb32ae1e9d1e1b9eb4}{initialize\+\_\+virtual\+\_\+registers}} ()
+\item 
+void \mbox{\hyperlink{translate_8c_aecdee1492308b67f9b70d84648d602e4}{add\+\_\+free\+\_\+virtual\+\_\+register}} (\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} register\+\_\+index)
+\item 
+\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{translate_8c_ac1a14169eb2cf1e71e6ac15dba8b4da8}{get\+\_\+free\+\_\+virtual\+\_\+register}} (void)
+\item 
 \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{translate_8c_a7abbf5b5f5d3fc9d561f7e080077bb9e}{determine\+\_\+binary\+\_\+expression\+\_\+stack\+\_\+allocation}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root)
 \begin{DoxyCompactList}\small\item\em Perform a DFS on an AST to determine the stack allocation needed for a binary expression. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_ab4bb4871076aa73ec76e957aececfa8f}{ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n)
 \begin{DoxyCompactList}\small\item\em Generates LLVM-\/\+IR from a given AST. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{translate_8c_aca5e0ac30f889ce8ca56e0e258f4d772}{free\+\_\+llvm\+\_\+stack\+\_\+entry\+\_\+node\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$head)
+void \mbox{\hyperlink{translate_8c_a24f6f1959edad4155dc0418b5f041948}{free\+\_\+llvm\+\_\+stack\+\_\+entry\+\_\+node\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$head)
 \begin{DoxyCompactList}\small\item\em Free memory used by \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} linked lists. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{translate_8c_adfbc27d31aa9042e542ed3ffdb363bf5}{generate\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root)
+void \mbox{\hyperlink{translate_8c_ac2560f9333db7b4bc4b0dd4ef15b3dcc}{generate\+\_\+llvm}} (void)
 \begin{DoxyCompactList}\small\item\em Wrapper function for generating LLVM. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{translate_8c_a34ca54a9e8ecfdea8744a76677de7325}{loaded\+Registers\+Head}} = NULL
-\begin{DoxyCompactList}\small\item\em Head node of linked list containing register indices that have loaded values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Head node of linked list containing register indices that have loaded values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{translate_8c_a14931181b0e852af3c22f3d9f3678e48}{free\+Virtual\+Registers\+Head}} = NULL
+\begin{DoxyCompactList}\small\item\em Head node of linked list containing register indices that are free to have values stored in them. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -39,6 +47,12 @@ Charles Averill
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{translate_8c_aecdee1492308b67f9b70d84648d602e4}\label{translate_8c_aecdee1492308b67f9b70d84648d602e4}} 
+\index{translate.c@{translate.c}!add\_free\_virtual\_register@{add\_free\_virtual\_register}}
+\index{add\_free\_virtual\_register@{add\_free\_virtual\_register}!translate.c@{translate.c}}
+\doxysubsubsection{\texorpdfstring{add\_free\_virtual\_register()}{add\_free\_virtual\_register()}}
+{\footnotesize\ttfamily void add\+\_\+free\+\_\+virtual\+\_\+register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{register\+\_\+index }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{translate_8c_ab4bb4871076aa73ec76e957aececfa8f}\label{translate_8c_ab4bb4871076aa73ec76e957aececfa8f}} 
 \index{translate.c@{translate.c}!ast\_to\_llvm@{ast\_to\_llvm}}
 \index{ast\_to\_llvm@{ast\_to\_llvm}!translate.c@{translate.c}}
@@ -75,11 +89,11 @@ Perform a DFS on an AST to determine the stack allocation needed for a binary ex
 \begin{DoxyReturn}{Returns}
 LLVMStack\+Entry\+Node$\ast$ Pointer to front of the stack allocation linked list 
 \end{DoxyReturn}
-\mbox{\Hypertarget{translate_8c_aca5e0ac30f889ce8ca56e0e258f4d772}\label{translate_8c_aca5e0ac30f889ce8ca56e0e258f4d772}} 
+\mbox{\Hypertarget{translate_8c_a24f6f1959edad4155dc0418b5f041948}\label{translate_8c_a24f6f1959edad4155dc0418b5f041948}} 
 \index{translate.c@{translate.c}!free\_llvm\_stack\_entry\_node\_list@{free\_llvm\_stack\_entry\_node\_list}}
 \index{free\_llvm\_stack\_entry\_node\_list@{free\_llvm\_stack\_entry\_node\_list}!translate.c@{translate.c}}
 \doxysubsubsection{\texorpdfstring{free\_llvm\_stack\_entry\_node\_list()}{free\_llvm\_stack\_entry\_node\_list()}}
-{\footnotesize\ttfamily static void free\+\_\+llvm\+\_\+stack\+\_\+entry\+\_\+node\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$}]{head }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily void free\+\_\+llvm\+\_\+stack\+\_\+entry\+\_\+node\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$}]{head }\end{DoxyParamCaption})}
 
 
 
@@ -90,15 +104,27 @@ Free memory used by \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\
 {\em head} & Head of list to free \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{translate_8c_adfbc27d31aa9042e542ed3ffdb363bf5}\label{translate_8c_adfbc27d31aa9042e542ed3ffdb363bf5}} 
+\mbox{\Hypertarget{translate_8c_ac2560f9333db7b4bc4b0dd4ef15b3dcc}\label{translate_8c_ac2560f9333db7b4bc4b0dd4ef15b3dcc}} 
 \index{translate.c@{translate.c}!generate\_llvm@{generate\_llvm}}
 \index{generate\_llvm@{generate\_llvm}!translate.c@{translate.c}}
 \doxysubsubsection{\texorpdfstring{generate\_llvm()}{generate\_llvm()}}
-{\footnotesize\ttfamily void generate\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void generate\+\_\+llvm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
 Wrapper function for generating LLVM. 
+
+\mbox{\Hypertarget{translate_8c_ac1a14169eb2cf1e71e6ac15dba8b4da8}\label{translate_8c_ac1a14169eb2cf1e71e6ac15dba8b4da8}} 
+\index{translate.c@{translate.c}!get\_free\_virtual\_register@{get\_free\_virtual\_register}}
+\index{get\_free\_virtual\_register@{get\_free\_virtual\_register}!translate.c@{translate.c}}
+\doxysubsubsection{\texorpdfstring{get\_free\_virtual\_register()}{get\_free\_virtual\_register()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{llvm_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} get\+\_\+free\+\_\+virtual\+\_\+register (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{translate_8c_aa256716721f9c5bb32ae1e9d1e1b9eb4}\label{translate_8c_aa256716721f9c5bb32ae1e9d1e1b9eb4}} 
+\index{translate.c@{translate.c}!initialize\_virtual\_registers@{initialize\_virtual\_registers}}
+\index{initialize\_virtual\_registers@{initialize\_virtual\_registers}!translate.c@{translate.c}}
+\doxysubsubsection{\texorpdfstring{initialize\_virtual\_registers()}{initialize\_virtual\_registers()}}
+{\footnotesize\ttfamily void initialize\+\_\+virtual\+\_\+registers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{translate_8c_ae80e343df46fde6686f722d2b1c3e6a6}\label{translate_8c_ae80e343df46fde6686f722d2b1c3e6a6}} 
 \index{translate.c@{translate.c}!translate\_init@{translate\_init}}
@@ -113,6 +139,16 @@ Initialize any values required for LLVM translation.
 
 
 \doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{translate_8c_a14931181b0e852af3c22f3d9f3678e48}\label{translate_8c_a14931181b0e852af3c22f3d9f3678e48}} 
+\index{translate.c@{translate.c}!freeVirtualRegistersHead@{freeVirtualRegistersHead}}
+\index{freeVirtualRegistersHead@{freeVirtualRegistersHead}!translate.c@{translate.c}}
+\doxysubsubsection{\texorpdfstring{freeVirtualRegistersHead}{freeVirtualRegistersHead}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}}$\ast$ free\+Virtual\+Registers\+Head = NULL}
+
+
+
+Head node of linked list containing register indices that are free to have values stored in them. 
+
 \mbox{\Hypertarget{translate_8c_a34ca54a9e8ecfdea8744a76677de7325}\label{translate_8c_a34ca54a9e8ecfdea8744a76677de7325}} 
 \index{translate.c@{translate.c}!loadedRegistersHead@{loadedRegistersHead}}
 \index{loadedRegistersHead@{loadedRegistersHead}!translate.c@{translate.c}}
