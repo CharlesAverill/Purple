@@ -6,10 +6,14 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{grammar purple;}
 \DoxyCodeLine{}
 \DoxyCodeLine{tokens \{}
-\DoxyCodeLine{    T\_INTEGER\_LITERAL}
+\DoxyCodeLine{    T\_INTEGER\_LITERAL,}
+\DoxyCodeLine{    T\_IDENTIFIER}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
 \DoxyCodeLine{number: T\_INTEGER\_LITERAL}
+\DoxyCodeLine{        ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{dataType: 'int'}
 \DoxyCodeLine{        ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{multiplicativeExpression: number}
@@ -28,10 +32,21 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{expression: binaryExpression}
 \DoxyCodeLine{          ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{print\_statement: 'print' expression }
+\DoxyCodeLine{printStatement: 'print' expression }
+\DoxyCodeLine{              ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{declareStatement: dataType T\_IDENTIFIER}
+\DoxyCodeLine{                ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{assignStatement: T\_IDENTIFIER '=' expression}
 \DoxyCodeLine{               ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{statement: print\_statement ';'}
+\DoxyCodeLine{statementType: printStatement}
+\DoxyCodeLine{             | assignStatement}
+\DoxyCodeLine{             | declareStatement}
+\DoxyCodeLine{             ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{statement: statementType ';'}
 \DoxyCodeLine{         ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{statements: statement}
