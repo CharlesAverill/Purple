@@ -33,7 +33,7 @@ const char* get_temp_dir(void)
     // Ensure ends with slash
     if (tmpdir && tmpdir[strlen(tmpdir) - 1] != '/') {
         char* formatted = (char*)malloc(strlen(tmpdir + 2));
-        formatted[0] = 0;
+        formatted[0] = '\0';
 
         strcat(formatted, tmpdir);
         strcat(formatted, "/");
@@ -52,8 +52,8 @@ void create_tmp_generator_program()
     purple_log(LOG_DEBUG, "Creating generator program file");
 
     // Setup full paths
-    generatorProgramFullPath[0] = 0;
-    generatorProgramLLFullPath[0] = 0;
+    generatorProgramFullPath[0] = '\0';
+    generatorProgramLLFullPath[0] = '\0';
     strcat(generatorProgramFullPath, get_temp_dir());
     strcat(generatorProgramFullPath, GENERATOR_PROGRAM_FILENAME);
     strcat(generatorProgramLLFullPath, get_temp_dir());
@@ -61,6 +61,9 @@ void create_tmp_generator_program()
 
     // Write to file and close
     FILE* generatorProgramFilePointer = fopen(generatorProgramFullPath, "w");
+    if (!generatorProgramFilePointer) {
+        fatal(RC_FILE_ERROR, "Failed to open generator program %s", generatorProgramLLFullPath);
+    }
     fwrite(GENERATOR_PROGRAM_CONTENTS, GENERATOR_PROGRAM_CONTENTS_LENGTH, 1,
            generatorProgramFilePointer);
     fclose(generatorProgramFilePointer);
@@ -154,7 +157,8 @@ char* get_target_datalayout()
     char line[1024];
     FILE* generatorProgramFilePointer = fopen(generatorProgramLLFullPath, "r");
     if (!generatorProgramFilePointer) {
-        fatal(RC_FILE_ERROR, "Failed to open generator program %s", generatorProgramLLFullPath);
+        fatal(RC_FILE_ERROR, "Failed to open generator program LLVM file %s",
+              generatorProgramLLFullPath);
     }
 
     while (fgets(line, 1024, generatorProgramFilePointer) != NULL) {

@@ -1,7 +1,7 @@
 /**
  * @file expression.c
  * @author Charles Averill
- * @brief Logic for parsing into an AST
+ * @brief Logic for parsing expressions into an AST
  * @date 09-Sep-2022
  */
 
@@ -62,7 +62,7 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
     // Get the intlit on the left and scan the next Token
     left = create_terminal_node(D_GLOBAL_TOKEN);
     current_ttype = D_GLOBAL_TOKEN.type;
-    if (current_ttype == T_EOF) {
+    if (current_ttype == T_SEMICOLON) {
         return left;
     }
 
@@ -79,7 +79,7 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
 
         // Update current_ttype and check for EOF
         current_ttype = D_GLOBAL_TOKEN.type;
-        if (current_ttype == T_EOF) {
+        if (current_ttype == T_SEMICOLON) {
             return left;
         }
     }

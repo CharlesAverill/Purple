@@ -12,3 +12,4 @@ core
 *.s
 *.ll
 scratch.prp
+peda-*

@@ -19,6 +19,6 @@
 LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root);
 
 LLVMValue ast_to_llvm(ASTNode* n);
-void generate_llvm(ASTNode* root);
+void generate_llvm(void);
 
 #endif /* TRANSLATE_H */

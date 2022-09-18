@@ -1,10 +1,14 @@
 grammar purple;
 
 tokens {
-    T_INTEGER_LITERAL
+    T_INTEGER_LITERAL,
+    T_IDENTIFIER
 }
 
 number: T_INTEGER_LITERAL
+        ;
+
+dataType: 'int'
         ;
 
 multiplicativeExpression: number
@@ -23,10 +27,21 @@ binaryExpression: additiveExpression
 expression: binaryExpression
           ;
 
-print_statement: 'print(' expression ')'
+printStatement: 'print' expression 
+              ;
+
+declareStatement: dataType T_IDENTIFIER
+                ;
+
+assignStatement: T_IDENTIFIER '=' expression
                ;
 
-statement: print_statement ';'
+statementType: printStatement
+             | assignStatement
+             | declareStatement
+             ;
+
+statement: statementType ';'
          ;
 
 statements: statement

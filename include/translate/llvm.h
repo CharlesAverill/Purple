@@ -5,30 +5,12 @@
  * @date 10-Sep-2022
  */
 
-#ifndef LLVM_H
-#define LLVM_H
+#ifndef LLVM
+#define LLVM
 
 #include "scan.h"
 #include "types/number.h"
-
-/**
- * @brief A too-big data type for register indices in case of stress testing
- */
-#define type_register unsigned long long int
-
-/**
- * @brief Node of a linked list containing information about required stack allocation for a function. Also used as a general-purpose linked list of registers with loaded values
- */
-typedef struct LLVMStackEntryNode {
-    /**Register number of the current node*/
-    type_register reg;
-    /**Data type of the current node*/
-    NumberType type;
-    /**Number of bytes to align stack to for this data*/
-    int align_bytes;
-    /**Next node in linked list*/
-    struct LLVMStackEntryNode* next;
-} LLVMStackEntryNode;
+#include "utils/llvm_stack_entry.h"
 
 /**
  * @brief LLVM-IR representations of data types
@@ -43,9 +25,15 @@ static const char* numberTypeLLVMReprs[] = {
 extern LLVMStackEntryNode* loadedRegistersHead;
 
 /**
+ * @brief Head node of linked list containing register indices that are free to have values stored in them
+ */
+extern LLVMStackEntryNode* freeVirtualRegistersHead;
+
+/**
  * @brief Types of values possibly returned by ast_to_llvm
  */
-typedef enum {
+typedef enum
+{
     LLVMVALUETYPE_NONE,
     LLVMVALUETYPE_VIRTUAL_REGISTER,
 } LLVMValueType;
@@ -104,4 +92,4 @@ type_register get_next_local_virtual_register(void);
 
 void llvm_print_int(type_register reg);
 
-#endif /* LLVM_H */
+#endif /* LLVM */

@@ -32,8 +32,6 @@ extern_ char* D_INPUT_FN;
 extern_ char* D_LLVM_FN;
 /**Current number of the latest-used LLVM virtual register within a function*/
 extern_ unsigned long long int D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER;
-/**Number of allocated free virtual registers available*/
-extern_ unsigned long long int D_FREE_REGISTER_COUNT;
 
 /**Purple identifiers can be a maximum of 255 bytes in length*/
 #define D_MAX_IDENTIFIER_LENGTH 255

@@ -656,6 +656,15 @@ hr.footer {
     content: url(on_sync.png);
 }
 
+.sm-dox {
+    background-image: none;
+    /* height: 55px; */
+}
+
+.main-menu-btn {
+    margin-top: 8px;
+}
+
 /***********************************/
 
 /*********** Plant UML ***********/

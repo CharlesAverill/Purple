@@ -9,6 +9,7 @@
 #include "utils/logging.h"
 
 LLVMStackEntryNode* loadedRegistersHead = NULL;
+LLVMStackEntryNode* freeVirtualRegistersHead = NULL;
 
 /**
  * @brief Initialize any values required for LLVM translation
@@ -23,9 +24,8 @@ static void translate_init(void)
 
     D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 1;
 
-    D_FREE_REGISTER_COUNT = 0;
-
-    loadedRegistersHead = NULL;
+    initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
+    initialize_stack_entry_linked_list(&loadedRegistersHead);
 }
 
 /**
@@ -38,6 +38,7 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
 {
     LLVMStackEntryNode* temp_left;
     LLVMStackEntryNode* temp_right;
+    LLVMStackEntryNode* curr;
 
     if (root == NULL) {
         return NULL;
@@ -51,10 +52,12 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
             temp_right = determine_binary_expression_stack_allocation(root->right);
         }
 
-        if (temp_left && temp_left->next) {
-            temp_left->next->next = temp_right;
-        } else if (temp_left) {
-            temp_left->next = temp_right;
+        if (temp_left) {
+            curr = temp_left;
+            while (curr->next) {
+                curr = curr->next;
+            }
+            curr->next = temp_right;
         } else {
             temp_left = temp_right;
         }
@@ -63,9 +66,10 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
     } else {
         LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
         current->reg = get_next_local_virtual_register();
-        D_FREE_REGISTER_COUNT++;
+        prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
         current->type = token_type_to_number_type(root->ttype);
         current->align_bytes = numberTypeByteSizes[current->type];
+        current->next = NULL;
         return current;
     }
 }
@@ -128,46 +132,22 @@ LLVMValue ast_to_llvm(ASTNode* n)
 }
 
 /**
- * @brief Free memory used by LLVMStackEntryNode linked lists
- * 
- * @param head Head of list to free
- */
-static void free_llvm_stack_entry_node_list(LLVMStackEntryNode* head)
-{
-    LLVMStackEntryNode* current = head;
-    LLVMStackEntryNode* next;
-    while (current) {
-        next = current->next;
-        free(current);
-        current = next;
-    }
-}
-
-/**
  * @brief Wrapper function for generating LLVM
  */
-void generate_llvm(ASTNode* root)
+void generate_llvm(void)
 {
-    purple_log(LOG_DEBUG, "Generating LLVM from AST");
+    purple_log(LOG_DEBUG, "Beginning translation");
 
     translate_init();
 
-    LLVMStackEntryNode* stack_entries = determine_binary_expression_stack_allocation(root);
-
     llvm_preamble();
 
-    llvm_stack_allocation(stack_entries);
-
-    free_llvm_stack_entry_node_list(stack_entries);
-
-    // Parse everything into a single AST
-    type_register print_vr = ast_to_llvm(root).value.virtual_register_index;
-
-    llvm_print_int(print_vr);
+    parse_statements();
 
     llvm_postamble();
 
     free_llvm_stack_entry_node_list(loadedRegistersHead);
+    free_llvm_stack_entry_node_list(freeVirtualRegistersHead);
 
     purple_log(LOG_DEBUG, "LLVM written to %s", D_LLVM_FN);
 }
