@@ -1,0 +1,12 @@
+<map id="include/types/number.h" name="include/types/number.h">
+<area shape="rect" id="node1" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="305,5,459,32"/>
+<area shape="rect" id="node2" href="$llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="83,177,238,203"/>
+<area shape="rect" id="node3" href="$translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="269,259,450,285"/>
+<area shape="rect" id="node8" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="271,80,389,121"/>
+<area shape="rect" id="node10" href="$number_8c.html" title="Functions for dealing with numbers internally." alt="" coords="473,87,605,114"/>
+<area shape="rect" id="node4" href="$statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="5,333,153,360"/>
+<area shape="rect" id="node6" href="$llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="177,333,309,360"/>
+<area shape="rect" id="node5" href="$purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="333,333,423,360"/>
+<area shape="rect" id="node7" href="$translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="447,333,605,360"/>
+<area shape="rect" id="node9" href="$llvm__stack__entry_8c.html" title=" " alt="" coords="263,169,397,211"/>
+</map>

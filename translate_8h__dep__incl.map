@@ -1,0 +1,7 @@
+<map id="include/translate/translate.h" name="include/translate/translate.h">
+<area shape="rect" id="node1" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="198,5,379,32"/>
+<area shape="rect" id="node2" href="$statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="5,80,153,107"/>
+<area shape="rect" id="node3" href="$purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="177,80,267,107"/>
+<area shape="rect" id="node4" href="$llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="291,80,423,107"/>
+<area shape="rect" id="node5" href="$translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="447,80,605,107"/>
+</map>

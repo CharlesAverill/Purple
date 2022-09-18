@@ -1,0 +1,22 @@
+<map id="src/parse/statement.c" name="src/parse/statement.c">
+<area shape="rect" id="node1" title="Logic for parsing statements into an AST." alt="" coords="536,5,684,32"/>
+<area shape="rect" id="node2" href="$data_8h.html" title="Project&#45;wide variables." alt="" coords="256,229,313,256"/>
+<area shape="rect" id="node15" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="526,155,590,181"/>
+<area shape="rect" id="node17" href="$llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="778,155,889,181"/>
+<area shape="rect" id="node20" href="$translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="595,80,731,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="138,453,198,480"/>
+<area shape="rect" id="node4" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="525,304,585,331"/>
+<area shape="rect" id="node12" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="156,304,277,331"/>
+<area shape="rect" id="node5" title=" " alt="" coords="617,379,680,405"/>
+<area shape="rect" id="node6" title=" " alt="" coords="518,379,592,405"/>
+<area shape="rect" id="node7" title=" " alt="" coords="686,453,749,480"/>
+<area shape="rect" id="node8" title=" " alt="" coords="254,379,318,405"/>
+<area shape="rect" id="node9" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="392,379,494,405"/>
+<area shape="rect" id="node10" title=" " alt="" coords="466,453,534,480"/>
+<area shape="rect" id="node11" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="326,453,442,480"/>
+<area shape="rect" id="node13" title=" " alt="" coords="44,379,101,405"/>
+<area shape="rect" id="node14" href="$info_8h.html" title="CMake config definitions." alt="" coords="126,379,179,405"/>
+<area shape="rect" id="node16" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="593,229,648,256"/>
+<area shape="rect" id="node18" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="857,304,968,331"/>
+<area shape="rect" id="node19" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="829,229,988,256"/>
+</map>
