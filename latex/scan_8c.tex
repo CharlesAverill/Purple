@@ -5,9 +5,10 @@
 Functions for lexical scanning from input source files.  
 
 
-{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils/logging.\+h\char`\"{}}\newline
 Include dependency graph for scan.\+c\+:
 \nopagebreak
 \begin{figure}[H]
@@ -23,11 +24,11 @@ static char \mbox{\hyperlink{scan_8c_aba19733986b2193569abfcc4951d480f}{next}} (
 \begin{DoxyCompactList}\small\item\em Get the next valid character from the current input file. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{scan_8c_aa675e2a79ca95a2b6861a587655eef81}{put\+\_\+back\+\_\+into\+\_\+stream}} (char c)
 \begin{DoxyCompactList}\small\item\em Put a character back into the input stream. \end{DoxyCompactList}\item 
-static char \mbox{\hyperlink{scan_8c_ae1cbaaa04222c8794e6fb52ab9a0078d}{skip}} (void)
+static char \mbox{\hyperlink{scan_8c_a86d1f1bccadab31732ccd799bed1abb3}{skip\+\_\+whitespace}} (void)
 \begin{DoxyCompactList}\small\item\em Skips whitespace tokens. \end{DoxyCompactList}\item 
 static int \mbox{\hyperlink{scan_8c_afe176fe0d1142633375951f2e45831bc}{index\+\_\+of}} (char $\ast$s, int c)
 \begin{DoxyCompactList}\small\item\em Return the index of char c in string s. \end{DoxyCompactList}\item 
-static int \mbox{\hyperlink{scan_8c_afaef79548b221cbef5702e4b9957aeb8}{scanint}} (char c)
+static int \mbox{\hyperlink{scan_8c_a4f4c06379367bf6bfc0b86087997d66f}{scan\+\_\+integer\+\_\+literal}} (char c)
 \begin{DoxyCompactList}\small\item\em Scan and return an integer literal from the input stream. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{scan_8c_a266d26db82d5dbb4136042baf955f5ad}{is\+\_\+valid\+\_\+identifier\+\_\+char}} (char c, int index)
 \begin{DoxyCompactList}\small\item\em Determine if a character in an identifier is a permitted character. \end{DoxyCompactList}\item 
@@ -217,11 +218,11 @@ Scan an alphanumeric identifier.
 \begin{DoxyReturn}{Returns}
 int Length of the identifier 
 \end{DoxyReturn}
-\mbox{\Hypertarget{scan_8c_afaef79548b221cbef5702e4b9957aeb8}\label{scan_8c_afaef79548b221cbef5702e4b9957aeb8}} 
-\index{scan.c@{scan.c}!scanint@{scanint}}
-\index{scanint@{scanint}!scan.c@{scan.c}}
-\doxysubsubsection{\texorpdfstring{scanint()}{scanint()}}
-{\footnotesize\ttfamily static int scanint (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\mbox{\Hypertarget{scan_8c_a4f4c06379367bf6bfc0b86087997d66f}\label{scan_8c_a4f4c06379367bf6bfc0b86087997d66f}} 
+\index{scan.c@{scan.c}!scan\_integer\_literal@{scan\_integer\_literal}}
+\index{scan\_integer\_literal@{scan\_integer\_literal}!scan.c@{scan.c}}
+\doxysubsubsection{\texorpdfstring{scan\_integer\_literal()}{scan\_integer\_literal()}}
+{\footnotesize\ttfamily static int scan\+\_\+integer\+\_\+literal (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -235,11 +236,11 @@ Scan and return an integer literal from the input stream.
 \begin{DoxyReturn}{Returns}
 int Scanned integer literal 
 \end{DoxyReturn}
-\mbox{\Hypertarget{scan_8c_ae1cbaaa04222c8794e6fb52ab9a0078d}\label{scan_8c_ae1cbaaa04222c8794e6fb52ab9a0078d}} 
-\index{scan.c@{scan.c}!skip@{skip}}
-\index{skip@{skip}!scan.c@{scan.c}}
-\doxysubsubsection{\texorpdfstring{skip()}{skip()}}
-{\footnotesize\ttfamily static char skip (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\mbox{\Hypertarget{scan_8c_a86d1f1bccadab31732ccd799bed1abb3}\label{scan_8c_a86d1f1bccadab31732ccd799bed1abb3}} 
+\index{scan.c@{scan.c}!skip\_whitespace@{skip\_whitespace}}
+\index{skip\_whitespace@{skip\_whitespace}!scan.c@{scan.c}}
+\doxysubsubsection{\texorpdfstring{skip\_whitespace()}{skip\_whitespace()}}
+{\footnotesize\ttfamily static char skip\+\_\+whitespace (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 

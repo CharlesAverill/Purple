@@ -3,8 +3,8 @@
 \mbox{\hyperlink{clang_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef CLANG}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define CLANG}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef CLANG\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define CLANG\_H}}
 \DoxyCodeLine{10 }
 \DoxyCodeLine{14 \textcolor{preprocessor}{\#define GENERATOR\_PROGRAM\_CONTENTS "{}\#include <stdio.h>\(\backslash\)nint main()\{printf(\(\backslash\)"{}\(\backslash\)"{});\}"{}}}
 \DoxyCodeLine{18 \textcolor{preprocessor}{\#define GENERATOR\_PROGRAM\_CONTENTS\_LENGTH sizeof(GENERATOR\_PROGRAM\_CONTENTS)}}
@@ -13,14 +13,17 @@
 \DoxyCodeLine{30 \textcolor{keyword}{static} \textcolor{keywordtype}{char} \mbox{\hyperlink{clang_8h_a557e1909a0c7d7b39e06a47586eea3d4}{generatorProgramFullPath}}[512];}
 \DoxyCodeLine{34 \textcolor{keyword}{static} \textcolor{keywordtype}{char} \mbox{\hyperlink{clang_8h_a47210c5be27c00fe65ac814e22beecea}{generatorProgramLLFullPath}}[512];}
 \DoxyCodeLine{38 \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{clang_8h_ab585cd02953166aee6f90d6d306e6eda}{generatorProgramWritten}} = \textcolor{keyword}{false};}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40 \textcolor{keywordtype}{void} \mbox{\hyperlink{clang_8h_a3ef9aa60f9d1860c6a5b0ce0c983dedd}{clang\_compile\_llvm}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* fn);}
-\DoxyCodeLine{41 \textcolor{keywordtype}{void} \mbox{\hyperlink{clang_8h_a3b369fac9808777478e63f68f41d5270}{create\_tmp\_generator\_program}}();}
-\DoxyCodeLine{42 \textcolor{keywordtype}{char}* \mbox{\hyperlink{clang_8h_aad50747c930d7d8fe05d741b81501f5c}{get\_target\_datalayout}}();}
-\DoxyCodeLine{43 \textcolor{keywordtype}{char}* \mbox{\hyperlink{clang_8h_ae6b73131bb54576584f6bdb9dc6378a7}{get\_target\_triple}}();}
-\DoxyCodeLine{44 \textcolor{keywordtype}{char}* \mbox{\hyperlink{clang_8h_a05c1a47a02bdbc3937ea103b8a6eae63}{get\_postamble}}();}
-\DoxyCodeLine{45 \textcolor{keywordtype}{char}* \mbox{\hyperlink{clang_8h_a90aaa0f0e2c76dc8c5631842644b5282}{regex\_match}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* regex, \textcolor{keywordtype}{char}* target\_str, \textcolor{keywordtype}{int} len, \textcolor{keywordtype}{int} group\_index);}
-\DoxyCodeLine{46 }
-\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CLANG */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define PURPLE\_GLOBALS\_PLACEHOLDER "{};<purple\_globals\_placeholder>"{}}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define PURPLE\_GLOBALS\_PLACEHOLDER\_LEN sizeof(PURPLE\_GLOBALS\_PLACEHOLDER) -\/ 1}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{keywordtype}{void} \mbox{\hyperlink{clang_8h_a3ef9aa60f9d1860c6a5b0ce0c983dedd}{clang\_compile\_llvm}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* fn);}
+\DoxyCodeLine{49 \textcolor{keywordtype}{void} \mbox{\hyperlink{clang_8h_a3d84b3d464dde7bb8b1f557995ddeef5}{link\_globals}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{50 \textcolor{keywordtype}{void} \mbox{\hyperlink{clang_8h_a3b369fac9808777478e63f68f41d5270}{create\_tmp\_generator\_program}}();}
+\DoxyCodeLine{51 \textcolor{keywordtype}{char}* \mbox{\hyperlink{clang_8h_aad50747c930d7d8fe05d741b81501f5c}{get\_target\_datalayout}}();}
+\DoxyCodeLine{52 \textcolor{keywordtype}{char}* \mbox{\hyperlink{clang_8h_ae6b73131bb54576584f6bdb9dc6378a7}{get\_target\_triple}}();}
+\DoxyCodeLine{53 \textcolor{keywordtype}{char}* \mbox{\hyperlink{clang_8h_a05c1a47a02bdbc3937ea103b8a6eae63}{get\_postamble}}();}
+\DoxyCodeLine{54 \textcolor{keywordtype}{char}* \mbox{\hyperlink{clang_8h_a90aaa0f0e2c76dc8c5631842644b5282}{regex\_match}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* regex, \textcolor{keywordtype}{char}* target\_str, \textcolor{keywordtype}{int} len, \textcolor{keywordtype}{int} group\_index);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CLANG\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -23,12 +23,18 @@ This graph shows which files directly or indirectly include this file\+:
 \#define \mbox{\hyperlink{clang_8h_a64dbf9f48eb71d5d333061baf146d905}{GENERATOR\+\_\+\+PROGRAM\+\_\+\+FILENAME}}~\char`\"{}.prp\+\_\+platform\+\_\+information\+\_\+generator.\+c\char`\"{}
 \begin{DoxyCompactList}\small\item\em Filename of GENERATOR\+\_\+\+PROGRAM. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{clang_8h_a888ca45ed84a867fe39d88c176dd3201}{GENERATOR\+\_\+\+PROGRAM\+\_\+\+FILENAME\+\_\+\+LL}}~\char`\"{}.prp\+\_\+platform\+\_\+information\+\_\+generator.\+ll\char`\"{}
-\begin{DoxyCompactList}\small\item\em Filename of GENERATOR\+\_\+\+PROGRAM\textquotesingle{}s LLVM-\/compiled file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Filename of GENERATOR\+\_\+\+PROGRAM\textquotesingle{}s LLVM-\/compiled file. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{clang_8h_a0ee761c397a357c8d5655377bb261bc8}{PURPLE\+\_\+\+GLOBALS\+\_\+\+PLACEHOLDER}}~\char`\"{};$<$purple\+\_\+globals\+\_\+placeholder$>$\char`\"{}
+\begin{DoxyCompactList}\small\item\em Placeholder in main LLVM file used when linking globals. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{clang_8h_a493219f6c0f98a275c1537ec9fc28624}{PURPLE\+\_\+\+GLOBALS\+\_\+\+PLACEHOLDER\+\_\+\+LEN}}~sizeof(\mbox{\hyperlink{clang_8h_a0ee761c397a357c8d5655377bb261bc8}{PURPLE\+\_\+\+GLOBALS\+\_\+\+PLACEHOLDER}}) -\/ 1
+\begin{DoxyCompactList}\small\item\em Length of PURPLE\+\_\+\+GLOBALS\+\_\+\+PLACEHOLDER. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{clang_8h_a3ef9aa60f9d1860c6a5b0ce0c983dedd}{clang\+\_\+compile\+\_\+llvm}} (const char $\ast$fn)
 \begin{DoxyCompactList}\small\item\em Starts up the clang compiler to compile the generated LLVM-\/\+IR into a binary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{clang_8h_a3d84b3d464dde7bb8b1f557995ddeef5}{link\+\_\+globals}} (void)
+\begin{DoxyCompactList}\small\item\em Link globals.\+ll to main LLVM file by copying the contents of each LLVM file into a temporary file, then copying back to the main LLVM file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{clang_8h_a3b369fac9808777478e63f68f41d5270}{create\+\_\+tmp\+\_\+generator\+\_\+program}} ()
 \begin{DoxyCompactList}\small\item\em Create a temporary file for a generator program used to determine compilation information. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{clang_8h_aad50747c930d7d8fe05d741b81501f5c}{get\+\_\+target\+\_\+datalayout}} ()
@@ -102,6 +108,26 @@ Filename of GENERATOR\+\_\+\+PROGRAM.
 
 Filename of GENERATOR\+\_\+\+PROGRAM\textquotesingle{}s LLVM-\/compiled file. 
 
+\mbox{\Hypertarget{clang_8h_a0ee761c397a357c8d5655377bb261bc8}\label{clang_8h_a0ee761c397a357c8d5655377bb261bc8}} 
+\index{clang.h@{clang.h}!PURPLE\_GLOBALS\_PLACEHOLDER@{PURPLE\_GLOBALS\_PLACEHOLDER}}
+\index{PURPLE\_GLOBALS\_PLACEHOLDER@{PURPLE\_GLOBALS\_PLACEHOLDER}!clang.h@{clang.h}}
+\doxysubsubsection{\texorpdfstring{PURPLE\_GLOBALS\_PLACEHOLDER}{PURPLE\_GLOBALS\_PLACEHOLDER}}
+{\footnotesize\ttfamily \#define PURPLE\+\_\+\+GLOBALS\+\_\+\+PLACEHOLDER~\char`\"{};$<$purple\+\_\+globals\+\_\+placeholder$>$\char`\"{}}
+
+
+
+Placeholder in main LLVM file used when linking globals. 
+
+\mbox{\Hypertarget{clang_8h_a493219f6c0f98a275c1537ec9fc28624}\label{clang_8h_a493219f6c0f98a275c1537ec9fc28624}} 
+\index{clang.h@{clang.h}!PURPLE\_GLOBALS\_PLACEHOLDER\_LEN@{PURPLE\_GLOBALS\_PLACEHOLDER\_LEN}}
+\index{PURPLE\_GLOBALS\_PLACEHOLDER\_LEN@{PURPLE\_GLOBALS\_PLACEHOLDER\_LEN}!clang.h@{clang.h}}
+\doxysubsubsection{\texorpdfstring{PURPLE\_GLOBALS\_PLACEHOLDER\_LEN}{PURPLE\_GLOBALS\_PLACEHOLDER\_LEN}}
+{\footnotesize\ttfamily \#define PURPLE\+\_\+\+GLOBALS\+\_\+\+PLACEHOLDER\+\_\+\+LEN~sizeof(\mbox{\hyperlink{clang_8h_a0ee761c397a357c8d5655377bb261bc8}{PURPLE\+\_\+\+GLOBALS\+\_\+\+PLACEHOLDER}}) -\/ 1}
+
+
+
+Length of PURPLE\+\_\+\+GLOBALS\+\_\+\+PLACEHOLDER. 
+
 
 
 \doxysubsection{Function Documentation}
@@ -157,6 +183,16 @@ Get the target triple for the current target.
 \begin{DoxyReturn}{Returns}
 char$\ast$ Pointer to the target triple string 
 \end{DoxyReturn}
+\mbox{\Hypertarget{clang_8h_a3d84b3d464dde7bb8b1f557995ddeef5}\label{clang_8h_a3d84b3d464dde7bb8b1f557995ddeef5}} 
+\index{clang.h@{clang.h}!link\_globals@{link\_globals}}
+\index{link\_globals@{link\_globals}!clang.h@{clang.h}}
+\doxysubsubsection{\texorpdfstring{link\_globals()}{link\_globals()}}
+{\footnotesize\ttfamily void link\+\_\+globals (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Link globals.\+ll to main LLVM file by copying the contents of each LLVM file into a temporary file, then copying back to the main LLVM file. 
+
 \mbox{\Hypertarget{clang_8h_a90aaa0f0e2c76dc8c5631842644b5282}\label{clang_8h_a90aaa0f0e2c76dc8c5631842644b5282}} 
 \index{clang.h@{clang.h}!regex\_match@{regex\_match}}
 \index{regex\_match@{regex\_match}!clang.h@{clang.h}}

@@ -16,7 +16,7 @@ Collaboration diagram for ASTNode\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=182pt]{structASTNode__coll__graph}
+\includegraphics[width=236pt]{structASTNode__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Attributes}
@@ -30,15 +30,33 @@ struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{structA
 \item 
 struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{structASTNode_ab3fac314ab87bbccda872cde9678b5b3}{right}}
 \item 
-int \mbox{\hyperlink{structASTNode_a136d1712e8cfdeb4908aceb22abc3de7}{value}}
-\end{DoxyCompactItemize}
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>int \mbox{\hyperlink{structASTNode_af8535af330bd921499868489fd553eb9}{int\_value}}\\
+\>unsigned long int \mbox{\hyperlink{structASTNode_ab432652908e6980e38ac7b303bc2e3c9}{global\_symbol\_table\_index}}\\
+\} \mbox{\hyperlink{structASTNode_a6eb3eb28a0e661931fa444b130f86404}{value}}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Component of the abstract syntax tree built during parsing. 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}\label{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}} 
+\mbox{\Hypertarget{structASTNode_ab432652908e6980e38ac7b303bc2e3c9}\label{structASTNode_ab432652908e6980e38ac7b303bc2e3c9}} 
+\index{ASTNode@{ASTNode}!global\_symbol\_table\_index@{global\_symbol\_table\_index}}
+\index{global\_symbol\_table\_index@{global\_symbol\_table\_index}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{global\_symbol\_table\_index}{global\_symbol\_table\_index}}
+{\footnotesize\ttfamily unsigned long int ASTNode\+::global\+\_\+symbol\+\_\+table\+\_\+index}
+
+Index of identifier in global symbol table \mbox{\Hypertarget{structASTNode_af8535af330bd921499868489fd553eb9}\label{structASTNode_af8535af330bd921499868489fd553eb9}} 
+\index{ASTNode@{ASTNode}!int\_value@{int\_value}}
+\index{int\_value@{int\_value}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{int\_value}{int\_value}}
+{\footnotesize\ttfamily int ASTNode\+::int\+\_\+value}
+
+Value of integer token \mbox{\Hypertarget{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}\label{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}} 
 \index{ASTNode@{ASTNode}!left@{left}}
 \index{left@{left}!ASTNode@{ASTNode}}
 \doxysubsubsection{\texorpdfstring{left}{left}}
@@ -66,13 +84,13 @@ The right child of the AST Node \mbox{\Hypertarget{structASTNode_ac71a4bb0085044
 
 The Token\+Type of the given token. 
 
-\mbox{\Hypertarget{structASTNode_a136d1712e8cfdeb4908aceb22abc3de7}\label{structASTNode_a136d1712e8cfdeb4908aceb22abc3de7}} 
+\mbox{\Hypertarget{structASTNode_a6eb3eb28a0e661931fa444b130f86404}\label{structASTNode_a6eb3eb28a0e661931fa444b130f86404}} 
 \index{ASTNode@{ASTNode}!value@{value}}
 \index{value@{value}!ASTNode@{ASTNode}}
-\doxysubsubsection{\texorpdfstring{value}{value}}
-{\footnotesize\ttfamily int ASTNode\+::value}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily union  \{ ... \}  ASTNode\+::value}
 
-Union containing either the value of an integer literal, or the identifier of a symbol 
+Value of AST Node\textquotesingle{}s \mbox{\hyperlink{structToken}{Token}} 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

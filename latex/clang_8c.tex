@@ -8,6 +8,7 @@ Functions for interacting with clang.
 {\ttfamily \#include $<$regex.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils/clang.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils/logging.\+h\char`\"{}}\newline
@@ -26,6 +27,8 @@ const char $\ast$ \mbox{\hyperlink{clang_8c_ad757e0b452602859654ba026c29b5024}{g
 \begin{DoxyCompactList}\small\item\em Get the default temporary directory. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{clang_8c_a3b369fac9808777478e63f68f41d5270}{create\+\_\+tmp\+\_\+generator\+\_\+program}} ()
 \begin{DoxyCompactList}\small\item\em Create a temporary file for a generator program used to determine compilation information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{clang_8c_a3d84b3d464dde7bb8b1f557995ddeef5}{link\+\_\+globals}} (void)
+\begin{DoxyCompactList}\small\item\em Link globals.\+ll to main LLVM file by copying the contents of each LLVM file into a temporary file, then copying back to the main LLVM file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{clang_8c_a3ef9aa60f9d1860c6a5b0ce0c983dedd}{clang\+\_\+compile\+\_\+llvm}} (const char $\ast$fn)
 \begin{DoxyCompactList}\small\item\em Starts up the clang compiler to compile the generated LLVM-\/\+IR into a binary. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{clang_8c_aad50747c930d7d8fe05d741b81501f5c}{get\+\_\+target\+\_\+datalayout}} ()
@@ -107,6 +110,16 @@ Get the default temporary directory.
 \begin{DoxyReturn}{Returns}
 const char$\ast$ String containing temporary directory name 
 \end{DoxyReturn}
+\mbox{\Hypertarget{clang_8c_a3d84b3d464dde7bb8b1f557995ddeef5}\label{clang_8c_a3d84b3d464dde7bb8b1f557995ddeef5}} 
+\index{clang.c@{clang.c}!link\_globals@{link\_globals}}
+\index{link\_globals@{link\_globals}!clang.c@{clang.c}}
+\doxysubsubsection{\texorpdfstring{link\_globals()}{link\_globals()}}
+{\footnotesize\ttfamily void link\+\_\+globals (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Link globals.\+ll to main LLVM file by copying the contents of each LLVM file into a temporary file, then copying back to the main LLVM file. 
+
 \mbox{\Hypertarget{clang_8c_a90aaa0f0e2c76dc8c5631842644b5282}\label{clang_8c_a90aaa0f0e2c76dc8c5631842644b5282}} 
 \index{clang.c@{clang.c}!regex\_match@{regex\_match}}
 \index{regex\_match@{regex\_match}!clang.c@{clang.c}}

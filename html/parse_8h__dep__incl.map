@@ -1,9 +1,10 @@
 <map id="include/parse.h" name="include/parse.h">
-<area shape="rect" id="node1" title="Function headers for parsing and operator precedence values." alt="" coords="207,5,317,32"/>
+<area shape="rect" id="node1" title="Function headers for parsing and operator precedence values." alt="" coords="271,5,381,32"/>
 <area shape="rect" id="node2" href="$translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="235,80,417,107"/>
 <area shape="rect" id="node3" href="$statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="5,155,153,181"/>
 <area shape="rect" id="node4" href="$purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="177,155,267,181"/>
-<area shape="rect" id="node7" href="$expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="441,80,593,107"/>
+<area shape="rect" id="node7" href="$declaration_8c.html" title="Logic for declaration statements." alt="" coords="441,80,595,107"/>
+<area shape="rect" id="node8" href="$expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="619,80,771,107"/>
 <area shape="rect" id="node5" href="$llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="291,155,423,181"/>
 <area shape="rect" id="node6" href="$translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="447,155,605,181"/>
 </map>

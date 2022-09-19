@@ -7,6 +7,7 @@ Project-\/wide variables.
 
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}translate/symbol\+\_\+table.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils/arguments.\+h\char`\"{}}\newline
 Include dependency graph for data.\+h\+:
 \nopagebreak
@@ -42,9 +43,13 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} FILE $\ast$ \mbox{\hyperlink{data_8h_a6739ad08f1684785c7621617a6e8370b}{D\+\_\+\+LLVM\+\_\+\+FILE}}
 \item 
+\mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} FILE $\ast$ \mbox{\hyperlink{data_8h_adb9f233c82840e13fa251b97e66b46f5}{D\+\_\+\+LLVM\+\_\+\+GLOBALS\+\_\+\+FILE}}
+\item 
 \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} char $\ast$ \mbox{\hyperlink{data_8h_aee2c492e0cfc03b5bb388e816e6aa07d}{D\+\_\+\+INPUT\+\_\+\+FN}}
 \item 
 \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} char $\ast$ \mbox{\hyperlink{data_8h_a9db47be3c9e243f3a6b2f3e77b30a745}{D\+\_\+\+LLVM\+\_\+\+FN}}
+\item 
+\mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} char $\ast$ \mbox{\hyperlink{data_8h_a0a1aa4528f335b35bbb9ca110033d00a}{D\+\_\+\+LLVM\+\_\+\+GLOBALS\+\_\+\+FN}}
 \item 
 \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} unsigned long long int \mbox{\hyperlink{data_8h_af29dba328a9429eb1dd0172a6fa0bc99}{D\+\_\+\+LLVM\+\_\+\+LOCAL\+\_\+\+VIRTUAL\+\_\+\+REGISTER\+\_\+\+NUMBER}}
 \item 
@@ -55,6 +60,10 @@ This graph shows which files directly or indirectly include this file\+:
 \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$ \mbox{\hyperlink{data_8h_af0b239f72df01c220d263866200ea216}{args}}
 \item 
 \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} struct \mbox{\hyperlink{structToken}{Token}} \mbox{\hyperlink{data_8h_aaa782ad10014ebc3f74c54edfe56d98b}{D\+\_\+\+GLOBAL\+\_\+\+TOKEN}}
+\item 
+\mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} \mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$ \mbox{\hyperlink{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}{D\+\_\+\+SYMBOL\+\_\+\+TABLE\+\_\+\+STACK}}
+\item 
+\mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ \mbox{\hyperlink{data_8h_a3d6de1760dedbf060d53166af7599d98}{D\+\_\+\+GLOBAL\+\_\+\+SYMBOL\+\_\+\+TABLE}}
 \end{DoxyCompactItemize}
 
 
@@ -97,7 +106,13 @@ Command line arguments \mbox{\Hypertarget{data_8h_a05f52f3601bd5b29b20cf4fa58f3b
 \doxysubsubsection{\texorpdfstring{D\_DEBUG}{D\_DEBUG}}
 {\footnotesize\ttfamily \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} int D\+\_\+\+DEBUG}
 
-Activates debug behavior \mbox{\Hypertarget{data_8h_aaa782ad10014ebc3f74c54edfe56d98b}\label{data_8h_aaa782ad10014ebc3f74c54edfe56d98b}} 
+Activates debug behavior \mbox{\Hypertarget{data_8h_a3d6de1760dedbf060d53166af7599d98}\label{data_8h_a3d6de1760dedbf060d53166af7599d98}} 
+\index{data.h@{data.h}!D\_GLOBAL\_SYMBOL\_TABLE@{D\_GLOBAL\_SYMBOL\_TABLE}}
+\index{D\_GLOBAL\_SYMBOL\_TABLE@{D\_GLOBAL\_SYMBOL\_TABLE}!data.h@{data.h}}
+\doxysubsubsection{\texorpdfstring{D\_GLOBAL\_SYMBOL\_TABLE}{D\_GLOBAL\_SYMBOL\_TABLE}}
+{\footnotesize\ttfamily \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}}$\ast$ D\+\_\+\+GLOBAL\+\_\+\+SYMBOL\+\_\+\+TABLE}
+
+Global Symbol Table (pointer to bottom of D\+\_\+\+SYMBOL\+\_\+\+TABLE\+\_\+\+STACK) \mbox{\Hypertarget{data_8h_aaa782ad10014ebc3f74c54edfe56d98b}\label{data_8h_aaa782ad10014ebc3f74c54edfe56d98b}} 
 \index{data.h@{data.h}!D\_GLOBAL\_TOKEN@{D\_GLOBAL\_TOKEN}}
 \index{D\_GLOBAL\_TOKEN@{D\_GLOBAL\_TOKEN}!data.h@{data.h}}
 \doxysubsubsection{\texorpdfstring{D\_GLOBAL\_TOKEN}{D\_GLOBAL\_TOKEN}}
@@ -139,7 +154,19 @@ The file pointer to the open filestream for the output LLVM-\/\+IR file \mbox{\H
 \doxysubsubsection{\texorpdfstring{D\_LLVM\_FN}{D\_LLVM\_FN}}
 {\footnotesize\ttfamily \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} char$\ast$ D\+\_\+\+LLVM\+\_\+\+FN}
 
-Filename corresponding to D\+\_\++\+LLVM\+\_\+\+FILE \mbox{\Hypertarget{data_8h_af29dba328a9429eb1dd0172a6fa0bc99}\label{data_8h_af29dba328a9429eb1dd0172a6fa0bc99}} 
+Filename corresponding to D\+\_\+\+LLVM\+\_\+\+FILE \mbox{\Hypertarget{data_8h_adb9f233c82840e13fa251b97e66b46f5}\label{data_8h_adb9f233c82840e13fa251b97e66b46f5}} 
+\index{data.h@{data.h}!D\_LLVM\_GLOBALS\_FILE@{D\_LLVM\_GLOBALS\_FILE}}
+\index{D\_LLVM\_GLOBALS\_FILE@{D\_LLVM\_GLOBALS\_FILE}!data.h@{data.h}}
+\doxysubsubsection{\texorpdfstring{D\_LLVM\_GLOBALS\_FILE}{D\_LLVM\_GLOBALS\_FILE}}
+{\footnotesize\ttfamily \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} FILE$\ast$ D\+\_\+\+LLVM\+\_\+\+GLOBALS\+\_\+\+FILE}
+
+The file pointer to the open filestream for the output LLVM-\/\+IR Global Variables file \mbox{\Hypertarget{data_8h_a0a1aa4528f335b35bbb9ca110033d00a}\label{data_8h_a0a1aa4528f335b35bbb9ca110033d00a}} 
+\index{data.h@{data.h}!D\_LLVM\_GLOBALS\_FN@{D\_LLVM\_GLOBALS\_FN}}
+\index{D\_LLVM\_GLOBALS\_FN@{D\_LLVM\_GLOBALS\_FN}!data.h@{data.h}}
+\doxysubsubsection{\texorpdfstring{D\_LLVM\_GLOBALS\_FN}{D\_LLVM\_GLOBALS\_FN}}
+{\footnotesize\ttfamily \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} char$\ast$ D\+\_\+\+LLVM\+\_\+\+GLOBALS\+\_\+\+FN}
+
+Filename corresponding to D\+\_\+\+LLVM\+\_\+\+GLOBALS\+\_\+\+FILE \mbox{\Hypertarget{data_8h_af29dba328a9429eb1dd0172a6fa0bc99}\label{data_8h_af29dba328a9429eb1dd0172a6fa0bc99}} 
 \index{data.h@{data.h}!D\_LLVM\_LOCAL\_VIRTUAL\_REGISTER\_NUMBER@{D\_LLVM\_LOCAL\_VIRTUAL\_REGISTER\_NUMBER}}
 \index{D\_LLVM\_LOCAL\_VIRTUAL\_REGISTER\_NUMBER@{D\_LLVM\_LOCAL\_VIRTUAL\_REGISTER\_NUMBER}!data.h@{data.h}}
 \doxysubsubsection{\texorpdfstring{D\_LLVM\_LOCAL\_VIRTUAL\_REGISTER\_NUMBER}{D\_LLVM\_LOCAL\_VIRTUAL\_REGISTER\_NUMBER}}
@@ -151,4 +178,10 @@ Current number of the latest-\/used LLVM virtual register within a function \mbo
 \doxysubsubsection{\texorpdfstring{D\_PUT\_BACK}{D\_PUT\_BACK}}
 {\footnotesize\ttfamily \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} char D\+\_\+\+PUT\+\_\+\+BACK}
 
-If defined, this character will be put back into the input stream 
+If defined, this character will be put back into the input stream \mbox{\Hypertarget{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}\label{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}} 
+\index{data.h@{data.h}!D\_SYMBOL\_TABLE\_STACK@{D\_SYMBOL\_TABLE\_STACK}}
+\index{D\_SYMBOL\_TABLE\_STACK@{D\_SYMBOL\_TABLE\_STACK}!data.h@{data.h}}
+\doxysubsubsection{\texorpdfstring{D\_SYMBOL\_TABLE\_STACK}{D\_SYMBOL\_TABLE\_STACK}}
+{\footnotesize\ttfamily \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} \mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}}$\ast$ D\+\_\+\+SYMBOL\+\_\+\+TABLE\+\_\+\+STACK}
+
+Symbol Table Stack with the Global Symbol Table as its bottom 

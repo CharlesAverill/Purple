@@ -5,15 +5,13 @@
 Function headers for parsing and operator precedence values.  
 
 
-{\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}tree.\+h\char`\"{}}\newline
 Include dependency graph for parse.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{parse_8h__incl}
+\includegraphics[width=308pt]{parse_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -29,6 +27,10 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}{parse\+\_\+binary\+\_\+expression}} (int previous\+\_\+token\+\_\+precedence)
 \begin{DoxyCompactList}\small\item\em Recursively parse binary expressions into an AST. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parse_8h_a50272a0b5fea28f10f872dda4641d1a4}{match\+\_\+token}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Ensure current token is of a given type, and scan the next token if so. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{parse_8h_a5975acb392673971cc8f96e720e23de7}{variable\+\_\+declaration}} (void)
+\begin{DoxyCompactList}\small\item\em Parse a variable declaration statement into LLVM. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{parse_8h_a36e413083d2a6e7a8b561e22e141b811}{parse\+\_\+statements}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
@@ -111,6 +113,21 @@ This table outlines Purple\textquotesingle{}s operator precedence values. A high
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{parse_8h_a50272a0b5fea28f10f872dda4641d1a4}\label{parse_8h_a50272a0b5fea28f10f872dda4641d1a4}} 
+\index{parse.h@{parse.h}!match\_token@{match\_token}}
+\index{match\_token@{match\_token}!parse.h@{parse.h}}
+\doxysubsubsection{\texorpdfstring{match\_token()}{match\_token()}}
+{\footnotesize\ttfamily void match\+\_\+token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Ensure current token is of a given type, and scan the next token if so. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Token\+Type to ensure \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}\label{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}} 
 \index{parse.h@{parse.h}!parse\_binary\_expression@{parse\_binary\_expression}}
 \index{parse\_binary\_expression@{parse\_binary\_expression}!parse.h@{parse.h}}
@@ -138,6 +155,16 @@ ASTNode$\ast$ An AST or AST Subtree of the binary expressions in D\+\_\+\+INPUT\
 
 
 Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. 
+
+\mbox{\Hypertarget{parse_8h_a5975acb392673971cc8f96e720e23de7}\label{parse_8h_a5975acb392673971cc8f96e720e23de7}} 
+\index{parse.h@{parse.h}!variable\_declaration@{variable\_declaration}}
+\index{variable\_declaration@{variable\_declaration}!parse.h@{parse.h}}
+\doxysubsubsection{\texorpdfstring{variable\_declaration()}{variable\_declaration()}}
+{\footnotesize\ttfamily void variable\+\_\+declaration (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Parse a variable declaration statement into LLVM. 
 
 
 

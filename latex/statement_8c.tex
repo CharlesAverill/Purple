@@ -20,8 +20,12 @@ Include dependency graph for statement.\+c\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \mbox{\hyperlink{statement_8c_aa5cb8c2f1ebc18701e7c4fa5e8894876}{match\+\_\+token}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
+void \mbox{\hyperlink{statement_8c_a50272a0b5fea28f10f872dda4641d1a4}{match\+\_\+token}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Ensure current token is of a given type, and scan the next token if so. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{statement_8c_af4242b2b6f2d05d00166bc689f35d3d7}{print\+\_\+statement}} (void)
+\begin{DoxyCompactList}\small\item\em Parse a print statement into LLVM. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{statement_8c_a2afb5107be64bb296ac5379206c8303a}{assignment\+\_\+statement}} (void)
+\begin{DoxyCompactList}\small\item\em Parse an assignment statement into LLVM-\/\+IR. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{statement_8c_a36e413083d2a6e7a8b561e22e141b811}{parse\+\_\+statements}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -38,11 +42,21 @@ Charles Averill
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{statement_8c_aa5cb8c2f1ebc18701e7c4fa5e8894876}\label{statement_8c_aa5cb8c2f1ebc18701e7c4fa5e8894876}} 
+\mbox{\Hypertarget{statement_8c_a2afb5107be64bb296ac5379206c8303a}\label{statement_8c_a2afb5107be64bb296ac5379206c8303a}} 
+\index{statement.c@{statement.c}!assignment\_statement@{assignment\_statement}}
+\index{assignment\_statement@{assignment\_statement}!statement.c@{statement.c}}
+\doxysubsubsection{\texorpdfstring{assignment\_statement()}{assignment\_statement()}}
+{\footnotesize\ttfamily static void assignment\+\_\+statement (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parse an assignment statement into LLVM-\/\+IR. 
+
+\mbox{\Hypertarget{statement_8c_a50272a0b5fea28f10f872dda4641d1a4}\label{statement_8c_a50272a0b5fea28f10f872dda4641d1a4}} 
 \index{statement.c@{statement.c}!match\_token@{match\_token}}
 \index{match\_token@{match\_token}!statement.c@{statement.c}}
 \doxysubsubsection{\texorpdfstring{match\_token()}{match\_token()}}
-{\footnotesize\ttfamily static void match\+\_\+token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily void match\+\_\+token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{type }\end{DoxyParamCaption})}
 
 
 
@@ -62,4 +76,14 @@ Ensure current token is of a given type, and scan the next token if so.
 
 
 Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. 
+
+\mbox{\Hypertarget{statement_8c_af4242b2b6f2d05d00166bc689f35d3d7}\label{statement_8c_af4242b2b6f2d05d00166bc689f35d3d7}} 
+\index{statement.c@{statement.c}!print\_statement@{print\_statement}}
+\index{print\_statement@{print\_statement}!statement.c@{statement.c}}
+\doxysubsubsection{\texorpdfstring{print\_statement()}{print\_statement()}}
+{\footnotesize\ttfamily static void print\+\_\+statement (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parse a print statement into LLVM. 
 

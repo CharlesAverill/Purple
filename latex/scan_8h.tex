@@ -5,18 +5,14 @@
 Lexical Scanner function headers.  
 
 
-{\ttfamily \#include $<$ctype.\+h$>$}\newline
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
-{\ttfamily \#include $<$stdio.\+h$>$}\newline
-{\ttfamily \#include $<$stdlib.\+h$>$}\newline
-{\ttfamily \#include $<$string.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}utils/logging.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
 Include dependency graph for scan.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{scan_8h__incl}
+\includegraphics[width=177pt]{scan_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -61,11 +57,19 @@ struct \mbox{\hyperlink{structToken}{Token}}
 \item 
 \#define \mbox{\hyperlink{scan_8h_a9594000ba5f90a9539403cbdfc4cc988}{TTS\+\_\+\+INTEGER\+\_\+\+LITERAL}}~\char`\"{}integer literal\char`\"{}
 \item 
+\#define \mbox{\hyperlink{scan_8h_ae1c9235579ab0f8931698efc0689bacf}{TTS\+\_\+\+INT}}~\char`\"{}int\char`\"{}
+\item 
+\#define \mbox{\hyperlink{scan_8h_a6fab4f8e45fe721285aa5c861c37e0c1}{TTS\+\_\+\+ASSIGN}}~\char`\"{}=\char`\"{}
+\item 
 \#define \mbox{\hyperlink{scan_8h_af0c6f1db37de72c86eb8abdf2eeb4316}{TTS\+\_\+\+PRINT}}~\char`\"{}print\char`\"{}
 \item 
 \#define \mbox{\hyperlink{scan_8h_a0dee619cbc594f611dc45bc837c0253b}{TTS\+\_\+\+SEMICOLON}}~\char`\"{};\char`\"{}
 \item 
-\#define \mbox{\hyperlink{scan_8h_affec33daf918f96ba231bf8564fffbe0}{TOKENTYPE\+\_\+\+IS\+\_\+\+TERMINAL}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}})
+\#define \mbox{\hyperlink{scan_8h_a8846b3004b810435c8eeac38ebdb1eec}{TTS\+\_\+\+IDENTIFIER}}~\char`\"{}identifier\char`\"{}
+\item 
+\#define \mbox{\hyperlink{scan_8h_a8ef63807b66125e7597b5d3fc09e4ab5}{TTS\+\_\+\+LVALUE\+\_\+\+IDENTIFIER}}~\char`\"{}lvalue identifier\char`\"{}
+\item 
+\#define \mbox{\hyperlink{scan_8h_affec33daf918f96ba231bf8564fffbe0}{TOKENTYPE\+\_\+\+IS\+\_\+\+TERMINAL}}(type)
 \begin{DoxyCompactList}\small\item\em Macro to determine if a Token\+Type is associated with a terminal AST Node. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scan_8h_a58f4872f7a38784336953acff530cb27}{TOKENTYPE\+\_\+\+IS\+\_\+\+BINARY\+\_\+\+ARITHMETIC}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2}{T\+\_\+\+PLUS}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd}{T\+\_\+\+EXPONENT}})
 \begin{DoxyCompactList}\small\item\em Macro to determine if a Token\+Type is associated with a binary arithmetic operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -94,8 +98,13 @@ enum \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \
 , \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df}{T\+\_\+\+GE}}
 , \newline
 \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83}{T\+\_\+\+INT}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720}{T\+\_\+\+ASSIGN}}
 , \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aa9d18789762367b48144de4ab345a73b}{T\+\_\+\+PRINT}}
-, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf}{T\+\_\+\+SEMICOLON}}
+, \newline
+\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf}{T\+\_\+\+SEMICOLON}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a}{T\+\_\+\+IDENTIFIER}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63}{T\+\_\+\+LVALUE\+\_\+\+IDENTIFIER}}
  \}
 \begin{DoxyCompactList}\small\item\em Types of scannable tokens. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
@@ -136,11 +145,24 @@ Macro to determine if a Token\+Type is associated with a binary arithmetic opera
 \index{scan.h@{scan.h}!TOKENTYPE\_IS\_TERMINAL@{TOKENTYPE\_IS\_TERMINAL}}
 \index{TOKENTYPE\_IS\_TERMINAL@{TOKENTYPE\_IS\_TERMINAL}!scan.h@{scan.h}}
 \doxysubsubsection{\texorpdfstring{TOKENTYPE\_IS\_TERMINAL}{TOKENTYPE\_IS\_TERMINAL}}
-{\footnotesize\ttfamily \#define TOKENTYPE\+\_\+\+IS\+\_\+\+TERMINAL(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}})}
+{\footnotesize\ttfamily \#define TOKENTYPE\+\_\+\+IS\+\_\+\+TERMINAL(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})}
 
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    (\textcolor{comment}{/*Literals*/} (type >= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\_INTEGER\_LITERAL}} \&\& type <= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\_INTEGER\_LITERAL}}) ||                      \(\backslash\)}
+\DoxyCodeLine{     \textcolor{comment}{/*Types*/} (type >= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83}{T\_INT}} \&\& type <= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83}{T\_INT}}) ||                                                 \(\backslash\)}
+\DoxyCodeLine{     \textcolor{comment}{/*Miscellaneous*/} (type >= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf}{T\_SEMICOLON}} \&\& type <= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63}{T\_LVALUE\_IDENTIFIER}}))}
+
+\end{DoxyCode}
 
 
 Macro to determine if a Token\+Type is associated with a terminal AST Node. 
+
+\mbox{\Hypertarget{scan_8h_a6fab4f8e45fe721285aa5c861c37e0c1}\label{scan_8h_a6fab4f8e45fe721285aa5c861c37e0c1}} 
+\index{scan.h@{scan.h}!TTS\_ASSIGN@{TTS\_ASSIGN}}
+\index{TTS\_ASSIGN@{TTS\_ASSIGN}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{TTS\_ASSIGN}{TTS\_ASSIGN}}
+{\footnotesize\ttfamily \#define TTS\+\_\+\+ASSIGN~\char`\"{}=\char`\"{}}
 
 \mbox{\Hypertarget{scan_8h_a7149f58e15d6b128b39310679a2d4c38}\label{scan_8h_a7149f58e15d6b128b39310679a2d4c38}} 
 \index{scan.h@{scan.h}!TTS\_EOF@{TTS\_EOF}}
@@ -172,6 +194,18 @@ Macro to determine if a Token\+Type is associated with a terminal AST Node.
 \doxysubsubsection{\texorpdfstring{TTS\_GT}{TTS\_GT}}
 {\footnotesize\ttfamily \#define TTS\+\_\+\+GT~\char`\"{}$>$\char`\"{}}
 
+\mbox{\Hypertarget{scan_8h_a8846b3004b810435c8eeac38ebdb1eec}\label{scan_8h_a8846b3004b810435c8eeac38ebdb1eec}} 
+\index{scan.h@{scan.h}!TTS\_IDENTIFIER@{TTS\_IDENTIFIER}}
+\index{TTS\_IDENTIFIER@{TTS\_IDENTIFIER}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{TTS\_IDENTIFIER}{TTS\_IDENTIFIER}}
+{\footnotesize\ttfamily \#define TTS\+\_\+\+IDENTIFIER~\char`\"{}identifier\char`\"{}}
+
+\mbox{\Hypertarget{scan_8h_ae1c9235579ab0f8931698efc0689bacf}\label{scan_8h_ae1c9235579ab0f8931698efc0689bacf}} 
+\index{scan.h@{scan.h}!TTS\_INT@{TTS\_INT}}
+\index{TTS\_INT@{TTS\_INT}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{TTS\_INT}{TTS\_INT}}
+{\footnotesize\ttfamily \#define TTS\+\_\+\+INT~\char`\"{}int\char`\"{}}
+
 \mbox{\Hypertarget{scan_8h_a9594000ba5f90a9539403cbdfc4cc988}\label{scan_8h_a9594000ba5f90a9539403cbdfc4cc988}} 
 \index{scan.h@{scan.h}!TTS\_INTEGER\_LITERAL@{TTS\_INTEGER\_LITERAL}}
 \index{TTS\_INTEGER\_LITERAL@{TTS\_INTEGER\_LITERAL}!scan.h@{scan.h}}
@@ -189,6 +223,12 @@ Macro to determine if a Token\+Type is associated with a terminal AST Node.
 \index{TTS\_LT@{TTS\_LT}!scan.h@{scan.h}}
 \doxysubsubsection{\texorpdfstring{TTS\_LT}{TTS\_LT}}
 {\footnotesize\ttfamily \#define TTS\+\_\+\+LT~\char`\"{}$<$\char`\"{}}
+
+\mbox{\Hypertarget{scan_8h_a8ef63807b66125e7597b5d3fc09e4ab5}\label{scan_8h_a8ef63807b66125e7597b5d3fc09e4ab5}} 
+\index{scan.h@{scan.h}!TTS\_LVALUE\_IDENTIFIER@{TTS\_LVALUE\_IDENTIFIER}}
+\index{TTS\_LVALUE\_IDENTIFIER@{TTS\_LVALUE\_IDENTIFIER}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{TTS\_LVALUE\_IDENTIFIER}{TTS\_LVALUE\_IDENTIFIER}}
+{\footnotesize\ttfamily \#define TTS\+\_\+\+LVALUE\+\_\+\+IDENTIFIER~\char`\"{}lvalue identifier\char`\"{}}
 
 \mbox{\Hypertarget{scan_8h_a4498dadc8b674237ed78dc0f2d53dd44}\label{scan_8h_a4498dadc8b674237ed78dc0f2d53dd44}} 
 \index{scan.h@{scan.h}!TTS\_MINUS@{TTS\_MINUS}}
@@ -311,12 +351,28 @@ T\+\_\+\+GE&\\
 T\+\_\+\+INTEGER\+\_\+\+LITERAL&\\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_INT@{T\_INT}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_INT@{T\_INT}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83}} 
+T\+\_\+\+INT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_ASSIGN@{T\_ASSIGN}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_ASSIGN@{T\_ASSIGN}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720}} 
+T\+\_\+\+ASSIGN&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{T\_PRINT@{T\_PRINT}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_PRINT@{T\_PRINT}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921aa9d18789762367b48144de4ab345a73b}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921aa9d18789762367b48144de4ab345a73b}} 
 T\+\_\+\+PRINT&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{T\_SEMICOLON@{T\_SEMICOLON}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_SEMICOLON@{T\_SEMICOLON}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf}} 
 T\+\_\+\+SEMICOLON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_IDENTIFIER@{T\_IDENTIFIER}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_IDENTIFIER@{T\_IDENTIFIER}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a}} 
+T\+\_\+\+IDENTIFIER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_LVALUE\_IDENTIFIER@{T\_LVALUE\_IDENTIFIER}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_LVALUE\_IDENTIFIER@{T\_LVALUE\_IDENTIFIER}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63}} 
+T\+\_\+\+LVALUE\+\_\+\+IDENTIFIER&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -352,10 +408,25 @@ bool Returns true if a \mbox{\hyperlink{structToken}{Token}} was scanned success
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{= \{}
-\DoxyCodeLine{    \mbox{\hyperlink{scan_8h_a7149f58e15d6b128b39310679a2d4c38}{TTS\_EOF}},      \mbox{\hyperlink{scan_8h_a57fcc8292af8ab5dbc1ba1222c92e656}{TTS\_PLUS}}, \mbox{\hyperlink{scan_8h_a4498dadc8b674237ed78dc0f2d53dd44}{TTS\_MINUS}}, \mbox{\hyperlink{scan_8h_a035a192d545d9e2fae66af59d98c2e30}{TTS\_STAR}}, \mbox{\hyperlink{scan_8h_ab2974cb4da4d5b0174b395c10b6f7bcd}{TTS\_SLASH}}, \mbox{\hyperlink{scan_8h_a76df956b81ba2dfbb5b1a9dbdcbd916b}{TTS\_EXPONENT}},        \mbox{\hyperlink{scan_8h_ab4a2b680a10fe47c4b69dbcfe6df4127}{TTS\_EQ}},}
-\DoxyCodeLine{    \mbox{\hyperlink{scan_8h_a34455ceb28a6d9881bf620ce7fa085a6}{TTS\_NEQ}},      \mbox{\hyperlink{scan_8h_a8a5a49889cfa7a1dc000cd3e0356f891}{TTS\_LT}},   \mbox{\hyperlink{scan_8h_a9391ce01718fee07755d8ed7b3f2cf1b}{TTS\_GT}},    \mbox{\hyperlink{scan_8h_afea1fa794fd5cfb8217235f052c3f16f}{TTS\_LE}},   \mbox{\hyperlink{scan_8h_a7bf41eda078f643afe448e0d4fe3513d}{TTS\_GE}},    \mbox{\hyperlink{scan_8h_a9594000ba5f90a9539403cbdfc4cc988}{TTS\_INTEGER\_LITERAL}}, \mbox{\hyperlink{scan_8h_af0c6f1db37de72c86eb8abdf2eeb4316}{TTS\_PRINT}},}
-\DoxyCodeLine{    \mbox{\hyperlink{scan_8h_a0dee619cbc594f611dc45bc837c0253b}{TTS\_SEMICOLON}}\}}
+\DoxyCodeLine{= \{\mbox{\hyperlink{scan_8h_a7149f58e15d6b128b39310679a2d4c38}{TTS\_EOF}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a57fcc8292af8ab5dbc1ba1222c92e656}{TTS\_PLUS}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a4498dadc8b674237ed78dc0f2d53dd44}{TTS\_MINUS}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a035a192d545d9e2fae66af59d98c2e30}{TTS\_STAR}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_ab2974cb4da4d5b0174b395c10b6f7bcd}{TTS\_SLASH}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a76df956b81ba2dfbb5b1a9dbdcbd916b}{TTS\_EXPONENT}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_ab4a2b680a10fe47c4b69dbcfe6df4127}{TTS\_EQ}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a34455ceb28a6d9881bf620ce7fa085a6}{TTS\_NEQ}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a8a5a49889cfa7a1dc000cd3e0356f891}{TTS\_LT}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a9391ce01718fee07755d8ed7b3f2cf1b}{TTS\_GT}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_afea1fa794fd5cfb8217235f052c3f16f}{TTS\_LE}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a7bf41eda078f643afe448e0d4fe3513d}{TTS\_GE}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a9594000ba5f90a9539403cbdfc4cc988}{TTS\_INTEGER\_LITERAL}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_ae1c9235579ab0f8931698efc0689bacf}{TTS\_INT}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a6fab4f8e45fe721285aa5c861c37e0c1}{TTS\_ASSIGN}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_af0c6f1db37de72c86eb8abdf2eeb4316}{TTS\_PRINT}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a0dee619cbc594f611dc45bc837c0253b}{TTS\_SEMICOLON}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a8846b3004b810435c8eeac38ebdb1eec}{TTS\_IDENTIFIER}},}
+\DoxyCodeLine{                               \mbox{\hyperlink{scan_8h_a8ef63807b66125e7597b5d3fc09e4ab5}{TTS\_LVALUE\_IDENTIFIER}}\}}
 
 \end{DoxyCode}
 

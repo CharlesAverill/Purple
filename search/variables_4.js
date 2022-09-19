@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['generatorprogramfullpath_0',['generatorProgramFullPath',['../clang_8h.html#a557e1909a0c7d7b39e06a47586eea3d4',1,'clang.h']]],
-  ['generatorprogramllfullpath_1',['generatorProgramLLFullPath',['../clang_8h.html#a47210c5be27c00fe65ac814e22beecea',1,'clang.h']]],
-  ['generatorprogramwritten_2',['generatorProgramWritten',['../clang_8h.html#ab585cd02953166aee6f90d6d306e6eda',1,'clang.h']]]
+  ['filenames_0',['filenames',['../structPurpleArgs.html#a472dbb5a4f9205da6be8af0239e38272',1,'PurpleArgs']]],
+  ['freevirtualregistershead_1',['freeVirtualRegistersHead',['../llvm_8h.html#a14931181b0e852af3c22f3d9f3678e48',1,'freeVirtualRegistersHead():&#160;translate.c'],['../translate_8c.html#a14931181b0e852af3c22f3d9f3678e48',1,'freeVirtualRegistersHead():&#160;translate.c']]]
 ];

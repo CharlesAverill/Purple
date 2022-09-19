@@ -1,0 +1,5 @@
+<map id="SymbolTableStack" name="SymbolTableStack">
+<area shape="rect" id="node1" title="Stack of Symbol Tables used for scoping." alt="" coords="5,359,136,436"/>
+<area shape="rect" id="node2" href="$structSymbolTable.html" title="Holds data for symbols within a scope." alt="" coords="15,189,126,296"/>
+<area shape="rect" id="node3" href="$structSymbolTableEntry.html" title="Struct holding data about a symbol." alt="" coords="7,5,134,127"/>
+</map>

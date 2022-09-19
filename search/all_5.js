@@ -1,18 +1,13 @@
 var searchData=
 [
-  ['generate_5fllvm_0',['generate_llvm',['../translate_8h.html#ac2560f9333db7b4bc4b0dd4ef15b3dcc',1,'generate_llvm(void):&#160;translate.c'],['../translate_8c.html#ac2560f9333db7b4bc4b0dd4ef15b3dcc',1,'generate_llvm(void):&#160;translate.c']]],
-  ['generator_5fprogram_5fcontents_1',['GENERATOR_PROGRAM_CONTENTS',['../clang_8h.html#aadf030cd0471c3820bbbaf28939962e8',1,'clang.h']]],
-  ['generator_5fprogram_5fcontents_5flength_2',['GENERATOR_PROGRAM_CONTENTS_LENGTH',['../clang_8h.html#a7ee7a4dfe8493922ecc907b71ec7b6d4',1,'clang.h']]],
-  ['generator_5fprogram_5ffilename_3',['GENERATOR_PROGRAM_FILENAME',['../clang_8h.html#a64dbf9f48eb71d5d333061baf146d905',1,'clang.h']]],
-  ['generator_5fprogram_5ffilename_5fll_4',['GENERATOR_PROGRAM_FILENAME_LL',['../clang_8h.html#a888ca45ed84a867fe39d88c176dd3201',1,'clang.h']]],
-  ['generatorprogramfullpath_5',['generatorProgramFullPath',['../clang_8h.html#a557e1909a0c7d7b39e06a47586eea3d4',1,'clang.h']]],
-  ['generatorprogramllfullpath_6',['generatorProgramLLFullPath',['../clang_8h.html#a47210c5be27c00fe65ac814e22beecea',1,'clang.h']]],
-  ['generatorprogramwritten_7',['generatorProgramWritten',['../clang_8h.html#ab585cd02953166aee6f90d6d306e6eda',1,'clang.h']]],
-  ['get_5fnext_5flocal_5fvirtual_5fregister_8',['get_next_local_virtual_register',['../llvm_8h.html#acf6ffab57a0d67bd99dc3caa06a9e1d6',1,'get_next_local_virtual_register(void):&#160;llvm.c'],['../llvm_8c.html#acf6ffab57a0d67bd99dc3caa06a9e1d6',1,'get_next_local_virtual_register(void):&#160;llvm.c']]],
-  ['get_5foperatorprecedence_9',['get_operatorPrecedence',['../expression_8c.html#ace021c537d1a5bacc6190333c1b5dcd4',1,'expression.c']]],
-  ['get_5fpostamble_10',['get_postamble',['../clang_8h.html#a05c1a47a02bdbc3937ea103b8a6eae63',1,'clang.h']]],
-  ['get_5ftarget_5fdatalayout_11',['get_target_datalayout',['../clang_8h.html#aad50747c930d7d8fe05d741b81501f5c',1,'get_target_datalayout():&#160;clang.c'],['../clang_8c.html#aad50747c930d7d8fe05d741b81501f5c',1,'get_target_datalayout():&#160;clang.c']]],
-  ['get_5ftarget_5ftriple_12',['get_target_triple',['../clang_8h.html#ae6b73131bb54576584f6bdb9dc6378a7',1,'get_target_triple():&#160;clang.c'],['../clang_8c.html#ae6b73131bb54576584f6bdb9dc6378a7',1,'get_target_triple():&#160;clang.c']]],
-  ['get_5ftemp_5fdir_13',['get_temp_dir',['../clang_8c.html#ad757e0b452602859654ba026c29b5024',1,'clang.c']]],
-  ['grammar_14',['grammar',['../grammar.html',1,'']]]
+  ['fatal_0',['fatal',['../logging_8h.html#a3e2e8dc1bc2143b8356e8e13798b0c42',1,'fatal(ReturnCode rc, const char *fmt,...):&#160;logging.c'],['../logging_8c.html#a3e2e8dc1bc2143b8356e8e13798b0c42',1,'fatal(ReturnCode rc, const char *fmt,...):&#160;logging.c']]],
+  ['filenames_1',['filenames',['../structPurpleArgs.html#a472dbb5a4f9205da6be8af0239e38272',1,'PurpleArgs']]],
+  ['find_5fsymbol_5ftable_5fentry_2',['find_symbol_table_entry',['../symbol__table_8h.html#a8cee987c629bab7017e0eea921e4ab1f',1,'find_symbol_table_entry(SymbolTable *table, char *symbol_name):&#160;symbol_table.c'],['../symbol__table_8c.html#a8cee987c629bab7017e0eea921e4ab1f',1,'find_symbol_table_entry(SymbolTable *table, char *symbol_name):&#160;symbol_table.c']]],
+  ['fnv_5f1_3',['FNV_1',['../hash_8h.html#ab17e65bc44528a6dded8ef5b965cdcff',1,'FNV_1(char *str):&#160;hash.c'],['../hash_8c.html#ab17e65bc44528a6dded8ef5b965cdcff',1,'FNV_1(char *str):&#160;hash.c']]],
+  ['fnv_5foffset_5fbasis_4',['FNV_OFFSET_BASIS',['../hash_8h.html#ad2026578664bf796de1faaa6d562ff17',1,'hash.h']]],
+  ['fnv_5fprime_5',['FNV_PRIME',['../hash_8h.html#ad24caffb4ec2b57caeb823da822d3120',1,'hash.h']]],
+  ['formatting_2eh_6',['formatting.h',['../formatting_8h.html',1,'']]],
+  ['free_5fllvm_5fstack_5fentry_5fnode_5flist_7',['free_llvm_stack_entry_node_list',['../llvm__stack__entry_8h.html#a24f6f1959edad4155dc0418b5f041948',1,'free_llvm_stack_entry_node_list(LLVMStackEntryNode *head):&#160;llvm_stack_entry.c'],['../llvm__stack__entry_8c.html#a24f6f1959edad4155dc0418b5f041948',1,'free_llvm_stack_entry_node_list(LLVMStackEntryNode *head):&#160;llvm_stack_entry.c']]],
+  ['free_5fsymbol_5ftable_5fstack_8',['free_symbol_table_stack',['../symbol__table_8h.html#a346fc23f4e7fa1a296eac45b999f6536',1,'free_symbol_table_stack(SymbolTableStack *stack):&#160;symbol_table.c'],['../symbol__table_8c.html#a346fc23f4e7fa1a296eac45b999f6536',1,'free_symbol_table_stack(SymbolTableStack *stack):&#160;symbol_table.c']]],
+  ['freevirtualregistershead_9',['freeVirtualRegistersHead',['../llvm_8h.html#a14931181b0e852af3c22f3d9f3678e48',1,'freeVirtualRegistersHead():&#160;translate.c'],['../translate_8c.html#a14931181b0e852af3c22f3d9f3678e48',1,'freeVirtualRegistersHead():&#160;translate.c']]]
 ];

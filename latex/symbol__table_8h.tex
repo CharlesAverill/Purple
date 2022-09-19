@@ -1,0 +1,349 @@
+\hypertarget{symbol__table_8h}{}\doxysection{include/translate/symbol\+\_\+table.h File Reference}
+\label{symbol__table_8h}\index{include/translate/symbol\_table.h@{include/translate/symbol\_table.h}}
+
+
+Function headers and definitions for the global and local symbol tables.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for symbol\+\_\+table.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{symbol__table_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{symbol__table_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}}
+\begin{DoxyCompactList}\small\item\em Struct holding data about a symbol. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}}
+\begin{DoxyCompactList}\small\item\em Holds data for symbols within a scope. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}}
+\begin{DoxyCompactList}\small\item\em Stack of Symbol Tables used for scoping. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}{SYMBOL\+\_\+\+TABLE\+\_\+\+DEFAULT\+\_\+\+LENGTH}}~1024
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} \mbox{\hyperlink{symbol__table_8h_a70075dcb3cfa8811d6771d902040ede1}{Symbol\+Table\+Entry}}
+\begin{DoxyCompactList}\small\item\em Struct holding data about a symbol. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} \mbox{\hyperlink{symbol__table_8h_a0ef213c033eadd9c99ef43c1df3d9bd5}{Symbol\+Table}}
+\begin{DoxyCompactList}\small\item\em Holds data for symbols within a scope. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} \mbox{\hyperlink{symbol__table_8h_a13eccf949a1c465b7662b74e0d880409}{Symbol\+Table\+Stack}}
+\begin{DoxyCompactList}\small\item\em Stack of Symbol Tables used for scoping. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$ \mbox{\hyperlink{symbol__table_8h_a78f6b09625b0bd2da6bcf366eb1a6c03}{new\+\_\+symbol\+\_\+table\+\_\+stack}} (void)
+\begin{DoxyCompactList}\small\item\em Create a new Symbol Table Stack. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$ \mbox{\hyperlink{symbol__table_8h_aa9e85df6e628a2d7c77ed61e32b3884e}{new\+\_\+nonempty\+\_\+symbol\+\_\+table\+\_\+stack}} (void)
+\begin{DoxyCompactList}\small\item\em Create a new Symbol Table Stack with one empty Symbol Table at the bottom. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{symbol__table_8h_a346fc23f4e7fa1a296eac45b999f6536}{free\+\_\+symbol\+\_\+table\+\_\+stack}} (\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em Free all memory in a Symbol Table Stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{symbol__table_8h_af000bd991852803c5c9afbf8254f61b8}{push\+\_\+symbol\+\_\+table}} (\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em Push new empty Symbol Table onto Symbol Table Stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{symbol__table_8h_adc448b0f90b802302a34273a0e058d6d}{push\+\_\+existing\+\_\+symbol\+\_\+table}} (\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$stack, \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$new\+\_\+table)
+\begin{DoxyCompactList}\small\item\em Push existing Symbol Table onto Symbol Table Stack. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ \mbox{\hyperlink{symbol__table_8h_afeb6feeb636922dac2196bc7a4df7678}{pop\+\_\+symbol\+\_\+table}} (\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em Remove Symbol Table from Symbol Table Stack and return its pointer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{symbol__table_8h_afc191863c772a976e9cae92081f4c7db}{pop\+\_\+and\+\_\+free\+\_\+symbol\+\_\+table}} (\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em Remove Symbol Table from Symbol Table Stack and free its memory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ \mbox{\hyperlink{symbol__table_8h_a22baa579c30840a238351e7afbed177f}{peek\+\_\+symbol\+\_\+table}} (\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em Get pointer of the top Symbol Table from Symbol Table Stack. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ \mbox{\hyperlink{symbol__table_8h_a66d50bceed619e9635d0ff0f0639d55d}{new\+\_\+symbol\+\_\+table}} (void)
+\begin{DoxyCompactList}\small\item\em Get pointer to empty Symbol Table with length SYMBOL\+\_\+\+TABLE\+\_\+\+DEFAULT\+\_\+\+LENGTH. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ \mbox{\hyperlink{symbol__table_8h_a9ee026e65506b668f3ea22de08b22b8c}{new\+\_\+symbol\+\_\+table\+\_\+with\+\_\+length}} (int length)
+\begin{DoxyCompactList}\small\item\em Get pointer to empty Symbol Table with a custom length. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{symbol__table_8h_ace4eaeafa7e20975b8dc696cf7705b1f}{resize\+\_\+symbol\+\_\+table}} (\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$table)
+\begin{DoxyCompactList}\small\item\em Double the size of a Symbol Table\textquotesingle{}s buckets array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8h_a8cee987c629bab7017e0eea921e4ab1f}{find\+\_\+symbol\+\_\+table\+\_\+entry}} (\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$table, char $\ast$symbol\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Find the entry of a symbol in the provided Symbol Table if it exists. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8h_a19902129ff999624837d473ed4d77674}{new\+\_\+symbol\+\_\+table\+\_\+entry}} (char $\ast$symbol\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Get pointer to new Symbol Table Entry. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{symbol__table_8h_a6d088e847f4639719470df65b7d44c43}{add\+\_\+symbol\+\_\+table\+\_\+entry}} (\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$table, char $\ast$symbol\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Hash symbol\+\_\+name with hash function FNV-\/1 and put it into the chained Symbol Table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function headers and definitions for the global and local symbol tables. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+16-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}\label{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}} 
+\index{symbol\_table.h@{symbol\_table.h}!SYMBOL\_TABLE\_DEFAULT\_LENGTH@{SYMBOL\_TABLE\_DEFAULT\_LENGTH}}
+\index{SYMBOL\_TABLE\_DEFAULT\_LENGTH@{SYMBOL\_TABLE\_DEFAULT\_LENGTH}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_TABLE\_DEFAULT\_LENGTH}{SYMBOL\_TABLE\_DEFAULT\_LENGTH}}
+{\footnotesize\ttfamily \#define SYMBOL\+\_\+\+TABLE\+\_\+\+DEFAULT\+\_\+\+LENGTH~1024}
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{symbol__table_8h_a0ef213c033eadd9c99ef43c1df3d9bd5}\label{symbol__table_8h_a0ef213c033eadd9c99ef43c1df3d9bd5}} 
+\index{symbol\_table.h@{symbol\_table.h}!SymbolTable@{SymbolTable}}
+\index{SymbolTable@{SymbolTable}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{SymbolTable}{SymbolTable}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}}}
+
+
+
+Holds data for symbols within a scope. 
+
+\mbox{\Hypertarget{symbol__table_8h_a70075dcb3cfa8811d6771d902040ede1}\label{symbol__table_8h_a70075dcb3cfa8811d6771d902040ede1}} 
+\index{symbol\_table.h@{symbol\_table.h}!SymbolTableEntry@{SymbolTableEntry}}
+\index{SymbolTableEntry@{SymbolTableEntry}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{SymbolTableEntry}{SymbolTableEntry}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}}}
+
+
+
+Struct holding data about a symbol. 
+
+\mbox{\Hypertarget{symbol__table_8h_a13eccf949a1c465b7662b74e0d880409}\label{symbol__table_8h_a13eccf949a1c465b7662b74e0d880409}} 
+\index{symbol\_table.h@{symbol\_table.h}!SymbolTableStack@{SymbolTableStack}}
+\index{SymbolTableStack@{SymbolTableStack}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{SymbolTableStack}{SymbolTableStack}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} \mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}}}
+
+
+
+Stack of Symbol Tables used for scoping. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{symbol__table_8h_a6d088e847f4639719470df65b7d44c43}\label{symbol__table_8h_a6d088e847f4639719470df65b7d44c43}} 
+\index{symbol\_table.h@{symbol\_table.h}!add\_symbol\_table\_entry@{add\_symbol\_table\_entry}}
+\index{add\_symbol\_table\_entry@{add\_symbol\_table\_entry}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{add\_symbol\_table\_entry()}{add\_symbol\_table\_entry()}}
+{\footnotesize\ttfamily void add\+\_\+symbol\+\_\+table\+\_\+entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$}]{table,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Hash symbol\+\_\+name with hash function FNV-\/1 and put it into the chained Symbol Table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Table to put new Symbol Table Entry into \\
+\hline
+{\em symbol\+\_\+name} & Name of symbol to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{symbol__table_8h_a8cee987c629bab7017e0eea921e4ab1f}\label{symbol__table_8h_a8cee987c629bab7017e0eea921e4ab1f}} 
+\index{symbol\_table.h@{symbol\_table.h}!find\_symbol\_table\_entry@{find\_symbol\_table\_entry}}
+\index{find\_symbol\_table\_entry@{find\_symbol\_table\_entry}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{find\_symbol\_table\_entry()}{find\_symbol\_table\_entry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ find\+\_\+symbol\+\_\+table\+\_\+entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$}]{table,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Find the entry of a symbol in the provided Symbol Table if it exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Table to search in \\
+\hline
+{\em symbol\+\_\+name} & Name of symbol to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Symbol\+Table\+Entry$\ast$ Pointer to entry if it exists, else NULL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{symbol__table_8h_a346fc23f4e7fa1a296eac45b999f6536}\label{symbol__table_8h_a346fc23f4e7fa1a296eac45b999f6536}} 
+\index{symbol\_table.h@{symbol\_table.h}!free\_symbol\_table\_stack@{free\_symbol\_table\_stack}}
+\index{free\_symbol\_table\_stack@{free\_symbol\_table\_stack}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{free\_symbol\_table\_stack()}{free\_symbol\_table\_stack()}}
+{\footnotesize\ttfamily void free\+\_\+symbol\+\_\+table\+\_\+stack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$}]{stack }\end{DoxyParamCaption})}
+
+
+
+Free all memory in a Symbol Table Stack. 
+
+\mbox{\Hypertarget{symbol__table_8h_aa9e85df6e628a2d7c77ed61e32b3884e}\label{symbol__table_8h_aa9e85df6e628a2d7c77ed61e32b3884e}} 
+\index{symbol\_table.h@{symbol\_table.h}!new\_nonempty\_symbol\_table\_stack@{new\_nonempty\_symbol\_table\_stack}}
+\index{new\_nonempty\_symbol\_table\_stack@{new\_nonempty\_symbol\_table\_stack}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{new\_nonempty\_symbol\_table\_stack()}{new\_nonempty\_symbol\_table\_stack()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$ new\+\_\+nonempty\+\_\+symbol\+\_\+table\+\_\+stack (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Create a new Symbol Table Stack with one empty Symbol Table at the bottom. 
+
+\begin{DoxyReturn}{Returns}
+Symbol\+Table\+Stack$\ast$ Pointer to new non-\/empty Symbol Table Stack 
+\end{DoxyReturn}
+\mbox{\Hypertarget{symbol__table_8h_a66d50bceed619e9635d0ff0f0639d55d}\label{symbol__table_8h_a66d50bceed619e9635d0ff0f0639d55d}} 
+\index{symbol\_table.h@{symbol\_table.h}!new\_symbol\_table@{new\_symbol\_table}}
+\index{new\_symbol\_table@{new\_symbol\_table}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{new\_symbol\_table()}{new\_symbol\_table()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ new\+\_\+symbol\+\_\+table (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get pointer to empty Symbol Table with length SYMBOL\+\_\+\+TABLE\+\_\+\+DEFAULT\+\_\+\+LENGTH. 
+
+\begin{DoxyReturn}{Returns}
+Symbol\+Table$\ast$ Pointer to new empty Symbol Table 
+\end{DoxyReturn}
+\mbox{\Hypertarget{symbol__table_8h_a19902129ff999624837d473ed4d77674}\label{symbol__table_8h_a19902129ff999624837d473ed4d77674}} 
+\index{symbol\_table.h@{symbol\_table.h}!new\_symbol\_table\_entry@{new\_symbol\_table\_entry}}
+\index{new\_symbol\_table\_entry@{new\_symbol\_table\_entry}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{new\_symbol\_table\_entry()}{new\_symbol\_table\_entry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ new\+\_\+symbol\+\_\+table\+\_\+entry (\begin{DoxyParamCaption}\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Get pointer to new Symbol Table Entry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol\+\_\+name} & Name of new symbol \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Symbol\+Table\+Entry$\ast$ Pointer to new Symbol Table Entry 
+\end{DoxyReturn}
+\mbox{\Hypertarget{symbol__table_8h_a78f6b09625b0bd2da6bcf366eb1a6c03}\label{symbol__table_8h_a78f6b09625b0bd2da6bcf366eb1a6c03}} 
+\index{symbol\_table.h@{symbol\_table.h}!new\_symbol\_table\_stack@{new\_symbol\_table\_stack}}
+\index{new\_symbol\_table\_stack@{new\_symbol\_table\_stack}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{new\_symbol\_table\_stack()}{new\_symbol\_table\_stack()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$ new\+\_\+symbol\+\_\+table\+\_\+stack (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Create a new Symbol Table Stack. 
+
+\begin{DoxyReturn}{Returns}
+Symbol\+Table\+Stack$\ast$ Pointer to new empty Symbol Table Stack 
+\end{DoxyReturn}
+\mbox{\Hypertarget{symbol__table_8h_a9ee026e65506b668f3ea22de08b22b8c}\label{symbol__table_8h_a9ee026e65506b668f3ea22de08b22b8c}} 
+\index{symbol\_table.h@{symbol\_table.h}!new\_symbol\_table\_with\_length@{new\_symbol\_table\_with\_length}}
+\index{new\_symbol\_table\_with\_length@{new\_symbol\_table\_with\_length}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{new\_symbol\_table\_with\_length()}{new\_symbol\_table\_with\_length()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ new\+\_\+symbol\+\_\+table\+\_\+with\+\_\+length (\begin{DoxyParamCaption}\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Get pointer to empty Symbol Table with a custom length. 
+
+\begin{DoxyReturn}{Returns}
+Symbol\+Table$\ast$ Pointer to new empty Symbol Table 
+\end{DoxyReturn}
+\mbox{\Hypertarget{symbol__table_8h_a22baa579c30840a238351e7afbed177f}\label{symbol__table_8h_a22baa579c30840a238351e7afbed177f}} 
+\index{symbol\_table.h@{symbol\_table.h}!peek\_symbol\_table@{peek\_symbol\_table}}
+\index{peek\_symbol\_table@{peek\_symbol\_table}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{peek\_symbol\_table()}{peek\_symbol\_table()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ peek\+\_\+symbol\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$}]{stack }\end{DoxyParamCaption})}
+
+
+
+Get pointer of the top Symbol Table from Symbol Table Stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Stack to ppek at \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Symbol\+Table$\ast$ Pointer to peeked Symbol Table 
+\end{DoxyReturn}
+\mbox{\Hypertarget{symbol__table_8h_afc191863c772a976e9cae92081f4c7db}\label{symbol__table_8h_afc191863c772a976e9cae92081f4c7db}} 
+\index{symbol\_table.h@{symbol\_table.h}!pop\_and\_free\_symbol\_table@{pop\_and\_free\_symbol\_table}}
+\index{pop\_and\_free\_symbol\_table@{pop\_and\_free\_symbol\_table}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{pop\_and\_free\_symbol\_table()}{pop\_and\_free\_symbol\_table()}}
+{\footnotesize\ttfamily void pop\+\_\+and\+\_\+free\+\_\+symbol\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$}]{stack }\end{DoxyParamCaption})}
+
+
+
+Remove Symbol Table from Symbol Table Stack and free its memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Stack to pop from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{symbol__table_8h_afeb6feeb636922dac2196bc7a4df7678}\label{symbol__table_8h_afeb6feeb636922dac2196bc7a4df7678}} 
+\index{symbol\_table.h@{symbol\_table.h}!pop\_symbol\_table@{pop\_symbol\_table}}
+\index{pop\_symbol\_table@{pop\_symbol\_table}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{pop\_symbol\_table()}{pop\_symbol\_table()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ pop\+\_\+symbol\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$}]{stack }\end{DoxyParamCaption})}
+
+
+
+Remove Symbol Table from Symbol Table Stack and return its pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Stack to pop from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Symbol\+Table$\ast$ Pointer to popped Symbol Table 
+\end{DoxyReturn}
+\mbox{\Hypertarget{symbol__table_8h_adc448b0f90b802302a34273a0e058d6d}\label{symbol__table_8h_adc448b0f90b802302a34273a0e058d6d}} 
+\index{symbol\_table.h@{symbol\_table.h}!push\_existing\_symbol\_table@{push\_existing\_symbol\_table}}
+\index{push\_existing\_symbol\_table@{push\_existing\_symbol\_table}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{push\_existing\_symbol\_table()}{push\_existing\_symbol\_table()}}
+{\footnotesize\ttfamily void push\+\_\+existing\+\_\+symbol\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$}]{stack,  }\item[{\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$}]{new\+\_\+table }\end{DoxyParamCaption})}
+
+
+
+Push existing Symbol Table onto Symbol Table Stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Symbol Table Stack to push existing table onto \\
+\hline
+{\em new\+\_\+table} & New table to push onto stack \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{symbol__table_8h_af000bd991852803c5c9afbf8254f61b8}\label{symbol__table_8h_af000bd991852803c5c9afbf8254f61b8}} 
+\index{symbol\_table.h@{symbol\_table.h}!push\_symbol\_table@{push\_symbol\_table}}
+\index{push\_symbol\_table@{push\_symbol\_table}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{push\_symbol\_table()}{push\_symbol\_table()}}
+{\footnotesize\ttfamily void push\+\_\+symbol\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$}]{stack }\end{DoxyParamCaption})}
+
+
+
+Push new empty Symbol Table onto Symbol Table Stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Symbol Table Stack to push new table onto \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{symbol__table_8h_ace4eaeafa7e20975b8dc696cf7705b1f}\label{symbol__table_8h_ace4eaeafa7e20975b8dc696cf7705b1f}} 
+\index{symbol\_table.h@{symbol\_table.h}!resize\_symbol\_table@{resize\_symbol\_table}}
+\index{resize\_symbol\_table@{resize\_symbol\_table}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{resize\_symbol\_table()}{resize\_symbol\_table()}}
+{\footnotesize\ttfamily void resize\+\_\+symbol\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$}]{table }\end{DoxyParamCaption})}
+
+
+
+Double the size of a Symbol Table\textquotesingle{}s buckets array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Table to double the size of \\
+\hline
+\end{DoxyParams}

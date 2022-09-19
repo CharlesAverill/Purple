@@ -6,62 +6,58 @@
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef LOGGING}}
 \DoxyCodeLine{9 \textcolor{preprocessor}{\#define LOGGING}}
 \DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <stdarg.h>}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <stdio.h>}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <stdlib.h>}}
-\DoxyCodeLine{14 }
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{data_8h}{data.h}}"{}}}
-\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{shutdown_8h}{utils/shutdown.h}}"{}}}
-\DoxyCodeLine{17 }
-\DoxyCodeLine{18 \textcolor{preprocessor}{\#define ANSI\_BOLD "{}\(\backslash\)033[1m"{}}}
-\DoxyCodeLine{19 \textcolor{preprocessor}{\#define ANSI\_RED "{}\(\backslash\)033[38:5:196m"{}}}
-\DoxyCodeLine{20 \textcolor{preprocessor}{\#define ANSI\_ORANGE "{}\(\backslash\)033[38:5:208m"{}}}
-\DoxyCodeLine{21 \textcolor{preprocessor}{\#define ANSI\_YELLOW "{}\(\backslash\)033[38:5:178m"{}}}
-\DoxyCodeLine{22 \textcolor{preprocessor}{\#define ANSI\_RESET "{}\(\backslash\)033[0m"{}}}
-\DoxyCodeLine{23 }
-\DoxyCodeLine{24 \textcolor{preprocessor}{\#define ERROR\_RED ANSI\_RED ANSI\_BOLD}}
-\DoxyCodeLine{25 \textcolor{preprocessor}{\#define ERROR\_ORANGE ANSI\_ORANGE ANSI\_BOLD}}
-\DoxyCodeLine{26 \textcolor{preprocessor}{\#define ERROR\_YELLOW ANSI\_YELLOW ANSI\_BOLD}}
-\DoxyCodeLine{27 }
-\DoxyCodeLine{31 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
-\DoxyCodeLine{32 \{}
-\DoxyCodeLine{33     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a85639df34979de4e5ff6f7b05e4de8f1}{LOG\_NONE}},}
-\DoxyCodeLine{34     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e}{LOG\_DEBUG}},}
-\DoxyCodeLine{35     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837}{LOG\_INFO}},}
-\DoxyCodeLine{36     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400}{LOG\_WARNING}},}
-\DoxyCodeLine{37     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}{LOG\_ERROR}},}
-\DoxyCodeLine{38     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a065aa62cc0698301fbbe7b5448990708}{LOG\_CRITICAL}}}
-\DoxyCodeLine{39 \} \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}};}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{44 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
-\DoxyCodeLine{45     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}} \mbox{\hyperlink{structLogInfo_a8b9778ebccf6e8b387c97db572d84645}{level}};}
-\DoxyCodeLine{46     \textcolor{keywordtype}{char}* \mbox{\hyperlink{structLogInfo_af501795479e1c95e3d426fb28c51255f}{name}};}
-\DoxyCodeLine{47     \textcolor{keywordtype}{char}* \mbox{\hyperlink{structLogInfo_a05f39422ad65997038524c4fd3593da5}{color}};}
-\DoxyCodeLine{48 \} \mbox{\hyperlink{structLogInfo}{LogInfo}};}
-\DoxyCodeLine{49 }
-\DoxyCodeLine{53 \textcolor{keyword}{static} \textcolor{keyword}{const} \mbox{\hyperlink{structLogInfo}{LogInfo}} \mbox{\hyperlink{logging_8h_a59e149c6933a5ab3ce3d7820c755e882}{logInfoLevels}}[] = \{}
-\DoxyCodeLine{54     \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a85639df34979de4e5ff6f7b05e4de8f1}{LOG\_NONE}}, \textcolor{stringliteral}{"{}"{}}, \mbox{\hyperlink{logging_8h_af77a445894f2f750d43cf2182cd29e55}{ANSI\_RESET}}\},          \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e}{LOG\_DEBUG}}, \textcolor{stringliteral}{"{}[DEBUG]"{}}, \mbox{\hyperlink{logging_8h_a46587b83544b8e9be045bb93f644ac82}{ANSI\_BOLD}}\},}
-\DoxyCodeLine{55     \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837}{LOG\_INFO}}, \textcolor{stringliteral}{"{}[INFO]"{}}, \mbox{\hyperlink{logging_8h_a46587b83544b8e9be045bb93f644ac82}{ANSI\_BOLD}}\},     \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400}{LOG\_WARNING}}, \textcolor{stringliteral}{"{}[WARNING]"{}}, \mbox{\hyperlink{logging_8h_af6e8b5c7b35e8bff4c581efd8019c798}{ANSI\_YELLOW}}\},}
-\DoxyCodeLine{56     \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}{LOG\_ERROR}}, \textcolor{stringliteral}{"{}[ERROR]"{}}, \mbox{\hyperlink{logging_8h_a7abd01983a396871db34d8af6c2234da}{ANSI\_ORANGE}}\}, \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a065aa62cc0698301fbbe7b5448990708}{LOG\_CRITICAL}}, \textcolor{stringliteral}{"{}[CRITICAL]"{}}, \mbox{\hyperlink{logging_8h_a7f026776e12ac1b5e7736c24b756085d}{ANSI\_RED}}\}\};}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{61 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
-\DoxyCodeLine{62 \{}
-\DoxyCodeLine{63     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ecab834a5bb2ce6d97c2831fe3d71103c14}{RC\_OK}},}
-\DoxyCodeLine{64     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ecaae4a23b560d56fcf0981a9636f58edeb}{RC\_ERROR}},}
-\DoxyCodeLine{65     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ecab88f61475ecc583f660cd937529e15e8}{RC\_SYNTAX\_ERROR}},}
-\DoxyCodeLine{66     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144eca8ad91f9a2f61be46941a7dd9145d66c2}{RC\_MEMORY\_ERROR}},}
-\DoxyCodeLine{67     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144eca616c2bf4e696b3b321995bbe1776945b}{RC\_FILE\_ERROR}},}
-\DoxyCodeLine{68     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ecaa62f5654268c12e7157b106038efc6cb}{RC\_COMPILER\_ERROR}},}
-\DoxyCodeLine{69 \} \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{ReturnCode}};}
-\DoxyCodeLine{70 }
-\DoxyCodeLine{74 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{logging_8h_ac056197f8b96c1d78e1858c19eadcb0a}{returnCodeStrings}}[] = \{\textcolor{stringliteral}{"{}OK"{}},           \textcolor{stringliteral}{"{}ERROR"{}},      \textcolor{stringliteral}{"{}SYNTAX ERROR"{}},}
-\DoxyCodeLine{75                                           \textcolor{stringliteral}{"{}MEMORY ERROR"{}}, \textcolor{stringliteral}{"{}FILE ERROR"{}}, \textcolor{stringliteral}{"{}COMPILER ERROR"{}}\};}
-\DoxyCodeLine{76 }
-\DoxyCodeLine{77 \textcolor{keywordtype}{void} \mbox{\hyperlink{logging_8h_a3e2e8dc1bc2143b8356e8e13798b0c42}{fatal}}(\mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{ReturnCode}} rc, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
-\DoxyCodeLine{78 \textcolor{keywordtype}{void} \mbox{\hyperlink{logging_8h_ad3f93e9c7f297c7b02098203e676fb47}{syntax\_error}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* fn, \textcolor{keyword}{const} \textcolor{keywordtype}{int} line\_number, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
-\DoxyCodeLine{79 }
-\DoxyCodeLine{80 \textcolor{keywordtype}{void} \mbox{\hyperlink{logging_8h_a9cfd6399b1995d4e620bcb1aa53f4764}{purple\_log}}(\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}} level, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
-\DoxyCodeLine{81 }
-\DoxyCodeLine{82 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* LOGGING */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{shutdown_8h}{utils/shutdown.h}}"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define ANSI\_BOLD "{}\(\backslash\)033[1m"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define ANSI\_RED "{}\(\backslash\)033[38:5:196m"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define ANSI\_ORANGE "{}\(\backslash\)033[38:5:208m"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define ANSI\_YELLOW "{}\(\backslash\)033[38:5:178m"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define ANSI\_RESET "{}\(\backslash\)033[0m"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define ERROR\_RED ANSI\_RED ANSI\_BOLD}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define ERROR\_ORANGE ANSI\_ORANGE ANSI\_BOLD}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define ERROR\_YELLOW ANSI\_YELLOW ANSI\_BOLD}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{27     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a85639df34979de4e5ff6f7b05e4de8f1}{LOG\_NONE}},}
+\DoxyCodeLine{28     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e}{LOG\_DEBUG}},}
+\DoxyCodeLine{29     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837}{LOG\_INFO}},}
+\DoxyCodeLine{30     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400}{LOG\_WARNING}},}
+\DoxyCodeLine{31     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}{LOG\_ERROR}},}
+\DoxyCodeLine{32     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a065aa62cc0698301fbbe7b5448990708}{LOG\_CRITICAL}}}
+\DoxyCodeLine{33 \} \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{38 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{39     \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}} \mbox{\hyperlink{structLogInfo_a8b9778ebccf6e8b387c97db572d84645}{level}};}
+\DoxyCodeLine{40     \textcolor{keywordtype}{char}* \mbox{\hyperlink{structLogInfo_af501795479e1c95e3d426fb28c51255f}{name}};}
+\DoxyCodeLine{41     \textcolor{keywordtype}{char}* \mbox{\hyperlink{structLogInfo_a05f39422ad65997038524c4fd3593da5}{color}};}
+\DoxyCodeLine{42 \} \mbox{\hyperlink{structLogInfo}{LogInfo}};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{47 \textcolor{keyword}{static} \textcolor{keyword}{const} \mbox{\hyperlink{structLogInfo}{LogInfo}} \mbox{\hyperlink{logging_8h_a59e149c6933a5ab3ce3d7820c755e882}{logInfoLevels}}[] = \{}
+\DoxyCodeLine{48     \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a85639df34979de4e5ff6f7b05e4de8f1}{LOG\_NONE}}, \textcolor{stringliteral}{"{}"{}}, \mbox{\hyperlink{logging_8h_af77a445894f2f750d43cf2182cd29e55}{ANSI\_RESET}}\},          \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e}{LOG\_DEBUG}}, \textcolor{stringliteral}{"{}[DEBUG]"{}}, \mbox{\hyperlink{logging_8h_a46587b83544b8e9be045bb93f644ac82}{ANSI\_BOLD}}\},}
+\DoxyCodeLine{49     \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837}{LOG\_INFO}}, \textcolor{stringliteral}{"{}[INFO]"{}}, \mbox{\hyperlink{logging_8h_a46587b83544b8e9be045bb93f644ac82}{ANSI\_BOLD}}\},     \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400}{LOG\_WARNING}}, \textcolor{stringliteral}{"{}[WARNING]"{}}, \mbox{\hyperlink{logging_8h_af6e8b5c7b35e8bff4c581efd8019c798}{ANSI\_YELLOW}}\},}
+\DoxyCodeLine{50     \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}{LOG\_ERROR}}, \textcolor{stringliteral}{"{}[ERROR]"{}}, \mbox{\hyperlink{logging_8h_a7abd01983a396871db34d8af6c2234da}{ANSI\_ORANGE}}\}, \{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9a065aa62cc0698301fbbe7b5448990708}{LOG\_CRITICAL}}, \textcolor{stringliteral}{"{}[CRITICAL]"{}}, \mbox{\hyperlink{logging_8h_a7f026776e12ac1b5e7736c24b756085d}{ANSI\_RED}}\}\};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{55 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{56     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ecab834a5bb2ce6d97c2831fe3d71103c14}{RC\_OK}},}
+\DoxyCodeLine{57     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ecaae4a23b560d56fcf0981a9636f58edeb}{RC\_ERROR}},}
+\DoxyCodeLine{58     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ecab88f61475ecc583f660cd937529e15e8}{RC\_SYNTAX\_ERROR}},}
+\DoxyCodeLine{59     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144eca8ad91f9a2f61be46941a7dd9145d66c2}{RC\_MEMORY\_ERROR}},}
+\DoxyCodeLine{60     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144eca616c2bf4e696b3b321995bbe1776945b}{RC\_FILE\_ERROR}},}
+\DoxyCodeLine{61     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ecaa62f5654268c12e7157b106038efc6cb}{RC\_COMPILER\_ERROR}},}
+\DoxyCodeLine{62     \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144eca5f4ac2778f1e43b7b205d9dffe5750f5}{RC\_IDENTIFIER\_ERROR}},}
+\DoxyCodeLine{63 \} \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{ReturnCode}};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{68 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{logging_8h_ac056197f8b96c1d78e1858c19eadcb0a}{returnCodeStrings}}[] = \{}
+\DoxyCodeLine{69     \textcolor{stringliteral}{"{}OK"{}},         \textcolor{stringliteral}{"{}ERROR"{}},          \textcolor{stringliteral}{"{}SYNTAX ERROR"{}},    \textcolor{stringliteral}{"{}MEMORY ERROR"{}},}
+\DoxyCodeLine{70     \textcolor{stringliteral}{"{}FILE ERROR"{}}, \textcolor{stringliteral}{"{}COMPILER ERROR"{}}, \textcolor{stringliteral}{"{}IDENTIFIER ERROR"{}}\};}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{keywordtype}{void} \mbox{\hyperlink{logging_8h_a3e2e8dc1bc2143b8356e8e13798b0c42}{fatal}}(\mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{ReturnCode}} rc, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
+\DoxyCodeLine{73 \textcolor{keywordtype}{void} \mbox{\hyperlink{logging_8h_ad3f93e9c7f297c7b02098203e676fb47}{syntax\_error}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* fn, \textcolor{keyword}{const} \textcolor{keywordtype}{int} line\_number, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
+\DoxyCodeLine{74 \textcolor{keywordtype}{void} \mbox{\hyperlink{logging_8h_ae6862a45445edc1bbebf19cbef187a25}{identifier\_error}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* fn, \textcolor{keyword}{const} \textcolor{keywordtype}{int} line\_number, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{keywordtype}{void} \mbox{\hyperlink{logging_8h_a9cfd6399b1995d4e620bcb1aa53f4764}{purple\_log}}(\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}} level, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* LOGGING */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

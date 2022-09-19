@@ -16,7 +16,7 @@ Collaboration diagram for Token\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=128pt]{structToken__coll__graph}
+\includegraphics[width=193pt]{structToken__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Attributes}
@@ -24,27 +24,45 @@ Collaboration diagram for Token\+:
 \item 
 \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \mbox{\hyperlink{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}{type}}
 \item 
-int \mbox{\hyperlink{structToken_a041346a45c6c5571a78a6af3394a2756}{value}}
-\end{DoxyCompactItemize}
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>int \mbox{\hyperlink{structToken_a0bd1ec80054e52bb87e5f5c4fd2f6931}{int\_value}}\\
+\>unsigned long int \mbox{\hyperlink{structToken_a3b51c076680a3ee64390eca9bd1c204c}{global\_symbol\_table\_index}}\\
+\} \mbox{\hyperlink{structToken_aa8cbd23eb93e4c0f3f2627c3e5b5591d}{value}}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Structure containing information about individual scannable tokens. 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}\label{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}} 
+\mbox{\Hypertarget{structToken_a3b51c076680a3ee64390eca9bd1c204c}\label{structToken_a3b51c076680a3ee64390eca9bd1c204c}} 
+\index{Token@{Token}!global\_symbol\_table\_index@{global\_symbol\_table\_index}}
+\index{global\_symbol\_table\_index@{global\_symbol\_table\_index}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{global\_symbol\_table\_index}{global\_symbol\_table\_index}}
+{\footnotesize\ttfamily unsigned long int Token\+::global\+\_\+symbol\+\_\+table\+\_\+index}
+
+Index of identifier in global symbol table \mbox{\Hypertarget{structToken_a0bd1ec80054e52bb87e5f5c4fd2f6931}\label{structToken_a0bd1ec80054e52bb87e5f5c4fd2f6931}} 
+\index{Token@{Token}!int\_value@{int\_value}}
+\index{int\_value@{int\_value}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{int\_value}{int\_value}}
+{\footnotesize\ttfamily int Token\+::int\+\_\+value}
+
+Value of integer token \mbox{\Hypertarget{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}\label{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}} 
 \index{Token@{Token}!type@{type}}
 \index{type@{type}!Token@{Token}}
 \doxysubsubsection{\texorpdfstring{type}{type}}
 {\footnotesize\ttfamily \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} Token\+::type}
 
-Type of token \mbox{\Hypertarget{structToken_a041346a45c6c5571a78a6af3394a2756}\label{structToken_a041346a45c6c5571a78a6af3394a2756}} 
+Type of token \mbox{\Hypertarget{structToken_aa8cbd23eb93e4c0f3f2627c3e5b5591d}\label{structToken_aa8cbd23eb93e4c0f3f2627c3e5b5591d}} 
 \index{Token@{Token}!value@{value}}
 \index{value@{value}!Token@{Token}}
-\doxysubsubsection{\texorpdfstring{value}{value}}
-{\footnotesize\ttfamily int Token\+::value}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily union  \{ ... \}  Token\+::value}
 
-Value of integer token 
+Value of token 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

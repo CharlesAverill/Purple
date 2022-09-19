@@ -1,0 +1,53 @@
+\hypertarget{hash_8c}{}\doxysection{src/utils/hash.c File Reference}
+\label{hash_8c}\index{src/utils/hash.c@{src/utils/hash.c}}
+
+
+Logic for hashing functions.  
+
+
+{\ttfamily \#include \char`\"{}utils/hash.\+h\char`\"{}}\newline
+Include dependency graph for hash.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{hash_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long int \mbox{\hyperlink{hash_8c_ab17e65bc44528a6dded8ef5b965cdcff}{FNV\+\_\+1}} (char $\ast$str)
+\begin{DoxyCompactList}\small\item\em FNV-\/1 String hashing algorithm as defined here\+: \href{https://en.wikipedia.org/wiki/Fowler\%E2\%80\%93Noll\%E2\%80\%93Vo_hash_function\#FNV-1_hash}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Fowler\%\+E2\%80\%93\+Noll\%\+E2\%80\%93\+Vo\+\_\+hash\+\_\+function\#\+FNV-\/1\+\_\+hash}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Logic for hashing functions. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+17-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{hash_8c_ab17e65bc44528a6dded8ef5b965cdcff}\label{hash_8c_ab17e65bc44528a6dded8ef5b965cdcff}} 
+\index{hash.c@{hash.c}!FNV\_1@{FNV\_1}}
+\index{FNV\_1@{FNV\_1}!hash.c@{hash.c}}
+\doxysubsubsection{\texorpdfstring{FNV\_1()}{FNV\_1()}}
+{\footnotesize\ttfamily unsigned long int FNV\+\_\+1 (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+FNV-\/1 String hashing algorithm as defined here\+: \href{https://en.wikipedia.org/wiki/Fowler\%E2\%80\%93Noll\%E2\%80\%93Vo_hash_function\#FNV-1_hash}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Fowler\%\+E2\%80\%93\+Noll\%\+E2\%80\%93\+Vo\+\_\+hash\+\_\+function\#\+FNV-\/1\+\_\+hash}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned long int Hash value 
+\end{DoxyReturn}

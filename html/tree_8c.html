@@ -76,49 +76,43 @@ $(function() {
 
 <p>Logic for constructing an Abstract Syntax Tree (AST)  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="tree_8h_source.html">tree.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="tree_8h_source.html">tree.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for tree.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="tree_8c__incl.png" border="0" usemap="#asrc_2tree_8c" alt=""/></div>
 <map name="asrc_2tree_8c" id="asrc_2tree_8c">
-<area shape="rect" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="206,5,282,32"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="217,80,271,107"/>
-<area shape="rect" title=" " alt="" coords="50,453,113,480"/>
-<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="301,155,361,181"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="193,229,295,256"/>
-<area shape="rect" title=" " alt="" coords="319,229,382,256"/>
-<area shape="rect" title=" " alt="" coords="407,229,481,256"/>
-<area shape="rect" title=" " alt="" coords="290,379,350,405"/>
-<area shape="rect" title=" " alt="" coords="429,453,493,480"/>
-<area shape="rect" title=" " alt="" coords="278,304,346,331"/>
-<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="145,304,202,331"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="370,304,486,331"/>
-<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="145,379,266,405"/>
-<area shape="rect" title=" " alt="" coords="157,453,214,480"/>
-<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="239,453,292,480"/>
+<area shape="rect" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="43,5,119,32"/>
+<area shape="rect" title=" " alt="" coords="11,80,71,107"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="95,80,149,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,68,181"/>
+<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="92,155,152,181"/>
+<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="201,155,302,181"/>
+<area shape="rect" title=" " alt="" coords="85,229,159,256"/>
+<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="193,229,309,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a915e772bd69ae842cad589acf8fb3ad5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a915e772bd69ae842cad589acf8fb3ad5">create_ast_node</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, <a class="el" href="structASTNode.html">ASTNode</a> *left, <a class="el" href="structASTNode.html">ASTNode</a> *mid, <a class="el" href="structASTNode.html">ASTNode</a> *right, long value)</td></tr>
-<tr class="memdesc:a915e772bd69ae842cad589acf8fb3ad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Node with the provided values.  <a href="tree_8c.html#a915e772bd69ae842cad589acf8fb3ad5">More...</a><br /></td></tr>
-<tr class="separator:a915e772bd69ae842cad589acf8fb3ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b486a5b3aa6f1d3405d5fc2d7272732"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a0b486a5b3aa6f1d3405d5fc2d7272732">create_ast_leaf</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, long value)</td></tr>
-<tr class="memdesc:a0b486a5b3aa6f1d3405d5fc2d7272732"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Leaf Node with the provided values.  <a href="tree_8c.html#a0b486a5b3aa6f1d3405d5fc2d7272732">More...</a><br /></td></tr>
-<tr class="separator:a0b486a5b3aa6f1d3405d5fc2d7272732"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9794c678cd8461862083fa041a50463e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a9794c678cd8461862083fa041a50463e">create_unary_ast_node</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, <a class="el" href="structASTNode.html">ASTNode</a> *child, int value)</td></tr>
-<tr class="memdesc:a9794c678cd8461862083fa041a50463e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Unary Parent Node with the provided values.  <a href="tree_8c.html#a9794c678cd8461862083fa041a50463e">More...</a><br /></td></tr>
-<tr class="separator:a9794c678cd8461862083fa041a50463e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb7c6db24955212a6ad9a5ac7947afe5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#abb7c6db24955212a6ad9a5ac7947afe5">create_ast_node</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, <a class="el" href="structASTNode.html">ASTNode</a> *left, <a class="el" href="structASTNode.html">ASTNode</a> *mid, <a class="el" href="structASTNode.html">ASTNode</a> *right, unsigned long int value)</td></tr>
+<tr class="memdesc:abb7c6db24955212a6ad9a5ac7947afe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Node with the provided values.  <a href="tree_8c.html#abb7c6db24955212a6ad9a5ac7947afe5">More...</a><br /></td></tr>
+<tr class="separator:abb7c6db24955212a6ad9a5ac7947afe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00fffa8f9aff69ca46abf5546fd788e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a00fffa8f9aff69ca46abf5546fd788e0">create_ast_leaf</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, unsigned long int value)</td></tr>
+<tr class="memdesc:a00fffa8f9aff69ca46abf5546fd788e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Leaf Node with the provided values.  <a href="tree_8c.html#a00fffa8f9aff69ca46abf5546fd788e0">More...</a><br /></td></tr>
+<tr class="separator:a00fffa8f9aff69ca46abf5546fd788e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c120729f16efddf089474356bf271ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a9c120729f16efddf089474356bf271ea">create_unary_ast_node</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, <a class="el" href="structASTNode.html">ASTNode</a> *child, unsigned long int value)</td></tr>
+<tr class="memdesc:a9c120729f16efddf089474356bf271ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Unary Parent Node with the provided values.  <a href="tree_8c.html#a9c120729f16efddf089474356bf271ea">More...</a><br /></td></tr>
+<tr class="separator:a9c120729f16efddf089474356bf271ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Logic for constructing an Abstract Syntax Tree (AST) </p>
 <dl class="section author"><dt>Author</dt><dd>Charles Averill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>09-Sep-2022 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a0b486a5b3aa6f1d3405d5fc2d7272732" name="a0b486a5b3aa6f1d3405d5fc2d7272732"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b486a5b3aa6f1d3405d5fc2d7272732">&#9670;&nbsp;</a></span>create_ast_leaf()</h2>
+<a id="a00fffa8f9aff69ca46abf5546fd788e0" name="a00fffa8f9aff69ca46abf5546fd788e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00fffa8f9aff69ca46abf5546fd788e0">&#9670;&nbsp;</a></span>create_ast_leaf()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -132,7 +126,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">long&#160;</td>
+          <td class="paramtype">unsigned long int&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -155,8 +149,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a915e772bd69ae842cad589acf8fb3ad5" name="a915e772bd69ae842cad589acf8fb3ad5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a915e772bd69ae842cad589acf8fb3ad5">&#9670;&nbsp;</a></span>create_ast_node()</h2>
+<a id="abb7c6db24955212a6ad9a5ac7947afe5" name="abb7c6db24955212a6ad9a5ac7947afe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb7c6db24955212a6ad9a5ac7947afe5">&#9670;&nbsp;</a></span>create_ast_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,7 +182,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">long&#160;</td>
+          <td class="paramtype">unsigned long int&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -214,8 +208,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9794c678cd8461862083fa041a50463e" name="a9794c678cd8461862083fa041a50463e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9794c678cd8461862083fa041a50463e">&#9670;&nbsp;</a></span>create_unary_ast_node()</h2>
+<a id="a9c120729f16efddf089474356bf271ea" name="a9c120729f16efddf089474356bf271ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c120729f16efddf089474356bf271ea">&#9670;&nbsp;</a></span>create_unary_ast_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,7 +229,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned long int&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>

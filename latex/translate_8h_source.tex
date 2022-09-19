@@ -6,19 +6,15 @@
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef TRANSLATE\_H}}
 \DoxyCodeLine{9 \textcolor{preprocessor}{\#define TRANSLATE\_H}}
 \DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <stdio.h>}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <stdlib.h>}}
-\DoxyCodeLine{13 }
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{parse_8h}{parse.h}}"{}}}
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{llvm_8h}{translate/llvm.h}}"{}}}
-\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tree_8h}{tree.h}}"{}}}
-\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{number_8h}{types/number.h}}"{}}}
-\DoxyCodeLine{18 }
-\DoxyCodeLine{19 \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}* \mbox{\hyperlink{translate_8h_a7abbf5b5f5d3fc9d561f7e080077bb9e}{determine\_binary\_expression\_stack\_allocation}}(\mbox{\hyperlink{structASTNode}{ASTNode}}* root);}
-\DoxyCodeLine{20 }
-\DoxyCodeLine{21 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8h_ab4bb4871076aa73ec76e957aececfa8f}{ast\_to\_llvm}}(\mbox{\hyperlink{structASTNode}{ASTNode}}* n);}
-\DoxyCodeLine{22 \textcolor{keywordtype}{void} \mbox{\hyperlink{translate_8h_ac2560f9333db7b4bc4b0dd4ef15b3dcc}{generate\_llvm}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{23 }
-\DoxyCodeLine{24 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TRANSLATE\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{parse_8h}{parse.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{llvm_8h}{translate/llvm.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tree_8h}{tree.h}}"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}* \mbox{\hyperlink{translate_8h_a7abbf5b5f5d3fc9d561f7e080077bb9e}{determine\_binary\_expression\_stack\_allocation}}(\mbox{\hyperlink{structASTNode}{ASTNode}}* root);}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8h_a4178bbc4cd024087a8cdcdd0a1f1c002}{ast\_to\_llvm}}(\mbox{\hyperlink{structASTNode}{ASTNode}}* n, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\_register}} register\_number);}
+\DoxyCodeLine{18 \textcolor{keywordtype}{void} \mbox{\hyperlink{translate_8h_ac2560f9333db7b4bc4b0dd4ef15b3dcc}{generate\_llvm}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TRANSLATE\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

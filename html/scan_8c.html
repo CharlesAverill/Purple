@@ -76,28 +76,27 @@ $(function() {
 
 <p>Functions for lexical scanning from input source files.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;ctype.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="data_8h_source.html">data.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="scan_8h_source.html">scan.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="logging_8h_source.html">utils/logging.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for scan.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="scan_8c__incl.png" border="0" usemap="#asrc_2scan_8c" alt=""/></div>
 <map name="asrc_2scan_8c" id="asrc_2scan_8c">
-<area shape="rect" title="Functions for lexical scanning from input source files." alt="" coords="186,5,269,32"/>
-<area shape="rect" title=" " alt="" coords="5,229,68,256"/>
-<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="265,80,323,107"/>
-<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="231,155,291,181"/>
-<area shape="rect" title=" " alt="" coords="167,304,227,331"/>
-<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="523,155,644,181"/>
-<area shape="rect" title=" " alt="" coords="143,229,218,256"/>
-<area shape="rect" title=" " alt="" coords="483,304,545,331"/>
-<area shape="rect" title=" " alt="" coords="469,229,533,256"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="293,229,394,256"/>
-<area shape="rect" title=" " alt="" coords="251,304,319,331"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="343,304,459,331"/>
-<area shape="rect" title=" " alt="" coords="635,229,692,256"/>
-<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="557,229,610,256"/>
+<area shape="rect" title="Functions for lexical scanning from input source files." alt="" coords="137,5,219,32"/>
+<area shape="rect" title=" " alt="" coords="43,80,107,107"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="183,80,240,107"/>
+<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="5,155,65,181"/>
+<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="435,80,537,107"/>
+<area shape="rect" title=" " alt="" coords="113,155,173,181"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="198,155,361,181"/>
+<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="385,155,507,181"/>
+<area shape="rect" title=" " alt="" coords="158,229,233,256"/>
+<area shape="rect" title=" " alt="" coords="377,229,435,256"/>
+<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="459,229,513,256"/>
+<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="531,155,647,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -109,15 +108,15 @@ Functions</h2></td></tr>
 <tr class="memitem:aa675e2a79ca95a2b6861a587655eef81"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#aa675e2a79ca95a2b6861a587655eef81">put_back_into_stream</a> (char c)</td></tr>
 <tr class="memdesc:aa675e2a79ca95a2b6861a587655eef81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put a character back into the input stream.  <a href="scan_8c.html#aa675e2a79ca95a2b6861a587655eef81">More...</a><br /></td></tr>
 <tr class="separator:aa675e2a79ca95a2b6861a587655eef81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1cbaaa04222c8794e6fb52ab9a0078d"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#ae1cbaaa04222c8794e6fb52ab9a0078d">skip</a> (void)</td></tr>
-<tr class="memdesc:ae1cbaaa04222c8794e6fb52ab9a0078d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skips whitespace tokens.  <a href="scan_8c.html#ae1cbaaa04222c8794e6fb52ab9a0078d">More...</a><br /></td></tr>
-<tr class="separator:ae1cbaaa04222c8794e6fb52ab9a0078d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86d1f1bccadab31732ccd799bed1abb3"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#a86d1f1bccadab31732ccd799bed1abb3">skip_whitespace</a> (void)</td></tr>
+<tr class="memdesc:a86d1f1bccadab31732ccd799bed1abb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skips whitespace tokens.  <a href="scan_8c.html#a86d1f1bccadab31732ccd799bed1abb3">More...</a><br /></td></tr>
+<tr class="separator:a86d1f1bccadab31732ccd799bed1abb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe176fe0d1142633375951f2e45831bc"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#afe176fe0d1142633375951f2e45831bc">index_of</a> (char *s, int c)</td></tr>
 <tr class="memdesc:afe176fe0d1142633375951f2e45831bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the index of char c in string s.  <a href="scan_8c.html#afe176fe0d1142633375951f2e45831bc">More...</a><br /></td></tr>
 <tr class="separator:afe176fe0d1142633375951f2e45831bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaef79548b221cbef5702e4b9957aeb8"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#afaef79548b221cbef5702e4b9957aeb8">scanint</a> (char c)</td></tr>
-<tr class="memdesc:afaef79548b221cbef5702e4b9957aeb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scan and return an integer literal from the input stream.  <a href="scan_8c.html#afaef79548b221cbef5702e4b9957aeb8">More...</a><br /></td></tr>
-<tr class="separator:afaef79548b221cbef5702e4b9957aeb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f4c06379367bf6bfc0b86087997d66f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#a4f4c06379367bf6bfc0b86087997d66f">scan_integer_literal</a> (char c)</td></tr>
+<tr class="memdesc:a4f4c06379367bf6bfc0b86087997d66f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scan and return an integer literal from the input stream.  <a href="scan_8c.html#a4f4c06379367bf6bfc0b86087997d66f">More...</a><br /></td></tr>
+<tr class="separator:a4f4c06379367bf6bfc0b86087997d66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a266d26db82d5dbb4136042baf955f5ad"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8c.html#a266d26db82d5dbb4136042baf955f5ad">is_valid_identifier_char</a> (char c, int index)</td></tr>
 <tr class="memdesc:a266d26db82d5dbb4136042baf955f5ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if a character in an identifier is a permitted character.  <a href="scan_8c.html#a266d26db82d5dbb4136042baf955f5ad">More...</a><br /></td></tr>
 <tr class="separator:a266d26db82d5dbb4136042baf955f5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -482,8 +481,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afaef79548b221cbef5702e4b9957aeb8" name="afaef79548b221cbef5702e4b9957aeb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afaef79548b221cbef5702e4b9957aeb8">&#9670;&nbsp;</a></span>scanint()</h2>
+<a id="a4f4c06379367bf6bfc0b86087997d66f" name="a4f4c06379367bf6bfc0b86087997d66f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f4c06379367bf6bfc0b86087997d66f">&#9670;&nbsp;</a></span>scan_integer_literal()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -492,7 +491,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int scanint </td>
+          <td class="memname">static int scan_integer_literal </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
@@ -517,8 +516,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae1cbaaa04222c8794e6fb52ab9a0078d" name="ae1cbaaa04222c8794e6fb52ab9a0078d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1cbaaa04222c8794e6fb52ab9a0078d">&#9670;&nbsp;</a></span>skip()</h2>
+<a id="a86d1f1bccadab31732ccd799bed1abb3" name="a86d1f1bccadab31732ccd799bed1abb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86d1f1bccadab31732ccd799bed1abb3">&#9670;&nbsp;</a></span>skip_whitespace()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -527,7 +526,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static char skip </td>
+          <td class="memname">static char skip_whitespace </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>

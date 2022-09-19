@@ -6,70 +6,96 @@
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef SCAN\_H}}
 \DoxyCodeLine{9 \textcolor{preprocessor}{\#define SCAN\_H}}
 \DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <ctype.h>}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <stdbool.h>}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <stdio.h>}}
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <stdlib.h>}}
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <string.h>}}
-\DoxyCodeLine{16 }
-\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{logging_8h}{utils/logging.h}}"{}}}
-\DoxyCodeLine{18 }
-\DoxyCodeLine{22 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
-\DoxyCodeLine{23 \{}
-\DoxyCodeLine{24     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a9882ff017eb83e311ec8ad12ab646455}{T\_EOF}},}
-\DoxyCodeLine{25     \textcolor{comment}{// Arithmetic Operators}}
-\DoxyCodeLine{26     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2}{T\_PLUS}},}
-\DoxyCodeLine{27     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aeabbf9419f82ec47ab35d6931784dfb4}{T\_MINUS}},}
-\DoxyCodeLine{28     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a6fad6b41ffee1efe0dfc7b12a19c0672}{T\_STAR}},}
-\DoxyCodeLine{29     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a}{T\_SLASH}},}
-\DoxyCodeLine{30     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd}{T\_EXPONENT}},}
-\DoxyCodeLine{31     \textcolor{comment}{// Comparison Operators}}
-\DoxyCodeLine{32     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad}{T\_EQ}},}
-\DoxyCodeLine{33     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af7c934b483e2a65d6212722999121c0e}{T\_NEQ}},}
-\DoxyCodeLine{34     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a9e53bc57aabd3d3baa91aed85cb9f0fc}{T\_LT}},}
-\DoxyCodeLine{35     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ac869f90f0fc081ae0e4a1c7746c11f3d}{T\_GT}},}
-\DoxyCodeLine{36     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aa2fbee07f3776bb841fe1ac13629eb9d}{T\_LE}},}
-\DoxyCodeLine{37     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df}{T\_GE}},}
-\DoxyCodeLine{38     \textcolor{comment}{// Literals}}
-\DoxyCodeLine{39     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\_INTEGER\_LITERAL}},}
-\DoxyCodeLine{40     \textcolor{comment}{// Keywords}}
-\DoxyCodeLine{41     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aa9d18789762367b48144de4ab345a73b}{T\_PRINT}},}
-\DoxyCodeLine{42     \textcolor{comment}{// Miscellaneous}}
-\DoxyCodeLine{43     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf}{T\_SEMICOLON}},}
-\DoxyCodeLine{44 \} \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}};}
-\DoxyCodeLine{45 }
-\DoxyCodeLine{46 \textcolor{preprocessor}{\#define TTS\_EOF "{}EOF"{}}}
-\DoxyCodeLine{47 \textcolor{preprocessor}{\#define TTS\_PLUS "{}+"{}}}
-\DoxyCodeLine{48 \textcolor{preprocessor}{\#define TTS\_MINUS "{}-\/"{}}}
-\DoxyCodeLine{49 \textcolor{preprocessor}{\#define TTS\_STAR "{}*"{}}}
-\DoxyCodeLine{50 \textcolor{preprocessor}{\#define TTS\_SLASH "{}/"{}}}
-\DoxyCodeLine{51 \textcolor{preprocessor}{\#define TTS\_EXPONENT "{}**"{}}}
-\DoxyCodeLine{52 \textcolor{preprocessor}{\#define TTS\_EQ "{}=="{}}}
-\DoxyCodeLine{53 \textcolor{preprocessor}{\#define TTS\_NEQ "{}!="{}}}
-\DoxyCodeLine{54 \textcolor{preprocessor}{\#define TTS\_LT "{}<"{}}}
-\DoxyCodeLine{55 \textcolor{preprocessor}{\#define TTS\_GT "{}>"{}}}
-\DoxyCodeLine{56 \textcolor{preprocessor}{\#define TTS\_LE "{}<="{}}}
-\DoxyCodeLine{57 \textcolor{preprocessor}{\#define TTS\_GE "{}>="{}}}
-\DoxyCodeLine{58 \textcolor{preprocessor}{\#define TTS\_INTEGER\_LITERAL "{}integer literal"{}}}
-\DoxyCodeLine{59 \textcolor{preprocessor}{\#define TTS\_PRINT "{}print"{}}}
-\DoxyCodeLine{60 \textcolor{preprocessor}{\#define TTS\_SEMICOLON "{};"{}}}
-\DoxyCodeLine{61 }
-\DoxyCodeLine{65 \textcolor{keyword}{static} \textcolor{keywordtype}{char}* \mbox{\hyperlink{scan_8h_a3cef8f6f6c1a827c5f882dc5ab2024e7}{tokenStrings}}[] = \{}
-\DoxyCodeLine{66     \mbox{\hyperlink{scan_8h_a7149f58e15d6b128b39310679a2d4c38}{TTS\_EOF}},      \mbox{\hyperlink{scan_8h_a57fcc8292af8ab5dbc1ba1222c92e656}{TTS\_PLUS}}, \mbox{\hyperlink{scan_8h_a4498dadc8b674237ed78dc0f2d53dd44}{TTS\_MINUS}}, \mbox{\hyperlink{scan_8h_a035a192d545d9e2fae66af59d98c2e30}{TTS\_STAR}}, \mbox{\hyperlink{scan_8h_ab2974cb4da4d5b0174b395c10b6f7bcd}{TTS\_SLASH}}, \mbox{\hyperlink{scan_8h_a76df956b81ba2dfbb5b1a9dbdcbd916b}{TTS\_EXPONENT}},        \mbox{\hyperlink{scan_8h_ab4a2b680a10fe47c4b69dbcfe6df4127}{TTS\_EQ}},}
-\DoxyCodeLine{67     \mbox{\hyperlink{scan_8h_a34455ceb28a6d9881bf620ce7fa085a6}{TTS\_NEQ}},      \mbox{\hyperlink{scan_8h_a8a5a49889cfa7a1dc000cd3e0356f891}{TTS\_LT}},   \mbox{\hyperlink{scan_8h_a9391ce01718fee07755d8ed7b3f2cf1b}{TTS\_GT}},    \mbox{\hyperlink{scan_8h_afea1fa794fd5cfb8217235f052c3f16f}{TTS\_LE}},   \mbox{\hyperlink{scan_8h_a7bf41eda078f643afe448e0d4fe3513d}{TTS\_GE}},    \mbox{\hyperlink{scan_8h_a9594000ba5f90a9539403cbdfc4cc988}{TTS\_INTEGER\_LITERAL}}, \mbox{\hyperlink{scan_8h_af0c6f1db37de72c86eb8abdf2eeb4316}{TTS\_PRINT}},}
-\DoxyCodeLine{68     \mbox{\hyperlink{scan_8h_a0dee619cbc594f611dc45bc837c0253b}{TTS\_SEMICOLON}}\};}
-\DoxyCodeLine{69 }
-\DoxyCodeLine{73 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_TERMINAL(type) (type >= T\_INTEGER\_LITERAL \&\& type <= T\_INTEGER\_LITERAL)}}
-\DoxyCodeLine{74 }
-\DoxyCodeLine{78 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_BINARY\_ARITHMETIC(type) (type >= T\_PLUS \&\& type <= T\_EXPONENT)}}
-\DoxyCodeLine{79 }
-\DoxyCodeLine{83 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structToken}{Token}} \{}
-\DoxyCodeLine{85     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}{type}};}
-\DoxyCodeLine{87     \textcolor{keywordtype}{int} \mbox{\hyperlink{structToken_a041346a45c6c5571a78a6af3394a2756}{value}};}
-\DoxyCodeLine{88 \} \mbox{\hyperlink{scan_8h_ae88d5c0259051080fda097b92d99d7ee}{Token}};}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{scan_8h}{scan.h}}"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{18 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{19     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a9882ff017eb83e311ec8ad12ab646455}{T\_EOF}},}
+\DoxyCodeLine{20     \textcolor{comment}{// Arithmetic Operators}}
+\DoxyCodeLine{21     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2}{T\_PLUS}},}
+\DoxyCodeLine{22     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aeabbf9419f82ec47ab35d6931784dfb4}{T\_MINUS}},}
+\DoxyCodeLine{23     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a6fad6b41ffee1efe0dfc7b12a19c0672}{T\_STAR}},}
+\DoxyCodeLine{24     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a}{T\_SLASH}},}
+\DoxyCodeLine{25     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd}{T\_EXPONENT}},}
+\DoxyCodeLine{26     \textcolor{comment}{// Comparison Operators}}
+\DoxyCodeLine{27     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad}{T\_EQ}},}
+\DoxyCodeLine{28     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af7c934b483e2a65d6212722999121c0e}{T\_NEQ}},}
+\DoxyCodeLine{29     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a9e53bc57aabd3d3baa91aed85cb9f0fc}{T\_LT}},}
+\DoxyCodeLine{30     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ac869f90f0fc081ae0e4a1c7746c11f3d}{T\_GT}},}
+\DoxyCodeLine{31     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aa2fbee07f3776bb841fe1ac13629eb9d}{T\_LE}},}
+\DoxyCodeLine{32     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df}{T\_GE}},}
+\DoxyCodeLine{33     \textcolor{comment}{// Literals}}
+\DoxyCodeLine{34     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\_INTEGER\_LITERAL}},}
+\DoxyCodeLine{35     \textcolor{comment}{// Types}}
+\DoxyCodeLine{36     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83}{T\_INT}},}
+\DoxyCodeLine{37     \textcolor{comment}{// Assignment}}
+\DoxyCodeLine{38     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720}{T\_ASSIGN}},}
+\DoxyCodeLine{39     \textcolor{comment}{// Keywords}}
+\DoxyCodeLine{40     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aa9d18789762367b48144de4ab345a73b}{T\_PRINT}},}
+\DoxyCodeLine{41     \textcolor{comment}{// Miscellaneous}}
+\DoxyCodeLine{42     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf}{T\_SEMICOLON}},}
+\DoxyCodeLine{43     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a}{T\_IDENTIFIER}},}
+\DoxyCodeLine{44     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63}{T\_LVALUE\_IDENTIFIER}},}
+\DoxyCodeLine{45 \} \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define TTS\_EOF "{}EOF"{}}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define TTS\_PLUS "{}+"{}}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define TTS\_MINUS "{}-\/"{}}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define TTS\_STAR "{}*"{}}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define TTS\_SLASH "{}/"{}}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define TTS\_EXPONENT "{}**"{}}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define TTS\_EQ "{}=="{}}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define TTS\_NEQ "{}!="{}}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define TTS\_LT "{}<"{}}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define TTS\_GT "{}>"{}}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#define TTS\_LE "{}<="{}}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define TTS\_GE "{}>="{}}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define TTS\_INTEGER\_LITERAL "{}integer literal"{}}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define TTS\_INT "{}int"{}}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define TTS\_ASSIGN "{}="{}}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define TTS\_PRINT "{}print"{}}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define TTS\_SEMICOLON "{};"{}}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define TTS\_IDENTIFIER "{}identifier"{}}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define TTS\_LVALUE\_IDENTIFIER "{}lvalue identifier"{}}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{70 \textcolor{keyword}{static} \textcolor{keywordtype}{char}* \mbox{\hyperlink{scan_8h_a3cef8f6f6c1a827c5f882dc5ab2024e7}{tokenStrings}}[] = \{\mbox{\hyperlink{scan_8h_a7149f58e15d6b128b39310679a2d4c38}{TTS\_EOF}},}
+\DoxyCodeLine{71                                \mbox{\hyperlink{scan_8h_a57fcc8292af8ab5dbc1ba1222c92e656}{TTS\_PLUS}},}
+\DoxyCodeLine{72                                \mbox{\hyperlink{scan_8h_a4498dadc8b674237ed78dc0f2d53dd44}{TTS\_MINUS}},}
+\DoxyCodeLine{73                                \mbox{\hyperlink{scan_8h_a035a192d545d9e2fae66af59d98c2e30}{TTS\_STAR}},}
+\DoxyCodeLine{74                                \mbox{\hyperlink{scan_8h_ab2974cb4da4d5b0174b395c10b6f7bcd}{TTS\_SLASH}},}
+\DoxyCodeLine{75                                \mbox{\hyperlink{scan_8h_a76df956b81ba2dfbb5b1a9dbdcbd916b}{TTS\_EXPONENT}},}
+\DoxyCodeLine{76                                \mbox{\hyperlink{scan_8h_ab4a2b680a10fe47c4b69dbcfe6df4127}{TTS\_EQ}},}
+\DoxyCodeLine{77                                \mbox{\hyperlink{scan_8h_a34455ceb28a6d9881bf620ce7fa085a6}{TTS\_NEQ}},}
+\DoxyCodeLine{78                                \mbox{\hyperlink{scan_8h_a8a5a49889cfa7a1dc000cd3e0356f891}{TTS\_LT}},}
+\DoxyCodeLine{79                                \mbox{\hyperlink{scan_8h_a9391ce01718fee07755d8ed7b3f2cf1b}{TTS\_GT}},}
+\DoxyCodeLine{80                                \mbox{\hyperlink{scan_8h_afea1fa794fd5cfb8217235f052c3f16f}{TTS\_LE}},}
+\DoxyCodeLine{81                                \mbox{\hyperlink{scan_8h_a7bf41eda078f643afe448e0d4fe3513d}{TTS\_GE}},}
+\DoxyCodeLine{82                                \mbox{\hyperlink{scan_8h_a9594000ba5f90a9539403cbdfc4cc988}{TTS\_INTEGER\_LITERAL}},}
+\DoxyCodeLine{83                                \mbox{\hyperlink{scan_8h_ae1c9235579ab0f8931698efc0689bacf}{TTS\_INT}},}
+\DoxyCodeLine{84                                \mbox{\hyperlink{scan_8h_a6fab4f8e45fe721285aa5c861c37e0c1}{TTS\_ASSIGN}},}
+\DoxyCodeLine{85                                \mbox{\hyperlink{scan_8h_af0c6f1db37de72c86eb8abdf2eeb4316}{TTS\_PRINT}},}
+\DoxyCodeLine{86                                \mbox{\hyperlink{scan_8h_a0dee619cbc594f611dc45bc837c0253b}{TTS\_SEMICOLON}},}
+\DoxyCodeLine{87                                \mbox{\hyperlink{scan_8h_a8846b3004b810435c8eeac38ebdb1eec}{TTS\_IDENTIFIER}},}
+\DoxyCodeLine{88                                \mbox{\hyperlink{scan_8h_a8ef63807b66125e7597b5d3fc09e4ab5}{TTS\_LVALUE\_IDENTIFIER}}\};}
 \DoxyCodeLine{89 }
-\DoxyCodeLine{90 \textcolor{keywordtype}{bool} \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}}(\mbox{\hyperlink{structToken}{Token}}* t);}
-\DoxyCodeLine{91 }
-\DoxyCodeLine{92 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SCAN\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_TERMINAL(type)                                                                \(\backslash\)}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{    (}\textcolor{comment}{/*Literals*/}\textcolor{preprocessor}{ (type >= T\_INTEGER\_LITERAL \&\& type <= T\_INTEGER\_LITERAL) ||                      \(\backslash\)}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{     }\textcolor{comment}{/*Types*/}\textcolor{preprocessor}{ (type >= T\_INT \&\& type <= T\_INT) ||                                                 \(\backslash\)}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{     }\textcolor{comment}{/*Miscellaneous*/}\textcolor{preprocessor}{ (type >= T\_SEMICOLON \&\& type <= T\_LVALUE\_IDENTIFIER))}}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_BINARY\_ARITHMETIC(type) (type >= T\_PLUS \&\& type <= T\_EXPONENT)}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{107 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structToken}{Token}} \{}
+\DoxyCodeLine{109     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}{type}};}
+\DoxyCodeLine{111     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{113         \textcolor{keywordtype}{int} \mbox{\hyperlink{structToken_a0bd1ec80054e52bb87e5f5c4fd2f6931}{int\_value}};}
+\DoxyCodeLine{115         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structToken_a3b51c076680a3ee64390eca9bd1c204c}{global\_symbol\_table\_index}};}
+\DoxyCodeLine{116     \} \mbox{\hyperlink{structToken_aa8cbd23eb93e4c0f3f2627c3e5b5591d}{value}};}
+\DoxyCodeLine{117 \} \mbox{\hyperlink{scan_8h_ae88d5c0259051080fda097b92d99d7ee}{Token}};}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \textcolor{keywordtype}{bool} \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}}(\mbox{\hyperlink{structToken}{Token}}* t);}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SCAN\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

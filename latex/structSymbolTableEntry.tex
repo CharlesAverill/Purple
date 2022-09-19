@@ -1,0 +1,75 @@
+\hypertarget{structSymbolTableEntry}{}\doxysection{Symbol\+Table\+Entry Struct Reference}
+\label{structSymbolTableEntry}\index{SymbolTableEntry@{SymbolTableEntry}}
+
+
+Struct holding data about a symbol.  
+
+
+
+
+{\ttfamily \#include $<$symbol\+\_\+table.\+h$>$}
+
+
+
+Collaboration diagram for Symbol\+Table\+Entry\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{structSymbolTableEntry__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{structSymbolTableEntry_a7d7e61aa88b5d5194f9e6681923dcf49}{symbol\+\_\+name}}
+\item 
+unsigned int \mbox{\hyperlink{structSymbolTableEntry_aa0a12eb25f232b048883c09c4457f960}{length}}
+\item 
+unsigned long int \mbox{\hyperlink{structSymbolTableEntry_a0c15e2fc64ead404c914b0fef62eb1ea}{bucket\+\_\+index}}
+\item 
+struct \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{structSymbolTableEntry_adf808305494a748a34cb14340e90bfe1}{next}}
+\item 
+unsigned int \mbox{\hyperlink{structSymbolTableEntry_a7db3bae7f68630cf192d8f1e57169c20}{chain\+\_\+index}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct holding data about a symbol. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structSymbolTableEntry_a0c15e2fc64ead404c914b0fef62eb1ea}\label{structSymbolTableEntry_a0c15e2fc64ead404c914b0fef62eb1ea}} 
+\index{SymbolTableEntry@{SymbolTableEntry}!bucket\_index@{bucket\_index}}
+\index{bucket\_index@{bucket\_index}!SymbolTableEntry@{SymbolTableEntry}}
+\doxysubsubsection{\texorpdfstring{bucket\_index}{bucket\_index}}
+{\footnotesize\ttfamily unsigned long int Symbol\+Table\+Entry\+::bucket\+\_\+index}
+
+Index of symbol in Symbol Table \mbox{\Hypertarget{structSymbolTableEntry_a7db3bae7f68630cf192d8f1e57169c20}\label{structSymbolTableEntry_a7db3bae7f68630cf192d8f1e57169c20}} 
+\index{SymbolTableEntry@{SymbolTableEntry}!chain\_index@{chain\_index}}
+\index{chain\_index@{chain\_index}!SymbolTableEntry@{SymbolTableEntry}}
+\doxysubsubsection{\texorpdfstring{chain\_index}{chain\_index}}
+{\footnotesize\ttfamily unsigned int Symbol\+Table\+Entry\+::chain\+\_\+index}
+
+Index in chain \mbox{\Hypertarget{structSymbolTableEntry_aa0a12eb25f232b048883c09c4457f960}\label{structSymbolTableEntry_aa0a12eb25f232b048883c09c4457f960}} 
+\index{SymbolTableEntry@{SymbolTableEntry}!length@{length}}
+\index{length@{length}!SymbolTableEntry@{SymbolTableEntry}}
+\doxysubsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily unsigned int Symbol\+Table\+Entry\+::length}
+
+Length of name \mbox{\Hypertarget{structSymbolTableEntry_adf808305494a748a34cb14340e90bfe1}\label{structSymbolTableEntry_adf808305494a748a34cb14340e90bfe1}} 
+\index{SymbolTableEntry@{SymbolTableEntry}!next@{next}}
+\index{next@{next}!SymbolTableEntry@{SymbolTableEntry}}
+\doxysubsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}}$\ast$ Symbol\+Table\+Entry\+::next}
+
+Symbol Tables are a chained Hash Table, this is the chain \mbox{\Hypertarget{structSymbolTableEntry_a7d7e61aa88b5d5194f9e6681923dcf49}\label{structSymbolTableEntry_a7d7e61aa88b5d5194f9e6681923dcf49}} 
+\index{SymbolTableEntry@{SymbolTableEntry}!symbol\_name@{symbol\_name}}
+\index{symbol\_name@{symbol\_name}!SymbolTableEntry@{SymbolTableEntry}}
+\doxysubsubsection{\texorpdfstring{symbol\_name}{symbol\_name}}
+{\footnotesize\ttfamily char$\ast$ Symbol\+Table\+Entry\+::symbol\+\_\+name}
+
+Name of symbol 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/translate/\mbox{\hyperlink{symbol__table_8h}{symbol\+\_\+table.\+h}}\end{DoxyCompactItemize}

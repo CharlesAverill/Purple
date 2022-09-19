@@ -78,32 +78,31 @@ $(function() {
 <p>Functions for LLVM-IR translation.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="translate_8h_source.html">translate/translate.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="data_8h_source.html">data.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="logging_8h_source.html">utils/logging.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for translate.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="translate_8c__incl.png" border="0" usemap="#asrc_2translate_2translate_8c" alt=""/></div>
 <map name="asrc_2translate_2translate_8c" id="asrc_2translate_2translate_8c">
-<area shape="rect" title="Functions for LLVM&#45;IR translation." alt="" coords="842,5,1001,32"/>
-<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="719,80,855,107"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="629,379,731,405"/>
-<area shape="rect" title=" " alt="" coords="782,453,842,480"/>
-<area shape="rect" title=" " alt="" coords="323,453,386,480"/>
-<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="595,155,659,181"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="445,229,499,256"/>
-<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="731,155,842,181"/>
-<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="857,304,967,331"/>
-<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="626,229,683,256"/>
-<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="511,304,571,331"/>
-<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="139,304,261,331"/>
-<area shape="rect" title=" " alt="" coords="443,379,506,405"/>
-<area shape="rect" title=" " alt="" coords="531,379,605,405"/>
-<area shape="rect" title=" " alt="" coords="253,379,317,405"/>
-<area shape="rect" title=" " alt="" coords="537,453,605,480"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="629,453,745,480"/>
-<area shape="rect" title=" " alt="" coords="171,379,229,405"/>
-<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="93,379,147,405"/>
-<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="707,229,866,256"/>
+<area shape="rect" title="Functions for LLVM&#45;IR translation." alt="" coords="140,5,299,32"/>
+<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="151,80,287,107"/>
+<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="13,304,114,331"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="521,229,579,256"/>
+<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="187,155,251,181"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="123,229,177,256"/>
+<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="276,155,387,181"/>
+<area shape="rect" title=" " alt="" coords="139,304,201,331"/>
+<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="360,304,420,331"/>
+<area shape="rect" title=" " alt="" coords="433,379,507,405"/>
+<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="5,379,121,405"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="225,304,336,331"/>
+<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="253,229,412,256"/>
+<area shape="rect" title=" " alt="" coords="656,304,716,331"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="469,304,631,331"/>
+<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="740,304,861,331"/>
+<area shape="rect" title=" " alt="" coords="732,379,789,405"/>
+<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="814,379,867,405"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -115,9 +114,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a7abbf5b5f5d3fc9d561f7e080077bb9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#a7abbf5b5f5d3fc9d561f7e080077bb9e">determine_binary_expression_stack_allocation</a> (<a class="el" href="structASTNode.html">ASTNode</a> *root)</td></tr>
 <tr class="memdesc:a7abbf5b5f5d3fc9d561f7e080077bb9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a DFS on an AST to determine the stack allocation needed for a binary expression.  <a href="translate_8c.html#a7abbf5b5f5d3fc9d561f7e080077bb9e">More...</a><br /></td></tr>
 <tr class="separator:a7abbf5b5f5d3fc9d561f7e080077bb9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4bb4871076aa73ec76e957aececfa8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#ab4bb4871076aa73ec76e957aececfa8f">ast_to_llvm</a> (<a class="el" href="structASTNode.html">ASTNode</a> *n)</td></tr>
-<tr class="memdesc:ab4bb4871076aa73ec76e957aececfa8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates LLVM-IR from a given AST.  <a href="translate_8c.html#ab4bb4871076aa73ec76e957aececfa8f">More...</a><br /></td></tr>
-<tr class="separator:ab4bb4871076aa73ec76e957aececfa8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4178bbc4cd024087a8cdcdd0a1f1c002"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#a4178bbc4cd024087a8cdcdd0a1f1c002">ast_to_llvm</a> (<a class="el" href="structASTNode.html">ASTNode</a> *n, <a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> register_number)</td></tr>
+<tr class="memdesc:a4178bbc4cd024087a8cdcdd0a1f1c002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates LLVM-IR from a given AST.  <a href="translate_8c.html#a4178bbc4cd024087a8cdcdd0a1f1c002">More...</a><br /></td></tr>
+<tr class="separator:a4178bbc4cd024087a8cdcdd0a1f1c002"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2560f9333db7b4bc4b0dd4ef15b3dcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#ac2560f9333db7b4bc4b0dd4ef15b3dcc">generate_llvm</a> (void)</td></tr>
 <tr class="memdesc:ac2560f9333db7b4bc4b0dd4ef15b3dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper function for generating LLVM.  <a href="translate_8c.html#ac2560f9333db7b4bc4b0dd4ef15b3dcc">More...</a><br /></td></tr>
 <tr class="separator:ac2560f9333db7b4bc4b0dd4ef15b3dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,8 +135,8 @@ Variables</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Charles Averill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>10-Sep-2022 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ab4bb4871076aa73ec76e957aececfa8f" name="ab4bb4871076aa73ec76e957aececfa8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4bb4871076aa73ec76e957aececfa8f">&#9670;&nbsp;</a></span>ast_to_llvm()</h2>
+<a id="a4178bbc4cd024087a8cdcdd0a1f1c002" name="a4178bbc4cd024087a8cdcdd0a1f1c002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4178bbc4cd024087a8cdcdd0a1f1c002">&#9670;&nbsp;</a></span>ast_to_llvm()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -146,8 +145,18 @@ Variables</h2></td></tr>
           <td class="memname"><a class="el" href="structLLVMValue.html">LLVMValue</a> ast_to_llvm </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td>
-          <td class="paramname"><em>n</em></td><td>)</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
+          <td class="paramname"><em>register_number</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -156,6 +165,7 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n</td><td>The AST Node from which LLVM will be generated </td></tr>
+    <tr><td class="paramname">register_number</td><td>Register number of RValues for storing into LValues </td></tr>
   </table>
   </dd>
 </dl>

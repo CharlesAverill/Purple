@@ -80,7 +80,7 @@ Collaboration diagram for Token:</div>
 <div class="dyncontent">
 <div class="center"><img src="structToken__coll__graph.png" border="0" usemap="#aToken_coll__map" alt="Collaboration graph"/></div>
 <map name="aToken_coll__map" id="aToken_coll__map">
-<area shape="rect" title="Structure containing information about individual scannable tokens." alt="" coords="5,5,69,97"/>
+<area shape="rect" title="Structure containing information about individual scannable tokens." alt="" coords="5,5,156,141"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -88,12 +88,47 @@ Collaboration diagram for Token:</div>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a67919af9f3a80dc0b28a0ab1e6d5bf8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structToken.html#a67919af9f3a80dc0b28a0ab1e6d5bf8a">type</a></td></tr>
 <tr class="separator:a67919af9f3a80dc0b28a0ab1e6d5bf8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a041346a45c6c5571a78a6af3394a2756"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structToken.html#a041346a45c6c5571a78a6af3394a2756">value</a></td></tr>
-<tr class="separator:a041346a45c6c5571a78a6af3394a2756"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8cbd23eb93e4c0f3f2627c3e5b5591d"><td class="memItemLeft" >union {</td></tr>
+<tr class="memitem:a082df6cf1ace28929f2b20b9dd624d18"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structToken.html#a0bd1ec80054e52bb87e5f5c4fd2f6931">int_value</a></td></tr>
+<tr class="separator:a082df6cf1ace28929f2b20b9dd624d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b8e7a609e1dfbcde7762e2ad3ba9cb"><td class="memItemLeft" >&#160;&#160;&#160;unsigned long int&#160;&#160;&#160;<a class="el" href="structToken.html#a3b51c076680a3ee64390eca9bd1c204c">global_symbol_table_index</a></td></tr>
+<tr class="separator:a03b8e7a609e1dfbcde7762e2ad3ba9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8cbd23eb93e4c0f3f2627c3e5b5591d"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structToken.html#aa8cbd23eb93e4c0f3f2627c3e5b5591d">value</a></td></tr>
+<tr class="separator:aa8cbd23eb93e4c0f3f2627c3e5b5591d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Structure containing information about individual scannable tokens. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3b51c076680a3ee64390eca9bd1c204c" name="a3b51c076680a3ee64390eca9bd1c204c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b51c076680a3ee64390eca9bd1c204c">&#9670;&nbsp;</a></span>global_symbol_table_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long int Token::global_symbol_table_index</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Index of identifier in global symbol table </p>
+
+</div>
+</div>
+<a id="a0bd1ec80054e52bb87e5f5c4fd2f6931" name="a0bd1ec80054e52bb87e5f5c4fd2f6931"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bd1ec80054e52bb87e5f5c4fd2f6931">&#9670;&nbsp;</a></span>int_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Token::int_value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Value of integer token </p>
+
+</div>
+</div>
 <a id="a67919af9f3a80dc0b28a0ab1e6d5bf8a" name="a67919af9f3a80dc0b28a0ab1e6d5bf8a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67919af9f3a80dc0b28a0ab1e6d5bf8a">&#9670;&nbsp;</a></span>type</h2>
 
@@ -109,18 +144,18 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a041346a45c6c5571a78a6af3394a2756" name="a041346a45c6c5571a78a6af3394a2756"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a041346a45c6c5571a78a6af3394a2756">&#9670;&nbsp;</a></span>value</h2>
+<a id="aa8cbd23eb93e4c0f3f2627c3e5b5591d" name="aa8cbd23eb93e4c0f3f2627c3e5b5591d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8cbd23eb93e4c0f3f2627c3e5b5591d">&#9670;&nbsp;</a></span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Token::value</td>
+          <td class="memname">union  { ... }  Token::value</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Value of integer token </p>
+<p >Value of token </p>
 
 </div>
 </div>

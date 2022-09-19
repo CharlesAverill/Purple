@@ -81,30 +81,15 @@ $(function() {
 
 <p>Lexical Scanner function headers.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;ctype.h&gt;</code><br />
-<code>#include &lt;stdbool.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="logging_8h_source.html">utils/logging.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="scan_8h_source.html">scan.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for scan.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="scan_8h__incl.png" border="0" usemap="#ainclude_2scan_8h" alt=""/></div>
 <map name="ainclude_2scan_8h" id="ainclude_2scan_8h">
-<area shape="rect" title="Lexical Scanner function headers." alt="" coords="219,5,324,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,68,107"/>
-<area shape="rect" title=" " alt="" coords="93,80,167,107"/>
-<area shape="rect" title=" " alt="" coords="291,229,351,256"/>
-<area shape="rect" title=" " alt="" coords="357,304,420,331"/>
-<area shape="rect" title=" " alt="" coords="567,304,631,331"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="323,80,425,107"/>
-<area shape="rect" title=" " alt="" coords="427,155,495,181"/>
-<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="243,155,300,181"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="519,155,635,181"/>
-<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="145,229,267,256"/>
-<area shape="rect" title=" " alt="" coords="137,304,195,331"/>
-<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="219,304,273,331"/>
+<area shape="rect" title="Lexical Scanner function headers." alt="" coords="5,7,111,33"/>
+<area shape="rect" title=" " alt="" coords="21,81,95,108"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -112,26 +97,24 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="scan_8h__dep__incl.png" border="0" usemap="#ainclude_2scan_8hdep" alt=""/></div>
 <map name="ainclude_2scan_8hdep" id="ainclude_2scan_8hdep">
-<area shape="rect" title="Lexical Scanner function headers." alt="" coords="453,5,558,32"/>
-<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="323,80,426,107"/>
-<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="425,319,535,345"/>
-<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="221,468,310,495"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="597,237,696,263"/>
-<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="412,155,495,181"/>
-<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="913,319,1068,345"/>
-<area shape="rect" href="number_8c.html" title="Functions for dealing with numbers internally." alt="" coords="621,80,753,107"/>
-<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="546,468,694,495"/>
-<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="1063,468,1195,495"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="573,155,720,181"/>
-<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="409,237,522,263"/>
-<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="245,237,384,263"/>
-<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="631,393,812,420"/>
-<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="404,393,556,420"/>
-<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="826,468,985,495"/>
-<area shape="rect" href="arguments_8c.html" title="Command line interface logic." alt="" coords="1027,237,1170,263"/>
-<area shape="rect" href="llvm__stack__entry_8c.html" title=" " alt="" coords="721,229,855,271"/>
-<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="880,237,1003,263"/>
-<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="685,319,761,345"/>
+<area shape="rect" title="Lexical Scanner function headers." alt="" coords="1186,6,1292,33"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="886,156,989,182"/>
+<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="1026,305,1116,332"/>
+<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="1379,230,1462,257"/>
+<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="80,156,235,182"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="410,81,508,108"/>
+<area shape="rect" href="number_8c.html" title="Functions for dealing with numbers internally." alt="" coords="1537,81,1669,108"/>
+<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="324,230,477,257"/>
+<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="552,230,704,257"/>
+<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="212,305,360,332"/>
+<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="56,305,188,332"/>
+<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="573,305,732,332"/>
+<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="881,230,994,257"/>
+<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="1019,230,1142,257"/>
+<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="1166,230,1304,257"/>
+<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="67,230,248,257"/>
+<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="346,156,455,182"/>
+<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="480,156,556,182"/>
 </map>
 </div>
 </div>
@@ -171,11 +154,19 @@ Macros</h2></td></tr>
 <tr class="separator:a7bf41eda078f643afe448e0d4fe3513d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9594000ba5f90a9539403cbdfc4cc988"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a9594000ba5f90a9539403cbdfc4cc988">TTS_INTEGER_LITERAL</a>&#160;&#160;&#160;&quot;integer literal&quot;</td></tr>
 <tr class="separator:a9594000ba5f90a9539403cbdfc4cc988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1c9235579ab0f8931698efc0689bacf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#ae1c9235579ab0f8931698efc0689bacf">TTS_INT</a>&#160;&#160;&#160;&quot;int&quot;</td></tr>
+<tr class="separator:ae1c9235579ab0f8931698efc0689bacf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fab4f8e45fe721285aa5c861c37e0c1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a6fab4f8e45fe721285aa5c861c37e0c1">TTS_ASSIGN</a>&#160;&#160;&#160;&quot;=&quot;</td></tr>
+<tr class="separator:a6fab4f8e45fe721285aa5c861c37e0c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0c6f1db37de72c86eb8abdf2eeb4316"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#af0c6f1db37de72c86eb8abdf2eeb4316">TTS_PRINT</a>&#160;&#160;&#160;&quot;print&quot;</td></tr>
 <tr class="separator:af0c6f1db37de72c86eb8abdf2eeb4316"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dee619cbc594f611dc45bc837c0253b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a0dee619cbc594f611dc45bc837c0253b">TTS_SEMICOLON</a>&#160;&#160;&#160;&quot;;&quot;</td></tr>
 <tr class="separator:a0dee619cbc594f611dc45bc837c0253b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affec33daf918f96ba231bf8564fffbe0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#affec33daf918f96ba231bf8564fffbe0">TOKENTYPE_IS_TERMINAL</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a>)</td></tr>
+<tr class="memitem:a8846b3004b810435c8eeac38ebdb1eec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a8846b3004b810435c8eeac38ebdb1eec">TTS_IDENTIFIER</a>&#160;&#160;&#160;&quot;identifier&quot;</td></tr>
+<tr class="separator:a8846b3004b810435c8eeac38ebdb1eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ef63807b66125e7597b5d3fc09e4ab5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a8ef63807b66125e7597b5d3fc09e4ab5">TTS_LVALUE_IDENTIFIER</a>&#160;&#160;&#160;&quot;lvalue identifier&quot;</td></tr>
+<tr class="separator:a8ef63807b66125e7597b5d3fc09e4ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affec33daf918f96ba231bf8564fffbe0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#affec33daf918f96ba231bf8564fffbe0">TOKENTYPE_IS_TERMINAL</a>(type)</td></tr>
 <tr class="memdesc:affec33daf918f96ba231bf8564fffbe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to determine if a TokenType is associated with a terminal AST Node.  <a href="scan_8h.html#affec33daf918f96ba231bf8564fffbe0">More...</a><br /></td></tr>
 <tr class="separator:affec33daf918f96ba231bf8564fffbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58f4872f7a38784336953acff530cb27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a58f4872f7a38784336953acff530cb27">TOKENTYPE_IS_BINARY_ARITHMETIC</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2">T_PLUS</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd">T_EXPONENT</a>)</td></tr>
@@ -207,8 +198,13 @@ Enumerations</h2></td></tr>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df">T_GE</a>
 , <br />
 &#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83">T_INT</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720">T_ASSIGN</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aa9d18789762367b48144de4ab345a73b">T_PRINT</a>
-, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf">T_SEMICOLON</a>
+, <br />
+&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf">T_SEMICOLON</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a">T_IDENTIFIER</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63">T_LVALUE_IDENTIFIER</a>
 <br />
  }</td></tr>
 <tr class="memdesc:aa520fbf142ba1e7e659590c07da31921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types of scannable tokens.  <a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">More...</a><br /></td></tr>
@@ -262,12 +258,33 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">type</td><td>)</td>
-          <td>&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Value:</b><div class="fragment"><div class="line">    (<span class="comment">/*Literals*/</span> (type &gt;= <a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a> &amp;&amp; type &lt;= <a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a>) ||                      \</div>
+<div class="line">     <span class="comment">/*Types*/</span> (type &gt;= <a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83">T_INT</a> &amp;&amp; type &lt;= <a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83">T_INT</a>) ||                                                 \</div>
+<div class="line">     <span class="comment">/*Miscellaneous*/</span> (type &gt;= <a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf">T_SEMICOLON</a> &amp;&amp; type &lt;= <a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63">T_LVALUE_IDENTIFIER</a>))</div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a></div><div class="ttdeci">@ T_INTEGER_LITERAL</div><div class="ttdef"><b>Definition:</b> scan.h:34</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf">T_SEMICOLON</a></div><div class="ttdeci">@ T_SEMICOLON</div><div class="ttdef"><b>Definition:</b> scan.h:42</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83">T_INT</a></div><div class="ttdeci">@ T_INT</div><div class="ttdef"><b>Definition:</b> scan.h:36</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63">T_LVALUE_IDENTIFIER</a></div><div class="ttdeci">@ T_LVALUE_IDENTIFIER</div><div class="ttdef"><b>Definition:</b> scan.h:44</div></div>
+</div><!-- fragment -->
 <p>Macro to determine if a TokenType is associated with a terminal AST Node. </p>
+
+</div>
+</div>
+<a id="a6fab4f8e45fe721285aa5c861c37e0c1" name="a6fab4f8e45fe721285aa5c861c37e0c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fab4f8e45fe721285aa5c861c37e0c1">&#9670;&nbsp;</a></span>TTS_ASSIGN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TTS_ASSIGN&#160;&#160;&#160;&quot;=&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -341,6 +358,34 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a8846b3004b810435c8eeac38ebdb1eec" name="a8846b3004b810435c8eeac38ebdb1eec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8846b3004b810435c8eeac38ebdb1eec">&#9670;&nbsp;</a></span>TTS_IDENTIFIER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TTS_IDENTIFIER&#160;&#160;&#160;&quot;identifier&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1c9235579ab0f8931698efc0689bacf" name="ae1c9235579ab0f8931698efc0689bacf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1c9235579ab0f8931698efc0689bacf">&#9670;&nbsp;</a></span>TTS_INT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TTS_INT&#160;&#160;&#160;&quot;int&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a9594000ba5f90a9539403cbdfc4cc988" name="a9594000ba5f90a9539403cbdfc4cc988"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9594000ba5f90a9539403cbdfc4cc988">&#9670;&nbsp;</a></span>TTS_INTEGER_LITERAL</h2>
 
@@ -377,6 +422,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define TTS_LT&#160;&#160;&#160;&quot;&lt;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8ef63807b66125e7597b5d3fc09e4ab5" name="a8ef63807b66125e7597b5d3fc09e4ab5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ef63807b66125e7597b5d3fc09e4ab5">&#9670;&nbsp;</a></span>TTS_LVALUE_IDENTIFIER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TTS_LVALUE_IDENTIFIER&#160;&#160;&#160;&quot;lvalue identifier&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -526,8 +585,12 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921aa2fbee07f3776bb841fe1ac13629eb9d" name="aa520fbf142ba1e7e659590c07da31921aa2fbee07f3776bb841fe1ac13629eb9d"></a>T_LE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df" name="aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df"></a>T_GE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3" name="aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3"></a>T_INTEGER_LITERAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83" name="aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83"></a>T_INT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720" name="aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720"></a>T_ASSIGN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921aa9d18789762367b48144de4ab345a73b" name="aa520fbf142ba1e7e659590c07da31921aa9d18789762367b48144de4ab345a73b"></a>T_PRINT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf" name="aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf"></a>T_SEMICOLON&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a" name="aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a"></a>T_IDENTIFIER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63" name="aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63"></a>T_LVALUE_IDENTIFIER&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -580,25 +643,44 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <a class="code hl_define" href="scan_8h.html#a7149f58e15d6b128b39310679a2d4c38">TTS_EOF</a>,      <a class="code hl_define" href="scan_8h.html#a57fcc8292af8ab5dbc1ba1222c92e656">TTS_PLUS</a>, <a class="code hl_define" href="scan_8h.html#a4498dadc8b674237ed78dc0f2d53dd44">TTS_MINUS</a>, <a class="code hl_define" href="scan_8h.html#a035a192d545d9e2fae66af59d98c2e30">TTS_STAR</a>, <a class="code hl_define" href="scan_8h.html#ab2974cb4da4d5b0174b395c10b6f7bcd">TTS_SLASH</a>, <a class="code hl_define" href="scan_8h.html#a76df956b81ba2dfbb5b1a9dbdcbd916b">TTS_EXPONENT</a>,        <a class="code hl_define" href="scan_8h.html#ab4a2b680a10fe47c4b69dbcfe6df4127">TTS_EQ</a>,</div>
-<div class="line">    <a class="code hl_define" href="scan_8h.html#a34455ceb28a6d9881bf620ce7fa085a6">TTS_NEQ</a>,      <a class="code hl_define" href="scan_8h.html#a8a5a49889cfa7a1dc000cd3e0356f891">TTS_LT</a>,   <a class="code hl_define" href="scan_8h.html#a9391ce01718fee07755d8ed7b3f2cf1b">TTS_GT</a>,    <a class="code hl_define" href="scan_8h.html#afea1fa794fd5cfb8217235f052c3f16f">TTS_LE</a>,   <a class="code hl_define" href="scan_8h.html#a7bf41eda078f643afe448e0d4fe3513d">TTS_GE</a>,    <a class="code hl_define" href="scan_8h.html#a9594000ba5f90a9539403cbdfc4cc988">TTS_INTEGER_LITERAL</a>, <a class="code hl_define" href="scan_8h.html#af0c6f1db37de72c86eb8abdf2eeb4316">TTS_PRINT</a>,</div>
-<div class="line">    <a class="code hl_define" href="scan_8h.html#a0dee619cbc594f611dc45bc837c0253b">TTS_SEMICOLON</a>}</div>
-<div class="ttc" id="ascan_8h_html_a035a192d545d9e2fae66af59d98c2e30"><div class="ttname"><a href="scan_8h.html#a035a192d545d9e2fae66af59d98c2e30">TTS_STAR</a></div><div class="ttdeci">#define TTS_STAR</div><div class="ttdef"><b>Definition:</b> scan.h:49</div></div>
-<div class="ttc" id="ascan_8h_html_a0dee619cbc594f611dc45bc837c0253b"><div class="ttname"><a href="scan_8h.html#a0dee619cbc594f611dc45bc837c0253b">TTS_SEMICOLON</a></div><div class="ttdeci">#define TTS_SEMICOLON</div><div class="ttdef"><b>Definition:</b> scan.h:60</div></div>
-<div class="ttc" id="ascan_8h_html_a34455ceb28a6d9881bf620ce7fa085a6"><div class="ttname"><a href="scan_8h.html#a34455ceb28a6d9881bf620ce7fa085a6">TTS_NEQ</a></div><div class="ttdeci">#define TTS_NEQ</div><div class="ttdef"><b>Definition:</b> scan.h:53</div></div>
-<div class="ttc" id="ascan_8h_html_a4498dadc8b674237ed78dc0f2d53dd44"><div class="ttname"><a href="scan_8h.html#a4498dadc8b674237ed78dc0f2d53dd44">TTS_MINUS</a></div><div class="ttdeci">#define TTS_MINUS</div><div class="ttdef"><b>Definition:</b> scan.h:48</div></div>
-<div class="ttc" id="ascan_8h_html_a57fcc8292af8ab5dbc1ba1222c92e656"><div class="ttname"><a href="scan_8h.html#a57fcc8292af8ab5dbc1ba1222c92e656">TTS_PLUS</a></div><div class="ttdeci">#define TTS_PLUS</div><div class="ttdef"><b>Definition:</b> scan.h:47</div></div>
-<div class="ttc" id="ascan_8h_html_a7149f58e15d6b128b39310679a2d4c38"><div class="ttname"><a href="scan_8h.html#a7149f58e15d6b128b39310679a2d4c38">TTS_EOF</a></div><div class="ttdeci">#define TTS_EOF</div><div class="ttdef"><b>Definition:</b> scan.h:46</div></div>
-<div class="ttc" id="ascan_8h_html_a76df956b81ba2dfbb5b1a9dbdcbd916b"><div class="ttname"><a href="scan_8h.html#a76df956b81ba2dfbb5b1a9dbdcbd916b">TTS_EXPONENT</a></div><div class="ttdeci">#define TTS_EXPONENT</div><div class="ttdef"><b>Definition:</b> scan.h:51</div></div>
-<div class="ttc" id="ascan_8h_html_a7bf41eda078f643afe448e0d4fe3513d"><div class="ttname"><a href="scan_8h.html#a7bf41eda078f643afe448e0d4fe3513d">TTS_GE</a></div><div class="ttdeci">#define TTS_GE</div><div class="ttdef"><b>Definition:</b> scan.h:57</div></div>
-<div class="ttc" id="ascan_8h_html_a8a5a49889cfa7a1dc000cd3e0356f891"><div class="ttname"><a href="scan_8h.html#a8a5a49889cfa7a1dc000cd3e0356f891">TTS_LT</a></div><div class="ttdeci">#define TTS_LT</div><div class="ttdef"><b>Definition:</b> scan.h:54</div></div>
-<div class="ttc" id="ascan_8h_html_a9391ce01718fee07755d8ed7b3f2cf1b"><div class="ttname"><a href="scan_8h.html#a9391ce01718fee07755d8ed7b3f2cf1b">TTS_GT</a></div><div class="ttdeci">#define TTS_GT</div><div class="ttdef"><b>Definition:</b> scan.h:55</div></div>
-<div class="ttc" id="ascan_8h_html_a9594000ba5f90a9539403cbdfc4cc988"><div class="ttname"><a href="scan_8h.html#a9594000ba5f90a9539403cbdfc4cc988">TTS_INTEGER_LITERAL</a></div><div class="ttdeci">#define TTS_INTEGER_LITERAL</div><div class="ttdef"><b>Definition:</b> scan.h:58</div></div>
-<div class="ttc" id="ascan_8h_html_ab2974cb4da4d5b0174b395c10b6f7bcd"><div class="ttname"><a href="scan_8h.html#ab2974cb4da4d5b0174b395c10b6f7bcd">TTS_SLASH</a></div><div class="ttdeci">#define TTS_SLASH</div><div class="ttdef"><b>Definition:</b> scan.h:50</div></div>
-<div class="ttc" id="ascan_8h_html_ab4a2b680a10fe47c4b69dbcfe6df4127"><div class="ttname"><a href="scan_8h.html#ab4a2b680a10fe47c4b69dbcfe6df4127">TTS_EQ</a></div><div class="ttdeci">#define TTS_EQ</div><div class="ttdef"><b>Definition:</b> scan.h:52</div></div>
-<div class="ttc" id="ascan_8h_html_af0c6f1db37de72c86eb8abdf2eeb4316"><div class="ttname"><a href="scan_8h.html#af0c6f1db37de72c86eb8abdf2eeb4316">TTS_PRINT</a></div><div class="ttdeci">#define TTS_PRINT</div><div class="ttdef"><b>Definition:</b> scan.h:59</div></div>
-<div class="ttc" id="ascan_8h_html_afea1fa794fd5cfb8217235f052c3f16f"><div class="ttname"><a href="scan_8h.html#afea1fa794fd5cfb8217235f052c3f16f">TTS_LE</a></div><div class="ttdeci">#define TTS_LE</div><div class="ttdef"><b>Definition:</b> scan.h:56</div></div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {<a class="code hl_define" href="scan_8h.html#a7149f58e15d6b128b39310679a2d4c38">TTS_EOF</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a57fcc8292af8ab5dbc1ba1222c92e656">TTS_PLUS</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a4498dadc8b674237ed78dc0f2d53dd44">TTS_MINUS</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a035a192d545d9e2fae66af59d98c2e30">TTS_STAR</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#ab2974cb4da4d5b0174b395c10b6f7bcd">TTS_SLASH</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a76df956b81ba2dfbb5b1a9dbdcbd916b">TTS_EXPONENT</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#ab4a2b680a10fe47c4b69dbcfe6df4127">TTS_EQ</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a34455ceb28a6d9881bf620ce7fa085a6">TTS_NEQ</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a8a5a49889cfa7a1dc000cd3e0356f891">TTS_LT</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a9391ce01718fee07755d8ed7b3f2cf1b">TTS_GT</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#afea1fa794fd5cfb8217235f052c3f16f">TTS_LE</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a7bf41eda078f643afe448e0d4fe3513d">TTS_GE</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a9594000ba5f90a9539403cbdfc4cc988">TTS_INTEGER_LITERAL</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#ae1c9235579ab0f8931698efc0689bacf">TTS_INT</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a6fab4f8e45fe721285aa5c861c37e0c1">TTS_ASSIGN</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#af0c6f1db37de72c86eb8abdf2eeb4316">TTS_PRINT</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a0dee619cbc594f611dc45bc837c0253b">TTS_SEMICOLON</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a8846b3004b810435c8eeac38ebdb1eec">TTS_IDENTIFIER</a>,</div>
+<div class="line">                               <a class="code hl_define" href="scan_8h.html#a8ef63807b66125e7597b5d3fc09e4ab5">TTS_LVALUE_IDENTIFIER</a>}</div>
+<div class="ttc" id="ascan_8h_html_a035a192d545d9e2fae66af59d98c2e30"><div class="ttname"><a href="scan_8h.html#a035a192d545d9e2fae66af59d98c2e30">TTS_STAR</a></div><div class="ttdeci">#define TTS_STAR</div><div class="ttdef"><b>Definition:</b> scan.h:50</div></div>
+<div class="ttc" id="ascan_8h_html_a0dee619cbc594f611dc45bc837c0253b"><div class="ttname"><a href="scan_8h.html#a0dee619cbc594f611dc45bc837c0253b">TTS_SEMICOLON</a></div><div class="ttdeci">#define TTS_SEMICOLON</div><div class="ttdef"><b>Definition:</b> scan.h:63</div></div>
+<div class="ttc" id="ascan_8h_html_a34455ceb28a6d9881bf620ce7fa085a6"><div class="ttname"><a href="scan_8h.html#a34455ceb28a6d9881bf620ce7fa085a6">TTS_NEQ</a></div><div class="ttdeci">#define TTS_NEQ</div><div class="ttdef"><b>Definition:</b> scan.h:54</div></div>
+<div class="ttc" id="ascan_8h_html_a4498dadc8b674237ed78dc0f2d53dd44"><div class="ttname"><a href="scan_8h.html#a4498dadc8b674237ed78dc0f2d53dd44">TTS_MINUS</a></div><div class="ttdeci">#define TTS_MINUS</div><div class="ttdef"><b>Definition:</b> scan.h:49</div></div>
+<div class="ttc" id="ascan_8h_html_a57fcc8292af8ab5dbc1ba1222c92e656"><div class="ttname"><a href="scan_8h.html#a57fcc8292af8ab5dbc1ba1222c92e656">TTS_PLUS</a></div><div class="ttdeci">#define TTS_PLUS</div><div class="ttdef"><b>Definition:</b> scan.h:48</div></div>
+<div class="ttc" id="ascan_8h_html_a6fab4f8e45fe721285aa5c861c37e0c1"><div class="ttname"><a href="scan_8h.html#a6fab4f8e45fe721285aa5c861c37e0c1">TTS_ASSIGN</a></div><div class="ttdeci">#define TTS_ASSIGN</div><div class="ttdef"><b>Definition:</b> scan.h:61</div></div>
+<div class="ttc" id="ascan_8h_html_a7149f58e15d6b128b39310679a2d4c38"><div class="ttname"><a href="scan_8h.html#a7149f58e15d6b128b39310679a2d4c38">TTS_EOF</a></div><div class="ttdeci">#define TTS_EOF</div><div class="ttdef"><b>Definition:</b> scan.h:47</div></div>
+<div class="ttc" id="ascan_8h_html_a76df956b81ba2dfbb5b1a9dbdcbd916b"><div class="ttname"><a href="scan_8h.html#a76df956b81ba2dfbb5b1a9dbdcbd916b">TTS_EXPONENT</a></div><div class="ttdeci">#define TTS_EXPONENT</div><div class="ttdef"><b>Definition:</b> scan.h:52</div></div>
+<div class="ttc" id="ascan_8h_html_a7bf41eda078f643afe448e0d4fe3513d"><div class="ttname"><a href="scan_8h.html#a7bf41eda078f643afe448e0d4fe3513d">TTS_GE</a></div><div class="ttdeci">#define TTS_GE</div><div class="ttdef"><b>Definition:</b> scan.h:58</div></div>
+<div class="ttc" id="ascan_8h_html_a8846b3004b810435c8eeac38ebdb1eec"><div class="ttname"><a href="scan_8h.html#a8846b3004b810435c8eeac38ebdb1eec">TTS_IDENTIFIER</a></div><div class="ttdeci">#define TTS_IDENTIFIER</div><div class="ttdef"><b>Definition:</b> scan.h:64</div></div>
+<div class="ttc" id="ascan_8h_html_a8a5a49889cfa7a1dc000cd3e0356f891"><div class="ttname"><a href="scan_8h.html#a8a5a49889cfa7a1dc000cd3e0356f891">TTS_LT</a></div><div class="ttdeci">#define TTS_LT</div><div class="ttdef"><b>Definition:</b> scan.h:55</div></div>
+<div class="ttc" id="ascan_8h_html_a8ef63807b66125e7597b5d3fc09e4ab5"><div class="ttname"><a href="scan_8h.html#a8ef63807b66125e7597b5d3fc09e4ab5">TTS_LVALUE_IDENTIFIER</a></div><div class="ttdeci">#define TTS_LVALUE_IDENTIFIER</div><div class="ttdef"><b>Definition:</b> scan.h:65</div></div>
+<div class="ttc" id="ascan_8h_html_a9391ce01718fee07755d8ed7b3f2cf1b"><div class="ttname"><a href="scan_8h.html#a9391ce01718fee07755d8ed7b3f2cf1b">TTS_GT</a></div><div class="ttdeci">#define TTS_GT</div><div class="ttdef"><b>Definition:</b> scan.h:56</div></div>
+<div class="ttc" id="ascan_8h_html_a9594000ba5f90a9539403cbdfc4cc988"><div class="ttname"><a href="scan_8h.html#a9594000ba5f90a9539403cbdfc4cc988">TTS_INTEGER_LITERAL</a></div><div class="ttdeci">#define TTS_INTEGER_LITERAL</div><div class="ttdef"><b>Definition:</b> scan.h:59</div></div>
+<div class="ttc" id="ascan_8h_html_ab2974cb4da4d5b0174b395c10b6f7bcd"><div class="ttname"><a href="scan_8h.html#ab2974cb4da4d5b0174b395c10b6f7bcd">TTS_SLASH</a></div><div class="ttdeci">#define TTS_SLASH</div><div class="ttdef"><b>Definition:</b> scan.h:51</div></div>
+<div class="ttc" id="ascan_8h_html_ab4a2b680a10fe47c4b69dbcfe6df4127"><div class="ttname"><a href="scan_8h.html#ab4a2b680a10fe47c4b69dbcfe6df4127">TTS_EQ</a></div><div class="ttdeci">#define TTS_EQ</div><div class="ttdef"><b>Definition:</b> scan.h:53</div></div>
+<div class="ttc" id="ascan_8h_html_ae1c9235579ab0f8931698efc0689bacf"><div class="ttname"><a href="scan_8h.html#ae1c9235579ab0f8931698efc0689bacf">TTS_INT</a></div><div class="ttdeci">#define TTS_INT</div><div class="ttdef"><b>Definition:</b> scan.h:60</div></div>
+<div class="ttc" id="ascan_8h_html_af0c6f1db37de72c86eb8abdf2eeb4316"><div class="ttname"><a href="scan_8h.html#af0c6f1db37de72c86eb8abdf2eeb4316">TTS_PRINT</a></div><div class="ttdeci">#define TTS_PRINT</div><div class="ttdef"><b>Definition:</b> scan.h:62</div></div>
+<div class="ttc" id="ascan_8h_html_afea1fa794fd5cfb8217235f052c3f16f"><div class="ttname"><a href="scan_8h.html#afea1fa794fd5cfb8217235f052c3f16f">TTS_LE</a></div><div class="ttdeci">#define TTS_LE</div><div class="ttdef"><b>Definition:</b> scan.h:57</div></div>
 </div><!-- fragment -->
 <p><a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> string equivalents. </p>
 

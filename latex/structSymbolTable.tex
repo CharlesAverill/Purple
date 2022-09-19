@@ -1,0 +1,75 @@
+\hypertarget{structSymbolTable}{}\doxysection{Symbol\+Table Struct Reference}
+\label{structSymbolTable}\index{SymbolTable@{SymbolTable}}
+
+
+Holds data for symbols within a scope.  
+
+
+
+
+{\ttfamily \#include $<$symbol\+\_\+table.\+h$>$}
+
+
+
+Collaboration diagram for Symbol\+Table\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{structSymbolTable__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long int \mbox{\hyperlink{structSymbolTable_a836b71e7e80178990b2b24ca0bc11e59}{length}}
+\item 
+unsigned long int \mbox{\hyperlink{structSymbolTable_afdf8bf4102eda5ca2e077f198e9f6c66}{capacity}}
+\item 
+unsigned long int \mbox{\hyperlink{structSymbolTable_a79d029aed5cb77d5153ace908e59547e}{total\+\_\+buckets}}
+\item 
+\mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$$\ast$ \mbox{\hyperlink{structSymbolTable_af6e51d297fb314f42872cb61235691bd}{buckets}}
+\item 
+struct \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ \mbox{\hyperlink{structSymbolTable_afce59ce70989d0f787d63f192504479c}{next}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Holds data for symbols within a scope. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structSymbolTable_af6e51d297fb314f42872cb61235691bd}\label{structSymbolTable_af6e51d297fb314f42872cb61235691bd}} 
+\index{SymbolTable@{SymbolTable}!buckets@{buckets}}
+\index{buckets@{buckets}!SymbolTable@{SymbolTable}}
+\doxysubsubsection{\texorpdfstring{buckets}{buckets}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}}$\ast$$\ast$ Symbol\+Table\+::buckets}
+
+Array of entries with length length \mbox{\Hypertarget{structSymbolTable_afdf8bf4102eda5ca2e077f198e9f6c66}\label{structSymbolTable_afdf8bf4102eda5ca2e077f198e9f6c66}} 
+\index{SymbolTable@{SymbolTable}!capacity@{capacity}}
+\index{capacity@{capacity}!SymbolTable@{SymbolTable}}
+\doxysubsubsection{\texorpdfstring{capacity}{capacity}}
+{\footnotesize\ttfamily unsigned long int Symbol\+Table\+::capacity}
+
+\mbox{\hyperlink{structNumber}{Number}} of empty buckets in the Symbol Table \mbox{\Hypertarget{structSymbolTable_a836b71e7e80178990b2b24ca0bc11e59}\label{structSymbolTable_a836b71e7e80178990b2b24ca0bc11e59}} 
+\index{SymbolTable@{SymbolTable}!length@{length}}
+\index{length@{length}!SymbolTable@{SymbolTable}}
+\doxysubsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily unsigned long int Symbol\+Table\+::length}
+
+\mbox{\hyperlink{structNumber}{Number}} of non-\/empty buckets in the Symbol Table \mbox{\Hypertarget{structSymbolTable_afce59ce70989d0f787d63f192504479c}\label{structSymbolTable_afce59ce70989d0f787d63f192504479c}} 
+\index{SymbolTable@{SymbolTable}!next@{next}}
+\index{next@{next}!SymbolTable@{SymbolTable}}
+\doxysubsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}}$\ast$ Symbol\+Table\+::next}
+
+Next Symbol Table in the scope stack \mbox{\Hypertarget{structSymbolTable_a79d029aed5cb77d5153ace908e59547e}\label{structSymbolTable_a79d029aed5cb77d5153ace908e59547e}} 
+\index{SymbolTable@{SymbolTable}!total\_buckets@{total\_buckets}}
+\index{total\_buckets@{total\_buckets}!SymbolTable@{SymbolTable}}
+\doxysubsubsection{\texorpdfstring{total\_buckets}{total\_buckets}}
+{\footnotesize\ttfamily unsigned long int Symbol\+Table\+::total\+\_\+buckets}
+
+Total number of buckets in the Symbol Table 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/translate/\mbox{\hyperlink{symbol__table_8h}{symbol\+\_\+table.\+h}}\end{DoxyCompactItemize}

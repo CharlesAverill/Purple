@@ -1,11 +1,12 @@
 <map id="include/tree.h" name="include/tree.h">
-<area shape="rect" id="node1" title="Function headers for abstract syntax tree parsing." alt="" coords="414,5,513,32"/>
-<area shape="rect" id="node2" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="409,80,518,107"/>
-<area shape="rect" id="node3" href="$translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="245,155,426,181"/>
-<area shape="rect" id="node9" href="$tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="543,80,619,107"/>
-<area shape="rect" id="node4" href="$statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="344,229,492,256"/>
-<area shape="rect" id="node5" href="$purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="516,229,605,256"/>
-<area shape="rect" id="node8" href="$expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="551,155,703,181"/>
+<area shape="rect" id="node1" title="Function headers for abstract syntax tree parsing." alt="" coords="445,5,543,32"/>
+<area shape="rect" id="node2" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="439,80,549,107"/>
+<area shape="rect" id="node3" href="$translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="157,155,338,181"/>
+<area shape="rect" id="node10" href="$tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="573,80,649,107"/>
+<area shape="rect" id="node4" href="$statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="368,229,516,256"/>
+<area shape="rect" id="node5" href="$purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="552,229,641,256"/>
+<area shape="rect" id="node8" href="$declaration_8c.html" title="Logic for declaration statements." alt="" coords="640,155,793,181"/>
+<area shape="rect" id="node9" href="$expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="362,155,514,181"/>
 <area shape="rect" id="node6" href="$llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="188,229,320,256"/>
 <area shape="rect" id="node7" href="$translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="5,229,164,256"/>
 </map>

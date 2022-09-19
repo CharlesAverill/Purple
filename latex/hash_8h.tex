@@ -1,0 +1,74 @@
+\hypertarget{hash_8h}{}\doxysection{include/utils/hash.h File Reference}
+\label{hash_8h}\index{include/utils/hash.h@{include/utils/hash.h}}
+
+
+Function headers and definitions for hashing algorithms.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{hash_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{hash_8h_ad2026578664bf796de1faaa6d562ff17}{FNV\+\_\+\+OFFSET\+\_\+\+BASIS}}~0x\+CBF29\+CE484222325
+\item 
+\#define \mbox{\hyperlink{hash_8h_ad24caffb4ec2b57caeb823da822d3120}{FNV\+\_\+\+PRIME}}~0x100000001\+B3
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long int \mbox{\hyperlink{hash_8h_ab17e65bc44528a6dded8ef5b965cdcff}{FNV\+\_\+1}} (char $\ast$str)
+\begin{DoxyCompactList}\small\item\em FNV-\/1 String hashing algorithm as defined here\+: \href{https://en.wikipedia.org/wiki/Fowler\%E2\%80\%93Noll\%E2\%80\%93Vo_hash_function\#FNV-1_hash}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Fowler\%\+E2\%80\%93\+Noll\%\+E2\%80\%93\+Vo\+\_\+hash\+\_\+function\#\+FNV-\/1\+\_\+hash}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function headers and definitions for hashing algorithms. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+17-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{hash_8h_ad2026578664bf796de1faaa6d562ff17}\label{hash_8h_ad2026578664bf796de1faaa6d562ff17}} 
+\index{hash.h@{hash.h}!FNV\_OFFSET\_BASIS@{FNV\_OFFSET\_BASIS}}
+\index{FNV\_OFFSET\_BASIS@{FNV\_OFFSET\_BASIS}!hash.h@{hash.h}}
+\doxysubsubsection{\texorpdfstring{FNV\_OFFSET\_BASIS}{FNV\_OFFSET\_BASIS}}
+{\footnotesize\ttfamily \#define FNV\+\_\+\+OFFSET\+\_\+\+BASIS~0x\+CBF29\+CE484222325}
+
+\mbox{\Hypertarget{hash_8h_ad24caffb4ec2b57caeb823da822d3120}\label{hash_8h_ad24caffb4ec2b57caeb823da822d3120}} 
+\index{hash.h@{hash.h}!FNV\_PRIME@{FNV\_PRIME}}
+\index{FNV\_PRIME@{FNV\_PRIME}!hash.h@{hash.h}}
+\doxysubsubsection{\texorpdfstring{FNV\_PRIME}{FNV\_PRIME}}
+{\footnotesize\ttfamily \#define FNV\+\_\+\+PRIME~0x100000001\+B3}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{hash_8h_ab17e65bc44528a6dded8ef5b965cdcff}\label{hash_8h_ab17e65bc44528a6dded8ef5b965cdcff}} 
+\index{hash.h@{hash.h}!FNV\_1@{FNV\_1}}
+\index{FNV\_1@{FNV\_1}!hash.h@{hash.h}}
+\doxysubsubsection{\texorpdfstring{FNV\_1()}{FNV\_1()}}
+{\footnotesize\ttfamily unsigned long int FNV\+\_\+1 (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+FNV-\/1 String hashing algorithm as defined here\+: \href{https://en.wikipedia.org/wiki/Fowler\%E2\%80\%93Noll\%E2\%80\%93Vo_hash_function\#FNV-1_hash}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Fowler\%\+E2\%80\%93\+Noll\%\+E2\%80\%93\+Vo\+\_\+hash\+\_\+function\#\+FNV-\/1\+\_\+hash}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned long int Hash value 
+\end{DoxyReturn}

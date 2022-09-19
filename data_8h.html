@@ -79,25 +79,21 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="scan_8h_source.html">scan.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="symbol__table_8h_source.html">translate/symbol_table.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="arguments_8h_source.html">utils/arguments.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for data.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="data_8h__incl.png" border="0" usemap="#ainclude_2data_8h" alt=""/></div>
 <map name="ainclude_2data_8h" id="ainclude_2data_8h">
-<area shape="rect" title="Project&#45;wide variables." alt="" coords="144,5,247,32"/>
-<area shape="rect" title=" " alt="" coords="5,229,65,256"/>
-<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="200,80,260,107"/>
-<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="476,80,597,107"/>
-<area shape="rect" title=" " alt="" coords="199,155,261,181"/>
-<area shape="rect" title=" " alt="" coords="286,155,361,181"/>
-<area shape="rect" title=" " alt="" coords="367,229,429,256"/>
-<area shape="rect" title=" " alt="" coords="435,155,499,181"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="73,155,174,181"/>
-<area shape="rect" title=" " alt="" coords="89,229,157,256"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="181,229,297,256"/>
-<area shape="rect" title=" " alt="" coords="575,155,632,181"/>
-<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="657,155,710,181"/>
+<area shape="rect" title="Project&#45;wide variables." alt="" coords="148,5,251,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,65,107"/>
+<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="89,80,149,107"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="198,80,361,107"/>
+<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="385,80,507,107"/>
+<area shape="rect" title=" " alt="" coords="201,155,275,181"/>
+<area shape="rect" title=" " alt="" coords="377,155,435,181"/>
+<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="459,155,513,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -105,26 +101,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="data_8h__dep__incl.png" border="0" usemap="#ainclude_2data_8hdep" alt=""/></div>
 <map name="ainclude_2data_8hdep" id="ainclude_2data_8hdep">
-<area shape="rect" title="Project&#45;wide variables." alt="" coords="303,5,406,32"/>
-<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="428,319,537,345"/>
-<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="526,468,674,495"/>
-<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="219,468,309,495"/>
-<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="918,468,1050,495"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="532,80,679,107"/>
-<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="144,244,227,271"/>
-<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="1058,162,1171,189"/>
-<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="1196,162,1335,189"/>
-<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="680,393,861,420"/>
-<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="403,393,555,420"/>
-<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="706,468,865,495"/>
-<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="302,162,407,189"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="611,244,709,271"/>
-<area shape="rect" href="arguments_8c.html" title="Command line interface logic." alt="" coords="534,162,677,189"/>
-<area shape="rect" href="llvm__stack__entry_8c.html" title=" " alt="" coords="701,155,835,196"/>
-<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="860,162,983,189"/>
-<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="561,319,716,345"/>
-<area shape="rect" href="number_8c.html" title="Functions for dealing with numbers internally." alt="" coords="353,244,485,271"/>
-<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="741,319,817,345"/>
+<area shape="rect" title="Project&#45;wide variables." alt="" coords="701,5,804,32"/>
+<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="5,80,159,107"/>
+<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="183,80,335,107"/>
+<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="360,80,508,107"/>
+<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="532,80,621,107"/>
+<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="646,80,729,107"/>
+<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="753,80,885,107"/>
+<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="909,80,1068,107"/>
+<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="1092,80,1205,107"/>
+<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="1230,80,1353,107"/>
+<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="1377,80,1515,107"/>
 </map>
 </div>
 </div>
@@ -147,10 +134,14 @@ Variables</h2></td></tr>
 <tr class="separator:a923af85a91125df76be177e4f52adeee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6739ad08f1684785c7621617a6e8370b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8h.html#a6739ad08f1684785c7621617a6e8370b">D_LLVM_FILE</a></td></tr>
 <tr class="separator:a6739ad08f1684785c7621617a6e8370b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb9f233c82840e13fa251b97e66b46f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8h.html#adb9f233c82840e13fa251b97e66b46f5">D_LLVM_GLOBALS_FILE</a></td></tr>
+<tr class="separator:adb9f233c82840e13fa251b97e66b46f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee2c492e0cfc03b5bb388e816e6aa07d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8h.html#aee2c492e0cfc03b5bb388e816e6aa07d">D_INPUT_FN</a></td></tr>
 <tr class="separator:aee2c492e0cfc03b5bb388e816e6aa07d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9db47be3c9e243f3a6b2f3e77b30a745"><td class="memItemLeft" align="right" valign="top"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8h.html#a9db47be3c9e243f3a6b2f3e77b30a745">D_LLVM_FN</a></td></tr>
 <tr class="separator:a9db47be3c9e243f3a6b2f3e77b30a745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a1aa4528f335b35bbb9ca110033d00a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8h.html#a0a1aa4528f335b35bbb9ca110033d00a">D_LLVM_GLOBALS_FN</a></td></tr>
+<tr class="separator:a0a1aa4528f335b35bbb9ca110033d00a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af29dba328a9429eb1dd0172a6fa0bc99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> unsigned long long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8h.html#af29dba328a9429eb1dd0172a6fa0bc99">D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER</a></td></tr>
 <tr class="separator:af29dba328a9429eb1dd0172a6fa0bc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fa49f095b70d3074fc4a67be01f2813"><td class="memItemLeft" align="right" valign="top"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8h.html#a4fa49f095b70d3074fc4a67be01f2813">D_IDENTIFIER_BUFFER</a> [<a class="el" href="data_8h.html#afdefd4da733213509f3ca91a81945044">D_MAX_IDENTIFIER_LENGTH</a>+1]</td></tr>
@@ -161,6 +152,10 @@ Variables</h2></td></tr>
 <tr class="separator:af0b239f72df01c220d263866200ea216"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa782ad10014ebc3f74c54edfe56d98b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> struct <a class="el" href="structToken.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8h.html#aaa782ad10014ebc3f74c54edfe56d98b">D_GLOBAL_TOKEN</a></td></tr>
 <tr class="separator:aaa782ad10014ebc3f74c54edfe56d98b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b776b58bc391d4b2b0ad9110d862f1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> <a class="el" href="structSymbolTableStack.html">SymbolTableStack</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8h.html#a1b776b58bc391d4b2b0ad9110d862f1c">D_SYMBOL_TABLE_STACK</a></td></tr>
+<tr class="separator:a1b776b58bc391d4b2b0ad9110d862f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d6de1760dedbf060d53166af7599d98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> <a class="el" href="structSymbolTable.html">SymbolTable</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8h.html#a3d6de1760dedbf060d53166af7599d98">D_GLOBAL_SYMBOL_TABLE</a></td></tr>
+<tr class="separator:a3d6de1760dedbf060d53166af7599d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Project-wide variables. </p>
@@ -225,6 +220,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >Activates debug behavior </p>
+
+</div>
+</div>
+<a id="a3d6de1760dedbf060d53166af7599d98" name="a3d6de1760dedbf060d53166af7599d98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d6de1760dedbf060d53166af7599d98">&#9670;&nbsp;</a></span>D_GLOBAL_SYMBOL_TABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> <a class="el" href="structSymbolTable.html">SymbolTable</a>* D_GLOBAL_SYMBOL_TABLE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Global Symbol Table (pointer to bottom of D_SYMBOL_TABLE_STACK) </p>
 
 </div>
 </div>
@@ -329,7 +339,37 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Filename corresponding to D_+LLVM_FILE </p>
+<p >Filename corresponding to D_LLVM_FILE </p>
+
+</div>
+</div>
+<a id="adb9f233c82840e13fa251b97e66b46f5" name="adb9f233c82840e13fa251b97e66b46f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb9f233c82840e13fa251b97e66b46f5">&#9670;&nbsp;</a></span>D_LLVM_GLOBALS_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> FILE* D_LLVM_GLOBALS_FILE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >The file pointer to the open filestream for the output LLVM-IR Global Variables file </p>
+
+</div>
+</div>
+<a id="a0a1aa4528f335b35bbb9ca110033d00a" name="a0a1aa4528f335b35bbb9ca110033d00a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a1aa4528f335b35bbb9ca110033d00a">&#9670;&nbsp;</a></span>D_LLVM_GLOBALS_FN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> char* D_LLVM_GLOBALS_FN</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Filename corresponding to D_LLVM_GLOBALS_FILE </p>
 
 </div>
 </div>
@@ -360,6 +400,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >If defined, this character will be put back into the input stream </p>
+
+</div>
+</div>
+<a id="a1b776b58bc391d4b2b0ad9110d862f1c" name="a1b776b58bc391d4b2b0ad9110d862f1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b776b58bc391d4b2b0ad9110d862f1c">&#9670;&nbsp;</a></span>D_SYMBOL_TABLE_STACK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="purple_8c.html#a7e774264afdce4a653327473a9563e4d">extern_</a> <a class="el" href="structSymbolTableStack.html">SymbolTableStack</a>* D_SYMBOL_TABLE_STACK</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Symbol Table Stack with the Global Symbol Table as its bottom </p>
 
 </div>
 </div>

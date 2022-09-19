@@ -13,7 +13,7 @@ Include dependency graph for llvm.\+h\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{llvm_8h__incl}
+\includegraphics[width=325pt]{llvm_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -67,6 +67,14 @@ void \mbox{\hyperlink{llvm_8h_a9c7b432e690cb422483d20eaacdcfaf0}{llvm\+\_\+stack
 \begin{DoxyCompactList}\small\item\em Store a constant number value into a register. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{llvm_8h_acf6ffab57a0d67bd99dc3caa06a9e1d6}{get\+\_\+next\+\_\+local\+\_\+virtual\+\_\+register}} (void)
 \begin{DoxyCompactList}\small\item\em Retrieves the next valid virtual register index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a01ecfb327d3aaac5bc133e922d18a4ef}{llvm\+\_\+load\+\_\+global\+\_\+variable}} (char $\ast$symbol\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Load a global variable\textquotesingle{}s value into a new virtual register. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{llvm_8h_a83ac5d54b95ce52ab3494500cf6d8476}{llvm\+\_\+store\+\_\+global\+\_\+variable}} (char $\ast$symbol\+\_\+name, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} rvalue\+\_\+register\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Store a value into a global variable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{llvm_8h_aeab3cd1ced090b1a1895f4db2ae4a387}{llvm\+\_\+declare\+\_\+global\+\_\+number\+\_\+variable}} (char $\ast$symbol\+\_\+name, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} number\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Declare a global variable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{llvm_8h_a3d975b70508857ae99ff02c02f2712d1}{llvm\+\_\+declare\+\_\+assign\+\_\+global\+\_\+number\+\_\+variable}} (char $\ast$symbol\+\_\+name, \mbox{\hyperlink{structNumber}{Number}} number)
+\begin{DoxyCompactList}\small\item\em Declare a global variable with an assigned number value. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8h_afc2182252bf20257b60928774df28665}{llvm\+\_\+print\+\_\+int}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} reg)
 \begin{DoxyCompactList}\small\item\em Generate code to print an integer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
@@ -214,12 +222,64 @@ Generates LLVM-\/\+IR for various binary arithmetic expressions.
 \begin{DoxyReturn}{Returns}
 int \mbox{\hyperlink{structNumber}{Number}} of virtual register in which the result is stored 
 \end{DoxyReturn}
+\mbox{\Hypertarget{llvm_8h_a3d975b70508857ae99ff02c02f2712d1}\label{llvm_8h_a3d975b70508857ae99ff02c02f2712d1}} 
+\index{llvm.h@{llvm.h}!llvm\_declare\_assign\_global\_number\_variable@{llvm\_declare\_assign\_global\_number\_variable}}
+\index{llvm\_declare\_assign\_global\_number\_variable@{llvm\_declare\_assign\_global\_number\_variable}!llvm.h@{llvm.h}}
+\doxysubsubsection{\texorpdfstring{llvm\_declare\_assign\_global\_number\_variable()}{llvm\_declare\_assign\_global\_number\_variable()}}
+{\footnotesize\ttfamily void llvm\+\_\+declare\+\_\+assign\+\_\+global\+\_\+number\+\_\+variable (\begin{DoxyParamCaption}\item[{char $\ast$}]{symbol\+\_\+name,  }\item[{\mbox{\hyperlink{structNumber}{Number}}}]{number }\end{DoxyParamCaption})}
+
+
+
+Declare a global variable with an assigned number value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol\+\_\+name} & Name of global variable \\
+\hline
+{\em number} & Default value of global variable \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{llvm_8h_aeab3cd1ced090b1a1895f4db2ae4a387}\label{llvm_8h_aeab3cd1ced090b1a1895f4db2ae4a387}} 
+\index{llvm.h@{llvm.h}!llvm\_declare\_global\_number\_variable@{llvm\_declare\_global\_number\_variable}}
+\index{llvm\_declare\_global\_number\_variable@{llvm\_declare\_global\_number\_variable}!llvm.h@{llvm.h}}
+\doxysubsubsection{\texorpdfstring{llvm\_declare\_global\_number\_variable()}{llvm\_declare\_global\_number\_variable()}}
+{\footnotesize\ttfamily void llvm\+\_\+declare\+\_\+global\+\_\+number\+\_\+variable (\begin{DoxyParamCaption}\item[{char $\ast$}]{symbol\+\_\+name,  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{number\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Declare a global variable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol\+\_\+name} & Name of global variable \\
+\hline
+{\em number\+\_\+type} & Type of number of global variable \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{llvm_8h_aa1d4242202590d641a4086aa55379945}\label{llvm_8h_aa1d4242202590d641a4086aa55379945}} 
 \index{llvm.h@{llvm.h}!llvm\_ensure\_registers\_loaded@{llvm\_ensure\_registers\_loaded}}
 \index{llvm\_ensure\_registers\_loaded@{llvm\_ensure\_registers\_loaded}!llvm.h@{llvm.h}}
 \doxysubsubsection{\texorpdfstring{llvm\_ensure\_registers\_loaded()}{llvm\_ensure\_registers\_loaded()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} $\ast$ llvm\+\_\+ensure\+\_\+registers\+\_\+loaded (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+registers,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{registers\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{llvm_8h_a01ecfb327d3aaac5bc133e922d18a4ef}\label{llvm_8h_a01ecfb327d3aaac5bc133e922d18a4ef}} 
+\index{llvm.h@{llvm.h}!llvm\_load\_global\_variable@{llvm\_load\_global\_variable}}
+\index{llvm\_load\_global\_variable@{llvm\_load\_global\_variable}!llvm.h@{llvm.h}}
+\doxysubsubsection{\texorpdfstring{llvm\_load\_global\_variable()}{llvm\_load\_global\_variable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+load\+\_\+global\+\_\+variable (\begin{DoxyParamCaption}\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Load a global variable\textquotesingle{}s value into a new virtual register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol\+\_\+name} & Identifier name of variable to load \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} Register number variable value is held in 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8h_a6f43471ff369b4c5cc066b16f61ebbf3}\label{llvm_8h_a6f43471ff369b4c5cc066b16f61ebbf3}} 
 \index{llvm.h@{llvm.h}!llvm\_postamble@{llvm\_postamble}}
 \index{llvm\_postamble@{llvm\_postamble}!llvm.h@{llvm.h}}
@@ -288,6 +348,23 @@ Store a constant number value into a register.
 \begin{DoxyReturn}{Returns}
 int Register number value is held in 
 \end{DoxyReturn}
+\mbox{\Hypertarget{llvm_8h_a83ac5d54b95ce52ab3494500cf6d8476}\label{llvm_8h_a83ac5d54b95ce52ab3494500cf6d8476}} 
+\index{llvm.h@{llvm.h}!llvm\_store\_global\_variable@{llvm\_store\_global\_variable}}
+\index{llvm\_store\_global\_variable@{llvm\_store\_global\_variable}!llvm.h@{llvm.h}}
+\doxysubsubsection{\texorpdfstring{llvm\_store\_global\_variable()}{llvm\_store\_global\_variable()}}
+{\footnotesize\ttfamily void llvm\+\_\+store\+\_\+global\+\_\+variable (\begin{DoxyParamCaption}\item[{char $\ast$}]{symbol\+\_\+name,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{rvalue\+\_\+register\+\_\+number }\end{DoxyParamCaption})}
+
+
+
+Store a value into a global variable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol\+\_\+name} & Identifier name of variable to store new value to \\
+\hline
+{\em rvalue\+\_\+register\+\_\+number} & Register number of statement\textquotesingle{}s RValue to store \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Variable Documentation}

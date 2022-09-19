@@ -1,22 +1,11 @@
 var searchData=
 [
-  ['tab_0',['TAB',['../formatting_8h.html#ad58a1fbfc85c7e4790fc55e654f50221',1,'formatting.h']]],
-  ['tokentype_5fis_5fbinary_5farithmetic_1',['TOKENTYPE_IS_BINARY_ARITHMETIC',['../scan_8h.html#a58f4872f7a38784336953acff530cb27',1,'scan.h']]],
-  ['tokentype_5fis_5fterminal_2',['TOKENTYPE_IS_TERMINAL',['../scan_8h.html#affec33daf918f96ba231bf8564fffbe0',1,'scan.h']]],
-  ['tts_5feof_3',['TTS_EOF',['../scan_8h.html#a7149f58e15d6b128b39310679a2d4c38',1,'scan.h']]],
-  ['tts_5feq_4',['TTS_EQ',['../scan_8h.html#ab4a2b680a10fe47c4b69dbcfe6df4127',1,'scan.h']]],
-  ['tts_5fexponent_5',['TTS_EXPONENT',['../scan_8h.html#a76df956b81ba2dfbb5b1a9dbdcbd916b',1,'scan.h']]],
-  ['tts_5fge_6',['TTS_GE',['../scan_8h.html#a7bf41eda078f643afe448e0d4fe3513d',1,'scan.h']]],
-  ['tts_5fgt_7',['TTS_GT',['../scan_8h.html#a9391ce01718fee07755d8ed7b3f2cf1b',1,'scan.h']]],
-  ['tts_5finteger_5fliteral_8',['TTS_INTEGER_LITERAL',['../scan_8h.html#a9594000ba5f90a9539403cbdfc4cc988',1,'scan.h']]],
-  ['tts_5fle_9',['TTS_LE',['../scan_8h.html#afea1fa794fd5cfb8217235f052c3f16f',1,'scan.h']]],
-  ['tts_5flt_10',['TTS_LT',['../scan_8h.html#a8a5a49889cfa7a1dc000cd3e0356f891',1,'scan.h']]],
-  ['tts_5fminus_11',['TTS_MINUS',['../scan_8h.html#a4498dadc8b674237ed78dc0f2d53dd44',1,'scan.h']]],
-  ['tts_5fneq_12',['TTS_NEQ',['../scan_8h.html#a34455ceb28a6d9881bf620ce7fa085a6',1,'scan.h']]],
-  ['tts_5fplus_13',['TTS_PLUS',['../scan_8h.html#a57fcc8292af8ab5dbc1ba1222c92e656',1,'scan.h']]],
-  ['tts_5fprint_14',['TTS_PRINT',['../scan_8h.html#af0c6f1db37de72c86eb8abdf2eeb4316',1,'scan.h']]],
-  ['tts_5fsemicolon_15',['TTS_SEMICOLON',['../scan_8h.html#a0dee619cbc594f611dc45bc837c0253b',1,'scan.h']]],
-  ['tts_5fslash_16',['TTS_SLASH',['../scan_8h.html#ab2974cb4da4d5b0174b395c10b6f7bcd',1,'scan.h']]],
-  ['tts_5fstar_17',['TTS_STAR',['../scan_8h.html#a035a192d545d9e2fae66af59d98c2e30',1,'scan.h']]],
-  ['type_5fregister_18',['type_register',['../llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e',1,'llvm_stack_entry.h']]]
+  ['project_5fname_0',['PROJECT_NAME',['../info_8h.html#ae73053051efbb45c3a39751f5ce9fb36',1,'info.h']]],
+  ['project_5fname_5fand_5fvers_1',['PROJECT_NAME_AND_VERS',['../info_8h.html#ad41a6ae9272f069ba953cfc269adbf19',1,'info.h']]],
+  ['project_5fver_2',['PROJECT_VER',['../info_8h.html#ab6dbc0b8f5e2da90bed8c9efc19d042f',1,'info.h']]],
+  ['project_5fver_5fmajor_3',['PROJECT_VER_MAJOR',['../info_8h.html#a8499ba1e5631acd6376d329b93d8d28b',1,'info.h']]],
+  ['project_5fver_5fminor_4',['PROJECT_VER_MINOR',['../info_8h.html#a5b1736c20e7e4b4780bbcda7ccb87706',1,'info.h']]],
+  ['project_5fver_5fpatch_5',['PROJECT_VER_PATCH',['../info_8h.html#afee21e9699ad9d07592c9332ac3ffe7c',1,'info.h']]],
+  ['purple_5fglobals_5fplaceholder_6',['PURPLE_GLOBALS_PLACEHOLDER',['../clang_8h.html#a0ee761c397a357c8d5655377bb261bc8',1,'clang.h']]],
+  ['purple_5fglobals_5fplaceholder_5flen_7',['PURPLE_GLOBALS_PLACEHOLDER_LEN',['../clang_8h.html#a493219f6c0f98a275c1537ec9fc28624',1,'clang.h']]]
 ];
