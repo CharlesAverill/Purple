@@ -6,6 +6,7 @@
  */
 
 #include "translate/translate.h"
+#include "data.h"
 #include "utils/logging.h"
 
 LLVMStackEntryNode* loadedRegistersHead = NULL;
@@ -20,6 +21,13 @@ static void translate_init(void)
     D_LLVM_FILE = fopen(args->filenames[1], "w");
     if (D_LLVM_FILE == NULL) {
         fatal(RC_FILE_ERROR, "Could not open %s for writing LLVM", args->filenames[1]);
+    }
+
+    D_LLVM_GLOBALS_FN = "globals.ll";
+    D_LLVM_GLOBALS_FILE = fopen(D_LLVM_GLOBALS_FN, "w");
+    if (D_LLVM_GLOBALS_FILE == NULL) {
+        fatal(RC_FILE_ERROR, "Could not open %s for writing LLVM global variables",
+              D_LLVM_GLOBALS_FN);
     }
 
     D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 1;
@@ -63,11 +71,19 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
         }
 
         return temp_left;
-    } else {
+    } else if (root->ttype == T_INTEGER_LITERAL) {
         LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
         current->reg = get_next_local_virtual_register();
         prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
         current->type = token_type_to_number_type(root->ttype);
+        current->align_bytes = numberTypeByteSizes[current->type];
+        current->next = NULL;
+        return current;
+    } else if (root->ttype == T_IDENTIFIER) {
+        LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
+        current->reg = get_next_local_virtual_register();
+        prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
+        current->type = token_type_to_number_type(T_INTEGER_LITERAL);
         current->align_bytes = numberTypeByteSizes[current->type];
         current->next = NULL;
         return current;
@@ -76,10 +92,12 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
 
 /**
  * @brief Generates LLVM-IR from a given AST
+ * 
  * @param n The AST Node from which LLVM will be generated
+ * @param register_number Register number of RValues for storing into LValues
  * @return LLVMValue LLVMValue struct containing information about what code this AST Node generated
 */
-LLVMValue ast_to_llvm(ASTNode* n)
+LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
 {
     type_register virtual_registers[2] = {0, 0};
     LLVMValue temp_values[2];
@@ -90,8 +108,10 @@ LLVMValue ast_to_llvm(ASTNode* n)
     }
 
     // Generate code for left and right subtrees
-    temp_values[0] = ast_to_llvm(n->left);
-    temp_values[1] = ast_to_llvm(n->right);
+    temp_values[0] = ast_to_llvm(
+        n->left,
+        0); // TODO: Here, register_number should be something like -1 to show that it is not actually representing a valid register. Shouldn't matter anyways but it's iffy and I don't like it
+    temp_values[1] = ast_to_llvm(n->right, temp_values[0].value.virtual_register_index);
 
     // Process values from left and right subtrees
     for (int i = 0; i < 2; i++) {
@@ -119,15 +139,24 @@ LLVMValue ast_to_llvm(ASTNode* n)
 
         return llvm_binary_arithmetic(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr),
                                       LLVMVALUE_VIRTUAL_REGISTER(right_vr));
-    } else if (TOKENTYPE_IS_TERMINAL(n->ttype)) {
+    } else {
         switch (n->ttype) {
         case T_INTEGER_LITERAL:
-            return llvm_store_constant(NUMBER_INT32(n->value));
+            return llvm_store_constant(NUMBER_INT32(n->value.int_value));
+        case T_IDENTIFIER:
+            return llvm_load_global_variable(
+                D_GLOBAL_SYMBOL_TABLE->buckets[n->value.global_symbol_table_index]->symbol_name);
+        case T_LVALUE_IDENTIFIER:
+            llvm_store_global_variable(
+                D_GLOBAL_SYMBOL_TABLE->buckets[n->value.global_symbol_table_index]->symbol_name,
+                register_number);
+            return LLVMVALUE_VIRTUAL_REGISTER(register_number);
+        case T_ASSIGN:
+            return LLVMVALUE_VIRTUAL_REGISTER(register_number);
         default:
-            break;
+            syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unknown operator \"%s\"",
+                         tokenStrings[n->ttype]);
         }
-    } else {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unknown operator \"%s\"", tokenStrings[n->ttype]);
     }
 }
 

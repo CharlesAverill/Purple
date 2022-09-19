@@ -81,6 +81,9 @@ void llvm_preamble()
     char* target_triple = get_target_triple();
     fprintf(D_LLVM_FILE, "target triple = \"%s\"" NEWLINE NEWLINE, target_triple);
 
+    // Globals placeholder
+    fprintf(D_LLVM_FILE, PURPLE_GLOBALS_PLACEHOLDER NEWLINE NEWLINE);
+
     fprintf(D_LLVM_FILE, "@print_int_fstring = private unnamed_addr constant [4 x i8] "
                          "c\"%%d\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "; Function Attrs: noinline nounwind optnone uwtable" NEWLINE);
@@ -261,6 +264,57 @@ LLVMValue llvm_store_constant(Number value)
 type_register get_next_local_virtual_register(void)
 {
     return D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER++;
+}
+
+/**
+ * @brief Load a global variable's value into a new virtual register
+ * 
+ * @param symbol_name Identifier name of variable to load
+ * @return LLVMValue Register number variable value is held in
+ */
+LLVMValue llvm_load_global_variable(char* symbol_name)
+{
+    type_register out_register_number = get_next_local_virtual_register();
+    fprintf(D_LLVM_FILE, TAB "%%%llu = load i32, i32* @%s" NEWLINE, out_register_number,
+            symbol_name);
+    prepend_loaded(out_register_number);
+    return LLVMVALUE_VIRTUAL_REGISTER(out_register_number);
+}
+
+/**
+ * @brief Store a value into a global variable
+ * 
+ * @param symbol_name Identifier name of variable to store new value to
+ * @param rvalue_register_number Register number of statement's RValue to store
+ */
+void llvm_store_global_variable(char* symbol_name, type_register rvalue_register_number)
+{
+    fprintf(D_LLVM_FILE, TAB "store i32 %%%llu, i32* @%s" NEWLINE, rvalue_register_number,
+            symbol_name);
+}
+
+/**
+ * @brief Declare a global variable
+ * 
+ * @param symbol_name Name of global variable
+ * @param number_type Type of number of global variable
+ */
+void llvm_declare_global_number_variable(char* symbol_name, NumberType number_type)
+{
+    fprintf(D_LLVM_GLOBALS_FILE, "@%s = global %s 0" NEWLINE, symbol_name,
+            numberTypeLLVMReprs[number_type]);
+}
+
+/**
+ * @brief Declare a global variable with an assigned number value
+ * 
+ * @param symbol_name Name of global variable
+ * @param number Default value of global variable
+ */
+void llvm_declare_assign_global_number_variable(char* symbol_name, Number number)
+{
+    fprintf(D_LLVM_GLOBALS_FILE, "@%s = global %s %d" NEWLINE, symbol_name,
+            numberTypeLLVMReprs[number.type], number.value.int_value);
 }
 
 /**

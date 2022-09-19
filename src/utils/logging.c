@@ -5,8 +5,12 @@
  * @date 08-Sep-2022
  */
 
-#include "utils/logging.h"
+#include <stdarg.h>
+#include <stdlib.h>
+
+#include "data.h"
 #include "utils/arguments.h"
+#include "utils/logging.h"
 
 /**
  * @brief Raises a fatal error that will exit the compiler
@@ -55,6 +59,31 @@ void syntax_error(const char* fn, const int line_number, const char* fmt, ...)
     fprintf(stderr, "\n");
 
     fatal(RC_SYNTAX_ERROR, "%s:%d", fn, line_number);
+}
+
+/**
+ * @brief Raises a fatal identifier error
+ * 
+ * @param fn Filename in which identifier error occurs
+ * @param line_number Line number on which identifier error occurs
+ * @param fmt Format string for details printed before fatal error
+ * @param ... Varargs for details printed before fatal error
+ */
+void identifier_error(const char* fn, const int line_number, const char* fmt, ...)
+{
+    va_list func_args;
+
+    // Print fence for error distinguishing
+    fprintf(stderr, "----------------------------------------\n");
+
+    // Print details of error
+    va_start(func_args, fmt);
+    vfprintf(stderr, fmt, func_args);
+    va_end(func_args);
+
+    fprintf(stderr, "\n");
+
+    fatal(RC_IDENTIFIER_ERROR, "%s:%d", fn, line_number);
 }
 
 /**

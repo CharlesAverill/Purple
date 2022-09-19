@@ -5,6 +5,7 @@
  * @date 09-Sep-2022
  */
 
+#include "data.h"
 #include "parse.h"
 
 /**
@@ -34,15 +35,25 @@ static int get_operatorPrecedence(Token t)
 static ASTNode* create_terminal_node(Token t)
 {
     ASTNode* out;
+    SymbolTableEntry* entry;
 
     switch (D_GLOBAL_TOKEN.type) {
     case T_INTEGER_LITERAL:
-        out = create_ast_leaf(T_INTEGER_LITERAL, D_GLOBAL_TOKEN.value);
-        scan(&D_GLOBAL_TOKEN);
+        out = create_ast_leaf(T_INTEGER_LITERAL, D_GLOBAL_TOKEN.value.int_value);
+        break;
+    case T_IDENTIFIER:
+        entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER);
+        if (entry == NULL) {
+            identifier_error(D_INPUT_FN, D_LINE_NUMBER, "Unknown identifier \"%s\"",
+                             D_IDENTIFIER_BUFFER);
+        }
+        out = create_ast_leaf(T_IDENTIFIER, entry->bucket_index);
         break;
     default:
         syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Token: \"%s\"", tokenStrings[t.type]);
     }
+
+    scan(&D_GLOBAL_TOKEN);
 
     return out;
 }

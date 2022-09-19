@@ -25,12 +25,18 @@ typedef struct ASTNode {
     struct ASTNode* mid;
     /**The right child of the AST Node*/
     struct ASTNode* right;
-    /**Union containing either the value of an integer literal, or the identifier of a symbol*/
-    int value;
+    /**Value of AST Node's Token*/
+    union {
+        /**Value of integer token*/
+        int int_value;
+        /**Index of identifier in global symbol table*/
+        unsigned long int global_symbol_table_index;
+    } value;
 } ASTNode;
 
-ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right, long value);
-ASTNode* create_ast_leaf(TokenType ttype, long value);
-ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, int value);
+ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right,
+                         unsigned long int value);
+ASTNode* create_ast_leaf(TokenType ttype, unsigned long int value);
+ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, unsigned long int value);
 
 #endif /* TREE_H */

@@ -8,11 +8,6 @@
 #ifndef LOGGING
 #define LOGGING
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "data.h"
 #include "utils/shutdown.h"
 
 #define ANSI_BOLD "\033[1m"
@@ -28,8 +23,7 @@
 /**
  * @brief Severity levels of logging statements emitted by the compiler 
  */
-typedef enum
-{
+typedef enum {
     LOG_NONE,
     LOG_DEBUG,
     LOG_INFO,
@@ -58,24 +52,26 @@ static const LogInfo logInfoLevels[] = {
 /**
  * @brief Return codes used in different scenarios
  */
-typedef enum
-{
+typedef enum {
     RC_OK,
     RC_ERROR,
     RC_SYNTAX_ERROR,
     RC_MEMORY_ERROR,
     RC_FILE_ERROR,
     RC_COMPILER_ERROR,
+    RC_IDENTIFIER_ERROR,
 } ReturnCode;
 
 /**
  * @brief String representation of return codes
  */
-static const char* returnCodeStrings[] = {"OK",           "ERROR",      "SYNTAX ERROR",
-                                          "MEMORY ERROR", "FILE ERROR", "COMPILER ERROR"};
+static const char* returnCodeStrings[] = {
+    "OK",         "ERROR",          "SYNTAX ERROR",    "MEMORY ERROR",
+    "FILE ERROR", "COMPILER ERROR", "IDENTIFIER ERROR"};
 
 void fatal(ReturnCode rc, const char* fmt, ...);
 void syntax_error(const char* fn, const int line_number, const char* fmt, ...);
+void identifier_error(const char* fn, const int line_number, const char* fmt, ...);
 
 void purple_log(LogLevel level, const char* fmt, ...);
 

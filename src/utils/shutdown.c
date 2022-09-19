@@ -5,6 +5,8 @@
  * @date 13-Sep-2022
  */
 
+#include <stdlib.h>
+
 #include "data.h"
 #include "utils/logging.h"
 
@@ -22,6 +24,10 @@ void close_files(void)
     if (D_LLVM_FILE) {
         fclose(D_LLVM_FILE);
         D_LLVM_FILE = NULL;
+    }
+    if (D_LLVM_GLOBALS_FILE) {
+        fclose(D_LLVM_GLOBALS_FILE);
+        D_LLVM_GLOBALS_FILE = NULL;
     }
 }
 

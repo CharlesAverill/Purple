@@ -8,19 +8,14 @@
 #ifndef SCAN_H
 #define SCAN_H
 
-#include <ctype.h>
 #include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-#include "utils/logging.h"
+#include "scan.h"
 
 /**
  * @brief Types of scannable tokens
  */
-typedef enum
-{
+typedef enum {
     T_EOF,
     // Arithmetic Operators
     T_PLUS,
@@ -37,10 +32,16 @@ typedef enum
     T_GE,
     // Literals
     T_INTEGER_LITERAL,
+    // Types
+    T_INT,
+    // Assignment
+    T_ASSIGN,
     // Keywords
     T_PRINT,
     // Miscellaneous
     T_SEMICOLON,
+    T_IDENTIFIER,
+    T_LVALUE_IDENTIFIER,
 } TokenType;
 
 #define TTS_EOF "EOF"
@@ -56,21 +57,44 @@ typedef enum
 #define TTS_LE "<="
 #define TTS_GE ">="
 #define TTS_INTEGER_LITERAL "integer literal"
+#define TTS_INT "int"
+#define TTS_ASSIGN "="
 #define TTS_PRINT "print"
 #define TTS_SEMICOLON ";"
+#define TTS_IDENTIFIER "identifier"
+#define TTS_LVALUE_IDENTIFIER "lvalue identifier"
 
 /**
  * @brief Token string equivalents
  */
-static char* tokenStrings[] = {
-    TTS_EOF,      TTS_PLUS, TTS_MINUS, TTS_STAR, TTS_SLASH, TTS_EXPONENT,        TTS_EQ,
-    TTS_NEQ,      TTS_LT,   TTS_GT,    TTS_LE,   TTS_GE,    TTS_INTEGER_LITERAL, TTS_PRINT,
-    TTS_SEMICOLON};
+static char* tokenStrings[] = {TTS_EOF,
+                               TTS_PLUS,
+                               TTS_MINUS,
+                               TTS_STAR,
+                               TTS_SLASH,
+                               TTS_EXPONENT,
+                               TTS_EQ,
+                               TTS_NEQ,
+                               TTS_LT,
+                               TTS_GT,
+                               TTS_LE,
+                               TTS_GE,
+                               TTS_INTEGER_LITERAL,
+                               TTS_INT,
+                               TTS_ASSIGN,
+                               TTS_PRINT,
+                               TTS_SEMICOLON,
+                               TTS_IDENTIFIER,
+                               TTS_LVALUE_IDENTIFIER};
 
 /**
  * @brief Macro to determine if a TokenType is associated with a terminal AST Node
  */
-#define TOKENTYPE_IS_TERMINAL(type) (type >= T_INTEGER_LITERAL && type <= T_INTEGER_LITERAL)
+
+#define TOKENTYPE_IS_TERMINAL(type)                                                                \
+    (/*Literals*/ (type >= T_INTEGER_LITERAL && type <= T_INTEGER_LITERAL) ||                      \
+     /*Types*/ (type >= T_INT && type <= T_INT) ||                                                 \
+     /*Miscellaneous*/ (type >= T_SEMICOLON && type <= T_LVALUE_IDENTIFIER))
 
 /**
  * @brief Macro to determine if a TokenType is associated with a binary arithmetic operation
@@ -83,8 +107,13 @@ static char* tokenStrings[] = {
 typedef struct Token {
     /**Type of token*/
     TokenType type;
-    /**Value of integer token*/
-    int value;
+    /**Value of token*/
+    union {
+        /**Value of integer token*/
+        int int_value;
+        /**Index of identifier in global symbol table*/
+        unsigned long int global_symbol_table_index;
+    } value;
 } Token;
 
 bool scan(Token* t);

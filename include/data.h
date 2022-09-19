@@ -11,6 +11,7 @@
 #include <stdio.h>
 
 #include "scan.h"
+#include "translate/symbol_table.h"
 #include "utils/arguments.h"
 
 /**extern_ will be undefined in purple.c, causing purple.c to "own" these variables*/
@@ -26,10 +27,14 @@ extern_ char D_PUT_BACK;
 extern_ FILE* D_INPUT_FILE;
 /**The file pointer to the open filestream for the output LLVM-IR file*/
 extern_ FILE* D_LLVM_FILE;
+/**The file pointer to the open filestream for the output LLVM-IR Global Variables file*/
+extern_ FILE* D_LLVM_GLOBALS_FILE;
 /**Filename corresponding to D_INPUT_FILE*/
 extern_ char* D_INPUT_FN;
-/**Filename corresponding to D_+LLVM_FILE*/
+/**Filename corresponding to D_LLVM_FILE*/
 extern_ char* D_LLVM_FN;
+/**Filename corresponding to D_LLVM_GLOBALS_FILE*/
+extern_ char* D_LLVM_GLOBALS_FN;
 /**Current number of the latest-used LLVM virtual register within a function*/
 extern_ unsigned long long int D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER;
 
@@ -46,5 +51,10 @@ extern_ PurpleArgs* args;
 
 /**Most recently-parsed token*/
 extern_ struct Token D_GLOBAL_TOKEN;
+
+/**Symbol Table Stack with the Global Symbol Table as its bottom*/
+extern_ SymbolTableStack* D_SYMBOL_TABLE_STACK;
+/**Global Symbol Table (pointer to bottom of D_SYMBOL_TABLE_STACK)*/
+extern_ SymbolTable* D_GLOBAL_SYMBOL_TABLE;
 
 #endif /* DATA_H */

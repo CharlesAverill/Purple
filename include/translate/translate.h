@@ -8,17 +8,13 @@
 #ifndef TRANSLATE_H
 #define TRANSLATE_H
 
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "parse.h"
 #include "translate/llvm.h"
 #include "tree.h"
-#include "types/number.h"
 
 LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root);
 
-LLVMValue ast_to_llvm(ASTNode* n);
+LLVMValue ast_to_llvm(ASTNode* n, type_register register_number);
 void generate_llvm(void);
 
 #endif /* TRANSLATE_H */

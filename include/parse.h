@@ -29,8 +29,6 @@
 #ifndef PARSE_H
 #define PARSE_H
 
-#include "data.h"
-#include "scan.h"
 #include "tree.h"
 
 /**
@@ -57,6 +55,8 @@ static int operatorPrecedence[] = {
 };
 
 ASTNode* parse_binary_expression(int previous_token_precedence);
+void match_token(TokenType type);
+void variable_declaration(void);
 void parse_statements(void);
 
 #endif /* PARSE_H */

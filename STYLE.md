@@ -95,3 +95,13 @@ Follows the below format:
  * @date <DD-MMM-YYYY> // e.g. 12-Sep-2022
  */
 ```
+
+## File pointers
+
+When checking if a file has been opened successfully using a `FILE*` and `fopen(3)`, explicitly check if the returned `FILE*` is `NULL` like so:
+
+```c
+FILE* file_pointer = fopen("test.txt", "r");
+if (file_pointer == NULL) {
+    // Throw your error or whatever here
+} 

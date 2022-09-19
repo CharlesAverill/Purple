@@ -5,10 +5,11 @@
  * @date 08-Sep-2022
  */
 
-#include <ctype.h>
+#include <string.h>
 
 #include "data.h"
 #include "scan.h"
+#include "utils/logging.h"
 
 /**
  * @brief Get the next valid character from the current input file
@@ -51,7 +52,7 @@ static void put_back_into_stream(char c) { D_PUT_BACK = c; }
  * 
  * @return char The next non-whitespace Token
  */
-static char skip(void)
+static char skip_whitespace(void)
 {
     char c;
 
@@ -87,7 +88,7 @@ static int index_of(char* s, int c)
  * @param c Current character
  * @return int Scanned integer literal
  */
-static int scanint(char c)
+static int scan_integer_literal(char c)
 {
     int k = 0;   // Current digit
     int val = 0; // Output
@@ -153,10 +154,16 @@ static int scan_identifier(char c, char* buf, int max_len)
 static TokenType parse_keyword(char* keyword_string)
 {
     switch (keyword_string[0]) {
+    case 'i':
+        if (!strcmp(keyword_string, TTS_INT)) {
+            return T_INT;
+        }
+        break;
     case 'p':
         if (!strcmp(keyword_string, TTS_PRINT)) {
             return T_PRINT;
         }
+        break;
     }
 
     return 0;
@@ -190,7 +197,7 @@ bool scan(Token* t)
     TokenType temp_type;
 
     // Skip whitespace
-    c = skip();
+    c = skip_whitespace();
 
     bool switch_matched = true;
     switch (c) {
@@ -217,6 +224,9 @@ bool scan(Token* t)
     case ';':
         t->type = T_SEMICOLON;
         break;
+    case '=':
+        t->type = T_ASSIGN;
+        break;
     default:
         switch_matched = false;
         break;
@@ -229,7 +239,7 @@ bool scan(Token* t)
     bool no_switch_match_output = true;
     // Check if c is an integer
     if (scan_check_integer_literal(c)) {
-        t->value = scanint(c);
+        t->value.int_value = scan_integer_literal(c);
         t->type = T_INTEGER_LITERAL;
     } else if (scan_check_keyword_identifier(c)) {
         // Scan identifier string into buffer
@@ -239,8 +249,7 @@ bool scan(Token* t)
         if (temp_type = parse_keyword(D_IDENTIFIER_BUFFER)) {
             t->type = temp_type;
         } else {
-            syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unrecognized identifier \"%s\"",
-                         D_IDENTIFIER_BUFFER);
+            t->type = T_IDENTIFIER;
         }
     } else {
         no_switch_match_output = false;

@@ -8,6 +8,7 @@
 #include <regex.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "data.h"
 #include "utils/clang.h"
@@ -105,6 +106,67 @@ void create_tmp_generator_program()
 }
 
 /**
+ * @brief Link globals.ll to main LLVM file by copying the contents of each LLVM file into a temporary file, then 
+ * copying back to the main LLVM file
+ */
+void link_globals(void)
+{
+    // getline buffers
+    char* current_llvm_line = NULL;
+    size_t llvm_buf_size = (PURPLE_GLOBALS_PLACEHOLDER_LEN + 1);
+    char* temp_line = NULL;
+    size_t temp_buf_size = 512;
+
+    // Open files
+    purple_log(LOG_DEBUG, "Opening files for globals linking");
+    FILE* temp_file = tmpfile();
+    if (temp_file == NULL) {
+        fatal(RC_FILE_ERROR, "Failed to open temporary file");
+    }
+    FILE* globals_file = fopen(D_LLVM_GLOBALS_FN, "r");
+    if (temp_file == NULL) {
+        fatal(RC_FILE_ERROR, "Failed to open globals LLVM file");
+    }
+    FILE* llvm_file = fopen(D_LLVM_FN, "r");
+    if (temp_file == NULL) {
+        fatal(RC_FILE_ERROR, "Failed to open main LLVM file");
+    }
+
+    purple_log(LOG_DEBUG, "Scanning main LLVM file for globals placeholder");
+    while (getline(&current_llvm_line, &llvm_buf_size, llvm_file) >= 0) {
+        // Check if current line is the placeholder
+        if (regex_match(PURPLE_GLOBALS_PLACEHOLDER "\\s*", current_llvm_line, llvm_buf_size + 1,
+                        0)) {
+            // Copy entire globals file into temp file
+            rewind(globals_file);
+
+            while (getline(&temp_line, &temp_buf_size, globals_file) >= 0) {
+                fwrite(temp_line, strlen(temp_line), 1, temp_file);
+            }
+        } else {
+            // Copy line into temp file
+            fwrite(current_llvm_line, strlen(current_llvm_line), 1, temp_file);
+        }
+    }
+
+    // Close globals file, close, erase, and reopen LLVM, rewind temp file
+    fclose(globals_file);
+    fclose(llvm_file);
+    llvm_file = fopen(D_LLVM_FN, "w");
+    rewind(temp_file);
+
+    // Copy data from temp file to LLVM file
+    purple_log(LOG_DEBUG, "Copying data from temp LLVM file to main LLVM file");
+    while (getline(&temp_line, &temp_buf_size, temp_file) >= 0) {
+        fwrite(temp_line, strlen(temp_line), 1, llvm_file);
+    }
+
+    // Close LLVM and temp files
+    fclose(llvm_file);
+    fclose(temp_file);
+}
+
+/**
  * @brief Starts up the clang compiler to compile the generated LLVM-IR into a binary
  */
 void clang_compile_llvm(const char* fn)
@@ -112,7 +174,8 @@ void clang_compile_llvm(const char* fn)
     purple_log(LOG_DEBUG, "Compiling LLVM with clang");
 
     int clang_status;
-    char process_out[256];
+    char* process_out;
+    size_t process_out_buf_len = 256;
     // Generate the clang command
     char cmd[270] = {0};
 
@@ -124,7 +187,7 @@ void clang_compile_llvm(const char* fn)
     FILE* clang_process = popen(cmd, "r");
 
     // Let process run
-    while (fgets(process_out, 256, clang_process) != NULL) {
+    while (getline(&process_out, &process_out_buf_len, clang_process) >= 0) {
         if (args->logging == LOG_DEBUG) {
             printf("%s", process_out);
         }

@@ -5,8 +5,8 @@
  * @date 13-Sep-2022
  */
 
-#ifndef CLANG
-#define CLANG
+#ifndef CLANG_H
+#define CLANG_H
 
 /**
  * @brief Program used to determine platform information
@@ -36,12 +36,21 @@ static char generatorProgramLLFullPath[512];
  * @brief True if the generator program has been written and compiled
  */
 static bool generatorProgramWritten = false;
+/**
+ * @brief Placeholder in main LLVM file used when linking globals
+ */
+#define PURPLE_GLOBALS_PLACEHOLDER ";<purple_globals_placeholder>"
+/**
+ * @brief Length of PURPLE_GLOBALS_PLACEHOLDER
+ */
+#define PURPLE_GLOBALS_PLACEHOLDER_LEN sizeof(PURPLE_GLOBALS_PLACEHOLDER) - 1
 
 void clang_compile_llvm(const char* fn);
+void link_globals(void);
 void create_tmp_generator_program();
 char* get_target_datalayout();
 char* get_target_triple();
 char* get_postamble();
 char* regex_match(const char* regex, char* target_str, int len, int group_index);
 
-#endif /* CLANG */
+#endif /* CLANG_H */

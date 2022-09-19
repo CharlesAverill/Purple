@@ -5,7 +5,11 @@
  * @date 08-Sep-2022
  */
 
+#include <ctype.h>
+#include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 // Define, then undef extern_ to transfer ownership to purple.c
 #define extern_
@@ -14,12 +18,11 @@
 
 #include "parse.h"
 #include "scan.h"
+#include "translate/symbol_table.h"
 #include "translate/translate.h"
 #include "utils/arguments.h"
 #include "utils/clang.h"
 #include "utils/logging.h"
-
-static void init(int argc, char* argv[]);
 
 /**
  * @brief Parse compiler arguments, open input file, and allocate memory 
@@ -29,10 +32,6 @@ static void init(int argc, char* argv[]);
  */
 static void init(int argc, char* argv[])
 {
-    // Global data
-    D_LINE_NUMBER = 1;
-    D_PUT_BACK = '\n';
-
     // Argument parsing
     args = malloc(sizeof(PurpleArgs));
     if (args == NULL) {
@@ -47,8 +46,16 @@ static void init(int argc, char* argv[])
         fatal(RC_FILE_ERROR, "Unable to open %s: %s\n", D_INPUT_FN, strerror(errno));
     }
 
+    // Global data
+    D_LINE_NUMBER = 1;
+    D_PUT_BACK = '\n';
+
     // Global Token
     scan(&D_GLOBAL_TOKEN);
+
+    // Symbol Tables
+    D_SYMBOL_TABLE_STACK = new_nonempty_symbol_table_stack();
+    D_GLOBAL_SYMBOL_TABLE = D_SYMBOL_TABLE_STACK->top;
 
     purple_log(LOG_DEBUG, "Compiler initialized");
 }
@@ -67,6 +74,8 @@ int main(int argc, char* argv[])
     generate_llvm();
 
     close_files();
+
+    link_globals();
 
     clang_compile_llvm(D_LLVM_FN);
 

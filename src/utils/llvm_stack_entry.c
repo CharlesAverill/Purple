@@ -5,6 +5,8 @@
  * @date 15-Sep-2022
  */
 
+#include <stdlib.h>
+
 #include "utils/llvm_stack_entry.h"
 #include "utils/logging.h"
 

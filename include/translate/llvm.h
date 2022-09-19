@@ -5,8 +5,8 @@
  * @date 10-Sep-2022
  */
 
-#ifndef LLVM
-#define LLVM
+#ifndef LLVM_H
+#define LLVM_H
 
 #include "scan.h"
 #include "types/number.h"
@@ -32,8 +32,7 @@ extern LLVMStackEntryNode* freeVirtualRegistersHead;
 /**
  * @brief Types of values possibly returned by ast_to_llvm
  */
-typedef enum
-{
+typedef enum {
     LLVMVALUETYPE_NONE,
     LLVMVALUETYPE_VIRTUAL_REGISTER,
 } LLVMValueType;
@@ -90,6 +89,10 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
 LLVMValue llvm_store_constant(Number value);
 type_register get_next_local_virtual_register(void);
 
+LLVMValue llvm_load_global_variable(char* symbol_name);
+void llvm_store_global_variable(char* symbol_name, type_register rvalue_register_number);
+void llvm_declare_global_number_variable(char* symbol_name, NumberType number_type);
+void llvm_declare_assign_global_number_variable(char* symbol_name, Number number);
 void llvm_print_int(type_register reg);
 
-#endif /* LLVM */
+#endif /* LLVM_H */
