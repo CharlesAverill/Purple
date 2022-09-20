@@ -148,7 +148,11 @@ LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
         case T_LVALUE_IDENTIFIER:;
             type_register* loaded_registers =
                 llvm_ensure_registers_loaded(1, (type_register[]){register_number});
-            llvm_store_global_variable(n->value.symbol_name, loaded_registers[0]);
+            if (loaded_registers != NULL) {
+                register_number = loaded_registers[0];
+                free(loaded_registers);
+            }
+            llvm_store_global_variable(n->value.symbol_name, register_number);
             return LLVMVALUE_VIRTUAL_REGISTER(register_number);
         case T_ASSIGN:
             return LLVMVALUE_VIRTUAL_REGISTER(register_number);

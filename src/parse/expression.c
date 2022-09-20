@@ -67,7 +67,6 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
 
     // Get the intlit on the left and scan the next Token
     left = create_terminal_node(D_GLOBAL_TOKEN);
-    ast_debug_level_order(left, LOG_INFO);
     current_ttype = D_GLOBAL_TOKEN.type;
     if (current_ttype == T_SEMICOLON) {
         return left;

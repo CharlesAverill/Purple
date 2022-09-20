@@ -39,7 +39,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
     out->right = right;
     if (ttype == T_INTEGER_LITERAL) {
         out->value.int_value = value;
-    } else if (ttype == T_IDENTIFIER || ttype == T_LVALUE_IDENTIFIER) {
+    } else if (TOKENTYPE_IS_IDENTIFIER(ttype)) {
         strcpy(out->value.symbol_name, symbol_name);
     }
 
