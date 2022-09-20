@@ -11,9 +11,8 @@ var searchData=
   ['get_5fnext_5flocal_5fvirtual_5fregister_8',['get_next_local_virtual_register',['../llvm_8h.html#acf6ffab57a0d67bd99dc3caa06a9e1d6',1,'get_next_local_virtual_register(void):&#160;llvm.c'],['../llvm_8c.html#acf6ffab57a0d67bd99dc3caa06a9e1d6',1,'get_next_local_virtual_register(void):&#160;llvm.c']]],
   ['get_5foperatorprecedence_9',['get_operatorPrecedence',['../expression_8c.html#ace021c537d1a5bacc6190333c1b5dcd4',1,'expression.c']]],
   ['get_5fpostamble_10',['get_postamble',['../clang_8h.html#a05c1a47a02bdbc3937ea103b8a6eae63',1,'clang.h']]],
-  ['get_5ftarget_5fdatalayout_11',['get_target_datalayout',['../clang_8c.html#aad50747c930d7d8fe05d741b81501f5c',1,'get_target_datalayout():&#160;clang.c'],['../clang_8h.html#aad50747c930d7d8fe05d741b81501f5c',1,'get_target_datalayout():&#160;clang.c']]],
+  ['get_5ftarget_5fdatalayout_11',['get_target_datalayout',['../clang_8h.html#aad50747c930d7d8fe05d741b81501f5c',1,'get_target_datalayout():&#160;clang.c'],['../clang_8c.html#aad50747c930d7d8fe05d741b81501f5c',1,'get_target_datalayout():&#160;clang.c']]],
   ['get_5ftarget_5ftriple_12',['get_target_triple',['../clang_8h.html#ae6b73131bb54576584f6bdb9dc6378a7',1,'get_target_triple():&#160;clang.c'],['../clang_8c.html#ae6b73131bb54576584f6bdb9dc6378a7',1,'get_target_triple():&#160;clang.c']]],
   ['get_5ftemp_5fdir_13',['get_temp_dir',['../clang_8c.html#ad757e0b452602859654ba026c29b5024',1,'clang.c']]],
-  ['global_5fsymbol_5ftable_5findex_14',['global_symbol_table_index',['../structASTNode.html#ab432652908e6980e38ac7b303bc2e3c9',1,'ASTNode::global_symbol_table_index()'],['../structToken.html#a3b51c076680a3ee64390eca9bd1c204c',1,'Token::global_symbol_table_index()']]],
-  ['grammar_15',['grammar',['../grammar.html',1,'']]]
+  ['grammar_14',['grammar',['../grammar.html',1,'']]]
 ];

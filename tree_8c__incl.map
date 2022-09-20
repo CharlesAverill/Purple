@@ -1,10 +1,12 @@
 <map id="src/tree.c" name="src/tree.c">
-<area shape="rect" id="node1" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="43,5,119,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="11,80,71,107"/>
-<area shape="rect" id="node3" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="95,80,149,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,155,68,181"/>
-<area shape="rect" id="node5" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="92,155,152,181"/>
-<area shape="rect" id="node7" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="201,155,302,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="85,229,159,256"/>
-<area shape="rect" id="node8" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="193,229,309,256"/>
+<area shape="rect" id="node1" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="84,5,160,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,65,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="90,80,154,107"/>
+<area shape="rect" id="node4" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="179,80,233,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="56,155,119,181"/>
+<area shape="rect" id="node6" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="143,155,203,181"/>
+<area shape="rect" id="node8" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="125,229,287,256"/>
+<area shape="rect" id="node9" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="315,155,417,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="109,304,183,331"/>
+<area shape="rect" id="node10" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="312,229,428,256"/>
 </map>

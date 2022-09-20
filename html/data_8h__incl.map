@@ -1,10 +1,10 @@
 <map id="include/data.h" name="include/data.h">
-<area shape="rect" id="node1" title="Project&#45;wide variables." alt="" coords="148,5,251,32"/>
+<area shape="rect" id="node1" title="Project&#45;wide variables." alt="" coords="101,5,204,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,80,65,107"/>
 <area shape="rect" id="node3" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="89,80,149,107"/>
-<area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="198,80,361,107"/>
-<area shape="rect" id="node6" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="385,80,507,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="201,155,275,181"/>
-<area shape="rect" id="node7" title=" " alt="" coords="377,155,435,181"/>
-<area shape="rect" id="node8" href="$info_8h.html" title="CMake config definitions." alt="" coords="459,155,513,181"/>
+<area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="87,155,250,181"/>
+<area shape="rect" id="node6" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="243,80,364,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="71,229,146,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="275,155,332,181"/>
+<area shape="rect" id="node8" href="$info_8h.html" title="CMake config definitions." alt="" coords="357,155,410,181"/>
 </map>

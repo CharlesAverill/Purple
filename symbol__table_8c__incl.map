@@ -1,8 +1,9 @@
 <map id="src/translate/symbol_table.c" name="src/translate/symbol_table.c">
-<area shape="rect" id="node1" title="Logic for global and local symbol tables." alt="" coords="123,5,262,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,68,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="93,95,157,121"/>
-<area shape="rect" id="node4" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="181,95,343,121"/>
-<area shape="rect" id="node6" href="$hash_8h.html" title="Function headers and definitions for hashing algorithms." alt="" coords="367,95,455,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="225,169,299,196"/>
+<area shape="rect" id="node1" title="Logic for global and local symbol tables." alt="" coords="139,5,278,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,65,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="89,95,152,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="177,95,241,121"/>
+<area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="265,95,427,121"/>
+<area shape="rect" id="node7" href="$hash_8h.html" title="Function headers and definitions for hashing algorithms." alt="" coords="451,95,539,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="309,169,383,196"/>
 </map>

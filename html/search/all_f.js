@@ -13,7 +13,7 @@ var searchData=
   ['skip_5fwhitespace_10',['skip_whitespace',['../scan_8c.html#a86d1f1bccadab31732ccd799bed1abb3',1,'scan.c']]],
   ['statement_2ec_11',['statement.c',['../statement_8c.html',1,'']]],
   ['stores_5fpointer_12',['stores_pointer',['../structLLVMValue.html#a781b99846c8053f0557e5db87b954296',1,'LLVMValue']]],
-  ['symbol_5fname_13',['symbol_name',['../structSymbolTableEntry.html#a7d7e61aa88b5d5194f9e6681923dcf49',1,'SymbolTableEntry']]],
+  ['symbol_5fname_13',['symbol_name',['../structToken.html#abc35c403b083d14cef963cdbf390cf23',1,'Token::symbol_name()'],['../structASTNode.html#ab07357f4f4f7d75f05a60ab6799c3008',1,'ASTNode::symbol_name()'],['../structSymbolTableEntry.html#a7d7e61aa88b5d5194f9e6681923dcf49',1,'SymbolTableEntry::symbol_name()']]],
   ['symbol_5ftable_2ec_14',['symbol_table.c',['../symbol__table_8c.html',1,'']]],
   ['symbol_5ftable_2eh_15',['symbol_table.h',['../symbol__table_8h.html',1,'']]],
   ['symbol_5ftable_5fdefault_5flength_16',['SYMBOL_TABLE_DEFAULT_LENGTH',['../symbol__table_8h.html#a79653115fb43c2f3cee6d1b80ec69efb',1,'symbol_table.h']]],

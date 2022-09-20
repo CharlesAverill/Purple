@@ -1,4 +1,5 @@
 <map id="include/scan.h" name="include/scan.h">
-<area shape="rect" id="node1" title="Lexical Scanner function headers." alt="" coords="5,7,111,33"/>
-<area shape="rect" id="node2" title=" " alt="" coords="21,81,95,108"/>
+<area shape="rect" id="node1" title="Lexical Scanner function headers." alt="" coords="5,5,111,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="21,155,95,181"/>
+<area shape="rect" id="node3" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="37,80,199,107"/>
 </map>

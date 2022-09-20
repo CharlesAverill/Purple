@@ -12,7 +12,7 @@ var searchData=
   ['d_5fllvm_5fglobals_5ffile_9',['D_LLVM_GLOBALS_FILE',['../data_8h.html#adb9f233c82840e13fa251b97e66b46f5',1,'data.h']]],
   ['d_5fllvm_5fglobals_5ffn_10',['D_LLVM_GLOBALS_FN',['../data_8h.html#a0a1aa4528f335b35bbb9ca110033d00a',1,'data.h']]],
   ['d_5fllvm_5flocal_5fvirtual_5fregister_5fnumber_11',['D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER',['../data_8h.html#af29dba328a9429eb1dd0172a6fa0bc99',1,'data.h']]],
-  ['d_5fmax_5fidentifier_5flength_12',['D_MAX_IDENTIFIER_LENGTH',['../data_8h.html#afdefd4da733213509f3ca91a81945044',1,'data.h']]],
+  ['d_5fmax_5fidentifier_5flength_12',['D_MAX_IDENTIFIER_LENGTH',['../scan_8h.html#afdefd4da733213509f3ca91a81945044',1,'scan.h']]],
   ['d_5fput_5fback_13',['D_PUT_BACK',['../data_8h.html#aecfb2e5af0488a83da058ff5cc29d822',1,'data.h']]],
   ['d_5fsymbol_5ftable_5fstack_14',['D_SYMBOL_TABLE_STACK',['../data_8h.html#a1b776b58bc391d4b2b0ad9110d862f1c',1,'data.h']]],
   ['data_2eh_15',['data.h',['../data_8h.html',1,'']]],

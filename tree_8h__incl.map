@@ -1,8 +1,9 @@
 <map id="include/tree.h" name="include/tree.h">
-<area shape="rect" id="node1" title="Function headers for abstract syntax tree parsing." alt="" coords="73,5,171,32"/>
+<area shape="rect" id="node1" title="Function headers for abstract syntax tree parsing." alt="" coords="106,5,205,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,80,68,107"/>
 <area shape="rect" id="node3" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="92,80,152,107"/>
-<area shape="rect" id="node5" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="201,80,302,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="85,155,159,181"/>
-<area shape="rect" id="node6" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="193,155,309,181"/>
+<area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="74,155,237,181"/>
+<area shape="rect" id="node6" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="265,80,366,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="58,229,133,256"/>
+<area shape="rect" id="node7" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="261,155,377,181"/>
 </map>

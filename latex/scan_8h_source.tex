@@ -8,7 +8,7 @@
 \DoxyCodeLine{10 }
 \DoxyCodeLine{11 \textcolor{preprocessor}{\#include <stdbool.h>}}
 \DoxyCodeLine{12 }
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{scan_8h}{scan.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{symbol__table_8h}{translate/symbol\_table.h}}"{}}}
 \DoxyCodeLine{14 }
 \DoxyCodeLine{18 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
 \DoxyCodeLine{19     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a9882ff017eb83e311ec8ad12ab646455}{T\_EOF}},}
@@ -86,16 +86,22 @@
 \DoxyCodeLine{98 }
 \DoxyCodeLine{102 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_BINARY\_ARITHMETIC(type) (type >= T\_PLUS \&\& type <= T\_EXPONENT)}}
 \DoxyCodeLine{103 }
-\DoxyCodeLine{107 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structToken}{Token}} \{}
-\DoxyCodeLine{109     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}{type}};}
-\DoxyCodeLine{111     \textcolor{keyword}{union }\{}
-\DoxyCodeLine{113         \textcolor{keywordtype}{int} \mbox{\hyperlink{structToken_a0bd1ec80054e52bb87e5f5c4fd2f6931}{int\_value}};}
-\DoxyCodeLine{115         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structToken_a3b51c076680a3ee64390eca9bd1c204c}{global\_symbol\_table\_index}};}
-\DoxyCodeLine{116     \} \mbox{\hyperlink{structToken_aa8cbd23eb93e4c0f3f2627c3e5b5591d}{value}};}
-\DoxyCodeLine{117 \} \mbox{\hyperlink{scan_8h_ae88d5c0259051080fda097b92d99d7ee}{Token}};}
-\DoxyCodeLine{118 }
-\DoxyCodeLine{119 \textcolor{keywordtype}{bool} \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}}(\mbox{\hyperlink{structToken}{Token}}* t);}
-\DoxyCodeLine{120 }
-\DoxyCodeLine{121 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SCAN\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_LITERAL(type) (type >= T\_INTEGER\_LITERAL \&\& type <= T\_INTEGER\_LITERAL)}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_IDENTIFIER(type) (type >= T\_IDENTIFIER \&\& type <= T\_LVALUE\_IDENTIFIER)}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#define D\_MAX\_IDENTIFIER\_LENGTH 255}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{114 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structToken}{Token}} \{}
+\DoxyCodeLine{116     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}{type}};}
+\DoxyCodeLine{118     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{120         \textcolor{keywordtype}{int} \mbox{\hyperlink{structToken_a0bd1ec80054e52bb87e5f5c4fd2f6931}{int\_value}};}
+\DoxyCodeLine{122         \textcolor{keywordtype}{char} \mbox{\hyperlink{structToken_abc35c403b083d14cef963cdbf390cf23}{symbol\_name}}[\mbox{\hyperlink{scan_8h_afdefd4da733213509f3ca91a81945044}{D\_MAX\_IDENTIFIER\_LENGTH}}];}
+\DoxyCodeLine{123     \} \mbox{\hyperlink{structToken_aa8cbd23eb93e4c0f3f2627c3e5b5591d}{value}};}
+\DoxyCodeLine{124 \} \mbox{\hyperlink{scan_8h_ae88d5c0259051080fda097b92d99d7ee}{Token}};}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126 \textcolor{keywordtype}{bool} \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}}(\mbox{\hyperlink{structToken}{Token}}* t);}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SCAN\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

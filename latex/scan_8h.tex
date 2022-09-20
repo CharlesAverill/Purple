@@ -6,13 +6,13 @@ Lexical Scanner function headers.
 
 
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}translate/symbol\+\_\+table.\+h\char`\"{}}\newline
 Include dependency graph for scan.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=177pt]{scan_8h__incl}
+\includegraphics[width=226pt]{scan_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -72,7 +72,13 @@ struct \mbox{\hyperlink{structToken}{Token}}
 \#define \mbox{\hyperlink{scan_8h_affec33daf918f96ba231bf8564fffbe0}{TOKENTYPE\+\_\+\+IS\+\_\+\+TERMINAL}}(type)
 \begin{DoxyCompactList}\small\item\em Macro to determine if a Token\+Type is associated with a terminal AST Node. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scan_8h_a58f4872f7a38784336953acff530cb27}{TOKENTYPE\+\_\+\+IS\+\_\+\+BINARY\+\_\+\+ARITHMETIC}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2}{T\+\_\+\+PLUS}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd}{T\+\_\+\+EXPONENT}})
-\begin{DoxyCompactList}\small\item\em Macro to determine if a Token\+Type is associated with a binary arithmetic operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Macro to determine if a Token\+Type is associated with a binary arithmetic operation. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{scan_8h_a87af1be2659dcfd57ec2e73dcd0470c5}{TOKENTYPE\+\_\+\+IS\+\_\+\+LITERAL}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}})
+\item 
+\#define \mbox{\hyperlink{scan_8h_a10cb0c84238158232dc389584ea0e2eb}{TOKENTYPE\+\_\+\+IS\+\_\+\+IDENTIFIER}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a}{T\+\_\+\+IDENTIFIER}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63}{T\+\_\+\+LVALUE\+\_\+\+IDENTIFIER}})
+\item 
+\#define \mbox{\hyperlink{scan_8h_afdefd4da733213509f3ca91a81945044}{D\+\_\+\+MAX\+\_\+\+IDENTIFIER\+\_\+\+LENGTH}}~255
+\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -131,7 +137,13 @@ Charles\+Averill
 
 
 \doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{scan_8h_a58f4872f7a38784336953acff530cb27}\label{scan_8h_a58f4872f7a38784336953acff530cb27}} 
+\mbox{\Hypertarget{scan_8h_afdefd4da733213509f3ca91a81945044}\label{scan_8h_afdefd4da733213509f3ca91a81945044}} 
+\index{scan.h@{scan.h}!D\_MAX\_IDENTIFIER\_LENGTH@{D\_MAX\_IDENTIFIER\_LENGTH}}
+\index{D\_MAX\_IDENTIFIER\_LENGTH@{D\_MAX\_IDENTIFIER\_LENGTH}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{D\_MAX\_IDENTIFIER\_LENGTH}{D\_MAX\_IDENTIFIER\_LENGTH}}
+{\footnotesize\ttfamily \#define D\+\_\+\+MAX\+\_\+\+IDENTIFIER\+\_\+\+LENGTH~255}
+
+Purple identifiers can be a maximum of 255 bytes in length \mbox{\Hypertarget{scan_8h_a58f4872f7a38784336953acff530cb27}\label{scan_8h_a58f4872f7a38784336953acff530cb27}} 
 \index{scan.h@{scan.h}!TOKENTYPE\_IS\_BINARY\_ARITHMETIC@{TOKENTYPE\_IS\_BINARY\_ARITHMETIC}}
 \index{TOKENTYPE\_IS\_BINARY\_ARITHMETIC@{TOKENTYPE\_IS\_BINARY\_ARITHMETIC}!scan.h@{scan.h}}
 \doxysubsubsection{\texorpdfstring{TOKENTYPE\_IS\_BINARY\_ARITHMETIC}{TOKENTYPE\_IS\_BINARY\_ARITHMETIC}}
@@ -140,6 +152,18 @@ Charles\+Averill
 
 
 Macro to determine if a Token\+Type is associated with a binary arithmetic operation. 
+
+\mbox{\Hypertarget{scan_8h_a10cb0c84238158232dc389584ea0e2eb}\label{scan_8h_a10cb0c84238158232dc389584ea0e2eb}} 
+\index{scan.h@{scan.h}!TOKENTYPE\_IS\_IDENTIFIER@{TOKENTYPE\_IS\_IDENTIFIER}}
+\index{TOKENTYPE\_IS\_IDENTIFIER@{TOKENTYPE\_IS\_IDENTIFIER}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{TOKENTYPE\_IS\_IDENTIFIER}{TOKENTYPE\_IS\_IDENTIFIER}}
+{\footnotesize\ttfamily \#define TOKENTYPE\+\_\+\+IS\+\_\+\+IDENTIFIER(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a}{T\+\_\+\+IDENTIFIER}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63}{T\+\_\+\+LVALUE\+\_\+\+IDENTIFIER}})}
+
+\mbox{\Hypertarget{scan_8h_a87af1be2659dcfd57ec2e73dcd0470c5}\label{scan_8h_a87af1be2659dcfd57ec2e73dcd0470c5}} 
+\index{scan.h@{scan.h}!TOKENTYPE\_IS\_LITERAL@{TOKENTYPE\_IS\_LITERAL}}
+\index{TOKENTYPE\_IS\_LITERAL@{TOKENTYPE\_IS\_LITERAL}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{TOKENTYPE\_IS\_LITERAL}{TOKENTYPE\_IS\_LITERAL}}
+{\footnotesize\ttfamily \#define TOKENTYPE\+\_\+\+IS\+\_\+\+LITERAL(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3}{T\+\_\+\+INTEGER\+\_\+\+LITERAL}})}
 
 \mbox{\Hypertarget{scan_8h_affec33daf918f96ba231bf8564fffbe0}\label{scan_8h_affec33daf918f96ba231bf8564fffbe0}} 
 \index{scan.h@{scan.h}!TOKENTYPE\_IS\_TERMINAL@{TOKENTYPE\_IS\_TERMINAL}}

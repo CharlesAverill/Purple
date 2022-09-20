@@ -15,6 +15,9 @@ var searchData=
   ['arguments_2ec_12',['arguments.c',['../arguments_8c.html',1,'']]],
   ['arguments_2eh_13',['arguments.h',['../arguments_8h.html',1,'']]],
   ['assignment_5fstatement_14',['assignment_statement',['../statement_8c.html#a2afb5107be64bb296ac5379206c8303a',1,'statement.c']]],
-  ['ast_5fto_5fllvm_15',['ast_to_llvm',['../translate_8h.html#a4178bbc4cd024087a8cdcdd0a1f1c002',1,'ast_to_llvm(ASTNode *n, type_register register_number):&#160;translate.c'],['../translate_8c.html#a4178bbc4cd024087a8cdcdd0a1f1c002',1,'ast_to_llvm(ASTNode *n, type_register register_number):&#160;translate.c']]],
-  ['astnode_16',['ASTNode',['../structASTNode.html',1,'ASTNode'],['../tree_8h.html#a6b9026f45e950e06b76db629f9563f3a',1,'ASTNode():&#160;tree.h']]]
+  ['ast_5fdebug_5fcurrent_5flevel_15',['ast_debug_current_level',['../tree_8c.html#a21971a3ce9a67483f03a909ed0ab9a8d',1,'tree.c']]],
+  ['ast_5fdebug_5flevel_5forder_16',['ast_debug_level_order',['../tree_8h.html#a5a2821d5f8274f595c2057a9ead90fa9',1,'ast_debug_level_order(ASTNode *root, LogLevel log_level):&#160;tree.c'],['../tree_8c.html#a5a2821d5f8274f595c2057a9ead90fa9',1,'ast_debug_level_order(ASTNode *root, LogLevel log_level):&#160;tree.c']]],
+  ['ast_5fnode_5fheight_17',['ast_node_height',['../tree_8c.html#ab6c2c2c6938ab1abcc61eca99cb85394',1,'tree.c']]],
+  ['ast_5fto_5fllvm_18',['ast_to_llvm',['../translate_8h.html#a4178bbc4cd024087a8cdcdd0a1f1c002',1,'ast_to_llvm(ASTNode *n, type_register register_number):&#160;translate.c'],['../translate_8c.html#a4178bbc4cd024087a8cdcdd0a1f1c002',1,'ast_to_llvm(ASTNode *n, type_register register_number):&#160;translate.c']]],
+  ['astnode_19',['ASTNode',['../structASTNode.html',1,'ASTNode'],['../tree_8h.html#a6b9026f45e950e06b76db629f9563f3a',1,'ASTNode():&#160;tree.h']]]
 ];

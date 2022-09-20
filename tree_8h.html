@@ -80,18 +80,20 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="scan_8h_source.html">scan.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="symbol__table_8h_source.html">translate/symbol_table.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="logging_8h_source.html">utils/logging.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for tree.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="tree_8h__incl.png" border="0" usemap="#ainclude_2tree_8h" alt=""/></div>
 <map name="ainclude_2tree_8h" id="ainclude_2tree_8h">
-<area shape="rect" title="Function headers for abstract syntax tree parsing." alt="" coords="73,5,171,32"/>
+<area shape="rect" title="Function headers for abstract syntax tree parsing." alt="" coords="106,5,205,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,68,107"/>
 <area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="92,80,152,107"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="201,80,302,107"/>
-<area shape="rect" title=" " alt="" coords="85,155,159,181"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="193,155,309,181"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="74,155,237,181"/>
+<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="265,80,366,107"/>
+<area shape="rect" title=" " alt="" coords="58,229,133,256"/>
+<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="261,155,377,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -128,15 +130,20 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abb7c6db24955212a6ad9a5ac7947afe5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#abb7c6db24955212a6ad9a5ac7947afe5">create_ast_node</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, <a class="el" href="structASTNode.html">ASTNode</a> *left, <a class="el" href="structASTNode.html">ASTNode</a> *mid, <a class="el" href="structASTNode.html">ASTNode</a> *right, unsigned long int value)</td></tr>
-<tr class="memdesc:abb7c6db24955212a6ad9a5ac7947afe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Node with the provided values.  <a href="tree_8h.html#abb7c6db24955212a6ad9a5ac7947afe5">More...</a><br /></td></tr>
-<tr class="separator:abb7c6db24955212a6ad9a5ac7947afe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00fffa8f9aff69ca46abf5546fd788e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a00fffa8f9aff69ca46abf5546fd788e0">create_ast_leaf</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, unsigned long int value)</td></tr>
-<tr class="memdesc:a00fffa8f9aff69ca46abf5546fd788e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Leaf Node with the provided values.  <a href="tree_8h.html#a00fffa8f9aff69ca46abf5546fd788e0">More...</a><br /></td></tr>
-<tr class="separator:a00fffa8f9aff69ca46abf5546fd788e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9341f013776568a8bb1f32800690cec2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a9341f013776568a8bb1f32800690cec2">create_ast_node</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, <a class="el" href="structASTNode.html">ASTNode</a> *left, <a class="el" href="structASTNode.html">ASTNode</a> *mid, <a class="el" href="structASTNode.html">ASTNode</a> *right, unsigned long int value, char *symbol_name)</td></tr>
+<tr class="memdesc:a9341f013776568a8bb1f32800690cec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Node with the provided values.  <a href="tree_8h.html#a9341f013776568a8bb1f32800690cec2">More...</a><br /></td></tr>
+<tr class="separator:a9341f013776568a8bb1f32800690cec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18d29fb6bfdd9597d52718a85dde7934"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a18d29fb6bfdd9597d52718a85dde7934">create_ast_nonidentifier_leaf</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, unsigned long int value)</td></tr>
+<tr class="memdesc:a18d29fb6bfdd9597d52718a85dde7934"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Leaf Node with the provided values for a token that is not an identifier.  <a href="tree_8h.html#a18d29fb6bfdd9597d52718a85dde7934">More...</a><br /></td></tr>
+<tr class="separator:a18d29fb6bfdd9597d52718a85dde7934"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6944d26b526509a2659e0921d358adb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a6944d26b526509a2659e0921d358adb5">create_ast_identifier_leaf</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, char *symbol_name)</td></tr>
+<tr class="memdesc:a6944d26b526509a2659e0921d358adb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Leaf Node with the provided values for a token that is an identifier.  <a href="tree_8h.html#a6944d26b526509a2659e0921d358adb5">More...</a><br /></td></tr>
+<tr class="separator:a6944d26b526509a2659e0921d358adb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c120729f16efddf089474356bf271ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a9c120729f16efddf089474356bf271ea">create_unary_ast_node</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, <a class="el" href="structASTNode.html">ASTNode</a> *child, unsigned long int value)</td></tr>
 <tr class="memdesc:a9c120729f16efddf089474356bf271ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Unary Parent Node with the provided values.  <a href="tree_8h.html#a9c120729f16efddf089474356bf271ea">More...</a><br /></td></tr>
 <tr class="separator:a9c120729f16efddf089474356bf271ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a2821d5f8274f595c2057a9ead90fa9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a5a2821d5f8274f595c2057a9ead90fa9">ast_debug_level_order</a> (<a class="el" href="structASTNode.html">ASTNode</a> *root, <a class="el" href="logging_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> log_level)</td></tr>
+<tr class="separator:a5a2821d5f8274f595c2057a9ead90fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Function headers for abstract syntax tree parsing. </p>
@@ -160,23 +167,23 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a00fffa8f9aff69ca46abf5546fd788e0" name="a00fffa8f9aff69ca46abf5546fd788e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00fffa8f9aff69ca46abf5546fd788e0">&#9670;&nbsp;</a></span>create_ast_leaf()</h2>
+<a id="a5a2821d5f8274f595c2057a9ead90fa9" name="a5a2821d5f8274f595c2057a9ead90fa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a2821d5f8274f595c2057a9ead90fa9">&#9670;&nbsp;</a></span>ast_debug_level_order()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structASTNode.html">ASTNode</a> * create_ast_leaf </td>
+          <td class="memname">void ast_debug_level_order </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td>
-          <td class="paramname"><em>ttype</em>, </td>
+          <td class="paramtype"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned long int&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="logging_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a>&#160;</td>
+          <td class="paramname"><em>log_level</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -186,11 +193,39 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs a new AST Leaf Node with the provided values. </p>
+</div>
+</div>
+<a id="a6944d26b526509a2659e0921d358adb5" name="a6944d26b526509a2659e0921d358adb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6944d26b526509a2659e0921d358adb5">&#9670;&nbsp;</a></span>create_ast_identifier_leaf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structASTNode.html">ASTNode</a> * create_ast_identifier_leaf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td>
+          <td class="paramname"><em>ttype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>symbol_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a new AST Leaf Node with the provided values for a token that is an identifier. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ttype</td><td>TokenType of the new AST Node </td></tr>
-    <tr><td class="paramname">value</td><td>If TokenType == T_INTEGER_LITERAL, then the value of the integer literal </td></tr>
+    <tr><td class="paramname">gst_entry</td><td><a class="el" href="structSymbolTableEntry.html" title="Struct holding data about a symbol.">SymbolTableEntry</a> in Global Symbol Table for this token </td></tr>
   </table>
   </dd>
 </dl>
@@ -198,8 +233,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abb7c6db24955212a6ad9a5ac7947afe5" name="abb7c6db24955212a6ad9a5ac7947afe5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb7c6db24955212a6ad9a5ac7947afe5">&#9670;&nbsp;</a></span>create_ast_node()</h2>
+<a id="a9341f013776568a8bb1f32800690cec2" name="a9341f013776568a8bb1f32800690cec2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9341f013776568a8bb1f32800690cec2">&#9670;&nbsp;</a></span>create_ast_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -232,7 +267,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned long int&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>symbol_name</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -250,10 +291,49 @@ Functions</h2></td></tr>
     <tr><td class="paramname">mid</td><td>Middle child subtree of the new AST Node </td></tr>
     <tr><td class="paramname">right</td><td>Right child subtree of the new AST Node </td></tr>
     <tr><td class="paramname">value</td><td>If TokenType == T_INTEGER_LITERAL, then the value of the integer literal </td></tr>
+    <tr><td class="paramname">symbol_name</td><td>if TokenType == T_IDENTIFIER, then the string for the identifier </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ASTNode* The pointer to a new AST Node with the provided values </dd></dl>
+
+</div>
+</div>
+<a id="a18d29fb6bfdd9597d52718a85dde7934" name="a18d29fb6bfdd9597d52718a85dde7934"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18d29fb6bfdd9597d52718a85dde7934">&#9670;&nbsp;</a></span>create_ast_nonidentifier_leaf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structASTNode.html">ASTNode</a> * create_ast_nonidentifier_leaf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td>
+          <td class="paramname"><em>ttype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a new AST Leaf Node with the provided values for a token that is not an identifier. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ttype</td><td>TokenType of the new AST Node </td></tr>
+    <tr><td class="paramname">value</td><td>If TokenType == T_INTEGER_LITERAL, then the value of the integer literal </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTNode* The pointer to a new AST Leaf Node with the provided values </dd></dl>
 
 </div>
 </div>

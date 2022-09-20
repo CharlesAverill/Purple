@@ -16,7 +16,7 @@ Collaboration diagram for ASTNode\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=236pt]{structASTNode__coll__graph}
+\includegraphics[width=208pt]{structASTNode__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Attributes}
@@ -34,7 +34,7 @@ struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{structA
 xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
 union \{\\
 \>int \mbox{\hyperlink{structASTNode_af8535af330bd921499868489fd553eb9}{int\_value}}\\
-\>unsigned long int \mbox{\hyperlink{structASTNode_ab432652908e6980e38ac7b303bc2e3c9}{global\_symbol\_table\_index}}\\
+\>char \mbox{\hyperlink{structASTNode_ab07357f4f4f7d75f05a60ab6799c3008}{symbol\_name}} \mbox{[}\mbox{\hyperlink{scan_8h_afdefd4da733213509f3ca91a81945044}{D\_MAX\_IDENTIFIER\_LENGTH}}\mbox{]}\\
 \} \mbox{\hyperlink{structASTNode_a6eb3eb28a0e661931fa444b130f86404}{value}}\\
 
 \end{tabbing}\end{DoxyCompactItemize}
@@ -44,13 +44,7 @@ union \{\\
 Component of the abstract syntax tree built during parsing. 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{structASTNode_ab432652908e6980e38ac7b303bc2e3c9}\label{structASTNode_ab432652908e6980e38ac7b303bc2e3c9}} 
-\index{ASTNode@{ASTNode}!global\_symbol\_table\_index@{global\_symbol\_table\_index}}
-\index{global\_symbol\_table\_index@{global\_symbol\_table\_index}!ASTNode@{ASTNode}}
-\doxysubsubsection{\texorpdfstring{global\_symbol\_table\_index}{global\_symbol\_table\_index}}
-{\footnotesize\ttfamily unsigned long int ASTNode\+::global\+\_\+symbol\+\_\+table\+\_\+index}
-
-Index of identifier in global symbol table \mbox{\Hypertarget{structASTNode_af8535af330bd921499868489fd553eb9}\label{structASTNode_af8535af330bd921499868489fd553eb9}} 
+\mbox{\Hypertarget{structASTNode_af8535af330bd921499868489fd553eb9}\label{structASTNode_af8535af330bd921499868489fd553eb9}} 
 \index{ASTNode@{ASTNode}!int\_value@{int\_value}}
 \index{int\_value@{int\_value}!ASTNode@{ASTNode}}
 \doxysubsubsection{\texorpdfstring{int\_value}{int\_value}}
@@ -74,7 +68,13 @@ The middle child of the AST Node \mbox{\Hypertarget{structASTNode_ab3fac314ab87b
 \doxysubsubsection{\texorpdfstring{right}{right}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structASTNode}{ASTNode}}$\ast$ ASTNode\+::right}
 
-The right child of the AST Node \mbox{\Hypertarget{structASTNode_ac71a4bb0085044ea339b9021a8c0c820}\label{structASTNode_ac71a4bb0085044ea339b9021a8c0c820}} 
+The right child of the AST Node \mbox{\Hypertarget{structASTNode_ab07357f4f4f7d75f05a60ab6799c3008}\label{structASTNode_ab07357f4f4f7d75f05a60ab6799c3008}} 
+\index{ASTNode@{ASTNode}!symbol\_name@{symbol\_name}}
+\index{symbol\_name@{symbol\_name}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{symbol\_name}{symbol\_name}}
+{\footnotesize\ttfamily char ASTNode\+::symbol\+\_\+name\mbox{[}\mbox{\hyperlink{scan_8h_afdefd4da733213509f3ca91a81945044}{D\+\_\+\+MAX\+\_\+\+IDENTIFIER\+\_\+\+LENGTH}}\mbox{]}}
+
+Name of this identifier token \mbox{\Hypertarget{structASTNode_ac71a4bb0085044ea339b9021a8c0c820}\label{structASTNode_ac71a4bb0085044ea339b9021a8c0c820}} 
 \index{ASTNode@{ASTNode}!ttype@{ttype}}
 \index{ttype@{ttype}!ASTNode@{ASTNode}}
 \doxysubsubsection{\texorpdfstring{ttype}{ttype}}

@@ -2,5 +2,6 @@
 <area shape="rect" id="node1" title="Functions for dealing with numbers internally." alt="" coords="49,5,181,32"/>
 <area shape="rect" id="node2" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="5,80,116,107"/>
 <area shape="rect" id="node3" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="140,80,200,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="133,155,207,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="131,229,206,256"/>
+<area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="147,155,310,181"/>
 </map>

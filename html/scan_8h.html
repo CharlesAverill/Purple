@@ -82,14 +82,15 @@ $(function() {
 <p>Lexical Scanner function headers.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="scan_8h_source.html">scan.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="symbol__table_8h_source.html">translate/symbol_table.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for scan.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="scan_8h__incl.png" border="0" usemap="#ainclude_2scan_8h" alt=""/></div>
 <map name="ainclude_2scan_8h" id="ainclude_2scan_8h">
-<area shape="rect" title="Lexical Scanner function headers." alt="" coords="5,7,111,33"/>
-<area shape="rect" title=" " alt="" coords="21,81,95,108"/>
+<area shape="rect" title="Lexical Scanner function headers." alt="" coords="5,5,111,32"/>
+<area shape="rect" title=" " alt="" coords="21,155,95,181"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="37,80,199,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -97,24 +98,24 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="scan_8h__dep__incl.png" border="0" usemap="#ainclude_2scan_8hdep" alt=""/></div>
 <map name="ainclude_2scan_8hdep" id="ainclude_2scan_8hdep">
-<area shape="rect" title="Lexical Scanner function headers." alt="" coords="1186,6,1292,33"/>
-<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="886,156,989,182"/>
-<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="1026,305,1116,332"/>
-<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="1379,230,1462,257"/>
-<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="80,156,235,182"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="410,81,508,108"/>
-<area shape="rect" href="number_8c.html" title="Functions for dealing with numbers internally." alt="" coords="1537,81,1669,108"/>
-<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="324,230,477,257"/>
-<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="552,230,704,257"/>
-<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="212,305,360,332"/>
-<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="56,305,188,332"/>
-<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="573,305,732,332"/>
-<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="881,230,994,257"/>
-<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="1019,230,1142,257"/>
-<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="1166,230,1304,257"/>
-<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="67,230,248,257"/>
-<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="346,156,455,182"/>
-<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="480,156,556,182"/>
+<area shape="rect" title="Lexical Scanner function headers." alt="" coords="1186,5,1292,32"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="886,155,989,181"/>
+<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="1026,304,1116,331"/>
+<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="1379,229,1462,256"/>
+<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="80,155,235,181"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="410,80,508,107"/>
+<area shape="rect" href="number_8c.html" title="Functions for dealing with numbers internally." alt="" coords="1537,80,1669,107"/>
+<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="324,229,477,256"/>
+<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="552,229,704,256"/>
+<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="212,304,360,331"/>
+<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="56,304,188,331"/>
+<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="573,304,732,331"/>
+<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="881,229,994,256"/>
+<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="1019,229,1142,256"/>
+<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="1166,229,1304,256"/>
+<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="67,229,248,256"/>
+<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="346,155,455,181"/>
+<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="480,155,556,181"/>
 </map>
 </div>
 </div>
@@ -172,6 +173,12 @@ Macros</h2></td></tr>
 <tr class="memitem:a58f4872f7a38784336953acff530cb27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a58f4872f7a38784336953acff530cb27">TOKENTYPE_IS_BINARY_ARITHMETIC</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2">T_PLUS</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd">T_EXPONENT</a>)</td></tr>
 <tr class="memdesc:a58f4872f7a38784336953acff530cb27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to determine if a TokenType is associated with a binary arithmetic operation.  <a href="scan_8h.html#a58f4872f7a38784336953acff530cb27">More...</a><br /></td></tr>
 <tr class="separator:a58f4872f7a38784336953acff530cb27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87af1be2659dcfd57ec2e73dcd0470c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a87af1be2659dcfd57ec2e73dcd0470c5">TOKENTYPE_IS_LITERAL</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a>)</td></tr>
+<tr class="separator:a87af1be2659dcfd57ec2e73dcd0470c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10cb0c84238158232dc389584ea0e2eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a10cb0c84238158232dc389584ea0e2eb">TOKENTYPE_IS_IDENTIFIER</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a">T_IDENTIFIER</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63">T_LVALUE_IDENTIFIER</a>)</td></tr>
+<tr class="separator:a10cb0c84238158232dc389584ea0e2eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdefd4da733213509f3ca91a81945044"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#afdefd4da733213509f3ca91a81945044">D_MAX_IDENTIFIER_LENGTH</a>&#160;&#160;&#160;255</td></tr>
+<tr class="separator:afdefd4da733213509f3ca91a81945044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -227,6 +234,21 @@ Variables</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>CharlesAverill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>05-Oct-2021 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="afdefd4da733213509f3ca91a81945044" name="afdefd4da733213509f3ca91a81945044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdefd4da733213509f3ca91a81945044">&#9670;&nbsp;</a></span>D_MAX_IDENTIFIER_LENGTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_MAX_IDENTIFIER_LENGTH&#160;&#160;&#160;255</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Purple identifiers can be a maximum of 255 bytes in length </p>
+
+</div>
+</div>
 <a id="a58f4872f7a38784336953acff530cb27" name="a58f4872f7a38784336953acff530cb27"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a58f4872f7a38784336953acff530cb27">&#9670;&nbsp;</a></span>TOKENTYPE_IS_BINARY_ARITHMETIC</h2>
 
@@ -244,6 +266,42 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Macro to determine if a TokenType is associated with a binary arithmetic operation. </p>
+
+</div>
+</div>
+<a id="a10cb0c84238158232dc389584ea0e2eb" name="a10cb0c84238158232dc389584ea0e2eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10cb0c84238158232dc389584ea0e2eb">&#9670;&nbsp;</a></span>TOKENTYPE_IS_IDENTIFIER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOKENTYPE_IS_IDENTIFIER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type</td><td>)</td>
+          <td>&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a">T_IDENTIFIER</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63">T_LVALUE_IDENTIFIER</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87af1be2659dcfd57ec2e73dcd0470c5" name="a87af1be2659dcfd57ec2e73dcd0470c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87af1be2659dcfd57ec2e73dcd0470c5">&#9670;&nbsp;</a></span>TOKENTYPE_IS_LITERAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOKENTYPE_IS_LITERAL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type</td><td>)</td>
+          <td>&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a170d0f2c42f9a3d3e95dc48d0f8f38b3">T_INTEGER_LITERAL</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -80,7 +80,7 @@ Collaboration diagram for ASTNode:</div>
 <div class="dyncontent">
 <div class="center"><img src="structASTNode__coll__graph.png" border="0" usemap="#aASTNode_coll__map" alt="Collaboration graph"/></div>
 <map name="aASTNode_coll__map" id="aASTNode_coll__map">
-<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,5,156,141"/>
+<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,5,119,127"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -98,29 +98,14 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a6eb3eb28a0e661931fa444b130f86404"><td class="memItemLeft" >union {</td></tr>
 <tr class="memitem:ac21720ac48ab6998b464bf9ead12eb46"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structASTNode.html#af8535af330bd921499868489fd553eb9">int_value</a></td></tr>
 <tr class="separator:ac21720ac48ab6998b464bf9ead12eb46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbf84bc781f7bbb3bd4c999b598f7a1c"><td class="memItemLeft" >&#160;&#160;&#160;unsigned long int&#160;&#160;&#160;<a class="el" href="structASTNode.html#ab432652908e6980e38ac7b303bc2e3c9">global_symbol_table_index</a></td></tr>
-<tr class="separator:afbf84bc781f7bbb3bd4c999b598f7a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49226fe06ed0b3ec80400bc56aa9d5ec"><td class="memItemLeft" >&#160;&#160;&#160;char&#160;&#160;&#160;<a class="el" href="structASTNode.html#ab07357f4f4f7d75f05a60ab6799c3008">symbol_name</a> [<a class="el" href="scan_8h.html#afdefd4da733213509f3ca91a81945044">D_MAX_IDENTIFIER_LENGTH</a>]</td></tr>
+<tr class="separator:a49226fe06ed0b3ec80400bc56aa9d5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6eb3eb28a0e661931fa444b130f86404"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#a6eb3eb28a0e661931fa444b130f86404">value</a></td></tr>
 <tr class="separator:a6eb3eb28a0e661931fa444b130f86404"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Component of the abstract syntax tree built during parsing. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab432652908e6980e38ac7b303bc2e3c9" name="ab432652908e6980e38ac7b303bc2e3c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab432652908e6980e38ac7b303bc2e3c9">&#9670;&nbsp;</a></span>global_symbol_table_index</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned long int ASTNode::global_symbol_table_index</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Index of identifier in global symbol table </p>
-
-</div>
-</div>
 <a id="af8535af330bd921499868489fd553eb9" name="af8535af330bd921499868489fd553eb9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af8535af330bd921499868489fd553eb9">&#9670;&nbsp;</a></span>int_value</h2>
 
@@ -178,6 +163,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >The right child of the AST Node </p>
+
+</div>
+</div>
+<a id="ab07357f4f4f7d75f05a60ab6799c3008" name="ab07357f4f4f7d75f05a60ab6799c3008"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab07357f4f4f7d75f05a60ab6799c3008">&#9670;&nbsp;</a></span>symbol_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char ASTNode::symbol_name[<a class="el" href="scan_8h.html#afdefd4da733213509f3ca91a81945044">D_MAX_IDENTIFIER_LENGTH</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Name of this identifier token </p>
 
 </div>
 </div>
