@@ -38,8 +38,6 @@ extern_ char* D_LLVM_GLOBALS_FN;
 /**Current number of the latest-used LLVM virtual register within a function*/
 extern_ unsigned long long int D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER;
 
-/**Purple identifiers can be a maximum of 255 bytes in length*/
-#define D_MAX_IDENTIFIER_LENGTH 255
 /**Buffer to read identifiers into*/
 extern_ char D_IDENTIFIER_BUFFER[D_MAX_IDENTIFIER_LENGTH + 1];
 

@@ -39,15 +39,10 @@ static ASTNode* create_terminal_node(Token t)
 
     switch (D_GLOBAL_TOKEN.type) {
     case T_INTEGER_LITERAL:
-        out = create_ast_leaf(T_INTEGER_LITERAL, D_GLOBAL_TOKEN.value.int_value);
+        out = create_ast_nonidentifier_leaf(T_INTEGER_LITERAL, D_GLOBAL_TOKEN.value.int_value);
         break;
     case T_IDENTIFIER:
-        entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER);
-        if (entry == NULL) {
-            identifier_error(D_INPUT_FN, D_LINE_NUMBER, "Unknown identifier \"%s\"",
-                             D_IDENTIFIER_BUFFER);
-        }
-        out = create_ast_leaf(T_IDENTIFIER, entry->bucket_index);
+        out = create_ast_identifier_leaf(T_IDENTIFIER, t.value.symbol_name);
         break;
     default:
         syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Token: \"%s\"", tokenStrings[t.type]);
@@ -72,6 +67,7 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
 
     // Get the intlit on the left and scan the next Token
     left = create_terminal_node(D_GLOBAL_TOKEN);
+    ast_debug_level_order(left, LOG_INFO);
     current_ttype = D_GLOBAL_TOKEN.type;
     if (current_ttype == T_SEMICOLON) {
         return left;
@@ -86,7 +82,7 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
         right = parse_binary_expression(operatorPrecedence[current_ttype]);
 
         // Join right subtree with current left subtree
-        left = create_ast_node(current_ttype, left, NULL, right, 0);
+        left = create_ast_node(current_ttype, left, NULL, right, 0, NULL);
 
         // Update current_ttype and check for EOF
         current_ttype = D_GLOBAL_TOKEN.type;

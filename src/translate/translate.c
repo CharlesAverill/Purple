@@ -144,12 +144,11 @@ LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
         case T_INTEGER_LITERAL:
             return llvm_store_constant(NUMBER_INT32(n->value.int_value));
         case T_IDENTIFIER:
-            return llvm_load_global_variable(
-                D_GLOBAL_SYMBOL_TABLE->buckets[n->value.global_symbol_table_index]->symbol_name);
-        case T_LVALUE_IDENTIFIER:
-            llvm_store_global_variable(
-                D_GLOBAL_SYMBOL_TABLE->buckets[n->value.global_symbol_table_index]->symbol_name,
-                register_number);
+            return llvm_load_global_variable(n->value.symbol_name);
+        case T_LVALUE_IDENTIFIER:;
+            type_register* loaded_registers =
+                llvm_ensure_registers_loaded(1, (type_register[]){register_number});
+            llvm_store_global_variable(n->value.symbol_name, loaded_registers[0]);
             return LLVMVALUE_VIRTUAL_REGISTER(register_number);
         case T_ASSIGN:
             return LLVMVALUE_VIRTUAL_REGISTER(register_number);

@@ -11,6 +11,7 @@
 #include <stdlib.h>
 
 #include "scan.h"
+#include "translate/symbol_table.h"
 #include "utils/logging.h"
 
 /**
@@ -29,14 +30,16 @@ typedef struct ASTNode {
     union {
         /**Value of integer token*/
         int int_value;
-        /**Index of identifier in global symbol table*/
-        unsigned long int global_symbol_table_index;
+        /**Name of this identifier token*/
+        char symbol_name[D_MAX_IDENTIFIER_LENGTH];
     } value;
 } ASTNode;
 
 ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right,
-                         unsigned long int value);
-ASTNode* create_ast_leaf(TokenType ttype, unsigned long int value);
+                         unsigned long int value, char* symbol_name);
+ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, unsigned long int value);
+ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name);
 ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, unsigned long int value);
+void ast_debug_level_order(ASTNode* root, LogLevel log_level);
 
 #endif /* TREE_H */

@@ -10,7 +10,7 @@
 
 #include <stdbool.h>
 
-#include "scan.h"
+#include "translate/symbol_table.h"
 
 /**
  * @brief Types of scannable tokens
@@ -101,6 +101,13 @@ static char* tokenStrings[] = {TTS_EOF,
  */
 #define TOKENTYPE_IS_BINARY_ARITHMETIC(type) (type >= T_PLUS && type <= T_EXPONENT)
 
+#define TOKENTYPE_IS_LITERAL(type) (type >= T_INTEGER_LITERAL && type <= T_INTEGER_LITERAL)
+
+#define TOKENTYPE_IS_IDENTIFIER(type) (type >= T_IDENTIFIER && type <= T_LVALUE_IDENTIFIER)
+
+/**Purple identifiers can be a maximum of 255 bytes in length*/
+#define D_MAX_IDENTIFIER_LENGTH 255
+
 /**
  * @brief Structure containing information about individual scannable tokens
  */
@@ -111,8 +118,8 @@ typedef struct Token {
     union {
         /**Value of integer token*/
         int int_value;
-        /**Index of identifier in global symbol table*/
-        unsigned long int global_symbol_table_index;
+        /**Name of identifier token*/
+        char symbol_name[D_MAX_IDENTIFIER_LENGTH];
     } value;
 } Token;
 

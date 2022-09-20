@@ -250,6 +250,7 @@ bool scan(Token* t)
             t->type = temp_type;
         } else {
             t->type = T_IDENTIFIER;
+            strcpy(t->value.symbol_name, D_IDENTIFIER_BUFFER);
         }
     } else {
         no_switch_match_output = false;

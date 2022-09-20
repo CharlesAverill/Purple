@@ -82,7 +82,7 @@ static void assignment_statement(void)
     }
 
     // Make a terminal node for the identifier
-    right = create_ast_leaf(T_LVALUE_IDENTIFIER, found_entry->bucket_index);
+    right = create_ast_identifier_leaf(T_LVALUE_IDENTIFIER, found_entry->symbol_name);
 
     match_token(T_ASSIGN);
 
@@ -91,7 +91,7 @@ static void assignment_statement(void)
     left = parse_binary_expression(0);
 
     // Create subtree for assignment statement
-    root = create_ast_node(T_ASSIGN, left, NULL, right, 0);
+    root = create_ast_node(T_ASSIGN, left, NULL, right, 0, NULL);
 
     // Allocate stack space
     purple_log(LOG_DEBUG, "Determining stack space");
