@@ -22,6 +22,8 @@ Include dependency graph for statement.\+c\+:
 \item 
 void \mbox{\hyperlink{statement_8c_a50272a0b5fea28f10f872dda4641d1a4}{match\+\_\+token}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Ensure current token is of a given type, and scan the next token if so. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{statement_8c_a94550f7bd9df805c3163c53b6f149390}{match\+\_\+type}} (void)
+\begin{DoxyCompactList}\small\item\em Ensure current token is a type token, and scan the next token if so. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{statement_8c_af4242b2b6f2d05d00166bc689f35d3d7}{print\+\_\+statement}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a print statement into LLVM. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{statement_8c_a2afb5107be64bb296ac5379206c8303a}{assignment\+\_\+statement}} (void)
@@ -67,6 +69,16 @@ Ensure current token is of a given type, and scan the next token if so.
 {\em type} & Token\+Type to ensure \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{statement_8c_a94550f7bd9df805c3163c53b6f149390}\label{statement_8c_a94550f7bd9df805c3163c53b6f149390}} 
+\index{statement.c@{statement.c}!match\_type@{match\_type}}
+\index{match\_type@{match\_type}!statement.c@{statement.c}}
+\doxysubsubsection{\texorpdfstring{match\_type()}{match\_type()}}
+{\footnotesize\ttfamily void match\+\_\+type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Ensure current token is a type token, and scan the next token if so. 
+
 \mbox{\Hypertarget{statement_8c_a36e413083d2a6e7a8b561e22e141b811}\label{statement_8c_a36e413083d2a6e7a8b561e22e141b811}} 
 \index{statement.c@{statement.c}!parse\_statements@{parse\_statements}}
 \index{parse\_statements@{parse\_statements}!statement.c@{statement.c}}

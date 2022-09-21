@@ -7,13 +7,20 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{}
 \DoxyCodeLine{tokens \{}
 \DoxyCodeLine{    T\_INTEGER\_LITERAL,}
+\DoxyCodeLine{    T\_TRUE,}
+\DoxyCodeLine{    T\_FALSE,}
 \DoxyCodeLine{    T\_IDENTIFIER}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
 \DoxyCodeLine{number: T\_INTEGER\_LITERAL}
 \DoxyCodeLine{        ;}
 \DoxyCodeLine{}
+\DoxyCodeLine{bool: T\_TRUE}
+\DoxyCodeLine{    | T\_FALSE}
+\DoxyCodeLine{    ;}
+\DoxyCodeLine{}
 \DoxyCodeLine{dataType: 'int'}
+\DoxyCodeLine{        | 'bool'}
 \DoxyCodeLine{        ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{multiplicativeExpression: number}
