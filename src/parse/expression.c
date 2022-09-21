@@ -42,6 +42,10 @@ static ASTNode* create_terminal_node(Token t)
         out = create_ast_nonidentifier_leaf(T_INTEGER_LITERAL, D_GLOBAL_TOKEN.value.int_value);
         break;
     case T_IDENTIFIER:
+        if (!find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, t.value.symbol_name)) {
+            identifier_error(D_INPUT_FN, D_LINE_NUMBER, "Undeclared identifier %s",
+                             t.value.symbol_name);
+        }
         out = create_ast_identifier_leaf(T_IDENTIFIER, t.value.symbol_name);
         break;
     default:
