@@ -139,10 +139,21 @@ LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
 
         return llvm_binary_arithmetic(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr),
                                       LLVMVALUE_VIRTUAL_REGISTER(right_vr));
+    } else if (TOKENTYPE_IS_COMPARATOR(n->ttype)) {
+        type_register* loaded_registers =
+            llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr});
+        if (loaded_registers != NULL) {
+            left_vr = loaded_registers[0];
+            right_vr = loaded_registers[1];
+            free(loaded_registers);
+        }
+
+        return llvm_compare(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr),
+                            LLVMVALUE_VIRTUAL_REGISTER(right_vr));
     } else {
         switch (n->ttype) {
         case T_INTEGER_LITERAL:
-        // TODO : Booleans should be ui8s, not i32s
+        // TODO : Booleans should be i1s, not i32s
         case T_TRUE:
         case T_FALSE:
             return llvm_store_constant(NUMBER_INT32(n->value.int_value));

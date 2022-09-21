@@ -16,6 +16,7 @@
  * @brief LLVM-IR representations of data types
  */
 static const char* numberTypeLLVMReprs[] = {
+    "i1",
     "i32",
 };
 
@@ -45,6 +46,8 @@ typedef struct LLVMValue {
     LLVMValueType value_type;
     /**Stores a pointer?*/
     bool stores_pointer;
+    /**If a number is stored*/
+    NumberType number_type;
     /**Contents of the value returned*/
     union {
         type_register virtual_register_index;
@@ -93,6 +96,9 @@ LLVMValue llvm_load_global_variable(char* symbol_name);
 void llvm_store_global_variable(char* symbol_name, type_register rvalue_register_number);
 void llvm_declare_global_number_variable(char* symbol_name, NumberType number_type);
 void llvm_declare_assign_global_number_variable(char* symbol_name, Number number);
-void llvm_print_int(type_register reg);
+void llvm_print_int(type_register print_vr);
+void llvm_print_bool(type_register print_vr);
+LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_register,
+                       LLVMValue right_virtual_register);
 
 #endif /* LLVM_H */

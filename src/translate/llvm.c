@@ -86,6 +86,8 @@ void llvm_preamble()
 
     fprintf(D_LLVM_FILE, "@print_int_fstring = private unnamed_addr constant [4 x i8] "
                          "c\"%%d\\0A\\00\", align 1" NEWLINE NEWLINE);
+    fprintf(D_LLVM_FILE, "@print_bool_fstring = private unnamed_addr constant [4 x i8] "
+                         "c\"%%b\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "; Function Attrs: noinline nounwind optnone uwtable" NEWLINE);
     fprintf(D_LLVM_FILE, "define dso_local i32 @main() #0 {" NEWLINE);
 }
@@ -329,4 +331,58 @@ void llvm_print_int(type_register print_vr)
             TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
                 "i8]* @print_int_fstring , i32 0, i32 0), i32 %%%llu)" NEWLINE,
             print_vr);
+}
+
+/**
+ * @brief Generate code to print a boolean value
+ * 
+ * @param print_vr Register holding value to print
+ */
+void llvm_print_bool(type_register print_vr)
+{
+    get_next_local_virtual_register();
+    fprintf(D_LLVM_FILE,
+            TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
+                "i8]* @print_bool_fstring , i32 0, i32 0), i1 %%%llu)" NEWLINE,
+            print_vr);
+}
+
+LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_register,
+                       LLVMValue right_virtual_register)
+{
+    type_register out_register = get_next_local_virtual_register();
+
+    fprintf(D_LLVM_FILE, TAB "%%%llu = icmp ", out_register);
+
+    switch (comparison_type) {
+    case T_EQ:
+        fprintf(D_LLVM_FILE, "eq");
+        break;
+    case T_NEQ:
+        fprintf(D_LLVM_FILE, "ne");
+        break;
+    case T_LT:
+        fprintf(D_LLVM_FILE, "slt");
+        break;
+    case T_LE:
+        fprintf(D_LLVM_FILE, "sle");
+        break;
+    case T_GT:
+        fprintf(D_LLVM_FILE, "sgt");
+        break;
+    case T_GE:
+        fprintf(D_LLVM_FILE, "sge");
+        break;
+    default:
+        fatal(RC_COMPILER_ERROR, "llvm_compare receieved non-comparison operator \"%s\"",
+              tokenStrings[comparison_type]);
+    }
+
+    fprintf(D_LLVM_FILE, " i32 %%%llu, %%%llu" NEWLINE,
+            left_virtual_register.value.virtual_register_index,
+            right_virtual_register.value.virtual_register_index);
+
+    prepend_loaded(out_register);
+
+    return LLVMVALUE_VIRTUAL_REGISTER(out_register);
 }

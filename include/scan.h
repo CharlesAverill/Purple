@@ -110,13 +110,30 @@ static char* tokenStrings[] = {TTS_EOF,
  */
 #define TOKENTYPE_IS_BINARY_ARITHMETIC(type) (type >= T_PLUS && type <= T_EXPONENT)
 
+/**
+ * @brief Macro to determine if a TokenType is associated with a type keyword
+ */
 #define TOKENTYPE_IS_TYPE(type) (type >= T_INT && type <= T_BOOL)
 
+/**
+ * @brief Macro to determine if a TokenType is associated with a literal value
+ */
 #define TOKENTYPE_IS_LITERAL(type) (type >= T_INTEGER_LITERAL && type <= T_FALSE)
 
+/**
+ * @brief Macro to determine if a TokenType is associated with a boolean literal value
+ */
 #define TOKENTYPE_IS_BOOL_LITERAL(type) (type >= T_TRUE && type <= T_FALSE)
 
+/**
+ * @brief Macro to determine if a TokenType is associated with an identifier
+ */
 #define TOKENTYPE_IS_IDENTIFIER(type) (type >= T_IDENTIFIER && type <= T_LVALUE_IDENTIFIER)
+
+/**
+ * @brief Macro to determine if a TokenType is associated with a comparison operator
+ */
+#define TOKENTYPE_IS_COMPARATOR(type) (type >= T_EQ && type <= T_GE)
 
 /**Purple identifiers can be a maximum of 255 bytes in length*/
 #define D_MAX_IDENTIFIER_LENGTH 255

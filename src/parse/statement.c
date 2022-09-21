@@ -64,7 +64,17 @@ static void print_statement(void)
     purple_log(LOG_DEBUG, "Generating LLVM");
     cg_output = ast_to_llvm(
         root, 0); // See TODO in translate.c regarding ast_to_llvm register_number being 0
-    llvm_print_int(cg_output.value.virtual_register_index);
+    switch (cg_output.number_type) {
+    case NT_INT1:
+        llvm_print_bool(cg_output.value.virtual_register_index);
+        break;
+    case NT_INT32:
+        llvm_print_int(cg_output.value.virtual_register_index);
+        break;
+    default:
+        fatal(RC_COMPILER_ERROR, "Unknown number type %d returned when generating LLVM",
+              cg_output.number_type);
+    }
 
     initialize_stack_entry_linked_list(&loadedRegistersHead);
     initialize_stack_entry_linked_list(&freeVirtualRegistersHead);

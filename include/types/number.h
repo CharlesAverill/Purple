@@ -12,6 +12,7 @@
  * @brief Types of numbers supported by Purple
  */
 typedef enum {
+    NT_INT1,
     NT_INT32,
 } NumberType;
 
@@ -19,6 +20,7 @@ typedef enum {
  * @brief Size of each NumberType
  */
 static const int numberTypeByteSizes[] = {
+    1,
     4,
 };
 
@@ -26,6 +28,7 @@ static const int numberTypeByteSizes[] = {
  * @brief Format strings for each data type
  */
 static const char* numberTypeFormatStrings[] = {
+    "%b",
     "%d",
 };
 
