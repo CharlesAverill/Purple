@@ -10,8 +10,19 @@
 #include "utils/llvm_stack_entry.h"
 #include "utils/logging.h"
 
+/**
+ * @brief Initialize a stack entry linked list
+ * 
+ * @param head Head of linked list
+ */
 void initialize_stack_entry_linked_list(LLVMStackEntryNode** head) { *head = NULL; }
 
+/**
+ * @brief Add a stack entry to a stack entry linked list
+ * 
+ * @param head Head of linked list
+ * @param register_index Register number to push onto list
+ */
 void prepend_stack_entry_linked_list(LLVMStackEntryNode** head, type_register register_index)
 {
     LLVMStackEntryNode* temp = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
@@ -26,6 +37,12 @@ void prepend_stack_entry_linked_list(LLVMStackEntryNode** head, type_register re
     }
 }
 
+/**
+ * @brief Pop and free a stack entry from a Stack Entry Node linked list and get its type
+ * 
+ * @param head Head of linked list to pop from
+ * @return type_register Register number from first entry in linked list
+ */
 type_register pop_stack_entry_linked_list(LLVMStackEntryNode** head)
 {
     LLVMStackEntryNode* temp;

@@ -168,6 +168,8 @@ void link_globals(void)
 
 /**
  * @brief Starts up the clang compiler to compile the generated LLVM-IR into a binary
+ * 
+ * @param fn Name of file to compile
  */
 void clang_compile_llvm(const char* fn)
 {

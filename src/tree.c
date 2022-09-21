@@ -83,6 +83,12 @@ ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, unsigned long in
     return create_ast_node(ttype, child, NULL, NULL, value, NULL);
 }
 
+/**
+ * @brief Get the height of an AST Node
+ * 
+ * @param node Node to get height of
+ * @return int Height of node
+ */
 static int ast_node_height(ASTNode* node)
 {
     if (node == NULL) {
@@ -98,6 +104,13 @@ static int ast_node_height(ASTNode* node)
     return right_height + 1;
 }
 
+/**
+ * @brief Print out a single level of an AST in order from left to right
+ * 
+ * @param root Root of AST
+ * @param height Level of tree to be printed out
+ * @param log_level Log level to print at
+ */
 static void ast_debug_current_level(ASTNode* root, int height, LogLevel log_level)
 {
     if (root == NULL) {
@@ -116,6 +129,12 @@ static void ast_debug_current_level(ASTNode* root, int height, LogLevel log_leve
     }
 }
 
+/**
+ * @brief Print out an AST's level order traversal
+ * 
+ * @param root Root of AST
+ * @param log_level Log level to print at
+ */
 void ast_debug_level_order(ASTNode* root, LogLevel log_level)
 {
     purple_log(log_level, "---Level Order AST Traversal---");
