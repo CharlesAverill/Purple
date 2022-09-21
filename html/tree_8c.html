@@ -112,10 +112,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:a9c120729f16efddf089474356bf271ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Unary Parent Node with the provided values.  <a href="tree_8c.html#a9c120729f16efddf089474356bf271ea">More...</a><br /></td></tr>
 <tr class="separator:a9c120729f16efddf089474356bf271ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6c2c2c6938ab1abcc61eca99cb85394"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#ab6c2c2c6938ab1abcc61eca99cb85394">ast_node_height</a> (<a class="el" href="structASTNode.html">ASTNode</a> *node)</td></tr>
+<tr class="memdesc:ab6c2c2c6938ab1abcc61eca99cb85394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the height of an AST Node.  <a href="tree_8c.html#ab6c2c2c6938ab1abcc61eca99cb85394">More...</a><br /></td></tr>
 <tr class="separator:ab6c2c2c6938ab1abcc61eca99cb85394"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21971a3ce9a67483f03a909ed0ab9a8d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a21971a3ce9a67483f03a909ed0ab9a8d">ast_debug_current_level</a> (<a class="el" href="structASTNode.html">ASTNode</a> *root, int height, <a class="el" href="logging_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> log_level)</td></tr>
+<tr class="memdesc:a21971a3ce9a67483f03a909ed0ab9a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out a single level of an AST in order from left to right.  <a href="tree_8c.html#a21971a3ce9a67483f03a909ed0ab9a8d">More...</a><br /></td></tr>
 <tr class="separator:a21971a3ce9a67483f03a909ed0ab9a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a2821d5f8274f595c2057a9ead90fa9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a5a2821d5f8274f595c2057a9ead90fa9">ast_debug_level_order</a> (<a class="el" href="structASTNode.html">ASTNode</a> *root, <a class="el" href="logging_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> log_level)</td></tr>
+<tr class="memdesc:a5a2821d5f8274f595c2057a9ead90fa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out an AST's level order traversal.  <a href="tree_8c.html#a5a2821d5f8274f595c2057a9ead90fa9">More...</a><br /></td></tr>
 <tr class="separator:a5a2821d5f8274f595c2057a9ead90fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -163,6 +166,16 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Print out a single level of an AST in order from left to right. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">root</td><td>Root of AST </td></tr>
+    <tr><td class="paramname">height</td><td>Level of tree to be printed out </td></tr>
+    <tr><td class="paramname">log_level</td><td>Log level to print at </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a5a2821d5f8274f595c2057a9ead90fa9" name="a5a2821d5f8274f595c2057a9ead90fa9"></a>
@@ -191,6 +204,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Print out an AST's level order traversal. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">root</td><td>Root of AST </td></tr>
+    <tr><td class="paramname">log_level</td><td>Log level to print at </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab6c2c2c6938ab1abcc61eca99cb85394" name="ab6c2c2c6938ab1abcc61eca99cb85394"></a>
@@ -216,6 +238,15 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the height of an AST Node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>Node to get height of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int Height of node </dd></dl>
 
 </div>
 </div>

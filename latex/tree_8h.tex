@@ -47,7 +47,7 @@ typedef struct \mbox{\hyperlink{structASTNode}{ASTNode}} \mbox{\hyperlink{tree_8
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8h_a9c120729f16efddf089474356bf271ea}{create\+\_\+unary\+\_\+ast\+\_\+node}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$child, unsigned long int value)
 \begin{DoxyCompactList}\small\item\em Constructs a new AST Unary Parent Node with the provided values. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{tree_8h_a5a2821d5f8274f595c2057a9ead90fa9}{ast\+\_\+debug\+\_\+level\+\_\+order}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root, \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} log\+\_\+level)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Print out an AST\textquotesingle{}s level order traversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -81,6 +81,17 @@ Component of the abstract syntax tree built during parsing.
 \doxysubsubsection{\texorpdfstring{ast\_debug\_level\_order()}{ast\_debug\_level\_order()}}
 {\footnotesize\ttfamily void ast\+\_\+debug\+\_\+level\+\_\+order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root,  }\item[{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{log\+\_\+level }\end{DoxyParamCaption})}
 
+
+
+Print out an AST\textquotesingle{}s level order traversal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & Root of AST \\
+\hline
+{\em log\+\_\+level} & Log level to print at \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{tree_8h_a6944d26b526509a2659e0921d358adb5}\label{tree_8h_a6944d26b526509a2659e0921d358adb5}} 
 \index{tree.h@{tree.h}!create\_ast\_identifier\_leaf@{create\_ast\_identifier\_leaf}}
 \index{create\_ast\_identifier\_leaf@{create\_ast\_identifier\_leaf}!tree.h@{tree.h}}

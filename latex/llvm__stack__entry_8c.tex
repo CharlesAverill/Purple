@@ -15,11 +15,11 @@ Include dependency graph for llvm\+\_\+stack\+\_\+entry.\+c\+:
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{llvm__stack__entry_8c_a8fa2f2bf229b53383166e64c9f631cd6}{initialize\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$head)
-\item 
+\begin{DoxyCompactList}\small\item\em Initialize a stack entry linked list. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm__stack__entry_8c_a687e029c1aee69283c86cca194374eb1}{prepend\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$head, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} register\+\_\+index)
-\item 
+\begin{DoxyCompactList}\small\item\em Add a stack entry to a stack entry linked list. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{llvm__stack__entry_8c_aa9f09b232b9d0e2e3b2e0de2f012aa4f}{pop\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$head)
-\item 
+\begin{DoxyCompactList}\small\item\em Pop and free a stack entry from a Stack Entry Node linked list and get its type. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm__stack__entry_8c_a24f6f1959edad4155dc0418b5f041948}{free\+\_\+llvm\+\_\+stack\+\_\+entry\+\_\+node\+\_\+list}} (\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$head)
 \begin{DoxyCompactList}\small\item\em Free memory used by \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} linked lists. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -55,15 +55,47 @@ Free memory used by \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\
 \doxysubsubsection{\texorpdfstring{initialize\_stack\_entry\_linked\_list()}{initialize\_stack\_entry\_linked\_list()}}
 {\footnotesize\ttfamily void initialize\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
 
+
+
+Initialize a stack entry linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & Head of linked list \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{llvm__stack__entry_8c_aa9f09b232b9d0e2e3b2e0de2f012aa4f}\label{llvm__stack__entry_8c_aa9f09b232b9d0e2e3b2e0de2f012aa4f}} 
 \index{llvm\_stack\_entry.c@{llvm\_stack\_entry.c}!pop\_stack\_entry\_linked\_list@{pop\_stack\_entry\_linked\_list}}
 \index{pop\_stack\_entry\_linked\_list@{pop\_stack\_entry\_linked\_list}!llvm\_stack\_entry.c@{llvm\_stack\_entry.c}}
 \doxysubsubsection{\texorpdfstring{pop\_stack\_entry\_linked\_list()}{pop\_stack\_entry\_linked\_list()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} pop\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
 
+
+
+Pop and free a stack entry from a Stack Entry Node linked list and get its type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & Head of linked list to pop from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+type\+\_\+register Register number from first entry in linked list 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm__stack__entry_8c_a687e029c1aee69283c86cca194374eb1}\label{llvm__stack__entry_8c_a687e029c1aee69283c86cca194374eb1}} 
 \index{llvm\_stack\_entry.c@{llvm\_stack\_entry.c}!prepend\_stack\_entry\_linked\_list@{prepend\_stack\_entry\_linked\_list}}
 \index{prepend\_stack\_entry\_linked\_list@{prepend\_stack\_entry\_linked\_list}!llvm\_stack\_entry.c@{llvm\_stack\_entry.c}}
 \doxysubsubsection{\texorpdfstring{prepend\_stack\_entry\_linked\_list()}{prepend\_stack\_entry\_linked\_list()}}
 {\footnotesize\ttfamily void prepend\+\_\+stack\+\_\+entry\+\_\+linked\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$$\ast$}]{head,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{register\+\_\+index }\end{DoxyParamCaption})}
 
+
+
+Add a stack entry to a stack entry linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & Head of linked list \\
+\hline
+{\em register\+\_\+index} & Register number to push onto list \\
+\hline
+\end{DoxyParams}

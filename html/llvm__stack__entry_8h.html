@@ -126,10 +126,13 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a8fa2f2bf229b53383166e64c9f631cd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm__stack__entry_8h.html#a8fa2f2bf229b53383166e64c9f631cd6">initialize_stack_entry_linked_list</a> (<a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> **head)</td></tr>
+<tr class="memdesc:a8fa2f2bf229b53383166e64c9f631cd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a stack entry linked list.  <a href="llvm__stack__entry_8h.html#a8fa2f2bf229b53383166e64c9f631cd6">More...</a><br /></td></tr>
 <tr class="separator:a8fa2f2bf229b53383166e64c9f631cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a687e029c1aee69283c86cca194374eb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm__stack__entry_8h.html#a687e029c1aee69283c86cca194374eb1">prepend_stack_entry_linked_list</a> (<a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> **head, <a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> register_index)</td></tr>
+<tr class="memdesc:a687e029c1aee69283c86cca194374eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a stack entry to a stack entry linked list.  <a href="llvm__stack__entry_8h.html#a687e029c1aee69283c86cca194374eb1">More...</a><br /></td></tr>
 <tr class="separator:a687e029c1aee69283c86cca194374eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9f09b232b9d0e2e3b2e0de2f012aa4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm__stack__entry_8h.html#aa9f09b232b9d0e2e3b2e0de2f012aa4f">pop_stack_entry_linked_list</a> (<a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> **head)</td></tr>
+<tr class="memdesc:aa9f09b232b9d0e2e3b2e0de2f012aa4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pop and free a stack entry from a Stack Entry Node linked list and get its type.  <a href="llvm__stack__entry_8h.html#aa9f09b232b9d0e2e3b2e0de2f012aa4f">More...</a><br /></td></tr>
 <tr class="separator:aa9f09b232b9d0e2e3b2e0de2f012aa4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24f6f1959edad4155dc0418b5f041948"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm__stack__entry_8h.html#a24f6f1959edad4155dc0418b5f041948">free_llvm_stack_entry_node_list</a> (<a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> *head)</td></tr>
 <tr class="memdesc:a24f6f1959edad4155dc0418b5f041948"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free memory used by <a class="el" href="structLLVMStackEntryNode.html" title="Node of a linked list containing information about required stack allocation for a piece of data....">LLVMStackEntryNode</a> linked lists.  <a href="llvm__stack__entry_8h.html#a24f6f1959edad4155dc0418b5f041948">More...</a><br /></td></tr>
@@ -215,6 +218,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Initialize a stack entry linked list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">head</td><td>Head of linked list </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aa9f09b232b9d0e2e3b2e0de2f012aa4f" name="aa9f09b232b9d0e2e3b2e0de2f012aa4f"></a>
@@ -232,6 +243,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pop and free a stack entry from a Stack Entry Node linked list and get its type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">head</td><td>Head of linked list to pop from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>type_register Register number from first entry in linked list </dd></dl>
 
 </div>
 </div>
@@ -260,6 +280,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Add a stack entry to a stack entry linked list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">head</td><td>Head of linked list </td></tr>
+    <tr><td class="paramname">register_index</td><td>Register number to push onto list </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

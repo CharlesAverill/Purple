@@ -28,11 +28,11 @@ Include dependency graph for tree.\+c\+:
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8c_a9c120729f16efddf089474356bf271ea}{create\+\_\+unary\+\_\+ast\+\_\+node}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$child, unsigned long int value)
 \begin{DoxyCompactList}\small\item\em Constructs a new AST Unary Parent Node with the provided values. \end{DoxyCompactList}\item 
 static int \mbox{\hyperlink{tree_8c_ab6c2c2c6938ab1abcc61eca99cb85394}{ast\+\_\+node\+\_\+height}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$node)
-\item 
+\begin{DoxyCompactList}\small\item\em Get the height of an AST Node. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{tree_8c_a21971a3ce9a67483f03a909ed0ab9a8d}{ast\+\_\+debug\+\_\+current\+\_\+level}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root, int height, \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} log\+\_\+level)
-\item 
+\begin{DoxyCompactList}\small\item\em Print out a single level of an AST in order from left to right. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{tree_8c_a5a2821d5f8274f595c2057a9ead90fa9}{ast\+\_\+debug\+\_\+level\+\_\+order}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root, \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} log\+\_\+level)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Print out an AST\textquotesingle{}s level order traversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -53,18 +53,54 @@ Charles Averill
 \doxysubsubsection{\texorpdfstring{ast\_debug\_current\_level()}{ast\_debug\_current\_level()}}
 {\footnotesize\ttfamily static void ast\+\_\+debug\+\_\+current\+\_\+level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root,  }\item[{int}]{height,  }\item[{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{log\+\_\+level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Print out a single level of an AST in order from left to right. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & Root of AST \\
+\hline
+{\em height} & Level of tree to be printed out \\
+\hline
+{\em log\+\_\+level} & Log level to print at \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{tree_8c_a5a2821d5f8274f595c2057a9ead90fa9}\label{tree_8c_a5a2821d5f8274f595c2057a9ead90fa9}} 
 \index{tree.c@{tree.c}!ast\_debug\_level\_order@{ast\_debug\_level\_order}}
 \index{ast\_debug\_level\_order@{ast\_debug\_level\_order}!tree.c@{tree.c}}
 \doxysubsubsection{\texorpdfstring{ast\_debug\_level\_order()}{ast\_debug\_level\_order()}}
 {\footnotesize\ttfamily void ast\+\_\+debug\+\_\+level\+\_\+order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root,  }\item[{\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{log\+\_\+level }\end{DoxyParamCaption})}
 
+
+
+Print out an AST\textquotesingle{}s level order traversal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & Root of AST \\
+\hline
+{\em log\+\_\+level} & Log level to print at \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{tree_8c_ab6c2c2c6938ab1abcc61eca99cb85394}\label{tree_8c_ab6c2c2c6938ab1abcc61eca99cb85394}} 
 \index{tree.c@{tree.c}!ast\_node\_height@{ast\_node\_height}}
 \index{ast\_node\_height@{ast\_node\_height}!tree.c@{tree.c}}
 \doxysubsubsection{\texorpdfstring{ast\_node\_height()}{ast\_node\_height()}}
 {\footnotesize\ttfamily static int ast\+\_\+node\+\_\+height (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Get the height of an AST Node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Node to get height of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Height of node 
+\end{DoxyReturn}
 \mbox{\Hypertarget{tree_8c_a6944d26b526509a2659e0921d358adb5}\label{tree_8c_a6944d26b526509a2659e0921d358adb5}} 
 \index{tree.c@{tree.c}!create\_ast\_identifier\_leaf@{create\_ast\_identifier\_leaf}}
 \index{create\_ast\_identifier\_leaf@{create\_ast\_identifier\_leaf}!tree.c@{tree.c}}
