@@ -15,8 +15,7 @@
 /**
  * @brief Types of scannable tokens
  */
-typedef enum
-{
+typedef enum {
     T_EOF,
     // Arithmetic Operators
     T_PLUS,
@@ -33,8 +32,11 @@ typedef enum
     T_GE,
     // Literals
     T_INTEGER_LITERAL,
+    T_TRUE,
+    T_FALSE,
     // Types
     T_INT,
+    T_BOOL,
     // Assignment
     T_ASSIGN,
     // Keywords
@@ -58,7 +60,10 @@ typedef enum
 #define TTS_LE "<="
 #define TTS_GE ">="
 #define TTS_INTEGER_LITERAL "integer literal"
+#define TTS_TRUE "true"
+#define TTS_FALSE "false"
 #define TTS_INT "int"
+#define TTS_BOOL "bool"
 #define TTS_ASSIGN "="
 #define TTS_PRINT "print"
 #define TTS_SEMICOLON ";"
@@ -81,7 +86,10 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_LE,
                                TTS_GE,
                                TTS_INTEGER_LITERAL,
+                               TTS_TRUE,
+                               TTS_FALSE,
                                TTS_INT,
+                               TTS_BOOL,
                                TTS_ASSIGN,
                                TTS_PRINT,
                                TTS_SEMICOLON,
@@ -93,8 +101,8 @@ static char* tokenStrings[] = {TTS_EOF,
  */
 
 #define TOKENTYPE_IS_TERMINAL(type)                                                                \
-    (/*Literals*/ (type >= T_INTEGER_LITERAL && type <= T_INTEGER_LITERAL) ||                      \
-     /*Types*/ (type >= T_INT && type <= T_INT) ||                                                 \
+    (/*Literals*/ (type >= T_INTEGER_LITERAL && type <= T_FALSE) ||                                \
+     /*Types*/ (type >= T_INT && type <= T_BOOL) ||                                                \
      /*Miscellaneous*/ (type >= T_SEMICOLON && type <= T_LVALUE_IDENTIFIER))
 
 /**
@@ -102,7 +110,11 @@ static char* tokenStrings[] = {TTS_EOF,
  */
 #define TOKENTYPE_IS_BINARY_ARITHMETIC(type) (type >= T_PLUS && type <= T_EXPONENT)
 
-#define TOKENTYPE_IS_LITERAL(type) (type >= T_INTEGER_LITERAL && type <= T_INTEGER_LITERAL)
+#define TOKENTYPE_IS_TYPE(type) (type >= T_INT && type <= T_BOOL)
+
+#define TOKENTYPE_IS_LITERAL(type) (type >= T_INTEGER_LITERAL && type <= T_FALSE)
+
+#define TOKENTYPE_IS_BOOL_LITERAL(type) (type >= T_TRUE && type <= T_FALSE)
 
 #define TOKENTYPE_IS_IDENTIFIER(type) (type >= T_IDENTIFIER && type <= T_LVALUE_IDENTIFIER)
 

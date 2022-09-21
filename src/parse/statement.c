@@ -25,6 +25,18 @@ void match_token(TokenType type)
 }
 
 /**
+ * @brief Ensure current token is a type token, and scan the next token if so
+ */
+void match_type(void)
+{
+    if (TOKENTYPE_IS_TYPE(D_GLOBAL_TOKEN.type)) {
+        scan(&D_GLOBAL_TOKEN);
+    } else {
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Expected type");
+    }
+}
+
+/**
  * @brief Parse a print statement into LLVM
  */
 static void print_statement(void)
@@ -125,6 +137,7 @@ void parse_statements(void)
             print_statement();
             break;
         case T_INT:
+        case T_BOOL:
             variable_declaration();
             break;
         case T_IDENTIFIER:

@@ -154,6 +154,15 @@ static int scan_identifier(char c, char* buf, int max_len)
 static TokenType parse_keyword(char* keyword_string)
 {
     switch (keyword_string[0]) {
+    case 'b':
+        if (!strcmp(keyword_string, TTS_BOOL)) {
+            return T_BOOL;
+        }
+        break;
+    case 'f':
+        if (!strcmp(keyword_string, TTS_FALSE)) {
+            return T_FALSE;
+        }
     case 'i':
         if (!strcmp(keyword_string, TTS_INT)) {
             return T_INT;
@@ -162,6 +171,11 @@ static TokenType parse_keyword(char* keyword_string)
     case 'p':
         if (!strcmp(keyword_string, TTS_PRINT)) {
             return T_PRINT;
+        }
+        break;
+    case 't':
+        if (!strcmp(keyword_string, TTS_TRUE)) {
+            return T_TRUE;
         }
         break;
     }
@@ -249,12 +263,20 @@ bool scan(Token* t)
         if (temp_type = parse_keyword(D_IDENTIFIER_BUFFER)) {
             t->type = temp_type;
         } else {
+            // It's an identifier
             t->type = T_IDENTIFIER;
             strcpy(t->value.symbol_name, D_IDENTIFIER_BUFFER);
         }
     } else {
         no_switch_match_output = false;
         syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unrecognized token \"%c\"", c);
+    }
+
+    // Fill boolean literal values
+    if (t->type == T_TRUE) {
+        t->value.int_value = 1;
+    } else if (t->type == T_FALSE) {
+        t->value.int_value = 0;
     }
 
     return no_switch_match_output;

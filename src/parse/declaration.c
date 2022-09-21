@@ -17,7 +17,7 @@ void variable_declaration(void)
 {
     purple_log(LOG_DEBUG, "Parsing variable declaration statement");
 
-    match_token(T_INT);
+    match_type();
     match_token(T_IDENTIFIER);
     add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER);
     llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, NT_INT32);

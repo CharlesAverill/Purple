@@ -39,7 +39,9 @@ static ASTNode* create_terminal_node(Token t)
 
     switch (D_GLOBAL_TOKEN.type) {
     case T_INTEGER_LITERAL:
-        out = create_ast_nonidentifier_leaf(T_INTEGER_LITERAL, D_GLOBAL_TOKEN.value.int_value);
+    case T_TRUE:
+    case T_FALSE:
+        out = create_ast_nonidentifier_leaf(D_GLOBAL_TOKEN.type, D_GLOBAL_TOKEN.value.int_value);
         break;
     case T_IDENTIFIER:
         if (!find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, t.value.symbol_name)) {

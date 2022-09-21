@@ -71,7 +71,7 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
         }
 
         return temp_left;
-    } else if (root->ttype == T_INTEGER_LITERAL) {
+    } else if (TOKENTYPE_IS_LITERAL(root->ttype)) {
         LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
         current->reg = get_next_local_virtual_register();
         prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
@@ -142,6 +142,9 @@ LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
     } else {
         switch (n->ttype) {
         case T_INTEGER_LITERAL:
+        // TODO : Booleans should be ui8s, not i32s
+        case T_TRUE:
+        case T_FALSE:
             return llvm_store_constant(NUMBER_INT32(n->value.int_value));
         case T_IDENTIFIER:
             return llvm_load_global_variable(n->value.symbol_name);
