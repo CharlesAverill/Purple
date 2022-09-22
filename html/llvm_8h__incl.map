@@ -1,8 +1,8 @@
 <map id="include/translate/llvm.h" name="include/translate/llvm.h">
-<area shape="rect" id="node1" title="Function headers for LLVM&#45;IR emission." alt="" coords="87,5,242,32"/>
-<area shape="rect" id="node2" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="66,80,126,107"/>
-<area shape="rect" id="node5" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="221,155,332,181"/>
-<area shape="rect" id="node6" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="202,80,361,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="6,229,80,256"/>
-<area shape="rect" id="node4" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="22,155,184,181"/>
+<area shape="rect" id="node1" title="Function headers for LLVM&#45;IR emission." alt="" coords="145,5,299,32"/>
+<area shape="rect" id="node2" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="73,80,133,107"/>
+<area shape="rect" id="node5" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="167,229,277,256"/>
+<area shape="rect" id="node6" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="260,155,419,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="7,229,82,256"/>
+<area shape="rect" id="node4" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="22,155,185,181"/>
 </map>

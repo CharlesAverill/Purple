@@ -1,4 +1,4 @@
 <map id="SymbolTable" name="SymbolTable">
-<area shape="rect" id="node1" title="Holds data for symbols within a scope." alt="" coords="13,189,124,296"/>
-<area shape="rect" id="node2" href="$structSymbolTableEntry.html" title="Struct holding data about a symbol." alt="" coords="5,5,132,127"/>
+<area shape="rect" id="node1" title="Holds data for symbols within a scope." alt="" coords="13,204,124,311"/>
+<area shape="rect" id="node2" href="$structSymbolTableEntry.html" title="Struct holding data about a symbol." alt="" coords="5,5,132,141"/>
 </map>

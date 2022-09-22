@@ -1,16 +1,17 @@
 <map id="src/parse/expression.c" name="src/parse/expression.c">
-<area shape="rect" id="node1" title="Logic for parsing expressions into an AST." alt="" coords="249,5,401,32"/>
+<area shape="rect" id="node1" title="Logic for parsing expressions into an AST." alt="" coords="293,5,445,32"/>
 <area shape="rect" id="node2" href="$data_8h.html" title="Project&#45;wide variables." alt="" coords="228,155,285,181"/>
-<area shape="rect" id="node10" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="343,80,407,107"/>
+<area shape="rect" id="node11" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="413,80,477,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="159,229,219,256"/>
 <area shape="rect" id="node4" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="295,229,355,256"/>
-<area shape="rect" id="node6" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="210,304,373,331"/>
-<area shape="rect" id="node7" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="13,229,135,256"/>
-<area shape="rect" id="node5" title=" " alt="" coords="313,379,387,405"/>
-<area shape="rect" id="node8" title=" " alt="" coords="5,304,63,331"/>
-<area shape="rect" id="node9" href="$info_8h.html" title="CMake config definitions." alt="" coords="87,304,141,331"/>
-<area shape="rect" id="node11" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="365,155,420,181"/>
-<area shape="rect" id="node12" title=" " alt="" coords="431,229,493,256"/>
-<area shape="rect" id="node13" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="518,229,619,256"/>
-<area shape="rect" id="node14" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="511,304,627,331"/>
+<area shape="rect" id="node6" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="318,304,481,331"/>
+<area shape="rect" id="node8" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="13,229,135,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="303,379,378,405"/>
+<area shape="rect" id="node7" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="403,379,513,405"/>
+<area shape="rect" id="node9" title=" " alt="" coords="5,304,63,331"/>
+<area shape="rect" id="node10" href="$info_8h.html" title="CMake config definitions." alt="" coords="87,304,141,331"/>
+<area shape="rect" id="node12" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="417,155,472,181"/>
+<area shape="rect" id="node13" title=" " alt="" coords="379,229,441,256"/>
+<area shape="rect" id="node14" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="517,229,618,256"/>
+<area shape="rect" id="node15" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="505,304,621,331"/>
 </map>

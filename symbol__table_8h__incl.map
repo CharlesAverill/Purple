@@ -1,4 +1,5 @@
 <map id="include/translate/symbol_table.h" name="include/translate/symbol_table.h">
-<area shape="rect" id="node1" title="Function headers and definitions for the global and local symbol tables." alt="" coords="5,5,168,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="49,95,124,121"/>
+<area shape="rect" id="node1" title="Function headers and definitions for the global and local symbol tables." alt="" coords="20,5,183,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,80,121"/>
+<area shape="rect" id="node3" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="105,95,215,121"/>
 </map>

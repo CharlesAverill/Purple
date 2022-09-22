@@ -80,7 +80,7 @@ Collaboration diagram for ASTNode:</div>
 <div class="dyncontent">
 <div class="center"><img src="structASTNode__coll__graph.png" border="0" usemap="#aASTNode_coll__map" alt="Collaboration graph"/></div>
 <map name="aASTNode_coll__map" id="aASTNode_coll__map">
-<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,5,119,127"/>
+<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,5,119,141"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -95,10 +95,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ae1b629d9a274de8b4afbe2382b81e072"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3fac314ab87bbccda872cde9678b5b3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#ab3fac314ab87bbccda872cde9678b5b3">right</a></td></tr>
 <tr class="separator:ab3fac314ab87bbccda872cde9678b5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58fd804bfb87d7a797a8d133147e15ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#a58fd804bfb87d7a797a8d133147e15ca">number_type</a></td></tr>
+<tr class="separator:a58fd804bfb87d7a797a8d133147e15ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6eb3eb28a0e661931fa444b130f86404"><td class="memItemLeft" >union {</td></tr>
 <tr class="memitem:ac21720ac48ab6998b464bf9ead12eb46"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structASTNode.html#af8535af330bd921499868489fd553eb9">int_value</a></td></tr>
 <tr class="separator:ac21720ac48ab6998b464bf9ead12eb46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49226fe06ed0b3ec80400bc56aa9d5ec"><td class="memItemLeft" >&#160;&#160;&#160;char&#160;&#160;&#160;<a class="el" href="structASTNode.html#ab07357f4f4f7d75f05a60ab6799c3008">symbol_name</a> [<a class="el" href="scan_8h.html#afdefd4da733213509f3ca91a81945044">D_MAX_IDENTIFIER_LENGTH</a>]</td></tr>
+<tr class="memitem:a49226fe06ed0b3ec80400bc56aa9d5ec"><td class="memItemLeft" >&#160;&#160;&#160;char&#160;&#160;&#160;<a class="el" href="structASTNode.html#ab07357f4f4f7d75f05a60ab6799c3008">symbol_name</a> [<a class="el" href="symbol__table_8h.html#afdefd4da733213509f3ca91a81945044">D_MAX_IDENTIFIER_LENGTH</a>]</td></tr>
 <tr class="separator:a49226fe06ed0b3ec80400bc56aa9d5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6eb3eb28a0e661931fa444b130f86404"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#a6eb3eb28a0e661931fa444b130f86404">value</a></td></tr>
 <tr class="separator:a6eb3eb28a0e661931fa444b130f86404"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,6 +153,21 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a58fd804bfb87d7a797a8d133147e15ca" name="a58fd804bfb87d7a797a8d133147e15ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58fd804bfb87d7a797a8d133147e15ca">&#9670;&nbsp;</a></span>number_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> ASTNode::number_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Type of number token </p>
+
+</div>
+</div>
 <a id="ab3fac314ab87bbccda872cde9678b5b3" name="ab3fac314ab87bbccda872cde9678b5b3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab3fac314ab87bbccda872cde9678b5b3">&#9670;&nbsp;</a></span>right</h2>
 
@@ -173,7 +190,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char ASTNode::symbol_name[<a class="el" href="scan_8h.html#afdefd4da733213509f3ca91a81945044">D_MAX_IDENTIFIER_LENGTH</a>]</td>
+          <td class="memname">char ASTNode::symbol_name[<a class="el" href="symbol__table_8h.html#afdefd4da733213509f3ca91a81945044">D_MAX_IDENTIFIER_LENGTH</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">

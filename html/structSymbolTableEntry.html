@@ -80,18 +80,20 @@ Collaboration diagram for SymbolTableEntry:</div>
 <div class="dyncontent">
 <div class="center"><img src="structSymbolTableEntry__coll__graph.png" border="0" usemap="#aSymbolTableEntry_coll__map" alt="Collaboration graph"/></div>
 <map name="aSymbolTableEntry_coll__map" id="aSymbolTableEntry_coll__map">
-<area shape="rect" title="Struct holding data about a symbol." alt="" coords="5,5,132,127"/>
+<area shape="rect" title="Struct holding data about a symbol." alt="" coords="5,5,132,141"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a7d7e61aa88b5d5194f9e6681923dcf49"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTableEntry.html#a7d7e61aa88b5d5194f9e6681923dcf49">symbol_name</a></td></tr>
-<tr class="separator:a7d7e61aa88b5d5194f9e6681923dcf49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76387686507c4887241428fa8e6efab6"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTableEntry.html#a76387686507c4887241428fa8e6efab6">symbol_name</a> [<a class="el" href="symbol__table_8h.html#afdefd4da733213509f3ca91a81945044">D_MAX_IDENTIFIER_LENGTH</a>+1]</td></tr>
+<tr class="separator:a76387686507c4887241428fa8e6efab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0a12eb25f232b048883c09c4457f960"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTableEntry.html#aa0a12eb25f232b048883c09c4457f960">length</a></td></tr>
 <tr class="separator:aa0a12eb25f232b048883c09c4457f960"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c15e2fc64ead404c914b0fef62eb1ea"><td class="memItemLeft" align="right" valign="top">unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTableEntry.html#a0c15e2fc64ead404c914b0fef62eb1ea">bucket_index</a></td></tr>
 <tr class="separator:a0c15e2fc64ead404c914b0fef62eb1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a607d0fb5996cc346c59d5985813273b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTableEntry.html#a607d0fb5996cc346c59d5985813273b7">number_type</a></td></tr>
+<tr class="separator:a607d0fb5996cc346c59d5985813273b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf808305494a748a34cb14340e90bfe1"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structSymbolTableEntry.html">SymbolTableEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTableEntry.html#adf808305494a748a34cb14340e90bfe1">next</a></td></tr>
 <tr class="separator:adf808305494a748a34cb14340e90bfe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7db3bae7f68630cf192d8f1e57169c20"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTableEntry.html#a7db3bae7f68630cf192d8f1e57169c20">chain_index</a></td></tr>
@@ -160,14 +162,29 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7d7e61aa88b5d5194f9e6681923dcf49" name="a7d7e61aa88b5d5194f9e6681923dcf49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d7e61aa88b5d5194f9e6681923dcf49">&#9670;&nbsp;</a></span>symbol_name</h2>
+<a id="a607d0fb5996cc346c59d5985813273b7" name="a607d0fb5996cc346c59d5985813273b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a607d0fb5996cc346c59d5985813273b7">&#9670;&nbsp;</a></span>number_type</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* SymbolTableEntry::symbol_name</td>
+          <td class="memname"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> SymbolTableEntry::number_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Type of entry </p>
+
+</div>
+</div>
+<a id="a76387686507c4887241428fa8e6efab6" name="a76387686507c4887241428fa8e6efab6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76387686507c4887241428fa8e6efab6">&#9670;&nbsp;</a></span>symbol_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char SymbolTableEntry::symbol_name[<a class="el" href="symbol__table_8h.html#afdefd4da733213509f3ca91a81945044">D_MAX_IDENTIFIER_LENGTH</a>+1]</td>
         </tr>
       </table>
 </div><div class="memdoc">

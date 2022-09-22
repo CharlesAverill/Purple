@@ -22,7 +22,9 @@ struct \mbox{\hyperlink{structNumber}{Number}}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{number_8h_a24ab2edce77238f47f3602f11764386b}{NUMBER\+\_\+\+INT32}}(v)~    (\mbox{\hyperlink{structNumber}{Number}}) \{ .type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}{NT\+\_\+\+INT32}}, .value.\+int\+\_\+value = v \}
-\begin{DoxyCompactList}\small\item\em Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT32. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT32. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{number_8h_a7931ed349e71ddd50a089f9cf928f9e0}{NUMBER\+\_\+\+INT1}}(v)~    (\mbox{\hyperlink{structNumber}{Number}}) \{ .type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3}{NT\+\_\+\+INT1}}, .value.\+int\+\_\+value = v \}
+\begin{DoxyCompactList}\small\item\em Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT1. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -31,7 +33,8 @@ typedef struct \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{number_8
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \{ \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}{NT\+\_\+\+INT32}}
+enum \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \{ \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3}{NT\+\_\+\+INT1}}
+, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}{NT\+\_\+\+INT32}}
  \}
 \begin{DoxyCompactList}\small\item\em Types of numbers supported by Purple. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
@@ -60,6 +63,16 @@ Charles Averill
 
 
 \doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{number_8h_a7931ed349e71ddd50a089f9cf928f9e0}\label{number_8h_a7931ed349e71ddd50a089f9cf928f9e0}} 
+\index{number.h@{number.h}!NUMBER\_INT1@{NUMBER\_INT1}}
+\index{NUMBER\_INT1@{NUMBER\_INT1}!number.h@{number.h}}
+\doxysubsubsection{\texorpdfstring{NUMBER\_INT1}{NUMBER\_INT1}}
+{\footnotesize\ttfamily \#define NUMBER\+\_\+\+INT1(\begin{DoxyParamCaption}\item[{}]{v }\end{DoxyParamCaption})~    (\mbox{\hyperlink{structNumber}{Number}}) \{ .type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3}{NT\+\_\+\+INT1}}, .value.\+int\+\_\+value = v \}}
+
+
+
+Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT1. 
+
 \mbox{\Hypertarget{number_8h_a24ab2edce77238f47f3602f11764386b}\label{number_8h_a24ab2edce77238f47f3602f11764386b}} 
 \index{number.h@{number.h}!NUMBER\_INT32@{NUMBER\_INT32}}
 \index{NUMBER\_INT32@{NUMBER\_INT32}!number.h@{number.h}}
@@ -97,6 +110,10 @@ Container for various kinds of number data.
 Types of numbers supported by Purple. 
 
 \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_INT1@{NT\_INT1}!number.h@{number.h}}\index{number.h@{number.h}!NT\_INT1@{NT\_INT1}}}\mbox{\Hypertarget{number_8h_ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3}\label{number_8h_ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3}} 
+NT\+\_\+\+INT1&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_INT32@{NT\_INT32}!number.h@{number.h}}\index{number.h@{number.h}!NT\_INT32@{NT\_INT32}}}\mbox{\Hypertarget{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}\label{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}} 
 NT\+\_\+\+INT32&\\
 \hline
@@ -135,6 +152,7 @@ Number\+Type Converted Token\+Type
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{= \{}
+\DoxyCodeLine{    1,}
 \DoxyCodeLine{    4,}
 \DoxyCodeLine{\}}
 
@@ -152,6 +170,7 @@ Size of each Number\+Type.
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{= \{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}\%d"{}},}
 \DoxyCodeLine{    \textcolor{stringliteral}{"{}\%d"{}},}
 \DoxyCodeLine{\}}
 

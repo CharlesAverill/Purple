@@ -86,17 +86,29 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="number_8h__dep__incl.png" border="0" usemap="#ainclude_2types_2number_8hdep" alt=""/></div>
 <map name="ainclude_2types_2number_8hdep" id="ainclude_2types_2number_8hdep">
-<area shape="rect" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="379,5,534,32"/>
-<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="282,177,437,203"/>
-<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="397,80,516,121"/>
-<area shape="rect" href="number_8c.html" title="Functions for dealing with numbers internally." alt="" coords="540,87,672,114"/>
-<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="205,259,386,285"/>
-<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="5,333,153,360"/>
-<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="473,333,605,360"/>
-<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="461,259,615,285"/>
-<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="177,333,267,360"/>
-<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="291,333,449,360"/>
-<area shape="rect" href="llvm__stack__entry_8c.html" title=" " alt="" coords="461,169,596,211"/>
+<area shape="rect" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="402,5,556,32"/>
+<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="466,333,575,360"/>
+<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="176,333,331,360"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="718,80,880,121"/>
+<area shape="rect" href="number_8c.html" title="Functions for dealing with numbers internally." alt="" coords="1486,259,1618,285"/>
+<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="170,80,289,121"/>
+<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="302,408,483,435"/>
+<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="190,483,338,509"/>
+<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="1404,483,1493,509"/>
+<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="73,408,226,435"/>
+<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="558,408,710,435"/>
+<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="362,483,494,509"/>
+<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="694,483,853,509"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="898,333,1001,360"/>
+<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="1000,177,1105,203"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="663,259,762,285"/>
+<area shape="rect" href="symbol__table_8c.html" title="Logic for global and local symbol tables." alt="" coords="836,169,975,211"/>
+<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="1486,408,1568,435"/>
+<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="734,408,810,435"/>
+<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="1150,408,1264,435"/>
+<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="1288,408,1411,435"/>
+<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="987,408,1126,435"/>
+<area shape="rect" href="llvm__stack__entry_8c.html" title=" " alt="" coords="81,169,216,211"/>
 </map>
 </div>
 </div>
@@ -113,6 +125,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a24ab2edce77238f47f3602f11764386b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="number_8h.html#a24ab2edce77238f47f3602f11764386b">NUMBER_INT32</a>(v)&#160;&#160;&#160;    (<a class="el" href="structNumber.html">Number</a>) { .type = <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733">NT_INT32</a>, .value.int_value = v }</td></tr>
 <tr class="memdesc:a24ab2edce77238f47f3602f11764386b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a <a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a> struct with type INT32.  <a href="number_8h.html#a24ab2edce77238f47f3602f11764386b">More...</a><br /></td></tr>
 <tr class="separator:a24ab2edce77238f47f3602f11764386b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7931ed349e71ddd50a089f9cf928f9e0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="number_8h.html#a7931ed349e71ddd50a089f9cf928f9e0">NUMBER_INT1</a>(v)&#160;&#160;&#160;    (<a class="el" href="structNumber.html">Number</a>) { .type = <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3">NT_INT1</a>, .value.int_value = v }</td></tr>
+<tr class="memdesc:a7931ed349e71ddd50a089f9cf928f9e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a <a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a> struct with type INT1.  <a href="number_8h.html#a7931ed349e71ddd50a089f9cf928f9e0">More...</a><br /></td></tr>
+<tr class="separator:a7931ed349e71ddd50a089f9cf928f9e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -122,7 +137,8 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ae33bf5f4db440a147780b796497d1ef5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> { <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733">NT_INT32</a>
+<tr class="memitem:ae33bf5f4db440a147780b796497d1ef5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> { <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3">NT_INT1</a>
+, <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733">NT_INT32</a>
  }</td></tr>
 <tr class="memdesc:ae33bf5f4db440a147780b796497d1ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types of numbers supported by Purple.  <a href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">More...</a><br /></td></tr>
 <tr class="separator:ae33bf5f4db440a147780b796497d1ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,6 +163,26 @@ Variables</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Charles Averill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12-Sep-2022 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a7931ed349e71ddd50a089f9cf928f9e0" name="a7931ed349e71ddd50a089f9cf928f9e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7931ed349e71ddd50a089f9cf928f9e0">&#9670;&nbsp;</a></span>NUMBER_INT1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUMBER_INT1</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">v</td><td>)</td>
+          <td>&#160;&#160;&#160;    (<a class="el" href="structNumber.html">Number</a>) { .type = <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3">NT_INT1</a>, .value.int_value = v }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generates a <a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a> struct with type INT1. </p>
+
+</div>
+</div>
 <a id="a24ab2edce77238f47f3602f11764386b" name="a24ab2edce77238f47f3602f11764386b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a24ab2edce77238f47f3602f11764386b">&#9670;&nbsp;</a></span>NUMBER_INT32</h2>
 
@@ -199,7 +235,8 @@ Variables</h2></td></tr>
 
 <p>Types of numbers supported by Purple. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733" name="ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733"></a>NT_INT32&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3" name="ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3"></a>NT_INT1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733" name="ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733"></a>NT_INT32&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -253,6 +290,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    1,</div>
 <div class="line">    4,</div>
 <div class="line">}</div>
 </div><!-- fragment -->
@@ -280,6 +318,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    <span class="stringliteral">&quot;%d&quot;</span>,</div>
 <div class="line">    <span class="stringliteral">&quot;%d&quot;</span>,</div>
 <div class="line">}</div>
 </div><!-- fragment -->

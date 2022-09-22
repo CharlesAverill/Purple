@@ -1,10 +1,11 @@
 <map id="include/parse.h" name="include/parse.h">
-<area shape="rect" id="node1" title="Function headers for parsing and operator precedence values." alt="" coords="101,5,210,32"/>
-<area shape="rect" id="node2" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="128,80,183,107"/>
+<area shape="rect" id="node1" title="Function headers for parsing and operator precedence values." alt="" coords="231,5,341,32"/>
+<area shape="rect" id="node2" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="163,80,217,107"/>
+<area shape="rect" id="node7" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="125,304,236,331"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,155,68,181"/>
 <area shape="rect" id="node4" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="92,155,152,181"/>
-<area shape="rect" id="node6" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="74,229,237,256"/>
-<area shape="rect" id="node7" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="265,155,366,181"/>
-<area shape="rect" id="node5" title=" " alt="" coords="58,304,133,331"/>
-<area shape="rect" id="node8" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="261,229,377,256"/>
+<area shape="rect" id="node6" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="41,229,203,256"/>
+<area shape="rect" id="node8" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="231,155,333,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="26,304,101,331"/>
+<area shape="rect" id="node9" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="228,229,344,256"/>
 </map>

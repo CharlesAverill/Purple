@@ -6,12 +6,13 @@ Function headers and definitions for the global and local symbol tables.
 
 
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}types/number.\+h\char`\"{}}\newline
 Include dependency graph for symbol\+\_\+table.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=202pt]{symbol__table_8h__incl}
+\includegraphics[width=238pt]{symbol__table_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -35,6 +36,8 @@ struct \mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}{SYMBOL\+\_\+\+TABLE\+\_\+\+DEFAULT\+\_\+\+LENGTH}}~1024
+\item 
+\#define \mbox{\hyperlink{symbol__table_8h_afdefd4da733213509f3ca91a81945044}{D\+\_\+\+MAX\+\_\+\+IDENTIFIER\+\_\+\+LENGTH}}~255
 \end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -74,7 +77,7 @@ void \mbox{\hyperlink{symbol__table_8h_ace4eaeafa7e20975b8dc696cf7705b1f}{resize
 \begin{DoxyCompactList}\small\item\em Find the entry of a symbol in the provided Symbol Table if it exists. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8h_a19902129ff999624837d473ed4d77674}{new\+\_\+symbol\+\_\+table\+\_\+entry}} (char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Get pointer to new Symbol Table Entry. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{symbol__table_8h_a6d088e847f4639719470df65b7d44c43}{add\+\_\+symbol\+\_\+table\+\_\+entry}} (\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$table, char $\ast$symbol\+\_\+name)
+void \mbox{\hyperlink{symbol__table_8h_ad566d16fa17276db926a2058b7650a88}{add\+\_\+symbol\+\_\+table\+\_\+entry}} (\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$table, char $\ast$symbol\+\_\+name, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} number\+\_\+type)
 \begin{DoxyCompactList}\small\item\em Hash symbol\+\_\+name with hash function FNV-\/1 and put it into the chained Symbol Table. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -90,7 +93,13 @@ Charles Averill
 
 
 \doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}\label{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}} 
+\mbox{\Hypertarget{symbol__table_8h_afdefd4da733213509f3ca91a81945044}\label{symbol__table_8h_afdefd4da733213509f3ca91a81945044}} 
+\index{symbol\_table.h@{symbol\_table.h}!D\_MAX\_IDENTIFIER\_LENGTH@{D\_MAX\_IDENTIFIER\_LENGTH}}
+\index{D\_MAX\_IDENTIFIER\_LENGTH@{D\_MAX\_IDENTIFIER\_LENGTH}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{D\_MAX\_IDENTIFIER\_LENGTH}{D\_MAX\_IDENTIFIER\_LENGTH}}
+{\footnotesize\ttfamily \#define D\+\_\+\+MAX\+\_\+\+IDENTIFIER\+\_\+\+LENGTH~255}
+
+Purple identifiers can be a maximum of 255 bytes in length \mbox{\Hypertarget{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}\label{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}} 
 \index{symbol\_table.h@{symbol\_table.h}!SYMBOL\_TABLE\_DEFAULT\_LENGTH@{SYMBOL\_TABLE\_DEFAULT\_LENGTH}}
 \index{SYMBOL\_TABLE\_DEFAULT\_LENGTH@{SYMBOL\_TABLE\_DEFAULT\_LENGTH}!symbol\_table.h@{symbol\_table.h}}
 \doxysubsubsection{\texorpdfstring{SYMBOL\_TABLE\_DEFAULT\_LENGTH}{SYMBOL\_TABLE\_DEFAULT\_LENGTH}}
@@ -132,11 +141,11 @@ Stack of Symbol Tables used for scoping.
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{symbol__table_8h_a6d088e847f4639719470df65b7d44c43}\label{symbol__table_8h_a6d088e847f4639719470df65b7d44c43}} 
+\mbox{\Hypertarget{symbol__table_8h_ad566d16fa17276db926a2058b7650a88}\label{symbol__table_8h_ad566d16fa17276db926a2058b7650a88}} 
 \index{symbol\_table.h@{symbol\_table.h}!add\_symbol\_table\_entry@{add\_symbol\_table\_entry}}
 \index{add\_symbol\_table\_entry@{add\_symbol\_table\_entry}!symbol\_table.h@{symbol\_table.h}}
 \doxysubsubsection{\texorpdfstring{add\_symbol\_table\_entry()}{add\_symbol\_table\_entry()}}
-{\footnotesize\ttfamily void add\+\_\+symbol\+\_\+table\+\_\+entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$}]{table,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void add\+\_\+symbol\+\_\+table\+\_\+entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$}]{table,  }\item[{char $\ast$}]{symbol\+\_\+name,  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{number\+\_\+type }\end{DoxyParamCaption})}
 
 
 

@@ -85,24 +85,24 @@ Include dependency graph for statement.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="statement_8c__incl.png" border="0" usemap="#asrc_2parse_2statement_8c" alt=""/></div>
 <map name="asrc_2parse_2statement_8c" id="asrc_2parse_2statement_8c">
-<area shape="rect" title="Logic for parsing statements into an AST." alt="" coords="321,5,469,32"/>
+<area shape="rect" title="Logic for parsing statements into an AST." alt="" coords="455,5,603,32"/>
 <area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="228,229,285,256"/>
-<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="347,155,411,181"/>
-<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="499,155,609,181"/>
-<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="381,80,517,107"/>
+<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="454,155,518,181"/>
+<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="673,229,784,256"/>
+<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="514,80,650,107"/>
 <area shape="rect" title=" " alt="" coords="159,304,219,331"/>
 <area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="295,304,355,331"/>
-<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="278,379,441,405"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="311,379,474,405"/>
 <area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="13,304,135,331"/>
-<area shape="rect" title=" " alt="" coords="262,453,337,480"/>
+<area shape="rect" title=" " alt="" coords="297,453,371,480"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="627,453,737,480"/>
 <area shape="rect" title=" " alt="" coords="5,379,63,405"/>
 <area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="87,379,141,405"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="393,229,448,256"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="443,229,497,256"/>
 <area shape="rect" title=" " alt="" coords="431,304,493,331"/>
 <area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="518,304,619,331"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="511,379,627,405"/>
-<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="644,304,755,331"/>
-<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="612,229,771,256"/>
+<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="503,379,619,405"/>
+<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="745,379,904,405"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -111,9 +111,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a50272a0b5fea28f10f872dda4641d1a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="statement_8c.html#a50272a0b5fea28f10f872dda4641d1a4">match_token</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type)</td></tr>
 <tr class="memdesc:a50272a0b5fea28f10f872dda4641d1a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure current token is of a given type, and scan the next token if so.  <a href="statement_8c.html#a50272a0b5fea28f10f872dda4641d1a4">More...</a><br /></td></tr>
 <tr class="separator:a50272a0b5fea28f10f872dda4641d1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94550f7bd9df805c3163c53b6f149390"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="statement_8c.html#a94550f7bd9df805c3163c53b6f149390">match_type</a> (void)</td></tr>
-<tr class="memdesc:a94550f7bd9df805c3163c53b6f149390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure current token is a type token, and scan the next token if so.  <a href="statement_8c.html#a94550f7bd9df805c3163c53b6f149390">More...</a><br /></td></tr>
-<tr class="separator:a94550f7bd9df805c3163c53b6f149390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e5c84a93405ab540a698edd6aa670b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="statement_8c.html#a8e5c84a93405ab540a698edd6aa670b3">match_type</a> (void)</td></tr>
+<tr class="memdesc:a8e5c84a93405ab540a698edd6aa670b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure current token is a type token, and scan the next token if so.  <a href="statement_8c.html#a8e5c84a93405ab540a698edd6aa670b3">More...</a><br /></td></tr>
+<tr class="separator:a8e5c84a93405ab540a698edd6aa670b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4242b2b6f2d05d00166bc689f35d3d7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="statement_8c.html#af4242b2b6f2d05d00166bc689f35d3d7">print_statement</a> (void)</td></tr>
 <tr class="memdesc:af4242b2b6f2d05d00166bc689f35d3d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a print statement into LLVM.  <a href="statement_8c.html#af4242b2b6f2d05d00166bc689f35d3d7">More...</a><br /></td></tr>
 <tr class="separator:af4242b2b6f2d05d00166bc689f35d3d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,14 +183,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a94550f7bd9df805c3163c53b6f149390" name="a94550f7bd9df805c3163c53b6f149390"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94550f7bd9df805c3163c53b6f149390">&#9670;&nbsp;</a></span>match_type()</h2>
+<a id="a8e5c84a93405ab540a698edd6aa670b3" name="a8e5c84a93405ab540a698edd6aa670b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e5c84a93405ab540a698edd6aa670b3">&#9670;&nbsp;</a></span>match_type()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void match_type </td>
+          <td class="memname"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> match_type </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -200,6 +200,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Ensure current token is a type token, and scan the next token if so. </p>
+<dl class="section return"><dt>Returns</dt><dd>Type of variable </dd></dl>
 
 </div>
 </div>

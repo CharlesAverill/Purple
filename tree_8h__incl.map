@@ -1,9 +1,10 @@
 <map id="include/tree.h" name="include/tree.h">
-<area shape="rect" id="node1" title="Function headers for abstract syntax tree parsing." alt="" coords="106,5,205,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,68,107"/>
-<area shape="rect" id="node3" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="92,80,152,107"/>
-<area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="74,155,237,181"/>
-<area shape="rect" id="node6" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="265,80,366,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="58,229,133,256"/>
-<area shape="rect" id="node7" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="261,155,377,181"/>
+<area shape="rect" id="node1" title="Function headers for abstract syntax tree parsing." alt="" coords="111,5,209,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="10,80,73,107"/>
+<area shape="rect" id="node3" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="97,80,157,107"/>
+<area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="79,155,241,181"/>
+<area shape="rect" id="node7" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="269,80,371,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,229,80,256"/>
+<area shape="rect" id="node6" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="105,229,215,256"/>
+<area shape="rect" id="node8" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="266,155,382,181"/>
 </map>

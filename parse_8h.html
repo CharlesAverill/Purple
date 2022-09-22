@@ -78,19 +78,21 @@ $(function() {
 <p>Function headers for parsing and operator precedence values.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="tree_8h_source.html">tree.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="number_8h_source.html">types/number.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for parse.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="parse_8h__incl.png" border="0" usemap="#ainclude_2parse_8h" alt=""/></div>
 <map name="ainclude_2parse_8h" id="ainclude_2parse_8h">
-<area shape="rect" title="Function headers for parsing and operator precedence values." alt="" coords="101,5,210,32"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="128,80,183,107"/>
+<area shape="rect" title="Function headers for parsing and operator precedence values." alt="" coords="231,5,341,32"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="163,80,217,107"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="125,304,236,331"/>
 <area shape="rect" title=" " alt="" coords="5,155,68,181"/>
 <area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="92,155,152,181"/>
-<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="74,229,237,256"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="265,155,366,181"/>
-<area shape="rect" title=" " alt="" coords="58,304,133,331"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="261,229,377,256"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="41,229,203,256"/>
+<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="231,155,333,181"/>
+<area shape="rect" title=" " alt="" coords="26,304,101,331"/>
+<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="228,229,344,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -119,9 +121,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a50272a0b5fea28f10f872dda4641d1a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a50272a0b5fea28f10f872dda4641d1a4">match_token</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type)</td></tr>
 <tr class="memdesc:a50272a0b5fea28f10f872dda4641d1a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure current token is of a given type, and scan the next token if so.  <a href="parse_8h.html#a50272a0b5fea28f10f872dda4641d1a4">More...</a><br /></td></tr>
 <tr class="separator:a50272a0b5fea28f10f872dda4641d1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94550f7bd9df805c3163c53b6f149390"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a94550f7bd9df805c3163c53b6f149390">match_type</a> (void)</td></tr>
-<tr class="memdesc:a94550f7bd9df805c3163c53b6f149390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure current token is a type token, and scan the next token if so.  <a href="parse_8h.html#a94550f7bd9df805c3163c53b6f149390">More...</a><br /></td></tr>
-<tr class="separator:a94550f7bd9df805c3163c53b6f149390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e5c84a93405ab540a698edd6aa670b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a8e5c84a93405ab540a698edd6aa670b3">match_type</a> (void)</td></tr>
+<tr class="memdesc:a8e5c84a93405ab540a698edd6aa670b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure current token is a type token, and scan the next token if so.  <a href="parse_8h.html#a8e5c84a93405ab540a698edd6aa670b3">More...</a><br /></td></tr>
+<tr class="separator:a8e5c84a93405ab540a698edd6aa670b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5975acb392673971cc8f96e720e23de7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a5975acb392673971cc8f96e720e23de7">variable_declaration</a> (void)</td></tr>
 <tr class="memdesc:a5975acb392673971cc8f96e720e23de7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a variable declaration statement into LLVM.  <a href="parse_8h.html#a5975acb392673971cc8f96e720e23de7">More...</a><br /></td></tr>
 <tr class="separator:a5975acb392673971cc8f96e720e23de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,14 +237,14 @@ Operator Precedence</h2>
 
 </div>
 </div>
-<a id="a94550f7bd9df805c3163c53b6f149390" name="a94550f7bd9df805c3163c53b6f149390"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94550f7bd9df805c3163c53b6f149390">&#9670;&nbsp;</a></span>match_type()</h2>
+<a id="a8e5c84a93405ab540a698edd6aa670b3" name="a8e5c84a93405ab540a698edd6aa670b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e5c84a93405ab540a698edd6aa670b3">&#9670;&nbsp;</a></span>match_type()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void match_type </td>
+          <td class="memname"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> match_type </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -252,6 +254,7 @@ Operator Precedence</h2>
 </div><div class="memdoc">
 
 <p>Ensure current token is a type token, and scan the next token if so. </p>
+<dl class="section return"><dt>Returns</dt><dd>Type of variable </dd></dl>
 
 </div>
 </div>
