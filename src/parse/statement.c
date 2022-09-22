@@ -26,14 +26,19 @@ void match_token(TokenType type)
 
 /**
  * @brief Ensure current token is a type token, and scan the next token if so
+ * 
+ * @return Type of variable
  */
-void match_type(void)
+NumberType match_type(void)
 {
-    if (TOKENTYPE_IS_TYPE(D_GLOBAL_TOKEN.type)) {
+    TokenType ttype = D_GLOBAL_TOKEN.type;
+    if (TOKENTYPE_IS_TYPE(ttype)) {
         scan(&D_GLOBAL_TOKEN);
     } else {
         syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Expected type");
     }
+
+    return token_type_to_number_type(ttype);
 }
 
 /**
@@ -66,9 +71,11 @@ static void print_statement(void)
         root, 0); // See TODO in translate.c regarding ast_to_llvm register_number being 0
     switch (cg_output.number_type) {
     case NT_INT1:
+        purple_log(LOG_DEBUG, "Print boolean");
         llvm_print_bool(cg_output.value.virtual_register_index);
         break;
     case NT_INT32:
+        purple_log(LOG_DEBUG, "Print 32-bit integer");
         llvm_print_int(cg_output.value.virtual_register_index);
         break;
     default:

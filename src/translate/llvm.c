@@ -31,7 +31,8 @@ void prepend_loaded(type_register reg)
     }
 }
 
-type_register* llvm_ensure_registers_loaded(int n_registers, type_register registers[])
+type_register* llvm_ensure_registers_loaded(int n_registers, type_register registers[],
+                                            NumberType number_type)
 {
     LLVMStackEntryNode* current = loadedRegistersHead;
     bool found_registers[n_registers];
@@ -57,8 +58,9 @@ type_register* llvm_ensure_registers_loaded(int n_registers, type_register regis
         loaded_registers[i] = registers[i];
         if (!found_registers[i]) {
             loaded_registers[i] = get_next_local_virtual_register();
-            fprintf(D_LLVM_FILE, TAB "%%%llu = load i32, i32* %%%llu, align 4" NEWLINE,
-                    loaded_registers[i], registers[i]);
+            fprintf(D_LLVM_FILE, TAB "%%%llu = load %s, %s* %%%llu, align %d" NEWLINE,
+                    loaded_registers[i], numberTypeLLVMReprs[number_type],
+                    numberTypeLLVMReprs[number_type], registers[i], numberTypeByteSizes[i]);
             prepend_loaded(loaded_registers[i]);
         }
     }
@@ -87,7 +89,7 @@ void llvm_preamble()
     fprintf(D_LLVM_FILE, "@print_int_fstring = private unnamed_addr constant [4 x i8] "
                          "c\"%%d\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "@print_bool_fstring = private unnamed_addr constant [4 x i8] "
-                         "c\"%%b\\0A\\00\", align 1" NEWLINE NEWLINE);
+                         "c\"%%d\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "; Function Attrs: noinline nounwind optnone uwtable" NEWLINE);
     fprintf(D_LLVM_FILE, "define dso_local i32 @main() #0 {" NEWLINE);
 }
@@ -239,7 +241,7 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
 
     prepend_loaded(out_register);
 
-    return LLVMVALUE_VIRTUAL_REGISTER(out_register);
+    return LLVMVALUE_VIRTUAL_REGISTER(out_register, left_virtual_register.number_type);
 }
 
 /**
@@ -255,7 +257,7 @@ LLVMValue llvm_store_constant(Number value)
     fprintf(D_LLVM_FILE, numberTypeFormatStrings[value.type], value.value);
     fprintf(D_LLVM_FILE, ", %s* %%%llu, align %d" NEWLINE, numberTypeLLVMReprs[value.type],
             out_register_number, numberTypeByteSizes[value.type]);
-    return LLVMVALUE_VIRTUAL_REGISTER_POINTER(out_register_number);
+    return LLVMVALUE_VIRTUAL_REGISTER_POINTER(out_register_number, value.type);
 }
 
 /**
@@ -277,10 +279,18 @@ type_register get_next_local_virtual_register(void)
 LLVMValue llvm_load_global_variable(char* symbol_name)
 {
     type_register out_register_number = get_next_local_virtual_register();
-    fprintf(D_LLVM_FILE, TAB "%%%llu = load i32, i32* @%s" NEWLINE, out_register_number,
+
+    SymbolTableEntry* symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+    if (symbol == NULL) {
+        fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
+              symbol_name);
+    }
+
+    fprintf(D_LLVM_FILE, TAB "%%%llu = load %s, %s* @%s" NEWLINE, out_register_number,
+            numberTypeLLVMReprs[symbol->number_type], numberTypeLLVMReprs[symbol->number_type],
             symbol_name);
     prepend_loaded(out_register_number);
-    return LLVMVALUE_VIRTUAL_REGISTER(out_register_number);
+    return LLVMVALUE_VIRTUAL_REGISTER(out_register_number, symbol->number_type);
 }
 
 /**
@@ -291,8 +301,15 @@ LLVMValue llvm_load_global_variable(char* symbol_name)
  */
 void llvm_store_global_variable(char* symbol_name, type_register rvalue_register_number)
 {
-    fprintf(D_LLVM_FILE, TAB "store i32 %%%llu, i32* @%s" NEWLINE, rvalue_register_number,
-            symbol_name);
+    SymbolTableEntry* symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+    if (symbol == NULL) {
+        fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
+              symbol_name);
+    }
+
+    fprintf(D_LLVM_FILE, TAB "store %s %%%llu, %s* @%s" NEWLINE,
+            numberTypeLLVMReprs[symbol->number_type], rvalue_register_number,
+            numberTypeLLVMReprs[symbol->number_type], symbol_name);
 }
 
 /**
@@ -384,5 +401,5 @@ LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_registe
 
     prepend_loaded(out_register);
 
-    return LLVMVALUE_VIRTUAL_REGISTER(out_register);
+    return LLVMVALUE_VIRTUAL_REGISTER(out_register, NT_INT1);
 }

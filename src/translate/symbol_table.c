@@ -174,7 +174,7 @@ SymbolTableEntry* find_symbol_table_entry(SymbolTable* table, char* symbol_name)
 SymbolTableEntry* new_symbol_table_entry(char* symbol_name)
 {
     SymbolTableEntry* entry = (SymbolTableEntry*)malloc(sizeof(SymbolTableEntry));
-    entry->symbol_name = symbol_name;
+    strcpy(entry->symbol_name, symbol_name);
     entry->length = strlen(symbol_name);
     entry->next = NULL;
     entry->bucket_index = 0;
@@ -188,10 +188,11 @@ SymbolTableEntry* new_symbol_table_entry(char* symbol_name)
  * @param table Table to put new Symbol Table Entry into
  * @param symbol_name Name of symbol to add
  */
-void add_symbol_table_entry(SymbolTable* table, char* symbol_name)
+void add_symbol_table_entry(SymbolTable* table, char* symbol_name, NumberType number_type)
 {
     SymbolTableEntry* entry = new_symbol_table_entry(symbol_name);
     entry->bucket_index = FNV_1(symbol_name) % table->total_buckets;
+    entry->number_type = number_type;
 
     if (table->buckets[entry->bucket_index] != NULL) {
         SymbolTableEntry* curr = table->buckets[entry->bucket_index];

@@ -5,13 +5,14 @@
  * @date 12-Sep-2022
  */
 
-#ifndef NUMBER_H
-#define NUMBER_H
+#ifndef NUMBER
+#define NUMBER
 
 /**
  * @brief Types of numbers supported by Purple
  */
-typedef enum {
+typedef enum
+{
     NT_INT1,
     NT_INT32,
 } NumberType;
@@ -28,7 +29,7 @@ static const int numberTypeByteSizes[] = {
  * @brief Format strings for each data type
  */
 static const char* numberTypeFormatStrings[] = {
-    "%b",
+    "%d",
     "%d",
 };
 
@@ -50,6 +51,12 @@ typedef struct Number {
 #define NUMBER_INT32(v)                                                                            \
     (Number) { .type = NT_INT32, .value.int_value = v }
 
+/**
+ * @brief Generates a Number struct with type INT1
+ */
+#define NUMBER_INT1(v)                                                                             \
+    (Number) { .type = NT_INT1, .value.int_value = v }
+
 NumberType token_type_to_number_type(int token_type);
 
-#endif /* NUMBER_H */
+#endif /* NUMBER */

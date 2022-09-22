@@ -17,8 +17,10 @@
 NumberType token_type_to_number_type(int token_type)
 {
     switch (token_type) {
+    case T_INT:
     case T_INTEGER_LITERAL:
         return NT_INT32;
+    case T_BOOL:
     case T_TRUE:
     case T_FALSE:
         return NT_INT1;

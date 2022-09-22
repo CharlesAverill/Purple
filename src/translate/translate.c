@@ -130,46 +130,53 @@ LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
 
     if (TOKENTYPE_IS_BINARY_ARITHMETIC(n->ttype)) {
         type_register* loaded_registers =
-            llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr});
+            llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr}, NT_INT32);
         if (loaded_registers != NULL) {
             left_vr = loaded_registers[0];
             right_vr = loaded_registers[1];
             free(loaded_registers);
         }
 
-        return llvm_binary_arithmetic(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr),
-                                      LLVMVALUE_VIRTUAL_REGISTER(right_vr));
+        return llvm_binary_arithmetic(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, NT_INT32),
+                                      LLVMVALUE_VIRTUAL_REGISTER(right_vr, NT_INT32));
     } else if (TOKENTYPE_IS_COMPARATOR(n->ttype)) {
         type_register* loaded_registers =
-            llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr});
+            llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr}, NT_INT32);
         if (loaded_registers != NULL) {
             left_vr = loaded_registers[0];
             right_vr = loaded_registers[1];
             free(loaded_registers);
         }
 
-        return llvm_compare(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr),
-                            LLVMVALUE_VIRTUAL_REGISTER(right_vr));
+        return llvm_compare(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, NT_INT32),
+                            LLVMVALUE_VIRTUAL_REGISTER(right_vr, NT_INT32));
     } else {
         switch (n->ttype) {
         case T_INTEGER_LITERAL:
-        // TODO : Booleans should be i1s, not i32s
+            return llvm_store_constant(NUMBER_INT32(n->value.int_value));
         case T_TRUE:
         case T_FALSE:
-            return llvm_store_constant(NUMBER_INT32(n->value.int_value));
+            return llvm_store_constant(NUMBER_INT1(n->value.int_value));
         case T_IDENTIFIER:
             return llvm_load_global_variable(n->value.symbol_name);
         case T_LVALUE_IDENTIFIER:;
-            type_register* loaded_registers =
-                llvm_ensure_registers_loaded(1, (type_register[]){register_number});
+            SymbolTableEntry* symbol =
+                find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, n->value.symbol_name);
+            if (symbol == NULL) {
+                fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
+                      n->value.symbol_name);
+            }
+
+            type_register* loaded_registers = llvm_ensure_registers_loaded(
+                1, (type_register[]){register_number}, symbol->number_type);
             if (loaded_registers != NULL) {
                 register_number = loaded_registers[0];
                 free(loaded_registers);
             }
             llvm_store_global_variable(n->value.symbol_name, register_number);
-            return LLVMVALUE_VIRTUAL_REGISTER(register_number);
+            return LLVMVALUE_VIRTUAL_REGISTER(register_number, symbol->number_type);
         case T_ASSIGN:
-            return LLVMVALUE_VIRTUAL_REGISTER(register_number);
+            return LLVMVALUE_VIRTUAL_REGISTER(register_number, NT_INT1);
         default:
             syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unknown operator \"%s\"",
                          tokenStrings[n->ttype]);

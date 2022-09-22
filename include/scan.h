@@ -5,8 +5,8 @@
  * @brief Lexical Scanner function headers
 */
 
-#ifndef SCAN_H
-#define SCAN_H
+#ifndef SCAN
+#define SCAN
 
 #include <stdbool.h>
 
@@ -15,7 +15,8 @@
 /**
  * @brief Types of scannable tokens
  */
-typedef enum {
+typedef enum
+{
     T_EOF,
     // Arithmetic Operators
     T_PLUS,
@@ -135,9 +136,6 @@ static char* tokenStrings[] = {TTS_EOF,
  */
 #define TOKENTYPE_IS_COMPARATOR(type) (type >= T_EQ && type <= T_GE)
 
-/**Purple identifiers can be a maximum of 255 bytes in length*/
-#define D_MAX_IDENTIFIER_LENGTH 255
-
 /**
  * @brief Structure containing information about individual scannable tokens
  */
@@ -155,4 +153,4 @@ typedef struct Token {
 
 bool scan(Token* t);
 
-#endif /* SCAN_H */
+#endif /* SCAN */

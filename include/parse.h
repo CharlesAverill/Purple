@@ -30,6 +30,7 @@
 #define PARSE_H
 
 #include "tree.h"
+#include "types/number.h"
 
 /**
  * Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed
@@ -56,7 +57,7 @@ static int operatorPrecedence[] = {
 
 ASTNode* parse_binary_expression(int previous_token_precedence);
 void match_token(TokenType type);
-void match_type(void);
+NumberType match_type(void);
 void variable_declaration(void);
 void parse_statements(void);
 
