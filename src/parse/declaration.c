@@ -20,6 +20,5 @@ void variable_declaration(void)
     NumberType number_type = match_type();
     match_token(T_IDENTIFIER);
     add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER, number_type);
-    printf("Bruh\n");
     llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, number_type);
 }

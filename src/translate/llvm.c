@@ -343,6 +343,12 @@ void llvm_declare_assign_global_number_variable(char* symbol_name, Number number
  */
 void llvm_print_int(type_register print_vr)
 {
+    type_register* loaded_register =
+        llvm_ensure_registers_loaded(1, (type_register[]){print_vr}, NT_INT32);
+    if (loaded_register) {
+        print_vr = loaded_register[0];
+    }
+
     get_next_local_virtual_register();
     fprintf(D_LLVM_FILE,
             TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
@@ -357,6 +363,12 @@ void llvm_print_int(type_register print_vr)
  */
 void llvm_print_bool(type_register print_vr)
 {
+    type_register* loaded_register =
+        llvm_ensure_registers_loaded(1, (type_register[]){print_vr}, NT_INT1);
+    if (loaded_register) {
+        print_vr = loaded_register[0];
+    }
+
     get_next_local_virtual_register();
     fprintf(D_LLVM_FILE,
             TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
