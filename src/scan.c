@@ -142,6 +142,8 @@ static int scan_identifier(char c, char* buf, int max_len)
     put_back_into_stream(c);
     buf[i] = '\0';
 
+    // TODO : Check buf against keywords
+
     return i;
 }
 
@@ -159,11 +161,18 @@ static TokenType parse_keyword(char* keyword_string)
             return T_BOOL;
         }
         break;
+    case 'e':
+        if(!strcmp(keyword_string, TTS_ELSE)) {
+            return T_ELSE;
+        }
     case 'f':
         if (!strcmp(keyword_string, TTS_FALSE)) {
             return T_FALSE;
         }
     case 'i':
+        if (!strcmp(keyword_string, TTS_IF)) {
+            return T_IF;
+        }
         if (!strcmp(keyword_string, TTS_INT)) {
             return T_INT;
         }

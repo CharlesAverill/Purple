@@ -10,9 +10,9 @@ tokens {
 number: T_INTEGER_LITERAL
         ;
 
-bool: T_TRUE
-    | T_FALSE
-    ;
+booleanLiteral: T_TRUE
+              | T_FALSE
+              ;
 
 dataType: 'int'
         | 'bool'
@@ -31,6 +31,11 @@ additiveExpression: multiplicativeExpression
 binaryExpression: additiveExpression
                 ;
 
+// This isn't very good
+booleanExpression: T_TRUE
+                 | T_FALSE
+                 ;
+
 expression: binaryExpression
           ;
 
@@ -43,14 +48,23 @@ declareStatement: dataType T_IDENTIFIER
 assignStatement: T_IDENTIFIER '=' expression
                ;
 
+ifClause: 'if' '(' booleanExpression ')' statements
+        ;
+
+ifStatement : ifClause
+            | ifClause 'else' statements
+            ;
+
 statementType: printStatement
              | assignStatement
              | declareStatement
+             | ifStatement
              ;
 
 statement: statementType ';'
          ;
 
-statements: statement
-          | statement statements
+statements: '{' '}'
+          | '{' statement '}'
+          | '{' statement statements '}'
           ;

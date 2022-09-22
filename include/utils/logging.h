@@ -23,8 +23,7 @@
 /**
  * @brief Severity levels of logging statements emitted by the compiler 
  */
-typedef enum
-{
+typedef enum {
     LOG_NONE,
     LOG_DEBUG,
     LOG_INFO,
@@ -53,8 +52,7 @@ static const LogInfo logInfoLevels[] = {
 /**
  * @brief Return codes used in different scenarios
  */
-typedef enum
-{
+typedef enum {
     RC_OK,
     RC_ERROR,
     RC_SYNTAX_ERROR,

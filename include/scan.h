@@ -5,8 +5,8 @@
  * @brief Lexical Scanner function headers
 */
 
-#ifndef SCAN
-#define SCAN
+#ifndef SCAN_H
+#define SCAN_H
 
 #include <stdbool.h>
 
@@ -15,8 +15,7 @@
 /**
  * @brief Types of scannable tokens
  */
-typedef enum
-{
+typedef enum {
     T_EOF,
     // Arithmetic Operators
     T_PLUS,
@@ -42,8 +41,14 @@ typedef enum
     T_ASSIGN,
     // Keywords
     T_PRINT,
+    T_IF,
+    T_ELSE,
     // Miscellaneous
     T_SEMICOLON,
+    T_LEFT_PAREN,
+    T_RIGHT_PAREN,
+    T_LEFT_BRACE,
+    T_RIGHT_BRACE,
     T_IDENTIFIER,
     T_LVALUE_IDENTIFIER,
 } TokenType;
@@ -67,7 +72,13 @@ typedef enum
 #define TTS_BOOL "bool"
 #define TTS_ASSIGN "="
 #define TTS_PRINT "print"
+#define TTS_IF "if"
+#define TTS_ELSE "else"
 #define TTS_SEMICOLON ";"
+#define TTS_LEFT_PAREN "("
+#define TTS_RIGHT_PAREN ")"
+#define TTS_LEFT_BRACE "{"
+#define TTS_RIGHT_BRACE "}"
 #define TTS_IDENTIFIER "identifier"
 #define TTS_LVALUE_IDENTIFIER "lvalue identifier"
 
@@ -153,4 +164,4 @@ typedef struct Token {
 
 bool scan(Token* t);
 
-#endif /* SCAN */
+#endif /* SCAN_H */

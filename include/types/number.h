@@ -11,8 +11,7 @@
 /**
  * @brief Types of numbers supported by Purple
  */
-typedef enum
-{
+typedef enum {
     NT_INT1,
     NT_INT32,
 } NumberType;
