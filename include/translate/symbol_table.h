@@ -5,23 +5,30 @@
  * @date 16-Sep-2022
  */
 
-#ifndef SYMBOL_TABLE_H
-#define SYMBOL_TABLE_H
+#ifndef SYMBOL_TABLE
+#define SYMBOL_TABLE
 
 #include <stdbool.h>
 
+#include "types/number.h"
+
 #define SYMBOL_TABLE_DEFAULT_LENGTH 1024
+
+/**Purple identifiers can be a maximum of 255 bytes in length*/
+#define D_MAX_IDENTIFIER_LENGTH 255
 
 /**
  * @brief Struct holding data about a symbol
  */
 typedef struct SymbolTableEntry {
     /**Name of symbol*/
-    char* symbol_name;
+    char symbol_name[D_MAX_IDENTIFIER_LENGTH + 1];
     /**Length of name*/
     unsigned int length;
     /**Index of symbol in Symbol Table*/
     unsigned long int bucket_index;
+    /**Type of entry*/
+    NumberType number_type;
     /**Symbol Tables are a chained Hash Table, this is the chain*/
     struct SymbolTableEntry* next;
     /**Index in chain*/
@@ -70,6 +77,6 @@ SymbolTableEntry* find_symbol_table_entry(SymbolTable* table, char* symbol_name)
 
 // Symbol Table Entry functions
 SymbolTableEntry* new_symbol_table_entry(char* symbol_name);
-void add_symbol_table_entry(SymbolTable* table, char* symbol_name);
+void add_symbol_table_entry(SymbolTable* table, char* symbol_name, NumberType number_type);
 
-#endif /* SYMBOL_TABLE_H */
+#endif /* SYMBOL_TABLE */

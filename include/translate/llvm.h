@@ -5,8 +5,8 @@
  * @date 10-Sep-2022
  */
 
-#ifndef LLVM_H
-#define LLVM_H
+#ifndef LLVM
+#define LLVM
 
 #include "scan.h"
 #include "types/number.h"
@@ -16,6 +16,7 @@
  * @brief LLVM-IR representations of data types
  */
 static const char* numberTypeLLVMReprs[] = {
+    "i1",
     "i32",
 };
 
@@ -32,7 +33,8 @@ extern LLVMStackEntryNode* freeVirtualRegistersHead;
 /**
  * @brief Types of values possibly returned by ast_to_llvm
  */
-typedef enum {
+typedef enum
+{
     LLVMVALUETYPE_NONE,
     LLVMVALUETYPE_VIRTUAL_REGISTER,
 } LLVMValueType;
@@ -45,6 +47,8 @@ typedef struct LLVMValue {
     LLVMValueType value_type;
     /**Stores a pointer?*/
     bool stores_pointer;
+    /**If a number is stored*/
+    NumberType number_type;
     /**Contents of the value returned*/
     union {
         type_register virtual_register_index;
@@ -60,24 +64,25 @@ typedef struct LLVMValue {
 /**
  * @brief Inline-initializes an LLVMValue struct from a virtual register number
  */
-#define LLVMVALUE_VIRTUAL_REGISTER(register_number)                                                \
+#define LLVMVALUE_VIRTUAL_REGISTER(register_number, n_t)                                           \
     (LLVMValue)                                                                                    \
     {                                                                                              \
         .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .stores_pointer = false,                     \
-        .value.virtual_register_index = register_number                                            \
+        .value.virtual_register_index = register_number, .number_type = n_t                        \
     }
 
 /**
  * @brief Inline-initializes an LLVMValue struct from the number of a virtual register that stores a pointer
  */
-#define LLVMVALUE_VIRTUAL_REGISTER_POINTER(register_number)                                        \
+#define LLVMVALUE_VIRTUAL_REGISTER_POINTER(register_number, n_t)                                   \
     (LLVMValue)                                                                                    \
     {                                                                                              \
         .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .stores_pointer = true,                      \
-        .value.virtual_register_index = register_number                                            \
+        .value.virtual_register_index = register_number, .number_type = n_t                        \
     }
 
-type_register* llvm_ensure_registers_loaded(int n_registers, type_register registers[]);
+type_register* llvm_ensure_registers_loaded(int n_registers, type_register registers[],
+                                            NumberType number_type);
 
 void llvm_preamble();
 void llvm_postamble();
@@ -93,6 +98,9 @@ LLVMValue llvm_load_global_variable(char* symbol_name);
 void llvm_store_global_variable(char* symbol_name, type_register rvalue_register_number);
 void llvm_declare_global_number_variable(char* symbol_name, NumberType number_type);
 void llvm_declare_assign_global_number_variable(char* symbol_name, Number number);
-void llvm_print_int(type_register reg);
+void llvm_print_int(type_register print_vr);
+void llvm_print_bool(type_register print_vr);
+LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_register,
+                       LLVMValue right_virtual_register);
 
-#endif /* LLVM_H */
+#endif /* LLVM */

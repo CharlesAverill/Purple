@@ -239,7 +239,35 @@ bool scan(Token* t)
         t->type = T_SEMICOLON;
         break;
     case '=':
-        t->type = T_ASSIGN;
+        if ((c = next()) == '=') {
+            t->type = T_EQ;
+        } else {
+            put_back_into_stream(c);
+            t->type = T_ASSIGN;
+        }
+        break;
+    case '!':
+        if ((c = next()) == '=') {
+            t->type = T_NEQ;
+        } else {
+            switch_matched = false;
+        }
+        break;
+    case '<':
+        if ((c = next()) == '=') {
+            t->type = T_LE;
+        } else {
+            put_back_into_stream(c);
+            t->type = T_LT;
+        }
+        break;
+    case '>':
+        if ((c = next()) == '=') {
+            t->type = T_GE;
+        } else {
+            put_back_into_stream(c);
+            t->type = T_GT;
+        }
         break;
     default:
         switch_matched = false;
