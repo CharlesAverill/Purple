@@ -5,8 +5,8 @@
  * @date 09-Sep-2022
  */
 
-#ifndef TREE_H
-#define TREE_H
+#ifndef TREE
+#define TREE
 
 #include <stdlib.h>
 
@@ -26,6 +26,8 @@ typedef struct ASTNode {
     struct ASTNode* mid;
     /**The right child of the AST Node*/
     struct ASTNode* right;
+    /**Type of number token*/
+    NumberType number_type;
     /**Value of AST Node's Token*/
     union {
         /**Value of integer token*/
@@ -42,4 +44,4 @@ ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name);
 ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, unsigned long int value);
 void ast_debug_level_order(ASTNode* root, LogLevel log_level);
 
-#endif /* TREE_H */
+#endif /* TREE */

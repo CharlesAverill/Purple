@@ -129,6 +129,13 @@ LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
     type_register right_vr = virtual_registers[1];
 
     if (TOKENTYPE_IS_BINARY_ARITHMETIC(n->ttype)) {
+        if (!(n->left->number_type == n->right->number_type && n->left->number_type == NT_INT32)) {
+            syntax_error(D_INPUT_FN, D_LINE_NUMBER,
+                         "Cannot perform operation \"%s\" on types %s and %s",
+                         tokenStrings[n->ttype], numberTypeLLVMReprs[n->left->number_type],
+                         numberTypeLLVMReprs[n->right->number_type]);
+        }
+
         type_register* loaded_registers =
             llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr}, NT_INT32);
         if (loaded_registers != NULL) {
@@ -140,16 +147,23 @@ LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
         return llvm_binary_arithmetic(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, NT_INT32),
                                       LLVMVALUE_VIRTUAL_REGISTER(right_vr, NT_INT32));
     } else if (TOKENTYPE_IS_COMPARATOR(n->ttype)) {
-        type_register* loaded_registers =
-            llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr}, NT_INT32);
+        if (n->left->number_type != n->right->number_type) {
+            syntax_error(D_INPUT_FN, D_LINE_NUMBER,
+                         "Cannot perform \"%s\" comparison types %s and %s", tokenStrings[n->ttype],
+                         numberTypeLLVMReprs[n->left->number_type],
+                         numberTypeLLVMReprs[n->right->number_type]);
+        }
+
+        type_register* loaded_registers = llvm_ensure_registers_loaded(
+            2, (type_register[]){left_vr, right_vr}, n->left->number_type);
         if (loaded_registers != NULL) {
             left_vr = loaded_registers[0];
             right_vr = loaded_registers[1];
             free(loaded_registers);
         }
 
-        return llvm_compare(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, NT_INT32),
-                            LLVMVALUE_VIRTUAL_REGISTER(right_vr, NT_INT32));
+        return llvm_compare(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
+                            LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->left->number_type));
     } else {
         switch (n->ttype) {
         case T_INTEGER_LITERAL:

@@ -407,7 +407,8 @@ LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_registe
               tokenStrings[comparison_type]);
     }
 
-    fprintf(D_LLVM_FILE, " i32 %%%llu, %%%llu" NEWLINE,
+    fprintf(D_LLVM_FILE, " %s %%%llu, %%%llu" NEWLINE,
+            numberTypeLLVMReprs[left_virtual_register.number_type],
             left_virtual_register.value.virtual_register_index,
             right_virtual_register.value.virtual_register_index);
 

@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "data.h"
+
 #include "tree.h"
 
 /**
@@ -39,8 +41,17 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
     out->right = right;
     if (ttype == T_INTEGER_LITERAL || TOKENTYPE_IS_BOOL_LITERAL(ttype)) {
         out->value.int_value = value;
+        out->number_type = token_type_to_number_type(ttype);
     } else if (TOKENTYPE_IS_IDENTIFIER(ttype)) {
         strcpy(out->value.symbol_name, symbol_name);
+
+        SymbolTableEntry* found_entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+        if (found_entry == NULL) {
+            fatal(RC_COMPILER_ERROR,
+                  "create_ast_node received identifier name that is not defined in the GST");
+        }
+
+        out->number_type = found_entry->number_type;
     }
 
     return out;
