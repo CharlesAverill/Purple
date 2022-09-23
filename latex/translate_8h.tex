@@ -29,7 +29,7 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{translate_8h_a7abbf5b5f5d3fc9d561f7e080077bb9e}{determine\+\_\+binary\+\_\+expression\+\_\+stack\+\_\+allocation}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root)
 \begin{DoxyCompactList}\small\item\em Perform a DFS on an AST to determine the stack allocation needed for a binary expression. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8h_a4178bbc4cd024087a8cdcdd0a1f1c002}{ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} register\+\_\+number)
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8h_ac03b5f4edcb74722ca4643fd469712e9}{ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+value, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} parent\+\_\+operation)
 \begin{DoxyCompactList}\small\item\em Generates LLVM-\/\+IR from a given AST. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{translate_8h_ac2560f9333db7b4bc4b0dd4ef15b3dcc}{generate\+\_\+llvm}} (void)
 \begin{DoxyCompactList}\small\item\em Wrapper function for generating LLVM. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -47,11 +47,11 @@ Charles Averill
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{translate_8h_a4178bbc4cd024087a8cdcdd0a1f1c002}\label{translate_8h_a4178bbc4cd024087a8cdcdd0a1f1c002}} 
+\mbox{\Hypertarget{translate_8h_ac03b5f4edcb74722ca4643fd469712e9}\label{translate_8h_ac03b5f4edcb74722ca4643fd469712e9}} 
 \index{translate.h@{translate.h}!ast\_to\_llvm@{ast\_to\_llvm}}
 \index{ast\_to\_llvm@{ast\_to\_llvm}!translate.h@{translate.h}}
 \doxysubsubsection{\texorpdfstring{ast\_to\_llvm()}{ast\_to\_llvm()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} ast\+\_\+to\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{n,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{register\+\_\+number }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} ast\+\_\+to\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{n,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{llvm\+\_\+value,  }\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{parent\+\_\+operation }\end{DoxyParamCaption})}
 
 
 
@@ -61,7 +61,9 @@ Generates LLVM-\/\+IR from a given AST.
 \begin{DoxyParams}{Parameters}
 {\em n} & The AST Node from which LLVM will be generated \\
 \hline
-{\em register\+\_\+number} & Register number of RValues for storing into LValues \\
+{\em llvm\+\_\+value} & \mbox{\hyperlink{structLLVMValue}{LLVMValue}} storing register or label information \\
+\hline
+{\em parent\+\_\+operation} & Token\+Type of parent of n \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

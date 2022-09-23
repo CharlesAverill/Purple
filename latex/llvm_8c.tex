@@ -59,7 +59,15 @@ void \mbox{\hyperlink{llvm_8c_a6db2b93d744734ee439ed511ab5b83a6}{llvm\+\_\+print
 void \mbox{\hyperlink{llvm_8c_a549185ec39141a09db11a45ec6c3363d}{llvm\+\_\+print\+\_\+bool}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} print\+\_\+vr)
 \begin{DoxyCompactList}\small\item\em Generate code to print a boolean value. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_a2dc07af05a8028e1c21b2822c12c171d}{llvm\+\_\+compare}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} comparison\+\_\+type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generate code to compare two registers. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_af86d3ef1da82cd0973de1009ceebab76}{llvm\+\_\+compare\+\_\+jump}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} comparison\+\_\+type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} false\+\_\+label)
+\begin{DoxyCompactList}\small\item\em Generate code to compare two registers and conditionally jump based on the result. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_af6c6071ec265809fb6669298c71f6b09}{get\+\_\+next\+\_\+label}} (void)
+\begin{DoxyCompactList}\small\item\em Get the next valid label. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{llvm_8c_a4643c393615f57dcf851e5f0acf0b514}{llvm\+\_\+label}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} label)
+\begin{DoxyCompactList}\small\item\em Generate label code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{llvm_8c_a4ccd254a599a759033c351b4e7d3d5c9}{llvm\+\_\+jump}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} label)
+\begin{DoxyCompactList}\small\item\em Generate an unconditional jump statement. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -74,6 +82,19 @@ Charles Averill
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{llvm_8c_af6c6071ec265809fb6669298c71f6b09}\label{llvm_8c_af6c6071ec265809fb6669298c71f6b09}} 
+\index{llvm.c@{llvm.c}!get\_next\_label@{get\_next\_label}}
+\index{get\_next\_label@{get\_next\_label}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{get\_next\_label()}{get\_next\_label()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} get\+\_\+next\+\_\+label (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get the next valid label. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} Next valid label 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_acf6ffab57a0d67bd99dc3caa06a9e1d6}\label{llvm_8c_acf6ffab57a0d67bd99dc3caa06a9e1d6}} 
 \index{llvm.c@{llvm.c}!get\_next\_local\_virtual\_register@{get\_next\_local\_virtual\_register}}
 \index{get\_next\_local\_virtual\_register@{get\_next\_local\_virtual\_register}!llvm.c@{llvm.c}}
@@ -135,6 +156,46 @@ int \mbox{\hyperlink{structNumber}{Number}} of virtual register in which the res
 \doxysubsubsection{\texorpdfstring{llvm\_compare()}{llvm\_compare()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+compare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{comparison\+\_\+type,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{left\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{right\+\_\+virtual\+\_\+register }\end{DoxyParamCaption})}
 
+
+
+Generate code to compare two registers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comparison\+\_\+type} & Type of comparison to make \\
+\hline
+{\em left\+\_\+virtual\+\_\+register} & \mbox{\hyperlink{structLLVMValue}{LLVMValue}} storing left value register index \\
+\hline
+{\em right\+\_\+virtual\+\_\+register} & \mbox{\hyperlink{structLLVMValue}{LLVMValue}} storing right value register index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} Register index of comparison value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{llvm_8c_af86d3ef1da82cd0973de1009ceebab76}\label{llvm_8c_af86d3ef1da82cd0973de1009ceebab76}} 
+\index{llvm.c@{llvm.c}!llvm\_compare\_jump@{llvm\_compare\_jump}}
+\index{llvm\_compare\_jump@{llvm\_compare\_jump}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvm\_compare\_jump()}{llvm\_compare\_jump()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+compare\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{comparison\+\_\+type,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{left\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{right\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{false\+\_\+label }\end{DoxyParamCaption})}
+
+
+
+Generate code to compare two registers and conditionally jump based on the result. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comparison\+\_\+type} & Type of comparison to make \\
+\hline
+{\em left\+\_\+virtual\+\_\+register} & \mbox{\hyperlink{structLLVMValue}{LLVMValue}} storing left value register index \\
+\hline
+{\em right\+\_\+virtual\+\_\+register} & \mbox{\hyperlink{structLLVMValue}{LLVMValue}} storing right value register index \\
+\hline
+{\em false\+\_\+label} & \mbox{\hyperlink{structLLVMValue}{LLVMValue}} storing label data for the branch in which the condition is false \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} Register index of comparison value 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_a3d975b70508857ae99ff02c02f2712d1}\label{llvm_8c_a3d975b70508857ae99ff02c02f2712d1}} 
 \index{llvm.c@{llvm.c}!llvm\_declare\_assign\_global\_number\_variable@{llvm\_declare\_assign\_global\_number\_variable}}
 \index{llvm\_declare\_assign\_global\_number\_variable@{llvm\_declare\_assign\_global\_number\_variable}!llvm.c@{llvm.c}}
@@ -195,6 +256,36 @@ type\+\_\+register Virtual register holding result
 \doxysubsubsection{\texorpdfstring{llvm\_ensure\_registers\_loaded()}{llvm\_ensure\_registers\_loaded()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} $\ast$ llvm\+\_\+ensure\+\_\+registers\+\_\+loaded (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+registers,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{registers\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{number\+\_\+type }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{llvm_8c_a4ccd254a599a759033c351b4e7d3d5c9}\label{llvm_8c_a4ccd254a599a759033c351b4e7d3d5c9}} 
+\index{llvm.c@{llvm.c}!llvm\_jump@{llvm\_jump}}
+\index{llvm\_jump@{llvm\_jump}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvm\_jump()}{llvm\_jump()}}
+{\footnotesize\ttfamily void llvm\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{label }\end{DoxyParamCaption})}
+
+
+
+Generate an unconditional jump statement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & Label to jump to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{llvm_8c_a4643c393615f57dcf851e5f0acf0b514}\label{llvm_8c_a4643c393615f57dcf851e5f0acf0b514}} 
+\index{llvm.c@{llvm.c}!llvm\_label@{llvm\_label}}
+\index{llvm\_label@{llvm\_label}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvm\_label()}{llvm\_label()}}
+{\footnotesize\ttfamily void llvm\+\_\+label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{label }\end{DoxyParamCaption})}
+
+
+
+Generate label code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & \mbox{\hyperlink{structLLVMValue}{LLVMValue}} containing label information \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{llvm_8c_a01ecfb327d3aaac5bc133e922d18a4ef}\label{llvm_8c_a01ecfb327d3aaac5bc133e922d18a4ef}} 
 \index{llvm.c@{llvm.c}!llvm\_load\_global\_variable@{llvm\_load\_global\_variable}}
 \index{llvm\_load\_global\_variable@{llvm\_load\_global\_variable}!llvm.c@{llvm.c}}

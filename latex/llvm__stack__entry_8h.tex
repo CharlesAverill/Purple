@@ -26,7 +26,9 @@ struct \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}~unsigned long long int
-\begin{DoxyCompactList}\small\item\em A too-\/big data type for register indices in case of stress testing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A too-\/big data type for register indices in case of stress testing. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{llvm__stack__entry_8h_a5a55d7544c78159d2429f84d79a87b6c}{type\+\_\+label}}~unsigned long long int
+\begin{DoxyCompactList}\small\item\em A too-\/big data type for label indices in case of stress testing. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -55,6 +57,16 @@ Charles Averill
 
 
 \doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{llvm__stack__entry_8h_a5a55d7544c78159d2429f84d79a87b6c}\label{llvm__stack__entry_8h_a5a55d7544c78159d2429f84d79a87b6c}} 
+\index{llvm\_stack\_entry.h@{llvm\_stack\_entry.h}!type\_label@{type\_label}}
+\index{type\_label@{type\_label}!llvm\_stack\_entry.h@{llvm\_stack\_entry.h}}
+\doxysubsubsection{\texorpdfstring{type\_label}{type\_label}}
+{\footnotesize\ttfamily \#define type\+\_\+label~unsigned long long int}
+
+
+
+A too-\/big data type for label indices in case of stress testing. 
+
 \mbox{\Hypertarget{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}\label{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}} 
 \index{llvm\_stack\_entry.h@{llvm\_stack\_entry.h}!type\_register@{type\_register}}
 \index{type\_register@{type\_register}!llvm\_stack\_entry.h@{llvm\_stack\_entry.h}}

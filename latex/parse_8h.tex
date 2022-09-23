@@ -34,7 +34,7 @@ void \mbox{\hyperlink{parse_8h_a50272a0b5fea28f10f872dda4641d1a4}{match\+\_\+tok
 \begin{DoxyCompactList}\small\item\em Ensure current token is a type token, and scan the next token if so. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{parse_8h_a5975acb392673971cc8f96e720e23de7}{variable\+\_\+declaration}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a variable declaration statement into LLVM. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{parse_8h_a36e413083d2a6e7a8b561e22e141b811}{parse\+\_\+statements}} (void)
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_a72e124e2436e13e1d8c09a0616245c12}{parse\+\_\+statements}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -142,7 +142,7 @@ Ensure current token is of a given type, and scan the next token if so.
 Ensure current token is a type token, and scan the next token if so. 
 
 \begin{DoxyReturn}{Returns}
-Type of variable 
+Number\+Type Type of variable 
 \end{DoxyReturn}
 \mbox{\Hypertarget{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}\label{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}} 
 \index{parse.h@{parse.h}!parse\_binary\_expression@{parse\_binary\_expression}}
@@ -162,16 +162,19 @@ Recursively parse binary expressions into an AST.
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ An AST or AST Subtree of the binary expressions in D\+\_\+\+INPUT\+\_\+\+FILE 
 \end{DoxyReturn}
-\mbox{\Hypertarget{parse_8h_a36e413083d2a6e7a8b561e22e141b811}\label{parse_8h_a36e413083d2a6e7a8b561e22e141b811}} 
+\mbox{\Hypertarget{parse_8h_a72e124e2436e13e1d8c09a0616245c12}\label{parse_8h_a72e124e2436e13e1d8c09a0616245c12}} 
 \index{parse.h@{parse.h}!parse\_statements@{parse\_statements}}
 \index{parse\_statements@{parse\_statements}!parse.h@{parse.h}}
 \doxysubsubsection{\texorpdfstring{parse\_statements()}{parse\_statements()}}
-{\footnotesize\ttfamily void parse\+\_\+statements (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ parse\+\_\+statements (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
 Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. 
 
+\begin{DoxyReturn}{Returns}
+AST for a group of statements 
+\end{DoxyReturn}
 \mbox{\Hypertarget{parse_8h_a5975acb392673971cc8f96e720e23de7}\label{parse_8h_a5975acb392673971cc8f96e720e23de7}} 
 \index{parse.h@{parse.h}!variable\_declaration@{variable\_declaration}}
 \index{variable\_declaration@{variable\_declaration}!parse.h@{parse.h}}

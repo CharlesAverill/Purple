@@ -24,11 +24,13 @@ void \mbox{\hyperlink{statement_8c_a50272a0b5fea28f10f872dda4641d1a4}{match\+\_\
 \begin{DoxyCompactList}\small\item\em Ensure current token is of a given type, and scan the next token if so. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \mbox{\hyperlink{statement_8c_a8e5c84a93405ab540a698edd6aa670b3}{match\+\_\+type}} (void)
 \begin{DoxyCompactList}\small\item\em Ensure current token is a type token, and scan the next token if so. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{statement_8c_af4242b2b6f2d05d00166bc689f35d3d7}{print\+\_\+statement}} (void)
-\begin{DoxyCompactList}\small\item\em Parse a print statement into LLVM. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{statement_8c_a2afb5107be64bb296ac5379206c8303a}{assignment\+\_\+statement}} (void)
-\begin{DoxyCompactList}\small\item\em Parse an assignment statement into LLVM-\/\+IR. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{statement_8c_a36e413083d2a6e7a8b561e22e141b811}{parse\+\_\+statements}} (void)
+static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_a5dcc808163fdfc0d3d90b2764cb7b4e0}{print\+\_\+statement}} (void)
+\begin{DoxyCompactList}\small\item\em Parse a print statement into an AST. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_aa536ce729335407760393a74647cd108}{assignment\+\_\+statement}} (void)
+\begin{DoxyCompactList}\small\item\em Parse an assignment statement into an AST. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_a7e949c66cdabab493e468a005b9ac4f4}{if\+\_\+statement}} (void)
+\begin{DoxyCompactList}\small\item\em Parse an if statement into an AST. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_a72e124e2436e13e1d8c09a0616245c12}{parse\+\_\+statements}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -44,16 +46,32 @@ Charles Averill
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{statement_8c_a2afb5107be64bb296ac5379206c8303a}\label{statement_8c_a2afb5107be64bb296ac5379206c8303a}} 
+\mbox{\Hypertarget{statement_8c_aa536ce729335407760393a74647cd108}\label{statement_8c_aa536ce729335407760393a74647cd108}} 
 \index{statement.c@{statement.c}!assignment\_statement@{assignment\_statement}}
 \index{assignment\_statement@{assignment\_statement}!statement.c@{statement.c}}
 \doxysubsubsection{\texorpdfstring{assignment\_statement()}{assignment\_statement()}}
-{\footnotesize\ttfamily static void assignment\+\_\+statement (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ assignment\+\_\+statement (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Parse an assignment statement into LLVM-\/\+IR. 
+Parse an assignment statement into an AST. 
 
+\begin{DoxyReturn}{Returns}
+ASTNode$\ast$ AST for assignment 
+\end{DoxyReturn}
+\mbox{\Hypertarget{statement_8c_a7e949c66cdabab493e468a005b9ac4f4}\label{statement_8c_a7e949c66cdabab493e468a005b9ac4f4}} 
+\index{statement.c@{statement.c}!if\_statement@{if\_statement}}
+\index{if\_statement@{if\_statement}!statement.c@{statement.c}}
+\doxysubsubsection{\texorpdfstring{if\_statement()}{if\_statement()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ if\+\_\+statement (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parse an if statement into an AST. 
+
+\begin{DoxyReturn}{Returns}
+ASTNode$\ast$ AST for if statement 
+\end{DoxyReturn}
 \mbox{\Hypertarget{statement_8c_a50272a0b5fea28f10f872dda4641d1a4}\label{statement_8c_a50272a0b5fea28f10f872dda4641d1a4}} 
 \index{statement.c@{statement.c}!match\_token@{match\_token}}
 \index{match\_token@{match\_token}!statement.c@{statement.c}}
@@ -80,25 +98,31 @@ Ensure current token is of a given type, and scan the next token if so.
 Ensure current token is a type token, and scan the next token if so. 
 
 \begin{DoxyReturn}{Returns}
-Type of variable 
+Number\+Type Type of variable 
 \end{DoxyReturn}
-\mbox{\Hypertarget{statement_8c_a36e413083d2a6e7a8b561e22e141b811}\label{statement_8c_a36e413083d2a6e7a8b561e22e141b811}} 
+\mbox{\Hypertarget{statement_8c_a72e124e2436e13e1d8c09a0616245c12}\label{statement_8c_a72e124e2436e13e1d8c09a0616245c12}} 
 \index{statement.c@{statement.c}!parse\_statements@{parse\_statements}}
 \index{parse\_statements@{parse\_statements}!statement.c@{statement.c}}
 \doxysubsubsection{\texorpdfstring{parse\_statements()}{parse\_statements()}}
-{\footnotesize\ttfamily void parse\+\_\+statements (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ parse\+\_\+statements (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
 Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. 
 
-\mbox{\Hypertarget{statement_8c_af4242b2b6f2d05d00166bc689f35d3d7}\label{statement_8c_af4242b2b6f2d05d00166bc689f35d3d7}} 
+\begin{DoxyReturn}{Returns}
+AST for a group of statements 
+\end{DoxyReturn}
+\mbox{\Hypertarget{statement_8c_a5dcc808163fdfc0d3d90b2764cb7b4e0}\label{statement_8c_a5dcc808163fdfc0d3d90b2764cb7b4e0}} 
 \index{statement.c@{statement.c}!print\_statement@{print\_statement}}
 \index{print\_statement@{print\_statement}!statement.c@{statement.c}}
 \doxysubsubsection{\texorpdfstring{print\_statement()}{print\_statement()}}
-{\footnotesize\ttfamily static void print\+\_\+statement (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ print\+\_\+statement (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Parse a print statement into LLVM. 
+Parse a print statement into an AST. 
 
+\begin{DoxyReturn}{Returns}
+ASTNode$\ast$ AST for print statement 
+\end{DoxyReturn}

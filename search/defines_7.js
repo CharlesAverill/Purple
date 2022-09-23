@@ -7,5 +7,6 @@ var searchData=
   ['project_5fver_5fminor_4',['PROJECT_VER_MINOR',['../info_8h.html#a5b1736c20e7e4b4780bbcda7ccb87706',1,'info.h']]],
   ['project_5fver_5fpatch_5',['PROJECT_VER_PATCH',['../info_8h.html#afee21e9699ad9d07592c9332ac3ffe7c',1,'info.h']]],
   ['purple_5fglobals_5fplaceholder_6',['PURPLE_GLOBALS_PLACEHOLDER',['../clang_8h.html#a0ee761c397a357c8d5655377bb261bc8',1,'clang.h']]],
-  ['purple_5fglobals_5fplaceholder_5flen_7',['PURPLE_GLOBALS_PLACEHOLDER_LEN',['../clang_8h.html#a493219f6c0f98a275c1537ec9fc28624',1,'clang.h']]]
+  ['purple_5fglobals_5fplaceholder_5flen_7',['PURPLE_GLOBALS_PLACEHOLDER_LEN',['../clang_8h.html#a493219f6c0f98a275c1537ec9fc28624',1,'clang.h']]],
+  ['purple_5flabel_5fprefix_8',['PURPLE_LABEL_PREFIX',['../llvm_8h.html#a92fceae56276ae64648cb4da994c37e1',1,'llvm.h']]]
 ];
