@@ -88,8 +88,10 @@ void llvm_preamble()
 
     fprintf(D_LLVM_FILE, "@print_int_fstring = private unnamed_addr constant [4 x i8] "
                          "c\"%%d\\0A\\00\", align 1" NEWLINE NEWLINE);
-    fprintf(D_LLVM_FILE, "@print_bool_fstring = private unnamed_addr constant [4 x i8] "
-                         "c\"%%d\\0A\\00\", align 1" NEWLINE NEWLINE);
+    fprintf(D_LLVM_FILE, "@print_true_fstring = private unnamed_addr constant [6 x i8] "
+                         "c\"true\\0A\\00\", align 1" NEWLINE NEWLINE);
+    fprintf(D_LLVM_FILE, "@print_false_fstring = private unnamed_addr constant [7 x i8] "
+                         "c\"false\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "; Function Attrs: noinline nounwind optnone uwtable" NEWLINE);
     fprintf(D_LLVM_FILE, "define dso_local i32 @main() #0 {" NEWLINE);
 }
@@ -370,11 +372,45 @@ void llvm_print_bool(type_register print_vr)
         print_vr = loaded_register[0];
     }
 
+    type_register compare_register = print_vr;
+    LLVMValue true_label, false_label, end_label;
+    true_label = get_next_label();
+    false_label = get_next_label();
+    end_label = get_next_label();
+
+    llvm_conditional_jump(LLVMVALUE_VIRTUAL_REGISTER(compare_register, NT_INT1), true_label,
+                          false_label);
+    llvm_label(true_label);
+    fprintf(D_LLVM_FILE,
+            TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([6 x i8], [6 x "
+                "i8]* @print_true_fstring , i32 0, i32 0))" NEWLINE);
+    llvm_jump(end_label);
+    llvm_label(false_label);
+    fprintf(D_LLVM_FILE,
+            TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([7 x i8], [7 x "
+                "i8]* @print_false_fstring , i32 0, i32 0))" NEWLINE);
+    llvm_jump(end_label);
+    llvm_label(end_label);
+    // %r = icmp eq print_vr 0
+    // br r, true, false
+    // true:
+    // printf true string
+    // br end
+    // false:
+    // printf false string
+    // br end
+    // end:
+
+    /*
     get_next_local_virtual_register();
     fprintf(D_LLVM_FILE,
             TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
                 "i8]* @print_bool_fstring , i32 0, i32 0), i1 %%%llu)" NEWLINE,
             print_vr);
+    */
+
+    initialize_stack_entry_linked_list(&loadedRegistersHead);
+    initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
 }
 
 /**
@@ -388,6 +424,17 @@ void llvm_print_bool(type_register print_vr)
 LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_register,
                        LLVMValue right_virtual_register)
 {
+    type_register* loaded_registers = llvm_ensure_registers_loaded(
+        2,
+        (type_register[]){left_virtual_register.value.virtual_register_index,
+                          right_virtual_register.value.virtual_register_index},
+        left_virtual_register.number_type);
+    if (loaded_registers != NULL) {
+        left_virtual_register.value.virtual_register_index = loaded_registers[0];
+        right_virtual_register.value.virtual_register_index = loaded_registers[1];
+        free(loaded_registers);
+    }
+
     type_register out_register = get_next_local_virtual_register();
 
     fprintf(D_LLVM_FILE, TAB "%%%llu = icmp ", out_register);
@@ -448,12 +495,7 @@ LLVMValue llvm_compare_jump(TokenType comparison_type, LLVMValue left_virtual_re
 
     LLVMValue true_label = get_next_label();
 
-    fprintf(D_LLVM_FILE,
-            TAB "br %s %%%llu, label %%" PURPLE_LABEL_PREFIX "%llu, label %%" PURPLE_LABEL_PREFIX
-                "%llu" NEWLINE,
-            numberTypeLLVMReprs[comparison_result.number_type],
-            comparison_result.value.virtual_register_index, true_label.value.label_index,
-            false_label.value.label_index);
+    llvm_conditional_jump(comparison_result, true_label, false_label);
 
     llvm_label(true_label);
 
@@ -496,4 +538,22 @@ void llvm_jump(LLVMValue label)
 
     fprintf(D_LLVM_FILE, TAB "br label %%" PURPLE_LABEL_PREFIX "%llu" NEWLINE,
             label.value.label_index);
+}
+
+/**
+ * @brief Generate a conditional jump statement
+ * 
+ * @param condition_register LLVMValue holding information about the register from the prior condition
+ * @param true_label Label to jump to if condition is true
+ * @param false_label Label to jump to if condition is false
+ */
+void llvm_conditional_jump(LLVMValue condition_register, LLVMValue true_label,
+                           LLVMValue false_label)
+{
+    fprintf(D_LLVM_FILE,
+            TAB "br %s %%%llu, label %%" PURPLE_LABEL_PREFIX "%llu, label %%" PURPLE_LABEL_PREFIX
+                "%llu" NEWLINE,
+            numberTypeLLVMReprs[condition_register.number_type],
+            condition_register.value.virtual_register_index, true_label.value.label_index,
+            false_label.value.label_index);
 }

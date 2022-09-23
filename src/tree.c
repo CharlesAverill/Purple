@@ -52,6 +52,10 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
         }
 
         out->number_type = found_entry->number_type;
+    } else if (TOKENTYPE_IS_BINARY_ARITHMETIC(ttype)) {
+        out->number_type = left->number_type;
+    } else if (TOKENTYPE_IS_COMPARATOR(ttype)) {
+        out->number_type = NT_INT1;
     }
 
     return out;

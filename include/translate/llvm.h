@@ -33,8 +33,7 @@ extern LLVMStackEntryNode* freeVirtualRegistersHead;
 /**
  * @brief Types of values possibly returned by ast_to_llvm
  */
-typedef enum
-{
+typedef enum {
     LLVMVALUETYPE_NONE,
     LLVMVALUETYPE_VIRTUAL_REGISTER,
     LLVMVALUETYPE_LABEL,
@@ -117,5 +116,7 @@ LLVMValue llvm_compare_jump(TokenType comparison_type, LLVMValue left_virtual_re
                             LLVMValue right_virtual_register, LLVMValue false_label);
 void llvm_label(LLVMValue label);
 void llvm_jump(LLVMValue label);
+void llvm_conditional_jump(LLVMValue condition_register, LLVMValue true_label,
+                           LLVMValue false_label);
 
 #endif /* LLVM */

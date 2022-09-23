@@ -233,14 +233,6 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
                          numberTypeLLVMReprs[n->right->number_type]);
         }
 
-        loaded_registers = llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr},
-                                                        n->left->number_type);
-        if (loaded_registers != NULL) {
-            left_vr = loaded_registers[0];
-            right_vr = loaded_registers[1];
-            free(loaded_registers);
-        }
-
         if (parent_operation == T_IF) {
             if (llvm_value.value_type != LLVMVALUETYPE_LABEL) {
                 fatal(RC_COMPILER_ERROR, "Tried to generate an if branch but received an LLVMValue "
@@ -251,7 +243,6 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
                 n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
                 LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->left->number_type), llvm_value);
         } else {
-
             return llvm_compare(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
                                 LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->left->number_type));
         }
@@ -265,7 +256,6 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
         free_llvm_stack_entry_node_list(stack_entries);
 
         switch (n->ttype) {
-
         case T_INTEGER_LITERAL:
             return llvm_store_constant(NUMBER_INT32(n->value.int_value));
         case T_TRUE:
@@ -307,6 +297,7 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
                 left_vr = loaded_registers[0];
                 free(loaded_registers);
             }
+
             switch (n->left->number_type) {
             case NT_INT1:
                 llvm_print_bool(left_vr);
@@ -316,8 +307,9 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
                 break;
             default:
                 fatal(RC_COMPILER_ERROR, "Unknown number type %d returned when generating LLVM",
-                      llvm_value.number_type);
+                      n->left->number_type);
             }
+
             initialize_stack_entry_linked_list(&loadedRegistersHead);
             initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
             return LLVMVALUE_NULL;
