@@ -6,37 +6,36 @@
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef NUMBER}}
 \DoxyCodeLine{9 \textcolor{preprocessor}{\#define NUMBER}}
 \DoxyCodeLine{10 }
-\DoxyCodeLine{14 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
-\DoxyCodeLine{15 \{}
-\DoxyCodeLine{16     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3}{NT\_INT1}},}
-\DoxyCodeLine{17     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}{NT\_INT32}},}
-\DoxyCodeLine{18 \} \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}};}
-\DoxyCodeLine{19 }
-\DoxyCodeLine{23 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{number_8h_a7be529595168c4c54f828029dd48f054}{numberTypeByteSizes}}[] = \{}
-\DoxyCodeLine{24     1,}
-\DoxyCodeLine{25     4,}
-\DoxyCodeLine{26 \};}
-\DoxyCodeLine{27 }
-\DoxyCodeLine{31 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{number_8h_a5d1eb1fc26fc937144216a3cd0cc0b4e}{numberTypeFormatStrings}}[] = \{}
+\DoxyCodeLine{14 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{15     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3}{NT\_INT1}},}
+\DoxyCodeLine{16     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}{NT\_INT32}},}
+\DoxyCodeLine{17 \} \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{22 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{number_8h_a7be529595168c4c54f828029dd48f054}{numberTypeByteSizes}}[] = \{}
+\DoxyCodeLine{23     1,}
+\DoxyCodeLine{24     4,}
+\DoxyCodeLine{25 \};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{30 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{number_8h_a5d1eb1fc26fc937144216a3cd0cc0b4e}{numberTypeFormatStrings}}[] = \{}
+\DoxyCodeLine{31     \textcolor{stringliteral}{"{}\%d"{}},}
 \DoxyCodeLine{32     \textcolor{stringliteral}{"{}\%d"{}},}
-\DoxyCodeLine{33     \textcolor{stringliteral}{"{}\%d"{}},}
-\DoxyCodeLine{34 \};}
-\DoxyCodeLine{35 }
-\DoxyCodeLine{39 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structNumber}{Number}} \{}
-\DoxyCodeLine{41     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{structNumber_ace28dcb37d2be0e9b881744c1e0c01d1}{type}};}
-\DoxyCodeLine{43     \textcolor{keyword}{union }\{}
-\DoxyCodeLine{44         \textcolor{keywordtype}{int} \mbox{\hyperlink{structNumber_ac38ba38977fa4ff09c1b23ecb358a125}{int\_value}};}
-\DoxyCodeLine{45     \} \mbox{\hyperlink{structNumber_a211b06e7b639aa8a7263a25c78ff4c9e}{value}};}
-\DoxyCodeLine{46 \} \mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}};}
-\DoxyCodeLine{47 }
-\DoxyCodeLine{51 \textcolor{preprocessor}{\#define NUMBER\_INT32(v)                                                                            \(\backslash\)}}
-\DoxyCodeLine{52 \textcolor{preprocessor}{    (Number) \{ .type = NT\_INT32, .value.int\_value = v \}}}
-\DoxyCodeLine{53 }
-\DoxyCodeLine{57 \textcolor{preprocessor}{\#define NUMBER\_INT1(v)                                                                             \(\backslash\)}}
-\DoxyCodeLine{58 \textcolor{preprocessor}{    (Number) \{ .type = NT\_INT1, .value.int\_value = v \}}}
-\DoxyCodeLine{59 }
-\DoxyCodeLine{60 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{number_8h_a242dd91fc5b139e8048fb50fac323dee}{token\_type\_to\_number\_type}}(\textcolor{keywordtype}{int} token\_type);}
-\DoxyCodeLine{61 }
-\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* NUMBER */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{33 \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{38 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structNumber}{Number}} \{}
+\DoxyCodeLine{40     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{structNumber_ace28dcb37d2be0e9b881744c1e0c01d1}{type}};}
+\DoxyCodeLine{42     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{43         \textcolor{keywordtype}{int} \mbox{\hyperlink{structNumber_ac38ba38977fa4ff09c1b23ecb358a125}{int\_value}};}
+\DoxyCodeLine{44     \} \mbox{\hyperlink{structNumber_a211b06e7b639aa8a7263a25c78ff4c9e}{value}};}
+\DoxyCodeLine{45 \} \mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define NUMBER\_INT32(v)                                                                            \(\backslash\)}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{    (Number) \{ .type = NT\_INT32, .value.int\_value = v \}}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define NUMBER\_INT1(v)                                                                             \(\backslash\)}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{    (Number) \{ .type = NT\_INT1, .value.int\_value = v \}}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{number_8h_a242dd91fc5b139e8048fb50fac323dee}{token\_type\_to\_number\_type}}(\textcolor{keywordtype}{int} token\_type);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* NUMBER */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

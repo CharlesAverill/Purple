@@ -67,7 +67,9 @@ void \mbox{\hyperlink{llvm_8c_a549185ec39141a09db11a45ec6c3363d}{llvm\+\_\+print
 void \mbox{\hyperlink{llvm_8c_a4643c393615f57dcf851e5f0acf0b514}{llvm\+\_\+label}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} label)
 \begin{DoxyCompactList}\small\item\em Generate label code. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a4ccd254a599a759033c351b4e7d3d5c9}{llvm\+\_\+jump}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} label)
-\begin{DoxyCompactList}\small\item\em Generate an unconditional jump statement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generate an unconditional jump statement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{llvm_8c_a492b6193f6cfe59c435bf09ee99f0a54}{llvm\+\_\+conditional\+\_\+jump}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} condition\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} true\+\_\+label, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} false\+\_\+label)
+\begin{DoxyCompactList}\small\item\em Generate a conditional jump statement. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -196,6 +198,25 @@ Generate code to compare two registers and conditionally jump based on the resul
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} Register index of comparison value 
 \end{DoxyReturn}
+\mbox{\Hypertarget{llvm_8c_a492b6193f6cfe59c435bf09ee99f0a54}\label{llvm_8c_a492b6193f6cfe59c435bf09ee99f0a54}} 
+\index{llvm.c@{llvm.c}!llvm\_conditional\_jump@{llvm\_conditional\_jump}}
+\index{llvm\_conditional\_jump@{llvm\_conditional\_jump}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvm\_conditional\_jump()}{llvm\_conditional\_jump()}}
+{\footnotesize\ttfamily void llvm\+\_\+conditional\+\_\+jump (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{condition\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{true\+\_\+label,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{false\+\_\+label }\end{DoxyParamCaption})}
+
+
+
+Generate a conditional jump statement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em condition\+\_\+register} & \mbox{\hyperlink{structLLVMValue}{LLVMValue}} holding information about the register from the prior condition \\
+\hline
+{\em true\+\_\+label} & Label to jump to if condition is true \\
+\hline
+{\em false\+\_\+label} & Label to jump to if condition is false \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{llvm_8c_a3d975b70508857ae99ff02c02f2712d1}\label{llvm_8c_a3d975b70508857ae99ff02c02f2712d1}} 
 \index{llvm.c@{llvm.c}!llvm\_declare\_assign\_global\_number\_variable@{llvm\_declare\_assign\_global\_number\_variable}}
 \index{llvm\_declare\_assign\_global\_number\_variable@{llvm\_declare\_assign\_global\_number\_variable}!llvm.c@{llvm.c}}

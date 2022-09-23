@@ -180,6 +180,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a4ccd254a599a759033c351b4e7d3d5c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a4ccd254a599a759033c351b4e7d3d5c9">llvm_jump</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> label)</td></tr>
 <tr class="memdesc:a4ccd254a599a759033c351b4e7d3d5c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an unconditional jump statement.  <a href="llvm_8c.html#a4ccd254a599a759033c351b4e7d3d5c9">More...</a><br /></td></tr>
 <tr class="separator:a4ccd254a599a759033c351b4e7d3d5c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a492b6193f6cfe59c435bf09ee99f0a54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a492b6193f6cfe59c435bf09ee99f0a54">llvm_conditional_jump</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> condition_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> true_label, <a class="el" href="structLLVMValue.html">LLVMValue</a> false_label)</td></tr>
+<tr class="memdesc:a492b6193f6cfe59c435bf09ee99f0a54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a conditional jump statement.  <a href="llvm_8c.html#a492b6193f6cfe59c435bf09ee99f0a54">More...</a><br /></td></tr>
+<tr class="separator:a492b6193f6cfe59c435bf09ee99f0a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >LLVM-IR emission. </p>
@@ -413,6 +416,50 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> Register index of comparison value </dd></dl>
+
+</div>
+</div>
+<a id="a492b6193f6cfe59c435bf09ee99f0a54" name="a492b6193f6cfe59c435bf09ee99f0a54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a492b6193f6cfe59c435bf09ee99f0a54">&#9670;&nbsp;</a></span>llvm_conditional_jump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void llvm_conditional_jump </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>condition_register</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>true_label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>false_label</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate a conditional jump statement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">condition_register</td><td><a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> holding information about the register from the prior condition </td></tr>
+    <tr><td class="paramname">true_label</td><td>Label to jump to if condition is true </td></tr>
+    <tr><td class="paramname">false_label</td><td>Label to jump to if condition is false </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
