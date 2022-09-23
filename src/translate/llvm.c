@@ -381,11 +381,13 @@ void llvm_print_bool(type_register print_vr)
     llvm_conditional_jump(LLVMVALUE_VIRTUAL_REGISTER(compare_register, NT_INT1), true_label,
                           false_label);
     llvm_label(true_label);
+    get_next_local_virtual_register();
     fprintf(D_LLVM_FILE,
             TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([6 x i8], [6 x "
                 "i8]* @print_true_fstring , i32 0, i32 0))" NEWLINE);
     llvm_jump(end_label);
     llvm_label(false_label);
+    get_next_local_virtual_register();
     fprintf(D_LLVM_FILE,
             TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([7 x i8], [7 x "
                 "i8]* @print_false_fstring , i32 0, i32 0))" NEWLINE);

@@ -110,18 +110,6 @@ static ASTNode* assignment_statement(void)
     root = create_ast_node(T_ASSIGN, left, NULL, right, 0, NULL);
 
     return root;
-
-    /*
-
-
-    // Generate LLVM
-    purple_log(LOG_DEBUG, "Generating LLVM");
-    ast_to_llvm(root, 0); // See TODO above
-
-    initialize_stack_entry_linked_list(&loadedRegistersHead);
-    initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
-
-    */
 }
 
 /**
@@ -173,10 +161,10 @@ ASTNode* parse_statements(void)
 
     match_token(T_LEFT_BRACE);
 
-    bool return_left = false;
-    bool match_semicolon = true;
-
     while (true) {
+        bool return_left = false;
+        bool match_semicolon = true;
+        
         switch (D_GLOBAL_TOKEN.type) {
         case T_PRINT:
             root = print_statement();
