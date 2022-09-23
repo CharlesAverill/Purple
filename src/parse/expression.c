@@ -19,6 +19,7 @@ static int get_operatorPrecedence(Token t)
     int prec = operatorPrecedence[t.type];
 
     if (prec == 0) {
+        printf("%d\n", t.type);
         syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Expected operator but got %s \"%d\"",
                      tokenStrings[t.type], t.value);
     }
@@ -74,7 +75,7 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
     // Get the intlit on the left and scan the next Token
     left = create_terminal_node(D_GLOBAL_TOKEN);
     current_ttype = D_GLOBAL_TOKEN.type;
-    if (current_ttype == T_SEMICOLON) {
+    if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {
         return left;
     }
 
@@ -91,7 +92,7 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
 
         // Update current_ttype and check for EOF
         current_ttype = D_GLOBAL_TOKEN.type;
-        if (current_ttype == T_SEMICOLON) {
+        if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {
             return left;
         }
     }

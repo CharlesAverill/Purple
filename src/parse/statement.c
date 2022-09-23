@@ -27,7 +27,7 @@ void match_token(TokenType type)
 /**
  * @brief Ensure current token is a type token, and scan the next token if so
  * 
- * @return Type of variable
+ * @return NumberType Type of variable
  */
 NumberType match_type(void)
 {
@@ -42,9 +42,11 @@ NumberType match_type(void)
 }
 
 /**
- * @brief Parse a print statement into LLVM
+ * @brief Parse a print statement into an AST
+ * 
+ * @return ASTNode* AST for print statement
  */
-static void print_statement(void)
+static ASTNode* print_statement(void)
 {
     ASTNode* root;
     LLVMValue cg_output;
@@ -54,7 +56,7 @@ static void print_statement(void)
     match_token(T_PRINT);
 
     // Parse printed value
-    purple_log(LOG_DEBUG, "Parsing binary expression");
+    purple_log(LOG_DEBUG, "Parsing binary expression for print statement");
     root = parse_binary_expression(0);
 
     // Allocate stack space
@@ -65,32 +67,17 @@ static void print_statement(void)
     purple_log(LOG_DEBUG, "Freeing stack space entries");
     free_llvm_stack_entry_node_list(stack_entries);
 
-    // Generate LLVM
-    purple_log(LOG_DEBUG, "Generating LLVM");
-    cg_output = ast_to_llvm(
-        root, 0); // See TODO in translate.c regarding ast_to_llvm register_number being 0
-    switch (cg_output.number_type) {
-    case NT_INT1:
-        purple_log(LOG_DEBUG, "Print boolean");
-        llvm_print_bool(cg_output.value.virtual_register_index);
-        break;
-    case NT_INT32:
-        purple_log(LOG_DEBUG, "Print 32-bit integer");
-        llvm_print_int(cg_output.value.virtual_register_index);
-        break;
-    default:
-        fatal(RC_COMPILER_ERROR, "Unknown number type %d returned when generating LLVM",
-              cg_output.number_type);
-    }
+    root = create_unary_ast_node(T_PRINT, root, 0);
 
-    initialize_stack_entry_linked_list(&loadedRegistersHead);
-    initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
+    return root;
 }
 
 /**
- * @brief Parse an assignment statement into LLVM-IR
+ * @brief Parse an assignment statement into an AST
+ * 
+ * @return ASTNode* AST for assignment
  */
-static void assignment_statement(void)
+static ASTNode* assignment_statement(void)
 {
     ASTNode* left;
     ASTNode* right;
@@ -116,19 +103,16 @@ static void assignment_statement(void)
     match_token(T_ASSIGN);
 
     // Parse assignment expression
-    purple_log(LOG_DEBUG, "Parsing binary expression");
+    purple_log(LOG_DEBUG, "Parsing binary expression for assign statement");
     left = parse_binary_expression(0);
 
     // Create subtree for assignment statement
     root = create_ast_node(T_ASSIGN, left, NULL, right, 0, NULL);
 
-    // Allocate stack space
-    purple_log(LOG_DEBUG, "Determining stack space");
-    LLVMStackEntryNode* stack_entries = determine_binary_expression_stack_allocation(left);
-    purple_log(LOG_DEBUG, "Allocating stack space");
-    llvm_stack_allocation(stack_entries);
-    purple_log(LOG_DEBUG, "Freeing stack space entries");
-    free_llvm_stack_entry_node_list(stack_entries);
+    return root;
+
+    /*
+
 
     // Generate LLVM
     purple_log(LOG_DEBUG, "Generating LLVM");
@@ -136,38 +120,104 @@ static void assignment_statement(void)
 
     initialize_stack_entry_linked_list(&loadedRegistersHead);
     initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
+
+    */
+}
+
+/**
+ * @brief Parse an if statement into an AST
+ * 
+ * @return ASTNode* AST for if statement
+ */
+static ASTNode* if_statement(void)
+{
+    ASTNode* condition = NULL;
+    ASTNode* true_branch = NULL;
+    ASTNode* false_branch = NULL;
+
+    purple_log(LOG_DEBUG, "Parsing if statement");
+
+    match_token(T_IF);
+    match_token(T_LEFT_PAREN);
+
+    condition = parse_binary_expression(0);
+
+    if (!TOKENTYPE_IS_COMPARATOR(condition->ttype)) {
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "If clauses must use a comparison operator");
+    }
+
+    match_token(T_RIGHT_PAREN);
+
+    true_branch = parse_statements();
+
+    if (D_GLOBAL_TOKEN.type == T_ELSE) {
+        match_token(T_ELSE);
+        false_branch = parse_statements();
+    }
+
+    return create_ast_node(T_IF, condition, true_branch, false_branch, 0, NULL);
 }
 
 /**
  * @brief Parse a set of statements into ASTs and generate them into LLVM-IR
+ * 
+ * @return AST for a group of statements
  */
-void parse_statements(void)
+ASTNode* parse_statements(void)
 {
     purple_log(LOG_DEBUG, "Parsing statements");
 
+    ASTNode* left = NULL;
     ASTNode* root;
     LLVMValue cg_output;
 
-    do {
+    match_token(T_LEFT_BRACE);
+
+    bool return_left = false;
+    bool match_semicolon = true;
+
+    while (true) {
         switch (D_GLOBAL_TOKEN.type) {
         case T_PRINT:
-            print_statement();
+            root = print_statement();
             break;
         case T_INT:
         case T_BOOL:
             variable_declaration();
+            root = NULL;
             break;
         case T_IDENTIFIER:
-            assignment_statement();
+            root = assignment_statement();
             break;
-        case T_EOF:
-            return;
+        case T_IF:
+            root = if_statement();
+            match_semicolon = false;
+            break;
+        case T_RIGHT_BRACE:
+            match_token(T_RIGHT_BRACE);
+            return_left = true;
+            match_semicolon = false;
+            break;
         default:
             syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unexpected token %s",
                          tokenStrings[D_GLOBAL_TOKEN.type]);
             break;
         }
 
-        match_token(T_SEMICOLON);
-    } while (D_GLOBAL_TOKEN.type != T_EOF);
+        if (return_left) {
+            return left;
+        }
+
+        if (match_semicolon) {
+            match_token(T_SEMICOLON);
+        }
+
+        if (root) {
+            if (left == NULL) {
+                left = root;
+            } else {
+                left = create_ast_node(T_AST_GLUE, left, NULL, root, 0, NULL);
+            }
+        }
+    }
 }

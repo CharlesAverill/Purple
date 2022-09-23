@@ -5,8 +5,8 @@
  * @date 15-Sep-2022
  */
 
-#ifndef LLVM_STACK_ENTRY_H
-#define LLVM_STACK_ENTRY_H
+#ifndef LLVM_STACK_ENTRY
+#define LLVM_STACK_ENTRY
 
 #include "types/number.h"
 
@@ -14,6 +14,11 @@
  * @brief A too-big data type for register indices in case of stress testing
  */
 #define type_register unsigned long long int
+
+/**
+ * @brief A too-big data type for label indices in case of stress testing
+ */
+#define type_label unsigned long long int
 
 /**
  * @brief Node of a linked list containing information about required stack allocation for a piece of data. 
@@ -36,4 +41,4 @@ void prepend_stack_entry_linked_list(LLVMStackEntryNode** head, type_register re
 type_register pop_stack_entry_linked_list(LLVMStackEntryNode** head);
 void free_llvm_stack_entry_node_list(LLVMStackEntryNode* head);
 
-#endif /* LLVM_STACK_ENTRY_H */
+#endif /* LLVM_STACK_ENTRY */

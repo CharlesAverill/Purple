@@ -162,7 +162,7 @@ static TokenType parse_keyword(char* keyword_string)
         }
         break;
     case 'e':
-        if(!strcmp(keyword_string, TTS_ELSE)) {
+        if (!strcmp(keyword_string, TTS_ELSE)) {
             return T_ELSE;
         }
     case 'f':
@@ -277,6 +277,18 @@ bool scan(Token* t)
             put_back_into_stream(c);
             t->type = T_GT;
         }
+        break;
+    case '(':
+        t->type = T_LEFT_PAREN;
+        break;
+    case ')':
+        t->type = T_RIGHT_PAREN;
+        break;
+    case '{':
+        t->type = T_LEFT_BRACE;
+        break;
+    case '}':
+        t->type = T_RIGHT_BRACE;
         break;
     default:
         switch_matched = false;

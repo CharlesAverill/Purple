@@ -5,8 +5,8 @@
  * @brief Lexical Scanner function headers
 */
 
-#ifndef SCAN_H
-#define SCAN_H
+#ifndef SCAN
+#define SCAN
 
 #include <stdbool.h>
 
@@ -15,7 +15,8 @@
 /**
  * @brief Types of scannable tokens
  */
-typedef enum {
+typedef enum
+{
     T_EOF,
     // Arithmetic Operators
     T_PLUS,
@@ -51,6 +52,7 @@ typedef enum {
     T_RIGHT_BRACE,
     T_IDENTIFIER,
     T_LVALUE_IDENTIFIER,
+    T_AST_GLUE,
 } TokenType;
 
 #define TTS_EOF "EOF"
@@ -81,6 +83,7 @@ typedef enum {
 #define TTS_RIGHT_BRACE "}"
 #define TTS_IDENTIFIER "identifier"
 #define TTS_LVALUE_IDENTIFIER "lvalue identifier"
+#define TTS_AST_GLUE "ast glue"
 
 /**
  * @brief Token string equivalents
@@ -104,9 +107,16 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_BOOL,
                                TTS_ASSIGN,
                                TTS_PRINT,
+                               TTS_IF,
+                               TTS_ELSE,
                                TTS_SEMICOLON,
+                               TTS_LEFT_PAREN,
+                               TTS_RIGHT_PAREN,
+                               TTS_LEFT_BRACE,
+                               TTS_RIGHT_BRACE,
                                TTS_IDENTIFIER,
-                               TTS_LVALUE_IDENTIFIER};
+                               TTS_LVALUE_IDENTIFIER,
+                               TTS_AST_GLUE};
 
 /**
  * @brief Macro to determine if a TokenType is associated with a terminal AST Node
@@ -164,4 +174,4 @@ typedef struct Token {
 
 bool scan(Token* t);
 
-#endif /* SCAN_H */
+#endif /* SCAN */
