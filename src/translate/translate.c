@@ -91,27 +91,106 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
 }
 
 /**
+ * @brief Generate LLVM-IR for an if statement AST
+ * 
+ * @param n Root AST node
+ * @return LLVMValue LLVMVALUE_NULL
+ */
+static LLVMValue if_ast_to_llvm(ASTNode* n)
+{
+    LLVMValue false_label, end_label;
+
+    false_label = get_next_label();
+    if (n->right) {
+        end_label = get_next_label();
+    }
+
+    ast_to_llvm(n->left, false_label, n->ttype);
+    ast_to_llvm(n->mid, LLVMVALUE_NULL, n->ttype);
+
+    if (n->right) {
+        llvm_jump(end_label);
+    }
+
+    llvm_label(false_label);
+
+    if (n->right) {
+        ast_to_llvm(n->right, LLVMVALUE_NULL, n->ttype);
+
+        llvm_jump(end_label);
+        llvm_label(end_label);
+    }
+
+    return LLVMVALUE_NULL;
+}
+
+static void print_ast_to_llvm(ASTNode* root)
+{
+    LLVMValue cg_output;
+
+    // Allocate stack space
+    purple_log(LOG_DEBUG, "Determining stack space");
+    LLVMStackEntryNode* stack_entries = determine_binary_expression_stack_allocation(root);
+    purple_log(LOG_DEBUG, "Allocating stack space");
+    llvm_stack_allocation(stack_entries);
+    purple_log(LOG_DEBUG, "Freeing stack space entries");
+    free_llvm_stack_entry_node_list(stack_entries);
+
+    // Generate LLVM
+    purple_log(LOG_DEBUG, "Generating LLVM");
+    cg_output = ast_to_llvm(
+        root->left, LLVMVALUE_NULL,
+        T_PRINT); // See TODO in translate.c regarding ast_to_llvm register_number being 0
+    switch (cg_output.number_type) {
+    case NT_INT1:
+        llvm_print_bool(cg_output.value.virtual_register_index);
+        break;
+    case NT_INT32:
+        llvm_print_int(cg_output.value.virtual_register_index);
+        break;
+    default:
+        fatal(RC_COMPILER_ERROR, "Unknown number type %d returned when generating LLVM",
+              cg_output.number_type);
+    }
+
+    initialize_stack_entry_linked_list(&loadedRegistersHead);
+    initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
+}
+
+/**
  * @brief Generates LLVM-IR from a given AST
  * 
  * @param n The AST Node from which LLVM will be generated
- * @param register_number Register number of RValues for storing into LValues
+ * @param llvm_value LLVMValue storing register or label information
+ * @param parent_operation TokenType of parent of n
  * @return LLVMValue LLVMValue struct containing information about what code this AST Node generated
 */
-LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
+LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operation)
 {
     type_register virtual_registers[2] = {0, 0};
     LLVMValue temp_values[2];
+    type_register* loaded_registers;
 
     // Make sure we aren't trying to generate from a null node
     if (!n) {
         return LLVMVALUE_NULL;
     }
 
+    switch (n->ttype) {
+    case T_IF:
+        return if_ast_to_llvm(n);
+    case T_AST_GLUE:
+        ast_to_llvm(n->left, LLVMVALUE_NULL, n->ttype);
+        ast_to_llvm(n->right, LLVMVALUE_NULL, n->ttype);
+        return LLVMVALUE_NULL;
+    }
+
     // Generate code for left and right subtrees
-    temp_values[0] = ast_to_llvm(
-        n->left,
-        0); // TODO: Here, register_number should be something like -1 to show that it is not actually representing a valid register. Shouldn't matter anyways but it's iffy and I don't like it
-    temp_values[1] = ast_to_llvm(n->right, temp_values[0].value.virtual_register_index);
+    temp_values[0] = ast_to_llvm(n->left, LLVMVALUE_NULL, n->ttype);
+    temp_values[1] = ast_to_llvm(
+        n->right,
+        LLVMVALUE_VIRTUAL_REGISTER(temp_values[0].value.virtual_register_index, n->number_type),
+        n->ttype);
 
     // Process values from left and right subtrees
     for (int i = 0; i < 2; i++) {
@@ -136,7 +215,7 @@ LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
                          numberTypeLLVMReprs[n->right->number_type]);
         }
 
-        type_register* loaded_registers =
+        loaded_registers =
             llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr}, NT_INT32);
         if (loaded_registers != NULL) {
             left_vr = loaded_registers[0];
@@ -154,23 +233,50 @@ LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
                          numberTypeLLVMReprs[n->right->number_type]);
         }
 
-        type_register* loaded_registers = llvm_ensure_registers_loaded(
-            2, (type_register[]){left_vr, right_vr}, n->left->number_type);
+        loaded_registers = llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr},
+                                                        n->left->number_type);
         if (loaded_registers != NULL) {
             left_vr = loaded_registers[0];
             right_vr = loaded_registers[1];
             free(loaded_registers);
         }
 
-        return llvm_compare(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
-                            LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->left->number_type));
-    } else {
+        if (parent_operation == T_IF) {
+            if (llvm_value.value_type != LLVMVALUETYPE_LABEL) {
+                fatal(RC_COMPILER_ERROR, "Tried to generate an if branch but received an LLVMValue "
+                                         "without a label index");
+            }
+
+            return llvm_compare_jump(
+                n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
+                LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->left->number_type), llvm_value);
+        } else {
+
+            return llvm_compare(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
+                                LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->left->number_type));
+        }
+    } else if (TOKENTYPE_IS_LITERAL(n->ttype)) {
+        // Allocate stack space
+        purple_log(LOG_DEBUG, "Determining stack space");
+        LLVMStackEntryNode* stack_entries = determine_binary_expression_stack_allocation(n);
+        purple_log(LOG_DEBUG, "Allocating stack space");
+        llvm_stack_allocation(stack_entries);
+        purple_log(LOG_DEBUG, "Freeing stack space entries");
+        free_llvm_stack_entry_node_list(stack_entries);
+
         switch (n->ttype) {
+
         case T_INTEGER_LITERAL:
             return llvm_store_constant(NUMBER_INT32(n->value.int_value));
         case T_TRUE:
         case T_FALSE:
             return llvm_store_constant(NUMBER_INT1(n->value.int_value));
+        }
+
+        initialize_stack_entry_linked_list(&loadedRegistersHead);
+        initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
+    } else {
+        switch (n->ttype) {
         case T_IDENTIFIER:
             return llvm_load_global_variable(n->value.symbol_name);
         case T_LVALUE_IDENTIFIER:;
@@ -181,16 +287,40 @@ LLVMValue ast_to_llvm(ASTNode* n, type_register register_number)
                       n->value.symbol_name);
             }
 
-            type_register* loaded_registers = llvm_ensure_registers_loaded(
-                1, (type_register[]){register_number}, symbol->number_type);
+            loaded_registers = llvm_ensure_registers_loaded(
+                1, (type_register[]){llvm_value.value.virtual_register_index}, symbol->number_type);
             if (loaded_registers != NULL) {
-                register_number = loaded_registers[0];
+                llvm_value.value.virtual_register_index = loaded_registers[0];
                 free(loaded_registers);
             }
-            llvm_store_global_variable(n->value.symbol_name, register_number);
-            return LLVMVALUE_VIRTUAL_REGISTER(register_number, symbol->number_type);
+            llvm_store_global_variable(n->value.symbol_name,
+                                       llvm_value.value.virtual_register_index);
+            return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index,
+                                              symbol->number_type);
         case T_ASSIGN:
-            return LLVMVALUE_VIRTUAL_REGISTER(register_number, NT_INT1);
+            return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index, NT_INT1);
+        case T_PRINT:;
+            //print_ast_to_llvm(n);
+            loaded_registers =
+                llvm_ensure_registers_loaded(1, (type_register[]){left_vr}, n->left->number_type);
+            if (loaded_registers != NULL) {
+                left_vr = loaded_registers[0];
+                free(loaded_registers);
+            }
+            switch (n->left->number_type) {
+            case NT_INT1:
+                llvm_print_bool(left_vr);
+                break;
+            case NT_INT32:
+                llvm_print_int(left_vr);
+                break;
+            default:
+                fatal(RC_COMPILER_ERROR, "Unknown number type %d returned when generating LLVM",
+                      llvm_value.number_type);
+            }
+            initialize_stack_entry_linked_list(&loadedRegistersHead);
+            initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
+            return LLVMVALUE_NULL;
         default:
             syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unknown operator \"%s\"",
                          tokenStrings[n->ttype]);
@@ -209,7 +339,8 @@ void generate_llvm(void)
 
     llvm_preamble();
 
-    parse_statements();
+    ASTNode* root = parse_statements();
+    ast_to_llvm(root, LLVMVALUE_NULL, root->ttype);
 
     llvm_postamble();
 

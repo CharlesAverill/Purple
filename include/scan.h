@@ -42,10 +42,17 @@ typedef enum
     T_ASSIGN,
     // Keywords
     T_PRINT,
+    T_IF,
+    T_ELSE,
     // Miscellaneous
     T_SEMICOLON,
+    T_LEFT_PAREN,
+    T_RIGHT_PAREN,
+    T_LEFT_BRACE,
+    T_RIGHT_BRACE,
     T_IDENTIFIER,
     T_LVALUE_IDENTIFIER,
+    T_AST_GLUE,
 } TokenType;
 
 #define TTS_EOF "EOF"
@@ -67,9 +74,16 @@ typedef enum
 #define TTS_BOOL "bool"
 #define TTS_ASSIGN "="
 #define TTS_PRINT "print"
+#define TTS_IF "if"
+#define TTS_ELSE "else"
 #define TTS_SEMICOLON ";"
+#define TTS_LEFT_PAREN "("
+#define TTS_RIGHT_PAREN ")"
+#define TTS_LEFT_BRACE "{"
+#define TTS_RIGHT_BRACE "}"
 #define TTS_IDENTIFIER "identifier"
 #define TTS_LVALUE_IDENTIFIER "lvalue identifier"
+#define TTS_AST_GLUE "ast glue"
 
 /**
  * @brief Token string equivalents
@@ -93,9 +107,16 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_BOOL,
                                TTS_ASSIGN,
                                TTS_PRINT,
+                               TTS_IF,
+                               TTS_ELSE,
                                TTS_SEMICOLON,
+                               TTS_LEFT_PAREN,
+                               TTS_RIGHT_PAREN,
+                               TTS_LEFT_BRACE,
+                               TTS_RIGHT_BRACE,
                                TTS_IDENTIFIER,
-                               TTS_LVALUE_IDENTIFIER};
+                               TTS_LVALUE_IDENTIFIER,
+                               TTS_AST_GLUE};
 
 /**
  * @brief Macro to determine if a TokenType is associated with a terminal AST Node

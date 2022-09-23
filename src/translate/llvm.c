@@ -252,6 +252,7 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
  */
 LLVMValue llvm_store_constant(Number value)
 {
+    purple_log(LOG_DEBUG, "Storing constant value");
     type_register out_register_number = pop_stack_entry_linked_list(&freeVirtualRegistersHead);
     fprintf(D_LLVM_FILE, TAB "store %s ", numberTypeLLVMReprs[value.type]);
     fprintf(D_LLVM_FILE, numberTypeFormatStrings[value.type], value.value);
@@ -376,6 +377,14 @@ void llvm_print_bool(type_register print_vr)
             print_vr);
 }
 
+/**
+ * @brief Generate code to compare two registers
+ * 
+ * @param comparison_type Type of comparison to make
+ * @param left_virtual_register LLVMValue storing left value register index
+ * @param right_virtual_register LLVMValue storing right value register index
+ * @return LLVMValue Register index of comparison value
+ */
 LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_register,
                        LLVMValue right_virtual_register)
 {
@@ -415,4 +424,76 @@ LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_registe
     prepend_loaded(out_register);
 
     return LLVMVALUE_VIRTUAL_REGISTER(out_register, NT_INT1);
+}
+
+/**
+ * @brief Generate code to compare two registers and conditionally jump based on the result
+ * 
+ * @param comparison_type Type of comparison to make
+ * @param left_virtual_register LLVMValue storing left value register index
+ * @param right_virtual_register LLVMValue storing right value register index
+ * @param false_label LLVMValue storing label data for the branch in which the condition is false
+ * @return LLVMValue Register index of comparison value
+ */
+LLVMValue llvm_compare_jump(TokenType comparison_type, LLVMValue left_virtual_register,
+                            LLVMValue right_virtual_register, LLVMValue false_label)
+{
+    LLVMValue comparison_result =
+        llvm_compare(comparison_type, left_virtual_register, right_virtual_register);
+
+    if (comparison_result.value_type != LLVMVALUETYPE_VIRTUAL_REGISTER) {
+        fatal(RC_COMPILER_ERROR, "Tried to generate jump after comparison, but comparison did not "
+                                 "return a virtual register number");
+    }
+
+    LLVMValue true_label = get_next_label();
+
+    fprintf(D_LLVM_FILE,
+            TAB "br %s %%%llu, label %%" PURPLE_LABEL_PREFIX "%llu, label %%" PURPLE_LABEL_PREFIX
+                "%llu" NEWLINE,
+            numberTypeLLVMReprs[comparison_result.number_type],
+            comparison_result.value.virtual_register_index, true_label.value.label_index,
+            false_label.value.label_index);
+
+    llvm_label(true_label);
+
+    return comparison_result;
+}
+
+/**
+ * @brief Get the next valid label
+ * 
+ * @return LLVMValue Next valid label
+ */
+LLVMValue get_next_label(void) { return LLVMVALUE_LABEL(D_LABEL_INDEX++); }
+
+/**
+ * @brief Generate label code
+ * 
+ * @param label LLVMValue containing label information
+ */
+void llvm_label(LLVMValue label)
+{
+    if (label.value_type != LLVMVALUETYPE_LABEL) {
+        fatal(RC_COMPILER_ERROR,
+              "Tried to generate a label statement, but received a non-label LLVMValue");
+    }
+
+    fprintf(D_LLVM_FILE, TAB PURPLE_LABEL_PREFIX "%llu:" NEWLINE, label.value.label_index);
+}
+
+/**
+ * @brief Generate an unconditional jump statement
+ * 
+ * @param label Label to jump to
+ */
+void llvm_jump(LLVMValue label)
+{
+    if (label.value_type != LLVMVALUETYPE_LABEL) {
+        fatal(RC_COMPILER_ERROR,
+              "Tried to generate a label statement, but received a non-label LLVMValue");
+    }
+
+    fprintf(D_LLVM_FILE, TAB "br label %%" PURPLE_LABEL_PREFIX "%llu" NEWLINE,
+            label.value.label_index);
 }

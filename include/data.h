@@ -37,6 +37,8 @@ extern_ char* D_LLVM_FN;
 extern_ char* D_LLVM_GLOBALS_FN;
 /**Current number of the latest-used LLVM virtual register within a function*/
 extern_ unsigned long long int D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER;
+/**Current label index*/
+extern_ unsigned long long int D_LABEL_INDEX;
 
 /**Buffer to read identifiers into*/
 extern_ char D_IDENTIFIER_BUFFER[D_MAX_IDENTIFIER_LENGTH + 1];

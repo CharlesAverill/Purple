@@ -37,6 +37,7 @@ typedef enum
 {
     LLVMVALUETYPE_NONE,
     LLVMVALUETYPE_VIRTUAL_REGISTER,
+    LLVMVALUETYPE_LABEL,
 } LLVMValueType;
 
 /**
@@ -52,6 +53,7 @@ typedef struct LLVMValue {
     /**Contents of the value returned*/
     union {
         type_register virtual_register_index;
+        type_label label_index;
     } value;
 } LLVMValue;
 
@@ -81,6 +83,14 @@ typedef struct LLVMValue {
         .value.virtual_register_index = register_number, .number_type = n_t                        \
     }
 
+/**
+ * @brief Inline initializes an LLVMValue struct from a label number
+ */
+#define LLVMVALUE_LABEL(label_number)                                                              \
+    (LLVMValue) { .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number }
+
+#define PURPLE_LABEL_PREFIX "L"
+
 type_register* llvm_ensure_registers_loaded(int n_registers, type_register registers[],
                                             NumberType number_type);
 
@@ -93,6 +103,7 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
                                  LLVMValue right_virtual_register);
 LLVMValue llvm_store_constant(Number value);
 type_register get_next_local_virtual_register(void);
+LLVMValue get_next_label(void);
 
 LLVMValue llvm_load_global_variable(char* symbol_name);
 void llvm_store_global_variable(char* symbol_name, type_register rvalue_register_number);
@@ -102,5 +113,9 @@ void llvm_print_int(type_register print_vr);
 void llvm_print_bool(type_register print_vr);
 LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_register,
                        LLVMValue right_virtual_register);
+LLVMValue llvm_compare_jump(TokenType comparison_type, LLVMValue left_virtual_register,
+                            LLVMValue right_virtual_register, LLVMValue false_label);
+void llvm_label(LLVMValue label);
+void llvm_jump(LLVMValue label);
 
 #endif /* LLVM */

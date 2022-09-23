@@ -30,4 +30,6 @@
     if(i != j){
         print 6;
     }
+
+    print  9 != 7 == true;
 }

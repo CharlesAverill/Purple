@@ -26,8 +26,8 @@
  * |  1         | `,` | Comma | Left-to-Right | 
  */
 
-#ifndef PARSE_H
-#define PARSE_H
+#ifndef PARSE
+#define PARSE
 
 #include "tree.h"
 #include "types/number.h"
@@ -59,6 +59,6 @@ ASTNode* parse_binary_expression(int previous_token_precedence);
 void match_token(TokenType type);
 NumberType match_type(void);
 void variable_declaration(void);
-void parse_statements(void);
+ASTNode* parse_statements(void);
 
-#endif /* PARSE_H */
+#endif /* PARSE */
