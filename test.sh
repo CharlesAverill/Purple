@@ -1,3 +1,5 @@
+./compile.sh
+
 ANSI_RED='\033[0;31m'
 ANSI_GREEN='\033[0;32m'
 ANSI_BOLD='\033[1m'
@@ -54,16 +56,40 @@ loop_test_output="0
 8
 9
 10
-55"
+11
+55
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0"
 
 echo -n "[Condition Test]: "
 strings_are_okay "$condition_test_output" "examples/condition_test.prp"
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
 
 echo -n "[Arithmetic Test]: "
 strings_are_okay "$print_test_output" "examples/print_test.prp"
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
 
 echo -n "[Variable Test]: "
 strings_are_okay "$variable_test_output" "examples/variable_test.prp"
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
 
 echo -n "[Loop Test]: "
 strings_are_okay "$loop_test_output" "examples/loop_test.prp"
+if [ $? -ne 0 ] ; then
+    exit 1
+fi

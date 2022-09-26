@@ -131,7 +131,7 @@ static ASTNode* if_statement(void)
     condition = parse_binary_expression(0);
 
     if (!TOKENTYPE_IS_COMPARATOR(condition->ttype)) {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "If clauses must use a comparison operator");
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Condition clauses must use a comparison operator");
     }
 
     match_token(T_RIGHT_PAREN);
@@ -165,7 +165,7 @@ static ASTNode* while_statement(void)
     condition = parse_binary_expression(0);
 
     if (!TOKENTYPE_IS_COMPARATOR(condition->ttype)) {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "While clauses must use a comparison operator");
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Condition clauses must use a comparison operator");
     }
 
     match_token(T_RIGHT_PAREN);
@@ -180,6 +180,55 @@ static ASTNode* while_statement(void)
     }
 
     return create_ast_node(T_WHILE, condition, body, else_body, 0, NULL);
+}
+
+/**
+ * @brief Parse a for statement into an AST
+ * 
+ * @return ASTNode* AST for for statement
+ */
+static ASTNode* for_statement(void)
+{
+    ASTNode* for_preamble;
+    ASTNode* condition;
+    ASTNode* for_postamble;
+    ASTNode* body;
+    ASTNode* else_body = NULL;
+    ASTNode* out;
+
+    purple_log(LOG_DEBUG, "Parsing for statement");
+
+    match_token(T_FOR);
+    match_token(T_LEFT_PAREN);
+
+    for_preamble = assignment_statement();
+
+    match_token(T_SEMICOLON);
+
+    condition = parse_binary_expression(0);
+    if (!TOKENTYPE_IS_COMPARATOR(condition->ttype)) {
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Condition clauses must use a comparison operator");
+    }
+
+    match_token(T_SEMICOLON);
+
+    for_postamble = assignment_statement();
+
+    match_token(T_RIGHT_PAREN);
+
+    body = parse_statements();
+
+    if (D_GLOBAL_TOKEN.type == T_ELSE) {
+        purple_log(LOG_DEBUG, "Encountered for-else statement");
+
+        match_token(T_ELSE);
+        else_body = parse_statements();
+    }
+
+    out = create_ast_node(T_AST_GLUE, for_postamble, NULL, else_body, 0, NULL);
+    out = create_ast_node(T_WHILE, condition, body, out, 0, NULL);
+    out = create_ast_node(T_AST_GLUE, for_preamble, NULL, out, 0, NULL);
+    return out;
 }
 
 /**
@@ -219,6 +268,10 @@ ASTNode* parse_statements(void)
             break;
         case T_WHILE:
             root = while_statement();
+            match_semicolon = false;
+            break;
+        case T_FOR:
+            root = for_statement();
             match_semicolon = false;
             break;
         case T_RIGHT_BRACE:

@@ -136,49 +136,48 @@ static LLVMValue if_ast_to_llvm(ASTNode* n)
 /**
  * @brief Generate LLVM-IR for a while-else statement AST
  * 
- * jump else_label if !condition
  * condition_label:
- * jump end_label if !condition
+ * jump else_label if !condition
  * body()
  * jump condition_label
  * else_label:
  * elsebody()
- * end_label:
  * 
  * @param n Root AST node
  * @return LLVMValue LLVMVALUE_NULL
  */
 static LLVMValue while_else_ast_to_llvm(ASTNode* n)
 {
-    LLVMValue condition_label, else_label, end_label;
+    LLVMValue condition_label, else_label;
 
     condition_label = get_next_label();
-    if (n->right) {
-        else_label = get_next_label();
-    }
-    end_label = get_next_label();
-
-    if (n->right) {
-        ast_to_llvm(n->left, else_label, n->ttype);
-    }
+    else_label = get_next_label();
 
     llvm_jump(condition_label);
     llvm_label(condition_label);
 
-    ast_to_llvm(n->left, end_label, n->ttype);
+    ast_to_llvm(n->left, else_label, n->ttype);
     ast_to_llvm(n->mid, LLVMVALUE_NULL, n->ttype);
 
-    llvm_jump(condition_label);
-
     if (n->right) {
+        switch (n->right->ttype) {
+        case T_AST_GLUE:
+            // For loop
+            ast_to_llvm(n->right->left, LLVMVALUE_NULL, n->ttype);
+            llvm_jump(condition_label);
+            llvm_label(else_label);
+            ast_to_llvm(n->right->right, LLVMVALUE_NULL, n->ttype);
+            break;
+        default:
+            // Standard while loop
+            llvm_jump(condition_label);
+            llvm_label(else_label);
+            ast_to_llvm(n->right, LLVMVALUE_NULL, n->ttype);
+        }
+    } else {
+        llvm_jump(condition_label);
         llvm_label(else_label);
-
-        ast_to_llvm(n->right, LLVMVALUE_NULL, n->ttype);
-
-        llvm_jump(end_label);
     }
-
-    llvm_label(end_label);
 
     return LLVMVALUE_NULL;
 }
@@ -242,6 +241,7 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
         return while_else_ast_to_llvm(n);
     case T_AST_GLUE:
         ast_to_llvm(n->left, LLVMVALUE_NULL, n->ttype);
+        ast_to_llvm(n->mid, LLVMVALUE_NULL, n->ttype);
         ast_to_llvm(n->right, LLVMVALUE_NULL, n->ttype);
         return LLVMVALUE_NULL;
     }

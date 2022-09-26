@@ -169,6 +169,9 @@ static TokenType parse_keyword(char* keyword_string)
         if (!strcmp(keyword_string, TTS_FALSE)) {
             return T_FALSE;
         }
+        if (!strcmp(keyword_string, TTS_FOR)) {
+            return T_FOR;
+        }
     case 'i':
         if (!strcmp(keyword_string, TTS_IF)) {
             return T_IF;

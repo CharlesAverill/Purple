@@ -5,6 +5,8 @@
     while(i <= 10){
 		print i;
 		i = i + 1;
+	} else {
+		print 11;
 	}
 
 	while(i <= 10) {
@@ -12,4 +14,8 @@
 	} else {
 		print 55;
 	}
+
+	for(i = 10; i >= 0; i = i - 1){
+		print i;
+    }
 }

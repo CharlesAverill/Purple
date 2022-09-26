@@ -28,12 +28,21 @@ additiveExpression: multiplicativeExpression
                   | additiveExpression '-' multiplicativeExpression
                   ;
 
+comparativeExpression: binaryExpression '<' binaryExpression
+                     | binaryExpression '>' binaryExpression
+                     | binaryExpression '<=' binaryExpression
+                     | binaryExpression '>=' binaryExpression
+                     | binaryExpression '==' binaryExpression
+                     | binaryExpression '!=' binaryExpression
+                     | binaryExpression // expands to binaryExpression == T_TRUE
+                     ;
+
 binaryExpression: additiveExpression
                 ;
 
-// This isn't very good
 booleanExpression: T_TRUE
                  | T_FALSE
+                 | comparativeExpression
                  ;
 
 expression: binaryExpression
@@ -48,10 +57,10 @@ declareStatement: dataType T_IDENTIFIER
 assignStatement: T_IDENTIFIER '=' expression
                ;
 
-ifClause: 'if' '(' booleanExpression ')' statements
+ifClause: 'if' '(' comparativeExpression ')' statements
         ;
 
-whileClause: 'while' '(' booleanExpression ')' statements
+whileClause: 'while' '(' comparativeExpression ')' statements
            ;
 
 ifStatement: ifClause
@@ -62,11 +71,19 @@ whileStatement: whileClause
               | whileClause 'else' statements
               ;
 
+forPreamble: statement;
+forPostamble: statement;
+
+forStatement: 'for' '(' forPreamble ';' comparativeExpression ';' forPostamble ')' statements 
+            // foreach
+            ;
+
 statementType: printStatement
              | assignStatement
              | declareStatement
              | ifStatement
              | whileStatement
+             | forStatement
              ;
 
 statement: statementType ';'
