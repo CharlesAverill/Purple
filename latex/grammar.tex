@@ -33,12 +33,21 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{                  | additiveExpression '-\/' multiplicativeExpression}
 \DoxyCodeLine{                  ;}
 \DoxyCodeLine{}
+\DoxyCodeLine{comparativeExpression: binaryExpression '<' binaryExpression}
+\DoxyCodeLine{                     | binaryExpression '>' binaryExpression}
+\DoxyCodeLine{                     | binaryExpression '<=' binaryExpression}
+\DoxyCodeLine{                     | binaryExpression '>=' binaryExpression}
+\DoxyCodeLine{                     | binaryExpression '==' binaryExpression}
+\DoxyCodeLine{                     | binaryExpression '!=' binaryExpression}
+\DoxyCodeLine{                     | binaryExpression // expands to binaryExpression == T\_TRUE}
+\DoxyCodeLine{                     ;}
+\DoxyCodeLine{}
 \DoxyCodeLine{binaryExpression: additiveExpression}
 \DoxyCodeLine{                ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{// This isn't very good}
 \DoxyCodeLine{booleanExpression: T\_TRUE}
 \DoxyCodeLine{                 | T\_FALSE}
+\DoxyCodeLine{                 | comparativeExpression}
 \DoxyCodeLine{                 ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{expression: binaryExpression}
@@ -53,10 +62,10 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{assignStatement: T\_IDENTIFIER '=' expression}
 \DoxyCodeLine{               ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ifClause: 'if' '(' booleanExpression ')' statements}
+\DoxyCodeLine{ifClause: 'if' '(' comparativeExpression ')' statements}
 \DoxyCodeLine{        ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{whileClause: 'while' '(' booleanExpression ')' statements}
+\DoxyCodeLine{whileClause: 'while' '(' comparativeExpression ')' statements}
 \DoxyCodeLine{           ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{ifStatement: ifClause}
@@ -67,11 +76,19 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{              | whileClause 'else' statements}
 \DoxyCodeLine{              ;}
 \DoxyCodeLine{}
+\DoxyCodeLine{forPreamble: statement;}
+\DoxyCodeLine{forPostamble: statement;}
+\DoxyCodeLine{}
+\DoxyCodeLine{forStatement: 'for' '(' forPreamble ';' comparativeExpression ';' forPostamble ')' statements }
+\DoxyCodeLine{            // foreach}
+\DoxyCodeLine{            ;}
+\DoxyCodeLine{}
 \DoxyCodeLine{statementType: printStatement}
 \DoxyCodeLine{             | assignStatement}
 \DoxyCodeLine{             | declareStatement}
 \DoxyCodeLine{             | ifStatement}
 \DoxyCodeLine{             | whileStatement}
+\DoxyCodeLine{             | forStatement}
 \DoxyCodeLine{             ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{statement: statementType ';'}

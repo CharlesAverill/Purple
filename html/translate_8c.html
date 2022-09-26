@@ -370,7 +370,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Generate LLVM-IR for a while-else statement AST. </p>
-<p >jump else_label if !condition condition_label: jump end_label if !condition body() jump condition_label else_label: elsebody() end_label:</p>
+<p >condition_label: jump else_label if !condition body() jump condition_label else_label: elsebody()</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n</td><td>Root AST node </td></tr>
