@@ -56,14 +56,22 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{ifClause: 'if' '(' booleanExpression ')' statements}
 \DoxyCodeLine{        ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ifStatement : ifClause}
-\DoxyCodeLine{            | ifClause 'else' statements}
-\DoxyCodeLine{            ;}
+\DoxyCodeLine{whileClause: 'while' '(' booleanExpression ')' statements}
+\DoxyCodeLine{           ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{ifStatement: ifClause}
+\DoxyCodeLine{           | ifClause 'else' statements}
+\DoxyCodeLine{           ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{whileStatement: whileClause}
+\DoxyCodeLine{              | whileClause 'else' statements}
+\DoxyCodeLine{              ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{statementType: printStatement}
 \DoxyCodeLine{             | assignStatement}
 \DoxyCodeLine{             | declareStatement}
 \DoxyCodeLine{             | ifStatement}
+\DoxyCodeLine{             | whileStatement}
 \DoxyCodeLine{             ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{statement: statementType ';'}

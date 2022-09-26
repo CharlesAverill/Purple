@@ -30,6 +30,8 @@ static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{stateme
 \begin{DoxyCompactList}\small\item\em Parse an assignment statement into an AST. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_a7e949c66cdabab493e468a005b9ac4f4}{if\+\_\+statement}} (void)
 \begin{DoxyCompactList}\small\item\em Parse an if statement into an AST. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_a7d14d1c0b95607a7e64a4889ba0c8cc9}{while\+\_\+statement}} (void)
+\begin{DoxyCompactList}\small\item\em Parse a while statement into an AST. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_a72e124e2436e13e1d8c09a0616245c12}{parse\+\_\+statements}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -125,4 +127,17 @@ Parse a print statement into an AST.
 
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ AST for print statement 
+\end{DoxyReturn}
+\mbox{\Hypertarget{statement_8c_a7d14d1c0b95607a7e64a4889ba0c8cc9}\label{statement_8c_a7d14d1c0b95607a7e64a4889ba0c8cc9}} 
+\index{statement.c@{statement.c}!while\_statement@{while\_statement}}
+\index{while\_statement@{while\_statement}!statement.c@{statement.c}}
+\doxysubsubsection{\texorpdfstring{while\_statement()}{while\_statement()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ while\+\_\+statement (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parse a while statement into an AST. 
+
+\begin{DoxyReturn}{Returns}
+ASTNode$\ast$ AST for while statement 
 \end{DoxyReturn}

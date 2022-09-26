@@ -25,8 +25,10 @@ static void \mbox{\hyperlink{translate_8c_ae80e343df46fde6686f722d2b1c3e6a6}{tra
 \begin{DoxyCompactList}\small\item\em Perform a DFS on an AST to determine the stack allocation needed for a binary expression. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_ac234380de36b6966bf21e6052c7fad68}{if\+\_\+ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n)
 \begin{DoxyCompactList}\small\item\em Generate LLVM-\/\+IR for an if statement AST. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{translate_8c_ad544617f24d6f132bafb6862657ebe7e}{print\+\_\+ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root)
-\item 
+static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_a3a5ce1830c21d69ecf8ec4b744af6882}{while\+\_\+else\+\_\+ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n)
+\begin{DoxyCompactList}\small\item\em Generate LLVM-\/\+IR for a while-\/else statement AST. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_a1073b5f001944206d99a8e4e641523bd}{print\+\_\+ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} virtual\+\_\+register)
+\begin{DoxyCompactList}\small\item\em Generate LLVM-\/\+IR for a print statement. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_ac03b5f4edcb74722ca4643fd469712e9}{ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+value, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} parent\+\_\+operation)
 \begin{DoxyCompactList}\small\item\em Generates LLVM-\/\+IR from a given AST. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{translate_8c_ac2560f9333db7b4bc4b0dd4ef15b3dcc}{generate\+\_\+llvm}} (void)
@@ -112,6 +114,8 @@ Wrapper function for generating LLVM.
 
 Generate LLVM-\/\+IR for an if statement AST. 
 
+jump false\+\_\+label if !condition body() jump end\+\_\+label false\+\_\+label\+: falsebody() end\+\_\+label\+:
+
 
 \begin{DoxyParams}{Parameters}
 {\em n} & Root AST node \\
@@ -120,12 +124,24 @@ Generate LLVM-\/\+IR for an if statement AST.
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} LLVMVALUE\+\_\+\+NULL 
 \end{DoxyReturn}
-\mbox{\Hypertarget{translate_8c_ad544617f24d6f132bafb6862657ebe7e}\label{translate_8c_ad544617f24d6f132bafb6862657ebe7e}} 
+\mbox{\Hypertarget{translate_8c_a1073b5f001944206d99a8e4e641523bd}\label{translate_8c_a1073b5f001944206d99a8e4e641523bd}} 
 \index{translate.c@{translate.c}!print\_ast\_to\_llvm@{print\_ast\_to\_llvm}}
 \index{print\_ast\_to\_llvm@{print\_ast\_to\_llvm}!translate.c@{translate.c}}
 \doxysubsubsection{\texorpdfstring{print\_ast\_to\_llvm()}{print\_ast\_to\_llvm()}}
-{\footnotesize\ttfamily static void print\+\_\+ast\+\_\+to\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} print\+\_\+ast\+\_\+to\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Generate LLVM-\/\+IR for a print statement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Root AST node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} LLVMVALUE\+\_\+\+NULL 
+\end{DoxyReturn}
 \mbox{\Hypertarget{translate_8c_ae80e343df46fde6686f722d2b1c3e6a6}\label{translate_8c_ae80e343df46fde6686f722d2b1c3e6a6}} 
 \index{translate.c@{translate.c}!translate\_init@{translate\_init}}
 \index{translate\_init@{translate\_init}!translate.c@{translate.c}}
@@ -136,6 +152,26 @@ Generate LLVM-\/\+IR for an if statement AST.
 
 Initialize any values required for LLVM translation. 
 
+\mbox{\Hypertarget{translate_8c_a3a5ce1830c21d69ecf8ec4b744af6882}\label{translate_8c_a3a5ce1830c21d69ecf8ec4b744af6882}} 
+\index{translate.c@{translate.c}!while\_else\_ast\_to\_llvm@{while\_else\_ast\_to\_llvm}}
+\index{while\_else\_ast\_to\_llvm@{while\_else\_ast\_to\_llvm}!translate.c@{translate.c}}
+\doxysubsubsection{\texorpdfstring{while\_else\_ast\_to\_llvm()}{while\_else\_ast\_to\_llvm()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} while\+\_\+else\+\_\+ast\+\_\+to\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Generate LLVM-\/\+IR for a while-\/else statement AST. 
+
+jump else\+\_\+label if !condition condition\+\_\+label\+: jump end\+\_\+label if !condition body() jump condition\+\_\+label else\+\_\+label\+: elsebody() end\+\_\+label\+:
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Root AST node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} LLVMVALUE\+\_\+\+NULL 
+\end{DoxyReturn}
 
 
 \doxysubsection{Variable Documentation}

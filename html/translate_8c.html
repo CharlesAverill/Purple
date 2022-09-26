@@ -117,8 +117,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ac234380de36b6966bf21e6052c7fad68"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#ac234380de36b6966bf21e6052c7fad68">if_ast_to_llvm</a> (<a class="el" href="structASTNode.html">ASTNode</a> *n)</td></tr>
 <tr class="memdesc:ac234380de36b6966bf21e6052c7fad68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate LLVM-IR for an if statement AST.  <a href="translate_8c.html#ac234380de36b6966bf21e6052c7fad68">More...</a><br /></td></tr>
 <tr class="separator:ac234380de36b6966bf21e6052c7fad68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad544617f24d6f132bafb6862657ebe7e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#ad544617f24d6f132bafb6862657ebe7e">print_ast_to_llvm</a> (<a class="el" href="structASTNode.html">ASTNode</a> *root)</td></tr>
-<tr class="separator:ad544617f24d6f132bafb6862657ebe7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a5ce1830c21d69ecf8ec4b744af6882"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#a3a5ce1830c21d69ecf8ec4b744af6882">while_else_ast_to_llvm</a> (<a class="el" href="structASTNode.html">ASTNode</a> *n)</td></tr>
+<tr class="memdesc:a3a5ce1830c21d69ecf8ec4b744af6882"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate LLVM-IR for a while-else statement AST.  <a href="translate_8c.html#a3a5ce1830c21d69ecf8ec4b744af6882">More...</a><br /></td></tr>
+<tr class="separator:a3a5ce1830c21d69ecf8ec4b744af6882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1073b5f001944206d99a8e4e641523bd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#a1073b5f001944206d99a8e4e641523bd">print_ast_to_llvm</a> (<a class="el" href="structASTNode.html">ASTNode</a> *root, <a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> virtual_register)</td></tr>
+<tr class="memdesc:a1073b5f001944206d99a8e4e641523bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate LLVM-IR for a print statement.  <a href="translate_8c.html#a1073b5f001944206d99a8e4e641523bd">More...</a><br /></td></tr>
+<tr class="separator:a1073b5f001944206d99a8e4e641523bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac03b5f4edcb74722ca4643fd469712e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8c.html#ac03b5f4edcb74722ca4643fd469712e9">ast_to_llvm</a> (<a class="el" href="structASTNode.html">ASTNode</a> *n, <a class="el" href="structLLVMValue.html">LLVMValue</a> llvm_value, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> parent_operation)</td></tr>
 <tr class="memdesc:ac03b5f4edcb74722ca4643fd469712e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates LLVM-IR from a given AST.  <a href="translate_8c.html#ac03b5f4edcb74722ca4643fd469712e9">More...</a><br /></td></tr>
 <tr class="separator:ac03b5f4edcb74722ca4643fd469712e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -257,6 +261,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Generate LLVM-IR for an if statement AST. </p>
+<p >jump false_label if !condition body() jump end_label false_label: falsebody() end_label:</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n</td><td>Root AST node </td></tr>
@@ -267,8 +272,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ad544617f24d6f132bafb6862657ebe7e" name="ad544617f24d6f132bafb6862657ebe7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad544617f24d6f132bafb6862657ebe7e">&#9670;&nbsp;</a></span>print_ast_to_llvm()</h2>
+<a id="a1073b5f001944206d99a8e4e641523bd" name="a1073b5f001944206d99a8e4e641523bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1073b5f001944206d99a8e4e641523bd">&#9670;&nbsp;</a></span>print_ast_to_llvm()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -277,11 +282,21 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void print_ast_to_llvm </td>
+          <td class="memname">static <a class="el" href="structLLVMValue.html">LLVMValue</a> print_ast_to_llvm </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td>
-          <td class="paramname"><em>root</em></td><td>)</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
+          <td class="paramname"><em>virtual_register</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -290,6 +305,15 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Generate LLVM-IR for a print statement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Root AST node </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> LLVMVALUE_NULL </dd></dl>
 
 </div>
 </div>
@@ -318,6 +342,42 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initialize any values required for LLVM translation. </p>
+
+</div>
+</div>
+<a id="a3a5ce1830c21d69ecf8ec4b744af6882" name="a3a5ce1830c21d69ecf8ec4b744af6882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a5ce1830c21d69ecf8ec4b744af6882">&#9670;&nbsp;</a></span>while_else_ast_to_llvm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structLLVMValue.html">LLVMValue</a> while_else_ast_to_llvm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generate LLVM-IR for a while-else statement AST. </p>
+<p >jump else_label if !condition condition_label: jump end_label if !condition body() jump condition_label else_label: elsebody() end_label:</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Root AST node </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> LLVMVALUE_NULL </dd></dl>
 
 </div>
 </div>

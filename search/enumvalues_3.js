@@ -28,5 +28,6 @@ var searchData=
   ['t_5fsemicolon_25',['T_SEMICOLON',['../scan_8h.html#aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf',1,'scan.h']]],
   ['t_5fslash_26',['T_SLASH',['../scan_8h.html#aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a',1,'scan.h']]],
   ['t_5fstar_27',['T_STAR',['../scan_8h.html#aa520fbf142ba1e7e659590c07da31921a6fad6b41ffee1efe0dfc7b12a19c0672',1,'scan.h']]],
-  ['t_5ftrue_28',['T_TRUE',['../scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075',1,'scan.h']]]
+  ['t_5ftrue_28',['T_TRUE',['../scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075',1,'scan.h']]],
+  ['t_5fwhile_29',['T_WHILE',['../scan_8h.html#aa520fbf142ba1e7e659590c07da31921a53ea0dd1b6eff99840e43263e461db90',1,'scan.h']]]
 ];

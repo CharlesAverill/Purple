@@ -37,6 +37,7 @@ var searchData=
   ['tts_5fslash_34',['TTS_SLASH',['../scan_8h.html#ab2974cb4da4d5b0174b395c10b6f7bcd',1,'scan.h']]],
   ['tts_5fstar_35',['TTS_STAR',['../scan_8h.html#a035a192d545d9e2fae66af59d98c2e30',1,'scan.h']]],
   ['tts_5ftrue_36',['TTS_TRUE',['../scan_8h.html#a5b48563ed4f8a06dfdad4a791c87a11b',1,'scan.h']]],
-  ['type_5flabel_37',['type_label',['../llvm__stack__entry_8h.html#a5a55d7544c78159d2429f84d79a87b6c',1,'llvm_stack_entry.h']]],
-  ['type_5fregister_38',['type_register',['../llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e',1,'llvm_stack_entry.h']]]
+  ['tts_5fwhile_37',['TTS_WHILE',['../scan_8h.html#a3e5728a8a605d74f2980025f8fa171e6',1,'scan.h']]],
+  ['type_5flabel_38',['type_label',['../llvm__stack__entry_8h.html#a5a55d7544c78159d2429f84d79a87b6c',1,'llvm_stack_entry.h']]],
+  ['type_5fregister_39',['type_register',['../llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e',1,'llvm_stack_entry.h']]]
 ];
