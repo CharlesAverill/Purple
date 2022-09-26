@@ -9,7 +9,6 @@
     print i <= j;
     print j >= i;
     print i != j;
-
     print i == j;
 
     if(i < j){

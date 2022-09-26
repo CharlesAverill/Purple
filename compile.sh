@@ -1,4 +1,4 @@
-clang-format -i $(find src include -name '*.c' -o -name '*.h')
+clang-format -i $(find src include examples -name '*.[c|prp]' -o -name '*.h')
 
 # cmake --target clean
 cmake -B build

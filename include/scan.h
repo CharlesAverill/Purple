@@ -43,6 +43,7 @@ typedef enum {
     T_PRINT,
     T_IF,
     T_ELSE,
+    T_WHILE,
     // Miscellaneous
     T_SEMICOLON,
     T_LEFT_PAREN,
@@ -75,6 +76,7 @@ typedef enum {
 #define TTS_PRINT "print"
 #define TTS_IF "if"
 #define TTS_ELSE "else"
+#define TTS_WHILE "while"
 #define TTS_SEMICOLON ";"
 #define TTS_LEFT_PAREN "("
 #define TTS_RIGHT_PAREN ")"
@@ -108,6 +110,7 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_PRINT,
                                TTS_IF,
                                TTS_ELSE,
+                               TTS_WHILE,
                                TTS_SEMICOLON,
                                TTS_LEFT_PAREN,
                                TTS_RIGHT_PAREN,

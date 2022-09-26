@@ -51,14 +51,22 @@ assignStatement: T_IDENTIFIER '=' expression
 ifClause: 'if' '(' booleanExpression ')' statements
         ;
 
-ifStatement : ifClause
-            | ifClause 'else' statements
-            ;
+whileClause: 'while' '(' booleanExpression ')' statements
+           ;
+
+ifStatement: ifClause
+           | ifClause 'else' statements
+           ;
+
+whileStatement: whileClause
+              | whileClause 'else' statements
+              ;
 
 statementType: printStatement
              | assignStatement
              | declareStatement
              | ifStatement
+             | whileStatement
              ;
 
 statement: statementType ';'

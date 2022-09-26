@@ -7,7 +7,9 @@
 		i = i + 1;
 	}
 
-	for(i = 10; i >= 0; i = i - 1){
+	while(i <= 10) {
 		print i;
-    }
+	} else {
+		print 55;
+	}
 }

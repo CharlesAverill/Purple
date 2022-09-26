@@ -187,6 +187,11 @@ static TokenType parse_keyword(char* keyword_string)
             return T_TRUE;
         }
         break;
+    case 'w':
+        if (!strcmp(keyword_string, TTS_WHILE)) {
+            return T_WHILE;
+        }
+        break;
     }
 
     return 0;

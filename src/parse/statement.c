@@ -147,6 +147,42 @@ static ASTNode* if_statement(void)
 }
 
 /**
+ * @brief Parse a while statement into an AST
+ * 
+ * @return ASTNode* AST for while statement
+ */
+static ASTNode* while_statement(void)
+{
+    ASTNode* condition = NULL;
+    ASTNode* body = NULL;
+    ASTNode* else_body = NULL;
+
+    purple_log(LOG_DEBUG, "Parsing while statement");
+
+    match_token(T_WHILE);
+    match_token(T_LEFT_PAREN);
+
+    condition = parse_binary_expression(0);
+
+    if (!TOKENTYPE_IS_COMPARATOR(condition->ttype)) {
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "While clauses must use a comparison operator");
+    }
+
+    match_token(T_RIGHT_PAREN);
+
+    body = parse_statements();
+
+    if (D_GLOBAL_TOKEN.type == T_ELSE) {
+        purple_log(LOG_DEBUG, "Encountered while-else statement");
+
+        match_token(T_ELSE);
+        else_body = parse_statements();
+    }
+
+    return create_ast_node(T_WHILE, condition, body, else_body, 0, NULL);
+}
+
+/**
  * @brief Parse a set of statements into ASTs and generate them into LLVM-IR
  * 
  * @return AST for a group of statements
@@ -164,7 +200,7 @@ ASTNode* parse_statements(void)
     while (true) {
         bool return_left = false;
         bool match_semicolon = true;
-        
+
         switch (D_GLOBAL_TOKEN.type) {
         case T_PRINT:
             root = print_statement();
@@ -179,6 +215,10 @@ ASTNode* parse_statements(void)
             break;
         case T_IF:
             root = if_statement();
+            match_semicolon = false;
+            break;
+        case T_WHILE:
+            root = while_statement();
             match_semicolon = false;
             break;
         case T_RIGHT_BRACE:
