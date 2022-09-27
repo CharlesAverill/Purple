@@ -15,7 +15,8 @@
 /**
  * @brief Types of scannable tokens
  */
-typedef enum {
+typedef enum
+{
     T_EOF,
     // Arithmetic Operators
     T_PLUS,
@@ -32,11 +33,14 @@ typedef enum {
     T_GE,
     // Literals
     T_INTEGER_LITERAL,
+    T_CHAR_LITERAL,
     T_TRUE,
     T_FALSE,
     // Types
-    T_INT,
     T_BOOL,
+    T_CHAR,
+    T_INT,
+    T_LONG,
     // Assignment
     T_ASSIGN,
     // Keywords
@@ -69,10 +73,13 @@ typedef enum {
 #define TTS_LE "<="
 #define TTS_GE ">="
 #define TTS_INTEGER_LITERAL "integer literal"
+#define TTS_CHAR_LITERAL "character literal"
 #define TTS_TRUE "true"
 #define TTS_FALSE "false"
-#define TTS_INT "int"
 #define TTS_BOOL "bool"
+#define TTS_CHAR "char"
+#define TTS_INT "int"
+#define TTS_LONG "long"
 #define TTS_ASSIGN "="
 #define TTS_PRINT "print"
 #define TTS_IF "if"
@@ -104,10 +111,13 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_LE,
                                TTS_GE,
                                TTS_INTEGER_LITERAL,
+                               TTS_CHAR_LITERAL,
                                TTS_TRUE,
                                TTS_FALSE,
-                               TTS_INT,
                                TTS_BOOL,
+                               TTS_CHAR,
+                               TTS_INT,
+                               TTS_LONG,
                                TTS_ASSIGN,
                                TTS_PRINT,
                                TTS_IF,
@@ -140,7 +150,7 @@ static char* tokenStrings[] = {TTS_EOF,
 /**
  * @brief Macro to determine if a TokenType is associated with a type keyword
  */
-#define TOKENTYPE_IS_TYPE(type) (type >= T_INT && type <= T_BOOL)
+#define TOKENTYPE_IS_TYPE(type) (type >= T_BOOL && type <= T_LONG)
 
 /**
  * @brief Macro to determine if a TokenType is associated with a literal value

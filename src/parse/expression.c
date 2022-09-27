@@ -19,7 +19,6 @@ static int get_operatorPrecedence(Token t)
     int prec = operatorPrecedence[t.type];
 
     if (prec == 0) {
-        printf("%d\n", t.type);
         syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Expected operator but got %s \"%d\"",
                      tokenStrings[t.type], t.value);
     }
@@ -38,21 +37,22 @@ static ASTNode* create_terminal_node(Token t)
     ASTNode* out;
     SymbolTableEntry* entry;
 
-    switch (D_GLOBAL_TOKEN.type) {
-    case T_INTEGER_LITERAL:
-    case T_TRUE:
-    case T_FALSE:
+    if (TOKENTYPE_IS_LITERAL(D_GLOBAL_TOKEN.type)) {
         out = create_ast_nonidentifier_leaf(D_GLOBAL_TOKEN.type, D_GLOBAL_TOKEN.value.int_value);
-        break;
-    case T_IDENTIFIER:
-        if (!find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, t.value.symbol_name)) {
-            identifier_error(D_INPUT_FN, D_LINE_NUMBER, "Undeclared identifier %s",
-                             t.value.symbol_name);
+    } else {
+        switch (D_GLOBAL_TOKEN.type) {
+        case T_IDENTIFIER:
+            if (!find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, t.value.symbol_name)) {
+                identifier_error(D_INPUT_FN, D_LINE_NUMBER, "Undeclared identifier %s",
+                                 t.value.symbol_name);
+            }
+            out = create_ast_identifier_leaf(T_IDENTIFIER, t.value.symbol_name);
+            break;
+        default:
+            syntax_error(D_INPUT_FN, D_LINE_NUMBER,
+                         "Tried creating a terminal node with token type \"%s\"",
+                         tokenStrings[t.type]);
         }
-        out = create_ast_identifier_leaf(T_IDENTIFIER, t.value.symbol_name);
-        break;
-    default:
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Token: \"%s\"", tokenStrings[t.type]);
     }
 
     scan(&D_GLOBAL_TOKEN);

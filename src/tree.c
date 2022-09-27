@@ -19,7 +19,7 @@
  * @param left Left child subtree of the new AST Node
  * @param mid Middle child subtree of the new AST Node
  * @param right Right child subtree of the new AST Node
- * @param value If TokenType == T_INTEGER_LITERAL, then the value of the integer literal
+ * @param value If Token is a literal, then the value of the literal
  * @param symbol_name if TokenType == T_IDENTIFIER, then the string for the identifier
  * @return ASTNode* The pointer to a new AST Node with the provided values
  */
@@ -39,7 +39,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
     out->left = left;
     out->mid = mid;
     out->right = right;
-    if (ttype == T_INTEGER_LITERAL || TOKENTYPE_IS_BOOL_LITERAL(ttype)) {
+    if (TOKENTYPE_IS_LITERAL(ttype)) {
         out->value.int_value = value;
         out->number_type = token_type_to_number_type(ttype);
     } else if (TOKENTYPE_IS_IDENTIFIER(ttype)) {
@@ -65,7 +65,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
  * @brief Constructs a new AST Leaf Node with the provided values for a token that is not an identifier
  * 
  * @param ttype TokenType of the new AST Node
- * @param value If TokenType == T_INTEGER_LITERAL, then the value of the integer literal
+ * @param value If Token is a literal, then the value of the literal
  * @return ASTNode* The pointer to a new AST Leaf Node with the provided values
  */
 ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, unsigned long int value)
@@ -90,7 +90,7 @@ ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name)
  * 
  * @param ttype TokenType of the new AST Node
  * @param child The AST Node's single child
- * @param value If TokenType == T_INTEGER_LITERAL, then the value of the integer literal
+ * @param value If Token is a literal, then the value of the literal
  * @return ASTNode* The pointer to a new AST Unary Parent Node with the provided values
  */
 ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, unsigned long int value)

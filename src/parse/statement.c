@@ -250,39 +250,39 @@ ASTNode* parse_statements(void)
         bool return_left = false;
         bool match_semicolon = true;
 
-        switch (D_GLOBAL_TOKEN.type) {
-        case T_PRINT:
-            root = print_statement();
-            break;
-        case T_INT:
-        case T_BOOL:
+        if (TOKENTYPE_IS_TYPE(D_GLOBAL_TOKEN.type)) {
             variable_declaration();
             root = NULL;
-            break;
-        case T_IDENTIFIER:
-            root = assignment_statement();
-            break;
-        case T_IF:
-            root = if_statement();
-            match_semicolon = false;
-            break;
-        case T_WHILE:
-            root = while_statement();
-            match_semicolon = false;
-            break;
-        case T_FOR:
-            root = for_statement();
-            match_semicolon = false;
-            break;
-        case T_RIGHT_BRACE:
-            match_token(T_RIGHT_BRACE);
-            return_left = true;
-            match_semicolon = false;
-            break;
-        default:
-            syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unexpected token %s",
-                         tokenStrings[D_GLOBAL_TOKEN.type]);
-            break;
+        } else {
+            switch (D_GLOBAL_TOKEN.type) {
+            case T_PRINT:
+                root = print_statement();
+                break;
+            case T_IDENTIFIER:
+                root = assignment_statement();
+                break;
+            case T_IF:
+                root = if_statement();
+                match_semicolon = false;
+                break;
+            case T_WHILE:
+                root = while_statement();
+                match_semicolon = false;
+                break;
+            case T_FOR:
+                root = for_statement();
+                match_semicolon = false;
+                break;
+            case T_RIGHT_BRACE:
+                match_token(T_RIGHT_BRACE);
+                return_left = true;
+                match_semicolon = false;
+                break;
+            default:
+                syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unexpected token %s",
+                             tokenStrings[D_GLOBAL_TOKEN.type]);
+                break;
+            }
         }
 
         if (return_left) {

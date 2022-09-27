@@ -2,6 +2,7 @@ grammar purple;
 
 tokens {
     T_INTEGER_LITERAL,
+    T_CHAR_LITERAL,
     T_TRUE,
     T_FALSE,
     T_IDENTIFIER

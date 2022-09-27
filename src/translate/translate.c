@@ -73,19 +73,41 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
         return temp_left;
     } else if (TOKENTYPE_IS_LITERAL(root->ttype)) {
         LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
+
         current->reg = get_next_local_virtual_register();
         prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
+
         current->type = token_type_to_number_type(root->ttype);
+        if (current->type == -1) {
+            fatal(RC_COMPILER_ERROR,
+                  "Failed to match number type in determine_binary_expression_stack_allocation");
+        }
+
         current->align_bytes = numberTypeByteSizes[current->type];
         current->next = NULL;
+
         return current;
     } else if (root->ttype == T_IDENTIFIER) {
+        SymbolTableEntry* symbol =
+            find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, root->value.symbol_name);
+        if (symbol == NULL) {
+            fatal(RC_COMPILER_ERROR,
+                  "Failed to find symbol in determine_binary_expression_stack_allocation");
+        }
+
         LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
+
         current->reg = get_next_local_virtual_register();
         prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
-        current->type = token_type_to_number_type(T_INTEGER_LITERAL);
-        current->align_bytes = numberTypeByteSizes[current->type];
+
+        current->type = symbol->number_type;
+        if (current->type == -1) {
+            fatal(RC_COMPILER_ERROR, "Symbol number type is ill-formed");
+        }
+
+        current->align_bytes = numberTypeByteSizes[symbol->number_type];
         current->next = NULL;
+
         return current;
     }
 }
@@ -201,8 +223,10 @@ static LLVMValue print_ast_to_llvm(ASTNode* root, type_register virtual_register
     case NT_INT1:
         llvm_print_bool(virtual_register);
         break;
+    case NT_INT8:
     case NT_INT32:
-        llvm_print_int(virtual_register);
+    case NT_INT64:
+        llvm_print_int(virtual_register, root->left->number_type);
         break;
     default:
         fatal(RC_COMPILER_ERROR, "Unknown number type %d returned when generating LLVM",
@@ -276,14 +300,6 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
                          numberTypeLLVMReprs[n->right->number_type]);
         }
 
-        loaded_registers =
-            llvm_ensure_registers_loaded(2, (type_register[]){left_vr, right_vr}, NT_INT32);
-        if (loaded_registers != NULL) {
-            left_vr = loaded_registers[0];
-            right_vr = loaded_registers[1];
-            free(loaded_registers);
-        }
-
         return llvm_binary_arithmetic(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, NT_INT32),
                                       LLVMVALUE_VIRTUAL_REGISTER(right_vr, NT_INT32));
     } else if (TOKENTYPE_IS_COMPARATOR(n->ttype)) {
@@ -318,10 +334,10 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
 
         switch (n->ttype) {
         case T_INTEGER_LITERAL:
-            return llvm_store_constant(NUMBER_INT32(n->value.int_value));
+            return llvm_store_constant(NUMBER_INT(n->value.int_value));
         case T_TRUE:
         case T_FALSE:
-            return llvm_store_constant(NUMBER_INT1(n->value.int_value));
+            return llvm_store_constant(NUMBER_BOOL(n->value.int_value));
         }
 
         initialize_stack_entry_linked_list(&loadedRegistersHead);
@@ -340,10 +356,12 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
 
             loaded_registers = llvm_ensure_registers_loaded(
                 1, (type_register[]){llvm_value.value.virtual_register_index}, symbol->number_type);
+            printf("%d\n", llvm_value.value.virtual_register_index);
             if (loaded_registers != NULL) {
                 llvm_value.value.virtual_register_index = loaded_registers[0];
                 free(loaded_registers);
             }
+            printf("%d\n", llvm_value.value.virtual_register_index);
             llvm_store_global_variable(n->value.symbol_name,
                                        llvm_value.value.virtual_register_index);
             return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index,

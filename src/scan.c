@@ -105,6 +105,18 @@ static int scan_integer_literal(char c)
 }
 
 /**
+ * @brief Scan and return an integer literal from the input stream
+ * 
+ * @param c Current character
+ * @return int Scanned integer literal
+ */
+static char scan_char_literal(char c)
+{
+    // Should I allow multichar literals?
+    return next();
+}
+
+/**
  * @brief Determine if a character in an identifier is a permitted character
  * 
  * @param c Character to check
@@ -161,6 +173,11 @@ static TokenType parse_keyword(char* keyword_string)
             return T_BOOL;
         }
         break;
+    case 'c':
+        if (!strcmp(keyword_string, TTS_CHAR)) {
+            return T_CHAR;
+        }
+        break;
     case 'e':
         if (!strcmp(keyword_string, TTS_ELSE)) {
             return T_ELSE;
@@ -178,6 +195,11 @@ static TokenType parse_keyword(char* keyword_string)
         }
         if (!strcmp(keyword_string, TTS_INT)) {
             return T_INT;
+        }
+        break;
+    case 'l':
+        if (!strcmp(keyword_string, TTS_LONG)) {
+            return T_LONG;
         }
         break;
     case 'p':
@@ -207,6 +229,14 @@ static TokenType parse_keyword(char* keyword_string)
  * @return bool True if the current character is the start of an integer literal
  */
 static bool scan_check_integer_literal(char c) { return isdigit(c); }
+
+/**
+ * @brief Check if the current character is the start of a character literal
+ * 
+ * @param c 
+ * @return bool True if the current character is the start of a character literal
+ */
+static bool scan_check_char_literal(char c) { return c == '\''; }
 
 /**
  * @brief Check if the current character is the start of a keyword or identifier
@@ -312,6 +342,13 @@ bool scan(Token* t)
     if (scan_check_integer_literal(c)) {
         t->value.int_value = scan_integer_literal(c);
         t->type = T_INTEGER_LITERAL;
+    } else if (scan_check_char_literal(c)) {
+        t->value.int_value = scan_char_literal(c);
+        t->type = T_CHAR_LITERAL;
+        if (!scan_check_char_literal(next())) {
+            syntax_error(D_LLVM_FN, D_LINE_NUMBER,
+                         "Multichar literals are not permitted, expected \'");
+        }
     } else if (scan_check_keyword_identifier(c)) {
         // Scan identifier string into buffer
         scan_identifier(c, D_IDENTIFIER_BUFFER, D_MAX_IDENTIFIER_LENGTH);

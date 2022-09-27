@@ -18,6 +18,10 @@ void variable_declaration(void)
     purple_log(LOG_DEBUG, "Parsing variable declaration statement");
 
     NumberType number_type = match_type();
+    if (number_type == -1) {
+        fatal(RC_COMPILER_ERROR, "Failed to match number type in variable_declaration");
+    }
+
     match_token(T_IDENTIFIER);
     add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER, number_type);
     llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, number_type);
