@@ -15,8 +15,7 @@
 /**
  * @brief Types of scannable tokens
  */
-typedef enum
-{
+typedef enum {
     T_EOF,
     // Arithmetic Operators
     T_PLUS,
@@ -34,6 +33,7 @@ typedef enum
     // Literals
     T_INTEGER_LITERAL,
     T_CHAR_LITERAL,
+    T_LONG_LITERAL,
     T_TRUE,
     T_FALSE,
     // Types
@@ -74,6 +74,7 @@ typedef enum
 #define TTS_GE ">="
 #define TTS_INTEGER_LITERAL "integer literal"
 #define TTS_CHAR_LITERAL "character literal"
+#define TTS_LONG_LITERAL "long literal"
 #define TTS_TRUE "true"
 #define TTS_FALSE "false"
 #define TTS_BOOL "bool"
@@ -95,6 +96,14 @@ typedef enum
 #define TTS_LVALUE_IDENTIFIER "lvalue identifier"
 #define TTS_AST_GLUE "ast glue"
 
+#define NUMBER_LITERAL_BIN_PREFIX "0b"
+#define NUMBER_LITERAL_OCT_PREFIX "0o"
+#define NUMBER_LITERAL_HEX_PREFIX "0x"
+#define NUMBER_LITERAL_LONG_SUFFIX 'L'
+
+#define NUMBER_LITERAL_SPACING_SEPARATOR '\''
+#define NUMBER_LITERAL_BASE_SEPARATOR '_'
+
 /**
  * @brief Token string equivalents
  */
@@ -112,6 +121,7 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_GE,
                                TTS_INTEGER_LITERAL,
                                TTS_CHAR_LITERAL,
+                               TTS_LONG_LITERAL,
                                TTS_TRUE,
                                TTS_FALSE,
                                TTS_BOOL,
@@ -132,15 +142,6 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_IDENTIFIER,
                                TTS_LVALUE_IDENTIFIER,
                                TTS_AST_GLUE};
-
-/**
- * @brief Macro to determine if a TokenType is associated with a terminal AST Node
- */
-
-#define TOKENTYPE_IS_TERMINAL(type)                                                                \
-    (/*Literals*/ (type >= T_INTEGER_LITERAL && type <= T_FALSE) ||                                \
-     /*Types*/ (type >= T_INT && type <= T_BOOL) ||                                                \
-     /*Miscellaneous*/ (type >= T_SEMICOLON && type <= T_LVALUE_IDENTIFIER))
 
 /**
  * @brief Macro to determine if a TokenType is associated with a binary arithmetic operation
@@ -173,6 +174,16 @@ static char* tokenStrings[] = {TTS_EOF,
 #define TOKENTYPE_IS_COMPARATOR(type) (type >= T_EQ && type <= T_GE)
 
 /**
+ * @brief Number literals can have a max value of 2^63 - 1 and a min value of -2^63
+ */
+#define number_literal_type long long int
+
+/**
+ * @brief len(str(2^63)) = 19
+ */
+#define MAX_NUMBER_LITERAL_DIGITS 19
+
+/**
  * @brief Structure containing information about individual scannable tokens
  */
 typedef struct Token {
@@ -181,7 +192,7 @@ typedef struct Token {
     /**Value of token*/
     union {
         /**Value of integer token*/
-        int int_value;
+        Number number_value;
         /**Name of identifier token*/
         char symbol_name[D_MAX_IDENTIFIER_LENGTH];
     } value;

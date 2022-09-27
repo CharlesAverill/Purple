@@ -83,25 +83,130 @@ static int index_of(char* s, int c)
 }
 
 /**
+ * @brief Convert a character into its integer form
+ * 
+ * @param c Character to convert
+ * @param base Base to convert to, or -1 if no limit
+ * @return int Value of character
+ */
+static int char_to_int(char c, int base)
+{
+    int index = index_of("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", c);
+    if (base != -1 && index >= base) {
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Literal of base %d cannot contain character '%c'",
+                     base, c);
+    }
+
+    if (index == -1) {
+        index = index_of("0123456789abcdefghijklmnopqrstuvwxyz", c);
+        if (base != -1 && index >= base) {
+            syntax_error(D_INPUT_FN, D_LINE_NUMBER,
+                         "Literal of base %d cannot contain character '%c'", base, c);
+        }
+    }
+
+    return index;
+}
+
+/**
  * @brief Scan and return an integer literal from the input stream
  * 
  * @param c Current character
- * @return int Scanned integer literal
+ * @return Number Scanned number literal
  */
-static int scan_integer_literal(char c)
+static Number scan_number_literal(char c)
 {
-    int k = 0;   // Current digit
-    int val = 0; // Output
+    char number_buffer[MAX_NUMBER_LITERAL_DIGITS + 1];
+    int buffer_index = 0;
+    Number out = NUMBER_INT(0);
+    int current_digit;
+    int base = 10;
 
-    while ((k = index_of("0123456789", c)) >= 0) {
-        val = val * 10 + k;
+    // Scan the number into a string
+    while (buffer_index < MAX_NUMBER_LITERAL_DIGITS) {
+        if (!isdigit(c) && !isalpha(c) && c != NUMBER_LITERAL_BASE_SEPARATOR &&
+            c != NUMBER_LITERAL_SPACING_SEPARATOR) {
+            break;
+        }
+
+        if (c == NUMBER_LITERAL_BASE_SEPARATOR) {
+            c = next();
+            if (isalpha(c) && !isupper(c)) {
+                syntax_error(D_INPUT_FN, D_LINE_NUMBER,
+                             "Number literal bases must be of form [1-9|A-Z]");
+            }
+            base = char_to_int(c, -1);
+            if (base == 0) {
+                syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Number literals cannot be base 0");
+            }
+            break;
+        }
+
+        if (c == NUMBER_LITERAL_SPACING_SEPARATOR) {
+            c = next();
+            continue;
+        }
+
+        if (c == NUMBER_LITERAL_LONG_SUFFIX) {
+            break;
+        }
+
+        number_buffer[buffer_index++] = c;
         c = next();
     }
 
-    // Loop has terminated at a non-integer value, so put it back
-    put_back_into_stream(c);
+    // Parse the string
+    for (int i = 0; i < buffer_index; i++) {
+        current_digit = char_to_int(number_buffer[i], base);
+        // Check for overflow
+        if (out.value * 10 + current_digit < out.value) {
+            syntax_error(D_LLVM_FN, D_LINE_NUMBER, "Number literal too big");
+        }
+        out.value = out.value * base + current_digit;
+        // Check for long
+        if (out.value >= 2147483648 || out.value < -2147483648) {
+            out.type = NT_INT64;
+        }
+    }
 
-    return val;
+    // Check for a long literal
+    if (out.type == NT_INT64 && c != NUMBER_LITERAL_LONG_SUFFIX) {
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Long literals must be suffixed with '%c'",
+                     NUMBER_LITERAL_LONG_SUFFIX);
+    } else if (c == NUMBER_LITERAL_LONG_SUFFIX) {
+        out.type = NT_INT64;
+    } else {
+        // Loop has terminated at a non-integer value, so put it back
+        put_back_into_stream(c);
+    }
+
+    return out;
+
+    /*
+    int k = 0; // Current digit
+    Number out;
+    out.type = NT_INT32;
+    out.value = 0;
+
+    while ((k = index_of("0123456789", c)) >= 0) {
+        if (out.value * 10 + k < out.value) {
+            syntax_error(D_LLVM_FN, D_LINE_NUMBER, "Number literal too big");
+        }
+        out.value = out.value * 10 + k;
+        c = next();
+    }
+
+    // Check for a long literal
+    if (!strcmp(&c, NUMBER_LITERAL_LONG_SUFFIX)) {
+        purple_log(LOG_DEBUG, "Parsing long literal");
+        out.type = NT_INT64;
+    } else {
+        // Loop has terminated at a non-integer value, so put it back
+        put_back_into_stream(c);
+    }
+
+    return out;
+    */
 }
 
 /**
@@ -340,10 +445,10 @@ bool scan(Token* t)
     bool no_switch_match_output = true;
     // Check if c is an integer
     if (scan_check_integer_literal(c)) {
-        t->value.int_value = scan_integer_literal(c);
-        t->type = T_INTEGER_LITERAL;
+        t->value.number_value = scan_number_literal(c);
+        t->type = t->value.number_value.type == NT_INT64 ? T_LONG_LITERAL : T_INTEGER_LITERAL;
     } else if (scan_check_char_literal(c)) {
-        t->value.int_value = scan_char_literal(c);
+        t->value.number_value = NUMBER_CHAR(scan_char_literal(c));
         t->type = T_CHAR_LITERAL;
         if (!scan_check_char_literal(next())) {
             syntax_error(D_LLVM_FN, D_LINE_NUMBER,
@@ -368,9 +473,9 @@ bool scan(Token* t)
 
     // Fill boolean literal values
     if (t->type == T_TRUE) {
-        t->value.int_value = 1;
+        t->value.number_value = NUMBER_BOOL(1);
     } else if (t->type == T_FALSE) {
-        t->value.int_value = 0;
+        t->value.number_value = NUMBER_BOOL(0);
     }
 
     return no_switch_match_output;

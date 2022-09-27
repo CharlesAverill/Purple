@@ -77,12 +77,7 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
         current->reg = get_next_local_virtual_register();
         prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
 
-        current->type = token_type_to_number_type(root->ttype);
-        if (current->type == -1) {
-            fatal(RC_COMPILER_ERROR,
-                  "Failed to match number type in determine_binary_expression_stack_allocation");
-        }
-
+        current->type = root->number_type;
         current->align_bytes = numberTypeByteSizes[current->type];
         current->next = NULL;
 
@@ -293,15 +288,16 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
     type_register right_vr = virtual_registers[1];
 
     if (TOKENTYPE_IS_BINARY_ARITHMETIC(n->ttype)) {
-        if (!(n->left->number_type == n->right->number_type && n->left->number_type == NT_INT32)) {
+        if (!(n->left->number_type == n->right->number_type && n->left->number_type != NT_INT1)) {
             syntax_error(D_INPUT_FN, D_LINE_NUMBER,
                          "Cannot perform operation \"%s\" on types %s and %s",
                          tokenStrings[n->ttype], numberTypeLLVMReprs[n->left->number_type],
                          numberTypeLLVMReprs[n->right->number_type]);
         }
 
-        return llvm_binary_arithmetic(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, NT_INT32),
-                                      LLVMVALUE_VIRTUAL_REGISTER(right_vr, NT_INT32));
+        return llvm_binary_arithmetic(n->ttype,
+                                      LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
+                                      LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->right->number_type));
     } else if (TOKENTYPE_IS_COMPARATOR(n->ttype)) {
         if (n->left->number_type != n->right->number_type) {
             syntax_error(D_INPUT_FN, D_LINE_NUMBER,
@@ -334,10 +330,14 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
 
         switch (n->ttype) {
         case T_INTEGER_LITERAL:
-            return llvm_store_constant(NUMBER_INT(n->value.int_value));
+            return llvm_store_constant(NUMBER_INT(n->value.number_value));
+        case T_LONG_LITERAL:
+            return llvm_store_constant(NUMBER_LONG(n->value.number_value));
+        case T_CHAR_LITERAL:
+            return llvm_store_constant(NUMBER_CHAR(n->value.number_value));
         case T_TRUE:
         case T_FALSE:
-            return llvm_store_constant(NUMBER_BOOL(n->value.int_value));
+            return llvm_store_constant(NUMBER_BOOL(n->value.number_value));
         }
 
         initialize_stack_entry_linked_list(&loadedRegistersHead);
@@ -356,12 +356,10 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
 
             loaded_registers = llvm_ensure_registers_loaded(
                 1, (type_register[]){llvm_value.value.virtual_register_index}, symbol->number_type);
-            printf("%d\n", llvm_value.value.virtual_register_index);
             if (loaded_registers != NULL) {
                 llvm_value.value.virtual_register_index = loaded_registers[0];
                 free(loaded_registers);
             }
-            printf("%d\n", llvm_value.value.virtual_register_index);
             llvm_store_global_variable(n->value.symbol_name,
                                        llvm_value.value.virtual_register_index);
             return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index,

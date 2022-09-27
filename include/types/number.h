@@ -5,14 +5,13 @@
  * @date 12-Sep-2022
  */
 
-#ifndef NUMBER
-#define NUMBER
+#ifndef NUMBER_H
+#define NUMBER_H
 
 /**
  * @brief Types of numbers supported by Purple
  */
-typedef enum
-{
+typedef enum {
     NT_INT1,
     NT_INT8,
     NT_INT32,
@@ -41,7 +40,7 @@ typedef struct Number {
     /**Data type of number*/
     NumberType type;
     /**Value of number*/
-    long long value;
+    long long int value;
 } Number;
 
 /**
@@ -70,4 +69,4 @@ typedef struct Number {
 
 NumberType token_type_to_number_type(int token_type);
 
-#endif /* NUMBER */
+#endif /* NUMBER_H */

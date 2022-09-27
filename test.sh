@@ -26,6 +26,7 @@ function strings_are_okay() {
         echo ">>>>>"
         echo -e $prog_output
         echo ">>>>>"
+        echo $2
         return 1
     fi
 }
@@ -44,7 +45,8 @@ false
 true"
 
 type_test_output="14
-4"
+c
+4294967294"
 
 variable_test_output="15
 35"
@@ -89,7 +91,7 @@ if [ $? -ne 0 ] ; then
 fi
 
 rm a.out
-echo -n "[Arithmetic Test]: "
+echo -n "[Type Test]: "
 strings_are_okay "$type_test_output" "examples/type_test.prp"
 if [ $? -ne 0 ] ; then
     exit 1

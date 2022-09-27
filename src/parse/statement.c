@@ -67,7 +67,7 @@ static ASTNode* print_statement(void)
     purple_log(LOG_DEBUG, "Freeing stack space entries");
     free_llvm_stack_entry_node_list(stack_entries);
 
-    root = create_unary_ast_node(T_PRINT, root, 0);
+    root = create_unary_ast_node(T_PRINT, root, NUMBER_INT(0));
 
     return root;
 }
@@ -107,7 +107,7 @@ static ASTNode* assignment_statement(void)
     left = parse_binary_expression(0);
 
     // Create subtree for assignment statement
-    root = create_ast_node(T_ASSIGN, left, NULL, right, 0, NULL);
+    root = create_ast_node(T_ASSIGN, left, NULL, right, NUMBER_INT(0), NULL);
 
     return root;
 }
@@ -143,7 +143,7 @@ static ASTNode* if_statement(void)
         false_branch = parse_statements();
     }
 
-    return create_ast_node(T_IF, condition, true_branch, false_branch, 0, NULL);
+    return create_ast_node(T_IF, condition, true_branch, false_branch, NUMBER_INT(0), NULL);
 }
 
 /**
@@ -179,7 +179,7 @@ static ASTNode* while_statement(void)
         else_body = parse_statements();
     }
 
-    return create_ast_node(T_WHILE, condition, body, else_body, 0, NULL);
+    return create_ast_node(T_WHILE, condition, body, else_body, NUMBER_INT(0), NULL);
 }
 
 /**
@@ -225,9 +225,9 @@ static ASTNode* for_statement(void)
         else_body = parse_statements();
     }
 
-    out = create_ast_node(T_AST_GLUE, for_postamble, NULL, else_body, 0, NULL);
-    out = create_ast_node(T_WHILE, condition, body, out, 0, NULL);
-    out = create_ast_node(T_AST_GLUE, for_preamble, NULL, out, 0, NULL);
+    out = create_ast_node(T_AST_GLUE, for_postamble, NULL, else_body, NUMBER_INT(0), NULL);
+    out = create_ast_node(T_WHILE, condition, body, out, NUMBER_INT(0), NULL);
+    out = create_ast_node(T_AST_GLUE, for_preamble, NULL, out, NUMBER_INT(0), NULL);
     return out;
 }
 
@@ -297,7 +297,7 @@ ASTNode* parse_statements(void)
             if (left == NULL) {
                 left = root;
             } else {
-                left = create_ast_node(T_AST_GLUE, left, NULL, root, 0, NULL);
+                left = create_ast_node(T_AST_GLUE, left, NULL, root, NUMBER_INT(0), NULL);
             }
         }
     }

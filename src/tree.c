@@ -23,8 +23,8 @@
  * @param symbol_name if TokenType == T_IDENTIFIER, then the string for the identifier
  * @return ASTNode* The pointer to a new AST Node with the provided values
  */
-ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right,
-                         unsigned long int value, char* symbol_name)
+ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right, Number value,
+                         char* symbol_name)
 {
     ASTNode* out;
 
@@ -40,8 +40,8 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
     out->mid = mid;
     out->right = right;
     if (TOKENTYPE_IS_LITERAL(ttype)) {
-        out->value.int_value = value;
-        out->number_type = token_type_to_number_type(ttype);
+        out->value.number_value = value.value;
+        out->number_type = value.type;
     } else if (TOKENTYPE_IS_IDENTIFIER(ttype)) {
         strcpy(out->value.symbol_name, symbol_name);
 
@@ -68,7 +68,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
  * @param value If Token is a literal, then the value of the literal
  * @return ASTNode* The pointer to a new AST Leaf Node with the provided values
  */
-ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, unsigned long int value)
+ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, Number value)
 {
     return create_ast_node(ttype, NULL, NULL, NULL, value, NULL);
 }
@@ -82,7 +82,7 @@ ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, unsigned long int value)
  */
 ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name)
 {
-    return create_ast_node(ttype, NULL, NULL, NULL, 0, symbol_name);
+    return create_ast_node(ttype, NULL, NULL, NULL, NUMBER_INT(0), symbol_name);
 }
 
 /**
@@ -93,7 +93,7 @@ ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name)
  * @param value If Token is a literal, then the value of the literal
  * @return ASTNode* The pointer to a new AST Unary Parent Node with the provided values
  */
-ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, unsigned long int value)
+ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, Number value)
 {
     return create_ast_node(ttype, child, NULL, NULL, value, NULL);
 }
@@ -134,7 +134,7 @@ static void ast_debug_current_level(ASTNode* root, int height, LogLevel log_leve
         if (TOKENTYPE_IS_IDENTIFIER(root->ttype)) {
             purple_log(log_level, "%s:%s", tokenStrings[root->ttype], root->value.symbol_name);
         } else if (TOKENTYPE_IS_LITERAL(root->ttype)) {
-            purple_log(log_level, "%s:%d", tokenStrings[root->ttype], root->value.int_value);
+            purple_log(log_level, "%s:%d", tokenStrings[root->ttype], root->value.number_value);
         } else {
             purple_log(log_level, "%s", tokenStrings[root->ttype]);
         }
