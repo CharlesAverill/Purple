@@ -5,8 +5,8 @@
  * @date 15-Sep-2022
  */
 
-#ifndef LLVM_STACK_ENTRY
-#define LLVM_STACK_ENTRY
+#ifndef LLVM_STACK_ENTRY_H
+#define LLVM_STACK_ENTRY_H
 
 #include "types/number.h"
 
@@ -41,4 +41,4 @@ void prepend_stack_entry_linked_list(LLVMStackEntryNode** head, type_register re
 type_register pop_stack_entry_linked_list(LLVMStackEntryNode** head);
 void free_llvm_stack_entry_node_list(LLVMStackEntryNode* head);
 
-#endif /* LLVM_STACK_ENTRY */
+#endif /* LLVM_STACK_ENTRY_H */

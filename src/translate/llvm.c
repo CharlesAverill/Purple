@@ -88,6 +88,10 @@ void llvm_preamble()
 
     fprintf(D_LLVM_FILE, "@print_int_fstring = private unnamed_addr constant [4 x i8] "
                          "c\"%%d\\0A\\00\", align 1" NEWLINE NEWLINE);
+    fprintf(D_LLVM_FILE, "@print_long_fstring = private unnamed_addr constant [5 x i8] "
+                         "c\"%%ld\\0A\\00\", align 1" NEWLINE NEWLINE);
+    fprintf(D_LLVM_FILE, "@print_char_fstring = private unnamed_addr constant [4 x i8] "
+                         "c\"%%c\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "@print_true_fstring = private unnamed_addr constant [6 x i8] "
                          "c\"true\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "@print_false_fstring = private unnamed_addr constant [7 x i8] "
@@ -152,8 +156,10 @@ void llvm_stack_allocation(LLVMStackEntryNode* stack_entries)
  */
 static type_register llvm_add(LLVMValue left_virtual_register, LLVMValue right_virtual_register)
 {
-    fprintf(D_LLVM_FILE, TAB "%%%llu = add nsw i32 %%%llu, %%%llu" NEWLINE,
-            get_next_local_virtual_register(), left_virtual_register.value.virtual_register_index,
+    fprintf(D_LLVM_FILE, TAB "%%%llu = add nsw %s %%%llu, %%%llu" NEWLINE,
+            get_next_local_virtual_register(),
+            numberTypeLLVMReprs[left_virtual_register.number_type],
+            left_virtual_register.value.virtual_register_index,
             right_virtual_register.value.virtual_register_index);
     return D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER - 1;
 }
@@ -168,8 +174,10 @@ static type_register llvm_add(LLVMValue left_virtual_register, LLVMValue right_v
 static type_register llvm_subtract(LLVMValue left_virtual_register,
                                    LLVMValue right_virtual_register)
 {
-    fprintf(D_LLVM_FILE, TAB "%%%llu = sub nsw i32 %%%llu, %%%llu" NEWLINE,
-            get_next_local_virtual_register(), left_virtual_register.value.virtual_register_index,
+    fprintf(D_LLVM_FILE, TAB "%%%llu = sub nsw %s %%%llu, %%%llu" NEWLINE,
+            get_next_local_virtual_register(),
+            numberTypeLLVMReprs[left_virtual_register.number_type],
+            left_virtual_register.value.virtual_register_index,
             right_virtual_register.value.virtual_register_index);
     return D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER - 1;
 }
@@ -184,8 +192,10 @@ static type_register llvm_subtract(LLVMValue left_virtual_register,
 static type_register llvm_multiply(LLVMValue left_virtual_register,
                                    LLVMValue right_virtual_register)
 {
-    fprintf(D_LLVM_FILE, TAB "%%%llu = mul nsw i32 %%%llu, %%%llu" NEWLINE,
-            get_next_local_virtual_register(), left_virtual_register.value.virtual_register_index,
+    fprintf(D_LLVM_FILE, TAB "%%%llu = mul nsw %s %%%llu, %%%llu" NEWLINE,
+            get_next_local_virtual_register(),
+            numberTypeLLVMReprs[left_virtual_register.number_type],
+            left_virtual_register.value.virtual_register_index,
             right_virtual_register.value.virtual_register_index);
     return D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER - 1;
 }
@@ -199,8 +209,10 @@ static type_register llvm_multiply(LLVMValue left_virtual_register,
  */
 static type_register llvm_divide(LLVMValue left_virtual_register, LLVMValue right_virtual_register)
 {
-    fprintf(D_LLVM_FILE, TAB "%%%llu = udiv i32 %%%llu, %%%llu" NEWLINE,
-            get_next_local_virtual_register(), left_virtual_register.value.virtual_register_index,
+    fprintf(D_LLVM_FILE, TAB "%%%llu = udiv %s %%%llu, %%%llu" NEWLINE,
+            get_next_local_virtual_register(),
+            numberTypeLLVMReprs[left_virtual_register.number_type],
+            left_virtual_register.value.virtual_register_index,
             right_virtual_register.value.virtual_register_index);
     return D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER - 1;
 }
@@ -217,6 +229,17 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
                                  LLVMValue right_virtual_register)
 {
     type_register out_register;
+
+    type_register* loaded_registers = llvm_ensure_registers_loaded(
+        2,
+        (type_register[]){left_virtual_register.value.virtual_register_index,
+                          right_virtual_register.value.virtual_register_index},
+        left_virtual_register.number_type);
+    if (loaded_registers != NULL) {
+        left_virtual_register.value.virtual_register_index = loaded_registers[0];
+        right_virtual_register.value.virtual_register_index = loaded_registers[1];
+        free(loaded_registers);
+    }
 
     switch (operation) {
     case T_PLUS:
@@ -254,7 +277,7 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
  */
 LLVMValue llvm_store_constant(Number value)
 {
-    purple_log(LOG_DEBUG, "Storing constant value");
+    purple_log(LOG_DEBUG, "Storing constant value %ld", value.value);
     type_register out_register_number = pop_stack_entry_linked_list(&freeVirtualRegistersHead);
     fprintf(D_LLVM_FILE, TAB "store %s ", numberTypeLLVMReprs[value.type]);
     fprintf(D_LLVM_FILE, numberTypeFormatStrings[value.type], value.value);
@@ -335,16 +358,17 @@ void llvm_declare_global_number_variable(char* symbol_name, NumberType number_ty
  */
 void llvm_declare_assign_global_number_variable(char* symbol_name, Number number)
 {
-    fprintf(D_LLVM_GLOBALS_FILE, "@%s = global %s %d" NEWLINE, symbol_name,
-            numberTypeLLVMReprs[number.type], number.value.int_value);
+    fprintf(D_LLVM_GLOBALS_FILE, "@%s = global %s %lld" NEWLINE, symbol_name,
+            numberTypeLLVMReprs[number.type], number.value);
 }
 
 /**
  * @brief Generate code to print an integer
  * 
  * @param print_vr Register holding value to print
+ * @param type Type of int (char, int, long) to print
  */
-void llvm_print_int(type_register print_vr)
+void llvm_print_int(type_register print_vr, NumberType type)
 {
     type_register* loaded_register =
         llvm_ensure_registers_loaded(1, (type_register[]){print_vr}, NT_INT32);
@@ -353,10 +377,29 @@ void llvm_print_int(type_register print_vr)
     }
 
     get_next_local_virtual_register();
-    fprintf(D_LLVM_FILE,
-            TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
-                "i8]* @print_int_fstring , i32 0, i32 0), i32 %%%llu)" NEWLINE,
-            print_vr);
+    switch (type) {
+    case NT_INT8:
+        fprintf(D_LLVM_FILE,
+                TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
+                    "i8]* @print_char_fstring , i32 0, i32 0), %s %%%llu)" NEWLINE,
+                numberTypeLLVMReprs[type], print_vr);
+        break;
+    case NT_INT32:
+        fprintf(D_LLVM_FILE,
+                TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
+                    "i8]* @print_int_fstring , i32 0, i32 0), %s %%%llu)" NEWLINE,
+                numberTypeLLVMReprs[type], print_vr);
+        break;
+    case NT_INT64:
+        fprintf(D_LLVM_FILE,
+                TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([5 x i8], [5 x "
+                    "i8]* @print_long_fstring , i32 0, i32 0), %s %%%llu)" NEWLINE,
+                numberTypeLLVMReprs[type], print_vr);
+        break;
+    default:
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unrecognized NumberType %s",
+                     numberTypeLLVMReprs[type]);
+    }
 }
 
 /**

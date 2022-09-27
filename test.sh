@@ -9,6 +9,10 @@ function strings_are_okay() {
     printf "${ANSI_RESET}"
     bin/purple $2 > /dev/null
     prog_output=$(./a.out)
+    if [ $? -ne 0 ] ; then
+        return 1
+    fi
+
     if [ "$1" == "$prog_output" ] ; then
         printf "${ANSI_GREEN}${ANSI_BOLD}OK${ANSI_RESET}\n"
         return 0
@@ -22,6 +26,7 @@ function strings_are_okay() {
         echo ">>>>>"
         echo -e $prog_output
         echo ">>>>>"
+        echo $2
         return 1
     fi
 }
@@ -39,8 +44,9 @@ false
 6
 true"
 
-print_test_output="14
-4"
+type_test_output="14
+c
+4294967294"
 
 variable_test_output="15
 35"
@@ -70,26 +76,46 @@ loop_test_output="0
 1
 0"
 
-echo -n "[Condition Test]: "
-strings_are_okay "$condition_test_output" "examples/condition_test.prp"
-if [ $? -ne 0 ] ; then
-    exit 1
-fi
+base_test_output="61455
+9
+9
+668
+668
+61455
+61455
+194"
 
-echo -n "[Arithmetic Test]: "
-strings_are_okay "$print_test_output" "examples/print_test.prp"
-if [ $? -ne 0 ] ; then
-    exit 1
-fi
-
+rm a.out
 echo -n "[Variable Test]: "
 strings_are_okay "$variable_test_output" "examples/variable_test.prp"
 if [ $? -ne 0 ] ; then
     exit 1
 fi
 
+rm a.out
+echo -n "[Condition Test]: "
+strings_are_okay "$condition_test_output" "examples/condition_test.prp"
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
+
+rm a.out
+echo -n "[Type Test]: "
+strings_are_okay "$type_test_output" "examples/type_test.prp"
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
+
+rm a.out
 echo -n "[Loop Test]: "
 strings_are_okay "$loop_test_output" "examples/loop_test.prp"
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
+
+rm a.out
+echo -n "[Base Test]: "
+strings_are_okay "$base_test_output" "examples/base_test.prp"
 if [ $? -ne 0 ] ; then
     exit 1
 fi
