@@ -11,7 +11,7 @@
   --bgfont-hover-text-decoration: none;
   --bgborder: #424245;
   --bgborder2: #fdf9f7;
-  --linkfont: #424245;
+  --linkfont: #62adca;
   --linkfont-hover: #727277;
   --linkfont-hover-text-decoration: var(--bgfont-hover-text-decoration);
   /* Main Header */
@@ -33,8 +33,8 @@
   --code-comment: #727277;
   --code-keyword: #62ca7f;
   --code-preprocessor: #121213;
-  --code-keywordtype: #121213;
-  --code-keywordflow: #af9dde;
+  --code-keywordtype: var(--bg1color);
+  --code-keywordflow: var(--linkfont);
   --code-text: #38383b;
   --code-code: #7f62ca;
   --code-line: #727277;
@@ -175,9 +175,8 @@ div.contents ul {
 /* Search Bar */
 
 #MSearchBox {
-  border-radius: 4px;
-  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
-  border: 1px solid #af9dde;
+  border-radius: 25px;
+  box-shadow: 3px 3px;
 }
 
 #MSearchBox > span {
@@ -186,7 +185,7 @@ div.contents ul {
 
 #main-menu > li:last-child {
   float: right;
-  padding-top: 20px;
+  padding-top: 0.5em;
 }
 
 /* Reset search hover color*/
@@ -344,8 +343,8 @@ li.navelem a {
 .memtitle a:visited {
   border: none;
   background-image: none;
-  color: var(--mem-title-font);
-  background-color: var(--mem-title-bg);
+  color: var(--bgfont);
+  background-color: var(--nav-tree-bg);
 }
 
 .memproto {
@@ -429,7 +428,7 @@ pre.fragment {
   background-color: var(--code-bg);
   border-radius: 25px;
   border: 1px solid #c7bae8;
-  box-shadow: -1px -1px 49px -33px rgba(0, 0, 0, 0.37);
+  box-shadow: 3px 3px;
 }
 
 div.line {
