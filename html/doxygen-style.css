@@ -93,8 +93,8 @@ div.contents ul {
 
 #titlearea {
   border-bottom: none;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding-bottom: 4px;
+  padding-top: 4px;
 }
 
 #titlearea,
@@ -102,6 +102,20 @@ div.contents ul {
   color: var(--bg1font);
   background-color: var(--bg1color);
 }
+
+#projectlogo {
+  padding-left: 4%;
+}
+
+/*
+#projectlogo {
+  width: 20%;
+}
+
+#projectlogo img {
+  width: 100%;
+}
+*/
 
 #projectname {
   padding: 0px 40px !important;
