@@ -76,6 +76,15 @@ loop_test_output="0
 1
 0"
 
+base_test_output="61455
+9
+9
+668
+668
+61455
+61455
+194"
+
 rm a.out
 echo -n "[Variable Test]: "
 strings_are_okay "$variable_test_output" "examples/variable_test.prp"
@@ -100,6 +109,13 @@ fi
 rm a.out
 echo -n "[Loop Test]: "
 strings_are_okay "$loop_test_output" "examples/loop_test.prp"
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
+
+rm a.out
+echo -n "[Base Test]: "
+strings_are_okay "$base_test_output" "examples/base_test.prp"
 if [ $? -ne 0 ] ; then
     exit 1
 fi

@@ -108,6 +108,27 @@ static int char_to_int(char c, int base)
     return index;
 }
 
+static Number parse_number_literal(char* literal, int length, int base)
+{
+    Number out = NUMBER_INT(0);
+    int current_digit;
+
+    for (int i = 0; i < length; i++) {
+        current_digit = char_to_int(literal[i], base);
+        // Check for overflow
+        if (out.value * 10 + current_digit < out.value) {
+            syntax_error(D_LLVM_FN, D_LINE_NUMBER, "Number literal too big");
+        }
+        out.value = out.value * base + current_digit;
+        // Check for long
+        if (out.value >= 2147483648 || out.value < -2147483648) {
+            out.type = NT_INT64;
+        }
+    }
+
+    return out;
+}
+
 /**
  * @brief Scan and return an integer literal from the input stream
  * 
@@ -119,8 +140,25 @@ static Number scan_number_literal(char c)
     char number_buffer[MAX_NUMBER_LITERAL_DIGITS + 1];
     int buffer_index = 0;
     Number out = NUMBER_INT(0);
-    int current_digit;
     int base = 10;
+
+    if (c == NUMBER_LITERAL_BASE_PREFIX) {
+        c = next();
+        switch (c) {
+        case NUMBER_LITERAL_BIN_PREFIX:
+            base = 2;
+            break;
+        case NUMBER_LITERAL_OCT_PREFIX:
+            base = 8;
+            break;
+        case NUMBER_LITERAL_HEX_PREFIX:
+            base = 16;
+            break;
+        }
+        if (base != 10) {
+            c = next();
+        }
+    }
 
     // Scan the number into a string
     while (buffer_index < MAX_NUMBER_LITERAL_DIGITS) {
@@ -139,6 +177,7 @@ static Number scan_number_literal(char c)
             if (base == 0) {
                 syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Number literals cannot be base 0");
             }
+            c = next();
             break;
         }
 
@@ -155,19 +194,7 @@ static Number scan_number_literal(char c)
         c = next();
     }
 
-    // Parse the string
-    for (int i = 0; i < buffer_index; i++) {
-        current_digit = char_to_int(number_buffer[i], base);
-        // Check for overflow
-        if (out.value * 10 + current_digit < out.value) {
-            syntax_error(D_LLVM_FN, D_LINE_NUMBER, "Number literal too big");
-        }
-        out.value = out.value * base + current_digit;
-        // Check for long
-        if (out.value >= 2147483648 || out.value < -2147483648) {
-            out.type = NT_INT64;
-        }
-    }
+    out = parse_number_literal(number_buffer, buffer_index, base);
 
     // Check for a long literal
     if (out.type == NT_INT64 && c != NUMBER_LITERAL_LONG_SUFFIX) {
@@ -181,32 +208,6 @@ static Number scan_number_literal(char c)
     }
 
     return out;
-
-    /*
-    int k = 0; // Current digit
-    Number out;
-    out.type = NT_INT32;
-    out.value = 0;
-
-    while ((k = index_of("0123456789", c)) >= 0) {
-        if (out.value * 10 + k < out.value) {
-            syntax_error(D_LLVM_FN, D_LINE_NUMBER, "Number literal too big");
-        }
-        out.value = out.value * 10 + k;
-        c = next();
-    }
-
-    // Check for a long literal
-    if (!strcmp(&c, NUMBER_LITERAL_LONG_SUFFIX)) {
-        purple_log(LOG_DEBUG, "Parsing long literal");
-        out.type = NT_INT64;
-    } else {
-        // Loop has terminated at a non-integer value, so put it back
-        put_back_into_stream(c);
-    }
-
-    return out;
-    */
 }
 
 /**
@@ -253,6 +254,11 @@ static int scan_identifier(char c, char* buf, int max_len)
 
         buf[i++] = c;
         c = next();
+    }
+
+    if (c == NUMBER_LITERAL_BASE_SEPARATOR) {
+        buf[i] = '\0';
+        return -1;
     }
 
     // Loop exits on prohibited identifier character, so put it back
@@ -333,7 +339,7 @@ static TokenType parse_keyword(char* keyword_string)
  * @param c Character to check
  * @return bool True if the current character is the start of an integer literal
  */
-static bool scan_check_integer_literal(char c) { return isdigit(c); }
+static bool scan_check_integer_literal(char c) { return isalnum(c); }
 
 /**
  * @brief Check if the current character is the start of a character literal
@@ -443,8 +449,40 @@ bool scan(Token* t)
     }
 
     bool no_switch_match_output = true;
-    // Check if c is an integer
-    if (scan_check_integer_literal(c)) {
+    if (scan_check_keyword_identifier(c)) {
+        // Scan identifier string into buffer
+        if (scan_identifier(c, D_IDENTIFIER_BUFFER, D_MAX_IDENTIFIER_LENGTH) == -1) {
+            purple_log(LOG_DEBUG, "Found base delimiter, reading in number literal");
+
+            c = next();
+            Number parsed = parse_number_literal(D_IDENTIFIER_BUFFER, strlen(D_IDENTIFIER_BUFFER),
+                                                 char_to_int(c, -1));
+            c = next();
+
+            // Check for a long literal
+            if (parsed.type == NT_INT64 && c != NUMBER_LITERAL_LONG_SUFFIX) {
+                syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Long literals must be suffixed with '%c'",
+                             NUMBER_LITERAL_LONG_SUFFIX);
+            } else if (c == NUMBER_LITERAL_LONG_SUFFIX) {
+                parsed.type = NT_INT64;
+            } else {
+                // Loop has terminated at a non-integer value, so put it back
+                put_back_into_stream(c);
+            }
+
+            t->value.number_value = parsed;
+            t->type = t->value.number_value.type == NT_INT64 ? T_LONG_LITERAL : T_INTEGER_LITERAL;
+        } else {
+            // Check if identifier is a keyword
+            if (temp_type = parse_keyword(D_IDENTIFIER_BUFFER)) {
+                t->type = temp_type;
+            } else {
+                // It's an identifier
+                t->type = T_IDENTIFIER;
+                strcpy(t->value.symbol_name, D_IDENTIFIER_BUFFER);
+            }
+        }
+    } else if (scan_check_integer_literal(c)) {
         t->value.number_value = scan_number_literal(c);
         t->type = t->value.number_value.type == NT_INT64 ? T_LONG_LITERAL : T_INTEGER_LITERAL;
     } else if (scan_check_char_literal(c)) {
@@ -453,18 +491,6 @@ bool scan(Token* t)
         if (!scan_check_char_literal(next())) {
             syntax_error(D_LLVM_FN, D_LINE_NUMBER,
                          "Multichar literals are not permitted, expected \'");
-        }
-    } else if (scan_check_keyword_identifier(c)) {
-        // Scan identifier string into buffer
-        scan_identifier(c, D_IDENTIFIER_BUFFER, D_MAX_IDENTIFIER_LENGTH);
-
-        // Check if identifier is a keyword
-        if (temp_type = parse_keyword(D_IDENTIFIER_BUFFER)) {
-            t->type = temp_type;
-        } else {
-            // It's an identifier
-            t->type = T_IDENTIFIER;
-            strcpy(t->value.symbol_name, D_IDENTIFIER_BUFFER);
         }
     } else {
         no_switch_match_output = false;

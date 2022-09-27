@@ -96,13 +96,14 @@ typedef enum {
 #define TTS_LVALUE_IDENTIFIER "lvalue identifier"
 #define TTS_AST_GLUE "ast glue"
 
-#define NUMBER_LITERAL_BIN_PREFIX "0b"
-#define NUMBER_LITERAL_OCT_PREFIX "0o"
-#define NUMBER_LITERAL_HEX_PREFIX "0x"
+#define NUMBER_LITERAL_BASE_PREFIX '0'
+#define NUMBER_LITERAL_BIN_PREFIX 'b'
+#define NUMBER_LITERAL_OCT_PREFIX 'o'
+#define NUMBER_LITERAL_HEX_PREFIX 'x'
 #define NUMBER_LITERAL_LONG_SUFFIX 'L'
 
 #define NUMBER_LITERAL_SPACING_SEPARATOR '\''
-#define NUMBER_LITERAL_BASE_SEPARATOR '_'
+#define NUMBER_LITERAL_BASE_SEPARATOR '#'
 
 /**
  * @brief Token string equivalents
