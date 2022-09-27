@@ -159,9 +159,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a3d975b70508857ae99ff02c02f2712d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a3d975b70508857ae99ff02c02f2712d1">llvm_declare_assign_global_number_variable</a> (char *symbol_name, <a class="el" href="structNumber.html">Number</a> number)</td></tr>
 <tr class="memdesc:a3d975b70508857ae99ff02c02f2712d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare a global variable with an assigned number value.  <a href="llvm_8c.html#a3d975b70508857ae99ff02c02f2712d1">More...</a><br /></td></tr>
 <tr class="separator:a3d975b70508857ae99ff02c02f2712d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6db2b93d744734ee439ed511ab5b83a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a6db2b93d744734ee439ed511ab5b83a6">llvm_print_int</a> (<a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> print_vr)</td></tr>
-<tr class="memdesc:a6db2b93d744734ee439ed511ab5b83a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print an integer.  <a href="llvm_8c.html#a6db2b93d744734ee439ed511ab5b83a6">More...</a><br /></td></tr>
-<tr class="separator:a6db2b93d744734ee439ed511ab5b83a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a933c8ba87670c20b0ab03d5b1174ff4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a933c8ba87670c20b0ab03d5b1174ff4c">llvm_print_int</a> (<a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> print_vr, <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> type)</td></tr>
+<tr class="memdesc:a933c8ba87670c20b0ab03d5b1174ff4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print an integer.  <a href="llvm_8c.html#a933c8ba87670c20b0ab03d5b1174ff4c">More...</a><br /></td></tr>
+<tr class="separator:a933c8ba87670c20b0ab03d5b1174ff4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a549185ec39141a09db11a45ec6c3363d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a549185ec39141a09db11a45ec6c3363d">llvm_print_bool</a> (<a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> print_vr)</td></tr>
 <tr class="memdesc:a549185ec39141a09db11a45ec6c3363d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print a boolean value.  <a href="llvm_8c.html#a549185ec39141a09db11a45ec6c3363d">More...</a><br /></td></tr>
 <tr class="separator:a549185ec39141a09db11a45ec6c3363d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -806,8 +806,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6db2b93d744734ee439ed511ab5b83a6" name="a6db2b93d744734ee439ed511ab5b83a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6db2b93d744734ee439ed511ab5b83a6">&#9670;&nbsp;</a></span>llvm_print_int()</h2>
+<a id="a933c8ba87670c20b0ab03d5b1174ff4c" name="a933c8ba87670c20b0ab03d5b1174ff4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a933c8ba87670c20b0ab03d5b1174ff4c">&#9670;&nbsp;</a></span>llvm_print_int()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -816,8 +816,18 @@ Functions</h2></td></tr>
           <td class="memname">void llvm_print_int </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
-          <td class="paramname"><em>print_vr</em></td><td>)</td>
+          <td class="paramname"><em>print_vr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -826,6 +836,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">print_vr</td><td>Register holding value to print </td></tr>
+    <tr><td class="paramname">type</td><td>Type of int (char, int, long) to print </td></tr>
   </table>
   </dd>
 </dl>

@@ -82,7 +82,7 @@ void \mbox{\hyperlink{llvm_8h_aeab3cd1ced090b1a1895f4db2ae4a387}{llvm\+\_\+decla
 \begin{DoxyCompactList}\small\item\em Declare a global variable. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8h_a3d975b70508857ae99ff02c02f2712d1}{llvm\+\_\+declare\+\_\+assign\+\_\+global\+\_\+number\+\_\+variable}} (char $\ast$symbol\+\_\+name, \mbox{\hyperlink{structNumber}{Number}} number)
 \begin{DoxyCompactList}\small\item\em Declare a global variable with an assigned number value. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{llvm_8h_a6db2b93d744734ee439ed511ab5b83a6}{llvm\+\_\+print\+\_\+int}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} print\+\_\+vr)
+void \mbox{\hyperlink{llvm_8h_a933c8ba87670c20b0ab03d5b1174ff4c}{llvm\+\_\+print\+\_\+int}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} print\+\_\+vr, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Generate code to print an integer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8h_a549185ec39141a09db11a45ec6c3363d}{llvm\+\_\+print\+\_\+bool}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} print\+\_\+vr)
 \begin{DoxyCompactList}\small\item\em Generate code to print a boolean value. \end{DoxyCompactList}\item 
@@ -99,7 +99,7 @@ void \mbox{\hyperlink{llvm_8h_a492b6193f6cfe59c435bf09ee99f0a54}{llvm\+\_\+condi
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-static const char $\ast$ \mbox{\hyperlink{llvm_8h_ac126174f25ba15725681e50ce7a7d558}{number\+Type\+LLVMReprs}} \mbox{[}$\,$\mbox{]}
+static const char $\ast$ \mbox{\hyperlink{llvm_8h_ac126174f25ba15725681e50ce7a7d558}{number\+Type\+LLVMReprs}} \mbox{[}$\,$\mbox{]} = \{\char`\"{}i1\char`\"{}, \char`\"{}i8\char`\"{}, \char`\"{}i32\char`\"{}, \char`\"{}i64\char`\"{}\}
 \begin{DoxyCompactList}\small\item\em LLVM-\/\+IR representations of data types. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{llvm_8h_a34ca54a9e8ecfdea8744a76677de7325}{loaded\+Registers\+Head}}
 \begin{DoxyCompactList}\small\item\em Head node of linked list containing register indices that have loaded values. \end{DoxyCompactList}\item 
@@ -462,11 +462,11 @@ Generate code to print a boolean value.
 {\em print\+\_\+vr} & Register holding value to print \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{llvm_8h_a6db2b93d744734ee439ed511ab5b83a6}\label{llvm_8h_a6db2b93d744734ee439ed511ab5b83a6}} 
+\mbox{\Hypertarget{llvm_8h_a933c8ba87670c20b0ab03d5b1174ff4c}\label{llvm_8h_a933c8ba87670c20b0ab03d5b1174ff4c}} 
 \index{llvm.h@{llvm.h}!llvm\_print\_int@{llvm\_print\_int}}
 \index{llvm\_print\_int@{llvm\_print\_int}!llvm.h@{llvm.h}}
 \doxysubsubsection{\texorpdfstring{llvm\_print\_int()}{llvm\_print\_int()}}
-{\footnotesize\ttfamily void llvm\+\_\+print\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{print\+\_\+vr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void llvm\+\_\+print\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{print\+\_\+vr,  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{type }\end{DoxyParamCaption})}
 
 
 
@@ -475,6 +475,8 @@ Generate code to print an integer.
 
 \begin{DoxyParams}{Parameters}
 {\em print\+\_\+vr} & Register holding value to print \\
+\hline
+{\em type} & Type of int (char, int, long) to print \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{llvm_8h_a9c7b432e690cb422483d20eaacdcfaf0}\label{llvm_8h_a9c7b432e690cb422483d20eaacdcfaf0}} 
@@ -554,16 +556,8 @@ Head node of linked list containing register indices that have loaded values.
 \index{llvm.h@{llvm.h}!numberTypeLLVMReprs@{numberTypeLLVMReprs}}
 \index{numberTypeLLVMReprs@{numberTypeLLVMReprs}!llvm.h@{llvm.h}}
 \doxysubsubsection{\texorpdfstring{numberTypeLLVMReprs}{numberTypeLLVMReprs}}
-{\footnotesize\ttfamily const char$\ast$ number\+Type\+LLVMReprs\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily const char$\ast$ number\+Type\+LLVMReprs\mbox{[}$\,$\mbox{]} = \{\char`\"{}i1\char`\"{}, \char`\"{}i8\char`\"{}, \char`\"{}i32\char`\"{}, \char`\"{}i64\char`\"{}\}\hspace{0.3cm}{\ttfamily [static]}}
 
-{\bfseries Initial value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{= \{}
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}i1"{}},}
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}i32"{}},}
-\DoxyCodeLine{\}}
-
-\end{DoxyCode}
 
 
 LLVM-\/\+IR representations of data types. 

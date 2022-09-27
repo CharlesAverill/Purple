@@ -1,12 +1,16 @@
 var searchData=
 [
-  ['project_5fname_0',['PROJECT_NAME',['../info_8h.html#ae73053051efbb45c3a39751f5ce9fb36',1,'info.h']]],
-  ['project_5fname_5fand_5fvers_1',['PROJECT_NAME_AND_VERS',['../info_8h.html#ad41a6ae9272f069ba953cfc269adbf19',1,'info.h']]],
-  ['project_5fver_2',['PROJECT_VER',['../info_8h.html#ab6dbc0b8f5e2da90bed8c9efc19d042f',1,'info.h']]],
-  ['project_5fver_5fmajor_3',['PROJECT_VER_MAJOR',['../info_8h.html#a8499ba1e5631acd6376d329b93d8d28b',1,'info.h']]],
-  ['project_5fver_5fminor_4',['PROJECT_VER_MINOR',['../info_8h.html#a5b1736c20e7e4b4780bbcda7ccb87706',1,'info.h']]],
-  ['project_5fver_5fpatch_5',['PROJECT_VER_PATCH',['../info_8h.html#afee21e9699ad9d07592c9332ac3ffe7c',1,'info.h']]],
-  ['purple_5fglobals_5fplaceholder_6',['PURPLE_GLOBALS_PLACEHOLDER',['../clang_8h.html#a0ee761c397a357c8d5655377bb261bc8',1,'clang.h']]],
-  ['purple_5fglobals_5fplaceholder_5flen_7',['PURPLE_GLOBALS_PLACEHOLDER_LEN',['../clang_8h.html#a493219f6c0f98a275c1537ec9fc28624',1,'clang.h']]],
-  ['purple_5flabel_5fprefix_8',['PURPLE_LABEL_PREFIX',['../llvm_8h.html#a92fceae56276ae64648cb4da994c37e1',1,'llvm.h']]]
+  ['newline_0',['NEWLINE',['../formatting_8h.html#a806511f4930171733227c99101dc0606',1,'formatting.h']]],
+  ['number_5fbool_1',['NUMBER_BOOL',['../number_8h.html#a4c1630cccd769649f78764670ce098b8',1,'number.h']]],
+  ['number_5fchar_2',['NUMBER_CHAR',['../number_8h.html#ad0f1ff4004749be70821eee85e67704e',1,'number.h']]],
+  ['number_5fint_3',['NUMBER_INT',['../number_8h.html#ac202445c9691d488083c3493855c97ff',1,'number.h']]],
+  ['number_5fliteral_5fbase_5fprefix_4',['NUMBER_LITERAL_BASE_PREFIX',['../scan_8h.html#a46f1aea9b4d32f930ba89616ac14aed6',1,'scan.h']]],
+  ['number_5fliteral_5fbase_5fseparator_5',['NUMBER_LITERAL_BASE_SEPARATOR',['../scan_8h.html#a4de92eb0d9c26c2407c7b97dfebcc702',1,'scan.h']]],
+  ['number_5fliteral_5fbin_5fprefix_6',['NUMBER_LITERAL_BIN_PREFIX',['../scan_8h.html#ae1c50a3b0df6114ef59f9b413c94f2e1',1,'scan.h']]],
+  ['number_5fliteral_5fhex_5fprefix_7',['NUMBER_LITERAL_HEX_PREFIX',['../scan_8h.html#a7e0a33708ab48c5aafd9730d68c26186',1,'scan.h']]],
+  ['number_5fliteral_5flong_5fsuffix_8',['NUMBER_LITERAL_LONG_SUFFIX',['../scan_8h.html#a7828f0d8eeaa3433d115a889f1a94563',1,'scan.h']]],
+  ['number_5fliteral_5foct_5fprefix_9',['NUMBER_LITERAL_OCT_PREFIX',['../scan_8h.html#ae2f9ef2bf19732862e498b021385c5dd',1,'scan.h']]],
+  ['number_5fliteral_5fspacing_5fseparator_10',['NUMBER_LITERAL_SPACING_SEPARATOR',['../scan_8h.html#ad89e0e94324d5dd68c10bd88fa2afd9b',1,'scan.h']]],
+  ['number_5fliteral_5ftype_11',['number_literal_type',['../scan_8h.html#a5e4b5ad5ed8273fc3c9ffd847ee2018b',1,'scan.h']]],
+  ['number_5flong_12',['NUMBER_LONG',['../number_8h.html#a9d46686bcc8f1545affc9a6be9154f10',1,'number.h']]]
 ];

@@ -80,7 +80,7 @@ Collaboration diagram for ASTNode:</div>
 <div class="dyncontent">
 <div class="center"><img src="structASTNode__coll__graph.png" border="0" usemap="#aASTNode_coll__map" alt="Collaboration graph"/></div>
 <map name="aASTNode_coll__map" id="aASTNode_coll__map">
-<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,5,119,141"/>
+<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,5,120,141"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -98,8 +98,8 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a58fd804bfb87d7a797a8d133147e15ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#a58fd804bfb87d7a797a8d133147e15ca">number_type</a></td></tr>
 <tr class="separator:a58fd804bfb87d7a797a8d133147e15ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6eb3eb28a0e661931fa444b130f86404"><td class="memItemLeft" >union {</td></tr>
-<tr class="memitem:ac21720ac48ab6998b464bf9ead12eb46"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structASTNode.html#af8535af330bd921499868489fd553eb9">int_value</a></td></tr>
-<tr class="separator:ac21720ac48ab6998b464bf9ead12eb46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e628e0b051fec57fe9863ada76c3b88"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="scan_8h.html#a5e4b5ad5ed8273fc3c9ffd847ee2018b">number_literal_type</a>&#160;&#160;&#160;<a class="el" href="structASTNode.html#ad4fae0832953dd1d0598a3c9ec85429f">number_value</a></td></tr>
+<tr class="separator:a5e628e0b051fec57fe9863ada76c3b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49226fe06ed0b3ec80400bc56aa9d5ec"><td class="memItemLeft" >&#160;&#160;&#160;char&#160;&#160;&#160;<a class="el" href="structASTNode.html#ab07357f4f4f7d75f05a60ab6799c3008">symbol_name</a> [<a class="el" href="symbol__table_8h.html#afdefd4da733213509f3ca91a81945044">D_MAX_IDENTIFIER_LENGTH</a>]</td></tr>
 <tr class="separator:a49226fe06ed0b3ec80400bc56aa9d5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6eb3eb28a0e661931fa444b130f86404"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#a6eb3eb28a0e661931fa444b130f86404">value</a></td></tr>
@@ -108,21 +108,6 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Component of the abstract syntax tree built during parsing. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="af8535af330bd921499868489fd553eb9" name="af8535af330bd921499868489fd553eb9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8535af330bd921499868489fd553eb9">&#9670;&nbsp;</a></span>int_value</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int ASTNode::int_value</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Value of integer token </p>
-
-</div>
-</div>
 <a id="a7e8efcf6431aca1ee186e775443abfcc" name="a7e8efcf6431aca1ee186e775443abfcc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e8efcf6431aca1ee186e775443abfcc">&#9670;&nbsp;</a></span>left</h2>
 
@@ -165,6 +150,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >Type of number token </p>
+
+</div>
+</div>
+<a id="ad4fae0832953dd1d0598a3c9ec85429f" name="ad4fae0832953dd1d0598a3c9ec85429f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4fae0832953dd1d0598a3c9ec85429f">&#9670;&nbsp;</a></span>number_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="scan_8h.html#a5e4b5ad5ed8273fc3c9ffd847ee2018b">number_literal_type</a> ASTNode::number_value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Value of integer token </p>
 
 </div>
 </div>

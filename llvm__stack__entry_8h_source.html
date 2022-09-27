@@ -72,8 +72,8 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="llvm__stack__entry_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef LLVM_STACK_ENTRY</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define LLVM_STACK_ENTRY</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef LLVM_STACK_ENTRY_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define LLVM_STACK_ENTRY_H</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="number_8h.html">types/number.h</a>&quot;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
@@ -93,7 +93,7 @@ $(function() {
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><a class="code hl_define" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> <a class="code hl_function" href="llvm__stack__entry_8h.html#aa9f09b232b9d0e2e3b2e0de2f012aa4f">pop_stack_entry_linked_list</a>(<a class="code hl_struct" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a>** head);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">void</span> <a class="code hl_function" href="llvm__stack__entry_8h.html#a24f6f1959edad4155dc0418b5f041948">free_llvm_stack_entry_node_list</a>(<a class="code hl_struct" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a>* head);</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif </span><span class="comment">/* LLVM_STACK_ENTRY */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif </span><span class="comment">/* LLVM_STACK_ENTRY_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="allvm__stack__entry_8h_html_a03da1d5061280400be8365177df15c4e"><div class="ttname"><a href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a></div><div class="ttdeci">#define type_register</div><div class="ttdoc">A too-big data type for register indices in case of stress testing.</div><div class="ttdef"><b>Definition:</b> llvm_stack_entry.h:16</div></div>
 <div class="ttc" id="allvm__stack__entry_8h_html_a24f6f1959edad4155dc0418b5f041948"><div class="ttname"><a href="llvm__stack__entry_8h.html#a24f6f1959edad4155dc0418b5f041948">free_llvm_stack_entry_node_list</a></div><div class="ttdeci">void free_llvm_stack_entry_node_list(LLVMStackEntryNode *head)</div><div class="ttdoc">Free memory used by LLVMStackEntryNode linked lists.</div><div class="ttdef"><b>Definition:</b> llvm_stack_entry.c:67</div></div>
 <div class="ttc" id="allvm__stack__entry_8h_html_a687e029c1aee69283c86cca194374eb1"><div class="ttname"><a href="llvm__stack__entry_8h.html#a687e029c1aee69283c86cca194374eb1">prepend_stack_entry_linked_list</a></div><div class="ttdeci">void prepend_stack_entry_linked_list(LLVMStackEntryNode **head, type_register register_index)</div><div class="ttdoc">Add a stack entry to a stack entry linked list.</div><div class="ttdef"><b>Definition:</b> llvm_stack_entry.c:26</div></div>

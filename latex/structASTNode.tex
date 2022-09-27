@@ -16,7 +16,7 @@ Collaboration diagram for ASTNode\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=208pt]{structASTNode__coll__graph}
+\includegraphics[width=209pt]{structASTNode__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Attributes}
@@ -35,7 +35,7 @@ struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{structA
 \begin{tabbing}
 xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
 union \{\\
-\>int \mbox{\hyperlink{structASTNode_af8535af330bd921499868489fd553eb9}{int\_value}}\\
+\>\mbox{\hyperlink{scan_8h_a5e4b5ad5ed8273fc3c9ffd847ee2018b}{number\_literal\_type}} \mbox{\hyperlink{structASTNode_ad4fae0832953dd1d0598a3c9ec85429f}{number\_value}}\\
 \>char \mbox{\hyperlink{structASTNode_ab07357f4f4f7d75f05a60ab6799c3008}{symbol\_name}} \mbox{[}\mbox{\hyperlink{symbol__table_8h_afdefd4da733213509f3ca91a81945044}{D\_MAX\_IDENTIFIER\_LENGTH}}\mbox{]}\\
 \} \mbox{\hyperlink{structASTNode_a6eb3eb28a0e661931fa444b130f86404}{value}}\\
 
@@ -46,13 +46,7 @@ union \{\\
 Component of the abstract syntax tree built during parsing. 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{structASTNode_af8535af330bd921499868489fd553eb9}\label{structASTNode_af8535af330bd921499868489fd553eb9}} 
-\index{ASTNode@{ASTNode}!int\_value@{int\_value}}
-\index{int\_value@{int\_value}!ASTNode@{ASTNode}}
-\doxysubsubsection{\texorpdfstring{int\_value}{int\_value}}
-{\footnotesize\ttfamily int ASTNode\+::int\+\_\+value}
-
-Value of integer token \mbox{\Hypertarget{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}\label{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}} 
+\mbox{\Hypertarget{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}\label{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}} 
 \index{ASTNode@{ASTNode}!left@{left}}
 \index{left@{left}!ASTNode@{ASTNode}}
 \doxysubsubsection{\texorpdfstring{left}{left}}
@@ -70,7 +64,13 @@ The middle child of the AST Node \mbox{\Hypertarget{structASTNode_a58fd804bfb87d
 \doxysubsubsection{\texorpdfstring{number\_type}{number\_type}}
 {\footnotesize\ttfamily \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} ASTNode\+::number\+\_\+type}
 
-Type of number token \mbox{\Hypertarget{structASTNode_ab3fac314ab87bbccda872cde9678b5b3}\label{structASTNode_ab3fac314ab87bbccda872cde9678b5b3}} 
+Type of number token \mbox{\Hypertarget{structASTNode_ad4fae0832953dd1d0598a3c9ec85429f}\label{structASTNode_ad4fae0832953dd1d0598a3c9ec85429f}} 
+\index{ASTNode@{ASTNode}!number\_value@{number\_value}}
+\index{number\_value@{number\_value}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{number\_value}{number\_value}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scan_8h_a5e4b5ad5ed8273fc3c9ffd847ee2018b}{number\+\_\+literal\+\_\+type}} ASTNode\+::number\+\_\+value}
+
+Value of integer token \mbox{\Hypertarget{structASTNode_ab3fac314ab87bbccda872cde9678b5b3}\label{structASTNode_ab3fac314ab87bbccda872cde9678b5b3}} 
 \index{ASTNode@{ASTNode}!right@{right}}
 \index{right@{right}!ASTNode@{ASTNode}}
 \doxysubsubsection{\texorpdfstring{right}{right}}

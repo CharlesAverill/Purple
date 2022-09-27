@@ -54,7 +54,7 @@ void \mbox{\hyperlink{llvm_8c_aeab3cd1ced090b1a1895f4db2ae4a387}{llvm\+\_\+decla
 \begin{DoxyCompactList}\small\item\em Declare a global variable. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a3d975b70508857ae99ff02c02f2712d1}{llvm\+\_\+declare\+\_\+assign\+\_\+global\+\_\+number\+\_\+variable}} (char $\ast$symbol\+\_\+name, \mbox{\hyperlink{structNumber}{Number}} number)
 \begin{DoxyCompactList}\small\item\em Declare a global variable with an assigned number value. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{llvm_8c_a6db2b93d744734ee439ed511ab5b83a6}{llvm\+\_\+print\+\_\+int}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} print\+\_\+vr)
+void \mbox{\hyperlink{llvm_8c_a933c8ba87670c20b0ab03d5b1174ff4c}{llvm\+\_\+print\+\_\+int}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} print\+\_\+vr, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Generate code to print an integer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a549185ec39141a09db11a45ec6c3363d}{llvm\+\_\+print\+\_\+bool}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} print\+\_\+vr)
 \begin{DoxyCompactList}\small\item\em Generate code to print a boolean value. \end{DoxyCompactList}\item 
@@ -380,11 +380,11 @@ Generate code to print a boolean value.
 {\em print\+\_\+vr} & Register holding value to print \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{llvm_8c_a6db2b93d744734ee439ed511ab5b83a6}\label{llvm_8c_a6db2b93d744734ee439ed511ab5b83a6}} 
+\mbox{\Hypertarget{llvm_8c_a933c8ba87670c20b0ab03d5b1174ff4c}\label{llvm_8c_a933c8ba87670c20b0ab03d5b1174ff4c}} 
 \index{llvm.c@{llvm.c}!llvm\_print\_int@{llvm\_print\_int}}
 \index{llvm\_print\_int@{llvm\_print\_int}!llvm.c@{llvm.c}}
 \doxysubsubsection{\texorpdfstring{llvm\_print\_int()}{llvm\_print\_int()}}
-{\footnotesize\ttfamily void llvm\+\_\+print\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{print\+\_\+vr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void llvm\+\_\+print\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{print\+\_\+vr,  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{type }\end{DoxyParamCaption})}
 
 
 
@@ -393,6 +393,8 @@ Generate code to print an integer.
 
 \begin{DoxyParams}{Parameters}
 {\em print\+\_\+vr} & Register holding value to print \\
+\hline
+{\em type} & Type of int (char, int, long) to print \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{llvm_8c_a9c7b432e690cb422483d20eaacdcfaf0}\label{llvm_8c_a9c7b432e690cb422483d20eaacdcfaf0}} 

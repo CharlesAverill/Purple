@@ -7,6 +7,5 @@ var searchData=
   ['info_2eh_4',['info.h',['../info_8h.html',1,'']]],
   ['init_5',['init',['../purple_8c.html#a04900abd2e06f2bb8f7aa0edd9e2e8e2',1,'purple.c']]],
   ['initialize_5fstack_5fentry_5flinked_5flist_6',['initialize_stack_entry_linked_list',['../llvm__stack__entry_8h.html#a8fa2f2bf229b53383166e64c9f631cd6',1,'initialize_stack_entry_linked_list(LLVMStackEntryNode **head):&#160;llvm_stack_entry.c'],['../llvm__stack__entry_8c.html#a8fa2f2bf229b53383166e64c9f631cd6',1,'initialize_stack_entry_linked_list(LLVMStackEntryNode **head):&#160;llvm_stack_entry.c']]],
-  ['int_5fvalue_7',['int_value',['../structToken.html#a0bd1ec80054e52bb87e5f5c4fd2f6931',1,'Token::int_value()'],['../structASTNode.html#af8535af330bd921499868489fd553eb9',1,'ASTNode::int_value()'],['../structNumber.html#ac38ba38977fa4ff09c1b23ecb358a125',1,'Number::int_value()']]],
-  ['is_5fvalid_5fidentifier_5fchar_8',['is_valid_identifier_char',['../scan_8c.html#a266d26db82d5dbb4136042baf955f5ad',1,'scan.c']]]
+  ['is_5fvalid_5fidentifier_5fchar_7',['is_valid_identifier_char',['../scan_8c.html#a266d26db82d5dbb4136042baf955f5ad',1,'scan.c']]]
 ];
