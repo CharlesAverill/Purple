@@ -184,8 +184,8 @@ div.contents ul {
 }
 
 #main-menu > li:last-child {
-  float: right;
-  padding-top: 0.5em;
+  translate: translateY(25%);
+  -ms-transform: translateY(-50%);
 }
 
 /* Reset search hover color*/
