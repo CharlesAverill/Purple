@@ -1,0 +1,21 @@
+name: Run Language Tests
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Install CMake and build-essential
+        run: apt install cmake build-essential clang-format
+        
+      - name: Compile Purple Executable
+        run: ./compile.sh
+  
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Run Tests
+        run: ./test.sh
