@@ -198,7 +198,7 @@ div.contents ul {
 }
 
 #main-menu > li:last-child {
-  translate: translateY(25%);
+  transform: translateY(25%);
   -ms-transform: translateY(-50%);
 }
 
