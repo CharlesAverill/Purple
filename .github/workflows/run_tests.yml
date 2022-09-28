@@ -7,6 +7,20 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Copy compile.sh
+        uses: actions/upload-artifact@v3
+        with:
+          name: compile.sh
+          path: compile.sh
+          retention-days: 1
+      
+      - name: Copy test.sh
+        uses: actions/upload-artifact@v3
+        with:
+          name: test.sh
+          path: test.sh
+          retention-days: 1
+      
       - name: Install CMake and build-essential
         run: sudo apt install cmake build-essential clang-format
         
