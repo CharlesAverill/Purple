@@ -8,7 +8,7 @@ jobs:
     
     steps:
       - name: Install CMake and build-essential
-        run: apt install cmake build-essential clang-format
+        run: sudo apt install cmake build-essential clang-format
         
       - name: Compile Purple Executable
         run: ./compile.sh
