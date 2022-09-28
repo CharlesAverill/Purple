@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - uses: actions/checkout@v2
+      
       - name: Copy compile.sh
         uses: actions/upload-artifact@v3
         with:
