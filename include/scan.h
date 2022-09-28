@@ -15,8 +15,7 @@
 /**
  * @brief Types of scannable tokens
  */
-typedef enum
-{
+typedef enum {
     T_EOF,
     // Arithmetic Operators
     T_PLUS,
@@ -31,6 +30,13 @@ typedef enum
     T_GT,
     T_LE,
     T_GE,
+    // Logical Operators
+    T_AND,
+    T_OR,
+    T_XOR,
+    T_NAND,
+    T_NOR,
+    T_XNOR,
     // Literals
     T_INTEGER_LITERAL,
     T_CHAR_LITERAL,
@@ -73,6 +79,12 @@ typedef enum
 #define TTS_GT ">"
 #define TTS_LE "<="
 #define TTS_GE ">="
+#define TTS_AND "and"
+#define TTS_OR "or"
+#define TTS_XOR "xor"
+#define TTS_NAND "nand"
+#define TTS_NOR "nor"
+#define TTS_XNOR "xnor"
 #define TTS_INTEGER_LITERAL "integer literal"
 #define TTS_CHAR_LITERAL "character literal"
 #define TTS_LONG_LITERAL "long literal"
@@ -121,6 +133,12 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_GT,
                                TTS_LE,
                                TTS_GE,
+                               TTS_AND,
+                               TTS_OR,
+                               TTS_XOR,
+                               TTS_NAND,
+                               TTS_NOR,
+                               TTS_XNOR,
                                TTS_INTEGER_LITERAL,
                                TTS_CHAR_LITERAL,
                                TTS_LONG_LITERAL,
@@ -146,34 +164,40 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_AST_GLUE};
 
 /**
- * @brief Macro to determine if a TokenType is associated with a binary arithmetic operation
+ * @brief Determines if a TokenType is associated with a binary arithmetic operation
  */
 #define TOKENTYPE_IS_BINARY_ARITHMETIC(type) (type >= T_PLUS && type <= T_EXPONENT)
 
 /**
- * @brief Macro to determine if a TokenType is associated with a type keyword
+ * @brief Determines if a TokenType is associated with a type keyword
  */
 #define TOKENTYPE_IS_TYPE(type) (type >= T_BOOL && type <= T_LONG)
 
 /**
- * @brief Macro to determine if a TokenType is associated with a literal value
+ * @brief Determines if a TokenType is associated with a literal value
  */
 #define TOKENTYPE_IS_LITERAL(type) (type >= T_INTEGER_LITERAL && type <= T_FALSE)
 
 /**
- * @brief Macro to determine if a TokenType is associated with a boolean literal value
+ * @brief Determines if a TokenType is associated with a boolean literal value
  */
 #define TOKENTYPE_IS_BOOL_LITERAL(type) (type >= T_TRUE && type <= T_FALSE)
 
 /**
- * @brief Macro to determine if a TokenType is associated with an identifier
+ * @brief Determines if a TokenType is associated with an identifier
  */
 #define TOKENTYPE_IS_IDENTIFIER(type) (type >= T_IDENTIFIER && type <= T_LVALUE_IDENTIFIER)
 
 /**
- * @brief Macro to determine if a TokenType is associated with a comparison operator
+ * @brief Determines if a TokenType is associated with a comparison operator
  */
 #define TOKENTYPE_IS_COMPARATOR(type) (type >= T_EQ && type <= T_GE)
+
+/**
+ * @brief Determines if a TokenType is associated with a logical operator
+ * 
+ */
+#define TOKENTYPE_IS_LOGICAL_OPERATOR(type) (type >= T_AND && type <= T_XNOR)
 
 /**
  * @brief Number literals can have a max value of 2^63 - 1 and a min value of -2^63

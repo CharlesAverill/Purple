@@ -279,6 +279,11 @@ static int scan_identifier(char c, char* buf, int max_len)
 static TokenType parse_keyword(char* keyword_string)
 {
     switch (keyword_string[0]) {
+    case 'a':
+        if (!strcmp(keyword_string, TTS_AND)) {
+            return T_AND;
+        }
+        break;
     case 'b':
         if (!strcmp(keyword_string, TTS_BOOL)) {
             return T_BOOL;
@@ -296,15 +301,13 @@ static TokenType parse_keyword(char* keyword_string)
     case 'f':
         if (!strcmp(keyword_string, TTS_FALSE)) {
             return T_FALSE;
-        }
-        if (!strcmp(keyword_string, TTS_FOR)) {
+        } else if (!strcmp(keyword_string, TTS_FOR)) {
             return T_FOR;
         }
     case 'i':
         if (!strcmp(keyword_string, TTS_IF)) {
             return T_IF;
-        }
-        if (!strcmp(keyword_string, TTS_INT)) {
+        } else if (!strcmp(keyword_string, TTS_INT)) {
             return T_INT;
         }
         break;
@@ -313,6 +316,17 @@ static TokenType parse_keyword(char* keyword_string)
             return T_LONG;
         }
         break;
+    case 'n':
+        if (!strcmp(keyword_string, TTS_NAND)) {
+            return T_NAND;
+        } else if (!strcmp(keyword_string, TTS_NOR)) {
+            return T_NOR;
+        }
+        break;
+    case 'o':
+        if (!strcmp(keyword_string, TTS_OR)) {
+            return T_OR;
+        }
     case 'p':
         if (!strcmp(keyword_string, TTS_PRINT)) {
             return T_PRINT;
@@ -326,6 +340,13 @@ static TokenType parse_keyword(char* keyword_string)
     case 'w':
         if (!strcmp(keyword_string, TTS_WHILE)) {
             return T_WHILE;
+        }
+        break;
+    case 'x':
+        if (!strcmp(keyword_string, TTS_XOR)) {
+            return T_XOR;
+        } else if (!strcmp(keyword_string, TTS_XNOR)) {
+            return T_XNOR;
         }
         break;
     }

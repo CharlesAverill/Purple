@@ -43,6 +43,11 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
         out->value.number_value = value.value;
         out->number_type = value.type;
     } else if (TOKENTYPE_IS_IDENTIFIER(ttype)) {
+        if (symbol_name == NULL) {
+            fatal(RC_COMPILER_ERROR,
+                  "Tried to create identifier node, but passed symbol_name is NULL");
+        }
+
         strcpy(out->value.symbol_name, symbol_name);
 
         SymbolTableEntry* found_entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);

@@ -42,6 +42,12 @@ false
 3
 4
 6
+35
+70
+140
+true
+true
+false
 true"
 
 type_test_output="14
@@ -74,6 +80,7 @@ loop_test_output="0
 3
 2
 1
+500
 0"
 
 base_test_output="61455

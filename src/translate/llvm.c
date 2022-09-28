@@ -458,6 +458,70 @@ void llvm_print_bool(type_register print_vr)
     initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
 }
 
+static void llvm_relational_compare(TokenType comparison_type, type_register out_register,
+                                    LLVMValue left_virtual_register,
+                                    LLVMValue right_virtual_register)
+{
+    fprintf(D_LLVM_FILE, TAB "%%%llu = icmp ", out_register);
+
+    switch (comparison_type) {
+    case T_EQ:
+        fprintf(D_LLVM_FILE, "eq");
+        break;
+    case T_NEQ:
+        fprintf(D_LLVM_FILE, "ne");
+        break;
+    case T_LT:
+        fprintf(D_LLVM_FILE, "slt");
+        break;
+    case T_LE:
+        fprintf(D_LLVM_FILE, "sle");
+        break;
+    case T_GT:
+        fprintf(D_LLVM_FILE, "sgt");
+        break;
+    case T_GE:
+        fprintf(D_LLVM_FILE, "sge");
+        break;
+    default:
+        fatal(RC_COMPILER_ERROR,
+              "llvm_relational_compare receieved non-relational-comparison operator \"%s\"",
+              tokenStrings[comparison_type]);
+    }
+
+    fprintf(D_LLVM_FILE, " %s %%%llu, %%%llu" NEWLINE,
+            numberTypeLLVMReprs[left_virtual_register.number_type],
+            left_virtual_register.value.virtual_register_index,
+            right_virtual_register.value.virtual_register_index);
+}
+
+static void llvm_logical_compare(TokenType comparison_type, type_register out_register,
+                                 LLVMValue left_virtual_register, LLVMValue right_virtual_register)
+{
+    fprintf(D_LLVM_FILE, TAB "%%%llu = ", out_register);
+
+    switch (comparison_type) {
+    case T_AND:
+        fprintf(D_LLVM_FILE, "and");
+        break;
+    case T_OR:
+        fprintf(D_LLVM_FILE, "or");
+        break;
+    case T_XOR:
+        fprintf(D_LLVM_FILE, "xor");
+        break;
+    case T_NAND:
+    case T_NOR:
+    case T_XNOR:
+        fatal(RC_COMPILER_ERROR, "N- logical operators not yet supported");
+    }
+
+    fprintf(D_LLVM_FILE, " %s %%%llu, %%%llu" NEWLINE,
+            numberTypeLLVMReprs[left_virtual_register.number_type],
+            left_virtual_register.value.virtual_register_index,
+            right_virtual_register.value.virtual_register_index);
+}
+
 /**
  * @brief Generate code to compare two registers
  * 
@@ -482,36 +546,13 @@ LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_registe
 
     type_register out_register = get_next_local_virtual_register();
 
-    fprintf(D_LLVM_FILE, TAB "%%%llu = icmp ", out_register);
-
-    switch (comparison_type) {
-    case T_EQ:
-        fprintf(D_LLVM_FILE, "eq");
-        break;
-    case T_NEQ:
-        fprintf(D_LLVM_FILE, "ne");
-        break;
-    case T_LT:
-        fprintf(D_LLVM_FILE, "slt");
-        break;
-    case T_LE:
-        fprintf(D_LLVM_FILE, "sle");
-        break;
-    case T_GT:
-        fprintf(D_LLVM_FILE, "sgt");
-        break;
-    case T_GE:
-        fprintf(D_LLVM_FILE, "sge");
-        break;
-    default:
-        fatal(RC_COMPILER_ERROR, "llvm_compare receieved non-comparison operator \"%s\"",
-              tokenStrings[comparison_type]);
+    if (TOKENTYPE_IS_COMPARATOR(comparison_type)) {
+        llvm_relational_compare(comparison_type, out_register, left_virtual_register,
+                                right_virtual_register);
+    } else {
+        llvm_logical_compare(comparison_type, out_register, left_virtual_register,
+                             right_virtual_register);
     }
-
-    fprintf(D_LLVM_FILE, " %s %%%llu, %%%llu" NEWLINE,
-            numberTypeLLVMReprs[left_virtual_register.number_type],
-            left_virtual_register.value.virtual_register_index,
-            right_virtual_register.value.virtual_register_index);
 
     prepend_loaded(out_register);
 

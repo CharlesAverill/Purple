@@ -30,5 +30,25 @@
         print 6;
     }
 
+    if(true and true) {
+        print 35;
+    }
+
+    if(true or false) {
+        print 70;
+    }
+
+    if(true xor false) {
+        print 140;
+    }
+
+    if(true and false) {
+        print false;
+    } else {
+        print true and true;
+        print true or true;
+        print true xor true;
+    }
+
     print  9 != 7 == true;
 }

@@ -130,8 +130,10 @@ static ASTNode* if_statement(void)
 
     condition = parse_binary_expression(0);
 
-    if (!TOKENTYPE_IS_COMPARATOR(condition->ttype)) {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Condition clauses must use a comparison operator");
+    if (!TOKENTYPE_IS_COMPARATOR(condition->ttype) &&
+        !TOKENTYPE_IS_LOGICAL_OPERATOR(condition->ttype)) {
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER,
+                     "Condition clauses must use a logical or comparison operator");
     }
 
     match_token(T_RIGHT_PAREN);
@@ -164,8 +166,10 @@ static ASTNode* while_statement(void)
 
     condition = parse_binary_expression(0);
 
-    if (!TOKENTYPE_IS_COMPARATOR(condition->ttype)) {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Condition clauses must use a comparison operator");
+    if (!TOKENTYPE_IS_COMPARATOR(condition->ttype) &&
+        !TOKENTYPE_IS_LOGICAL_OPERATOR(condition->ttype)) {
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER,
+                     "Condition clauses must use a logical or comparison operator");
     }
 
     match_token(T_RIGHT_PAREN);
@@ -206,8 +210,10 @@ static ASTNode* for_statement(void)
     match_token(T_SEMICOLON);
 
     condition = parse_binary_expression(0);
-    if (!TOKENTYPE_IS_COMPARATOR(condition->ttype)) {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Condition clauses must use a comparison operator");
+    if (!TOKENTYPE_IS_COMPARATOR(condition->ttype) &&
+        !TOKENTYPE_IS_LOGICAL_OPERATOR(condition->ttype)) {
+        syntax_error(D_INPUT_FN, D_LINE_NUMBER,
+                     "Condition clauses must use a logical or comparison operator");
     }
 
     match_token(T_SEMICOLON);

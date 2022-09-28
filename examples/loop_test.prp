@@ -9,13 +9,17 @@
 		print 11;
 	}
 
-	while(i <= 10) {
+	while(i <= 10 and false) {
 		print i;
 	} else {
 		print 55;
 	}
 
-	for(i = 10; i >= 0; i = i - 1){
+	for(i = 10; i >= 0 xor false; i = i - 1){
 		print i;
+
+		if(i - 1 == 0 or false) {
+			print 500;
+		}
     }
 }

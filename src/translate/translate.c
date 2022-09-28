@@ -301,8 +301,29 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
     } else if (TOKENTYPE_IS_COMPARATOR(n->ttype)) {
         if (n->left->number_type != n->right->number_type) {
             syntax_error(D_INPUT_FN, D_LINE_NUMBER,
-                         "Cannot perform \"%s\" comparison types %s and %s", tokenStrings[n->ttype],
-                         numberTypeLLVMReprs[n->left->number_type],
+                         "Cannot perform \"%s\" comparison on types %s and %s",
+                         tokenStrings[n->ttype], numberTypeLLVMReprs[n->left->number_type],
+                         numberTypeLLVMReprs[n->right->number_type]);
+        }
+
+        if (parent_operation == T_IF || parent_operation == T_WHILE) {
+            if (llvm_value.value_type != LLVMVALUETYPE_LABEL) {
+                fatal(RC_COMPILER_ERROR, "Tried to generate an if branch but received an LLVMValue "
+                                         "without a label index");
+            }
+
+            return llvm_compare_jump(
+                n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
+                LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->left->number_type), llvm_value);
+        } else {
+            return llvm_compare(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
+                                LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->left->number_type));
+        }
+    } else if (TOKENTYPE_IS_LOGICAL_OPERATOR(n->ttype)) {
+        if (n->left->number_type != NT_INT1 || n->left->number_type != n->right->number_type) {
+            syntax_error(D_INPUT_FN, D_LINE_NUMBER,
+                         "Cannot perform logical \"%s\" comparison on types %s and %s",
+                         tokenStrings[n->ttype], numberTypeLLVMReprs[n->left->number_type],
                          numberTypeLLVMReprs[n->right->number_type]);
         }
 
