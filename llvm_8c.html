@@ -175,6 +175,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a549185ec39141a09db11a45ec6c3363d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a549185ec39141a09db11a45ec6c3363d">llvm_print_bool</a> (<a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> print_vr)</td></tr>
 <tr class="memdesc:a549185ec39141a09db11a45ec6c3363d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print a boolean value.  <a href="llvm_8c.html#a549185ec39141a09db11a45ec6c3363d">More...</a><br /></td></tr>
 <tr class="separator:a549185ec39141a09db11a45ec6c3363d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cabc3424855d1740d8c12b93e20f2b3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a7cabc3424855d1740d8c12b93e20f2b3">llvm_relational_compare</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> comparison_type, <a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> out_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> left_virtual_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> right_virtual_register)</td></tr>
+<tr class="separator:a7cabc3424855d1740d8c12b93e20f2b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9458fbf7cb6c31d4eed7be16c8b24a80"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a9458fbf7cb6c31d4eed7be16c8b24a80">llvm_logical_compare</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> comparison_type, <a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> out_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> left_virtual_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> right_virtual_register)</td></tr>
+<tr class="separator:a9458fbf7cb6c31d4eed7be16c8b24a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2dc07af05a8028e1c21b2822c12c171d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a2dc07af05a8028e1c21b2822c12c171d">llvm_compare</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> comparison_type, <a class="el" href="structLLVMValue.html">LLVMValue</a> left_virtual_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> right_virtual_register)</td></tr>
 <tr class="memdesc:a2dc07af05a8028e1c21b2822c12c171d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to compare two registers.  <a href="llvm_8c.html#a2dc07af05a8028e1c21b2822c12c171d">More...</a><br /></td></tr>
 <tr class="separator:a2dc07af05a8028e1c21b2822c12c171d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -706,6 +710,54 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a9458fbf7cb6c31d4eed7be16c8b24a80" name="a9458fbf7cb6c31d4eed7be16c8b24a80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9458fbf7cb6c31d4eed7be16c8b24a80">&#9670;&nbsp;</a></span>llvm_logical_compare()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void llvm_logical_compare </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td>
+          <td class="paramname"><em>comparison_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
+          <td class="paramname"><em>out_register</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>left_virtual_register</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>right_virtual_register</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2c2dccceabde01686501452f369bc2ab" name="a2c2dccceabde01686501452f369bc2ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c2dccceabde01686501452f369bc2ab">&#9670;&nbsp;</a></span>llvm_multiply()</h2>
 
@@ -850,6 +902,54 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a7cabc3424855d1740d8c12b93e20f2b3" name="a7cabc3424855d1740d8c12b93e20f2b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cabc3424855d1740d8c12b93e20f2b3">&#9670;&nbsp;</a></span>llvm_relational_compare()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void llvm_relational_compare </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td>
+          <td class="paramname"><em>comparison_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
+          <td class="paramname"><em>out_register</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>left_virtual_register</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>right_virtual_register</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

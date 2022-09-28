@@ -156,7 +156,7 @@ Operator Precedence</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Precedence   </th><th class="markdownTableHeadNone">Operator   </th><th class="markdownTableHeadNone">Description   </th><th class="markdownTableHeadNone">Associativity    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">15   </td><td class="markdownTableBodyNone"><code>++ --</code> <br  />
+<td class="markdownTableBodyNone">16   </td><td class="markdownTableBodyNone"><code>++ --</code> <br  />
  <code>()</code> <br  />
  <code>[]</code> <br  />
  <code>.</code> <br  />
@@ -168,7 +168,7 @@ Operator Precedence</h2>
  Structure and union pointer member access <br  />
  Compound literal   </td><td class="markdownTableBodyNone">Left-to-Right    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">14   </td><td class="markdownTableBodyNone"><code>**</code> <br  />
+<td class="markdownTableBodyNone">15   </td><td class="markdownTableBodyNone"><code>**</code> <br  />
  <code>++ --</code> <br  />
  <code>-</code> <br  />
  <code>! ~</code> <br  />
@@ -184,30 +184,38 @@ Operator Precedence</h2>
  Address-of <br  />
  Size in bytes   </td><td class="markdownTableBodyNone">Right-to-Left    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">13   </td><td class="markdownTableBodyNone"><code>* / %</code>   </td><td class="markdownTableBodyNone">Multiplication, division, modulus   </td><td class="markdownTableBodyNone">Left-to-Right    </td></tr>
+<td class="markdownTableBodyNone">14   </td><td class="markdownTableBodyNone"><code>* / %</code>   </td><td class="markdownTableBodyNone">Multiplication, division, modulus   </td><td class="markdownTableBodyNone">Left-to-Right    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">12   </td><td class="markdownTableBodyNone"><code>+ -</code>   </td><td class="markdownTableBodyNone">Addition, Subtraction   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone">13   </td><td class="markdownTableBodyNone"><code>+ -</code>   </td><td class="markdownTableBodyNone">Addition, Subtraction   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">11   </td><td class="markdownTableBodyNone"><code>&lt;&lt; &gt;&gt;</code>   </td><td class="markdownTableBodyNone">Bitwise shifts   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone">12   </td><td class="markdownTableBodyNone"><code>&lt;&lt; &gt;&gt;</code>   </td><td class="markdownTableBodyNone">Bitwise shifts   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">10   </td><td class="markdownTableBodyNone"><code>&lt; &lt;=</code> <br  />
+<td class="markdownTableBodyNone">11   </td><td class="markdownTableBodyNone"><code>&lt; &lt;=</code> <br  />
  <code>&gt; &gt;=</code>   </td><td class="markdownTableBodyNone">"Less than", "Less than or equal to" relational operators <br  />
  "Greater than", "Greater than or equal to" relational operators   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">9   </td><td class="markdownTableBodyNone"><code>== !=</code>   </td><td class="markdownTableBodyNone">"Is equal", "Is not equal" relational operators   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone">10   </td><td class="markdownTableBodyNone"><code>== !=</code>   </td><td class="markdownTableBodyNone">"Is equal", "Is not equal" relational operators   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">8   </td><td class="markdownTableBodyNone"><code>&amp;</code>   </td><td class="markdownTableBodyNone">Bitwise AND   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone">9   </td><td class="markdownTableBodyNone"><code>&amp;</code>   </td><td class="markdownTableBodyNone">Bitwise AND   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">7   </td><td class="markdownTableBodyNone"><code>^</code>   </td><td class="markdownTableBodyNone">Bitwise XOR   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone">8   </td><td class="markdownTableBodyNone"><code>^</code>   </td><td class="markdownTableBodyNone">Bitwise XOR   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone">|   </td><td class="markdownTableBodyNone">Bitwise OR   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone">7   </td><td class="markdownTableBodyNone">|   </td><td class="markdownTableBodyNone">Bitwise OR   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone"><code>&amp;&amp;</code>   </td><td class="markdownTableBodyNone">Logical AND   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone"><code>and</code> <br  />
+ <code>nand</code>   </td><td class="markdownTableBodyNone">Logical AND <br  />
+ Logical NOT-AND   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">||   </td><td class="markdownTableBodyNone">Logical OR   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone"><code>xor</code> <br  />
+ <code>xnor</code>   </td><td class="markdownTableBodyNone">Logical XOR <br  />
+ Logical NOT-XOR   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone"><code>or</code> <br  />
+ <code>nor</code>   </td><td class="markdownTableBodyNone">Logical OR <br  />
+ Logical NOT-OR   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone"><code>? ... :</code>   </td><td class="markdownTableBodyNone">Ternary condition   </td><td class="markdownTableBodyNone">Right-to-Left    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone"><code>=</code> <br  />
  <code>+= -=</code> <br  />
  <code>*= /= %=</code> <br  />
@@ -217,7 +225,7 @@ Operator Precedence</h2>
  Product, Quotient, Modulus Assignments <br  />
  Bitshift Assignments <br  />
  Bitwise AND, OR, XOR Assignments   </td><td class="markdownTableBodyNone"></td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone"><code>,</code>   </td><td class="markdownTableBodyNone">Comma   </td><td class="markdownTableBodyNone">Left-to-Right   </td></tr>
 </table>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -356,26 +364,7 @@ Operator Precedence</h2>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    0, </div>
-<div class="line"> </div>
-<div class="line">    11, </div>
-<div class="line">    11, </div>
-<div class="line">    12, </div>
-<div class="line">    12, </div>
-<div class="line">    14, </div>
-<div class="line"> </div>
-<div class="line">    8, </div>
-<div class="line">    8, </div>
-<div class="line"> </div>
-<div class="line">    9, </div>
-<div class="line">    9, </div>
-<div class="line">    9, </div>
-<div class="line">    9, </div>
-<div class="line"> </div>
-<div class="line">    0, </div>
-<div class="line">}</div>
-</div><!-- fragment --><p >Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed </p>
+<p >Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed </p>
 
 </div>
 </div>

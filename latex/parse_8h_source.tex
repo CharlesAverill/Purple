@@ -3,38 +3,57 @@
 \mbox{\hyperlink{parse_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
-\DoxyCodeLine{29 \textcolor{preprocessor}{\#ifndef PARSE}}
-\DoxyCodeLine{30 \textcolor{preprocessor}{\#define PARSE}}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tree_8h}{tree.h}}"{}}}
-\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{number_8h}{types/number.h}}"{}}}
-\DoxyCodeLine{34 }
-\DoxyCodeLine{38 \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{parse_8h_aceb30c679b898ce21cad0d777c82664b}{operatorPrecedence}}[] = \{}
-\DoxyCodeLine{39     0, \textcolor{comment}{// EOF}}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{41     11, \textcolor{comment}{// PLUS}}
-\DoxyCodeLine{42     11, \textcolor{comment}{// MINUS}}
-\DoxyCodeLine{43     12, \textcolor{comment}{// STAR}}
-\DoxyCodeLine{44     12, \textcolor{comment}{// SLASH}}
-\DoxyCodeLine{45     14, \textcolor{comment}{// EXPONENT}}
-\DoxyCodeLine{46 }
-\DoxyCodeLine{47     8, \textcolor{comment}{// EQUALS}}
-\DoxyCodeLine{48     8, \textcolor{comment}{// NOT EQUALS}}
-\DoxyCodeLine{49 }
-\DoxyCodeLine{50     9, \textcolor{comment}{// LESS}}
-\DoxyCodeLine{51     9, \textcolor{comment}{// GREATER}}
-\DoxyCodeLine{52     9, \textcolor{comment}{// LESS EQUAL}}
-\DoxyCodeLine{53     9, \textcolor{comment}{// GREATER EQUAL}}
-\DoxyCodeLine{54 }
-\DoxyCodeLine{55     0, \textcolor{comment}{// INTLIT}}
-\DoxyCodeLine{56 \};}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{58 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}{parse\_binary\_expression}}(\textcolor{keywordtype}{int} previous\_token\_precedence);}
-\DoxyCodeLine{59 \textcolor{keywordtype}{void} \mbox{\hyperlink{parse_8h_a50272a0b5fea28f10f872dda4641d1a4}{match\_token}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} type);}
-\DoxyCodeLine{60 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{parse_8h_a8e5c84a93405ab540a698edd6aa670b3}{match\_type}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{61 \textcolor{keywordtype}{void} \mbox{\hyperlink{parse_8h_a5975acb392673971cc8f96e720e23de7}{variable\_declaration}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{62 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{parse_8h_a72e124e2436e13e1d8c09a0616245c12}{parse\_statements}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{63 }
-\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PARSE */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#ifndef PARSE\_H}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define PARSE\_H}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tree_8h}{tree.h}}"{}}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{number_8h}{types/number.h}}"{}}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{39 \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{parse_8h_aceb30c679b898ce21cad0d777c82664b}{operatorPrecedence}}[] = \{}
+\DoxyCodeLine{40     0, \textcolor{comment}{// EOF}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     12, \textcolor{comment}{// PLUS}}
+\DoxyCodeLine{43     12, \textcolor{comment}{// MINUS}}
+\DoxyCodeLine{44     13, \textcolor{comment}{// STAR}}
+\DoxyCodeLine{45     13, \textcolor{comment}{// SLASH}}
+\DoxyCodeLine{46     15, \textcolor{comment}{// EXPONENT}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     9, \textcolor{comment}{// EQUALS}}
+\DoxyCodeLine{49     9, \textcolor{comment}{// NOT EQUALS}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     10, \textcolor{comment}{// LESS}}
+\DoxyCodeLine{52     10, \textcolor{comment}{// GREATER}}
+\DoxyCodeLine{53     10, \textcolor{comment}{// LESS EQUAL}}
+\DoxyCodeLine{54     10, \textcolor{comment}{// GREATER EQUAL}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     6, \textcolor{comment}{// AND}}
+\DoxyCodeLine{57     4, \textcolor{comment}{// OR}}
+\DoxyCodeLine{58     5, \textcolor{comment}{// XOR}}
+\DoxyCodeLine{59     6, \textcolor{comment}{// NAND}}
+\DoxyCodeLine{60     4, \textcolor{comment}{// NOR}}
+\DoxyCodeLine{61     5, \textcolor{comment}{// XNOR}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     0, \textcolor{comment}{// Literals}}
+\DoxyCodeLine{64     0,  0, 0, 0,}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     0, \textcolor{comment}{// Types (maybe use these for casting? idk yet)}}
+\DoxyCodeLine{67     0,  0, 0,}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     2, \textcolor{comment}{// Assignment}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     0, \textcolor{comment}{// Keywords}}
+\DoxyCodeLine{72     0,  0, 0, 0,}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     0, \textcolor{comment}{// Miscellaneous}}
+\DoxyCodeLine{75     0,  0, 0, 0, 0, 0, 0,}
+\DoxyCodeLine{76 \};}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}{parse\_binary\_expression}}(\textcolor{keywordtype}{int} previous\_token\_precedence);}
+\DoxyCodeLine{79 \textcolor{keywordtype}{void} \mbox{\hyperlink{parse_8h_a50272a0b5fea28f10f872dda4641d1a4}{match\_token}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} type);}
+\DoxyCodeLine{80 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{parse_8h_a8e5c84a93405ab540a698edd6aa670b3}{match\_type}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{81 \textcolor{keywordtype}{void} \mbox{\hyperlink{parse_8h_a5975acb392673971cc8f96e720e23de7}{variable\_declaration}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{82 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{parse_8h_a72e124e2436e13e1d8c09a0616245c12}{parse\_statements}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* PARSE\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -63,7 +63,7 @@ This table outlines Purple\textquotesingle{}s operator precedence values. A high
 \hline
 \PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Precedence   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Operator   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Associativity    }\\\cline{1-4}
 \endhead
-15   &{\ttfamily ++ -\/-\/} ~\newline
+16   &{\ttfamily ++ -\/-\/} ~\newline
  {\ttfamily ()} ~\newline
  {\ttfamily \mbox{[}\mbox{]}} ~\newline
  {\ttfamily .} ~\newline
@@ -74,7 +74,7 @@ This table outlines Purple\textquotesingle{}s operator precedence values. A high
  Structure and Union member access ~\newline
  Structure and union pointer member access ~\newline
  Compound literal   &Left-\/to-\/\+Right    \\\cline{1-4}
-14   &{\ttfamily $\ast$$\ast$} ~\newline
+15   &{\ttfamily $\ast$$\ast$} ~\newline
  {\ttfamily ++ -\/-\/} ~\newline
  {\ttfamily -\/} ~\newline
  {\ttfamily ! $\sim$} ~\newline
@@ -89,18 +89,25 @@ This table outlines Purple\textquotesingle{}s operator precedence values. A high
  Dereference ~\newline
  Address-\/of ~\newline
  Size in bytes   &Right-\/to-\/\+Left    \\\cline{1-4}
-13   &{\ttfamily $\ast$ / \%}   &Multiplication, division, modulus   &Left-\/to-\/\+Right    \\\cline{1-4}
-12   &{\ttfamily + -\/}   &Addition, Subtraction   &\\\cline{1-4}
-11   &{\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}   &Bitwise shifts   &\\\cline{1-4}
-10   &{\ttfamily \texorpdfstring{$<$}{<} \texorpdfstring{$<$}{<}=} ~\newline
+14   &{\ttfamily $\ast$ / \%}   &Multiplication, division, modulus   &Left-\/to-\/\+Right    \\\cline{1-4}
+13   &{\ttfamily + -\/}   &Addition, Subtraction   &\\\cline{1-4}
+12   &{\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}   &Bitwise shifts   &\\\cline{1-4}
+11   &{\ttfamily \texorpdfstring{$<$}{<} \texorpdfstring{$<$}{<}=} ~\newline
  {\ttfamily \texorpdfstring{$>$}{>} \texorpdfstring{$>$}{>}=}   &\char`\"{}\+Less than\char`\"{}, \char`\"{}\+Less than or equal to\char`\"{} relational operators ~\newline
  \char`\"{}\+Greater than\char`\"{}, \char`\"{}\+Greater than or equal to\char`\"{} relational operators   &\\\cline{1-4}
-9   &{\ttfamily == !=}   &\char`\"{}\+Is equal\char`\"{}, \char`\"{}\+Is not equal\char`\"{} relational operators   &\\\cline{1-4}
-8   &{\ttfamily \&}   &Bitwise AND   &\\\cline{1-4}
-7   &{\ttfamily $^\wedge$}   &Bitwise XOR   &\\\cline{1-4}
-6   &$|$   &Bitwise OR   &\\\cline{1-4}
-5   &{\ttfamily \&\&}   &Logical AND   &\\\cline{1-4}
-4   &$|$$|$   &Logical OR   &\\\cline{1-4}
+10   &{\ttfamily == !=}   &\char`\"{}\+Is equal\char`\"{}, \char`\"{}\+Is not equal\char`\"{} relational operators   &\\\cline{1-4}
+9   &{\ttfamily \&}   &Bitwise AND   &\\\cline{1-4}
+8   &{\ttfamily $^\wedge$}   &Bitwise XOR   &\\\cline{1-4}
+7   &$|$   &Bitwise OR   &\\\cline{1-4}
+6   &{\ttfamily and} ~\newline
+ {\ttfamily nand}   &Logical AND ~\newline
+ Logical NOT-\/\+AND   &\\\cline{1-4}
+5   &{\ttfamily xor} ~\newline
+ {\ttfamily xnor}   &Logical XOR ~\newline
+ Logical NOT-\/\+XOR   &\\\cline{1-4}
+4   &{\ttfamily or} ~\newline
+ {\ttfamily nor}   &Logical OR ~\newline
+ Logical NOT-\/\+OR   &\\\cline{1-4}
 3   &{\ttfamily ? ... \+:}   &Ternary condition   &Right-\/to-\/\+Left    \\\cline{1-4}
 2   &{\ttfamily =} ~\newline
  {\ttfamily += -\/=} ~\newline
@@ -194,27 +201,4 @@ Parse a variable declaration statement into LLVM.
 \doxysubsubsection{\texorpdfstring{operatorPrecedence}{operatorPrecedence}}
 {\footnotesize\ttfamily int operator\+Precedence\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
 
-{\bfseries Initial value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{= \{}
-\DoxyCodeLine{    0, }
-\DoxyCodeLine{}
-\DoxyCodeLine{    11, }
-\DoxyCodeLine{    11, }
-\DoxyCodeLine{    12, }
-\DoxyCodeLine{    12, }
-\DoxyCodeLine{    14, }
-\DoxyCodeLine{}
-\DoxyCodeLine{    8, }
-\DoxyCodeLine{    8, }
-\DoxyCodeLine{}
-\DoxyCodeLine{    9, }
-\DoxyCodeLine{    9, }
-\DoxyCodeLine{    9, }
-\DoxyCodeLine{    9, }
-\DoxyCodeLine{}
-\DoxyCodeLine{    0, }
-\DoxyCodeLine{\}}
-
-\end{DoxyCode}
 Operator precedence values. Precedence ranges from 0-\/15, 15 being the first to be computed 

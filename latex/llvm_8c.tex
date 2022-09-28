@@ -58,6 +58,10 @@ void \mbox{\hyperlink{llvm_8c_a933c8ba87670c20b0ab03d5b1174ff4c}{llvm\+\_\+print
 \begin{DoxyCompactList}\small\item\em Generate code to print an integer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a549185ec39141a09db11a45ec6c3363d}{llvm\+\_\+print\+\_\+bool}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} print\+\_\+vr)
 \begin{DoxyCompactList}\small\item\em Generate code to print a boolean value. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{llvm_8c_a7cabc3424855d1740d8c12b93e20f2b3}{llvm\+\_\+relational\+\_\+compare}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} comparison\+\_\+type, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} out\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
+\item 
+static void \mbox{\hyperlink{llvm_8c_a9458fbf7cb6c31d4eed7be16c8b24a80}{llvm\+\_\+logical\+\_\+compare}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} comparison\+\_\+type, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} out\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
+\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_a2dc07af05a8028e1c21b2822c12c171d}{llvm\+\_\+compare}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} comparison\+\_\+type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
 \begin{DoxyCompactList}\small\item\em Generate code to compare two registers. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_af86d3ef1da82cd0973de1009ceebab76}{llvm\+\_\+compare\+\_\+jump}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} comparison\+\_\+type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} false\+\_\+label)
@@ -325,6 +329,12 @@ Load a global variable\textquotesingle{}s value into a new virtual register.
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} Register number variable value is held in 
 \end{DoxyReturn}
+\mbox{\Hypertarget{llvm_8c_a9458fbf7cb6c31d4eed7be16c8b24a80}\label{llvm_8c_a9458fbf7cb6c31d4eed7be16c8b24a80}} 
+\index{llvm.c@{llvm.c}!llvm\_logical\_compare@{llvm\_logical\_compare}}
+\index{llvm\_logical\_compare@{llvm\_logical\_compare}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvm\_logical\_compare()}{llvm\_logical\_compare()}}
+{\footnotesize\ttfamily static void llvm\+\_\+logical\+\_\+compare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{comparison\+\_\+type,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{out\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{left\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{right\+\_\+virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \mbox{\Hypertarget{llvm_8c_a2c2dccceabde01686501452f369bc2ab}\label{llvm_8c_a2c2dccceabde01686501452f369bc2ab}} 
 \index{llvm.c@{llvm.c}!llvm\_multiply@{llvm\_multiply}}
 \index{llvm\_multiply@{llvm\_multiply}!llvm.c@{llvm.c}}
@@ -397,6 +407,12 @@ Generate code to print an integer.
 {\em type} & Type of int (char, int, long) to print \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{llvm_8c_a7cabc3424855d1740d8c12b93e20f2b3}\label{llvm_8c_a7cabc3424855d1740d8c12b93e20f2b3}} 
+\index{llvm.c@{llvm.c}!llvm\_relational\_compare@{llvm\_relational\_compare}}
+\index{llvm\_relational\_compare@{llvm\_relational\_compare}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvm\_relational\_compare()}{llvm\_relational\_compare()}}
+{\footnotesize\ttfamily static void llvm\+\_\+relational\+\_\+compare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{comparison\+\_\+type,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{out\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{left\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{right\+\_\+virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \mbox{\Hypertarget{llvm_8c_a9c7b432e690cb422483d20eaacdcfaf0}\label{llvm_8c_a9c7b432e690cb422483d20eaacdcfaf0}} 
 \index{llvm.c@{llvm.c}!llvm\_stack\_allocation@{llvm\_stack\_allocation}}
 \index{llvm\_stack\_allocation@{llvm\_stack\_allocation}!llvm.c@{llvm.c}}
