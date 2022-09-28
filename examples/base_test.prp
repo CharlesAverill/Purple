@@ -1,5 +1,4 @@
 {
-    test 123;
     int F00F;
     F00F = F00F#G;
     print F00F;
