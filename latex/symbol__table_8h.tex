@@ -6,13 +6,13 @@ Function headers and definitions for the global and local symbol tables.
 
 
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}types/number.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}types/type.\+h\char`\"{}}\newline
 Include dependency graph for symbol\+\_\+table.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=238pt]{symbol__table_8h__incl}
+\includegraphics[width=230pt]{symbol__table_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -77,7 +77,7 @@ void \mbox{\hyperlink{symbol__table_8h_ace4eaeafa7e20975b8dc696cf7705b1f}{resize
 \begin{DoxyCompactList}\small\item\em Find the entry of a symbol in the provided Symbol Table if it exists. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8h_a19902129ff999624837d473ed4d77674}{new\+\_\+symbol\+\_\+table\+\_\+entry}} (char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Get pointer to new Symbol Table Entry. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{symbol__table_8h_ad566d16fa17276db926a2058b7650a88}{add\+\_\+symbol\+\_\+table\+\_\+entry}} (\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$table, char $\ast$symbol\+\_\+name, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} number\+\_\+type)
+\mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8h_ab32fb47ae26126a5117952900b892751}{add\+\_\+symbol\+\_\+table\+\_\+entry}} (\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$table, char $\ast$symbol\+\_\+name, \mbox{\hyperlink{structType}{Type}} type)
 \begin{DoxyCompactList}\small\item\em Hash symbol\+\_\+name with hash function FNV-\/1 and put it into the chained Symbol Table. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -141,11 +141,11 @@ Stack of Symbol Tables used for scoping.
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{symbol__table_8h_ad566d16fa17276db926a2058b7650a88}\label{symbol__table_8h_ad566d16fa17276db926a2058b7650a88}} 
+\mbox{\Hypertarget{symbol__table_8h_ab32fb47ae26126a5117952900b892751}\label{symbol__table_8h_ab32fb47ae26126a5117952900b892751}} 
 \index{symbol\_table.h@{symbol\_table.h}!add\_symbol\_table\_entry@{add\_symbol\_table\_entry}}
 \index{add\_symbol\_table\_entry@{add\_symbol\_table\_entry}!symbol\_table.h@{symbol\_table.h}}
 \doxysubsubsection{\texorpdfstring{add\_symbol\_table\_entry()}{add\_symbol\_table\_entry()}}
-{\footnotesize\ttfamily void add\+\_\+symbol\+\_\+table\+\_\+entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$}]{table,  }\item[{char $\ast$}]{symbol\+\_\+name,  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{number\+\_\+type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ add\+\_\+symbol\+\_\+table\+\_\+entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$}]{table,  }\item[{char $\ast$}]{symbol\+\_\+name,  }\item[{\mbox{\hyperlink{structType}{Type}}}]{type }\end{DoxyParamCaption})}
 
 
 
@@ -157,7 +157,12 @@ Hash symbol\+\_\+name with hash function FNV-\/1 and put it into the chained Sym
 \hline
 {\em symbol\+\_\+name} & Name of symbol to add \\
 \hline
+{\em type} & \mbox{\hyperlink{structType}{Type}} of symbol to add \\
+\hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Symbol\+Table\+Entry$\ast$ Pointer to new Symbol Table Entry 
+\end{DoxyReturn}
 \mbox{\Hypertarget{symbol__table_8h_a8cee987c629bab7017e0eea921e4ab1f}\label{symbol__table_8h_a8cee987c629bab7017e0eea921e4ab1f}} 
 \index{symbol\_table.h@{symbol\_table.h}!find\_symbol\_table\_entry@{find\_symbol\_table\_entry}}
 \index{find\_symbol\_table\_entry@{find\_symbol\_table\_entry}!symbol\_table.h@{symbol\_table.h}}

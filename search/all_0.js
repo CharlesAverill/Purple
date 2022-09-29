@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['add_5fsymbol_5ftable_5fentry_0',['add_symbol_table_entry',['../symbol__table_8h.html#ad566d16fa17276db926a2058b7650a88',1,'add_symbol_table_entry(SymbolTable *table, char *symbol_name, NumberType number_type):&#160;symbol_table.c'],['../symbol__table_8c.html#ad566d16fa17276db926a2058b7650a88',1,'add_symbol_table_entry(SymbolTable *table, char *symbol_name, NumberType number_type):&#160;symbol_table.c']]],
+  ['add_5fsymbol_5ftable_5fentry_0',['add_symbol_table_entry',['../symbol__table_8h.html#ab32fb47ae26126a5117952900b892751',1,'add_symbol_table_entry(SymbolTable *table, char *symbol_name, Type type):&#160;symbol_table.c'],['../symbol__table_8c.html#ab32fb47ae26126a5117952900b892751',1,'add_symbol_table_entry(SymbolTable *table, char *symbol_name, Type type):&#160;symbol_table.c']]],
   ['align_5fbytes_1',['align_bytes',['../structLLVMStackEntryNode.html#ab78e4f0785ccaad88dce16d7f6ad7b46',1,'LLVMStackEntryNode']]],
   ['ansi_5fbold_2',['ANSI_BOLD',['../logging_8h.html#a46587b83544b8e9be045bb93f644ac82',1,'logging.h']]],
   ['ansi_5forange_3',['ANSI_ORANGE',['../logging_8h.html#a7abd01983a396871db34d8af6c2234da',1,'logging.h']]],

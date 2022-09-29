@@ -96,12 +96,13 @@ Include dependency graph for parse.h:</div>
 <map name="ainclude_2parse_8h" id="ainclude_2parse_8h">
 <area shape="rect" title="Function headers for parsing and operator precedence values." alt="" coords="231,5,341,32"/>
 <area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="163,80,217,107"/>
-<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="125,304,236,331"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="252,379,363,405"/>
 <area shape="rect" title=" " alt="" coords="5,155,68,181"/>
 <area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="92,155,152,181"/>
 <area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="41,229,203,256"/>
 <area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="231,155,333,181"/>
-<area shape="rect" title=" " alt="" coords="26,304,101,331"/>
+<area shape="rect" title=" " alt="" coords="29,304,103,331"/>
+<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="133,304,223,331"/>
 <area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="228,229,344,256"/>
 </map>
 </div>
@@ -135,10 +136,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:a8e5c84a93405ab540a698edd6aa670b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure current token is a type token, and scan the next token if so.  <a href="parse_8h.html#a8e5c84a93405ab540a698edd6aa670b3">More...</a><br /></td></tr>
 <tr class="separator:a8e5c84a93405ab540a698edd6aa670b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5975acb392673971cc8f96e720e23de7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a5975acb392673971cc8f96e720e23de7">variable_declaration</a> (void)</td></tr>
-<tr class="memdesc:a5975acb392673971cc8f96e720e23de7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a variable declaration statement into LLVM.  <a href="parse_8h.html#a5975acb392673971cc8f96e720e23de7">More...</a><br /></td></tr>
+<tr class="memdesc:a5975acb392673971cc8f96e720e23de7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a variable declaration statement into an AST.  <a href="parse_8h.html#a5975acb392673971cc8f96e720e23de7">More...</a><br /></td></tr>
 <tr class="separator:a5975acb392673971cc8f96e720e23de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a144fb627a89093eec468cacb91eacd3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a144fb627a89093eec468cacb91eacd3d">function_declaration</a> (void)</td></tr>
+<tr class="memdesc:a144fb627a89093eec468cacb91eacd3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a function declaration statement into an AST.  <a href="parse_8h.html#a144fb627a89093eec468cacb91eacd3d">More...</a><br /></td></tr>
+<tr class="separator:a144fb627a89093eec468cacb91eacd3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72e124e2436e13e1d8c09a0616245c12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a72e124e2436e13e1d8c09a0616245c12">parse_statements</a> (void)</td></tr>
-<tr class="memdesc:a72e124e2436e13e1d8c09a0616245c12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a set of statements into ASTs and generate them into LLVM-IR.  <a href="parse_8h.html#a72e124e2436e13e1d8c09a0616245c12">More...</a><br /></td></tr>
+<tr class="memdesc:a72e124e2436e13e1d8c09a0616245c12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a set of statements into ASTs and generate them into an AST.  <a href="parse_8h.html#a72e124e2436e13e1d8c09a0616245c12">More...</a><br /></td></tr>
 <tr class="separator:a72e124e2436e13e1d8c09a0616245c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -229,6 +233,27 @@ Operator Precedence</h2>
 <td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone"><code>,</code>   </td><td class="markdownTableBodyNone">Comma   </td><td class="markdownTableBodyNone">Left-to-Right   </td></tr>
 </table>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a144fb627a89093eec468cacb91eacd3d" name="a144fb627a89093eec468cacb91eacd3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a144fb627a89093eec468cacb91eacd3d">&#9670;&nbsp;</a></span>function_declaration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structASTNode.html">ASTNode</a> * function_declaration </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parse a function declaration statement into an AST. </p>
+<dl class="section return"><dt>Returns</dt><dd>ASTNode* </dd></dl>
+
+</div>
+</div>
 <a id="a50272a0b5fea28f10f872dda4641d1a4" name="a50272a0b5fea28f10f872dda4641d1a4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a50272a0b5fea28f10f872dda4641d1a4">&#9670;&nbsp;</a></span>match_token()</h2>
 
@@ -272,7 +297,7 @@ Operator Precedence</h2>
 </div><div class="memdoc">
 
 <p>Ensure current token is a type token, and scan the next token if so. </p>
-<dl class="section return"><dt>Returns</dt><dd>NumberType Type of variable </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>NumberType <a class="el" href="structType.html" title="Container for type data.">Type</a> of variable </dd></dl>
 
 </div>
 </div>
@@ -319,7 +344,7 @@ Operator Precedence</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Parse a set of statements into ASTs and generate them into LLVM-IR. </p>
+<p>Parse a set of statements into ASTs and generate them into an AST. </p>
 <dl class="section return"><dt>Returns</dt><dd>AST for a group of statements </dd></dl>
 
 </div>
@@ -340,7 +365,7 @@ Operator Precedence</h2>
       </table>
 </div><div class="memdoc">
 
-<p>Parse a variable declaration statement into LLVM. </p>
+<p>Parse a variable declaration statement into an AST. </p>
 
 </div>
 </div>
@@ -364,7 +389,36 @@ Operator Precedence</h2>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed </p>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2">T_PLUS</a>] = 12,  [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aeabbf9419f82ec47ab35d6931784dfb4">T_MINUS</a>] = 12, [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a6fad6b41ffee1efe0dfc7b12a19c0672">T_STAR</a>] = 13, [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a">T_SLASH</a>] = 13, [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd">T_EXPONENT</a>] = 15,</div>
+<div class="line"> </div>
+<div class="line">    [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad">T_EQ</a>] = 9,     [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af7c934b483e2a65d6212722999121c0e">T_NEQ</a>] = 9,</div>
+<div class="line"> </div>
+<div class="line">    [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a9e53bc57aabd3d3baa91aed85cb9f0fc">T_LT</a>] = 10,    [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ac869f90f0fc081ae0e4a1c7746c11f3d">T_GT</a>] = 10,    [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aa2fbee07f3776bb841fe1ac13629eb9d">T_LE</a>] = 10,   [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df">T_GE</a>] = 10,</div>
+<div class="line"> </div>
+<div class="line">    [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a09d3f67b151bc1e002a78de682fc1c8b">T_AND</a>] = 6,    [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aee13d53546c9358e6b15a455f1c81fb6">T_OR</a>] = 4,     [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a39cfc5f9514bb57aa46ffa6ea56a1cc7">T_XOR</a>] = 5,   [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a2355672f63c952365ee7dd888eec494b">T_NAND</a>] = 6,   [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a5ea4f433350d42feb4cb4a2148368cc2">T_NOR</a>] = 4,       [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aaf1a365950bce3b45aec63de01c5d096">T_XNOR</a>] = 5,</div>
+<div class="line"> </div>
+<div class="line">    [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720">T_ASSIGN</a>] = 2,</div>
+<div class="line">}</div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921a09d3f67b151bc1e002a78de682fc1c8b"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a09d3f67b151bc1e002a78de682fc1c8b">T_AND</a></div><div class="ttdeci">@ T_AND</div><div class="ttdef"><b>Definition:</b> scan.h:34</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921a2355672f63c952365ee7dd888eec494b"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a2355672f63c952365ee7dd888eec494b">T_NAND</a></div><div class="ttdeci">@ T_NAND</div><div class="ttdef"><b>Definition:</b> scan.h:37</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921a39cfc5f9514bb57aa46ffa6ea56a1cc7"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a39cfc5f9514bb57aa46ffa6ea56a1cc7">T_XOR</a></div><div class="ttdeci">@ T_XOR</div><div class="ttdef"><b>Definition:</b> scan.h:36</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921a5ea4f433350d42feb4cb4a2148368cc2"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a5ea4f433350d42feb4cb4a2148368cc2">T_NOR</a></div><div class="ttdeci">@ T_NOR</div><div class="ttdef"><b>Definition:</b> scan.h:38</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df">T_GE</a></div><div class="ttdeci">@ T_GE</div><div class="ttdef"><b>Definition:</b> scan.h:32</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921a6fad6b41ffee1efe0dfc7b12a19c0672"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a6fad6b41ffee1efe0dfc7b12a19c0672">T_STAR</a></div><div class="ttdeci">@ T_STAR</div><div class="ttdef"><b>Definition:</b> scan.h:23</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921a9e53bc57aabd3d3baa91aed85cb9f0fc"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a9e53bc57aabd3d3baa91aed85cb9f0fc">T_LT</a></div><div class="ttdeci">@ T_LT</div><div class="ttdef"><b>Definition:</b> scan.h:29</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aa2fbee07f3776bb841fe1ac13629eb9d"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aa2fbee07f3776bb841fe1ac13629eb9d">T_LE</a></div><div class="ttdeci">@ T_LE</div><div class="ttdef"><b>Definition:</b> scan.h:31</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a">T_SLASH</a></div><div class="ttdeci">@ T_SLASH</div><div class="ttdef"><b>Definition:</b> scan.h:24</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aaf1a365950bce3b45aec63de01c5d096"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aaf1a365950bce3b45aec63de01c5d096">T_XNOR</a></div><div class="ttdeci">@ T_XNOR</div><div class="ttdef"><b>Definition:</b> scan.h:39</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad">T_EQ</a></div><div class="ttdeci">@ T_EQ</div><div class="ttdef"><b>Definition:</b> scan.h:27</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720">T_ASSIGN</a></div><div class="ttdeci">@ T_ASSIGN</div><div class="ttdef"><b>Definition:</b> scan.h:53</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921ac869f90f0fc081ae0e4a1c7746c11f3d"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ac869f90f0fc081ae0e4a1c7746c11f3d">T_GT</a></div><div class="ttdeci">@ T_GT</div><div class="ttdef"><b>Definition:</b> scan.h:30</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2">T_PLUS</a></div><div class="ttdeci">@ T_PLUS</div><div class="ttdef"><b>Definition:</b> scan.h:21</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aeabbf9419f82ec47ab35d6931784dfb4"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aeabbf9419f82ec47ab35d6931784dfb4">T_MINUS</a></div><div class="ttdeci">@ T_MINUS</div><div class="ttdef"><b>Definition:</b> scan.h:22</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aee13d53546c9358e6b15a455f1c81fb6"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aee13d53546c9358e6b15a455f1c81fb6">T_OR</a></div><div class="ttdeci">@ T_OR</div><div class="ttdef"><b>Definition:</b> scan.h:35</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921af7c934b483e2a65d6212722999121c0e"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af7c934b483e2a65d6212722999121c0e">T_NEQ</a></div><div class="ttdeci">@ T_NEQ</div><div class="ttdef"><b>Definition:</b> scan.h:28</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd">T_EXPONENT</a></div><div class="ttdeci">@ T_EXPONENT</div><div class="ttdef"><b>Definition:</b> scan.h:25</div></div>
+</div><!-- fragment --><p >Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed </p>
 
 </div>
 </div>

@@ -6,28 +6,46 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{grammar purple;}
 \DoxyCodeLine{}
 \DoxyCodeLine{tokens \{}
+\DoxyCodeLine{    T\_IDENTIFIER,}
 \DoxyCodeLine{    T\_INTEGER\_LITERAL,}
-\DoxyCodeLine{    T\_CHAR\_LITERAL,}
-\DoxyCodeLine{    T\_LONG\_LITERAL,}
-\DoxyCodeLine{    T\_TRUE,}
-\DoxyCodeLine{    T\_FALSE,}
-\DoxyCodeLine{    T\_IDENTIFIER}
+\DoxyCodeLine{    T\_CHAR\_LITERAL}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
-\DoxyCodeLine{number: T\_INTEGER\_LITERAL}
-\DoxyCodeLine{        ;}
-\DoxyCodeLine{}
-\DoxyCodeLine{booleanLiteral: T\_TRUE}
-\DoxyCodeLine{              | T\_FALSE}
+\DoxyCodeLine{booleanLiteral: 'true'}
+\DoxyCodeLine{              | 'false'}
 \DoxyCodeLine{              ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{dataType: 'int'}
-\DoxyCodeLine{        | 'bool'}
-\DoxyCodeLine{        ;}
+\DoxyCodeLine{type: 'void'}
+\DoxyCodeLine{    | 'bool'}
+\DoxyCodeLine{    | 'char'}
+\DoxyCodeLine{    | 'int'}
+\DoxyCodeLine{    | 'long'}
+\DoxyCodeLine{    ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{multiplicativeExpression: number}
-\DoxyCodeLine{                        | number '*' multiplicativeExpression}
-\DoxyCodeLine{                        | number '/' multiplicativeExpression}
+\DoxyCodeLine{assignmentOperator: '='}
+\DoxyCodeLine{                  ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{literal: T\_INTEGER\_LITERAL}
+\DoxyCodeLine{       | T\_CHAR\_LITERAL}
+\DoxyCodeLine{       | booleanLiteral}
+\DoxyCodeLine{       ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{primaryExpression: T\_IDENTIFIER}
+\DoxyCodeLine{                 | literal}
+\DoxyCodeLine{                 ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{postfixExpression: primaryExpression}
+\DoxyCodeLine{                 ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{unaryExpression: postfixExpression}
+\DoxyCodeLine{               ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{castExpression: unaryExpression}
+\DoxyCodeLine{              ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{multiplicativeExpression: castExpression}
+\DoxyCodeLine{                        | multiplicativeExpression '*' castExpression}
+\DoxyCodeLine{                        | multiplicativeExpression '/' castExpression}
 \DoxyCodeLine{                        ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{additiveExpression: multiplicativeExpression}
@@ -35,62 +53,73 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{                  | additiveExpression '-\/' multiplicativeExpression}
 \DoxyCodeLine{                  ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{comparativeExpression: binaryExpression '<' binaryExpression}
-\DoxyCodeLine{                     | binaryExpression '>' binaryExpression}
-\DoxyCodeLine{                     | binaryExpression '<=' binaryExpression}
-\DoxyCodeLine{                     | binaryExpression '>=' binaryExpression}
-\DoxyCodeLine{                     | binaryExpression '==' binaryExpression}
-\DoxyCodeLine{                     | binaryExpression '!=' binaryExpression}
-\DoxyCodeLine{                     | binaryExpression // expands to binaryExpression == T\_TRUE}
-\DoxyCodeLine{                     ;}
+\DoxyCodeLine{shiftExpression: additiveExpression}
+\DoxyCodeLine{               ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{binaryExpression: additiveExpression}
-\DoxyCodeLine{                ;}
+\DoxyCodeLine{relationalExpression: shiftExpression}
+\DoxyCodeLine{                    | relationalExpression '<' shiftExpression}
+\DoxyCodeLine{                    | relationalExpression '>' shiftExpression}
+\DoxyCodeLine{                    | relationalExpression '<=' shiftExpression}
+\DoxyCodeLine{                    | relationalExpression '>=' shiftExpression}
+\DoxyCodeLine{                    ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{booleanExpression: T\_TRUE}
-\DoxyCodeLine{                 | T\_FALSE}
-\DoxyCodeLine{                 | comparativeExpression}
+\DoxyCodeLine{equalityExpression: relationalExpression}
+\DoxyCodeLine{                  | equalityExpression '==' relationalExpression}
+\DoxyCodeLine{                  | equalityExpression '!=' relationalExpression}
+\DoxyCodeLine{                  ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{andLogicalExpression: equalityExpression}
+\DoxyCodeLine{                    | andLogicalExpression 'and' equalityExpression}
+\DoxyCodeLine{                    ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{xorLogicalExpression: andLogicalExpression}
+\DoxyCodeLine{                    | xorLogicalExpression 'xor' andLogicalExpression}
+\DoxyCodeLine{                    ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{orLogicalExpression: xorLogicalExpression}
+\DoxyCodeLine{                   | orLogicalExpression 'or' xorLogicalExpression}
+\DoxyCodeLine{                   ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{constantExpression: orLogicalExpression}
+\DoxyCodeLine{                  ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{assignmentExpression: orLogicalExpression}
+\DoxyCodeLine{                    | unaryExpression assignmentOperator assignmentExpression}
+\DoxyCodeLine{                    ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{booleanExpression: booleanLiteral}
+\DoxyCodeLine{                 | constantExpression}
 \DoxyCodeLine{                 ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{expression: binaryExpression}
+\DoxyCodeLine{expression: booleanExpression}
 \DoxyCodeLine{          ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{printStatement: 'print' expression }
 \DoxyCodeLine{              ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{declareStatement: dataType T\_IDENTIFIER}
+\DoxyCodeLine{declareStatement: type T\_IDENTIFIER}
 \DoxyCodeLine{                ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{assignStatement: T\_IDENTIFIER '=' expression}
-\DoxyCodeLine{               ;}
-\DoxyCodeLine{}
-\DoxyCodeLine{ifClause: 'if' '(' comparativeExpression ')' statements}
-\DoxyCodeLine{        ;}
-\DoxyCodeLine{}
-\DoxyCodeLine{whileClause: 'while' '(' comparativeExpression ')' statements}
+\DoxyCodeLine{ifStatement: 'if' '(' expression ')' statements}
+\DoxyCodeLine{           | 'if' '(' expression ')' statements 'else' statements}
 \DoxyCodeLine{           ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{ifStatement: ifClause}
-\DoxyCodeLine{           | ifClause 'else' statements}
-\DoxyCodeLine{           ;}
-\DoxyCodeLine{}
-\DoxyCodeLine{whileStatement: whileClause}
-\DoxyCodeLine{              | whileClause 'else' statements}
+\DoxyCodeLine{whileStatement: 'while' '(' expression ')' statements}
+\DoxyCodeLine{              | 'while' '(' expression ')' statements 'else' statements}
 \DoxyCodeLine{              ;}
 \DoxyCodeLine{}
-\DoxyCodeLine{forPreamble: statement;}
-\DoxyCodeLine{forPostamble: statement;}
-\DoxyCodeLine{}
-\DoxyCodeLine{forStatement: 'for' '(' forPreamble ';' comparativeExpression ';' forPostamble ')' statements }
-\DoxyCodeLine{            // foreach}
+\DoxyCodeLine{forStatement: 'for' '(' expression ';' expression ';' expression ')' statements}
 \DoxyCodeLine{            ;}
 \DoxyCodeLine{}
+\DoxyCodeLine{loopStatement: whileStatement}
+\DoxyCodeLine{             | forStatement}
+\DoxyCodeLine{             ;}
+\DoxyCodeLine{}
 \DoxyCodeLine{statementType: printStatement}
-\DoxyCodeLine{             | assignStatement}
+\DoxyCodeLine{             | assignmentExpression}
 \DoxyCodeLine{             | declareStatement}
 \DoxyCodeLine{             | ifStatement}
-\DoxyCodeLine{             | whileStatement}
-\DoxyCodeLine{             | forStatement}
+\DoxyCodeLine{             | loopStatement}
 \DoxyCodeLine{             ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{statement: statementType ';'}
@@ -100,6 +129,8 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{          | '\{' statement '\}'}
 \DoxyCodeLine{          | '\{' statement statements '\}'}
 \DoxyCodeLine{          ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{functionDeclaration: 'void' T\_IDENTIFIER '(' 'void' ')' statements;}
 
 \end{DoxyCodeInclude}
  

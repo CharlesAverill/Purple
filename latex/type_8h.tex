@@ -1,0 +1,157 @@
+\hypertarget{type_8h}{}\doxysection{include/types/type.h File Reference}
+\label{type_8h}\index{include/types/type.h@{include/types/type.h}}
+
+
+Function headers and defines for.  
+
+
+{\ttfamily \#include \char`\"{}types/number.\+h\char`\"{}}\newline
+Include dependency graph for type.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{type_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{type_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structType}{Type}}
+\begin{DoxyCompactList}\small\item\em Container for type data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{type_8h_a455edbbc0a157643b4d101447188e905}{TYPE\+\_\+\+VOID}}
+\begin{DoxyCompactList}\small\item\em Generates a void type struct. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{type_8h_af38880ae77064175c6133f1339ba6945}{TYPE\+\_\+\+NUMBER\+\_\+\+VAL}}(n)
+\begin{DoxyCompactList}\small\item\em Generates a number type struct given a \mbox{\hyperlink{structNumber}{Number}}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{type_8h_af6991466b578a05b9dc8e808c00ef2e8}{TYPE\+\_\+\+NUMBER}}(nt)
+\begin{DoxyCompactList}\small\item\em Generates a number type struct given a Number\+Type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structType}{Type}} \mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}}
+\begin{DoxyCompactList}\small\item\em Container for type data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0ee}{Type\+Type}} \{ \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0eea28299b2e38566e2c97826302cfa65028}{TT\+\_\+\+VOID}}
+, \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0eea71d6777fe79532b9c0e1a8dd3afc9f49}{TT\+\_\+\+NUMBER}}
+ \}
+\begin{DoxyCompactList}\small\item\em Types of types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function headers and defines for. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+28-\/Sep-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{type_8h_af6991466b578a05b9dc8e808c00ef2e8}\label{type_8h_af6991466b578a05b9dc8e808c00ef2e8}} 
+\index{type.h@{type.h}!TYPE\_NUMBER@{TYPE\_NUMBER}}
+\index{TYPE\_NUMBER@{TYPE\_NUMBER}!type.h@{type.h}}
+\doxysubsubsection{\texorpdfstring{TYPE\_NUMBER}{TYPE\_NUMBER}}
+{\footnotesize\ttfamily \#define TYPE\+\_\+\+NUMBER(\begin{DoxyParamCaption}\item[{}]{nt }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
+\DoxyCodeLine{    \{                                                                                              \(\backslash\)}
+\DoxyCodeLine{        .type = \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0eea71d6777fe79532b9c0e1a8dd3afc9f49}{TT\_NUMBER}}, .value.number = (\mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}})                                                \(\backslash\)}
+\DoxyCodeLine{        \{                                                                                          \(\backslash\)}
+\DoxyCodeLine{            .type = nt                                                                             \(\backslash\)}
+\DoxyCodeLine{        \}                                                                                          \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+
+
+Generates a number type struct given a Number\+Type. 
+
+\mbox{\Hypertarget{type_8h_af38880ae77064175c6133f1339ba6945}\label{type_8h_af38880ae77064175c6133f1339ba6945}} 
+\index{type.h@{type.h}!TYPE\_NUMBER\_VAL@{TYPE\_NUMBER\_VAL}}
+\index{TYPE\_NUMBER\_VAL@{TYPE\_NUMBER\_VAL}!type.h@{type.h}}
+\doxysubsubsection{\texorpdfstring{TYPE\_NUMBER\_VAL}{TYPE\_NUMBER\_VAL}}
+{\footnotesize\ttfamily \#define TYPE\+\_\+\+NUMBER\+\_\+\+VAL(\begin{DoxyParamCaption}\item[{}]{n }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
+\DoxyCodeLine{    \{                                                                                              \(\backslash\)}
+\DoxyCodeLine{        .type = \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0eea71d6777fe79532b9c0e1a8dd3afc9f49}{TT\_NUMBER}}, .value.number = n                                                       \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+
+
+Generates a number type struct given a \mbox{\hyperlink{structNumber}{Number}}. 
+
+\mbox{\Hypertarget{type_8h_a455edbbc0a157643b4d101447188e905}\label{type_8h_a455edbbc0a157643b4d101447188e905}} 
+\index{type.h@{type.h}!TYPE\_VOID@{TYPE\_VOID}}
+\index{TYPE\_VOID@{TYPE\_VOID}!type.h@{type.h}}
+\doxysubsubsection{\texorpdfstring{TYPE\_VOID}{TYPE\_VOID}}
+{\footnotesize\ttfamily \#define TYPE\+\_\+\+VOID}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
+\DoxyCodeLine{    \{                                                                                              \(\backslash\)}
+\DoxyCodeLine{        .type = \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0eea28299b2e38566e2c97826302cfa65028}{TT\_VOID}}                                                                            \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+
+
+Generates a void type struct. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{type_8h_a1ac75f8fee198af783521627f1fecfbc}\label{type_8h_a1ac75f8fee198af783521627f1fecfbc}} 
+\index{type.h@{type.h}!Type@{Type}}
+\index{Type@{Type}!type.h@{type.h}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structType}{Type}} \mbox{\hyperlink{structType}{Type}}}
+
+
+
+Container for type data. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{type_8h_a699ee47af4514d73f0f555d4696bc0ee}\label{type_8h_a699ee47af4514d73f0f555d4696bc0ee}} 
+\index{type.h@{type.h}!TypeType@{TypeType}}
+\index{TypeType@{TypeType}!type.h@{type.h}}
+\doxysubsubsection{\texorpdfstring{TypeType}{TypeType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0ee}{Type\+Type}}}
+
+
+
+Types of types. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TT\_VOID@{TT\_VOID}!type.h@{type.h}}\index{type.h@{type.h}!TT\_VOID@{TT\_VOID}}}\mbox{\Hypertarget{type_8h_a699ee47af4514d73f0f555d4696bc0eea28299b2e38566e2c97826302cfa65028}\label{type_8h_a699ee47af4514d73f0f555d4696bc0eea28299b2e38566e2c97826302cfa65028}} 
+TT\+\_\+\+VOID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TT\_NUMBER@{TT\_NUMBER}!type.h@{type.h}}\index{type.h@{type.h}!TT\_NUMBER@{TT\_NUMBER}}}\mbox{\Hypertarget{type_8h_a699ee47af4514d73f0f555d4696bc0eea71d6777fe79532b9c0e1a8dd3afc9f49}\label{type_8h_a699ee47af4514d73f0f555d4696bc0eea71d6777fe79532b9c0e1a8dd3afc9f49}} 
+TT\+\_\+\+NUMBER&\\
+\hline
+
+\end{DoxyEnumFields}

@@ -20,13 +20,13 @@ Include dependency graph for tree.\+c\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8c_a763b0d283b8770b34359d86a01f87f90}{create\+\_\+ast\+\_\+node}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$left, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$mid, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$right, \mbox{\hyperlink{structNumber}{Number}} value, char $\ast$symbol\+\_\+name)
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8c_ac92cb52b7dd963fb7408dd5df4caafb5}{create\+\_\+ast\+\_\+node}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$left, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$mid, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$right, \mbox{\hyperlink{structType}{Type}} type, char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Constructs a new AST Node with the provided values. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8c_aeeb3f4e58d29866c9f79e2344f530d7c}{create\+\_\+ast\+\_\+nonidentifier\+\_\+leaf}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, \mbox{\hyperlink{structNumber}{Number}} value)
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8c_a002845e4488b8c3ef920e3e56594b895}{create\+\_\+ast\+\_\+nonidentifier\+\_\+leaf}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, \mbox{\hyperlink{structType}{Type}} type)
 \begin{DoxyCompactList}\small\item\em Constructs a new AST Leaf Node with the provided values for a token that is not an identifier. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8c_a6944d26b526509a2659e0921d358adb5}{create\+\_\+ast\+\_\+identifier\+\_\+leaf}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Constructs a new AST Leaf Node with the provided values for a token that is an identifier. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8c_a71cd909b8b54edb42325c067d30d4223}{create\+\_\+unary\+\_\+ast\+\_\+node}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$child, \mbox{\hyperlink{structNumber}{Number}} value)
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8c_af609eb83ed6cdbeaf17bab9310304c99}{create\+\_\+unary\+\_\+ast\+\_\+node}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$child, \mbox{\hyperlink{structType}{Type}} type)
 \begin{DoxyCompactList}\small\item\em Constructs a new AST Unary Parent Node with the provided values. \end{DoxyCompactList}\item 
 static int \mbox{\hyperlink{tree_8c_ab6c2c2c6938ab1abcc61eca99cb85394}{ast\+\_\+node\+\_\+height}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$node)
 \begin{DoxyCompactList}\small\item\em Get the height of an AST Node. \end{DoxyCompactList}\item 
@@ -122,11 +122,11 @@ Constructs a new AST Leaf Node with the provided values for a token that is an i
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ The pointer to a new AST Leaf Node with the provided values 
 \end{DoxyReturn}
-\mbox{\Hypertarget{tree_8c_a763b0d283b8770b34359d86a01f87f90}\label{tree_8c_a763b0d283b8770b34359d86a01f87f90}} 
+\mbox{\Hypertarget{tree_8c_ac92cb52b7dd963fb7408dd5df4caafb5}\label{tree_8c_ac92cb52b7dd963fb7408dd5df4caafb5}} 
 \index{tree.c@{tree.c}!create\_ast\_node@{create\_ast\_node}}
 \index{create\_ast\_node@{create\_ast\_node}!tree.c@{tree.c}}
 \doxysubsubsection{\texorpdfstring{create\_ast\_node()}{create\_ast\_node()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ create\+\_\+ast\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{ttype,  }\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{left,  }\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{mid,  }\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{right,  }\item[{\mbox{\hyperlink{structNumber}{Number}}}]{value,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ create\+\_\+ast\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{ttype,  }\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{left,  }\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{mid,  }\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{right,  }\item[{\mbox{\hyperlink{structType}{Type}}}]{type,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
 
 
 
@@ -142,7 +142,7 @@ Constructs a new AST Node with the provided values.
 \hline
 {\em right} & Right child subtree of the new AST Node \\
 \hline
-{\em value} & If \mbox{\hyperlink{structToken}{Token}} is a literal, then the value of the literal \\
+{\em type} & \mbox{\hyperlink{structType}{Type}} of the new AST Node \\
 \hline
 {\em symbol\+\_\+name} & if Token\+Type == T\+\_\+\+IDENTIFIER, then the string for the identifier \\
 \hline
@@ -150,11 +150,11 @@ Constructs a new AST Node with the provided values.
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ The pointer to a new AST Node with the provided values 
 \end{DoxyReturn}
-\mbox{\Hypertarget{tree_8c_aeeb3f4e58d29866c9f79e2344f530d7c}\label{tree_8c_aeeb3f4e58d29866c9f79e2344f530d7c}} 
+\mbox{\Hypertarget{tree_8c_a002845e4488b8c3ef920e3e56594b895}\label{tree_8c_a002845e4488b8c3ef920e3e56594b895}} 
 \index{tree.c@{tree.c}!create\_ast\_nonidentifier\_leaf@{create\_ast\_nonidentifier\_leaf}}
 \index{create\_ast\_nonidentifier\_leaf@{create\_ast\_nonidentifier\_leaf}!tree.c@{tree.c}}
 \doxysubsubsection{\texorpdfstring{create\_ast\_nonidentifier\_leaf()}{create\_ast\_nonidentifier\_leaf()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ create\+\_\+ast\+\_\+nonidentifier\+\_\+leaf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{ttype,  }\item[{\mbox{\hyperlink{structNumber}{Number}}}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ create\+\_\+ast\+\_\+nonidentifier\+\_\+leaf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{ttype,  }\item[{\mbox{\hyperlink{structType}{Type}}}]{type }\end{DoxyParamCaption})}
 
 
 
@@ -164,17 +164,17 @@ Constructs a new AST Leaf Node with the provided values for a token that is not 
 \begin{DoxyParams}{Parameters}
 {\em ttype} & Token\+Type of the new AST Node \\
 \hline
-{\em value} & If \mbox{\hyperlink{structToken}{Token}} is a literal, then the value of the literal \\
+{\em type} & \mbox{\hyperlink{structType}{Type}} of the new AST Node \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ The pointer to a new AST Leaf Node with the provided values 
 \end{DoxyReturn}
-\mbox{\Hypertarget{tree_8c_a71cd909b8b54edb42325c067d30d4223}\label{tree_8c_a71cd909b8b54edb42325c067d30d4223}} 
+\mbox{\Hypertarget{tree_8c_af609eb83ed6cdbeaf17bab9310304c99}\label{tree_8c_af609eb83ed6cdbeaf17bab9310304c99}} 
 \index{tree.c@{tree.c}!create\_unary\_ast\_node@{create\_unary\_ast\_node}}
 \index{create\_unary\_ast\_node@{create\_unary\_ast\_node}!tree.c@{tree.c}}
 \doxysubsubsection{\texorpdfstring{create\_unary\_ast\_node()}{create\_unary\_ast\_node()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ create\+\_\+unary\+\_\+ast\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{ttype,  }\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{child,  }\item[{\mbox{\hyperlink{structNumber}{Number}}}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ create\+\_\+unary\+\_\+ast\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{ttype,  }\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{child,  }\item[{\mbox{\hyperlink{structType}{Type}}}]{type }\end{DoxyParamCaption})}
 
 
 
@@ -186,7 +186,7 @@ Constructs a new AST Unary Parent Node with the provided values.
 \hline
 {\em child} & The AST Node\textquotesingle{}s single child \\
 \hline
-{\em value} & If \mbox{\hyperlink{structToken}{Token}} is a literal, then the value of the literal \\
+{\em type} & \mbox{\hyperlink{structType}{Type}} of the new AST Node \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

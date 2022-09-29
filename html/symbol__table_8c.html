@@ -102,8 +102,9 @@ Include dependency graph for symbol_table.c:</div>
 <area shape="rect" title=" " alt="" coords="177,95,241,121"/>
 <area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="265,95,427,121"/>
 <area shape="rect" href="hash_8h.html" title="Function headers and definitions for hashing algorithms." alt="" coords="451,95,539,121"/>
-<area shape="rect" title=" " alt="" coords="250,169,325,196"/>
-<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="349,169,460,196"/>
+<area shape="rect" title=" " alt="" coords="255,169,330,196"/>
+<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="354,169,445,196"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="344,244,455,271"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -148,23 +149,23 @@ Functions</h2></td></tr>
 <tr class="memitem:a19902129ff999624837d473ed4d77674"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSymbolTableEntry.html">SymbolTableEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="symbol__table_8c.html#a19902129ff999624837d473ed4d77674">new_symbol_table_entry</a> (char *symbol_name)</td></tr>
 <tr class="memdesc:a19902129ff999624837d473ed4d77674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to new Symbol Table Entry.  <a href="symbol__table_8c.html#a19902129ff999624837d473ed4d77674">More...</a><br /></td></tr>
 <tr class="separator:a19902129ff999624837d473ed4d77674"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad566d16fa17276db926a2058b7650a88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="symbol__table_8c.html#ad566d16fa17276db926a2058b7650a88">add_symbol_table_entry</a> (<a class="el" href="structSymbolTable.html">SymbolTable</a> *table, char *symbol_name, <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> number_type)</td></tr>
-<tr class="memdesc:ad566d16fa17276db926a2058b7650a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash symbol_name with hash function FNV-1 and put it into the chained Symbol Table.  <a href="symbol__table_8c.html#ad566d16fa17276db926a2058b7650a88">More...</a><br /></td></tr>
-<tr class="separator:ad566d16fa17276db926a2058b7650a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab32fb47ae26126a5117952900b892751"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSymbolTableEntry.html">SymbolTableEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="symbol__table_8c.html#ab32fb47ae26126a5117952900b892751">add_symbol_table_entry</a> (<a class="el" href="structSymbolTable.html">SymbolTable</a> *table, char *symbol_name, <a class="el" href="structType.html">Type</a> type)</td></tr>
+<tr class="memdesc:ab32fb47ae26126a5117952900b892751"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash symbol_name with hash function FNV-1 and put it into the chained Symbol Table.  <a href="symbol__table_8c.html#ab32fb47ae26126a5117952900b892751">More...</a><br /></td></tr>
+<tr class="separator:ab32fb47ae26126a5117952900b892751"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Logic for global and local symbol tables. </p>
 <dl class="section author"><dt>Author</dt><dd>Charles Averill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>16-Sep-2022 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ad566d16fa17276db926a2058b7650a88" name="ad566d16fa17276db926a2058b7650a88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad566d16fa17276db926a2058b7650a88">&#9670;&nbsp;</a></span>add_symbol_table_entry()</h2>
+<a id="ab32fb47ae26126a5117952900b892751" name="ab32fb47ae26126a5117952900b892751"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab32fb47ae26126a5117952900b892751">&#9670;&nbsp;</a></span>add_symbol_table_entry()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void add_symbol_table_entry </td>
+          <td class="memname"><a class="el" href="structSymbolTableEntry.html">SymbolTableEntry</a> * add_symbol_table_entry </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structSymbolTable.html">SymbolTable</a> *&#160;</td>
           <td class="paramname"><em>table</em>, </td>
@@ -178,8 +179,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td>
-          <td class="paramname"><em>number_type</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structType.html">Type</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -194,9 +195,11 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">table</td><td>Table to put new Symbol Table Entry into </td></tr>
     <tr><td class="paramname">symbol_name</td><td>Name of symbol to add </td></tr>
+    <tr><td class="paramname">type</td><td><a class="el" href="structType.html" title="Container for type data.">Type</a> of symbol to add </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>SymbolTableEntry* Pointer to new Symbol Table Entry </dd></dl>
 
 </div>
 </div>

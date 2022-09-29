@@ -33,9 +33,11 @@ void \mbox{\hyperlink{parse_8h_a50272a0b5fea28f10f872dda4641d1a4}{match\+\_\+tok
 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \mbox{\hyperlink{parse_8h_a8e5c84a93405ab540a698edd6aa670b3}{match\+\_\+type}} (void)
 \begin{DoxyCompactList}\small\item\em Ensure current token is a type token, and scan the next token if so. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{parse_8h_a5975acb392673971cc8f96e720e23de7}{variable\+\_\+declaration}} (void)
-\begin{DoxyCompactList}\small\item\em Parse a variable declaration statement into LLVM. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Parse a variable declaration statement into an AST. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_a144fb627a89093eec468cacb91eacd3d}{function\+\_\+declaration}} (void)
+\begin{DoxyCompactList}\small\item\em Parse a function declaration statement into an AST. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_a72e124e2436e13e1d8c09a0616245c12}{parse\+\_\+statements}} (void)
-\begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into an AST. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -123,6 +125,19 @@ This table outlines Purple\textquotesingle{}s operator precedence values. A high
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{parse_8h_a144fb627a89093eec468cacb91eacd3d}\label{parse_8h_a144fb627a89093eec468cacb91eacd3d}} 
+\index{parse.h@{parse.h}!function\_declaration@{function\_declaration}}
+\index{function\_declaration@{function\_declaration}!parse.h@{parse.h}}
+\doxysubsubsection{\texorpdfstring{function\_declaration()}{function\_declaration()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ function\+\_\+declaration (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Parse a function declaration statement into an AST. 
+
+\begin{DoxyReturn}{Returns}
+ASTNode$\ast$ 
+\end{DoxyReturn}
 \mbox{\Hypertarget{parse_8h_a50272a0b5fea28f10f872dda4641d1a4}\label{parse_8h_a50272a0b5fea28f10f872dda4641d1a4}} 
 \index{parse.h@{parse.h}!match\_token@{match\_token}}
 \index{match\_token@{match\_token}!parse.h@{parse.h}}
@@ -149,7 +164,7 @@ Ensure current token is of a given type, and scan the next token if so.
 Ensure current token is a type token, and scan the next token if so. 
 
 \begin{DoxyReturn}{Returns}
-Number\+Type Type of variable 
+Number\+Type \mbox{\hyperlink{structType}{Type}} of variable 
 \end{DoxyReturn}
 \mbox{\Hypertarget{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}\label{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}} 
 \index{parse.h@{parse.h}!parse\_binary\_expression@{parse\_binary\_expression}}
@@ -177,7 +192,7 @@ ASTNode$\ast$ An AST or AST Subtree of the binary expressions in D\+\_\+\+INPUT\
 
 
 
-Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. 
+Parse a set of statements into ASTs and generate them into an AST. 
 
 \begin{DoxyReturn}{Returns}
 AST for a group of statements 
@@ -190,7 +205,7 @@ AST for a group of statements
 
 
 
-Parse a variable declaration statement into LLVM. 
+Parse a variable declaration statement into an AST. 
 
 
 
@@ -201,4 +216,19 @@ Parse a variable declaration statement into LLVM.
 \doxysubsubsection{\texorpdfstring{operatorPrecedence}{operatorPrecedence}}
 {\footnotesize\ttfamily int operator\+Precedence\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
 
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2}{T\_PLUS}}] = 12,  [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aeabbf9419f82ec47ab35d6931784dfb4}{T\_MINUS}}] = 12, [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a6fad6b41ffee1efe0dfc7b12a19c0672}{T\_STAR}}] = 13, [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a}{T\_SLASH}}] = 13, [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd}{T\_EXPONENT}}] = 15,}
+\DoxyCodeLine{}
+\DoxyCodeLine{    [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad}{T\_EQ}}] = 9,     [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af7c934b483e2a65d6212722999121c0e}{T\_NEQ}}] = 9,}
+\DoxyCodeLine{}
+\DoxyCodeLine{    [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a9e53bc57aabd3d3baa91aed85cb9f0fc}{T\_LT}}] = 10,    [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ac869f90f0fc081ae0e4a1c7746c11f3d}{T\_GT}}] = 10,    [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aa2fbee07f3776bb841fe1ac13629eb9d}{T\_LE}}] = 10,   [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df}{T\_GE}}] = 10,}
+\DoxyCodeLine{}
+\DoxyCodeLine{    [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a09d3f67b151bc1e002a78de682fc1c8b}{T\_AND}}] = 6,    [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aee13d53546c9358e6b15a455f1c81fb6}{T\_OR}}] = 4,     [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a39cfc5f9514bb57aa46ffa6ea56a1cc7}{T\_XOR}}] = 5,   [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a2355672f63c952365ee7dd888eec494b}{T\_NAND}}] = 6,   [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a5ea4f433350d42feb4cb4a2148368cc2}{T\_NOR}}] = 4,       [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aaf1a365950bce3b45aec63de01c5d096}{T\_XNOR}}] = 5,}
+\DoxyCodeLine{}
+\DoxyCodeLine{    [\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720}{T\_ASSIGN}}] = 2,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
 Operator precedence values. Precedence ranges from 0-\/15, 15 being the first to be computed 

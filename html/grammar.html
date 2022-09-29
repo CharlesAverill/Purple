@@ -83,28 +83,46 @@ Grammar</h1>
 <div class="fragment"><div class="line">grammar purple;</div>
 <div class="line"> </div>
 <div class="line">tokens {</div>
+<div class="line">    T_IDENTIFIER,</div>
 <div class="line">    T_INTEGER_LITERAL,</div>
-<div class="line">    T_CHAR_LITERAL,</div>
-<div class="line">    T_LONG_LITERAL,</div>
-<div class="line">    T_TRUE,</div>
-<div class="line">    T_FALSE,</div>
-<div class="line">    T_IDENTIFIER</div>
+<div class="line">    T_CHAR_LITERAL</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line">number: T_INTEGER_LITERAL</div>
-<div class="line">        ;</div>
-<div class="line"> </div>
-<div class="line">booleanLiteral: T_TRUE</div>
-<div class="line">              | T_FALSE</div>
+<div class="line">booleanLiteral: &#39;true&#39;</div>
+<div class="line">              | &#39;false&#39;</div>
 <div class="line">              ;</div>
 <div class="line"> </div>
-<div class="line">dataType: &#39;int&#39;</div>
-<div class="line">        | &#39;bool&#39;</div>
-<div class="line">        ;</div>
+<div class="line">type: &#39;void&#39;</div>
+<div class="line">    | &#39;bool&#39;</div>
+<div class="line">    | &#39;char&#39;</div>
+<div class="line">    | &#39;int&#39;</div>
+<div class="line">    | &#39;long&#39;</div>
+<div class="line">    ;</div>
 <div class="line"> </div>
-<div class="line">multiplicativeExpression: number</div>
-<div class="line">                        | number &#39;*&#39; multiplicativeExpression</div>
-<div class="line">                        | number &#39;/&#39; multiplicativeExpression</div>
+<div class="line">assignmentOperator: &#39;=&#39;</div>
+<div class="line">                  ;</div>
+<div class="line"> </div>
+<div class="line">literal: T_INTEGER_LITERAL</div>
+<div class="line">       | T_CHAR_LITERAL</div>
+<div class="line">       | booleanLiteral</div>
+<div class="line">       ;</div>
+<div class="line"> </div>
+<div class="line">primaryExpression: T_IDENTIFIER</div>
+<div class="line">                 | literal</div>
+<div class="line">                 ;</div>
+<div class="line"> </div>
+<div class="line">postfixExpression: primaryExpression</div>
+<div class="line">                 ;</div>
+<div class="line"> </div>
+<div class="line">unaryExpression: postfixExpression</div>
+<div class="line">               ;</div>
+<div class="line"> </div>
+<div class="line">castExpression: unaryExpression</div>
+<div class="line">              ;</div>
+<div class="line"> </div>
+<div class="line">multiplicativeExpression: castExpression</div>
+<div class="line">                        | multiplicativeExpression &#39;*&#39; castExpression</div>
+<div class="line">                        | multiplicativeExpression &#39;/&#39; castExpression</div>
 <div class="line">                        ;</div>
 <div class="line"> </div>
 <div class="line">additiveExpression: multiplicativeExpression</div>
@@ -112,62 +130,73 @@ Grammar</h1>
 <div class="line">                  | additiveExpression &#39;-&#39; multiplicativeExpression</div>
 <div class="line">                  ;</div>
 <div class="line"> </div>
-<div class="line">comparativeExpression: binaryExpression &#39;&lt;&#39; binaryExpression</div>
-<div class="line">                     | binaryExpression &#39;&gt;&#39; binaryExpression</div>
-<div class="line">                     | binaryExpression &#39;&lt;=&#39; binaryExpression</div>
-<div class="line">                     | binaryExpression &#39;&gt;=&#39; binaryExpression</div>
-<div class="line">                     | binaryExpression &#39;==&#39; binaryExpression</div>
-<div class="line">                     | binaryExpression &#39;!=&#39; binaryExpression</div>
-<div class="line">                     | binaryExpression // expands to binaryExpression == T_TRUE</div>
-<div class="line">                     ;</div>
+<div class="line">shiftExpression: additiveExpression</div>
+<div class="line">               ;</div>
 <div class="line"> </div>
-<div class="line">binaryExpression: additiveExpression</div>
-<div class="line">                ;</div>
+<div class="line">relationalExpression: shiftExpression</div>
+<div class="line">                    | relationalExpression &#39;&lt;&#39; shiftExpression</div>
+<div class="line">                    | relationalExpression &#39;&gt;&#39; shiftExpression</div>
+<div class="line">                    | relationalExpression &#39;&lt;=&#39; shiftExpression</div>
+<div class="line">                    | relationalExpression &#39;&gt;=&#39; shiftExpression</div>
+<div class="line">                    ;</div>
 <div class="line"> </div>
-<div class="line">booleanExpression: T_TRUE</div>
-<div class="line">                 | T_FALSE</div>
-<div class="line">                 | comparativeExpression</div>
+<div class="line">equalityExpression: relationalExpression</div>
+<div class="line">                  | equalityExpression &#39;==&#39; relationalExpression</div>
+<div class="line">                  | equalityExpression &#39;!=&#39; relationalExpression</div>
+<div class="line">                  ;</div>
+<div class="line"> </div>
+<div class="line">andLogicalExpression: equalityExpression</div>
+<div class="line">                    | andLogicalExpression &#39;and&#39; equalityExpression</div>
+<div class="line">                    ;</div>
+<div class="line"> </div>
+<div class="line">xorLogicalExpression: andLogicalExpression</div>
+<div class="line">                    | xorLogicalExpression &#39;xor&#39; andLogicalExpression</div>
+<div class="line">                    ;</div>
+<div class="line"> </div>
+<div class="line">orLogicalExpression: xorLogicalExpression</div>
+<div class="line">                   | orLogicalExpression &#39;or&#39; xorLogicalExpression</div>
+<div class="line">                   ;</div>
+<div class="line"> </div>
+<div class="line">constantExpression: orLogicalExpression</div>
+<div class="line">                  ;</div>
+<div class="line"> </div>
+<div class="line">assignmentExpression: orLogicalExpression</div>
+<div class="line">                    | unaryExpression assignmentOperator assignmentExpression</div>
+<div class="line">                    ;</div>
+<div class="line"> </div>
+<div class="line">booleanExpression: booleanLiteral</div>
+<div class="line">                 | constantExpression</div>
 <div class="line">                 ;</div>
 <div class="line"> </div>
-<div class="line">expression: binaryExpression</div>
+<div class="line">expression: booleanExpression</div>
 <div class="line">          ;</div>
 <div class="line"> </div>
 <div class="line">printStatement: &#39;print&#39; expression </div>
 <div class="line">              ;</div>
 <div class="line"> </div>
-<div class="line">declareStatement: dataType T_IDENTIFIER</div>
+<div class="line">declareStatement: type T_IDENTIFIER</div>
 <div class="line">                ;</div>
 <div class="line"> </div>
-<div class="line">assignStatement: T_IDENTIFIER &#39;=&#39; expression</div>
-<div class="line">               ;</div>
-<div class="line"> </div>
-<div class="line">ifClause: &#39;if&#39; &#39;(&#39; comparativeExpression &#39;)&#39; statements</div>
-<div class="line">        ;</div>
-<div class="line"> </div>
-<div class="line">whileClause: &#39;while&#39; &#39;(&#39; comparativeExpression &#39;)&#39; statements</div>
+<div class="line">ifStatement: &#39;if&#39; &#39;(&#39; expression &#39;)&#39; statements</div>
+<div class="line">           | &#39;if&#39; &#39;(&#39; expression &#39;)&#39; statements &#39;else&#39; statements</div>
 <div class="line">           ;</div>
 <div class="line"> </div>
-<div class="line">ifStatement: ifClause</div>
-<div class="line">           | ifClause &#39;else&#39; statements</div>
-<div class="line">           ;</div>
-<div class="line"> </div>
-<div class="line">whileStatement: whileClause</div>
-<div class="line">              | whileClause &#39;else&#39; statements</div>
+<div class="line">whileStatement: &#39;while&#39; &#39;(&#39; expression &#39;)&#39; statements</div>
+<div class="line">              | &#39;while&#39; &#39;(&#39; expression &#39;)&#39; statements &#39;else&#39; statements</div>
 <div class="line">              ;</div>
 <div class="line"> </div>
-<div class="line">forPreamble: statement;</div>
-<div class="line">forPostamble: statement;</div>
-<div class="line"> </div>
-<div class="line">forStatement: &#39;for&#39; &#39;(&#39; forPreamble &#39;;&#39; comparativeExpression &#39;;&#39; forPostamble &#39;)&#39; statements </div>
-<div class="line">            // foreach</div>
+<div class="line">forStatement: &#39;for&#39; &#39;(&#39; expression &#39;;&#39; expression &#39;;&#39; expression &#39;)&#39; statements</div>
 <div class="line">            ;</div>
 <div class="line"> </div>
+<div class="line">loopStatement: whileStatement</div>
+<div class="line">             | forStatement</div>
+<div class="line">             ;</div>
+<div class="line"> </div>
 <div class="line">statementType: printStatement</div>
-<div class="line">             | assignStatement</div>
+<div class="line">             | assignmentExpression</div>
 <div class="line">             | declareStatement</div>
 <div class="line">             | ifStatement</div>
-<div class="line">             | whileStatement</div>
-<div class="line">             | forStatement</div>
+<div class="line">             | loopStatement</div>
 <div class="line">             ;</div>
 <div class="line"> </div>
 <div class="line">statement: statementType &#39;;&#39;</div>
@@ -177,6 +206,8 @@ Grammar</h1>
 <div class="line">          | &#39;{&#39; statement &#39;}&#39;</div>
 <div class="line">          | &#39;{&#39; statement statements &#39;}&#39;</div>
 <div class="line">          ;</div>
+<div class="line"> </div>
+<div class="line">functionDeclaration: &#39;void&#39; T_IDENTIFIER &#39;(&#39; &#39;void&#39; &#39;)&#39; statements;</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

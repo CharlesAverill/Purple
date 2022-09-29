@@ -98,10 +98,11 @@ Include dependency graph for scan.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="scan_8h__incl.png" border="0" usemap="#ainclude_2scan_8h" alt=""/></div>
 <map name="ainclude_2scan_8h" id="ainclude_2scan_8h">
-<area shape="rect" title="Lexical Scanner function headers." alt="" coords="47,5,153,32"/>
+<area shape="rect" title="Lexical Scanner function headers." alt="" coords="43,5,149,32"/>
 <area shape="rect" title=" " alt="" coords="5,155,80,181"/>
-<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="79,80,241,107"/>
-<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="105,155,215,181"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="75,80,237,107"/>
+<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="111,155,201,181"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="101,229,211,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -186,6 +187,8 @@ Macros</h2></td></tr>
 <tr class="separator:a5b48563ed4f8a06dfdad4a791c87a11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06a6899fdb51b5e02168085e3dae1ed5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a06a6899fdb51b5e02168085e3dae1ed5">TTS_FALSE</a>&#160;&#160;&#160;&quot;false&quot;</td></tr>
 <tr class="separator:a06a6899fdb51b5e02168085e3dae1ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a161aade3b2faf94b8523822f2643204b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a161aade3b2faf94b8523822f2643204b">TTS_VOID</a>&#160;&#160;&#160;&quot;void&quot;</td></tr>
+<tr class="separator:a161aade3b2faf94b8523822f2643204b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9bc3684d38f2224d0cd03f1e556ebaf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#aa9bc3684d38f2224d0cd03f1e556ebaf">TTS_BOOL</a>&#160;&#160;&#160;&quot;bool&quot;</td></tr>
 <tr class="separator:aa9bc3684d38f2224d0cd03f1e556ebaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb2ff79d45002ba6bb78349a043e6554"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#aeb2ff79d45002ba6bb78349a043e6554">TTS_CHAR</a>&#160;&#160;&#160;&quot;char&quot;</td></tr>
@@ -222,6 +225,8 @@ Macros</h2></td></tr>
 <tr class="separator:a8ef63807b66125e7597b5d3fc09e4ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac040bd6f15b188707e566390bf2b9e67"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#ac040bd6f15b188707e566390bf2b9e67">TTS_AST_GLUE</a>&#160;&#160;&#160;&quot;ast glue&quot;</td></tr>
 <tr class="separator:ac040bd6f15b188707e566390bf2b9e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa36441f3c2ec30263defc59036ab260f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#aa36441f3c2ec30263defc59036ab260f">TTS_FUNCTION</a>&#160;&#160;&#160;&quot;function&quot;</td></tr>
+<tr class="separator:aa36441f3c2ec30263defc59036ab260f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46f1aea9b4d32f930ba89616ac14aed6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a46f1aea9b4d32f930ba89616ac14aed6">NUMBER_LITERAL_BASE_PREFIX</a>&#160;&#160;&#160;'0'</td></tr>
 <tr class="separator:a46f1aea9b4d32f930ba89616ac14aed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1c50a3b0df6114ef59f9b413c94f2e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#ae1c50a3b0df6114ef59f9b413c94f2e1">NUMBER_LITERAL_BIN_PREFIX</a>&#160;&#160;&#160;'b'</td></tr>
@@ -301,29 +306,31 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796">T_LONG_LITERAL</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075">T_TRUE</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ad04c6fedfc6e82b9cd961d926579f541">T_FALSE</a>
-, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf">T_BOOL</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99">T_VOID</a>
 , <br />
-&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921afc1d9070a444ece92960119b8b6d71b3">T_CHAR</a>
+&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf">T_BOOL</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921afc1d9070a444ece92960119b8b6d71b3">T_CHAR</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83">T_INT</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842">T_LONG</a>
-, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720">T_ASSIGN</a>
 , <br />
-&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aa9d18789762367b48144de4ab345a73b">T_PRINT</a>
+&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720">T_ASSIGN</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aa9d18789762367b48144de4ab345a73b">T_PRINT</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ae108a2ed1b8ace8f3e62ddfe3b6ee02d">T_IF</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aa3624108e89b325c2bc7b7fe968182b8">T_ELSE</a>
-, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a53ea0dd1b6eff99840e43263e461db90">T_WHILE</a>
 , <br />
-&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a015a67f9192b6e93aefaad3ff8e4d534">T_FOR</a>
+&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a53ea0dd1b6eff99840e43263e461db90">T_WHILE</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a015a67f9192b6e93aefaad3ff8e4d534">T_FOR</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf">T_SEMICOLON</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ad3c00dadab635871936786d06435b597">T_LEFT_PAREN</a>
-, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a424e527b30e941f85bd06be98649c9e4">T_RIGHT_PAREN</a>
 , <br />
-&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af80c03e581832d0539f935ad06c55644">T_LEFT_BRACE</a>
+&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a424e527b30e941f85bd06be98649c9e4">T_RIGHT_PAREN</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af80c03e581832d0539f935ad06c55644">T_LEFT_BRACE</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a0c4f26d5004adf7f0ae46c972d47c641">T_RIGHT_BRACE</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a">T_IDENTIFIER</a>
-, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63">T_LVALUE_IDENTIFIER</a>
 , <br />
-&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ab1647682cc68bc1ae29602d185992e7a">T_AST_GLUE</a>
+&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63">T_LVALUE_IDENTIFIER</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ab1647682cc68bc1ae29602d185992e7a">T_AST_GLUE</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ac8d14b8d5356398c7927dd298565f23a">T_FUNCTION</a>
 <br />
  }</td></tr>
 <tr class="memdesc:aa520fbf142ba1e7e659590c07da31921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types of scannable tokens.  <a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">More...</a><br /></td></tr>
@@ -784,6 +791,20 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="aa36441f3c2ec30263defc59036ab260f" name="aa36441f3c2ec30263defc59036ab260f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa36441f3c2ec30263defc59036ab260f">&#9670;&nbsp;</a></span>TTS_FUNCTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TTS_FUNCTION&#160;&#160;&#160;&quot;function&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7bf41eda078f643afe448e0d4fe3513d" name="a7bf41eda078f643afe448e0d4fe3513d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7bf41eda078f643afe448e0d4fe3513d">&#9670;&nbsp;</a></span>TTS_GE</h2>
 
@@ -1148,6 +1169,20 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a161aade3b2faf94b8523822f2643204b" name="a161aade3b2faf94b8523822f2643204b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a161aade3b2faf94b8523822f2643204b">&#9670;&nbsp;</a></span>TTS_VOID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TTS_VOID&#160;&#160;&#160;&quot;void&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3e5728a8a605d74f2980025f8fa171e6" name="a3e5728a8a605d74f2980025f8fa171e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3e5728a8a605d74f2980025f8fa171e6">&#9670;&nbsp;</a></span>TTS_WHILE</h2>
 
@@ -1245,6 +1280,7 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796" name="aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796"></a>T_LONG_LITERAL&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075" name="aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075"></a>T_TRUE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921ad04c6fedfc6e82b9cd961d926579f541" name="aa520fbf142ba1e7e659590c07da31921ad04c6fedfc6e82b9cd961d926579f541"></a>T_FALSE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99" name="aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99"></a>T_VOID&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf" name="aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf"></a>T_BOOL&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921afc1d9070a444ece92960119b8b6d71b3" name="aa520fbf142ba1e7e659590c07da31921afc1d9070a444ece92960119b8b6d71b3"></a>T_CHAR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83" name="aa520fbf142ba1e7e659590c07da31921aa30cbb0eb56b7263a35f9d6643e12c83"></a>T_INT&#160;</td><td class="fielddoc"></td></tr>
@@ -1263,6 +1299,7 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a" name="aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a"></a>T_IDENTIFIER&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63" name="aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63"></a>T_LVALUE_IDENTIFIER&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921ab1647682cc68bc1ae29602d185992e7a" name="aa520fbf142ba1e7e659590c07da31921ab1647682cc68bc1ae29602d185992e7a"></a>T_AST_GLUE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921ac8d14b8d5356398c7927dd298565f23a" name="aa520fbf142ba1e7e659590c07da31921ac8d14b8d5356398c7927dd298565f23a"></a>T_FUNCTION&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>

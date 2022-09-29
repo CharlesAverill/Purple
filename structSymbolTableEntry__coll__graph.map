@@ -1,3 +1,5 @@
 <map id="SymbolTableEntry" name="SymbolTableEntry">
-<area shape="rect" id="node1" title="Struct holding data about a symbol." alt="" coords="5,5,132,141"/>
+<area shape="rect" id="node1" title="Struct holding data about a symbol." alt="" coords="5,315,132,436"/>
+<area shape="rect" id="node2" href="$structType.html" title="Container for type data." alt="" coords="37,160,101,252"/>
+<area shape="rect" id="node3" href="$structNumber.html" title="Container for various kinds of number data." alt="" coords="35,5,103,97"/>
 </map>

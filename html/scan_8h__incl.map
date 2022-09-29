@@ -1,6 +1,7 @@
 <map id="include/scan.h" name="include/scan.h">
-<area shape="rect" id="node1" title="Lexical Scanner function headers." alt="" coords="47,5,153,32"/>
+<area shape="rect" id="node1" title="Lexical Scanner function headers." alt="" coords="43,5,149,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,155,80,181"/>
-<area shape="rect" id="node3" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="79,80,241,107"/>
-<area shape="rect" id="node4" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="105,155,215,181"/>
+<area shape="rect" id="node3" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="75,80,237,107"/>
+<area shape="rect" id="node4" href="$type_8h.html" title="Function headers and defines for." alt="" coords="111,155,201,181"/>
+<area shape="rect" id="node5" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="101,229,211,256"/>
 </map>

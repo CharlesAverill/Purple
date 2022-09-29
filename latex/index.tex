@@ -19,7 +19,7 @@ Purple uses C-\/style syntax, although this may change as the compiler is built
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{purple_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{void}) \{}
 \DoxyCodeLine{    \textcolor{keywordtype}{int} bob;}
 \DoxyCodeLine{    \textcolor{keywordtype}{int} alice;}
 \DoxyCodeLine{}
@@ -40,6 +40,8 @@ Purple uses C-\/style syntax, although this may change as the compiler is built
 \DoxyCodeLine{    \textcolor{keywordflow}{while} (i < 20) \{}
 \DoxyCodeLine{        print i;}
 \DoxyCodeLine{        i = i + 1;}
+\DoxyCodeLine{    \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{        print i == 0 or \textcolor{keyword}{true}; \textcolor{comment}{// true}}
 \DoxyCodeLine{    \}}
 \DoxyCodeLine{\}}
 

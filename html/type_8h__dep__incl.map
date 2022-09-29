@@ -1,0 +1,23 @@
+<map id="include/types/type.h" name="include/types/type.h">
+<area shape="rect" id="node1" title="Function headers and defines for." alt="" coords="815,5,951,32"/>
+<area shape="rect" id="node2" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="801,80,964,121"/>
+<area shape="rect" id="node3" href="$data_8h.html" title="Project&#45;wide variables." alt="" coords="658,333,761,360"/>
+<area shape="rect" id="node4" href="$declaration_8c.html" title="Logic for declaration statements." alt="" coords="1179,408,1333,435"/>
+<area shape="rect" id="node7" href="$purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="169,483,258,509"/>
+<area shape="rect" id="node15" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="761,177,866,203"/>
+<area shape="rect" id="node18" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="904,259,1003,285"/>
+<area shape="rect" id="node21" href="$symbol__table_8c.html" title="Logic for global and local symbol tables." alt="" coords="1271,169,1409,211"/>
+<area shape="rect" id="node5" href="$expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="952,408,1104,435"/>
+<area shape="rect" id="node6" href="$statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="1502,483,1650,509"/>
+<area shape="rect" id="node8" href="$scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="93,408,176,435"/>
+<area shape="rect" id="node9" href="$llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="1346,483,1478,509"/>
+<area shape="rect" id="node10" href="$translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="723,483,882,509"/>
+<area shape="rect" id="node11" href="$tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="851,408,927,435"/>
+<area shape="rect" id="node12" href="$clang_8c.html" title="Functions for interacting with clang." alt="" coords="302,408,415,435"/>
+<area shape="rect" id="node13" href="$logging_8c.html" title="Warnings and fatal error handling." alt="" coords="440,408,563,435"/>
+<area shape="rect" id="node14" href="$shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="587,408,725,435"/>
+<area shape="rect" id="node16" href="$llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="1371,333,1525,360"/>
+<area shape="rect" id="node20" href="$number_8c.html" title="Functions for dealing with numbers internally." alt="" coords="747,259,879,285"/>
+<area shape="rect" id="node17" href="$translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="1357,408,1539,435"/>
+<area shape="rect" id="node19" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="1087,333,1196,360"/>
+</map>

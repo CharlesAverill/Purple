@@ -21,7 +21,9 @@ Include dependency graph for declaration.\+c\+:
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{declaration_8c_a5975acb392673971cc8f96e720e23de7}{variable\+\_\+declaration}} (void)
-\begin{DoxyCompactList}\small\item\em Parse a variable declaration statement into LLVM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Parse a variable declaration statement into an AST. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{declaration_8c_a144fb627a89093eec468cacb91eacd3d}{function\+\_\+declaration}} (void)
+\begin{DoxyCompactList}\small\item\em Parse a function declaration statement into an AST. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -36,6 +38,19 @@ Charles Averill
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{declaration_8c_a144fb627a89093eec468cacb91eacd3d}\label{declaration_8c_a144fb627a89093eec468cacb91eacd3d}} 
+\index{declaration.c@{declaration.c}!function\_declaration@{function\_declaration}}
+\index{function\_declaration@{function\_declaration}!declaration.c@{declaration.c}}
+\doxysubsubsection{\texorpdfstring{function\_declaration()}{function\_declaration()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ function\+\_\+declaration (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Parse a function declaration statement into an AST. 
+
+\begin{DoxyReturn}{Returns}
+ASTNode$\ast$ 
+\end{DoxyReturn}
 \mbox{\Hypertarget{declaration_8c_a5975acb392673971cc8f96e720e23de7}\label{declaration_8c_a5975acb392673971cc8f96e720e23de7}} 
 \index{declaration.c@{declaration.c}!variable\_declaration@{variable\_declaration}}
 \index{variable\_declaration@{variable\_declaration}!declaration.c@{declaration.c}}
@@ -44,5 +59,5 @@ Charles Averill
 
 
 
-Parse a variable declaration statement into LLVM. 
+Parse a variable declaration statement into an AST. 
 

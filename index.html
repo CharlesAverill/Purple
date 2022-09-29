@@ -92,7 +92,7 @@ Grammar</h1>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Examples</h1>
 <p >Purple uses C-style syntax, although this may change as the compiler is built</p>
-<div class="fragment"><div class="line">{</div>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="purple_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">void</span>) {</div>
 <div class="line">    <span class="keywordtype">int</span> bob;</div>
 <div class="line">    <span class="keywordtype">int</span> alice;</div>
 <div class="line"> </div>
@@ -113,8 +113,11 @@ Examples</h1>
 <div class="line">    <span class="keywordflow">while</span> (i &lt; 20) {</div>
 <div class="line">        print i;</div>
 <div class="line">        i = i + 1;</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        print i == 0 or <span class="keyword">true</span>; <span class="comment">// true</span></div>
 <div class="line">    }</div>
 <div class="line">}</div>
+<div class="ttc" id="apurple_8c_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="purple_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdoc">Compiler entrypoint.</div><div class="ttdef"><b>Definition:</b> purple.c:70</div></div>
 </div><!-- fragment --><p >More examples can be viewed <a href="https://github.com/CharlesAverill/Purple/tree/main/examples" target="_blank">here</a>. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->

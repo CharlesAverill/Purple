@@ -35,7 +35,7 @@ static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{stateme
 static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_ac24b43c70d7c71aac2b50ab622019ec5}{for\+\_\+statement}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a for statement into an AST. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_a72e124e2436e13e1d8c09a0616245c12}{parse\+\_\+statements}} (void)
-\begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into an AST. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -115,7 +115,7 @@ Ensure current token is of a given type, and scan the next token if so.
 Ensure current token is a type token, and scan the next token if so. 
 
 \begin{DoxyReturn}{Returns}
-Number\+Type Type of variable 
+Number\+Type \mbox{\hyperlink{structType}{Type}} of variable 
 \end{DoxyReturn}
 \mbox{\Hypertarget{statement_8c_a72e124e2436e13e1d8c09a0616245c12}\label{statement_8c_a72e124e2436e13e1d8c09a0616245c12}} 
 \index{statement.c@{statement.c}!parse\_statements@{parse\_statements}}
@@ -125,7 +125,7 @@ Number\+Type Type of variable
 
 
 
-Parse a set of statements into ASTs and generate them into LLVM-\/\+IR. 
+Parse a set of statements into ASTs and generate them into an AST. 
 
 \begin{DoxyReturn}{Returns}
 AST for a group of statements 
