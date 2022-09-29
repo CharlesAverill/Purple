@@ -10,4 +10,5 @@ ReflowComments: false
 BreakBeforeBraces: Linux
 ColumnLimit: 100
 AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
 ---

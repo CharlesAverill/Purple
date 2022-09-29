@@ -5,8 +5,8 @@
  * @date 10-Sep-2022
  */
 
-#ifndef LLVM
-#define LLVM
+#ifndef LLVM_H
+#define LLVM_H
 
 #include "scan.h"
 #include "types/number.h"
@@ -57,7 +57,10 @@ typedef struct LLVMValue {
  * @brief A standard "null" LLVMValue struct returned in some scenarios
  */
 #define LLVMVALUE_NULL                                                                             \
-    (LLVMValue) { .value_type = LLVMVALUETYPE_NONE, .value = 0 }
+    (LLVMValue)                                                                                    \
+    {                                                                                              \
+        .value_type = LLVMVALUETYPE_NONE, .value = 0                                               \
+    }
 
 /**
  * @brief Inline-initializes an LLVMValue struct from a virtual register number
@@ -83,7 +86,10 @@ typedef struct LLVMValue {
  * @brief Inline initializes an LLVMValue struct from a label number
  */
 #define LLVMVALUE_LABEL(label_number)                                                              \
-    (LLVMValue) { .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number }
+    (LLVMValue)                                                                                    \
+    {                                                                                              \
+        .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number                       \
+    }
 
 #define PURPLE_LABEL_PREFIX "L"
 
@@ -93,7 +99,7 @@ type_register* llvm_ensure_registers_loaded(int n_registers, type_register regis
 void llvm_preamble();
 void llvm_postamble();
 
-void llvm_stack_allocation(LLVMStackEntryNode* stack_entries);
+bool llvm_stack_allocation(LLVMStackEntryNode* stack_entries);
 
 LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_register,
                                  LLVMValue right_virtual_register);
@@ -115,5 +121,7 @@ void llvm_label(LLVMValue label);
 void llvm_jump(LLVMValue label);
 void llvm_conditional_jump(LLVMValue condition_register, LLVMValue true_label,
                            LLVMValue false_label);
+void llvm_function_preamble(char* symbol_name);
+void llvm_function_postamble(void);
 
-#endif /* LLVM */
+#endif /* LLVM_H */

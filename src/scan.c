@@ -45,7 +45,10 @@ static char next(void)
  * 
  * @param c Character to be placed into the input stream
  */
-static void put_back_into_stream(char c) { D_PUT_BACK = c; }
+static void put_back_into_stream(char c)
+{
+    D_PUT_BACK = c;
+}
 
 /**
  * @brief Skips whitespace tokens
@@ -337,6 +340,11 @@ static TokenType parse_keyword(char* keyword_string)
             return T_TRUE;
         }
         break;
+    case 'v':
+        if (!strcmp(keyword_string, TTS_VOID)) {
+            return T_VOID;
+        }
+        break;
     case 'w':
         if (!strcmp(keyword_string, TTS_WHILE)) {
             return T_WHILE;
@@ -360,7 +368,10 @@ static TokenType parse_keyword(char* keyword_string)
  * @param c Character to check
  * @return bool True if the current character is the start of an integer literal
  */
-static bool scan_check_integer_literal(char c) { return isalnum(c); }
+static bool scan_check_integer_literal(char c)
+{
+    return isalnum(c);
+}
 
 /**
  * @brief Check if the current character is the start of a character literal
@@ -368,7 +379,10 @@ static bool scan_check_integer_literal(char c) { return isalnum(c); }
  * @param c 
  * @return bool True if the current character is the start of a character literal
  */
-static bool scan_check_char_literal(char c) { return c == '\''; }
+static bool scan_check_char_literal(char c)
+{
+    return c == '\'';
+}
 
 /**
  * @brief Check if the current character is the start of a keyword or identifier
@@ -376,7 +390,10 @@ static bool scan_check_char_literal(char c) { return c == '\''; }
  * @param c Character to check
  * @return bool True if the current character is the start of a keyword or identifier
  */
-static bool scan_check_keyword_identifier(char c) { return is_valid_identifier_char(c, 0); }
+static bool scan_check_keyword_identifier(char c)
+{
+    return is_valid_identifier_char(c, 0);
+}
 
 /**
  * @brief Scan tokens into the Token struct

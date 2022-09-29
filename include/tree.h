@@ -37,11 +37,11 @@ typedef struct ASTNode {
     } value;
 } ASTNode;
 
-ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right, Number value,
+ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right, Type type,
                          char* symbol_name);
-ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, Number value);
+ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, Type type);
 ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name);
-ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, Number value);
+ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, Type type);
 void ast_debug_level_order(ASTNode* root, LogLevel log_level);
 
 #endif /* TREE_H */

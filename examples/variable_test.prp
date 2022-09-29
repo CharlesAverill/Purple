@@ -1,4 +1,4 @@
-{
+void main(void) {
     int bob;
     int alice;
 

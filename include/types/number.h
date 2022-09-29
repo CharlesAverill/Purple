@@ -47,25 +47,37 @@ typedef struct Number {
  * @brief Generates a Number struct with type INT1
  */
 #define NUMBER_BOOL(v)                                                                             \
-    (Number) { .type = NT_INT1, .value = v }
+    (Number)                                                                                       \
+    {                                                                                              \
+        .type = NT_INT1, .value = v                                                                \
+    }
 
 /**
  * @brief Generates a Number struct with type INT32
  */
 #define NUMBER_CHAR(v)                                                                             \
-    (Number) { .type = NT_INT8, .value = v }
+    (Number)                                                                                       \
+    {                                                                                              \
+        .type = NT_INT8, .value = v                                                                \
+    }
 
 /**
  * @brief Generates a Number struct with type INT32
  */
 #define NUMBER_INT(v)                                                                              \
-    (Number) { .type = NT_INT32, .value = v }
+    (Number)                                                                                       \
+    {                                                                                              \
+        .type = NT_INT32, .value = v                                                               \
+    }
 
 /**
  * @brief Generates a Number struct with type INT32
  */
 #define NUMBER_LONG(v)                                                                             \
-    (Number) { .type = NT_INT64, .value = v }
+    (Number)                                                                                       \
+    {                                                                                              \
+        .type = NT_INT64, .value = v                                                               \
+    }
 
 NumberType token_type_to_number_type(int token_type);
 

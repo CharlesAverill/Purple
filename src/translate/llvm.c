@@ -97,7 +97,6 @@ void llvm_preamble()
     fprintf(D_LLVM_FILE, "@print_false_fstring = private unnamed_addr constant [7 x i8] "
                          "c\"false\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "; Function Attrs: noinline nounwind optnone uwtable" NEWLINE);
-    fprintf(D_LLVM_FILE, "define dso_local i32 @main() #0 {" NEWLINE);
 }
 
 /**
@@ -105,8 +104,6 @@ void llvm_preamble()
  */
 void llvm_postamble()
 {
-    fprintf(D_LLVM_FILE, TAB "ret i32 0" NEWLINE);
-    fprintf(D_LLVM_FILE, "}" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "declare i32 @printf(i8*, ...) #1" NEWLINE NEWLINE);
     fprintf(
         D_LLVM_FILE,
@@ -131,20 +128,40 @@ void llvm_postamble()
     fprintf(D_LLVM_FILE, "!5 = !{!\"Ubuntu clang version 14.0.0-1ubuntu1\"}" NEWLINE);
 }
 
+LLVMStackEntryNode* buffered_stack_entries_head = NULL;
+
 /**
  * @brief Allocate space on stack for variables
  * 
  * @param stack_entries LLVMStackEntryNode pointers holding stack allocation information
+ * @return bool True if stack_entries may be freed
  */
-void llvm_stack_allocation(LLVMStackEntryNode* stack_entries)
+bool llvm_stack_allocation(LLVMStackEntryNode* stack_entries)
 {
     LLVMStackEntryNode* current = stack_entries;
+
+    // If the preamble hasn't been printed, buffer the stack entries and allocate them once it is printed
+    if (!D_CURRENT_FUNCTION_PREAMBLE_PRINTED) {
+        if (buffered_stack_entries_head == NULL) {
+            buffered_stack_entries_head = stack_entries;
+        } else {
+            LLVMStackEntryNode* current_buffer = buffered_stack_entries_head;
+            while (current_buffer->next != NULL) {
+                current_buffer = current_buffer->next;
+            }
+            current_buffer->next = stack_entries;
+        }
+
+        return false;
+    }
 
     while (current) {
         fprintf(D_LLVM_FILE, TAB "%%%llu = alloca %s, align %d" NEWLINE, current->reg,
                 numberTypeLLVMReprs[current->type], current->align_bytes);
         current = current->next;
     }
+
+    return true;
 }
 
 /**
@@ -313,10 +330,10 @@ LLVMValue llvm_load_global_variable(char* symbol_name)
     }
 
     fprintf(D_LLVM_FILE, TAB "%%%llu = load %s, %s* @%s" NEWLINE, out_register_number,
-            numberTypeLLVMReprs[symbol->number_type], numberTypeLLVMReprs[symbol->number_type],
-            symbol_name);
+            numberTypeLLVMReprs[symbol->type.value.number.type],
+            numberTypeLLVMReprs[symbol->type.value.number.type], symbol_name);
     prepend_loaded(out_register_number);
-    return LLVMVALUE_VIRTUAL_REGISTER(out_register_number, symbol->number_type);
+    return LLVMVALUE_VIRTUAL_REGISTER(out_register_number, symbol->type.value.number.type);
 }
 
 /**
@@ -334,8 +351,8 @@ void llvm_store_global_variable(char* symbol_name, type_register rvalue_register
     }
 
     fprintf(D_LLVM_FILE, TAB "store %s %%%llu, %s* @%s" NEWLINE,
-            numberTypeLLVMReprs[symbol->number_type], rvalue_register_number,
-            numberTypeLLVMReprs[symbol->number_type], symbol_name);
+            numberTypeLLVMReprs[symbol->type.value.number.type], rvalue_register_number,
+            numberTypeLLVMReprs[symbol->type.value.number.type], symbol_name);
 }
 
 /**
@@ -593,7 +610,10 @@ LLVMValue llvm_compare_jump(TokenType comparison_type, LLVMValue left_virtual_re
  * 
  * @return LLVMValue Next valid label
  */
-LLVMValue get_next_label(void) { return LLVMVALUE_LABEL(D_LABEL_INDEX++); }
+LLVMValue get_next_label(void)
+{
+    return LLVMVALUE_LABEL(D_LABEL_INDEX++);
+}
 
 /**
  * @brief Generate label code
@@ -642,4 +662,21 @@ void llvm_conditional_jump(LLVMValue condition_register, LLVMValue true_label,
             numberTypeLLVMReprs[condition_register.number_type],
             condition_register.value.virtual_register_index, true_label.value.label_index,
             false_label.value.label_index);
+}
+
+void llvm_function_preamble(char* symbol_name)
+{
+    D_CURRENT_FUNCTION_PREAMBLE_PRINTED = true;
+    fprintf(D_LLVM_FILE, "define dso_local i32 @%s() #0 {" NEWLINE, symbol_name);
+
+    // Print our buffered stack entries
+    if (buffered_stack_entries_head != NULL) {
+        llvm_stack_allocation(buffered_stack_entries_head);
+        buffered_stack_entries_head = NULL;
+    }
+}
+
+void llvm_function_postamble()
+{
+    fprintf(D_LLVM_FILE, TAB "ret i32 0" NEWLINE "}" NEWLINE NEWLINE);
 }

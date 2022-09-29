@@ -15,7 +15,10 @@
  * 
  * @param head Head of linked list
  */
-void initialize_stack_entry_linked_list(LLVMStackEntryNode** head) { *head = NULL; }
+void initialize_stack_entry_linked_list(LLVMStackEntryNode** head)
+{
+    *head = NULL;
+}
 
 /**
  * @brief Add a stack entry to a stack entry linked list

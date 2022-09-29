@@ -1,28 +1,46 @@
 grammar purple;
 
 tokens {
+    T_IDENTIFIER,
     T_INTEGER_LITERAL,
-    T_CHAR_LITERAL,
-    T_LONG_LITERAL,
-    T_TRUE,
-    T_FALSE,
-    T_IDENTIFIER
+    T_CHAR_LITERAL
 }
 
-number: T_INTEGER_LITERAL
-        ;
-
-booleanLiteral: T_TRUE
-              | T_FALSE
+booleanLiteral: 'true'
+              | 'false'
               ;
 
-dataType: 'int'
-        | 'bool'
-        ;
+type: 'void'
+    | 'bool'
+    | 'char'
+    | 'int'
+    | 'long'
+    ;
 
-multiplicativeExpression: number
-                        | number '*' multiplicativeExpression
-                        | number '/' multiplicativeExpression
+assignmentOperator: '='
+                  ;
+
+literal: T_INTEGER_LITERAL
+       | T_CHAR_LITERAL
+       | booleanLiteral
+       ;
+
+primaryExpression: T_IDENTIFIER
+                 | literal
+                 ;
+
+postfixExpression: primaryExpression
+                 ;
+
+unaryExpression: postfixExpression
+               ;
+
+castExpression: unaryExpression
+              ;
+
+multiplicativeExpression: castExpression
+                        | multiplicativeExpression '*' castExpression
+                        | multiplicativeExpression '/' castExpression
                         ;
 
 additiveExpression: multiplicativeExpression
@@ -30,62 +48,73 @@ additiveExpression: multiplicativeExpression
                   | additiveExpression '-' multiplicativeExpression
                   ;
 
-comparativeExpression: binaryExpression '<' binaryExpression
-                     | binaryExpression '>' binaryExpression
-                     | binaryExpression '<=' binaryExpression
-                     | binaryExpression '>=' binaryExpression
-                     | binaryExpression '==' binaryExpression
-                     | binaryExpression '!=' binaryExpression
-                     | binaryExpression // expands to binaryExpression == T_TRUE
-                     ;
+shiftExpression: additiveExpression
+               ;
 
-binaryExpression: additiveExpression
-                ;
+relationalExpression: shiftExpression
+                    | relationalExpression '<' shiftExpression
+                    | relationalExpression '>' shiftExpression
+                    | relationalExpression '<=' shiftExpression
+                    | relationalExpression '>=' shiftExpression
+                    ;
 
-booleanExpression: T_TRUE
-                 | T_FALSE
-                 | comparativeExpression
+equalityExpression: relationalExpression
+                  | equalityExpression '==' relationalExpression
+                  | equalityExpression '!=' relationalExpression
+                  ;
+
+andLogicalExpression: equalityExpression
+                    | andLogicalExpression 'and' equalityExpression
+                    ;
+
+xorLogicalExpression: andLogicalExpression
+                    | xorLogicalExpression 'xor' andLogicalExpression
+                    ;
+
+orLogicalExpression: xorLogicalExpression
+                   | orLogicalExpression 'or' xorLogicalExpression
+                   ;
+
+constantExpression: orLogicalExpression
+                  ;
+
+assignmentExpression: orLogicalExpression
+                    | unaryExpression assignmentOperator assignmentExpression
+                    ;
+
+booleanExpression: booleanLiteral
+                 | constantExpression
                  ;
 
-expression: binaryExpression
+expression: booleanExpression
           ;
 
 printStatement: 'print' expression 
               ;
 
-declareStatement: dataType T_IDENTIFIER
+declareStatement: type T_IDENTIFIER
                 ;
 
-assignStatement: T_IDENTIFIER '=' expression
-               ;
-
-ifClause: 'if' '(' comparativeExpression ')' statements
-        ;
-
-whileClause: 'while' '(' comparativeExpression ')' statements
+ifStatement: 'if' '(' expression ')' statements
+           | 'if' '(' expression ')' statements 'else' statements
            ;
 
-ifStatement: ifClause
-           | ifClause 'else' statements
-           ;
-
-whileStatement: whileClause
-              | whileClause 'else' statements
+whileStatement: 'while' '(' expression ')' statements
+              | 'while' '(' expression ')' statements 'else' statements
               ;
 
-forPreamble: statement;
-forPostamble: statement;
-
-forStatement: 'for' '(' forPreamble ';' comparativeExpression ';' forPostamble ')' statements 
-            // foreach
+forStatement: 'for' '(' expression ';' expression ';' expression ')' statements
             ;
 
+loopStatement: whileStatement
+             | forStatement
+             ;
+
 statementType: printStatement
-             | assignStatement
+             | assignmentExpression
              | declareStatement
              | ifStatement
-             | whileStatement
-             | forStatement
+             | loopStatement
              ;
 
 statement: statementType ';'
@@ -95,3 +124,5 @@ statements: '{' '}'
           | '{' statement '}'
           | '{' statement statements '}'
           ;
+
+functionDeclaration: 'void' T_IDENTIFIER '(' 'void' ')' statements;

@@ -32,6 +32,8 @@ static void translate_init(void)
 
     D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 1;
 
+    D_CURRENT_FUNCTION_PREAMBLE_PRINTED = false;
+
     initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
     initialize_stack_entry_linked_list(&loadedRegistersHead);
 }
@@ -95,12 +97,12 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
         current->reg = get_next_local_virtual_register();
         prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
 
-        current->type = symbol->number_type;
+        current->type = symbol->type.value.number.type;
         if (current->type == -1) {
             fatal(RC_COMPILER_ERROR, "Symbol number type is ill-formed");
         }
 
-        current->align_bytes = numberTypeByteSizes[symbol->number_type];
+        current->align_bytes = numberTypeByteSizes[symbol->type.value.number.type];
         current->next = NULL;
 
         return current;
@@ -263,6 +265,11 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
         ast_to_llvm(n->mid, LLVMVALUE_NULL, n->ttype);
         ast_to_llvm(n->right, LLVMVALUE_NULL, n->ttype);
         return LLVMVALUE_NULL;
+    case T_FUNCTION:
+        llvm_function_preamble(n->value.symbol_name);
+        ast_to_llvm(n->left, LLVMVALUE_NULL, n->ttype);
+        llvm_function_postamble();
+        return LLVMVALUE_NULL;
     }
 
     // Generate code for left and right subtrees
@@ -345,9 +352,10 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
         purple_log(LOG_DEBUG, "Determining stack space");
         LLVMStackEntryNode* stack_entries = determine_binary_expression_stack_allocation(n);
         purple_log(LOG_DEBUG, "Allocating stack space");
-        llvm_stack_allocation(stack_entries);
-        purple_log(LOG_DEBUG, "Freeing stack space entries");
-        free_llvm_stack_entry_node_list(stack_entries);
+        if (llvm_stack_allocation(stack_entries)) {
+            purple_log(LOG_DEBUG, "Freeing stack space entries");
+            free_llvm_stack_entry_node_list(stack_entries);
+        }
 
         switch (n->ttype) {
         case T_INTEGER_LITERAL:
@@ -376,7 +384,8 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
             }
 
             loaded_registers = llvm_ensure_registers_loaded(
-                1, (type_register[]){llvm_value.value.virtual_register_index}, symbol->number_type);
+                1, (type_register[]){llvm_value.value.virtual_register_index},
+                symbol->type.value.number.type);
             if (loaded_registers != NULL) {
                 llvm_value.value.virtual_register_index = loaded_registers[0];
                 free(loaded_registers);
@@ -384,7 +393,7 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
             llvm_store_global_variable(n->value.symbol_name,
                                        llvm_value.value.virtual_register_index);
             return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index,
-                                              symbol->number_type);
+                                              symbol->type.value.number.type);
         case T_ASSIGN:
             return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index, NT_INT1);
         case T_PRINT:
@@ -407,8 +416,13 @@ void generate_llvm(void)
 
     llvm_preamble();
 
-    ASTNode* root = parse_statements();
-    ast_to_llvm(root, LLVMVALUE_NULL, root->ttype);
+    while (D_GLOBAL_TOKEN.type != T_EOF) {
+        ASTNode* root = function_declaration();
+        ast_to_llvm(root, LLVMVALUE_NULL, root->ttype);
+        D_CURRENT_FUNCTION_PREAMBLE_PRINTED = false;
+
+        D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 1;
+    }
 
     llvm_postamble();
 

@@ -38,7 +38,8 @@ static ASTNode* create_terminal_node(Token t)
     SymbolTableEntry* entry;
 
     if (TOKENTYPE_IS_LITERAL(D_GLOBAL_TOKEN.type)) {
-        out = create_ast_nonidentifier_leaf(D_GLOBAL_TOKEN.type, D_GLOBAL_TOKEN.value.number_value);
+        out = create_ast_nonidentifier_leaf(D_GLOBAL_TOKEN.type,
+                                            TYPE_NUMBER_VAL(D_GLOBAL_TOKEN.value.number_value));
     } else {
         switch (D_GLOBAL_TOKEN.type) {
         case T_IDENTIFIER:
@@ -88,7 +89,7 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
         right = parse_binary_expression(operatorPrecedence[current_ttype]);
 
         // Join right subtree with current left subtree
-        left = create_ast_node(current_ttype, left, NULL, right, NUMBER_INT(0), NULL);
+        left = create_ast_node(current_ttype, left, NULL, right, TYPE_VOID, NULL);
 
         // Update current_ttype and check for EOF
         current_ttype = D_GLOBAL_TOKEN.type;

@@ -44,6 +44,7 @@ typedef enum {
     T_TRUE,
     T_FALSE,
     // Types
+    T_VOID,
     T_BOOL,
     T_CHAR,
     T_INT,
@@ -65,6 +66,7 @@ typedef enum {
     T_IDENTIFIER,
     T_LVALUE_IDENTIFIER,
     T_AST_GLUE,
+    T_FUNCTION,
 } TokenType;
 
 #define TTS_EOF "EOF"
@@ -90,6 +92,7 @@ typedef enum {
 #define TTS_LONG_LITERAL "long literal"
 #define TTS_TRUE "true"
 #define TTS_FALSE "false"
+#define TTS_VOID "void"
 #define TTS_BOOL "bool"
 #define TTS_CHAR "char"
 #define TTS_INT "int"
@@ -108,6 +111,7 @@ typedef enum {
 #define TTS_IDENTIFIER "identifier"
 #define TTS_LVALUE_IDENTIFIER "lvalue identifier"
 #define TTS_AST_GLUE "ast glue"
+#define TTS_FUNCTION "function"
 
 #define NUMBER_LITERAL_BASE_PREFIX '0'
 #define NUMBER_LITERAL_BIN_PREFIX 'b'
@@ -144,6 +148,7 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_LONG_LITERAL,
                                TTS_TRUE,
                                TTS_FALSE,
+                               TTS_VOID,
                                TTS_BOOL,
                                TTS_CHAR,
                                TTS_INT,
@@ -161,7 +166,8 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_RIGHT_BRACE,
                                TTS_IDENTIFIER,
                                TTS_LVALUE_IDENTIFIER,
-                               TTS_AST_GLUE};
+                               TTS_AST_GLUE,
+                               TTS_FUNCTION};
 
 /**
  * @brief Determines if a TokenType is associated with a binary arithmetic operation

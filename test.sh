@@ -92,6 +92,8 @@ base_test_output="61455
 61455
 194"
 
+function_test_output="X"
+
 rm a.out
 echo -n "[Variable Test]: "
 strings_are_okay "$variable_test_output" "examples/variable_test.prp"
@@ -123,6 +125,13 @@ fi
 rm a.out
 echo -n "[Base Test]: "
 strings_are_okay "$base_test_output" "examples/base_test.prp"
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
+
+rm a.out
+echo -n "[Function Test]: "
+strings_are_okay "$function_test_output" "examples/function_test.prp"
 if [ $? -ne 0 ] ; then
     exit 1
 fi

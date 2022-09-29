@@ -19,11 +19,11 @@
  * @param left Left child subtree of the new AST Node
  * @param mid Middle child subtree of the new AST Node
  * @param right Right child subtree of the new AST Node
- * @param value If Token is a literal, then the value of the literal
+ * @param type Type of the new AST Node
  * @param symbol_name if TokenType == T_IDENTIFIER, then the string for the identifier
  * @return ASTNode* The pointer to a new AST Node with the provided values
  */
-ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right, Number value,
+ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right, Type type,
                          char* symbol_name)
 {
     ASTNode* out;
@@ -39,10 +39,10 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
     out->left = left;
     out->mid = mid;
     out->right = right;
-    if (TOKENTYPE_IS_LITERAL(ttype)) {
-        out->value.number_value = value.value;
-        out->number_type = value.type;
-    } else if (TOKENTYPE_IS_IDENTIFIER(ttype)) {
+    if (TOKENTYPE_IS_LITERAL(ttype) && type.type == TT_NUMBER) {
+        out->value.number_value = type.value.number.value;
+        out->number_type = type.value.number.type;
+    } else if (TOKENTYPE_IS_IDENTIFIER(ttype) || ttype == T_FUNCTION) {
         if (symbol_name == NULL) {
             fatal(RC_COMPILER_ERROR,
                   "Tried to create identifier node, but passed symbol_name is NULL");
@@ -56,7 +56,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
                   "create_ast_node received identifier name that is not defined in the GST");
         }
 
-        out->number_type = found_entry->number_type;
+        out->number_type = found_entry->type.value.number.type;
     } else if (TOKENTYPE_IS_BINARY_ARITHMETIC(ttype)) {
         out->number_type = left->number_type;
     } else if (TOKENTYPE_IS_COMPARATOR(ttype)) {
@@ -70,12 +70,12 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
  * @brief Constructs a new AST Leaf Node with the provided values for a token that is not an identifier
  * 
  * @param ttype TokenType of the new AST Node
- * @param value If Token is a literal, then the value of the literal
+ * @param type Type of the new AST Node
  * @return ASTNode* The pointer to a new AST Leaf Node with the provided values
  */
-ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, Number value)
+ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, Type type)
 {
-    return create_ast_node(ttype, NULL, NULL, NULL, value, NULL);
+    return create_ast_node(ttype, NULL, NULL, NULL, type, NULL);
 }
 
 /**
@@ -87,7 +87,7 @@ ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, Number value)
  */
 ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name)
 {
-    return create_ast_node(ttype, NULL, NULL, NULL, NUMBER_INT(0), symbol_name);
+    return create_ast_node(ttype, NULL, NULL, NULL, TYPE_VOID, symbol_name);
 }
 
 /**
@@ -95,12 +95,12 @@ ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name)
  * 
  * @param ttype TokenType of the new AST Node
  * @param child The AST Node's single child
- * @param value If Token is a literal, then the value of the literal
+ * @param type Type of the new AST Node
  * @return ASTNode* The pointer to a new AST Unary Parent Node with the provided values
  */
-ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, Number value)
+ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, Type type)
 {
-    return create_ast_node(ttype, child, NULL, NULL, value, NULL);
+    return create_ast_node(ttype, child, NULL, NULL, type, NULL);
 }
 
 /**

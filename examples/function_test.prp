@@ -1,0 +1,7 @@
+void test_function(void) {
+    print '!';
+}
+
+void main(void) {
+    print 'X';
+}

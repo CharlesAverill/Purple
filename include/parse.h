@@ -37,48 +37,22 @@
  * Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed
  */
 static int operatorPrecedence[] = {
-    0, // EOF
+    [T_PLUS] = 12,  [T_MINUS] = 12, [T_STAR] = 13, [T_SLASH] = 13, [T_EXPONENT] = 15,
 
-    12, // PLUS
-    12, // MINUS
-    13, // STAR
-    13, // SLASH
-    15, // EXPONENT
+    [T_EQ] = 9,     [T_NEQ] = 9,
 
-    9, // EQUALS
-    9, // NOT EQUALS
+    [T_LT] = 10,    [T_GT] = 10,    [T_LE] = 10,   [T_GE] = 10,
 
-    10, // LESS
-    10, // GREATER
-    10, // LESS EQUAL
-    10, // GREATER EQUAL
+    [T_AND] = 6,    [T_OR] = 4,     [T_XOR] = 5,   [T_NAND] = 6,   [T_NOR] = 4,       [T_XNOR] = 5,
 
-    6, // AND
-    4, // OR
-    5, // XOR
-    6, // NAND
-    4, // NOR
-    5, // XNOR
-
-    0, // Literals
-    0,  0, 0, 0,
-
-    0, // Types (maybe use these for casting? idk yet)
-    0,  0, 0,
-
-    2, // Assignment
-
-    0, // Keywords
-    0,  0, 0, 0,
-
-    0, // Miscellaneous
-    0,  0, 0, 0, 0, 0, 0,
+    [T_ASSIGN] = 2,
 };
 
 ASTNode* parse_binary_expression(int previous_token_precedence);
 void match_token(TokenType type);
 NumberType match_type(void);
 void variable_declaration(void);
+ASTNode* function_declaration(void);
 ASTNode* parse_statements(void);
 
 #endif /* PARSE_H */

@@ -106,7 +106,10 @@ void pop_and_free_symbol_table(SymbolTableStack* stack)
  * @param stack Stack to ppek at
  * @return SymbolTable* Pointer to peeked Symbol Table
  */
-SymbolTable* peek_symbol_table(SymbolTableStack* stack) { return stack->top; }
+SymbolTable* peek_symbol_table(SymbolTableStack* stack)
+{
+    return stack->top;
+}
 
 /**
  * @brief Get pointer to empty Symbol Table with length SYMBOL_TABLE_DEFAULT_LENGTH
@@ -187,12 +190,14 @@ SymbolTableEntry* new_symbol_table_entry(char* symbol_name)
  * 
  * @param table Table to put new Symbol Table Entry into
  * @param symbol_name Name of symbol to add
+ * @param type Type of symbol to add
+ * @return SymbolTableEntry* Pointer to new Symbol Table Entry
  */
-void add_symbol_table_entry(SymbolTable* table, char* symbol_name, NumberType number_type)
+SymbolTableEntry* add_symbol_table_entry(SymbolTable* table, char* symbol_name, Type type)
 {
     SymbolTableEntry* entry = new_symbol_table_entry(symbol_name);
     entry->bucket_index = FNV_1(symbol_name) % table->total_buckets;
-    entry->number_type = number_type;
+    entry->type = type;
 
     if (table->buckets[entry->bucket_index] != NULL) {
         SymbolTableEntry* curr = table->buckets[entry->bucket_index];
@@ -203,4 +208,6 @@ void add_symbol_table_entry(SymbolTable* table, char* symbol_name, NumberType nu
     } else {
         table->buckets[entry->bucket_index] = entry;
     }
+
+    return entry;
 }

@@ -10,7 +10,7 @@
 
 #include <stdbool.h>
 
-#include "types/number.h"
+#include "types/type.h"
 
 #define SYMBOL_TABLE_DEFAULT_LENGTH 1024
 
@@ -28,7 +28,7 @@ typedef struct SymbolTableEntry {
     /**Index of symbol in Symbol Table*/
     unsigned long int bucket_index;
     /**Type of entry*/
-    NumberType number_type;
+    Type type;
     /**Symbol Tables are a chained Hash Table, this is the chain*/
     struct SymbolTableEntry* next;
     /**Index in chain*/
@@ -77,6 +77,6 @@ SymbolTableEntry* find_symbol_table_entry(SymbolTable* table, char* symbol_name)
 
 // Symbol Table Entry functions
 SymbolTableEntry* new_symbol_table_entry(char* symbol_name);
-void add_symbol_table_entry(SymbolTable* table, char* symbol_name, NumberType number_type);
+SymbolTableEntry* add_symbol_table_entry(SymbolTable* table, char* symbol_name, Type type);
 
 #endif /* SYMBOL_TABLE */
