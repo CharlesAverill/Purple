@@ -59,15 +59,6 @@ static ASTNode* print_statement(void)
     purple_log(LOG_DEBUG, "Parsing binary expression for print statement");
     root = parse_binary_expression(0);
 
-    // Allocate stack space
-    purple_log(LOG_DEBUG, "Determining stack space");
-    LLVMStackEntryNode* stack_entries = determine_binary_expression_stack_allocation(root);
-    purple_log(LOG_DEBUG, "Allocating stack space");
-    if (llvm_stack_allocation(stack_entries)) {
-        purple_log(LOG_DEBUG, "Freeing stack space entries");
-        free_llvm_stack_entry_node_list(stack_entries);
-    }
-
     root = create_unary_ast_node(T_PRINT, root, TYPE_VOID);
 
     return root;
