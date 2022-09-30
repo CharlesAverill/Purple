@@ -32,31 +32,30 @@ static int get_operator_precedence(Token t)
  * @param t The Token to check and build
  * @return An AST Node built from the provided Token, or an error if the Token is non-terminal
  */
-static ASTNode* create_terminal_node(Token t)
+static ASTNode* create_terminal_node(Token* t)
 {
     ASTNode* out;
     SymbolTableEntry* entry;
 
-    if (TOKENTYPE_IS_LITERAL(D_GLOBAL_TOKEN.type)) {
-        out = create_ast_nonidentifier_leaf(D_GLOBAL_TOKEN.type,
-                                            TYPE_NUMBER_VAL(D_GLOBAL_TOKEN.value.number_value));
+    if (TOKENTYPE_IS_LITERAL(t->type)) {
+        out = create_ast_nonidentifier_leaf(t->type, TYPE_NUMBER_VAL(t->value.number_value));
     } else {
-        switch (D_GLOBAL_TOKEN.type) {
+        switch (t->type) {
         case T_IDENTIFIER:
-            if (!find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, t.value.symbol_name)) {
+            if (!find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, t->value.symbol_name)) {
                 identifier_error(D_INPUT_FN, D_LINE_NUMBER, "Undeclared identifier %s",
-                                 t.value.symbol_name);
+                                 t->value.symbol_name);
             }
-            out = create_ast_identifier_leaf(T_IDENTIFIER, t.value.symbol_name);
+            out = create_ast_identifier_leaf(T_IDENTIFIER, t->value.symbol_name);
             break;
         default:
             syntax_error(D_INPUT_FN, D_LINE_NUMBER,
                          "Tried creating a terminal node with token type \"%s\"",
-                         tokenStrings[t.type]);
+                         tokenStrings[t->type]);
         }
     }
 
-    scan(&D_GLOBAL_TOKEN);
+    scan(t);
 
     return out;
 }
@@ -74,7 +73,7 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
     TokenType current_ttype;
 
     // Get the intlit on the left and scan the next Token
-    left = create_terminal_node(D_GLOBAL_TOKEN);
+    left = create_terminal_node(&D_GLOBAL_TOKEN);
     current_ttype = D_GLOBAL_TOKEN.type;
     if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {
         return left;

@@ -8,4 +8,7 @@ void main(void) {
     long l;
     l = 2147483647L + 2147483647L;
     print l;
+    short s;
+    s = 100;
+    print s + s;
 }

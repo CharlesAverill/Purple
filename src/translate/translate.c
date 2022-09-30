@@ -221,6 +221,7 @@ static LLVMValue print_ast_to_llvm(ASTNode* root, type_register virtual_register
         llvm_print_bool(virtual_register);
         break;
     case NT_INT8:
+    case NT_INT16:
     case NT_INT32:
     case NT_INT64:
         llvm_print_int(virtual_register, root->left->number_type);

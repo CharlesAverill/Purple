@@ -46,7 +46,9 @@ typedef enum {
     // Types
     T_VOID,
     T_BOOL,
+    T_BYTE,
     T_CHAR,
+    T_SHORT,
     T_INT,
     T_LONG,
     // Assignment
@@ -94,7 +96,9 @@ typedef enum {
 #define TTS_FALSE "false"
 #define TTS_VOID "void"
 #define TTS_BOOL "bool"
+#define TTS_BYTE "byte"
 #define TTS_CHAR "char"
+#define TTS_SHORT "short"
 #define TTS_INT "int"
 #define TTS_LONG "long"
 #define TTS_ASSIGN "="
@@ -150,7 +154,9 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_FALSE,
                                TTS_VOID,
                                TTS_BOOL,
+                               TTS_BYTE,
                                TTS_CHAR,
+                               TTS_SHORT,
                                TTS_INT,
                                TTS_LONG,
                                TTS_ASSIGN,

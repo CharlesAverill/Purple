@@ -15,7 +15,7 @@
 /**
  * @brief LLVM-IR representations of data types
  */
-static const char* numberTypeLLVMReprs[] = {"i1", "i8", "i32", "i64"};
+static const char* numberTypeLLVMReprs[] = {"i1", "i8", "i16", "i32", "i64"};
 
 /**
  * @brief Head node of linked list containing register indices that have loaded values

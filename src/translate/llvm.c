@@ -388,7 +388,7 @@ void llvm_declare_assign_global_number_variable(char* symbol_name, Number number
 void llvm_print_int(type_register print_vr, NumberType type)
 {
     type_register* loaded_register =
-        llvm_ensure_registers_loaded(1, (type_register[]){print_vr}, NT_INT32);
+        llvm_ensure_registers_loaded(1, (type_register[]){print_vr}, type);
     if (loaded_register) {
         print_vr = loaded_register[0];
     }
@@ -401,6 +401,7 @@ void llvm_print_int(type_register print_vr, NumberType type)
                     "i8]* @print_char_fstring , i32 0, i32 0), %s %%%llu)" NEWLINE,
                 numberTypeLLVMReprs[type], print_vr);
         break;
+    case NT_INT16:
     case NT_INT32:
         fprintf(D_LLVM_FILE,
                 TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
