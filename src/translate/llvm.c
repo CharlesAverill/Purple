@@ -673,6 +673,7 @@ void llvm_function_preamble(char* symbol_name)
     // Print our buffered stack entries
     if (buffered_stack_entries_head != NULL) {
         llvm_stack_allocation(buffered_stack_entries_head);
+        free_llvm_stack_entry_node_list(buffered_stack_entries_head);
         buffered_stack_entries_head = NULL;
     }
 }
