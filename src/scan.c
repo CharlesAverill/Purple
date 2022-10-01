@@ -5,6 +5,7 @@
  * @date 08-Sep-2022
  */
 
+#include <math.h>
 #include <string.h>
 
 #include "data.h"
@@ -123,9 +124,15 @@ static Number parse_number_literal(char* literal, int length, int base)
             syntax_error(D_LLVM_FN, D_LINE_NUMBER, "Number literal too big");
         }
         out.value = out.value * base + current_digit;
-        // Check for long
-        if (out.value >= 2147483648 || out.value < -2147483648) {
-            out.type = NT_INT64;
+    }
+
+    // Check size
+    for (NumberType number_type = NT_INT64; number_type >= NT_INT8; number_type--) {
+        long long int max_value = numberTypeMaxValues[number_type];
+        if (-1 * max_value <= out.value && out.value <= max_value - 1) {
+            out.type = number_type;
+        } else {
+            break;
         }
     }
 
@@ -290,6 +297,9 @@ static TokenType parse_keyword(char* keyword_string)
     case 'b':
         if (!strcmp(keyword_string, TTS_BOOL)) {
             return T_BOOL;
+        } else if (!strcmp(keyword_string, TTS_BYTE)) {
+            fatal(RC_COMPILER_ERROR, "byte type not yet implemented");
+            return T_BYTE;
         }
         break;
     case 'c':
@@ -333,6 +343,11 @@ static TokenType parse_keyword(char* keyword_string)
     case 'p':
         if (!strcmp(keyword_string, TTS_PRINT)) {
             return T_PRINT;
+        }
+        break;
+    case 's':
+        if (!strcmp(keyword_string, TTS_SHORT)) {
+            return T_SHORT;
         }
         break;
     case 't':
@@ -522,7 +537,7 @@ bool scan(Token* t)
         }
     } else if (scan_check_integer_literal(c)) {
         t->value.number_value = scan_number_literal(c);
-        t->type = t->value.number_value.type == NT_INT64 ? T_LONG_LITERAL : T_INTEGER_LITERAL;
+        t->type = number_to_token_type(t->value.number_value);
     } else if (scan_check_char_literal(c)) {
         t->value.number_value = NUMBER_CHAR(scan_char_literal(c));
         t->type = T_CHAR_LITERAL;

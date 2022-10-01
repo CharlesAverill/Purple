@@ -17,7 +17,7 @@
  */
 void initialize_stack_entry_linked_list(LLVMStackEntryNode** head)
 {
-    *head = NULL;
+    //*head = NULL;
 }
 
 /**

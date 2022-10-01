@@ -52,7 +52,8 @@ true"
 
 type_test_output="14
 c
-4294967294"
+4294967294
+200"
 
 variable_test_output="15
 35"

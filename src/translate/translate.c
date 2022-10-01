@@ -216,18 +216,24 @@ static LLVMValue print_ast_to_llvm(ASTNode* root, type_register virtual_register
         free(loaded_registers);
     }
 
-    switch (root->left->number_type) {
-    case NT_INT1:
+    if (root->left->number_type == NT_INT1) {
         llvm_print_bool(virtual_register);
-        break;
-    case NT_INT8:
-    case NT_INT32:
-    case NT_INT64:
-        llvm_print_int(virtual_register, root->left->number_type);
-        break;
-    default:
-        fatal(RC_COMPILER_ERROR, "Unknown number type %d returned when generating LLVM",
-              root->left->number_type);
+    } else {
+        TokenType print_type = root->left->ttype;
+
+        if (print_type == T_IDENTIFIER) {
+            print_type = number_to_token_type((Number){.type = root->left->number_type});
+        }
+
+        if (TOKENTYPE_IS_BINARY_ARITHMETIC(print_type)) {
+            print_type = number_to_token_type((Number){.type = root->left->number_type});
+        }
+
+        if (print_type == T_BYTE_LITERAL && root->left->is_char_arithmetic) {
+            print_type = T_CHAR_LITERAL;
+        }
+
+        llvm_print_int(virtual_register, print_type);
     }
 
     initialize_stack_entry_linked_list(&loadedRegistersHead);
@@ -248,6 +254,7 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
 {
     type_register virtual_registers[2] = {0, 0};
     LLVMValue temp_values[2];
+    LLVMValue out;
     type_register* loaded_registers;
 
     // Make sure we aren't trying to generate from a null node
@@ -274,10 +281,7 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
 
     // Generate code for left and right subtrees
     temp_values[0] = ast_to_llvm(n->left, LLVMVALUE_NULL, n->ttype);
-    temp_values[1] = ast_to_llvm(
-        n->right,
-        LLVMVALUE_VIRTUAL_REGISTER(temp_values[0].value.virtual_register_index, n->number_type),
-        n->ttype);
+    temp_values[1] = ast_to_llvm(n->right, temp_values[0], n->ttype);
 
     // Process values from left and right subtrees
     for (int i = 0; i < 2; i++) {
@@ -295,23 +299,27 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
     type_register right_vr = virtual_registers[1];
 
     if (TOKENTYPE_IS_BINARY_ARITHMETIC(n->ttype)) {
+        /*
         if (!(n->left->number_type == n->right->number_type && n->left->number_type != NT_INT1)) {
             syntax_error(D_INPUT_FN, D_LINE_NUMBER,
                          "Cannot perform operation \"%s\" on types %s and %s",
                          tokenStrings[n->ttype], numberTypeLLVMReprs[n->left->number_type],
                          numberTypeLLVMReprs[n->right->number_type]);
         }
+        */
 
-        return llvm_binary_arithmetic(n->ttype,
-                                      LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
-                                      LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->right->number_type));
+        return llvm_binary_arithmetic(
+            n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, temp_values[0].number_type),
+            LLVMVALUE_VIRTUAL_REGISTER(right_vr, temp_values[1].number_type));
     } else if (TOKENTYPE_IS_COMPARATOR(n->ttype)) {
+        /*
         if (n->left->number_type != n->right->number_type) {
             syntax_error(D_INPUT_FN, D_LINE_NUMBER,
                          "Cannot perform \"%s\" comparison on types %s and %s",
                          tokenStrings[n->ttype], numberTypeLLVMReprs[n->left->number_type],
                          numberTypeLLVMReprs[n->right->number_type]);
         }
+        */
 
         if (parent_operation == T_IF || parent_operation == T_WHILE) {
             if (llvm_value.value_type != LLVMVALUETYPE_LABEL) {
@@ -321,10 +329,10 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
 
             return llvm_compare_jump(
                 n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
-                LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->left->number_type), llvm_value);
+                LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->right->number_type), llvm_value);
         } else {
             return llvm_compare(n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, n->left->number_type),
-                                LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->left->number_type));
+                                LLVMVALUE_VIRTUAL_REGISTER(right_vr, n->right->number_type));
         }
     } else if (TOKENTYPE_IS_LOGICAL_OPERATOR(n->ttype)) {
         if (n->left->number_type != NT_INT1 || n->left->number_type != n->right->number_type) {
@@ -357,20 +365,18 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
             free_llvm_stack_entry_node_list(stack_entries);
         }
 
-        switch (n->ttype) {
-        case T_INTEGER_LITERAL:
-            return llvm_store_constant(NUMBER_INT(n->value.number_value));
-        case T_LONG_LITERAL:
-            return llvm_store_constant(NUMBER_LONG(n->value.number_value));
-        case T_CHAR_LITERAL:
-            return llvm_store_constant(NUMBER_CHAR(n->value.number_value));
-        case T_TRUE:
-        case T_FALSE:
-            return llvm_store_constant(NUMBER_BOOL(n->value.number_value));
+        NumberType store_type;
+        if ((store_type = token_type_to_number_type(n->ttype)) != -1) {
+            out = llvm_store_constant(NUMBER_FROM_TYPE_VAL(store_type, n->value.number_value));
+        } else {
+            fatal(RC_COMPILER_ERROR, "Failed to match TokenType \"%s\" to NumberType",
+                  tokenStrings[n->ttype]);
         }
 
         initialize_stack_entry_linked_list(&loadedRegistersHead);
         initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
+
+        return out;
     } else {
         switch (n->ttype) {
         case T_IDENTIFIER:
@@ -383,6 +389,7 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
                       n->value.symbol_name);
             }
 
+            /*
             loaded_registers = llvm_ensure_registers_loaded(
                 1, (type_register[]){llvm_value.value.virtual_register_index},
                 symbol->type.value.number.type);
@@ -390,8 +397,9 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
                 llvm_value.value.virtual_register_index = loaded_registers[0];
                 free(loaded_registers);
             }
-            llvm_store_global_variable(n->value.symbol_name,
-                                       llvm_value.value.virtual_register_index);
+            */
+
+            llvm_store_global_variable(n->value.symbol_name, llvm_value);
             return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index,
                                               symbol->type.value.number.type);
         case T_ASSIGN:
@@ -422,12 +430,12 @@ void generate_llvm(void)
         D_CURRENT_FUNCTION_PREAMBLE_PRINTED = false;
 
         D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 1;
+
+        free_llvm_stack_entry_node_list(loadedRegistersHead);
+        free_llvm_stack_entry_node_list(freeVirtualRegistersHead);
     }
 
     llvm_postamble();
-
-    free_llvm_stack_entry_node_list(loadedRegistersHead);
-    free_llvm_stack_entry_node_list(freeVirtualRegistersHead);
 
     purple_log(LOG_DEBUG, "LLVM written to %s", D_LLVM_FN);
 }

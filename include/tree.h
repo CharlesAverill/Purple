@@ -28,6 +28,8 @@ typedef struct ASTNode {
     struct ASTNode* right;
     /**Type of number token*/
     NumberType number_type;
+    /**Whether or not a binary arithmetic node is dealing with chars*/
+    bool is_char_arithmetic;
     /**Value of AST Node's Token*/
     union {
         /**Value of integer token*/

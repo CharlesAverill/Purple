@@ -98,6 +98,8 @@ static ASTNode* assignment_statement(void)
     purple_log(LOG_DEBUG, "Parsing binary expression for assign statement");
     left = parse_binary_expression(0);
 
+    right->is_char_arithmetic = left->is_char_arithmetic;
+
     // Create subtree for assignment statement
     root = create_ast_node(T_ASSIGN, left, NULL, right, TYPE_VOID, NULL);
 

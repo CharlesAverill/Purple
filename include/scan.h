@@ -15,7 +15,8 @@
 /**
  * @brief Types of scannable tokens
  */
-typedef enum {
+typedef enum
+{
     T_EOF,
     // Arithmetic Operators
     T_PLUS,
@@ -38,15 +39,19 @@ typedef enum {
     T_NOR,
     T_XNOR,
     // Literals
-    T_INTEGER_LITERAL,
-    T_CHAR_LITERAL,
-    T_LONG_LITERAL,
     T_TRUE,
     T_FALSE,
+    T_BYTE_LITERAL,
+    T_CHAR_LITERAL,
+    T_SHORT_LITERAL,
+    T_INTEGER_LITERAL,
+    T_LONG_LITERAL,
     // Types
     T_VOID,
     T_BOOL,
+    T_BYTE,
     T_CHAR,
+    T_SHORT,
     T_INT,
     T_LONG,
     // Assignment
@@ -87,14 +92,18 @@ typedef enum {
 #define TTS_NAND "nand"
 #define TTS_NOR "nor"
 #define TTS_XNOR "xnor"
-#define TTS_INTEGER_LITERAL "integer literal"
-#define TTS_CHAR_LITERAL "character literal"
-#define TTS_LONG_LITERAL "long literal"
 #define TTS_TRUE "true"
 #define TTS_FALSE "false"
+#define TTS_BYTE_LITERAL "byte literal"
+#define TTS_CHAR_LITERAL "character literal"
+#define TTS_SHORT_LITERAL "short literal"
+#define TTS_INTEGER_LITERAL "integer literal"
+#define TTS_LONG_LITERAL "long literal"
 #define TTS_VOID "void"
 #define TTS_BOOL "bool"
+#define TTS_BYTE "byte"
 #define TTS_CHAR "char"
+#define TTS_SHORT "short"
 #define TTS_INT "int"
 #define TTS_LONG "long"
 #define TTS_ASSIGN "="
@@ -143,14 +152,18 @@ static char* tokenStrings[] = {TTS_EOF,
                                TTS_NAND,
                                TTS_NOR,
                                TTS_XNOR,
-                               TTS_INTEGER_LITERAL,
-                               TTS_CHAR_LITERAL,
-                               TTS_LONG_LITERAL,
                                TTS_TRUE,
                                TTS_FALSE,
+                               TTS_BYTE_LITERAL,
+                               TTS_CHAR_LITERAL,
+                               TTS_SHORT_LITERAL,
+                               TTS_INTEGER_LITERAL,
+                               TTS_LONG_LITERAL,
                                TTS_VOID,
                                TTS_BOOL,
+                               TTS_BYTE,
                                TTS_CHAR,
+                               TTS_SHORT,
                                TTS_INT,
                                TTS_LONG,
                                TTS_ASSIGN,
@@ -182,7 +195,7 @@ static char* tokenStrings[] = {TTS_EOF,
 /**
  * @brief Determines if a TokenType is associated with a literal value
  */
-#define TOKENTYPE_IS_LITERAL(type) (type >= T_INTEGER_LITERAL && type <= T_FALSE)
+#define TOKENTYPE_IS_LITERAL(type) (type >= T_TRUE && type <= T_LONG_LITERAL)
 
 /**
  * @brief Determines if a TokenType is associated with a boolean literal value
