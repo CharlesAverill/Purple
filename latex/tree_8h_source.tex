@@ -18,19 +18,20 @@
 \DoxyCodeLine{26     \textcolor{keyword}{struct }\mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{structASTNode_ae1b629d9a274de8b4afbe2382b81e072}{mid}};}
 \DoxyCodeLine{28     \textcolor{keyword}{struct }\mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{structASTNode_ab3fac314ab87bbccda872cde9678b5b3}{right}};}
 \DoxyCodeLine{30     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{structASTNode_a58fd804bfb87d7a797a8d133147e15ca}{number\_type}};}
-\DoxyCodeLine{32     \textcolor{keyword}{union }\{}
-\DoxyCodeLine{34         \mbox{\hyperlink{scan_8h_a5e4b5ad5ed8273fc3c9ffd847ee2018b}{number\_literal\_type}} \mbox{\hyperlink{structASTNode_ad4fae0832953dd1d0598a3c9ec85429f}{number\_value}};}
-\DoxyCodeLine{36         \textcolor{keywordtype}{char} \mbox{\hyperlink{structASTNode_ab07357f4f4f7d75f05a60ab6799c3008}{symbol\_name}}[\mbox{\hyperlink{symbol__table_8h_afdefd4da733213509f3ca91a81945044}{D\_MAX\_IDENTIFIER\_LENGTH}}];}
-\DoxyCodeLine{37     \} \mbox{\hyperlink{structASTNode_a6eb3eb28a0e661931fa444b130f86404}{value}};}
-\DoxyCodeLine{38 \} \mbox{\hyperlink{tree_8h_a6b9026f45e950e06b76db629f9563f3a}{ASTNode}};}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_ac92cb52b7dd963fb7408dd5df4caafb5}{create\_ast\_node}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}}* left, \mbox{\hyperlink{structASTNode}{ASTNode}}* mid, \mbox{\hyperlink{structASTNode}{ASTNode}}* right, \mbox{\hyperlink{structType}{Type}} type,}
-\DoxyCodeLine{41                          \textcolor{keywordtype}{char}* symbol\_name);}
-\DoxyCodeLine{42 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_a002845e4488b8c3ef920e3e56594b895}{create\_ast\_nonidentifier\_leaf}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structType}{Type}} type);}
-\DoxyCodeLine{43 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_a6944d26b526509a2659e0921d358adb5}{create\_ast\_identifier\_leaf}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \textcolor{keywordtype}{char}* symbol\_name);}
-\DoxyCodeLine{44 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_af609eb83ed6cdbeaf17bab9310304c99}{create\_unary\_ast\_node}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}}* child, \mbox{\hyperlink{structType}{Type}} type);}
-\DoxyCodeLine{45 \textcolor{keywordtype}{void} \mbox{\hyperlink{tree_8h_a5a2821d5f8274f595c2057a9ead90fa9}{ast\_debug\_level\_order}}(\mbox{\hyperlink{structASTNode}{ASTNode}}* root, \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}} log\_level);}
-\DoxyCodeLine{46 }
-\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TREE\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{32     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structASTNode_a62d58599dca37a47743243ae2cebb0e9}{is\_char\_arithmetic}};}
+\DoxyCodeLine{34     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{36         \mbox{\hyperlink{scan_8h_a5e4b5ad5ed8273fc3c9ffd847ee2018b}{number\_literal\_type}} \mbox{\hyperlink{structASTNode_ad4fae0832953dd1d0598a3c9ec85429f}{number\_value}};}
+\DoxyCodeLine{38         \textcolor{keywordtype}{char} \mbox{\hyperlink{structASTNode_ab07357f4f4f7d75f05a60ab6799c3008}{symbol\_name}}[\mbox{\hyperlink{symbol__table_8h_afdefd4da733213509f3ca91a81945044}{D\_MAX\_IDENTIFIER\_LENGTH}}];}
+\DoxyCodeLine{39     \} \mbox{\hyperlink{structASTNode_a6eb3eb28a0e661931fa444b130f86404}{value}};}
+\DoxyCodeLine{40 \} \mbox{\hyperlink{tree_8h_a6b9026f45e950e06b76db629f9563f3a}{ASTNode}};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_ac92cb52b7dd963fb7408dd5df4caafb5}{create\_ast\_node}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}}* left, \mbox{\hyperlink{structASTNode}{ASTNode}}* mid, \mbox{\hyperlink{structASTNode}{ASTNode}}* right, \mbox{\hyperlink{structType}{Type}} type,}
+\DoxyCodeLine{43                          \textcolor{keywordtype}{char}* symbol\_name);}
+\DoxyCodeLine{44 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_a002845e4488b8c3ef920e3e56594b895}{create\_ast\_nonidentifier\_leaf}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structType}{Type}} type);}
+\DoxyCodeLine{45 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_a6944d26b526509a2659e0921d358adb5}{create\_ast\_identifier\_leaf}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \textcolor{keywordtype}{char}* symbol\_name);}
+\DoxyCodeLine{46 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_af609eb83ed6cdbeaf17bab9310304c99}{create\_unary\_ast\_node}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}}* child, \mbox{\hyperlink{structType}{Type}} type);}
+\DoxyCodeLine{47 \textcolor{keywordtype}{void} \mbox{\hyperlink{tree_8h_a5a2821d5f8274f595c2057a9ead90fa9}{ast\_debug\_level\_order}}(\mbox{\hyperlink{structASTNode}{ASTNode}}* root, \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}} log\_level);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TREE\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

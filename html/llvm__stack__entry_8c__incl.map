@@ -2,7 +2,8 @@
 <area shape="rect" id="node1" title=" " alt="" coords="104,5,239,47"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,95,68,121"/>
 <area shape="rect" id="node3" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="92,95,251,121"/>
-<area shape="rect" id="node5" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="275,95,377,121"/>
+<area shape="rect" id="node6" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="275,95,377,121"/>
 <area shape="rect" id="node4" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="116,169,227,196"/>
-<area shape="rect" id="node6" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="268,169,384,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="140,244,203,271"/>
+<area shape="rect" id="node7" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="268,169,384,196"/>
 </map>

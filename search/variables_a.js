@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['reg_0',['reg',['../structLLVMStackEntryNode.html#aaff603b17fe1999a2f722998c3b47387',1,'LLVMStackEntryNode']]],
-  ['returncodestrings_1',['returnCodeStrings',['../logging_8h.html#ac056197f8b96c1d78e1858c19eadcb0a',1,'logging.h']]],
-  ['right_2',['right',['../structASTNode.html#ab3fac314ab87bbccda872cde9678b5b3',1,'ASTNode']]]
+  ['operatorprecedence_0',['operatorPrecedence',['../parse_8h.html#aceb30c679b898ce21cad0d777c82664b',1,'parse.h']]],
+  ['options_1',['options',['../arguments_8c.html#abc1fd3a47aea6a8944038c9100eb9135',1,'arguments.c']]]
 ];

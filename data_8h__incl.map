@@ -3,10 +3,11 @@
 <area shape="rect" id="node2" title=" " alt="" coords="5,80,65,107"/>
 <area shape="rect" id="node3" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="89,80,149,107"/>
 <area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="87,155,250,181"/>
-<area shape="rect" id="node8" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="243,80,364,107"/>
+<area shape="rect" id="node9" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="243,80,364,107"/>
 <area shape="rect" id="node4" title=" " alt="" coords="19,229,94,256"/>
 <area shape="rect" id="node6" href="$type_8h.html" title="Function headers and defines for." alt="" coords="123,229,214,256"/>
 <area shape="rect" id="node7" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="113,304,224,331"/>
-<area shape="rect" id="node9" title=" " alt="" coords="275,155,332,181"/>
-<area shape="rect" id="node10" href="$info_8h.html" title="CMake config definitions." alt="" coords="357,155,410,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="137,379,200,405"/>
+<area shape="rect" id="node10" title=" " alt="" coords="275,155,332,181"/>
+<area shape="rect" id="node11" href="$info_8h.html" title="CMake config definitions." alt="" coords="357,155,410,181"/>
 </map>

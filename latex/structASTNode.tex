@@ -16,7 +16,7 @@ Collaboration diagram for ASTNode\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=209pt]{structASTNode__coll__graph}
+\includegraphics[width=227pt]{structASTNode__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Attributes}
@@ -32,6 +32,8 @@ struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{structA
 \item 
 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \mbox{\hyperlink{structASTNode_a58fd804bfb87d7a797a8d133147e15ca}{number\+\_\+type}}
 \item 
+bool \mbox{\hyperlink{structASTNode_a62d58599dca37a47743243ae2cebb0e9}{is\+\_\+char\+\_\+arithmetic}}
+\item 
 \begin{tabbing}
 xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
 union \{\\
@@ -46,7 +48,13 @@ union \{\\
 Component of the abstract syntax tree built during parsing. 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}\label{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}} 
+\mbox{\Hypertarget{structASTNode_a62d58599dca37a47743243ae2cebb0e9}\label{structASTNode_a62d58599dca37a47743243ae2cebb0e9}} 
+\index{ASTNode@{ASTNode}!is\_char\_arithmetic@{is\_char\_arithmetic}}
+\index{is\_char\_arithmetic@{is\_char\_arithmetic}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{is\_char\_arithmetic}{is\_char\_arithmetic}}
+{\footnotesize\ttfamily bool ASTNode\+::is\+\_\+char\+\_\+arithmetic}
+
+Whether or not a binary arithmetic node is dealing with chars \mbox{\Hypertarget{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}\label{structASTNode_a7e8efcf6431aca1ee186e775443abfcc}} 
 \index{ASTNode@{ASTNode}!left@{left}}
 \index{left@{left}!ASTNode@{ASTNode}}
 \doxysubsubsection{\texorpdfstring{left}{left}}

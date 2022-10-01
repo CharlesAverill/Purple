@@ -7,5 +7,6 @@ var searchData=
   ['info_2eh_4',['info.h',['../info_8h.html',1,'']]],
   ['init_5',['init',['../purple_8c.html#a04900abd2e06f2bb8f7aa0edd9e2e8e2',1,'purple.c']]],
   ['initialize_5fstack_5fentry_5flinked_5flist_6',['initialize_stack_entry_linked_list',['../llvm__stack__entry_8h.html#a8fa2f2bf229b53383166e64c9f631cd6',1,'initialize_stack_entry_linked_list(LLVMStackEntryNode **head):&#160;llvm_stack_entry.c'],['../llvm__stack__entry_8c.html#a8fa2f2bf229b53383166e64c9f631cd6',1,'initialize_stack_entry_linked_list(LLVMStackEntryNode **head):&#160;llvm_stack_entry.c']]],
-  ['is_5fvalid_5fidentifier_5fchar_7',['is_valid_identifier_char',['../scan_8c.html#a266d26db82d5dbb4136042baf955f5ad',1,'scan.c']]]
+  ['is_5fchar_5farithmetic_7',['is_char_arithmetic',['../structASTNode.html#a62d58599dca37a47743243ae2cebb0e9',1,'ASTNode']]],
+  ['is_5fvalid_5fidentifier_5fchar_8',['is_valid_identifier_char',['../scan_8c.html#a266d26db82d5dbb4136042baf955f5ad',1,'scan.c']]]
 ];

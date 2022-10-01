@@ -5,8 +5,9 @@
 <area shape="rect" id="node3" title=" " alt="" coords="5,155,68,181"/>
 <area shape="rect" id="node4" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="92,155,152,181"/>
 <area shape="rect" id="node6" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="41,229,203,256"/>
-<area shape="rect" id="node9" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="231,155,333,181"/>
+<area shape="rect" id="node10" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="231,155,333,181"/>
 <area shape="rect" id="node5" title=" " alt="" coords="29,304,103,331"/>
 <area shape="rect" id="node7" href="$type_8h.html" title="Function headers and defines for." alt="" coords="133,304,223,331"/>
-<area shape="rect" id="node10" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="228,229,344,256"/>
+<area shape="rect" id="node9" title=" " alt="" coords="276,453,339,480"/>
+<area shape="rect" id="node11" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="228,229,344,256"/>
 </map>

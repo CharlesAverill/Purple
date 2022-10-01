@@ -111,6 +111,7 @@ Include dependency graph for llvm.c:</div>
 <area shape="rect" title=" " alt="" coords="414,453,489,480"/>
 <area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="486,379,649,405"/>
 <area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="517,453,607,480"/>
+<area shape="rect" title=" " alt="" coords="353,603,416,629"/>
 <area shape="rect" title=" " alt="" coords="240,304,300,331"/>
 <area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="324,304,445,331"/>
 <area shape="rect" title=" " alt="" coords="276,379,333,405"/>
@@ -162,18 +163,22 @@ Functions</h2></td></tr>
 <tr class="memitem:a01ecfb327d3aaac5bc133e922d18a4ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a01ecfb327d3aaac5bc133e922d18a4ef">llvm_load_global_variable</a> (char *symbol_name)</td></tr>
 <tr class="memdesc:a01ecfb327d3aaac5bc133e922d18a4ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a global variable's value into a new virtual register.  <a href="llvm_8c.html#a01ecfb327d3aaac5bc133e922d18a4ef">More...</a><br /></td></tr>
 <tr class="separator:a01ecfb327d3aaac5bc133e922d18a4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83ac5d54b95ce52ab3494500cf6d8476"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a83ac5d54b95ce52ab3494500cf6d8476">llvm_store_global_variable</a> (char *symbol_name, <a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> rvalue_register_number)</td></tr>
-<tr class="memdesc:a83ac5d54b95ce52ab3494500cf6d8476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store a value into a global variable.  <a href="llvm_8c.html#a83ac5d54b95ce52ab3494500cf6d8476">More...</a><br /></td></tr>
-<tr class="separator:a83ac5d54b95ce52ab3494500cf6d8476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6290db13d34ed659a7108ad675ee4da5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a6290db13d34ed659a7108ad675ee4da5">llvm_store_global_variable</a> (char *symbol_name, <a class="el" href="structLLVMValue.html">LLVMValue</a> rvalue_register)</td></tr>
+<tr class="memdesc:a6290db13d34ed659a7108ad675ee4da5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store a value into a global variable.  <a href="llvm_8c.html#a6290db13d34ed659a7108ad675ee4da5">More...</a><br /></td></tr>
+<tr class="separator:a6290db13d34ed659a7108ad675ee4da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a93bf1a762be7609ca6d328e1162d12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a4a93bf1a762be7609ca6d328e1162d12">llvm_signed_extend</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> reg, <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> new_type, <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> old_type)</td></tr>
+<tr class="separator:a4a93bf1a762be7609ca6d328e1162d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69c9341fb40188d621c5d36a8022996a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a69c9341fb40188d621c5d36a8022996a">llvm_truncate</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> reg, <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> new_type, <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> old_type)</td></tr>
+<tr class="separator:a69c9341fb40188d621c5d36a8022996a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeab3cd1ced090b1a1895f4db2ae4a387"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#aeab3cd1ced090b1a1895f4db2ae4a387">llvm_declare_global_number_variable</a> (char *symbol_name, <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> number_type)</td></tr>
 <tr class="memdesc:aeab3cd1ced090b1a1895f4db2ae4a387"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare a global variable.  <a href="llvm_8c.html#aeab3cd1ced090b1a1895f4db2ae4a387">More...</a><br /></td></tr>
 <tr class="separator:aeab3cd1ced090b1a1895f4db2ae4a387"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d975b70508857ae99ff02c02f2712d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a3d975b70508857ae99ff02c02f2712d1">llvm_declare_assign_global_number_variable</a> (char *symbol_name, <a class="el" href="structNumber.html">Number</a> number)</td></tr>
 <tr class="memdesc:a3d975b70508857ae99ff02c02f2712d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare a global variable with an assigned number value.  <a href="llvm_8c.html#a3d975b70508857ae99ff02c02f2712d1">More...</a><br /></td></tr>
 <tr class="separator:a3d975b70508857ae99ff02c02f2712d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a933c8ba87670c20b0ab03d5b1174ff4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a933c8ba87670c20b0ab03d5b1174ff4c">llvm_print_int</a> (<a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> print_vr, <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> type)</td></tr>
-<tr class="memdesc:a933c8ba87670c20b0ab03d5b1174ff4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print an integer.  <a href="llvm_8c.html#a933c8ba87670c20b0ab03d5b1174ff4c">More...</a><br /></td></tr>
-<tr class="separator:a933c8ba87670c20b0ab03d5b1174ff4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a031af08abcc558123b3ff132eb9aa142"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a031af08abcc558123b3ff132eb9aa142">llvm_print_int</a> (<a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> print_vr, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type)</td></tr>
+<tr class="memdesc:a031af08abcc558123b3ff132eb9aa142"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print an integer.  <a href="llvm_8c.html#a031af08abcc558123b3ff132eb9aa142">More...</a><br /></td></tr>
+<tr class="separator:a031af08abcc558123b3ff132eb9aa142"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a549185ec39141a09db11a45ec6c3363d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a549185ec39141a09db11a45ec6c3363d">llvm_print_bool</a> (<a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> print_vr)</td></tr>
 <tr class="memdesc:a549185ec39141a09db11a45ec6c3363d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print a boolean value.  <a href="llvm_8c.html#a549185ec39141a09db11a45ec6c3363d">More...</a><br /></td></tr>
 <tr class="separator:a549185ec39141a09db11a45ec6c3363d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -915,8 +920,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a933c8ba87670c20b0ab03d5b1174ff4c" name="a933c8ba87670c20b0ab03d5b1174ff4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a933c8ba87670c20b0ab03d5b1174ff4c">&#9670;&nbsp;</a></span>llvm_print_int()</h2>
+<a id="a031af08abcc558123b3ff132eb9aa142" name="a031af08abcc558123b3ff132eb9aa142"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a031af08abcc558123b3ff132eb9aa142">&#9670;&nbsp;</a></span>llvm_print_int()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -930,7 +935,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td>
           <td class="paramname"><em>type</em>&#160;</td>
         </tr>
         <tr>
@@ -945,7 +950,7 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">print_vr</td><td>Register holding value to print </td></tr>
-    <tr><td class="paramname">type</td><td><a class="el" href="structType.html" title="Container for type data.">Type</a> of int (char, int, long) to print </td></tr>
+    <tr><td class="paramname">type</td><td><a class="el" href="structType.html" title="Container for type data.">Type</a> of int (byte, char, int, long) to print </td></tr>
   </table>
   </dd>
 </dl>
@@ -996,6 +1001,40 @@ Variables</h2></td></tr>
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a93bf1a762be7609ca6d328e1162d12" name="a4a93bf1a762be7609ca6d328e1162d12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a93bf1a762be7609ca6d328e1162d12">&#9670;&nbsp;</a></span>llvm_signed_extend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLLVMValue.html">LLVMValue</a> llvm_signed_extend </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td>
+          <td class="paramname"><em>new_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td>
+          <td class="paramname"><em>old_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
@@ -1054,8 +1093,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a83ac5d54b95ce52ab3494500cf6d8476" name="a83ac5d54b95ce52ab3494500cf6d8476"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83ac5d54b95ce52ab3494500cf6d8476">&#9670;&nbsp;</a></span>llvm_store_global_variable()</h2>
+<a id="a6290db13d34ed659a7108ad675ee4da5" name="a6290db13d34ed659a7108ad675ee4da5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6290db13d34ed659a7108ad675ee4da5">&#9670;&nbsp;</a></span>llvm_store_global_variable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1069,8 +1108,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
-          <td class="paramname"><em>rvalue_register_number</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>rvalue_register</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1084,7 +1123,7 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">symbol_name</td><td>Identifier name of variable to store new value to </td></tr>
-    <tr><td class="paramname">rvalue_register_number</td><td>Register number of statement's RValue to store </td></tr>
+    <tr><td class="paramname">rvalue_register</td><td>Register number of statement's RValue to store </td></tr>
   </table>
   </dd>
 </dl>
@@ -1134,6 +1173,40 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>type_register Virtual register holding result </dd></dl>
+
+</div>
+</div>
+<a id="a69c9341fb40188d621c5d36a8022996a" name="a69c9341fb40188d621c5d36a8022996a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69c9341fb40188d621c5d36a8022996a">&#9670;&nbsp;</a></span>llvm_truncate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLLVMValue.html">LLVMValue</a> llvm_truncate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td>
+          <td class="paramname"><em>new_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td>
+          <td class="paramname"><em>old_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
