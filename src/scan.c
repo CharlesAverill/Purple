@@ -127,7 +127,7 @@ static Number parse_number_literal(char* literal, int length, int base)
     }
 
     // Check size
-    for (NumberType number_type = NT_INT64; number_type >= NT_INT1; number_type--) {
+    for (NumberType number_type = NT_INT64; number_type >= NT_INT8; number_type--) {
         long long int max_value = numberTypeMaxValues[number_type];
         if (-1 * max_value <= out.value && out.value <= max_value - 1) {
             out.type = number_type;
@@ -537,9 +537,7 @@ bool scan(Token* t)
         }
     } else if (scan_check_integer_literal(c)) {
         t->value.number_value = scan_number_literal(c);
-        t->type = t->value.number_value.type == NT_INT64   ? T_LONG_LITERAL
-                  : t->value.number_value.type == NT_INT16 ? T_CHAR_LITERAL
-                                                           : T_INTEGER_LITERAL;
+        t->type = number_to_token_type(t->value.number_value);
     } else if (scan_check_char_literal(c)) {
         t->value.number_value = NUMBER_CHAR(scan_char_literal(c));
         t->type = T_CHAR_LITERAL;

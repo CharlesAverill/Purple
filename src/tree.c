@@ -42,6 +42,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
     if (TOKENTYPE_IS_LITERAL(ttype) && type.type == TT_NUMBER) {
         out->value.number_value = type.value.number.value;
         out->number_type = type.value.number.type;
+        out->is_char_arithmetic = ttype == T_CHAR || ttype == T_CHAR_LITERAL;
     } else if (TOKENTYPE_IS_IDENTIFIER(ttype) || ttype == T_FUNCTION) {
         if (symbol_name == NULL) {
             fatal(RC_COMPILER_ERROR,
@@ -59,6 +60,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
         out->number_type = found_entry->type.value.number.type;
     } else if (TOKENTYPE_IS_BINARY_ARITHMETIC(ttype)) {
         out->number_type = left->number_type;
+        out->is_char_arithmetic = left->is_char_arithmetic;
     } else if (TOKENTYPE_IS_COMPARATOR(ttype)) {
         out->number_type = NT_INT1;
     }

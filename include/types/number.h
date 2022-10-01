@@ -13,7 +13,8 @@
 /**
  * @brief Types of numbers supported by Purple
  */
-typedef enum {
+typedef enum
+{
     NT_INT1,
     NT_INT8,
     NT_INT16,
@@ -27,6 +28,11 @@ typedef enum {
 static const int numberTypeByteSizes[] = {
     1, 1, 2, 4, 8,
 };
+
+/**
+ * @brief Bit size of each NumberType
+ */
+static const int numberTypeBitSizes[] = {1, 8, 16, 32, 64};
 
 /**
  * @brief Max value of each NumberType
@@ -95,6 +101,16 @@ typedef struct Number {
         .type = NT_INT64, .value = v                                                               \
     }
 
+/**
+ * @brief Generates a Number struct given a NumberType and a value
+ */
+#define NUMBER_FROM_TYPE_VAL(t, v)                                                                 \
+    (Number)                                                                                       \
+    {                                                                                              \
+        .type = t, .value = v                                                                      \
+    }
+
 NumberType token_type_to_number_type(int token_type);
+int number_to_token_type(Number number);
 
 #endif /* NUMBER_H */
