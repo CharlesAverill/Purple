@@ -20,6 +20,7 @@ static char args_doc[] = "PROGRAM";
 static struct argp_option options[] = {
     {"logging", 'l', "LEVEL", 0,
      "Level of log statements to print (NONE, DEBUG, INFO, WARNING, ERROR, CRITICAL)", 0},
+    {"cmd", 'c', "PROGRAM", 0, "Program passed in as a string", 0},
     {"output", 'o', "FILE", 0, "Path to the generated LLVM file", 0},
     {"quiet", 'q', 0, 0, "Equivalent to --logging=NONE", 0},
     {"verbose", 'v', 0, 0, "Equivalent to --logging=DEBUG", 0},
@@ -57,9 +58,16 @@ error_t parse_opt(int key, char* arg, struct argp_state* state)
     case 'o':
         arguments->filenames[1] = arg;
         break;
+    case 'c':
+        arguments->from_command_line_argument = arg;
+        break;
     case ARGP_KEY_ARG:
         // Check for too many arguments
         if (state->arg_num > 1) {
+            argp_usage(state);
+        }
+
+        if (arguments->from_command_line_argument != NULL) {
             argp_usage(state);
         }
 
@@ -68,7 +76,7 @@ error_t parse_opt(int key, char* arg, struct argp_state* state)
         break;
     case ARGP_KEY_END:
         // Check for not enough arguments
-        if (state->arg_num < 1) {
+        if (state->arg_num < 1 && arguments->from_command_line_argument == NULL) {
             argp_usage(state);
         }
         break;
@@ -85,6 +93,7 @@ void parse_args(PurpleArgs* args, int argc, char* argv[])
 {
     args->logging = LOG_INFO;
     args->filenames[1] = "a.ll";
+    args->from_command_line_argument = NULL;
 
     argp_parse(&argp, argc, argv, 0, 0, args);
 }

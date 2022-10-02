@@ -40,10 +40,18 @@ static void init(int argc, char* argv[])
 
     parse_args(args, argc, argv);
 
-    D_INPUT_FN = args->filenames[0];
-    D_INPUT_FILE = fopen(D_INPUT_FN, "r");
-    if (D_INPUT_FILE == NULL) {
-        fatal(RC_FILE_ERROR, "Unable to open %s: %s\n", D_INPUT_FN, strerror(errno));
+    if (args->from_command_line_argument != NULL) {
+        D_INPUT_FN = "argument";
+        D_INPUT_FILE = tmpfile();
+        fwrite(args->from_command_line_argument, strlen(args->from_command_line_argument), 1,
+               D_INPUT_FILE);
+        rewind(D_INPUT_FILE);
+    } else {
+        D_INPUT_FN = args->filenames[0];
+        D_INPUT_FILE = fopen(D_INPUT_FN, "r");
+        if (D_INPUT_FILE == NULL) {
+            fatal(RC_FILE_ERROR, "Unable to open %s: %s\n", D_INPUT_FN, strerror(errno));
+        }
     }
 
     // Global data

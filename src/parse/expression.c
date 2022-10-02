@@ -72,7 +72,6 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
     // Get the intlit on the left and scan the next Token
     position pre_pos = D_GLOBAL_TOKEN.pos;
     left = create_terminal_node(&D_GLOBAL_TOKEN);
-    printf("Terminal\n");
     add_position_info(left, pre_pos);
     current_ttype = D_GLOBAL_TOKEN.type;
     if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {
@@ -90,7 +89,6 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
 
         // Join right subtree with current left subtree
         left = create_ast_node(current_ttype, left, NULL, right, TYPE_VOID, NULL);
-        printf("Add to left\n");
         add_position_info(left, pos);
 
         // Update current_ttype and check for EOF
