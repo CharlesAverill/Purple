@@ -13,3 +13,4 @@ core
 *.ll
 scratch.prp
 peda-*
+.gdbinit

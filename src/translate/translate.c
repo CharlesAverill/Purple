@@ -299,28 +299,10 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
     type_register right_vr = virtual_registers[1];
 
     if (TOKENTYPE_IS_BINARY_ARITHMETIC(n->ttype)) {
-        /*
-        if (!(n->left->number_type == n->right->number_type && n->left->number_type != NT_INT1)) {
-            syntax_error(D_INPUT_FN, D_LINE_NUMBER,
-                         "Cannot perform operation \"%s\" on types %s and %s",
-                         tokenStrings[n->ttype], numberTypeLLVMReprs[n->left->number_type],
-                         numberTypeLLVMReprs[n->right->number_type]);
-        }
-        */
-
         return llvm_binary_arithmetic(
             n->ttype, LLVMVALUE_VIRTUAL_REGISTER(left_vr, temp_values[0].number_type),
             LLVMVALUE_VIRTUAL_REGISTER(right_vr, temp_values[1].number_type));
     } else if (TOKENTYPE_IS_COMPARATOR(n->ttype)) {
-        /*
-        if (n->left->number_type != n->right->number_type) {
-            syntax_error(D_INPUT_FN, D_LINE_NUMBER,
-                         "Cannot perform \"%s\" comparison on types %s and %s",
-                         tokenStrings[n->ttype], numberTypeLLVMReprs[n->left->number_type],
-                         numberTypeLLVMReprs[n->right->number_type]);
-        }
-        */
-
         if (parent_operation == T_IF || parent_operation == T_WHILE) {
             if (llvm_value.value_type != LLVMVALUETYPE_LABEL) {
                 fatal(RC_COMPILER_ERROR, "Tried to generate an if branch but received an LLVMValue "
@@ -336,7 +318,7 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
         }
     } else if (TOKENTYPE_IS_LOGICAL_OPERATOR(n->ttype)) {
         if (n->left->number_type != NT_INT1 || n->left->number_type != n->right->number_type) {
-            syntax_error(D_INPUT_FN, D_LINE_NUMBER,
+            syntax_error(n->filename, n->line_number, n->char_number,
                          "Cannot perform logical \"%s\" comparison on types %s and %s",
                          tokenStrings[n->ttype], numberTypeLLVMReprs[n->left->number_type],
                          numberTypeLLVMReprs[n->right->number_type]);
@@ -407,8 +389,7 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
         case T_PRINT:
             return print_ast_to_llvm(n, left_vr);
         default:
-            syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unknown operator \"%s\"",
-                         tokenStrings[n->ttype]);
+            syntax_error(0, 0, 0, "Unknown operator \"%s\"", tokenStrings[n->ttype]);
         }
     }
 }

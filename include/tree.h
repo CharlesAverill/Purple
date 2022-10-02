@@ -30,6 +30,12 @@ typedef struct ASTNode {
     NumberType number_type;
     /**Whether or not a binary arithmetic node is dealing with chars*/
     bool is_char_arithmetic;
+    /**Filename of this Token*/
+    char filename[256];
+    /**Line number of this Token*/
+    int line_number;
+    /**Character number of this Token*/
+    int char_number;
     /**Value of AST Node's Token*/
     union {
         /**Value of integer token*/
@@ -41,6 +47,7 @@ typedef struct ASTNode {
 
 ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right, Type type,
                          char* symbol_name);
+void add_position_info(ASTNode* dest, position p);
 ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, Type type);
 ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name);
 ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, Type type);

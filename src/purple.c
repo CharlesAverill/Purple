@@ -48,6 +48,7 @@ static void init(int argc, char* argv[])
 
     // Global data
     D_LINE_NUMBER = 1;
+    D_CHAR_NUMBER = 1;
     D_PUT_BACK = '\n';
 
     // Global Token

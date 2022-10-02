@@ -20,7 +20,7 @@ void match_token(TokenType type)
     if (D_GLOBAL_TOKEN.type == type) {
         scan(&D_GLOBAL_TOKEN);
     } else {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Expected token \"%s\"", tokenStrings[type]);
+        syntax_error(0, 0, 0, "Expected token \"%s\"", tokenStrings[type]);
     }
 }
 
@@ -35,7 +35,7 @@ NumberType match_type(void)
     if (TOKENTYPE_IS_TYPE(ttype)) {
         scan(&D_GLOBAL_TOKEN);
     } else {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Expected type");
+        syntax_error(0, 0, 0, "Expected type");
     }
 
     return token_type_to_number_type(ttype);
@@ -54,12 +54,14 @@ static ASTNode* print_statement(void)
     purple_log(LOG_DEBUG, "Parsing print statement");
 
     match_token(T_PRINT);
+    position print_position = D_GLOBAL_TOKEN.pos;
 
     // Parse printed value
     purple_log(LOG_DEBUG, "Parsing binary expression for print statement");
     root = parse_binary_expression(0);
 
     root = create_unary_ast_node(T_PRINT, root, TYPE_VOID);
+    add_position_info(root, print_position);
 
     return root;
 }
@@ -79,20 +81,24 @@ static ASTNode* assignment_statement(void)
     purple_log(LOG_DEBUG, "Parsing assignment statement");
 
     // Read identifier
+    position ident_pos = D_GLOBAL_TOKEN.pos;
     match_token(T_IDENTIFIER);
+    //position ident_pos = D_GLOBAL_TOKEN.pos;
 
     // Ensure identifier name has been declared
     purple_log(LOG_DEBUG, "Searching for identifier name in global symbol table");
     if ((found_entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER)) ==
         NULL) {
-        identifier_error(D_INPUT_FN, D_LINE_NUMBER, "Identifier name \"%s\" has not been declared",
+        identifier_error(0, 0, 0, "Identifier name \"%s\" has not been declared",
                          D_IDENTIFIER_BUFFER);
     }
 
     // Make a terminal node for the identifier
     right = create_ast_identifier_leaf(T_LVALUE_IDENTIFIER, found_entry->symbol_name);
+    add_position_info(right, ident_pos);
 
     match_token(T_ASSIGN);
+    position assign_pos = D_GLOBAL_TOKEN.pos;
 
     // Parse assignment expression
     purple_log(LOG_DEBUG, "Parsing binary expression for assign statement");
@@ -102,6 +108,7 @@ static ASTNode* assignment_statement(void)
 
     // Create subtree for assignment statement
     root = create_ast_node(T_ASSIGN, left, NULL, right, TYPE_VOID, NULL);
+    add_position_info(root, assign_pos);
 
     return root;
 }
@@ -123,11 +130,11 @@ static ASTNode* if_statement(void)
     match_token(T_LEFT_PAREN);
 
     condition = parse_binary_expression(0);
+    position condition_pos = D_GLOBAL_TOKEN.pos;
 
     if (!TOKENTYPE_IS_COMPARATOR(condition->ttype) &&
         !TOKENTYPE_IS_LOGICAL_OPERATOR(condition->ttype)) {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER,
-                     "Condition clauses must use a logical or comparison operator");
+        syntax_error(0, 0, 0, "Condition clauses must use a logical or comparison operator");
     }
 
     match_token(T_RIGHT_PAREN);
@@ -139,7 +146,10 @@ static ASTNode* if_statement(void)
         false_branch = parse_statements();
     }
 
-    return create_ast_node(T_IF, condition, true_branch, false_branch, TYPE_VOID, NULL);
+    condition = create_ast_node(T_IF, condition, true_branch, false_branch, TYPE_VOID, NULL);
+    add_position_info(condition, condition_pos);
+
+    return condition;
 }
 
 /**
@@ -159,11 +169,11 @@ static ASTNode* while_statement(void)
     match_token(T_LEFT_PAREN);
 
     condition = parse_binary_expression(0);
+    position condition_pos = D_GLOBAL_TOKEN.pos;
 
     if (!TOKENTYPE_IS_COMPARATOR(condition->ttype) &&
         !TOKENTYPE_IS_LOGICAL_OPERATOR(condition->ttype)) {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER,
-                     "Condition clauses must use a logical or comparison operator");
+        syntax_error(0, 0, 0, "Condition clauses must use a logical or comparison operator");
     }
 
     match_token(T_RIGHT_PAREN);
@@ -177,7 +187,10 @@ static ASTNode* while_statement(void)
         else_body = parse_statements();
     }
 
-    return create_ast_node(T_WHILE, condition, body, else_body, TYPE_VOID, NULL);
+    condition = create_ast_node(T_WHILE, condition, body, else_body, TYPE_VOID, NULL);
+    add_position_info(condition, condition_pos);
+
+    return condition;
 }
 
 /**
@@ -200,14 +213,14 @@ static ASTNode* for_statement(void)
     match_token(T_LEFT_PAREN);
 
     for_preamble = assignment_statement();
+    position for_position = D_GLOBAL_TOKEN.pos;
 
     match_token(T_SEMICOLON);
 
     condition = parse_binary_expression(0);
     if (!TOKENTYPE_IS_COMPARATOR(condition->ttype) &&
         !TOKENTYPE_IS_LOGICAL_OPERATOR(condition->ttype)) {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER,
-                     "Condition clauses must use a logical or comparison operator");
+        syntax_error(0, 0, 0, "Condition clauses must use a logical or comparison operator");
     }
 
     match_token(T_SEMICOLON);
@@ -227,6 +240,7 @@ static ASTNode* for_statement(void)
 
     out = create_ast_node(T_AST_GLUE, for_postamble, NULL, else_body, TYPE_VOID, NULL);
     out = create_ast_node(T_WHILE, condition, body, out, TYPE_VOID, NULL);
+    add_position_info(out, for_position);
     out = create_ast_node(T_AST_GLUE, for_preamble, NULL, out, TYPE_VOID, NULL);
     return out;
 }
@@ -279,8 +293,7 @@ ASTNode* parse_statements(void)
                 match_semicolon = false;
                 break;
             default:
-                syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unexpected token %s",
-                             tokenStrings[D_GLOBAL_TOKEN.type]);
+                syntax_error(0, 0, 0, "Unexpected token %s", tokenStrings[D_GLOBAL_TOKEN.type]);
                 break;
             }
         }

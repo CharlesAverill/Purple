@@ -5,6 +5,8 @@
  * @date 19-Sep-2022
  */
 
+#include <string.h>
+
 #include "data.h"
 #include "parse.h"
 #include "translate/llvm.h"
@@ -39,6 +41,8 @@ ASTNode* function_declaration(void)
 
     match_token(T_VOID);
     match_token(T_IDENTIFIER);
+    position ident_pos = D_GLOBAL_TOKEN.pos;
+    ident_pos.char_number -= strlen(D_GLOBAL_TOKEN.value.symbol_name) - 1;
 
     entry = add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER, TYPE_VOID);
 
@@ -48,5 +52,7 @@ ASTNode* function_declaration(void)
 
     out = parse_statements();
 
-    return create_ast_node(T_FUNCTION, out, NULL, NULL, TYPE_VOID, entry->symbol_name);
+    out = create_ast_node(T_FUNCTION, out, NULL, NULL, TYPE_VOID, entry->symbol_name);
+    add_position_info(out, ident_pos);
+    return out;
 }

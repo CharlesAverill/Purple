@@ -72,8 +72,8 @@ static const char* returnCodeStrings[] = {
     "FILE ERROR", "COMPILER ERROR", "IDENTIFIER ERROR"};
 
 void fatal(ReturnCode rc, const char* fmt, ...);
-void syntax_error(const char* fn, const int line_number, const char* fmt, ...);
-void identifier_error(const char* fn, const int line_number, const char* fmt, ...);
+void syntax_error(char* fn, int line_number, int char_number, const char* fmt, ...);
+void identifier_error(char* fn, int line_number, int char_number, const char* fmt, ...);
 
 void purple_log(LogLevel level, const char* fmt, ...);
 

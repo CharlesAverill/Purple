@@ -41,12 +41,23 @@ void fatal(ReturnCode rc, const char* fmt, ...)
  * 
  * @param fn Filename in which syntax error occurs
  * @param line_number Line number on which syntax error occurs
+ * @param char_number Character numbre on which syntax error occurs
  * @param fmt Format string for details printed before fatal error
  * @param ... Varargs for details printed before fatal error
  */
-void syntax_error(const char* fn, const int line_number, const char* fmt, ...)
+void syntax_error(char* fn, int line_number, int char_number, const char* fmt, ...)
 {
     va_list func_args;
+
+    if (fn == NULL) {
+        fn = D_INPUT_FN;
+    }
+    if (line_number == 0) {
+        line_number = D_LINE_NUMBER;
+    }
+    if (char_number == 0) {
+        char_number = D_CHAR_NUMBER;
+    }
 
     // Print fence for error distinguishing
     fprintf(stderr, "----------------------------------------\n");
@@ -66,10 +77,11 @@ void syntax_error(const char* fn, const int line_number, const char* fmt, ...)
  * 
  * @param fn Filename in which identifier error occurs
  * @param line_number Line number on which identifier error occurs
+ * @param char_number Character numbre on which syntax error occurs
  * @param fmt Format string for details printed before fatal error
  * @param ... Varargs for details printed before fatal error
  */
-void identifier_error(const char* fn, const int line_number, const char* fmt, ...)
+void identifier_error(char* fn, int line_number, int char_number, const char* fmt, ...)
 {
     va_list func_args;
 

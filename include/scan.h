@@ -228,17 +228,25 @@ static char* tokenStrings[] = {TTS_EOF,
  */
 #define MAX_NUMBER_LITERAL_DIGITS 19
 
+typedef struct position {
+    char filename[256];
+    int line_number;
+    int char_number;
+} position;
+
 /**
  * @brief Structure containing information about individual scannable tokens
  */
 typedef struct Token {
-    /**Type of token*/
+    /**Type of Token*/
     TokenType type;
-    /**Value of token*/
+    /**Position of Token*/
+    position pos;
+    /**Value of Token*/
     union {
-        /**Value of integer token*/
+        /**Value of integer Token*/
         Number number_value;
-        /**Name of identifier token*/
+        /**Name of identifier Token*/
         char symbol_name[D_MAX_IDENTIFIER_LENGTH];
     } value;
 } Token;

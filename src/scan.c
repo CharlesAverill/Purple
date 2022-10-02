@@ -32,10 +32,12 @@ static char next(void)
 
     // Get next character from file
     c = fgetc(D_INPUT_FILE);
+    D_CHAR_NUMBER++;
 
     // Check line increment
     if (c == '\n') {
         D_LINE_NUMBER++;
+        D_CHAR_NUMBER = 1;
     }
 
     return c;
@@ -49,6 +51,7 @@ static char next(void)
 static void put_back_into_stream(char c)
 {
     D_PUT_BACK = c;
+    D_CHAR_NUMBER--;
 }
 
 /**
@@ -97,15 +100,13 @@ static int char_to_int(char c, int base)
 {
     int index = index_of("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", c);
     if (base != -1 && index >= base) {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Literal of base %d cannot contain character '%c'",
-                     base, c);
+        syntax_error(0, 0, 0, "Literal of base %d cannot contain character '%c'", base, c);
     }
 
     if (index == -1) {
         index = index_of("0123456789abcdefghijklmnopqrstuvwxyz", c);
         if (base != -1 && index >= base) {
-            syntax_error(D_INPUT_FN, D_LINE_NUMBER,
-                         "Literal of base %d cannot contain character '%c'", base, c);
+            syntax_error(0, 0, 0, "Literal of base %d cannot contain character '%c'", base, c);
         }
     }
 
@@ -121,7 +122,7 @@ static Number parse_number_literal(char* literal, int length, int base)
         current_digit = char_to_int(literal[i], base);
         // Check for overflow
         if (out.value * 10 + current_digit < out.value) {
-            syntax_error(D_LLVM_FN, D_LINE_NUMBER, "Number literal too big");
+            syntax_error(0, 0, 0, "Number literal too big");
         }
         out.value = out.value * base + current_digit;
     }
@@ -180,12 +181,11 @@ static Number scan_number_literal(char c)
         if (c == NUMBER_LITERAL_BASE_SEPARATOR) {
             c = next();
             if (isalpha(c) && !isupper(c)) {
-                syntax_error(D_INPUT_FN, D_LINE_NUMBER,
-                             "Number literal bases must be of form [1-9|A-Z]");
+                syntax_error(0, 0, 0, "Number literal bases must be of form [1-9|A-Z]");
             }
             base = char_to_int(c, -1);
             if (base == 0) {
-                syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Number literals cannot be base 0");
+                syntax_error(0, 0, 0, "Number literals cannot be base 0");
             }
             c = next();
             break;
@@ -208,7 +208,7 @@ static Number scan_number_literal(char c)
 
     // Check for a long literal
     if (out.type == NT_INT64 && c != NUMBER_LITERAL_LONG_SUFFIX) {
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Long literals must be suffixed with '%c'",
+        syntax_error(0, 0, 0, "Long literals must be suffixed with '%c'",
                      NUMBER_LITERAL_LONG_SUFFIX);
     } else if (c == NUMBER_LITERAL_LONG_SUFFIX) {
         out.type = NT_INT64;
@@ -258,8 +258,7 @@ static int scan_identifier(char c, char* buf, int max_len)
 
     while (is_valid_identifier_char(c, i)) {
         if (i >= max_len - 1) {
-            syntax_error(D_INPUT_FN, D_LINE_NUMBER,
-                         "Identifier name has exceeded maximum length of %d", max_len);
+            syntax_error(0, 0, 0, "Identifier name has exceeded maximum length of %d", max_len);
         }
 
         buf[i++] = c;
@@ -421,8 +420,13 @@ bool scan(Token* t)
     char c;
     TokenType temp_type;
 
+    strcpy(t->pos.filename, D_INPUT_FN);
+    t->pos.line_number = D_LINE_NUMBER;
+
     // Skip whitespace
     c = skip_whitespace();
+    int start_pos = D_CHAR_NUMBER - 1;
+    t->pos.char_number = D_CHAR_NUMBER;
 
     bool switch_matched = true;
     switch (c) {
@@ -503,6 +507,7 @@ bool scan(Token* t)
 
     bool no_switch_match_output = true;
     if (scan_check_keyword_identifier(c)) {
+        t->pos.char_number = D_GLOBAL_TOKEN.pos.char_number;
         // Scan identifier string into buffer
         if (scan_identifier(c, D_IDENTIFIER_BUFFER, D_MAX_IDENTIFIER_LENGTH) == -1) {
             purple_log(LOG_DEBUG, "Found base delimiter, reading in number literal");
@@ -514,7 +519,7 @@ bool scan(Token* t)
 
             // Check for a long literal
             if (parsed.type == NT_INT64 && c != NUMBER_LITERAL_LONG_SUFFIX) {
-                syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Long literals must be suffixed with '%c'",
+                syntax_error(0, 0, 0, "Long literals must be suffixed with '%c'",
                              NUMBER_LITERAL_LONG_SUFFIX);
             } else if (c == NUMBER_LITERAL_LONG_SUFFIX) {
                 parsed.type = NT_INT64;
@@ -536,18 +541,19 @@ bool scan(Token* t)
             }
         }
     } else if (scan_check_integer_literal(c)) {
+        t->pos.char_number = D_CHAR_NUMBER;
         t->value.number_value = scan_number_literal(c);
         t->type = number_to_token_type(t->value.number_value);
     } else if (scan_check_char_literal(c)) {
+        t->pos.char_number = D_CHAR_NUMBER;
         t->value.number_value = NUMBER_CHAR(scan_char_literal(c));
         t->type = T_CHAR_LITERAL;
         if (!scan_check_char_literal(next())) {
-            syntax_error(D_LLVM_FN, D_LINE_NUMBER,
-                         "Multichar literals are not permitted, expected \'");
+            syntax_error(0, 0, 0, "Multichar literals are not permitted, expected \'");
         }
     } else {
         no_switch_match_output = false;
-        syntax_error(D_INPUT_FN, D_LINE_NUMBER, "Unrecognized token \"%c\"", c);
+        syntax_error(0, 0, 0, "Unrecognized token \"%c\"", c);
     }
 
     // Fill boolean literal values

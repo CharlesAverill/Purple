@@ -68,6 +68,13 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
     return out;
 }
 
+void add_position_info(ASTNode* dest, position p)
+{
+    strcpy(dest->filename, p.filename);
+    dest->line_number = p.line_number;
+    dest->char_number = p.char_number;
+}
+
 /**
  * @brief Constructs a new AST Leaf Node with the provided values for a token that is not an identifier
  * 

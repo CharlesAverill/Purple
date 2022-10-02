@@ -21,6 +21,8 @@
 
 /**Current line number of the Scanner*/
 extern_ int D_LINE_NUMBER;
+/**Current char number of the Scanner*/
+extern_ int D_CHAR_NUMBER;
 /**If defined, this character will be put back into the input stream*/
 extern_ char D_PUT_BACK;
 /**The file pointer to the open filestream for the Scanner*/

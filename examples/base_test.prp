@@ -1,6 +1,6 @@
 void main(void) {
     int F00F;
-    F00F = F00F#G;
+    F00F  = F00F#G;
     print F00F;
     print 1001#2;
     print 0b1001;
