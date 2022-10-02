@@ -4,7 +4,7 @@ Any style rule not defined here or handled by [.clang-format](./.clang-format) i
 
 ## Structs
 
-- Names are title-cased with no separators, fields are camel-cased. 
+- Names are title-cased with no separators, fields are snake-cased. 
 - Use `typedef struct StructName {...} StructName;` pattern.
 - Doxygen brief above struct
 - Inline field documentation with no spacing between description and comment rails
