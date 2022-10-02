@@ -19,19 +19,23 @@
 \DoxyCodeLine{28     \textcolor{keyword}{struct }\mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{structASTNode_ab3fac314ab87bbccda872cde9678b5b3}{right}};}
 \DoxyCodeLine{30     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{structASTNode_a58fd804bfb87d7a797a8d133147e15ca}{number\_type}};}
 \DoxyCodeLine{32     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structASTNode_a62d58599dca37a47743243ae2cebb0e9}{is\_char\_arithmetic}};}
-\DoxyCodeLine{34     \textcolor{keyword}{union }\{}
-\DoxyCodeLine{36         \mbox{\hyperlink{scan_8h_a5e4b5ad5ed8273fc3c9ffd847ee2018b}{number\_literal\_type}} \mbox{\hyperlink{structASTNode_ad4fae0832953dd1d0598a3c9ec85429f}{number\_value}};}
-\DoxyCodeLine{38         \textcolor{keywordtype}{char} \mbox{\hyperlink{structASTNode_ab07357f4f4f7d75f05a60ab6799c3008}{symbol\_name}}[\mbox{\hyperlink{symbol__table_8h_afdefd4da733213509f3ca91a81945044}{D\_MAX\_IDENTIFIER\_LENGTH}}];}
-\DoxyCodeLine{39     \} \mbox{\hyperlink{structASTNode_a6eb3eb28a0e661931fa444b130f86404}{value}};}
-\DoxyCodeLine{40 \} \mbox{\hyperlink{tree_8h_a6b9026f45e950e06b76db629f9563f3a}{ASTNode}};}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{42 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_ac92cb52b7dd963fb7408dd5df4caafb5}{create\_ast\_node}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}}* left, \mbox{\hyperlink{structASTNode}{ASTNode}}* mid, \mbox{\hyperlink{structASTNode}{ASTNode}}* right, \mbox{\hyperlink{structType}{Type}} type,}
-\DoxyCodeLine{43                          \textcolor{keywordtype}{char}* symbol\_name);}
-\DoxyCodeLine{44 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_a002845e4488b8c3ef920e3e56594b895}{create\_ast\_nonidentifier\_leaf}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structType}{Type}} type);}
-\DoxyCodeLine{45 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_a6944d26b526509a2659e0921d358adb5}{create\_ast\_identifier\_leaf}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \textcolor{keywordtype}{char}* symbol\_name);}
-\DoxyCodeLine{46 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_af609eb83ed6cdbeaf17bab9310304c99}{create\_unary\_ast\_node}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}}* child, \mbox{\hyperlink{structType}{Type}} type);}
-\DoxyCodeLine{47 \textcolor{keywordtype}{void} \mbox{\hyperlink{tree_8h_a5a2821d5f8274f595c2057a9ead90fa9}{ast\_debug\_level\_order}}(\mbox{\hyperlink{structASTNode}{ASTNode}}* root, \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}} log\_level);}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{49 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TREE\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{34     \textcolor{keywordtype}{char} \mbox{\hyperlink{structASTNode_aa794bc0db32b5488f7e89e0b140a5676}{filename}}[256];}
+\DoxyCodeLine{36     \textcolor{keywordtype}{int} \mbox{\hyperlink{structASTNode_afeaedac691fa3ce352620f2e3534b9dc}{line\_number}};}
+\DoxyCodeLine{38     \textcolor{keywordtype}{int} \mbox{\hyperlink{structASTNode_abd58f049a6109a8ae058eb8f0d01dd01}{char\_number}};}
+\DoxyCodeLine{40     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{42         \mbox{\hyperlink{scan_8h_a5e4b5ad5ed8273fc3c9ffd847ee2018b}{number\_literal\_type}} \mbox{\hyperlink{structASTNode_ad4fae0832953dd1d0598a3c9ec85429f}{number\_value}};}
+\DoxyCodeLine{44         \textcolor{keywordtype}{char} \mbox{\hyperlink{structASTNode_ab07357f4f4f7d75f05a60ab6799c3008}{symbol\_name}}[\mbox{\hyperlink{symbol__table_8h_afdefd4da733213509f3ca91a81945044}{D\_MAX\_IDENTIFIER\_LENGTH}}];}
+\DoxyCodeLine{45     \} \mbox{\hyperlink{structASTNode_a6eb3eb28a0e661931fa444b130f86404}{value}};}
+\DoxyCodeLine{46 \} \mbox{\hyperlink{tree_8h_a6b9026f45e950e06b76db629f9563f3a}{ASTNode}};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_ac92cb52b7dd963fb7408dd5df4caafb5}{create\_ast\_node}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}}* left, \mbox{\hyperlink{structASTNode}{ASTNode}}* mid, \mbox{\hyperlink{structASTNode}{ASTNode}}* right, \mbox{\hyperlink{structType}{Type}} type,}
+\DoxyCodeLine{49                          \textcolor{keywordtype}{char}* symbol\_name);}
+\DoxyCodeLine{50 \textcolor{keywordtype}{void} \mbox{\hyperlink{tree_8h_a6858dde9b0e6e9c9d944349265bc5614}{add\_position\_info}}(\mbox{\hyperlink{structASTNode}{ASTNode}}* dest, \mbox{\hyperlink{structposition}{position}} p);}
+\DoxyCodeLine{51 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_a002845e4488b8c3ef920e3e56594b895}{create\_ast\_nonidentifier\_leaf}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structType}{Type}} type);}
+\DoxyCodeLine{52 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_a6944d26b526509a2659e0921d358adb5}{create\_ast\_identifier\_leaf}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \textcolor{keywordtype}{char}* symbol\_name);}
+\DoxyCodeLine{53 \mbox{\hyperlink{structASTNode}{ASTNode}}* \mbox{\hyperlink{tree_8h_af609eb83ed6cdbeaf17bab9310304c99}{create\_unary\_ast\_node}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}}* child, \mbox{\hyperlink{structType}{Type}} type);}
+\DoxyCodeLine{54 \textcolor{keywordtype}{void} \mbox{\hyperlink{tree_8h_a5a2821d5f8274f595c2057a9ead90fa9}{ast\_debug\_level\_order}}(\mbox{\hyperlink{structASTNode}{ASTNode}}* root, \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}} log\_level);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TREE\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

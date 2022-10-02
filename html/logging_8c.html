@@ -120,12 +120,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a3e2e8dc1bc2143b8356e8e13798b0c42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logging_8c.html#a3e2e8dc1bc2143b8356e8e13798b0c42">fatal</a> (<a class="el" href="logging_8h.html#a5a2236a3693e3930b2c9fbe1fe7144ec">ReturnCode</a> rc, const char *fmt,...)</td></tr>
 <tr class="memdesc:a3e2e8dc1bc2143b8356e8e13798b0c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises a fatal error that will exit the compiler.  <a href="logging_8c.html#a3e2e8dc1bc2143b8356e8e13798b0c42">More...</a><br /></td></tr>
 <tr class="separator:a3e2e8dc1bc2143b8356e8e13798b0c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3f93e9c7f297c7b02098203e676fb47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logging_8c.html#ad3f93e9c7f297c7b02098203e676fb47">syntax_error</a> (const char *fn, const int line_number, const char *fmt,...)</td></tr>
-<tr class="memdesc:ad3f93e9c7f297c7b02098203e676fb47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises a fatal syntax error.  <a href="logging_8c.html#ad3f93e9c7f297c7b02098203e676fb47">More...</a><br /></td></tr>
-<tr class="separator:ad3f93e9c7f297c7b02098203e676fb47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6862a45445edc1bbebf19cbef187a25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logging_8c.html#ae6862a45445edc1bbebf19cbef187a25">identifier_error</a> (const char *fn, const int line_number, const char *fmt,...)</td></tr>
-<tr class="memdesc:ae6862a45445edc1bbebf19cbef187a25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises a fatal identifier error.  <a href="logging_8c.html#ae6862a45445edc1bbebf19cbef187a25">More...</a><br /></td></tr>
-<tr class="separator:ae6862a45445edc1bbebf19cbef187a25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac822358fa02712b5314553d97c5c17c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logging_8c.html#ac822358fa02712b5314553d97c5c17c4">syntax_error</a> (char *fn, int line_number, int char_number, const char *fmt,...)</td></tr>
+<tr class="memdesc:ac822358fa02712b5314553d97c5c17c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises a fatal syntax error.  <a href="logging_8c.html#ac822358fa02712b5314553d97c5c17c4">More...</a><br /></td></tr>
+<tr class="separator:ac822358fa02712b5314553d97c5c17c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d1248a371034909cb2a4a0954553dad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logging_8c.html#a1d1248a371034909cb2a4a0954553dad">identifier_error</a> (char *fn, int line_number, int char_number, const char *fmt,...)</td></tr>
+<tr class="memdesc:a1d1248a371034909cb2a4a0954553dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises a fatal identifier error.  <a href="logging_8c.html#a1d1248a371034909cb2a4a0954553dad">More...</a><br /></td></tr>
+<tr class="separator:a1d1248a371034909cb2a4a0954553dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cfd6399b1995d4e620bcb1aa53f4764"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logging_8c.html#a9cfd6399b1995d4e620bcb1aa53f4764">purple_log</a> (<a class="el" href="logging_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> level, const char *fmt,...)</td></tr>
 <tr class="memdesc:a9cfd6399b1995d4e620bcb1aa53f4764"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises a non-fatal logging statement.  <a href="logging_8c.html#a9cfd6399b1995d4e620bcb1aa53f4764">More...</a><br /></td></tr>
 <tr class="separator:a9cfd6399b1995d4e620bcb1aa53f4764"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,8 +179,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae6862a45445edc1bbebf19cbef187a25" name="ae6862a45445edc1bbebf19cbef187a25"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6862a45445edc1bbebf19cbef187a25">&#9670;&nbsp;</a></span>identifier_error()</h2>
+<a id="a1d1248a371034909cb2a4a0954553dad" name="a1d1248a371034909cb2a4a0954553dad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d1248a371034909cb2a4a0954553dad">&#9670;&nbsp;</a></span>identifier_error()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,14 +188,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void identifier_error </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>line_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>char_number</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -222,6 +228,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">fn</td><td>Filename in which identifier error occurs </td></tr>
     <tr><td class="paramname">line_number</td><td>Line number on which identifier error occurs </td></tr>
+    <tr><td class="paramname">char_number</td><td>Character numbre on which syntax error occurs </td></tr>
     <tr><td class="paramname">fmt</td><td>Format string for details printed before fatal error </td></tr>
     <tr><td class="paramname">...</td><td>Varargs for details printed before fatal error </td></tr>
   </table>
@@ -274,8 +281,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad3f93e9c7f297c7b02098203e676fb47" name="ad3f93e9c7f297c7b02098203e676fb47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3f93e9c7f297c7b02098203e676fb47">&#9670;&nbsp;</a></span>syntax_error()</h2>
+<a id="ac822358fa02712b5314553d97c5c17c4" name="ac822358fa02712b5314553d97c5c17c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac822358fa02712b5314553d97c5c17c4">&#9670;&nbsp;</a></span>syntax_error()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -283,14 +290,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void syntax_error </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>line_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>char_number</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -317,6 +330,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">fn</td><td>Filename in which syntax error occurs </td></tr>
     <tr><td class="paramname">line_number</td><td>Line number on which syntax error occurs </td></tr>
+    <tr><td class="paramname">char_number</td><td>Character numbre on which syntax error occurs </td></tr>
     <tr><td class="paramname">fmt</td><td>Format string for details printed before fatal error </td></tr>
     <tr><td class="paramname">...</td><td>Varargs for details printed before fatal error </td></tr>
   </table>

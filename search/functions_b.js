@@ -9,5 +9,5 @@ var searchData=
   ['scan_5fnumber_5fliteral_6',['scan_number_literal',['../scan_8c.html#a223a7943c49b77611fff01f1ac820e5e',1,'scan.c']]],
   ['shutdown_7',['shutdown',['../shutdown_8h.html#a1c9d5e29ad8899afe0c34571ddee18f9',1,'shutdown(void):&#160;shutdown.c'],['../shutdown_8c.html#a1c9d5e29ad8899afe0c34571ddee18f9',1,'shutdown(void):&#160;shutdown.c']]],
   ['skip_5fwhitespace_8',['skip_whitespace',['../scan_8c.html#a86d1f1bccadab31732ccd799bed1abb3',1,'scan.c']]],
-  ['syntax_5ferror_9',['syntax_error',['../logging_8h.html#ad3f93e9c7f297c7b02098203e676fb47',1,'syntax_error(const char *fn, const int line_number, const char *fmt,...):&#160;logging.c'],['../logging_8c.html#ad3f93e9c7f297c7b02098203e676fb47',1,'syntax_error(const char *fn, const int line_number, const char *fmt,...):&#160;logging.c']]]
+  ['syntax_5ferror_9',['syntax_error',['../logging_8h.html#ac822358fa02712b5314553d97c5c17c4',1,'syntax_error(char *fn, int line_number, int char_number, const char *fmt,...):&#160;logging.c'],['../logging_8c.html#ac822358fa02712b5314553d97c5c17c4',1,'syntax_error(char *fn, int line_number, int char_number, const char *fmt,...):&#160;logging.c']]]
 ];

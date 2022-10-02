@@ -1,4 +1,5 @@
 <map id="Token" name="Token">
-<area shape="rect" id="node1" title="Structure containing information about individual scannable tokens." alt="" coords="5,160,119,267"/>
-<area shape="rect" id="node2" href="$structNumber.html" title="Container for various kinds of number data." alt="" coords="28,5,96,97"/>
+<area shape="rect" id="node1" title="Structure containing information about individual scannable tokens." alt="" coords="59,175,172,281"/>
+<area shape="rect" id="node2" href="$structposition.html" title=" " alt="" coords="5,5,113,112"/>
+<area shape="rect" id="node3" href="$structNumber.html" title="Container for various kinds of number data." alt="" coords="137,13,205,105"/>
 </map>

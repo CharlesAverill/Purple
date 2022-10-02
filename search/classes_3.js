@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['purpleargs_0',['PurpleArgs',['../structPurpleArgs.html',1,'']]]
+  ['position_0',['position',['../structposition.html',1,'']]],
+  ['purpleargs_1',['PurpleArgs',['../structPurpleArgs.html',1,'']]]
 ];

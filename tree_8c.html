@@ -120,6 +120,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ac92cb52b7dd963fb7408dd5df4caafb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#ac92cb52b7dd963fb7408dd5df4caafb5">create_ast_node</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, <a class="el" href="structASTNode.html">ASTNode</a> *left, <a class="el" href="structASTNode.html">ASTNode</a> *mid, <a class="el" href="structASTNode.html">ASTNode</a> *right, <a class="el" href="structType.html">Type</a> type, char *symbol_name)</td></tr>
 <tr class="memdesc:ac92cb52b7dd963fb7408dd5df4caafb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Node with the provided values.  <a href="tree_8c.html#ac92cb52b7dd963fb7408dd5df4caafb5">More...</a><br /></td></tr>
 <tr class="separator:ac92cb52b7dd963fb7408dd5df4caafb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6858dde9b0e6e9c9d944349265bc5614"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a6858dde9b0e6e9c9d944349265bc5614">add_position_info</a> (<a class="el" href="structASTNode.html">ASTNode</a> *dest, <a class="el" href="structposition.html">position</a> p)</td></tr>
+<tr class="separator:a6858dde9b0e6e9c9d944349265bc5614"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a002845e4488b8c3ef920e3e56594b895"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a002845e4488b8c3ef920e3e56594b895">create_ast_nonidentifier_leaf</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> ttype, <a class="el" href="structType.html">Type</a> type)</td></tr>
 <tr class="memdesc:a002845e4488b8c3ef920e3e56594b895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new AST Leaf Node with the provided values for a token that is not an identifier.  <a href="tree_8c.html#a002845e4488b8c3ef920e3e56594b895">More...</a><br /></td></tr>
 <tr class="separator:a002845e4488b8c3ef920e3e56594b895"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,6 +146,34 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Charles Averill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>09-Sep-2022 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a6858dde9b0e6e9c9d944349265bc5614" name="a6858dde9b0e6e9c9d944349265bc5614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6858dde9b0e6e9c9d944349265bc5614">&#9670;&nbsp;</a></span>add_position_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_position_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structposition.html">position</a>&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a21971a3ce9a67483f03a909ed0ab9a8d" name="a21971a3ce9a67483f03a909ed0ab9a8d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a21971a3ce9a67483f03a909ed0ab9a8d">&#9670;&nbsp;</a></span>ast_debug_current_level()</h2>
 

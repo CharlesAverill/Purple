@@ -23,9 +23,9 @@ Include dependency graph for logging.\+c\+:
 \item 
 void \mbox{\hyperlink{logging_8c_a3e2e8dc1bc2143b8356e8e13798b0c42}{fatal}} (\mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{Return\+Code}} rc, const char $\ast$fmt,...)
 \begin{DoxyCompactList}\small\item\em Raises a fatal error that will exit the compiler. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{logging_8c_ad3f93e9c7f297c7b02098203e676fb47}{syntax\+\_\+error}} (const char $\ast$fn, const int line\+\_\+number, const char $\ast$fmt,...)
+void \mbox{\hyperlink{logging_8c_ac822358fa02712b5314553d97c5c17c4}{syntax\+\_\+error}} (char $\ast$fn, int line\+\_\+number, int char\+\_\+number, const char $\ast$fmt,...)
 \begin{DoxyCompactList}\small\item\em Raises a fatal syntax error. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{logging_8c_ae6862a45445edc1bbebf19cbef187a25}{identifier\+\_\+error}} (const char $\ast$fn, const int line\+\_\+number, const char $\ast$fmt,...)
+void \mbox{\hyperlink{logging_8c_a1d1248a371034909cb2a4a0954553dad}{identifier\+\_\+error}} (char $\ast$fn, int line\+\_\+number, int char\+\_\+number, const char $\ast$fmt,...)
 \begin{DoxyCompactList}\small\item\em Raises a fatal identifier error. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{logging_8c_a9cfd6399b1995d4e620bcb1aa53f4764}{purple\+\_\+log}} (\mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} level, const char $\ast$fmt,...)
 \begin{DoxyCompactList}\small\item\em Raises a non-\/fatal logging statement. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -62,11 +62,11 @@ Raises a fatal error that will exit the compiler.
 {\em ...} & Varargs for printed error \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{logging_8c_ae6862a45445edc1bbebf19cbef187a25}\label{logging_8c_ae6862a45445edc1bbebf19cbef187a25}} 
+\mbox{\Hypertarget{logging_8c_a1d1248a371034909cb2a4a0954553dad}\label{logging_8c_a1d1248a371034909cb2a4a0954553dad}} 
 \index{logging.c@{logging.c}!identifier\_error@{identifier\_error}}
 \index{identifier\_error@{identifier\_error}!logging.c@{logging.c}}
 \doxysubsubsection{\texorpdfstring{identifier\_error()}{identifier\_error()}}
-{\footnotesize\ttfamily void identifier\+\_\+error (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fn,  }\item[{const int}]{line\+\_\+number,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void identifier\+\_\+error (\begin{DoxyParamCaption}\item[{char $\ast$}]{fn,  }\item[{int}]{line\+\_\+number,  }\item[{int}]{char\+\_\+number,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
 
 
 
@@ -77,6 +77,8 @@ Raises a fatal identifier error.
 {\em fn} & Filename in which identifier error occurs \\
 \hline
 {\em line\+\_\+number} & Line number on which identifier error occurs \\
+\hline
+{\em char\+\_\+number} & Character numbre on which syntax error occurs \\
 \hline
 {\em fmt} & Format string for details printed before fatal error \\
 \hline
@@ -102,11 +104,11 @@ Raises a non-\/fatal logging statement.
 {\em ...} & Varargs for printed statement \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{logging_8c_ad3f93e9c7f297c7b02098203e676fb47}\label{logging_8c_ad3f93e9c7f297c7b02098203e676fb47}} 
+\mbox{\Hypertarget{logging_8c_ac822358fa02712b5314553d97c5c17c4}\label{logging_8c_ac822358fa02712b5314553d97c5c17c4}} 
 \index{logging.c@{logging.c}!syntax\_error@{syntax\_error}}
 \index{syntax\_error@{syntax\_error}!logging.c@{logging.c}}
 \doxysubsubsection{\texorpdfstring{syntax\_error()}{syntax\_error()}}
-{\footnotesize\ttfamily void syntax\+\_\+error (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fn,  }\item[{const int}]{line\+\_\+number,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void syntax\+\_\+error (\begin{DoxyParamCaption}\item[{char $\ast$}]{fn,  }\item[{int}]{line\+\_\+number,  }\item[{int}]{char\+\_\+number,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
 
 
 
@@ -117,6 +119,8 @@ Raises a fatal syntax error.
 {\em fn} & Filename in which syntax error occurs \\
 \hline
 {\em line\+\_\+number} & Line number on which syntax error occurs \\
+\hline
+{\em char\+\_\+number} & Character numbre on which syntax error occurs \\
 \hline
 {\em fmt} & Format string for details printed before fatal error \\
 \hline

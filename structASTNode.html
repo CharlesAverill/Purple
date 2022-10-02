@@ -90,7 +90,7 @@ Collaboration diagram for ASTNode:</div>
 <div class="dyncontent">
 <div class="center"><img src="structASTNode__coll__graph.png" border="0" usemap="#aASTNode_coll__map" alt="Collaboration graph"/></div>
 <map name="aASTNode_coll__map" id="aASTNode_coll__map">
-<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,5,144,156"/>
+<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,5,144,200"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -109,6 +109,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a58fd804bfb87d7a797a8d133147e15ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62d58599dca37a47743243ae2cebb0e9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#a62d58599dca37a47743243ae2cebb0e9">is_char_arithmetic</a></td></tr>
 <tr class="separator:a62d58599dca37a47743243ae2cebb0e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa794bc0db32b5488f7e89e0b140a5676"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#aa794bc0db32b5488f7e89e0b140a5676">filename</a> [256]</td></tr>
+<tr class="separator:aa794bc0db32b5488f7e89e0b140a5676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeaedac691fa3ce352620f2e3534b9dc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#afeaedac691fa3ce352620f2e3534b9dc">line_number</a></td></tr>
+<tr class="separator:afeaedac691fa3ce352620f2e3534b9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd58f049a6109a8ae058eb8f0d01dd01"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#abd58f049a6109a8ae058eb8f0d01dd01">char_number</a></td></tr>
+<tr class="separator:abd58f049a6109a8ae058eb8f0d01dd01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6eb3eb28a0e661931fa444b130f86404"><td class="memItemLeft" >union {</td></tr>
 <tr class="memitem:a5e628e0b051fec57fe9863ada76c3b88"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="scan_8h.html#a5e4b5ad5ed8273fc3c9ffd847ee2018b">number_literal_type</a>&#160;&#160;&#160;<a class="el" href="structASTNode.html#ad4fae0832953dd1d0598a3c9ec85429f">number_value</a></td></tr>
 <tr class="separator:a5e628e0b051fec57fe9863ada76c3b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,6 +126,36 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Component of the abstract syntax tree built during parsing. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="abd58f049a6109a8ae058eb8f0d01dd01" name="abd58f049a6109a8ae058eb8f0d01dd01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd58f049a6109a8ae058eb8f0d01dd01">&#9670;&nbsp;</a></span>char_number</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ASTNode::char_number</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Character number of this <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> </p>
+
+</div>
+</div>
+<a id="aa794bc0db32b5488f7e89e0b140a5676" name="aa794bc0db32b5488f7e89e0b140a5676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa794bc0db32b5488f7e89e0b140a5676">&#9670;&nbsp;</a></span>filename</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char ASTNode::filename[256]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Filename of this <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> </p>
+
+</div>
+</div>
 <a id="a62d58599dca37a47743243ae2cebb0e9" name="a62d58599dca37a47743243ae2cebb0e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a62d58599dca37a47743243ae2cebb0e9">&#9670;&nbsp;</a></span>is_char_arithmetic</h2>
 
@@ -147,6 +183,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >The left child of the AST Node </p>
+
+</div>
+</div>
+<a id="afeaedac691fa3ce352620f2e3534b9dc" name="afeaedac691fa3ce352620f2e3534b9dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeaedac691fa3ce352620f2e3534b9dc">&#9670;&nbsp;</a></span>line_number</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ASTNode::line_number</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Line number of this <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> </p>
 
 </div>
 </div>

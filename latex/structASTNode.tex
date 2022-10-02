@@ -34,6 +34,12 @@ struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{structA
 \item 
 bool \mbox{\hyperlink{structASTNode_a62d58599dca37a47743243ae2cebb0e9}{is\+\_\+char\+\_\+arithmetic}}
 \item 
+char \mbox{\hyperlink{structASTNode_aa794bc0db32b5488f7e89e0b140a5676}{filename}} \mbox{[}256\mbox{]}
+\item 
+int \mbox{\hyperlink{structASTNode_afeaedac691fa3ce352620f2e3534b9dc}{line\+\_\+number}}
+\item 
+int \mbox{\hyperlink{structASTNode_abd58f049a6109a8ae058eb8f0d01dd01}{char\+\_\+number}}
+\item 
 \begin{tabbing}
 xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
 union \{\\
@@ -48,7 +54,19 @@ union \{\\
 Component of the abstract syntax tree built during parsing. 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{structASTNode_a62d58599dca37a47743243ae2cebb0e9}\label{structASTNode_a62d58599dca37a47743243ae2cebb0e9}} 
+\mbox{\Hypertarget{structASTNode_abd58f049a6109a8ae058eb8f0d01dd01}\label{structASTNode_abd58f049a6109a8ae058eb8f0d01dd01}} 
+\index{ASTNode@{ASTNode}!char\_number@{char\_number}}
+\index{char\_number@{char\_number}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{char\_number}{char\_number}}
+{\footnotesize\ttfamily int ASTNode\+::char\+\_\+number}
+
+Character number of this \mbox{\hyperlink{structToken}{Token}} \mbox{\Hypertarget{structASTNode_aa794bc0db32b5488f7e89e0b140a5676}\label{structASTNode_aa794bc0db32b5488f7e89e0b140a5676}} 
+\index{ASTNode@{ASTNode}!filename@{filename}}
+\index{filename@{filename}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily char ASTNode\+::filename\mbox{[}256\mbox{]}}
+
+Filename of this \mbox{\hyperlink{structToken}{Token}} \mbox{\Hypertarget{structASTNode_a62d58599dca37a47743243ae2cebb0e9}\label{structASTNode_a62d58599dca37a47743243ae2cebb0e9}} 
 \index{ASTNode@{ASTNode}!is\_char\_arithmetic@{is\_char\_arithmetic}}
 \index{is\_char\_arithmetic@{is\_char\_arithmetic}!ASTNode@{ASTNode}}
 \doxysubsubsection{\texorpdfstring{is\_char\_arithmetic}{is\_char\_arithmetic}}
@@ -60,7 +78,13 @@ Whether or not a binary arithmetic node is dealing with chars \mbox{\Hypertarget
 \doxysubsubsection{\texorpdfstring{left}{left}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structASTNode}{ASTNode}}$\ast$ ASTNode\+::left}
 
-The left child of the AST Node \mbox{\Hypertarget{structASTNode_ae1b629d9a274de8b4afbe2382b81e072}\label{structASTNode_ae1b629d9a274de8b4afbe2382b81e072}} 
+The left child of the AST Node \mbox{\Hypertarget{structASTNode_afeaedac691fa3ce352620f2e3534b9dc}\label{structASTNode_afeaedac691fa3ce352620f2e3534b9dc}} 
+\index{ASTNode@{ASTNode}!line\_number@{line\_number}}
+\index{line\_number@{line\_number}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{line\_number}{line\_number}}
+{\footnotesize\ttfamily int ASTNode\+::line\+\_\+number}
+
+Line number of this \mbox{\hyperlink{structToken}{Token}} \mbox{\Hypertarget{structASTNode_ae1b629d9a274de8b4afbe2382b81e072}\label{structASTNode_ae1b629d9a274de8b4afbe2382b81e072}} 
 \index{ASTNode@{ASTNode}!mid@{mid}}
 \index{mid@{mid}!ASTNode@{ASTNode}}
 \doxysubsubsection{\texorpdfstring{mid}{mid}}

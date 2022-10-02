@@ -22,6 +22,8 @@ Include dependency graph for tree.\+c\+:
 \item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8c_ac92cb52b7dd963fb7408dd5df4caafb5}{create\+\_\+ast\+\_\+node}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$left, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$mid, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$right, \mbox{\hyperlink{structType}{Type}} type, char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Constructs a new AST Node with the provided values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tree_8c_a6858dde9b0e6e9c9d944349265bc5614}{add\+\_\+position\+\_\+info}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$dest, \mbox{\hyperlink{structposition}{position}} p)
+\item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8c_a002845e4488b8c3ef920e3e56594b895}{create\+\_\+ast\+\_\+nonidentifier\+\_\+leaf}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, \mbox{\hyperlink{structType}{Type}} type)
 \begin{DoxyCompactList}\small\item\em Constructs a new AST Leaf Node with the provided values for a token that is not an identifier. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8c_a6944d26b526509a2659e0921d358adb5}{create\+\_\+ast\+\_\+identifier\+\_\+leaf}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, char $\ast$symbol\+\_\+name)
@@ -48,6 +50,12 @@ Charles Averill
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tree_8c_a6858dde9b0e6e9c9d944349265bc5614}\label{tree_8c_a6858dde9b0e6e9c9d944349265bc5614}} 
+\index{tree.c@{tree.c}!add\_position\_info@{add\_position\_info}}
+\index{add\_position\_info@{add\_position\_info}!tree.c@{tree.c}}
+\doxysubsubsection{\texorpdfstring{add\_position\_info()}{add\_position\_info()}}
+{\footnotesize\ttfamily void add\+\_\+position\+\_\+info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{dest,  }\item[{\mbox{\hyperlink{structposition}{position}}}]{p }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{tree_8c_a21971a3ce9a67483f03a909ed0ab9a8d}\label{tree_8c_a21971a3ce9a67483f03a909ed0ab9a8d}} 
 \index{tree.c@{tree.c}!ast\_debug\_current\_level@{ast\_debug\_current\_level}}
 \index{ast\_debug\_current\_level@{ast\_debug\_current\_level}!tree.c@{tree.c}}

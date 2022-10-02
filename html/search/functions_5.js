@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['identifier_5ferror_0',['identifier_error',['../logging_8h.html#ae6862a45445edc1bbebf19cbef187a25',1,'identifier_error(const char *fn, const int line_number, const char *fmt,...):&#160;logging.c'],['../logging_8c.html#ae6862a45445edc1bbebf19cbef187a25',1,'identifier_error(const char *fn, const int line_number, const char *fmt,...):&#160;logging.c']]],
+  ['identifier_5ferror_0',['identifier_error',['../logging_8h.html#a1d1248a371034909cb2a4a0954553dad',1,'identifier_error(char *fn, int line_number, int char_number, const char *fmt,...):&#160;logging.c'],['../logging_8c.html#a1d1248a371034909cb2a4a0954553dad',1,'identifier_error(char *fn, int line_number, int char_number, const char *fmt,...):&#160;logging.c']]],
   ['if_5fast_5fto_5fllvm_1',['if_ast_to_llvm',['../translate_8c.html#ac234380de36b6966bf21e6052c7fad68',1,'translate.c']]],
   ['if_5fstatement_2',['if_statement',['../statement_8c.html#a7e949c66cdabab493e468a005b9ac4f4',1,'statement.c']]],
   ['index_5fof_3',['index_of',['../scan_8c.html#afe176fe0d1142633375951f2e45831bc',1,'scan.c']]],

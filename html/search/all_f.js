@@ -22,5 +22,5 @@ var searchData=
   ['symboltable_19',['SymbolTable',['../symbol__table_8h.html#a0ef213c033eadd9c99ef43c1df3d9bd5',1,'SymbolTable():&#160;symbol_table.h'],['../structSymbolTable.html',1,'SymbolTable']]],
   ['symboltableentry_20',['SymbolTableEntry',['../symbol__table_8h.html#a70075dcb3cfa8811d6771d902040ede1',1,'SymbolTableEntry():&#160;symbol_table.h'],['../structSymbolTableEntry.html',1,'SymbolTableEntry']]],
   ['symboltablestack_21',['SymbolTableStack',['../structSymbolTableStack.html',1,'SymbolTableStack'],['../symbol__table_8h.html#a13eccf949a1c465b7662b74e0d880409',1,'SymbolTableStack():&#160;symbol_table.h']]],
-  ['syntax_5ferror_22',['syntax_error',['../logging_8h.html#ad3f93e9c7f297c7b02098203e676fb47',1,'syntax_error(const char *fn, const int line_number, const char *fmt,...):&#160;logging.c'],['../logging_8c.html#ad3f93e9c7f297c7b02098203e676fb47',1,'syntax_error(const char *fn, const int line_number, const char *fmt,...):&#160;logging.c']]]
+  ['syntax_5ferror_22',['syntax_error',['../logging_8h.html#ac822358fa02712b5314553d97c5c17c4',1,'syntax_error(char *fn, int line_number, int char_number, const char *fmt,...):&#160;logging.c'],['../logging_8c.html#ac822358fa02712b5314553d97c5c17c4',1,'syntax_error(char *fn, int line_number, int char_number, const char *fmt,...):&#160;logging.c']]]
 ];
