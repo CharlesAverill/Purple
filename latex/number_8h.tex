@@ -41,7 +41,11 @@ struct \mbox{\hyperlink{structNumber}{Number}}
 \#define \mbox{\hyperlink{number_8h_a9d46686bcc8f1545affc9a6be9154f10}{NUMBER\+\_\+\+LONG}}(v)
 \begin{DoxyCompactList}\small\item\em Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT64. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{number_8h_add3ecbbfaff5335401b5bd7180e9019b}{NUMBER\+\_\+\+FROM\+\_\+\+TYPE\+\_\+\+VAL}}(t,  v)
-\begin{DoxyCompactList}\small\item\em Generates a \mbox{\hyperlink{structNumber}{Number}} struct given a Number\+Type and a value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generates a \mbox{\hyperlink{structNumber}{Number}} struct given a Number\+Type and a value. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{number_8h_af27aba9ef74b2e40caba03fa303e1f9c}{NT\+\_\+\+MAX}}(a,  b)~(a $>$ b ? a \+: b)
+\begin{DoxyCompactList}\small\item\em Determines the larger Number\+Type of two. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{number_8h_a386856588a76ef3016c00c76047aa4b0}{NT\+\_\+\+MIN}}(a,  b)~(\mbox{\hyperlink{number_8h_af27aba9ef74b2e40caba03fa303e1f9c}{NT\+\_\+\+MAX}}(a, b) == a ? b \+: a)
+\begin{DoxyCompactList}\small\item\em Determines the smaller Number\+Type of two. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -91,6 +95,26 @@ Charles Averill
 
 
 \doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{number_8h_af27aba9ef74b2e40caba03fa303e1f9c}\label{number_8h_af27aba9ef74b2e40caba03fa303e1f9c}} 
+\index{number.h@{number.h}!NT\_MAX@{NT\_MAX}}
+\index{NT\_MAX@{NT\_MAX}!number.h@{number.h}}
+\doxysubsubsection{\texorpdfstring{NT\_MAX}{NT\_MAX}}
+{\footnotesize\ttfamily \#define NT\+\_\+\+MAX(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~(a $>$ b ? a \+: b)}
+
+
+
+Determines the larger Number\+Type of two. 
+
+\mbox{\Hypertarget{number_8h_a386856588a76ef3016c00c76047aa4b0}\label{number_8h_a386856588a76ef3016c00c76047aa4b0}} 
+\index{number.h@{number.h}!NT\_MIN@{NT\_MIN}}
+\index{NT\_MIN@{NT\_MIN}!number.h@{number.h}}
+\doxysubsubsection{\texorpdfstring{NT\_MIN}{NT\_MIN}}
+{\footnotesize\ttfamily \#define NT\+\_\+\+MIN(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~(\mbox{\hyperlink{number_8h_af27aba9ef74b2e40caba03fa303e1f9c}{NT\+\_\+\+MAX}}(a, b) == a ? b \+: a)}
+
+
+
+Determines the smaller Number\+Type of two. 
+
 \mbox{\Hypertarget{number_8h_a4c1630cccd769649f78764670ce098b8}\label{number_8h_a4c1630cccd769649f78764670ce098b8}} 
 \index{number.h@{number.h}!NUMBER\_BOOL@{NUMBER\_BOOL}}
 \index{NUMBER\_BOOL@{NUMBER\_BOOL}!number.h@{number.h}}

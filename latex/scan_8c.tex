@@ -21,9 +21,9 @@ Include dependency graph for scan.\+c\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-static char \mbox{\hyperlink{scan_8c_aba19733986b2193569abfcc4951d480f}{next}} (void)
+char \mbox{\hyperlink{scan_8c_a0de139c03356d8fe5eef9b03661dc5b0}{next}} (void)
 \begin{DoxyCompactList}\small\item\em Get the next valid character from the current input file. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{scan_8c_aa675e2a79ca95a2b6861a587655eef81}{put\+\_\+back\+\_\+into\+\_\+stream}} (char c)
+void \mbox{\hyperlink{scan_8c_ad98ab6a95acd6305158f34a8edb0e4f1}{put\+\_\+back\+\_\+into\+\_\+stream}} (char c)
 \begin{DoxyCompactList}\small\item\em Put a character back into the input stream. \end{DoxyCompactList}\item 
 static char \mbox{\hyperlink{scan_8c_a86d1f1bccadab31732ccd799bed1abb3}{skip\+\_\+whitespace}} (void)
 \begin{DoxyCompactList}\small\item\em Skips whitespace tokens. \end{DoxyCompactList}\item 
@@ -125,11 +125,11 @@ Determine if a character in an identifier is a permitted character.
 \begin{DoxyReturn}{Returns}
 bool True if character is permitted 
 \end{DoxyReturn}
-\mbox{\Hypertarget{scan_8c_aba19733986b2193569abfcc4951d480f}\label{scan_8c_aba19733986b2193569abfcc4951d480f}} 
+\mbox{\Hypertarget{scan_8c_a0de139c03356d8fe5eef9b03661dc5b0}\label{scan_8c_a0de139c03356d8fe5eef9b03661dc5b0}} 
 \index{scan.c@{scan.c}!next@{next}}
 \index{next@{next}!scan.c@{scan.c}}
 \doxysubsubsection{\texorpdfstring{next()}{next()}}
-{\footnotesize\ttfamily static char next (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily char next (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -162,11 +162,11 @@ Token\+Type Token\+Type of the keyword, or 0 if the keyword is not recognized
 \doxysubsubsection{\texorpdfstring{parse\_number\_literal()}{parse\_number\_literal()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structNumber}{Number}} parse\+\_\+number\+\_\+literal (\begin{DoxyParamCaption}\item[{char $\ast$}]{literal,  }\item[{int}]{length,  }\item[{int}]{base }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\mbox{\Hypertarget{scan_8c_aa675e2a79ca95a2b6861a587655eef81}\label{scan_8c_aa675e2a79ca95a2b6861a587655eef81}} 
+\mbox{\Hypertarget{scan_8c_ad98ab6a95acd6305158f34a8edb0e4f1}\label{scan_8c_ad98ab6a95acd6305158f34a8edb0e4f1}} 
 \index{scan.c@{scan.c}!put\_back\_into\_stream@{put\_back\_into\_stream}}
 \index{put\_back\_into\_stream@{put\_back\_into\_stream}!scan.c@{scan.c}}
 \doxysubsubsection{\texorpdfstring{put\_back\_into\_stream()}{put\_back\_into\_stream()}}
-{\footnotesize\ttfamily static void put\+\_\+back\+\_\+into\+\_\+stream (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily void put\+\_\+back\+\_\+into\+\_\+stream (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
 
 
 

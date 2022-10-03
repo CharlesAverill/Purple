@@ -26,8 +26,8 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}{parse\+\_\+binary\+\_\+expression}} (int previous\+\_\+token\+\_\+precedence)
-\begin{DoxyCompactList}\small\item\em Recursively parse binary expressions into an AST. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_ac8d04db5938aa126d0a5e6b9bbeca016}{parse\+\_\+binary\+\_\+expression}} (void)
+\begin{DoxyCompactList}\small\item\em Convenience wrapper for parse\+\_\+binary\+\_\+expression\+\_\+recursive. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{parse_8h_a50272a0b5fea28f10f872dda4641d1a4}{match\+\_\+token}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Ensure current token is of a given type, and scan the next token if so. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \mbox{\hyperlink{parse_8h_a8e5c84a93405ab540a698edd6aa670b3}{match\+\_\+type}} (void)
@@ -166,21 +166,16 @@ Ensure current token is a type token, and scan the next token if so.
 \begin{DoxyReturn}{Returns}
 Number\+Type \mbox{\hyperlink{structType}{Type}} of variable 
 \end{DoxyReturn}
-\mbox{\Hypertarget{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}\label{parse_8h_a5289c1f11df62361e6a30e7bec3309c8}} 
+\mbox{\Hypertarget{parse_8h_ac8d04db5938aa126d0a5e6b9bbeca016}\label{parse_8h_ac8d04db5938aa126d0a5e6b9bbeca016}} 
 \index{parse.h@{parse.h}!parse\_binary\_expression@{parse\_binary\_expression}}
 \index{parse\_binary\_expression@{parse\_binary\_expression}!parse.h@{parse.h}}
 \doxysubsubsection{\texorpdfstring{parse\_binary\_expression()}{parse\_binary\_expression()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ parse\+\_\+binary\+\_\+expression (\begin{DoxyParamCaption}\item[{int}]{previous\+\_\+token\+\_\+precedence }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ parse\+\_\+binary\+\_\+expression (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
-Recursively parse binary expressions into an AST. 
+Convenience wrapper for parse\+\_\+binary\+\_\+expression\+\_\+recursive. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em previous\+\_\+token\+\_\+precedence} & The integer precedence value of the previous \mbox{\hyperlink{structToken}{Token}} \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ An AST or AST Subtree of the binary expressions in D\+\_\+\+INPUT\+\_\+\+FILE 
 \end{DoxyReturn}

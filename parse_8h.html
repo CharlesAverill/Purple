@@ -127,9 +127,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5289c1f11df62361e6a30e7bec3309c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a5289c1f11df62361e6a30e7bec3309c8">parse_binary_expression</a> (int previous_token_precedence)</td></tr>
-<tr class="memdesc:a5289c1f11df62361e6a30e7bec3309c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively parse binary expressions into an AST.  <a href="parse_8h.html#a5289c1f11df62361e6a30e7bec3309c8">More...</a><br /></td></tr>
-<tr class="separator:a5289c1f11df62361e6a30e7bec3309c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8d04db5938aa126d0a5e6b9bbeca016"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#ac8d04db5938aa126d0a5e6b9bbeca016">parse_binary_expression</a> (void)</td></tr>
+<tr class="memdesc:ac8d04db5938aa126d0a5e6b9bbeca016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience wrapper for parse_binary_expression_recursive.  <a href="parse_8h.html#ac8d04db5938aa126d0a5e6b9bbeca016">More...</a><br /></td></tr>
+<tr class="separator:ac8d04db5938aa126d0a5e6b9bbeca016"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50272a0b5fea28f10f872dda4641d1a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a50272a0b5fea28f10f872dda4641d1a4">match_token</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type)</td></tr>
 <tr class="memdesc:a50272a0b5fea28f10f872dda4641d1a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure current token is of a given type, and scan the next token if so.  <a href="parse_8h.html#a50272a0b5fea28f10f872dda4641d1a4">More...</a><br /></td></tr>
 <tr class="separator:a50272a0b5fea28f10f872dda4641d1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -302,8 +302,8 @@ Operator Precedence</h2>
 
 </div>
 </div>
-<a id="a5289c1f11df62361e6a30e7bec3309c8" name="a5289c1f11df62361e6a30e7bec3309c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5289c1f11df62361e6a30e7bec3309c8">&#9670;&nbsp;</a></span>parse_binary_expression()</h2>
+<a id="ac8d04db5938aa126d0a5e6b9bbeca016" name="ac8d04db5938aa126d0a5e6b9bbeca016"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8d04db5938aa126d0a5e6b9bbeca016">&#9670;&nbsp;</a></span>parse_binary_expression()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -311,20 +311,14 @@ Operator Precedence</h2>
         <tr>
           <td class="memname"><a class="el" href="structASTNode.html">ASTNode</a> * parse_binary_expression </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>previous_token_precedence</em></td><td>)</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Recursively parse binary expressions into an AST. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">previous_token_precedence</td><td>The integer precedence value of the previous <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Convenience wrapper for parse_binary_expression_recursive. </p>
 <dl class="section return"><dt>Returns</dt><dd>ASTNode* An AST or AST Subtree of the binary expressions in D_INPUT_FILE </dd></dl>
 
 </div>

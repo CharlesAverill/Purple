@@ -121,9 +121,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a53c43318e486672b8d59f9bb60e4105c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="expression_8c.html#a53c43318e486672b8d59f9bb60e4105c">create_terminal_node</a> (<a class="el" href="structToken.html">Token</a> *t)</td></tr>
 <tr class="memdesc:a53c43318e486672b8d59f9bb60e4105c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a terminal AST Node for a given <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>, exit if not a valid primary <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>.  <a href="expression_8c.html#a53c43318e486672b8d59f9bb60e4105c">More...</a><br /></td></tr>
 <tr class="separator:a53c43318e486672b8d59f9bb60e4105c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5289c1f11df62361e6a30e7bec3309c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="expression_8c.html#a5289c1f11df62361e6a30e7bec3309c8">parse_binary_expression</a> (int previous_token_precedence)</td></tr>
-<tr class="memdesc:a5289c1f11df62361e6a30e7bec3309c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively parse binary expressions into an AST.  <a href="expression_8c.html#a5289c1f11df62361e6a30e7bec3309c8">More...</a><br /></td></tr>
-<tr class="separator:a5289c1f11df62361e6a30e7bec3309c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a954be732c0f4936d3732a6c5eaf02741"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="expression_8c.html#a954be732c0f4936d3732a6c5eaf02741">parse_binary_expression_recursive</a> (int previous_token_precedence, <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> *nt_max)</td></tr>
+<tr class="memdesc:a954be732c0f4936d3732a6c5eaf02741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively parse binary expressions into an AST.  <a href="expression_8c.html#a954be732c0f4936d3732a6c5eaf02741">More...</a><br /></td></tr>
+<tr class="separator:a954be732c0f4936d3732a6c5eaf02741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8d04db5938aa126d0a5e6b9bbeca016"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="expression_8c.html#ac8d04db5938aa126d0a5e6b9bbeca016">parse_binary_expression</a> (void)</td></tr>
+<tr class="memdesc:ac8d04db5938aa126d0a5e6b9bbeca016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience wrapper for parse_binary_expression_recursive.  <a href="expression_8c.html#ac8d04db5938aa126d0a5e6b9bbeca016">More...</a><br /></td></tr>
+<tr class="separator:ac8d04db5938aa126d0a5e6b9bbeca016"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Logic for parsing expressions into an AST. </p>
@@ -200,8 +203,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5289c1f11df62361e6a30e7bec3309c8" name="a5289c1f11df62361e6a30e7bec3309c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5289c1f11df62361e6a30e7bec3309c8">&#9670;&nbsp;</a></span>parse_binary_expression()</h2>
+<a id="ac8d04db5938aa126d0a5e6b9bbeca016" name="ac8d04db5938aa126d0a5e6b9bbeca016"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8d04db5938aa126d0a5e6b9bbeca016">&#9670;&nbsp;</a></span>parse_binary_expression()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -209,17 +212,57 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structASTNode.html">ASTNode</a> * parse_binary_expression </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>previous_token_precedence</em></td><td>)</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+<p>Convenience wrapper for parse_binary_expression_recursive. </p>
+<dl class="section return"><dt>Returns</dt><dd>ASTNode* An AST or AST Subtree of the binary expressions in D_INPUT_FILE </dd></dl>
+
+</div>
+</div>
+<a id="a954be732c0f4936d3732a6c5eaf02741" name="a954be732c0f4936d3732a6c5eaf02741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a954be732c0f4936d3732a6c5eaf02741">&#9670;&nbsp;</a></span>parse_binary_expression_recursive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structASTNode.html">ASTNode</a> * parse_binary_expression_recursive </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>previous_token_precedence</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> *&#160;</td>
+          <td class="paramname"><em>nt_max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Recursively parse binary expressions into an AST. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">previous_token_precedence</td><td>The integer precedence value of the previous <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> </td></tr>
+    <tr><td class="paramname">nt_max</td><td>Maximum NumberType encountered during AST generation </td></tr>
   </table>
   </dd>
 </dl>

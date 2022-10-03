@@ -356,6 +356,12 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a0de139c03356d8fe5eef9b03661dc5b0"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a0de139c03356d8fe5eef9b03661dc5b0">next</a> (void)</td></tr>
+<tr class="memdesc:a0de139c03356d8fe5eef9b03661dc5b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next valid character from the current input file.  <a href="scan_8h.html#a0de139c03356d8fe5eef9b03661dc5b0">More...</a><br /></td></tr>
+<tr class="separator:a0de139c03356d8fe5eef9b03661dc5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad98ab6a95acd6305158f34a8edb0e4f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#ad98ab6a95acd6305158f34a8edb0e4f1">put_back_into_stream</a> (char c)</td></tr>
+<tr class="memdesc:ad98ab6a95acd6305158f34a8edb0e4f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put a character back into the input stream.  <a href="scan_8h.html#ad98ab6a95acd6305158f34a8edb0e4f1">More...</a><br /></td></tr>
+<tr class="separator:ad98ab6a95acd6305158f34a8edb0e4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0c54e61d886e8dfe989cfc440c57a35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#ab0c54e61d886e8dfe989cfc440c57a35">scan</a> (<a class="el" href="structToken.html">Token</a> *t)</td></tr>
 <tr class="memdesc:ab0c54e61d886e8dfe989cfc440c57a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scan tokens into the <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> struct.  <a href="scan_8h.html#ab0c54e61d886e8dfe989cfc440c57a35">More...</a><br /></td></tr>
 <tr class="separator:ab0c54e61d886e8dfe989cfc440c57a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1397,6 +1403,53 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a0de139c03356d8fe5eef9b03661dc5b0" name="a0de139c03356d8fe5eef9b03661dc5b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0de139c03356d8fe5eef9b03661dc5b0">&#9670;&nbsp;</a></span>next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char next </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the next valid character from the current input file. </p>
+<dl class="section return"><dt>Returns</dt><dd>char Next valid character from the current input file </dd></dl>
+
+</div>
+</div>
+<a id="ad98ab6a95acd6305158f34a8edb0e4f1" name="ad98ab6a95acd6305158f34a8edb0e4f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad98ab6a95acd6305158f34a8edb0e4f1">&#9670;&nbsp;</a></span>put_back_into_stream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void put_back_into_stream </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Put a character back into the input stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Character to be placed into the input stream </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ab0c54e61d886e8dfe989cfc440c57a35" name="ab0c54e61d886e8dfe989cfc440c57a35"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab0c54e61d886e8dfe989cfc440c57a35">&#9670;&nbsp;</a></span>scan()</h2>
 

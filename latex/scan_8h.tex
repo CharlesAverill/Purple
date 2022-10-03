@@ -233,6 +233,10 @@ enum \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+char \mbox{\hyperlink{scan_8h_a0de139c03356d8fe5eef9b03661dc5b0}{next}} (void)
+\begin{DoxyCompactList}\small\item\em Get the next valid character from the current input file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{scan_8h_ad98ab6a95acd6305158f34a8edb0e4f1}{put\+\_\+back\+\_\+into\+\_\+stream}} (char c)
+\begin{DoxyCompactList}\small\item\em Put a character back into the input stream. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}} (\mbox{\hyperlink{structToken}{Token}} $\ast$t)
 \begin{DoxyCompactList}\small\item\em Scan tokens into the \mbox{\hyperlink{structToken}{Token}} struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
@@ -893,6 +897,34 @@ T\+\_\+\+FUNCTION&\\
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{scan_8h_a0de139c03356d8fe5eef9b03661dc5b0}\label{scan_8h_a0de139c03356d8fe5eef9b03661dc5b0}} 
+\index{scan.h@{scan.h}!next@{next}}
+\index{next@{next}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily char next (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get the next valid character from the current input file. 
+
+\begin{DoxyReturn}{Returns}
+char Next valid character from the current input file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scan_8h_ad98ab6a95acd6305158f34a8edb0e4f1}\label{scan_8h_ad98ab6a95acd6305158f34a8edb0e4f1}} 
+\index{scan.h@{scan.h}!put\_back\_into\_stream@{put\_back\_into\_stream}}
+\index{put\_back\_into\_stream@{put\_back\_into\_stream}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{put\_back\_into\_stream()}{put\_back\_into\_stream()}}
+{\footnotesize\ttfamily void put\+\_\+back\+\_\+into\+\_\+stream (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Put a character back into the input stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Character to be placed into the input stream \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}\label{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}} 
 \index{scan.h@{scan.h}!scan@{scan}}
 \index{scan@{scan}!scan.h@{scan.h}}
