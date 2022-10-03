@@ -18,7 +18,7 @@ unsigned long int FNV_1(char* str)
     unsigned long int hash = FNV_OFFSET_BASIS;
     char c;
 
-    while (c = *str++) {
+    while ((c = *str++)) {
         hash *= FNV_PRIME;
         hash ^= c;
     }

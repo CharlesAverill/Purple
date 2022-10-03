@@ -471,8 +471,8 @@ void llvm_declare_assign_global_number_variable(char* symbol_name, Number number
  */
 void llvm_print_int(type_register print_vr, TokenType type)
 {
-    type_register* loaded_register =
-        llvm_ensure_registers_loaded(1, (type_register[]){print_vr}, type);
+    type_register* loaded_register = llvm_ensure_registers_loaded(1, (type_register[]){print_vr},
+                                                                  token_type_to_number_type(type));
     if (loaded_register) {
         print_vr = loaded_register[0];
     }
@@ -543,26 +543,6 @@ void llvm_print_bool(type_register print_vr)
                 "i8]* @print_false_fstring , i32 0, i32 0))" NEWLINE);
     llvm_jump(end_label);
     llvm_label(end_label);
-    // %r = icmp eq print_vr 0
-    // br r, true, false
-    // true:
-    // printf true string
-    // br end
-    // false:
-    // printf false string
-    // br end
-    // end:
-
-    /*
-    get_next_local_virtual_register();
-    fprintf(D_LLVM_FILE,
-            TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
-                "i8]* @print_bool_fstring , i32 0, i32 0), i1 %%%llu)" NEWLINE,
-            print_vr);
-    */
-
-    initialize_stack_entry_linked_list(&loadedRegistersHead);
-    initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
 }
 
 static void llvm_relational_compare(TokenType comparison_type, type_register out_register,
@@ -621,6 +601,9 @@ static void llvm_logical_compare(TokenType comparison_type, type_register out_re
     case T_NOR:
     case T_XNOR:
         fatal(RC_COMPILER_ERROR, "N- logical operators not yet supported");
+    default:
+        fatal(RC_COMPILER_ERROR, "llvm_logical_compare received Token \"%s\"",
+              tokenStrings[comparison_type]);
     }
 
     fprintf(D_LLVM_FILE, " %s %%%llu, %%%llu" NEWLINE,

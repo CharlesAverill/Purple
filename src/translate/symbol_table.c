@@ -22,6 +22,7 @@ SymbolTableStack* new_symbol_table_stack(void)
     SymbolTableStack* stack = (SymbolTableStack*)malloc(sizeof(SymbolTableStack));
     stack->length = 0;
     stack->top = NULL;
+    return stack;
 }
 
 /**

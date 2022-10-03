@@ -118,6 +118,10 @@ static Number parse_number_literal(char* literal, int length, int base)
     Number out = NUMBER_INT(0);
     int current_digit;
 
+    if (base < 0) {
+        fatal(RC_COMPILER_ERROR, "parse_number_literal received negative base");
+    }
+
     for (int i = 0; i < length; i++) {
         current_digit = char_to_int(literal[i], base);
         // Check for overflow
@@ -166,6 +170,7 @@ static Number scan_number_literal(char c)
             base = 16;
             break;
         }
+
         if (base != 10) {
             c = next();
         }
@@ -255,14 +260,26 @@ static bool is_valid_identifier_char(char c, int index)
 static int scan_identifier(char c, char* buf, int max_len)
 {
     int i = 0;
+    bool found_spacing_separator = false;
 
-    while (is_valid_identifier_char(c, i)) {
+    while (is_valid_identifier_char(c, i) || c == NUMBER_LITERAL_SPACING_SEPARATOR) {
         if (i >= max_len - 1) {
             syntax_error(0, 0, 0, "Identifier name has exceeded maximum length of %d", max_len);
         }
 
+        if (c == NUMBER_LITERAL_SPACING_SEPARATOR) {
+            found_spacing_separator = true;
+            c = next();
+            continue;
+        }
+
         buf[i++] = c;
         c = next();
+    }
+
+    if (found_spacing_separator) {
+        buf[i] = '\0';
+        return -2;
     }
 
     if (c == NUMBER_LITERAL_BASE_SEPARATOR) {
@@ -496,6 +513,10 @@ bool scan(Token* t)
     case '}':
         t->type = T_RIGHT_BRACE;
         break;
+    case NUMBER_LITERAL_BASE_SEPARATOR:
+        syntax_error(0, 0, t->pos.char_number + 2,
+                     "Encountered unexpected number literal base separator");
+        break;
     default:
         switch_matched = false;
         break;
@@ -509,12 +530,17 @@ bool scan(Token* t)
     if (scan_check_keyword_identifier(c)) {
         t->pos.char_number = D_GLOBAL_TOKEN.pos.char_number;
         // Scan identifier string into buffer
-        if (scan_identifier(c, D_IDENTIFIER_BUFFER, D_MAX_IDENTIFIER_LENGTH) == -1) {
-            purple_log(LOG_DEBUG, "Found base delimiter, reading in number literal");
+        int scan_ident_result = 0;
+        if ((scan_ident_result = scan_identifier(c, D_IDENTIFIER_BUFFER, D_MAX_IDENTIFIER_LENGTH)) <
+            0) {
+            purple_log(LOG_DEBUG, "Encounter %s character, reading in number literal",
+                       scan_ident_result == -1 ? "base delimiter" : "literal separator");
 
             c = next();
-            Number parsed = parse_number_literal(D_IDENTIFIER_BUFFER, strlen(D_IDENTIFIER_BUFFER),
-                                                 char_to_int(c, -1));
+            int base = char_to_int(c, -1);
+            base = base > 0 ? base : 10;
+            Number parsed =
+                parse_number_literal(D_IDENTIFIER_BUFFER, strlen(D_IDENTIFIER_BUFFER), base);
             c = next();
 
             // Check for a long literal
@@ -532,7 +558,7 @@ bool scan(Token* t)
             t->type = t->value.number_value.type == NT_INT64 ? T_LONG_LITERAL : T_INTEGER_LITERAL;
         } else {
             // Check if identifier is a keyword
-            if (temp_type = parse_keyword(D_IDENTIFIER_BUFFER)) {
+            if ((temp_type = parse_keyword(D_IDENTIFIER_BUFFER))) {
                 t->type = temp_type;
             } else {
                 // It's an identifier

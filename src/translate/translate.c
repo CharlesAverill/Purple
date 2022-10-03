@@ -33,9 +33,6 @@ static void translate_init(void)
     D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 1;
 
     D_CURRENT_FUNCTION_PREAMBLE_PRINTED = false;
-
-    initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
-    initialize_stack_entry_linked_list(&loadedRegistersHead);
 }
 
 /**
@@ -107,6 +104,8 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
 
         return current;
     }
+
+    return NULL;
 }
 
 /**
@@ -236,9 +235,6 @@ static LLVMValue print_ast_to_llvm(ASTNode* root, type_register virtual_register
         llvm_print_int(virtual_register, print_type);
     }
 
-    initialize_stack_entry_linked_list(&loadedRegistersHead);
-    initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
-
     return LLVMVALUE_NULL;
 }
 
@@ -277,6 +273,8 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
         ast_to_llvm(n->left, LLVMVALUE_NULL, n->ttype);
         llvm_function_postamble();
         return LLVMVALUE_NULL;
+    default:
+        break;
     }
 
     // Generate code for left and right subtrees
@@ -355,9 +353,6 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
                   tokenStrings[n->ttype]);
         }
 
-        initialize_stack_entry_linked_list(&loadedRegistersHead);
-        initialize_stack_entry_linked_list(&freeVirtualRegistersHead);
-
         return out;
     } else {
         switch (n->ttype) {
@@ -392,6 +387,8 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
             syntax_error(0, 0, 0, "Unknown operator \"%s\"", tokenStrings[n->ttype]);
         }
     }
+
+    return LLVMVALUE_NULL;
 }
 
 /**

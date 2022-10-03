@@ -69,7 +69,7 @@ void syntax_error(char* fn, int line_number, int char_number, const char* fmt, .
 
     fprintf(stderr, "\n");
 
-    fatal(RC_SYNTAX_ERROR, "%s:%d", fn, line_number);
+    fatal(RC_SYNTAX_ERROR, "%s:%d:%d", fn, line_number, char_number);
 }
 
 /**
@@ -85,6 +85,16 @@ void identifier_error(char* fn, int line_number, int char_number, const char* fm
 {
     va_list func_args;
 
+    if (fn == NULL) {
+        fn = D_INPUT_FN;
+    }
+    if (line_number == 0) {
+        line_number = D_LINE_NUMBER;
+    }
+    if (char_number == 0) {
+        char_number = D_CHAR_NUMBER;
+    }
+
     // Print fence for error distinguishing
     fprintf(stderr, "----------------------------------------\n");
 
@@ -95,7 +105,7 @@ void identifier_error(char* fn, int line_number, int char_number, const char* fm
 
     fprintf(stderr, "\n");
 
-    fatal(RC_IDENTIFIER_ERROR, "%s:%d", fn, line_number);
+    fatal(RC_IDENTIFIER_ERROR, "%s:%d:%d", fn, line_number, char_number);
 }
 
 /**
