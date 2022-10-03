@@ -47,8 +47,11 @@ static ASTNode* create_terminal_node(Token* t)
             out = create_ast_identifier_leaf(T_IDENTIFIER, t->value.symbol_name);
             break;
         default:
-            syntax_error(0, 0, 0, "Tried creating a terminal node with token type \"%s\"",
-                         tokenStrings[t->type]);
+            syntax_error(0, 0, 0, "Unexpected end of expression");
+            /*
+            fatal(RC_COMPILER_ERROR, "Tried creating a terminal node with token type \"%s\"",
+                  tokenStrings[t->type]);
+            */
         }
     }
 
@@ -61,17 +64,19 @@ static ASTNode* create_terminal_node(Token* t)
  * @brief Recursively parse binary expressions into an AST
  * 
  * @param previous_token_precedence The integer precedence value of the previous Token
+ * @param nt_max Maximum NumberType encountered during AST generation
  * @return ASTNode*  An AST or AST Subtree of the binary expressions in D_INPUT_FILE
  */
-ASTNode* parse_binary_expression(int previous_token_precedence)
+static ASTNode* parse_binary_expression_recursive(int previous_token_precedence, NumberType* nt_max)
 {
     ASTNode* left;
     ASTNode* right;
     TokenType current_ttype;
 
-    // Get the intlit on the left and scan the next Token
+    // Get the terminal token (literal, variable identifier, etc) on the left and scan the next Token
     position pre_pos = D_GLOBAL_TOKEN.pos;
     left = create_terminal_node(&D_GLOBAL_TOKEN);
+    *nt_max = NT_MAX(*nt_max, left->number_type);
     add_position_info(left, pre_pos);
     current_ttype = D_GLOBAL_TOKEN.type;
     if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {
@@ -85,7 +90,7 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
         scan(&D_GLOBAL_TOKEN);
 
         // Recursively build the right AST subtree
-        right = parse_binary_expression(operatorPrecedence[current_ttype]);
+        right = parse_binary_expression_recursive(operatorPrecedence[current_ttype], nt_max);
 
         // Join right subtree with current left subtree
         left = create_ast_node(current_ttype, left, NULL, right, TYPE_VOID, NULL);
@@ -99,4 +104,18 @@ ASTNode* parse_binary_expression(int previous_token_precedence)
     }
 
     return left;
+}
+
+/**
+ * @brief Convenience wrapper for parse_binary_expression_recursive
+ * 
+ * @return ASTNode*  An AST or AST Subtree of the binary expressions in D_INPUT_FILE
+ */
+ASTNode* parse_binary_expression(void)
+{
+    NumberType maximum = NT_INT1;
+    ASTNode* out = parse_binary_expression_recursive(0, &maximum);
+    out->largest_number_type = maximum;
+
+    return out;
 }

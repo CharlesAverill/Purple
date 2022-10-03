@@ -1,7 +1,28 @@
+/**
+ * @file loop_test.prp
+ * @author Charles Averill
+ * @brief Test loops, including while loops, for loops, while/else clauses, and for/else clauses
+ * @date 27-Sep-2022
+ */
+
 void main(void) {
     int i;
     i = 0;
 
+	/*
+	 * 0
+	 * 1
+	 * 2
+	 * 3
+	 * 4
+	 * 5
+	 * 6
+	 * 7
+	 * 8 
+	 * 9
+	 * 10
+	 * 11
+	 */
     while(i <= 10){
 		print i;
 		i = i + 1;
@@ -12,14 +33,31 @@ void main(void) {
 	while(i <= 10 and false) {
 		print i;
 	} else {
-		print 55;
+		print 55;              // 55
 	}
 
+	/*
+	 * 10
+	 * 9
+	 * 8
+	 * 7
+	 * 6
+	 * 5
+	 * 4
+	 * 3
+	 * 2
+	 * 1
+	 * 500
+	 * 0
+	 * 55
+	 */
 	for(i = 10; i >= 0 xor false; i = i - 1){
 		print i;
 
 		if(i - 1 == 0 or false) {
 			print 500;
 		}
-    }
+    } else {
+		print 55;
+	}
 }

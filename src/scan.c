@@ -17,7 +17,7 @@
  * 
  * @return char Next valid character from the current input file
  */
-static char next(void)
+char next(void)
 {
     // Get next valid character from file
 
@@ -48,7 +48,7 @@ static char next(void)
  * 
  * @param c Character to be placed into the input stream
  */
-static void put_back_into_stream(char c)
+void put_back_into_stream(char c)
 {
     D_PUT_BACK = c;
     D_CHAR_NUMBER--;
@@ -465,7 +465,26 @@ bool scan(Token* t)
         }
         break;
     case '/':
-        t->type = T_SLASH;
+        if ((c = next()) == '/') {
+            do {
+                c = next();
+            } while (c != '\n');
+            scan(t);
+        } else if (c == '*') {
+            while (true) {
+                c = next();
+                if (c == '*') {
+                    c = next();
+                    if (c == '/') {
+                        break;
+                    }
+                }
+            }
+            scan(t);
+        } else {
+            put_back_into_stream(c);
+            t->type = T_SLASH;
+        }
         break;
     case ';':
         t->type = T_SEMICOLON;

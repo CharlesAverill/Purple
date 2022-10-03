@@ -1,12 +1,19 @@
+/**
+ * @file base_test.prp
+ * @author Charles Averill
+ * @brief Test number literal declarations, including base specification and spacers
+ * @date 27-Sep-2022
+ */
+
 void main(void) {
     int F00F;
     F00F  = F00F#G;
-    print F00F;
-    print 1001#2;
-    print 0b1001;
-    print 1234#8;
-    print 0o1234;
-    print f00F#G;
-    print 0xf00f;
-    print 1234#5;
+    print F00F;   // 61455
+    print 1001#2; // 9
+    print 0b1001; // 9
+    print 1234#8; // 668
+    print 0o1234; // 668
+    print f00F#G; // 61455
+    print 0xf00f; // 61455
+    print 1234#5; // 194
 }

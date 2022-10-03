@@ -1,54 +1,61 @@
+/**
+ * @file condition_test.prp
+ * @author Charles Averill
+ * @brief Test conditions, including comparisons, conditional statements, and logical operators
+ * @date 08-Sep-2022
+ */
+
 void main(void) {
     int i;
     int j;
     i = 6;
     j = 12;
 
-    print i < j;
-    print j > i;
-    print i <= j;
-    print j >= i;
-    print i != j;
-    print i == j;
+    print i < j;             // true
+    print j > i;             // true
+    print i <= j;            // true
+    print j >= i;            // true
+    print i != j;            // true
+    print i == j;            // false
 
     if(i < j){
-        print 1;
+        print 1;             // 1
     }
     if(j > i){
-        print 2;
+        print 2;             // 2
     }
     if(i <= j){
-        print 3;
+        print 3;             // 3
     }
     if(j >= i){
-        print 4;
+        print 4;             // 4
     }
     if(i == j){
         print 5;
     }
     if(i != j){
-        print 6;
+        print 6;             // 6
     }
 
     if(true and true) {
-        print 35;
+        print 35;            // 35
     }
 
     if(true or false) {
-        print 70;
+        print 70;            // 70
     }
 
     if(true xor false) {
-        print 140;
+        print 140;           // 140
     }
 
     if(true and false) {
         print false;
     } else {
-        print true and true;
-        print true or true;
-        print true xor true;
+        print true and true; // true
+        print true or true;  // true
+        print true xor true; // false
     }
 
-    print  9 != 7 == true;
+    print  9 != 7 == true;   // true
 }

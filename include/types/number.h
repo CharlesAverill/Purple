@@ -110,6 +110,16 @@ typedef struct Number {
         .type = t, .value = v                                                                      \
     }
 
+/**
+ * @brief Determines the larger NumberType of two
+ */
+#define NT_MAX(a, b) (a > b ? a : b)
+
+/**
+ * @brief Determines the smaller NumberType of two
+ */
+#define NT_MIN(a, b) (NT_MAX(a, b) == a ? b : a)
+
 NumberType token_type_to_number_type(int token_type);
 int number_to_token_type(Number number);
 

@@ -221,11 +221,11 @@ static LLVMValue print_ast_to_llvm(ASTNode* root, type_register virtual_register
         TokenType print_type = root->left->ttype;
 
         if (print_type == T_IDENTIFIER) {
-            print_type = number_to_token_type((Number){.type = root->left->number_type});
+            print_type = number_to_token_type((Number){.type = root->left->largest_number_type});
         }
 
         if (TOKENTYPE_IS_BINARY_ARITHMETIC(print_type)) {
-            print_type = number_to_token_type((Number){.type = root->left->number_type});
+            print_type = number_to_token_type((Number){.type = root->left->largest_number_type});
         }
 
         if (print_type == T_BYTE_LITERAL && root->left->is_char_arithmetic) {

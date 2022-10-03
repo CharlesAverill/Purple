@@ -28,6 +28,8 @@ typedef struct ASTNode {
     struct ASTNode* right;
     /**Type of number token*/
     NumberType number_type;
+    /**Largest NumberType in subtree*/
+    NumberType largest_number_type;
     /**Whether or not a binary arithmetic node is dealing with chars*/
     bool is_char_arithmetic;
     /**Filename of this Token*/

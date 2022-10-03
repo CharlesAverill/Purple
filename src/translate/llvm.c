@@ -431,7 +431,6 @@ LLVMValue llvm_truncate(LLVMValue reg, NumberType new_type, NumberType old_type)
         return LLVMVALUE_NULL;
     }
 
-    printf("%d %d\n", new_type, old_type);
     LLVMValue out = LLVMVALUE_VIRTUAL_REGISTER(get_next_local_virtual_register(), new_type);
     fprintf(D_LLVM_FILE, TAB "%%%llu = trunc %s %%%llu to %s" NEWLINE,
             out.value.virtual_register_index, numberTypeLLVMReprs[old_type],
@@ -475,6 +474,7 @@ void llvm_print_int(type_register print_vr, TokenType type)
                                                                   token_type_to_number_type(type));
     if (loaded_register) {
         print_vr = loaded_register[0];
+        free(loaded_register);
     }
 
     get_next_local_virtual_register();

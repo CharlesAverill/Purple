@@ -1,3 +1,10 @@
+/**
+ * @file variable_test.prp
+ * @author Charles Averill
+ * @brief Test variables, including declaration, assignment, printing, and arithmetic
+ * @date 27-Sep-2022
+ */
+
 void main(void) {
     int bob;
     int alice;
@@ -5,9 +12,9 @@ void main(void) {
     bob = 5;
     alice = 10;
 
-    print bob + alice;
+    print bob + alice;                 // 15
 
     int bob_alice;
     bob_alice = 10 + 10 + bob + alice;
-    print bob_alice;
+    print bob_alice;                   // 35
 }

@@ -58,7 +58,7 @@ static ASTNode* print_statement(void)
 
     // Parse printed value
     purple_log(LOG_DEBUG, "Parsing binary expression for print statement");
-    root = parse_binary_expression(0);
+    root = parse_binary_expression();
 
     root = create_unary_ast_node(T_PRINT, root, TYPE_VOID);
     add_position_info(root, print_position);
@@ -102,7 +102,7 @@ static ASTNode* assignment_statement(void)
 
     // Parse assignment expression
     purple_log(LOG_DEBUG, "Parsing binary expression for assign statement");
-    left = parse_binary_expression(0);
+    left = parse_binary_expression();
 
     right->is_char_arithmetic = left->is_char_arithmetic;
 
@@ -129,7 +129,7 @@ static ASTNode* if_statement(void)
     match_token(T_IF);
     match_token(T_LEFT_PAREN);
 
-    condition = parse_binary_expression(0);
+    condition = parse_binary_expression();
     position condition_pos = D_GLOBAL_TOKEN.pos;
 
     if (!TOKENTYPE_IS_COMPARATOR(condition->ttype) &&
@@ -168,7 +168,7 @@ static ASTNode* while_statement(void)
     match_token(T_WHILE);
     match_token(T_LEFT_PAREN);
 
-    condition = parse_binary_expression(0);
+    condition = parse_binary_expression();
     position condition_pos = D_GLOBAL_TOKEN.pos;
 
     if (!TOKENTYPE_IS_COMPARATOR(condition->ttype) &&
@@ -217,7 +217,7 @@ static ASTNode* for_statement(void)
 
     match_token(T_SEMICOLON);
 
-    condition = parse_binary_expression(0);
+    condition = parse_binary_expression();
     if (!TOKENTYPE_IS_COMPARATOR(condition->ttype) &&
         !TOKENTYPE_IS_LOGICAL_OPERATOR(condition->ttype)) {
         syntax_error(0, 0, 0, "Condition clauses must use a logical or comparison operator");

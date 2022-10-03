@@ -251,6 +251,8 @@ typedef struct Token {
     } value;
 } Token;
 
+char next(void);
+void put_back_into_stream(char c);
 bool scan(Token* t);
 
 #endif /* SCAN_H */

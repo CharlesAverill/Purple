@@ -48,7 +48,7 @@ static int operatorPrecedence[] = {
     [T_ASSIGN] = 2,
 };
 
-ASTNode* parse_binary_expression(int previous_token_precedence);
+ASTNode* parse_binary_expression(void);
 void match_token(TokenType type);
 NumberType match_type(void);
 void variable_declaration(void);

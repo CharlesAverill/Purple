@@ -1,14 +1,22 @@
+/**
+ * @file type_test.prp
+ * @author Charles Averill
+ * @brief Test types, including char declarations, long declarations, literal thinning, and type widening
+ * @date 27-Sep-2022
+ */
+
 void main(void) {
     int x;
-    x = 2 * 3 + 5 + 6 / 3 + 1;
-    print x;
+    x = 2 * 3 + 0o5 + 6 / 3 + 1;
+    print x;                       // 14
     char c;
     c = 'a' + 'z' - 'x';
-    print 'c';
+    print 'c';                     // c
     long l;
-    l = 2147483647L + 2147483647L;
+    l = 2147483647L + 2147483647L; // 4294967294
     print l;
     short s;
     s = 100;
-    print s + s;
+    print s + s;                   // 200
+    print x + c + l + s;           // 4294967507
 }

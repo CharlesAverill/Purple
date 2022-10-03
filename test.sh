@@ -53,7 +53,8 @@ true"
 type_test_output="14
 c
 4294967294
-200"
+200
+4294967507"
 
 variable_test_output="15
 35"
@@ -82,7 +83,8 @@ loop_test_output="0
 2
 1
 500
-0"
+0
+55"
 
 base_test_output="61455
 9
