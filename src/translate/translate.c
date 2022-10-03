@@ -258,6 +258,7 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
         return LLVMVALUE_NULL;
     }
 
+    // Special kinds of TokenTypes that shouldn't have their left and right branches generated in the standard manner
     switch (n->ttype) {
     case T_IF:
         return if_ast_to_llvm(n);
@@ -365,16 +366,6 @@ LLVMValue ast_to_llvm(ASTNode* n, LLVMValue llvm_value, TokenType parent_operati
                 fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
                       n->value.symbol_name);
             }
-
-            /*
-            loaded_registers = llvm_ensure_registers_loaded(
-                1, (type_register[]){llvm_value.value.virtual_register_index},
-                symbol->type.value.number.type);
-            if (loaded_registers != NULL) {
-                llvm_value.value.virtual_register_index = loaded_registers[0];
-                free(loaded_registers);
-            }
-            */
 
             llvm_store_global_variable(n->value.symbol_name, llvm_value);
             return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index,

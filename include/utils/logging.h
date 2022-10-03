@@ -5,8 +5,8 @@
  * @date 08-Sep-2022
  */
 
-#ifndef LOGGING
-#define LOGGING
+#ifndef LOGGING_H
+#define LOGGING_H
 
 #include "utils/shutdown.h"
 
@@ -77,4 +77,4 @@ void identifier_error(char* fn, int line_number, int char_number, const char* fm
 
 void purple_log(LogLevel level, const char* fmt, ...);
 
-#endif /* LOGGING */
+#endif /* LOGGING_H */
