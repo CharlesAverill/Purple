@@ -9,25 +9,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Copy compile.sh
-        uses: actions/upload-artifact@v3
-        with:
-          name: compile.sh
-          path: ./compile.sh
-          retention-days: 1
-      
-      - name: Copy test.sh
-        uses: actions/upload-artifact@v3
-        with:
-          name: test.sh
-          path: ./test.sh
-          retention-days: 1
-      
-      - name: Install CMake and build-essential
-        run: sudo apt install cmake build-essential clang-format
+      - name: Install tools
+        run: sudo apt install cmake build-essential clang-format libclang-11-dev
         
       - name: Compile Purple Executable
         run: ./compile.sh
+      
+      - name: Upload Purple Executable
+        uses: actions/upload-artifact@v3
+        with:
+          name: purple
+          path: ./bin/purple
+          retention-days: 1
   
   test:
     runs-on: ubuntu-latest
@@ -35,6 +28,12 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+
+      - name: Download Purple Executable
+        uses: actions/download-artifact@v3
+        with:
+          name: purple
+          path: ./bin/purple
       
       - name: Run Tests
-        run: ./test.sh
+        run: ./test.sh --no-compile

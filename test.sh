@@ -1,4 +1,6 @@
-./compile.sh
+if [[ $1 != "--no-compile" ]] ; then
+    ./compile.sh
+fi
 
 ANSI_RED='\033[0;31m'
 ANSI_GREEN='\033[0;32m'
