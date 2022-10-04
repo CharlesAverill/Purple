@@ -31,7 +31,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           mkdir -p build
-          wasimake cmake --build build
+          wasimake cmake -B build
           cd build
           wasimake make
           cd ..
