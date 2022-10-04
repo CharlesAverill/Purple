@@ -13,6 +13,7 @@
 #include "types/identifier.h"
 #include "types/type.h"
 
+/**Default length of the symbol table hash table*/
 #define SYMBOL_TABLE_DEFAULT_LENGTH 1024
 
 /**

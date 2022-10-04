@@ -49,7 +49,9 @@ typedef struct LLVMValue {
     NumberType number_type;
     /**Contents of the value returned*/
     union {
+        /**Index of a virtual register*/
         type_register virtual_register_index;
+        /**Index of an LLVM label*/
         type_label label_index;
     } value;
 } LLVMValue;
@@ -92,13 +94,14 @@ typedef struct LLVMValue {
         .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number                       \
     }
 
+/**Prefix to prepend to LLVM label indices*/
 #define PURPLE_LABEL_PREFIX "L"
 
 type_register* llvm_ensure_registers_loaded(int n_registers, type_register registers[],
                                             NumberType number_type);
 
-void llvm_preamble();
-void llvm_postamble();
+void llvm_preamble(void);
+void llvm_postamble(void);
 
 bool llvm_stack_allocation(LLVMStackEntryNode* stack_entries);
 

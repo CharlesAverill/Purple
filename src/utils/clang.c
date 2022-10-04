@@ -48,7 +48,7 @@ const char* get_temp_dir(void)
 /**
  * @brief Create a temporary file for a generator program used to determine compilation information
  */
-void create_tmp_generator_program()
+void create_tmp_generator_program(void)
 {
     purple_log(LOG_DEBUG, "Creating generator program file");
 
@@ -211,7 +211,7 @@ void clang_compile_llvm(const char* fn)
  * 
  * @return char* Pointer to target datalayout string
  */
-char* get_target_datalayout()
+char* get_target_datalayout(void)
 {
     char* out = NULL;
 
@@ -248,7 +248,7 @@ char* get_target_datalayout()
  * 
  * @return char* Pointer to the target triple string
  */
-char* get_target_triple()
+char* get_target_triple(void)
 {
     char* process_out = (char*)malloc(64);
     int clang_status;

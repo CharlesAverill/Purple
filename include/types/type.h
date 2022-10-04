@@ -12,18 +12,6 @@
 #include "types/number.h"
 
 /**
-<<<<<<< HEAD
-=======
- * @brief Types of types
- */
-typedef enum
-{
-    TT_VOID,
-    TT_NUMBER
-} TypeType;
-
-/**
->>>>>>> 354a5d8addecd42f91cf66194e08c823fa86e051
  * @brief Container for type data
  */
 typedef struct Type {
@@ -44,7 +32,10 @@ typedef struct Type {
         .type = T_VOID                                                                             \
     }
 
-#define TYPE_NUMBER_TOKEN(ttype)                                                                   \
+/**
+ * @brief Generates a number type struct given a TokenType
+ */
+#define TYPE_NUMBER_FROM_NUMBERTYPE_FROM_TOKEN(ttype)                                              \
     (Type)                                                                                         \
     {                                                                                              \
         .type = ttype, .value.number = NUMBER_FROM_TYPE_VAL(token_type_to_number_type(ttype), 0)   \
@@ -53,7 +44,7 @@ typedef struct Type {
 /**
  * @brief Generates a number type struct given a Number
  */
-#define TYPE_NUMBER_VAL(n)                                                                         \
+#define TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(n)                                                 \
     (Type)                                                                                         \
     {                                                                                              \
         .type = number_to_token_type(n), .value.number = n                                         \
@@ -62,7 +53,7 @@ typedef struct Type {
 /**
  * @brief Generates a number type struct given a NumberType
  */
-#define TYPE_NUMBER(nt)                                                                            \
+#define TYPE_NUMBER_FROM_NUMBERTYPE(nt)                                                            \
     (Type)                                                                                         \
     {                                                                                              \
         .type = number_to_token_type((Number){.type = nt}), .value.number = (Number)               \
@@ -70,8 +61,5 @@ typedef struct Type {
             .type = nt                                                                             \
         }                                                                                          \
     }
-
-#define TOKENTYPE_IS_NUMBER_TYPE(tt)                                                               \
-    ((tt >= T_BOOL && tt <= T_LONG) || (T_TRUE <= tt && tt <= T_LONG_LITERAL))
 
 #endif /* TYPE_H */

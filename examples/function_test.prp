@@ -11,5 +11,5 @@ void test_function(void) {
 
 void main(void) {
     print 'X';       // X
-    // test_function(); // !
+    //test_function(); // !
 }

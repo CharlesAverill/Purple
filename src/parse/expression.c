@@ -37,7 +37,8 @@ static ASTNode* create_terminal_node(Token* t)
     SymbolTableEntry* entry;
 
     if (TOKENTYPE_IS_LITERAL(t->type)) {
-        out = create_ast_nonidentifier_leaf(t->type, TYPE_NUMBER_VAL(t->value.number_value));
+        out = create_ast_nonidentifier_leaf(
+            t->type, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(t->value.number_value));
     } else {
         switch (t->type) {
         case T_IDENTIFIER:

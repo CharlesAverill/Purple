@@ -194,6 +194,12 @@ static char* tokenStrings[] = {TTS_EOF,
 #define TOKENTYPE_IS_TYPE(type) (type >= T_BOOL && type <= T_LONG)
 
 /**
+ * @brief Determines if a TokenType is associated with a number type keyword or a number literal
+ */
+#define TOKENTYPE_IS_NUMBER_TYPE(tt)                                                               \
+    ((tt >= T_BOOL && tt <= T_LONG) || (T_TRUE <= tt && tt <= T_LONG_LITERAL))
+
+/**
  * @brief Determines if a TokenType is associated with a literal value
  */
 #define TOKENTYPE_IS_LITERAL(type) (type >= T_TRUE && type <= T_LONG_LITERAL)
@@ -229,9 +235,15 @@ static char* tokenStrings[] = {TTS_EOF,
  */
 #define MAX_NUMBER_LITERAL_DIGITS 19
 
+/**
+ * @brief Structure containing information about a Token's position in the input
+ */
 typedef struct position {
+    /**Name of file*/
     char filename[256];
+    /**Line number in file*/
     int line_number;
+    /**Character number in line*/
     int char_number;
 } position;
 

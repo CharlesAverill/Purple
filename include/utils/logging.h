@@ -10,14 +10,22 @@
 
 #include "utils/shutdown.h"
 
+/**ANSI code for bold text*/
 #define ANSI_BOLD "\033[1m"
+/**ANSI code for red text*/
 #define ANSI_RED "\033[38:5:196m"
+/**ANSI code for orange text*/
 #define ANSI_ORANGE "\033[38:5:208m"
+/**ANSI code for yellow text*/
 #define ANSI_YELLOW "\033[38:5:178m"
+/**ANSI code for default text style*/
 #define ANSI_RESET "\033[0m"
 
+/**Combination of ANSI codes for red errors*/
 #define ERROR_RED ANSI_RED ANSI_BOLD
+/**Combination of ANSI codes for orange errors*/
 #define ERROR_ORANGE ANSI_ORANGE ANSI_BOLD
+/**Combination of ANSI codes for yellow errors*/
 #define ERROR_YELLOW ANSI_YELLOW ANSI_BOLD
 
 /**
@@ -37,8 +45,11 @@ typedef enum
  * @brief Maps LogLevels to text and color for displaying
  */
 typedef struct {
+    /**Level of logging to use*/
     LogLevel level;
+    /**Name of logging level*/
     char* name;
+    /**ANSI color of logging level*/
     char* color;
 } LogInfo;
 

@@ -26,7 +26,7 @@ void variable_declaration(void)
 
     match_token(T_IDENTIFIER);
     add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER,
-                           TYPE_NUMBER_TOKEN(variable_type));
+                           TYPE_NUMBER_FROM_NUMBERTYPE_FROM_TOKEN(variable_type));
     llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER,
                                         token_type_to_number_type(variable_type));
 }

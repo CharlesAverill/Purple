@@ -39,6 +39,14 @@ void prepend_loaded(type_register reg)
     }
 }
 
+/**
+ * @brief Ensure that the values of a set of registers are loaded
+ * 
+ * @param n_registers Number of registers to ensure
+ * @param registers Array of register indices to ensure
+ * @param number_type NumberType of registers to ensure
+ * @return type_register* If the registers were not loaded, this array contains the loaded registers
+ */
 type_register* llvm_ensure_registers_loaded(int n_registers, type_register registers[],
                                             NumberType number_type)
 {
@@ -84,7 +92,7 @@ type_register* llvm_ensure_registers_loaded(int n_registers, type_register regis
 /**
  * @brief Generated program's preamble
  */
-void llvm_preamble()
+void llvm_preamble(void)
 {
     fprintf(D_LLVM_FILE, "; ModuleID = '%s'" NEWLINE, D_INPUT_FN);
 
@@ -115,7 +123,7 @@ void llvm_preamble()
 /**
  * @brief Generated program's postamble
  */
-void llvm_postamble()
+void llvm_postamble(void)
 {
     fprintf(D_LLVM_FILE, "declare i32 @printf(i8*, ...) #1" NEWLINE NEWLINE);
     fprintf(
@@ -773,7 +781,7 @@ void llvm_function_preamble(char* symbol_name)
     }
 }
 
-void llvm_function_postamble()
+void llvm_function_postamble(void)
 {
     fprintf(D_LLVM_FILE, TAB "ret i32 0" NEWLINE "}" NEWLINE NEWLINE);
 }

@@ -11,7 +11,7 @@
 /**
  * @brief Program used to determine platform information
  */
-#define GENERATOR_PROGRAM_CONTENTS "#include <stdio.h>\nint main(){printf(\"\");}"
+#define GENERATOR_PROGRAM_CONTENTS "#include <stdio.h>\nint main(void){printf(\"\");}"
 /**
  * @brief Length of GENERATOR_PROGRAM_CONTENTS
  */
@@ -47,10 +47,10 @@ static bool generatorProgramWritten = false;
 
 void clang_compile_llvm(const char* fn);
 void link_globals(void);
-void create_tmp_generator_program();
-char* get_target_datalayout();
-char* get_target_triple();
-char* get_postamble();
+void create_tmp_generator_program(void);
+char* get_target_datalayout(void);
+char* get_target_triple(void);
+char* get_postamble(void);
 char* regex_match(const char* regex, char* target_str, int len, int group_index);
 
 #endif /* CLANG_H */
