@@ -13,8 +13,7 @@
 /**
  * @brief Types of types
  */
-typedef enum
-{
+typedef enum {
     TT_VOID,
     TT_NUMBER
 } TypeType;
