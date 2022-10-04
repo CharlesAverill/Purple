@@ -21,6 +21,8 @@ typedef struct PurpleArgs {
     int logging;
     /**Input filename followed by output ASM filename*/
     char* filenames[2];
+    /**Path to clang executable*/
+    char* clang_executable;
     /**Program read from stdin*/
     char* from_command_line_argument;
 } PurpleArgs;

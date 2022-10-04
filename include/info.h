@@ -14,6 +14,8 @@
 #define PROJECT_VER_MINOR "TestMinor"
 #define PROJECT_VER_PATCH "TestPatch"
 
+#define DEFAULT_CLANG_EXECUTABLE_PATH "ClangPath"
+
 #define PROJECT_NAME_AND_VERS "TestName TestVersion"
 
 #endif /* INFO_H */

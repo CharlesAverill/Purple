@@ -20,6 +20,8 @@ static char args_doc[] = "PROGRAM";
 static struct argp_option options[] = {
     {"logging", 'l', "LEVEL", 0,
      "Level of log statements to print (NONE, DEBUG, INFO, WARNING, ERROR, CRITICAL)", 0},
+    {"clang-executable", 'g', "PATH", 0,
+     "Alternate path to clang executable (default is \"" DEFAULT_CLANG_EXECUTABLE_PATH "\"", 0},
     {"cmd", 'c', "PROGRAM", 0, "Program passed in as a string", 0},
     {"output", 'o', "FILE", 0, "Path to the generated LLVM file", 0},
     {"quiet", 'q', 0, 0, "Equivalent to --logging=NONE", 0},
@@ -34,11 +36,11 @@ error_t parse_opt(int key, char* arg, struct argp_state* state)
     int found = 0;
 
     switch (key) {
-    case 'q':
-        arguments->logging = LOG_NONE;
+    case 'c':
+        arguments->from_command_line_argument = arg;
         break;
-    case 'v':
-        arguments->logging = LOG_DEBUG;
+    case 'g':
+        arguments->clang_executable = arg;
         break;
     case 'l':
         if (!strcmp("NONE", arg)) {
@@ -58,8 +60,11 @@ error_t parse_opt(int key, char* arg, struct argp_state* state)
     case 'o':
         arguments->filenames[1] = arg;
         break;
-    case 'c':
-        arguments->from_command_line_argument = arg;
+    case 'q':
+        arguments->logging = LOG_NONE;
+        break;
+    case 'v':
+        arguments->logging = LOG_DEBUG;
         break;
     case ARGP_KEY_ARG:
         // Check for too many arguments
@@ -93,6 +98,7 @@ void parse_args(PurpleArgs* args, int argc, char* argv[])
 {
     args->logging = LOG_INFO;
     args->filenames[1] = "a.ll";
+    args->clang_executable = "/usr/bin/clang";
     args->from_command_line_argument = NULL;
 
     argp_parse(&argp, argc, argv, 0, 0, args);

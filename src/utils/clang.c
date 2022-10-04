@@ -74,9 +74,10 @@ void create_tmp_generator_program()
     int clang_status;
     char process_out[256];
     // Generate the clang command
-    char cmd[270] = {0};
+    char cmd[sizeof(args->clang_executable) + 270] = {0};
 
-    strcat(cmd, "clang -S -emit-llvm -w ");
+    strcat(cmd, args->clang_executable);
+    strcat(cmd, " -S -emit-llvm -w ");
     strcat(cmd, generatorProgramFullPath);
     strcat(cmd, " -o ");
     strcat(cmd, generatorProgramLLFullPath);
@@ -179,9 +180,10 @@ void clang_compile_llvm(const char* fn)
     char* process_out;
     size_t process_out_buf_len = 256;
     // Generate the clang command
-    char cmd[270] = {0};
+    char cmd[sizeof(args->clang_executable) + 270] = {0};
 
-    strcat(cmd, "clang ");
+    strcat(cmd, args->clang_executable);
+    strcat(cmd, " ");
     strcat(cmd, fn);
 
     // Open the process
@@ -254,7 +256,9 @@ char* get_target_triple()
     purple_log(LOG_DEBUG, "Retrieving target triple");
 
     // Open the process
-    FILE* clang_process = popen("clang -print-target-triple", "r");
+    char process_cmd[strlen(args->clang_executable) + 22];
+    sprintf(process_cmd, "%s %s", args->clang_executable, "-print-target-triple");
+    FILE* clang_process = popen(process_cmd, "r");
 
     // Let process run
     fgets(process_out, 64, clang_process);

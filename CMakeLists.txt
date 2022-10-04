@@ -6,7 +6,18 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
 set(CMAKE_BUILD_TYPE Debug)
 
+find_package(Clang)
+if(${Clang_FOUND})
+    message("Found clang")
+else (${Clang_FOUND})
+    message(FATAL_ERROR "Could not locate some clang files, consider installing libclang-xx-dev")
+endif(${Clang_FOUND})
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${LLVM_CMAKE_DIR}")
+
 string(CONCAT PROJECT_NAME_AND_VERS ${CMAKE_PROJECT_NAME} " " ${CMAKE_PROJECT_VERSION})
+set(DEFAULT_CLANG_EXECUTABLE_PATH ${Clang_DIR})
+message(${DEFAULT_CLANG_EXECUTABLE_PATH})
 
 file (GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS "src/*.c")
 
