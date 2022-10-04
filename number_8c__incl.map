@@ -1,9 +1,8 @@
 <map id="src/types/number.c" name="src/types/number.c">
-<area shape="rect" id="node1" title="Functions for dealing with numbers internally." alt="" coords="5,5,137,32"/>
-<area shape="rect" id="node2" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="73,304,184,331"/>
-<area shape="rect" id="node4" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="76,80,136,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="97,379,160,405"/>
-<area shape="rect" id="node5" title=" " alt="" coords="75,229,150,256"/>
-<area shape="rect" id="node6" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="138,155,301,181"/>
-<area shape="rect" id="node7" href="$type_8h.html" title="Function headers and defines for." alt="" coords="174,229,265,256"/>
+<area shape="rect" id="node1" title="Functions for dealing with numbers internally." alt="" coords="52,5,184,32"/>
+<area shape="rect" id="node2" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="5,155,116,181"/>
+<area shape="rect" id="node4" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="135,80,195,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="29,229,92,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="141,155,215,181"/>
+<area shape="rect" id="node6" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="239,155,354,181"/>
 </map>

@@ -1,12 +1,13 @@
 <map id="include/tree.h" name="include/tree.h">
-<area shape="rect" id="node1" title="Function headers for abstract syntax tree parsing." alt="" coords="106,5,205,32"/>
+<area shape="rect" id="node1" title="Function headers for abstract syntax tree parsing." alt="" coords="123,5,222,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,80,68,107"/>
-<area shape="rect" id="node3" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="92,80,152,107"/>
-<area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="74,155,237,181"/>
-<area shape="rect" id="node9" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="265,80,366,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="6,229,81,256"/>
-<area shape="rect" id="node6" href="$type_8h.html" title="Function headers and defines for." alt="" coords="110,229,201,256"/>
-<area shape="rect" id="node7" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="100,304,211,331"/>
-<area shape="rect" id="node8" title=" " alt="" coords="124,379,187,405"/>
-<area shape="rect" id="node10" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="261,155,377,181"/>
+<area shape="rect" id="node3" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="195,229,255,256"/>
+<area shape="rect" id="node8" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="151,80,314,107"/>
+<area shape="rect" id="node10" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="367,80,469,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="339,304,414,331"/>
+<area shape="rect" id="node5" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="65,304,179,331"/>
+<area shape="rect" id="node6" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="204,304,315,331"/>
+<area shape="rect" id="node7" title=" " alt="" coords="228,379,291,405"/>
+<area shape="rect" id="node9" href="$type_8h.html" title="Function headers and defines for." alt="" coords="194,155,285,181"/>
+<area shape="rect" id="node11" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="381,155,497,181"/>
 </map>

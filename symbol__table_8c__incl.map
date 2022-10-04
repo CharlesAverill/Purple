@@ -4,9 +4,11 @@
 <area shape="rect" id="node3" title=" " alt="" coords="89,95,152,121"/>
 <area shape="rect" id="node4" title=" " alt="" coords="177,95,241,121"/>
 <area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="265,95,427,121"/>
-<area shape="rect" id="node10" href="$hash_8h.html" title="Function headers and definitions for hashing algorithms." alt="" coords="451,95,539,121"/>
-<area shape="rect" id="node6" title=" " alt="" coords="255,169,330,196"/>
-<area shape="rect" id="node7" href="$type_8h.html" title="Function headers and defines for." alt="" coords="354,169,445,196"/>
-<area shape="rect" id="node8" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="344,244,455,271"/>
-<area shape="rect" id="node9" title=" " alt="" coords="368,319,431,345"/>
+<area shape="rect" id="node12" href="$hash_8h.html" title="Function headers and definitions for hashing algorithms." alt="" coords="451,95,539,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="182,319,257,345"/>
+<area shape="rect" id="node7" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="417,319,531,345"/>
+<area shape="rect" id="node8" href="$type_8h.html" title="Function headers and defines for." alt="" coords="301,169,391,196"/>
+<area shape="rect" id="node9" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="357,244,417,271"/>
+<area shape="rect" id="node10" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="281,319,392,345"/>
+<area shape="rect" id="node11" title=" " alt="" coords="305,393,368,420"/>
 </map>

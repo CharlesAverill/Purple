@@ -6,13 +6,14 @@ Function headers and definitions for the global and local symbol tables.
 
 
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}types/identifier.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}types/type.\+h\char`\"{}}\newline
 Include dependency graph for symbol\+\_\+table.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=230pt]{symbol__table_8h__incl}
+\includegraphics[width=342pt]{symbol__table_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -36,8 +37,6 @@ struct \mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}{SYMBOL\+\_\+\+TABLE\+\_\+\+DEFAULT\+\_\+\+LENGTH}}~1024
-\item 
-\#define \mbox{\hyperlink{symbol__table_8h_afdefd4da733213509f3ca91a81945044}{D\+\_\+\+MAX\+\_\+\+IDENTIFIER\+\_\+\+LENGTH}}~255
 \end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -93,13 +92,7 @@ Charles Averill
 
 
 \doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{symbol__table_8h_afdefd4da733213509f3ca91a81945044}\label{symbol__table_8h_afdefd4da733213509f3ca91a81945044}} 
-\index{symbol\_table.h@{symbol\_table.h}!D\_MAX\_IDENTIFIER\_LENGTH@{D\_MAX\_IDENTIFIER\_LENGTH}}
-\index{D\_MAX\_IDENTIFIER\_LENGTH@{D\_MAX\_IDENTIFIER\_LENGTH}!symbol\_table.h@{symbol\_table.h}}
-\doxysubsubsection{\texorpdfstring{D\_MAX\_IDENTIFIER\_LENGTH}{D\_MAX\_IDENTIFIER\_LENGTH}}
-{\footnotesize\ttfamily \#define D\+\_\+\+MAX\+\_\+\+IDENTIFIER\+\_\+\+LENGTH~255}
-
-Purple identifiers can be a maximum of 255 bytes in length \mbox{\Hypertarget{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}\label{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}} 
+\mbox{\Hypertarget{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}\label{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}} 
 \index{symbol\_table.h@{symbol\_table.h}!SYMBOL\_TABLE\_DEFAULT\_LENGTH@{SYMBOL\_TABLE\_DEFAULT\_LENGTH}}
 \index{SYMBOL\_TABLE\_DEFAULT\_LENGTH@{SYMBOL\_TABLE\_DEFAULT\_LENGTH}!symbol\_table.h@{symbol\_table.h}}
 \doxysubsubsection{\texorpdfstring{SYMBOL\_TABLE\_DEFAULT\_LENGTH}{SYMBOL\_TABLE\_DEFAULT\_LENGTH}}

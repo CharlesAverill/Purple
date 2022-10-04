@@ -6,41 +6,46 @@
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef TYPE\_H}}
 \DoxyCodeLine{9 \textcolor{preprocessor}{\#define TYPE\_H}}
 \DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{number_8h}{types/number.h}}"{}}}
-\DoxyCodeLine{12 }
-\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
-\DoxyCodeLine{17     \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0eea28299b2e38566e2c97826302cfa65028}{TT\_VOID}},}
-\DoxyCodeLine{18     \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0eea71d6777fe79532b9c0e1a8dd3afc9f49}{TT\_NUMBER}}}
-\DoxyCodeLine{19 \} \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0ee}{TypeType}};}
-\DoxyCodeLine{20 }
-\DoxyCodeLine{24 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structType}{Type}} \{}
-\DoxyCodeLine{26     \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0ee}{TypeType}} \mbox{\hyperlink{structType_a4a104a7251a624b3966a6d8c0c52ca48}{type}};}
-\DoxyCodeLine{28     \textcolor{keyword}{union }\{}
-\DoxyCodeLine{29         \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{structType_a78b8fbf7340e9445efa5bb9731367931}{number}};}
-\DoxyCodeLine{30     \} \mbox{\hyperlink{structType_af6d57ad268d222017f11c099570d378b}{value}};}
-\DoxyCodeLine{31 \} \mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}};}
-\DoxyCodeLine{32 }
-\DoxyCodeLine{36 \textcolor{preprocessor}{\#define TYPE\_VOID                                                                                  \(\backslash\)}}
-\DoxyCodeLine{37 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
-\DoxyCodeLine{38 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{39 \textcolor{preprocessor}{        .type = TT\_VOID                                                                            \(\backslash\)}}
-\DoxyCodeLine{40 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{45 \textcolor{preprocessor}{\#define TYPE\_NUMBER\_VAL(n)                                                                         \(\backslash\)}}
-\DoxyCodeLine{46 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
-\DoxyCodeLine{47 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{48 \textcolor{preprocessor}{        .type = TT\_NUMBER, .value.number = n                                                       \(\backslash\)}}
-\DoxyCodeLine{49 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{54 \textcolor{preprocessor}{\#define TYPE\_NUMBER(nt)                                                                            \(\backslash\)}}
-\DoxyCodeLine{55 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
-\DoxyCodeLine{56 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{57 \textcolor{preprocessor}{        .type = TT\_NUMBER, .value.number = (Number)                                                \(\backslash\)}}
-\DoxyCodeLine{58 \textcolor{preprocessor}{        \{                                                                                          \(\backslash\)}}
-\DoxyCodeLine{59 \textcolor{preprocessor}{            .type = nt                                                                             \(\backslash\)}}
-\DoxyCodeLine{60 \textcolor{preprocessor}{        \}                                                                                          \(\backslash\)}}
-\DoxyCodeLine{61 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{62 }
-\DoxyCodeLine{63 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TYPE\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{scan_8h}{scan.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{number_8h}{types/number.h}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{17 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structType}{Type}} \{}
+\DoxyCodeLine{19     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structType_ab90888b18d5dfabe3014052b41282591}{type}};}
+\DoxyCodeLine{21     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{22         \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{structType_a78b8fbf7340e9445efa5bb9731367931}{number}};}
+\DoxyCodeLine{23     \} \mbox{\hyperlink{structType_af6d57ad268d222017f11c099570d378b}{value}};}
+\DoxyCodeLine{24 \} \mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define TYPE\_VOID                                                                                  \(\backslash\)}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{        .type = T\_VOID                                                                             \(\backslash\)}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define TYPE\_NUMBER\_TOKEN(ttype)                                                                   \(\backslash\)}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{        .type = ttype, .value.number = NUMBER\_FROM\_TYPE\_VAL(token\_type\_to\_number\_type(ttype), 0)   \(\backslash\)}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define TYPE\_NUMBER\_VAL(n)                                                                         \(\backslash\)}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{        .type = number\_to\_token\_type(n), .value.number = n                                         \(\backslash\)}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define TYPE\_NUMBER(nt)                                                                            \(\backslash\)}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{        .type = number\_to\_token\_type((Number)\{.type = nt\}), .value.number = (Number)               \(\backslash\)}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{        \{                                                                                          \(\backslash\)}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{            .type = nt                                                                             \(\backslash\)}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{        \}                                                                                          \(\backslash\)}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_NUMBER\_TYPE(tt)                                                               \(\backslash\)}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{    ((tt >= T\_BOOL \&\& tt <= T\_LONG) || (T\_TRUE <= tt \&\& tt <= T\_LONG\_LITERAL))}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TYPE\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

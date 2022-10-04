@@ -99,14 +99,13 @@ Include dependency graph for llvm.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="llvm_8h__incl.png" border="0" usemap="#ainclude_2translate_2llvm_8h" alt=""/></div>
 <map name="ainclude_2translate_2llvm_8h" id="ainclude_2translate_2llvm_8h">
-<area shape="rect" title="Function headers for LLVM&#45;IR emission." alt="" coords="191,5,345,32"/>
-<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="119,80,179,107"/>
-<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="213,304,323,331"/>
-<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="306,155,465,181"/>
-<area shape="rect" title=" " alt="" coords="5,229,80,256"/>
-<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="68,155,231,181"/>
-<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="128,229,219,256"/>
-<area shape="rect" title=" " alt="" coords="237,379,299,405"/>
+<area shape="rect" title="Function headers for LLVM&#45;IR emission." alt="" coords="152,5,307,32"/>
+<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="131,80,191,107"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="243,155,354,181"/>
+<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="267,80,426,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,80,181"/>
+<area shape="rect" href="identifier_8h.html" title="Definitions for identifiers." alt="" coords="104,155,219,181"/>
+<area shape="rect" title=" " alt="" coords="267,229,330,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -267,7 +266,7 @@ Variables</h2></td></tr>
 <div class="line">    {                                                                                              \</div>
 <div class="line">        .value_type = <a class="code hl_enumvalue" href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79cad1194c945875d78e7a7a1a3070447333">LLVMVALUETYPE_LABEL</a>, .value.label_index = label_number                       \</div>
 <div class="line">    }</div>
-<div class="ttc" id="allvm_8h_html_a87c282050b6f3fea6f889ca66bf0b79cad1194c945875d78e7a7a1a3070447333"><div class="ttname"><a href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79cad1194c945875d78e7a7a1a3070447333">LLVMVALUETYPE_LABEL</a></div><div class="ttdeci">@ LLVMVALUETYPE_LABEL</div><div class="ttdef"><b>Definition:</b> llvm.h:36</div></div>
+<div class="ttc" id="allvm_8h_html_a87c282050b6f3fea6f889ca66bf0b79cad1194c945875d78e7a7a1a3070447333"><div class="ttname"><a href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79cad1194c945875d78e7a7a1a3070447333">LLVMVALUETYPE_LABEL</a></div><div class="ttdeci">@ LLVMVALUETYPE_LABEL</div><div class="ttdef"><b>Definition:</b> llvm.h:37</div></div>
 <div class="ttc" id="allvm_8h_html_a996ef903919a3c100bb6c98f81a47a48"><div class="ttname"><a href="llvm_8h.html#a996ef903919a3c100bb6c98f81a47a48">LLVMValue</a></div><div class="ttdeci">struct LLVMValue LLVMValue</div><div class="ttdoc">Value returned by ast_to_llvm.</div></div>
 </div><!-- fragment -->
 <p>Inline initializes an <a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> struct from a label number. </p>
@@ -289,7 +288,7 @@ Variables</h2></td></tr>
 <div class="line">    {                                                                                              \</div>
 <div class="line">        .value_type = <a class="code hl_enumvalue" href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca904a5cacf68c6ec7a9f9685372a334f0">LLVMVALUETYPE_NONE</a>, .value = 0                                               \</div>
 <div class="line">    }</div>
-<div class="ttc" id="allvm_8h_html_a87c282050b6f3fea6f889ca66bf0b79ca904a5cacf68c6ec7a9f9685372a334f0"><div class="ttname"><a href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca904a5cacf68c6ec7a9f9685372a334f0">LLVMVALUETYPE_NONE</a></div><div class="ttdeci">@ LLVMVALUETYPE_NONE</div><div class="ttdef"><b>Definition:</b> llvm.h:34</div></div>
+<div class="ttc" id="allvm_8h_html_a87c282050b6f3fea6f889ca66bf0b79ca904a5cacf68c6ec7a9f9685372a334f0"><div class="ttname"><a href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca904a5cacf68c6ec7a9f9685372a334f0">LLVMVALUETYPE_NONE</a></div><div class="ttdeci">@ LLVMVALUETYPE_NONE</div><div class="ttdef"><b>Definition:</b> llvm.h:35</div></div>
 </div><!-- fragment -->
 <p>A standard "null" <a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> struct returned in some scenarios. </p>
 
@@ -325,7 +324,7 @@ Variables</h2></td></tr>
 <div class="line">        .value_type = <a class="code hl_enumvalue" href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f">LLVMVALUETYPE_VIRTUAL_REGISTER</a>, .stores_pointer = <span class="keyword">false</span>,                     \</div>
 <div class="line">        .value.virtual_register_index = register_number, .number_type = n_t                        \</div>
 <div class="line">    }</div>
-<div class="ttc" id="allvm_8h_html_a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f"><div class="ttname"><a href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f">LLVMVALUETYPE_VIRTUAL_REGISTER</a></div><div class="ttdeci">@ LLVMVALUETYPE_VIRTUAL_REGISTER</div><div class="ttdef"><b>Definition:</b> llvm.h:35</div></div>
+<div class="ttc" id="allvm_8h_html_a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f"><div class="ttname"><a href="llvm_8h.html#a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f">LLVMVALUETYPE_VIRTUAL_REGISTER</a></div><div class="ttdeci">@ LLVMVALUETYPE_VIRTUAL_REGISTER</div><div class="ttdef"><b>Definition:</b> llvm.h:36</div></div>
 </div><!-- fragment -->
 <p>Inline-initializes an <a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> struct from a virtual register number. </p>
 
