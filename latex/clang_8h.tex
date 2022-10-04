@@ -16,7 +16,7 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{clang_8h_aadf030cd0471c3820bbbaf28939962e8}{GENERATOR\+\_\+\+PROGRAM\+\_\+\+CONTENTS}}~\char`\"{}\#include $<$stdio.\+h$>$\textbackslash{}nint \mbox{\hyperlink{purple_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}}()\{printf(\textbackslash{}\char`\"{}\textbackslash{}\char`\"{});\}\char`\"{}
+\#define \mbox{\hyperlink{clang_8h_aadf030cd0471c3820bbbaf28939962e8}{GENERATOR\+\_\+\+PROGRAM\+\_\+\+CONTENTS}}~\char`\"{}\#include $<$stdio.\+h$>$\textbackslash{}nint \mbox{\hyperlink{purple_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}}(void)\{printf(\textbackslash{}\char`\"{}\textbackslash{}\char`\"{});\}\char`\"{}
 \begin{DoxyCompactList}\small\item\em Program used to determine platform information. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{clang_8h_a7ee7a4dfe8493922ecc907b71ec7b6d4}{GENERATOR\+\_\+\+PROGRAM\+\_\+\+CONTENTS\+\_\+\+LENGTH}}~sizeof(\mbox{\hyperlink{clang_8h_aadf030cd0471c3820bbbaf28939962e8}{GENERATOR\+\_\+\+PROGRAM\+\_\+\+CONTENTS}})
 \begin{DoxyCompactList}\small\item\em Length of GENERATOR\+\_\+\+PROGRAM\+\_\+\+CONTENTS. \end{DoxyCompactList}\item 
@@ -35,13 +35,13 @@ void \mbox{\hyperlink{clang_8h_a3ef9aa60f9d1860c6a5b0ce0c983dedd}{clang\+\_\+com
 \begin{DoxyCompactList}\small\item\em Starts up the clang compiler to compile the generated LLVM-\/\+IR into a binary. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{clang_8h_a3d84b3d464dde7bb8b1f557995ddeef5}{link\+\_\+globals}} (void)
 \begin{DoxyCompactList}\small\item\em Link globals.\+ll to main LLVM file by copying the contents of each LLVM file into a temporary file, then copying back to the main LLVM file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{clang_8h_a3b369fac9808777478e63f68f41d5270}{create\+\_\+tmp\+\_\+generator\+\_\+program}} ()
+void \mbox{\hyperlink{clang_8h_a1304632607a0038e92588ecffdf652c5}{create\+\_\+tmp\+\_\+generator\+\_\+program}} (void)
 \begin{DoxyCompactList}\small\item\em Create a temporary file for a generator program used to determine compilation information. \end{DoxyCompactList}\item 
-char $\ast$ \mbox{\hyperlink{clang_8h_aad50747c930d7d8fe05d741b81501f5c}{get\+\_\+target\+\_\+datalayout}} ()
+char $\ast$ \mbox{\hyperlink{clang_8h_a8e9defa9881ad0ac71de6c1b13b9d2bc}{get\+\_\+target\+\_\+datalayout}} (void)
 \begin{DoxyCompactList}\small\item\em Search through GENERATOR\+\_\+\+PROGRAM for the target datalayout. \end{DoxyCompactList}\item 
-char $\ast$ \mbox{\hyperlink{clang_8h_ae6b73131bb54576584f6bdb9dc6378a7}{get\+\_\+target\+\_\+triple}} ()
+char $\ast$ \mbox{\hyperlink{clang_8h_a3a1904aa543eeb8ddc87cb2db56a0f24}{get\+\_\+target\+\_\+triple}} (void)
 \begin{DoxyCompactList}\small\item\em Get the target triple for the current target. \end{DoxyCompactList}\item 
-char $\ast$ \mbox{\hyperlink{clang_8h_a05c1a47a02bdbc3937ea103b8a6eae63}{get\+\_\+postamble}} ()
+char $\ast$ \mbox{\hyperlink{clang_8h_a4646b9c866c3979bf5164b55aa173e24}{get\+\_\+postamble}} (void)
 \item 
 char $\ast$ \mbox{\hyperlink{clang_8h_a90aaa0f0e2c76dc8c5631842644b5282}{regex\+\_\+match}} (const char $\ast$regex, char $\ast$target\+\_\+str, int len, int group\+\_\+index)
 \begin{DoxyCompactList}\small\item\em Simple regex parser. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -72,7 +72,7 @@ Charles Averill
 \index{clang.h@{clang.h}!GENERATOR\_PROGRAM\_CONTENTS@{GENERATOR\_PROGRAM\_CONTENTS}}
 \index{GENERATOR\_PROGRAM\_CONTENTS@{GENERATOR\_PROGRAM\_CONTENTS}!clang.h@{clang.h}}
 \doxysubsubsection{\texorpdfstring{GENERATOR\_PROGRAM\_CONTENTS}{GENERATOR\_PROGRAM\_CONTENTS}}
-{\footnotesize\ttfamily \#define GENERATOR\+\_\+\+PROGRAM\+\_\+\+CONTENTS~\char`\"{}\#include $<$stdio.\+h$>$\textbackslash{}nint \mbox{\hyperlink{purple_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}}()\{printf(\textbackslash{}\char`\"{}\textbackslash{}\char`\"{});\}\char`\"{}}
+{\footnotesize\ttfamily \#define GENERATOR\+\_\+\+PROGRAM\+\_\+\+CONTENTS~\char`\"{}\#include $<$stdio.\+h$>$\textbackslash{}nint \mbox{\hyperlink{purple_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}}(void)\{printf(\textbackslash{}\char`\"{}\textbackslash{}\char`\"{});\}\char`\"{}}
 
 
 
@@ -146,27 +146,27 @@ Starts up the clang compiler to compile the generated LLVM-\/\+IR into a binary.
 {\em fn} & Name of file to compile \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{clang_8h_a3b369fac9808777478e63f68f41d5270}\label{clang_8h_a3b369fac9808777478e63f68f41d5270}} 
+\mbox{\Hypertarget{clang_8h_a1304632607a0038e92588ecffdf652c5}\label{clang_8h_a1304632607a0038e92588ecffdf652c5}} 
 \index{clang.h@{clang.h}!create\_tmp\_generator\_program@{create\_tmp\_generator\_program}}
 \index{create\_tmp\_generator\_program@{create\_tmp\_generator\_program}!clang.h@{clang.h}}
 \doxysubsubsection{\texorpdfstring{create\_tmp\_generator\_program()}{create\_tmp\_generator\_program()}}
-{\footnotesize\ttfamily void create\+\_\+tmp\+\_\+generator\+\_\+program (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void create\+\_\+tmp\+\_\+generator\+\_\+program (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
 Create a temporary file for a generator program used to determine compilation information. 
 
-\mbox{\Hypertarget{clang_8h_a05c1a47a02bdbc3937ea103b8a6eae63}\label{clang_8h_a05c1a47a02bdbc3937ea103b8a6eae63}} 
+\mbox{\Hypertarget{clang_8h_a4646b9c866c3979bf5164b55aa173e24}\label{clang_8h_a4646b9c866c3979bf5164b55aa173e24}} 
 \index{clang.h@{clang.h}!get\_postamble@{get\_postamble}}
 \index{get\_postamble@{get\_postamble}!clang.h@{clang.h}}
 \doxysubsubsection{\texorpdfstring{get\_postamble()}{get\_postamble()}}
-{\footnotesize\ttfamily char $\ast$ get\+\_\+postamble (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily char $\ast$ get\+\_\+postamble (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{clang_8h_aad50747c930d7d8fe05d741b81501f5c}\label{clang_8h_aad50747c930d7d8fe05d741b81501f5c}} 
+\mbox{\Hypertarget{clang_8h_a8e9defa9881ad0ac71de6c1b13b9d2bc}\label{clang_8h_a8e9defa9881ad0ac71de6c1b13b9d2bc}} 
 \index{clang.h@{clang.h}!get\_target\_datalayout@{get\_target\_datalayout}}
 \index{get\_target\_datalayout@{get\_target\_datalayout}!clang.h@{clang.h}}
 \doxysubsubsection{\texorpdfstring{get\_target\_datalayout()}{get\_target\_datalayout()}}
-{\footnotesize\ttfamily char $\ast$ get\+\_\+target\+\_\+datalayout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily char $\ast$ get\+\_\+target\+\_\+datalayout (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -175,11 +175,11 @@ Search through GENERATOR\+\_\+\+PROGRAM for the target datalayout.
 \begin{DoxyReturn}{Returns}
 char$\ast$ Pointer to target datalayout string 
 \end{DoxyReturn}
-\mbox{\Hypertarget{clang_8h_ae6b73131bb54576584f6bdb9dc6378a7}\label{clang_8h_ae6b73131bb54576584f6bdb9dc6378a7}} 
+\mbox{\Hypertarget{clang_8h_a3a1904aa543eeb8ddc87cb2db56a0f24}\label{clang_8h_a3a1904aa543eeb8ddc87cb2db56a0f24}} 
 \index{clang.h@{clang.h}!get\_target\_triple@{get\_target\_triple}}
 \index{get\_target\_triple@{get\_target\_triple}!clang.h@{clang.h}}
 \doxysubsubsection{\texorpdfstring{get\_target\_triple()}{get\_target\_triple()}}
-{\footnotesize\ttfamily char $\ast$ get\+\_\+target\+\_\+triple (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily char $\ast$ get\+\_\+target\+\_\+triple (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 

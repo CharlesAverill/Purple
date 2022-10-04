@@ -11,50 +11,50 @@
 \DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{identifier_8h}{types/identifier.h}}"{}}}
 \DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{type_8h}{types/type.h}}"{}}}
 \DoxyCodeLine{15 }
-\DoxyCodeLine{16 \textcolor{preprocessor}{\#define SYMBOL\_TABLE\_DEFAULT\_LENGTH 1024}}
-\DoxyCodeLine{17 }
-\DoxyCodeLine{21 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}} \{}
-\DoxyCodeLine{23     \textcolor{keywordtype}{char} \mbox{\hyperlink{structSymbolTableEntry_a38ee057417f64c55de9d8e1a4c22ae39}{symbol\_name}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}} + 1];}
-\DoxyCodeLine{25     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTableEntry_aa0a12eb25f232b048883c09c4457f960}{length}};}
-\DoxyCodeLine{27     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTableEntry_a0c15e2fc64ead404c914b0fef62eb1ea}{bucket\_index}};}
-\DoxyCodeLine{29     \mbox{\hyperlink{structType}{Type}} \mbox{\hyperlink{structSymbolTableEntry_a52959839c9d7e016f5bc5a6001545c9a}{type}};}
-\DoxyCodeLine{31     \textcolor{keyword}{struct }\mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}}* \mbox{\hyperlink{structSymbolTableEntry_adf808305494a748a34cb14340e90bfe1}{next}};}
-\DoxyCodeLine{33     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTableEntry_a7db3bae7f68630cf192d8f1e57169c20}{chain\_index}};}
-\DoxyCodeLine{34 \} \mbox{\hyperlink{symbol__table_8h_a70075dcb3cfa8811d6771d902040ede1}{SymbolTableEntry}};}
-\DoxyCodeLine{35 }
-\DoxyCodeLine{39 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structSymbolTable}{SymbolTable}} \{}
-\DoxyCodeLine{41     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTable_a836b71e7e80178990b2b24ca0bc11e59}{length}};}
-\DoxyCodeLine{43     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTable_afdf8bf4102eda5ca2e077f198e9f6c66}{capacity}};}
-\DoxyCodeLine{45     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTable_a79d029aed5cb77d5153ace908e59547e}{total\_buckets}};}
-\DoxyCodeLine{47     \mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}}** \mbox{\hyperlink{structSymbolTable_af6e51d297fb314f42872cb61235691bd}{buckets}};}
-\DoxyCodeLine{49     \textcolor{keyword}{struct }\mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{structSymbolTable_afce59ce70989d0f787d63f192504479c}{next}};}
-\DoxyCodeLine{50 \} \mbox{\hyperlink{symbol__table_8h_a0ef213c033eadd9c99ef43c1df3d9bd5}{SymbolTable}};}
-\DoxyCodeLine{51 }
-\DoxyCodeLine{55 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}} \{}
-\DoxyCodeLine{56     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTableStack_a4030ff7c1fbe24981e56751c00fee72b}{length}};}
-\DoxyCodeLine{57     \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{structSymbolTableStack_a1134075dbf9ad905ab4494942f8b44aa}{top}};}
-\DoxyCodeLine{58 \} \mbox{\hyperlink{symbol__table_8h_a13eccf949a1c465b7662b74e0d880409}{SymbolTableStack}};}
-\DoxyCodeLine{59 }
-\DoxyCodeLine{60 \textcolor{comment}{// Symbol Table Stack functions}}
-\DoxyCodeLine{61 \mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* \mbox{\hyperlink{symbol__table_8h_a78f6b09625b0bd2da6bcf366eb1a6c03}{new\_symbol\_table\_stack}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{62 \mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* \mbox{\hyperlink{symbol__table_8h_aa9e85df6e628a2d7c77ed61e32b3884e}{new\_nonempty\_symbol\_table\_stack}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{63 \textcolor{keywordtype}{void} \mbox{\hyperlink{symbol__table_8h_a346fc23f4e7fa1a296eac45b999f6536}{free\_symbol\_table\_stack}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack);}
-\DoxyCodeLine{64 \textcolor{keywordtype}{void} \mbox{\hyperlink{symbol__table_8h_af000bd991852803c5c9afbf8254f61b8}{push\_symbol\_table}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack);}
-\DoxyCodeLine{65 \textcolor{keywordtype}{void} \mbox{\hyperlink{symbol__table_8h_adc448b0f90b802302a34273a0e058d6d}{push\_existing\_symbol\_table}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack, \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* new\_table);}
-\DoxyCodeLine{66 }
-\DoxyCodeLine{67 \textcolor{comment}{// Symbol Table functions}}
-\DoxyCodeLine{68 \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{symbol__table_8h_afeb6feeb636922dac2196bc7a4df7678}{pop\_symbol\_table}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack);}
-\DoxyCodeLine{69 \textcolor{keywordtype}{void} \mbox{\hyperlink{symbol__table_8h_afc191863c772a976e9cae92081f4c7db}{pop\_and\_free\_symbol\_table}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack);}
-\DoxyCodeLine{70 \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{symbol__table_8h_a22baa579c30840a238351e7afbed177f}{peek\_symbol\_table}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack);}
-\DoxyCodeLine{71 \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{symbol__table_8h_a66d50bceed619e9635d0ff0f0639d55d}{new\_symbol\_table}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{72 \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{symbol__table_8h_a9ee026e65506b668f3ea22de08b22b8c}{new\_symbol\_table\_with\_length}}(\textcolor{keywordtype}{int} length);}
-\DoxyCodeLine{73 \textcolor{keywordtype}{void} \mbox{\hyperlink{symbol__table_8h_ace4eaeafa7e20975b8dc696cf7705b1f}{resize\_symbol\_table}}(\mbox{\hyperlink{structSymbolTable}{SymbolTable}}* table);}
-\DoxyCodeLine{74 \mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}}* \mbox{\hyperlink{symbol__table_8h_a8cee987c629bab7017e0eea921e4ab1f}{find\_symbol\_table\_entry}}(\mbox{\hyperlink{structSymbolTable}{SymbolTable}}* table, \textcolor{keywordtype}{char}* symbol\_name);}
-\DoxyCodeLine{75 }
-\DoxyCodeLine{76 \textcolor{comment}{// Symbol Table Entry functions}}
-\DoxyCodeLine{77 \mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}}* \mbox{\hyperlink{symbol__table_8h_a19902129ff999624837d473ed4d77674}{new\_symbol\_table\_entry}}(\textcolor{keywordtype}{char}* symbol\_name);}
-\DoxyCodeLine{78 \mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}}* \mbox{\hyperlink{symbol__table_8h_ab32fb47ae26126a5117952900b892751}{add\_symbol\_table\_entry}}(\mbox{\hyperlink{structSymbolTable}{SymbolTable}}* table, \textcolor{keywordtype}{char}* symbol\_name, \mbox{\hyperlink{structType}{Type}} type);}
-\DoxyCodeLine{79 }
-\DoxyCodeLine{80 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SYMBOL\_TABLE */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define SYMBOL\_TABLE\_DEFAULT\_LENGTH 1024}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{22 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}} \{}
+\DoxyCodeLine{24     \textcolor{keywordtype}{char} \mbox{\hyperlink{structSymbolTableEntry_a38ee057417f64c55de9d8e1a4c22ae39}{symbol\_name}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}} + 1];}
+\DoxyCodeLine{26     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTableEntry_aa0a12eb25f232b048883c09c4457f960}{length}};}
+\DoxyCodeLine{28     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTableEntry_a0c15e2fc64ead404c914b0fef62eb1ea}{bucket\_index}};}
+\DoxyCodeLine{30     \mbox{\hyperlink{structType}{Type}} \mbox{\hyperlink{structSymbolTableEntry_a52959839c9d7e016f5bc5a6001545c9a}{type}};}
+\DoxyCodeLine{32     \textcolor{keyword}{struct }\mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}}* \mbox{\hyperlink{structSymbolTableEntry_adf808305494a748a34cb14340e90bfe1}{next}};}
+\DoxyCodeLine{34     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTableEntry_a7db3bae7f68630cf192d8f1e57169c20}{chain\_index}};}
+\DoxyCodeLine{35 \} \mbox{\hyperlink{symbol__table_8h_a70075dcb3cfa8811d6771d902040ede1}{SymbolTableEntry}};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{40 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structSymbolTable}{SymbolTable}} \{}
+\DoxyCodeLine{42     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTable_a836b71e7e80178990b2b24ca0bc11e59}{length}};}
+\DoxyCodeLine{44     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTable_afdf8bf4102eda5ca2e077f198e9f6c66}{capacity}};}
+\DoxyCodeLine{46     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTable_a79d029aed5cb77d5153ace908e59547e}{total\_buckets}};}
+\DoxyCodeLine{48     \mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}}** \mbox{\hyperlink{structSymbolTable_af6e51d297fb314f42872cb61235691bd}{buckets}};}
+\DoxyCodeLine{50     \textcolor{keyword}{struct }\mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{structSymbolTable_afce59ce70989d0f787d63f192504479c}{next}};}
+\DoxyCodeLine{51 \} \mbox{\hyperlink{symbol__table_8h_a0ef213c033eadd9c99ef43c1df3d9bd5}{SymbolTable}};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{56 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}} \{}
+\DoxyCodeLine{57     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structSymbolTableStack_a4030ff7c1fbe24981e56751c00fee72b}{length}};}
+\DoxyCodeLine{58     \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{structSymbolTableStack_a1134075dbf9ad905ab4494942f8b44aa}{top}};}
+\DoxyCodeLine{59 \} \mbox{\hyperlink{symbol__table_8h_a13eccf949a1c465b7662b74e0d880409}{SymbolTableStack}};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{comment}{// Symbol Table Stack functions}}
+\DoxyCodeLine{62 \mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* \mbox{\hyperlink{symbol__table_8h_a78f6b09625b0bd2da6bcf366eb1a6c03}{new\_symbol\_table\_stack}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{63 \mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* \mbox{\hyperlink{symbol__table_8h_aa9e85df6e628a2d7c77ed61e32b3884e}{new\_nonempty\_symbol\_table\_stack}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{64 \textcolor{keywordtype}{void} \mbox{\hyperlink{symbol__table_8h_a346fc23f4e7fa1a296eac45b999f6536}{free\_symbol\_table\_stack}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack);}
+\DoxyCodeLine{65 \textcolor{keywordtype}{void} \mbox{\hyperlink{symbol__table_8h_af000bd991852803c5c9afbf8254f61b8}{push\_symbol\_table}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack);}
+\DoxyCodeLine{66 \textcolor{keywordtype}{void} \mbox{\hyperlink{symbol__table_8h_adc448b0f90b802302a34273a0e058d6d}{push\_existing\_symbol\_table}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack, \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* new\_table);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{comment}{// Symbol Table functions}}
+\DoxyCodeLine{69 \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{symbol__table_8h_afeb6feeb636922dac2196bc7a4df7678}{pop\_symbol\_table}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack);}
+\DoxyCodeLine{70 \textcolor{keywordtype}{void} \mbox{\hyperlink{symbol__table_8h_afc191863c772a976e9cae92081f4c7db}{pop\_and\_free\_symbol\_table}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack);}
+\DoxyCodeLine{71 \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{symbol__table_8h_a22baa579c30840a238351e7afbed177f}{peek\_symbol\_table}}(\mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* stack);}
+\DoxyCodeLine{72 \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{symbol__table_8h_a66d50bceed619e9635d0ff0f0639d55d}{new\_symbol\_table}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{73 \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{symbol__table_8h_a9ee026e65506b668f3ea22de08b22b8c}{new\_symbol\_table\_with\_length}}(\textcolor{keywordtype}{int} length);}
+\DoxyCodeLine{74 \textcolor{keywordtype}{void} \mbox{\hyperlink{symbol__table_8h_ace4eaeafa7e20975b8dc696cf7705b1f}{resize\_symbol\_table}}(\mbox{\hyperlink{structSymbolTable}{SymbolTable}}* table);}
+\DoxyCodeLine{75 \mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}}* \mbox{\hyperlink{symbol__table_8h_a8cee987c629bab7017e0eea921e4ab1f}{find\_symbol\_table\_entry}}(\mbox{\hyperlink{structSymbolTable}{SymbolTable}}* table, \textcolor{keywordtype}{char}* symbol\_name);}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{comment}{// Symbol Table Entry functions}}
+\DoxyCodeLine{78 \mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}}* \mbox{\hyperlink{symbol__table_8h_a19902129ff999624837d473ed4d77674}{new\_symbol\_table\_entry}}(\textcolor{keywordtype}{char}* symbol\_name);}
+\DoxyCodeLine{79 \mbox{\hyperlink{structSymbolTableEntry}{SymbolTableEntry}}* \mbox{\hyperlink{symbol__table_8h_ab32fb47ae26126a5117952900b892751}{add\_symbol\_table\_entry}}(\mbox{\hyperlink{structSymbolTable}{SymbolTable}}* table, \textcolor{keywordtype}{char}* symbol\_name, \mbox{\hyperlink{structType}{Type}} type);}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SYMBOL\_TABLE */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

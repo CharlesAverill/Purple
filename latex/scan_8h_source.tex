@@ -179,39 +179,42 @@
 \DoxyCodeLine{190 }
 \DoxyCodeLine{194 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_TYPE(type) (type >= T\_BOOL \&\& type <= T\_LONG)}}
 \DoxyCodeLine{195 }
-\DoxyCodeLine{199 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_LITERAL(type) (type >= T\_TRUE \&\& type <= T\_LONG\_LITERAL)}}
-\DoxyCodeLine{200 }
-\DoxyCodeLine{204 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_BOOL\_LITERAL(type) (type >= T\_TRUE \&\& type <= T\_FALSE)}}
-\DoxyCodeLine{205 }
-\DoxyCodeLine{209 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_IDENTIFIER(type) (type >= T\_IDENTIFIER \&\& type <= T\_LVALUE\_IDENTIFIER)}}
-\DoxyCodeLine{210 }
-\DoxyCodeLine{214 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_COMPARATOR(type) (type >= T\_EQ \&\& type <= T\_GE)}}
-\DoxyCodeLine{215 }
-\DoxyCodeLine{220 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_LOGICAL\_OPERATOR(type) (type >= T\_AND \&\& type <= T\_XNOR)}}
+\DoxyCodeLine{199 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_NUMBER\_TYPE(tt)                                                               \(\backslash\)}}
+\DoxyCodeLine{200 \textcolor{preprocessor}{    ((tt >= T\_BOOL \&\& tt <= T\_LONG) || (T\_TRUE <= tt \&\& tt <= T\_LONG\_LITERAL))}}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{205 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_LITERAL(type) (type >= T\_TRUE \&\& type <= T\_LONG\_LITERAL)}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{210 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_BOOL\_LITERAL(type) (type >= T\_TRUE \&\& type <= T\_FALSE)}}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{215 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_IDENTIFIER(type) (type >= T\_IDENTIFIER \&\& type <= T\_LVALUE\_IDENTIFIER)}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{220 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_COMPARATOR(type) (type >= T\_EQ \&\& type <= T\_GE)}}
 \DoxyCodeLine{221 }
-\DoxyCodeLine{225 \textcolor{preprocessor}{\#define number\_literal\_type long long int}}
-\DoxyCodeLine{226 }
-\DoxyCodeLine{230 \textcolor{preprocessor}{\#define MAX\_NUMBER\_LITERAL\_DIGITS 19}}
-\DoxyCodeLine{231 }
-\DoxyCodeLine{232 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structposition}{position}} \{}
-\DoxyCodeLine{233     \textcolor{keywordtype}{char} \mbox{\hyperlink{structposition_a9ec1dda88ec8d157b7e8d9e52235f031}{filename}}[256];}
-\DoxyCodeLine{234     \textcolor{keywordtype}{int} \mbox{\hyperlink{structposition_a19a7fc8ddc793e56768c426d48582987}{line\_number}};}
-\DoxyCodeLine{235     \textcolor{keywordtype}{int} \mbox{\hyperlink{structposition_a27f45e9d4ef01bc81be9b5d906f78799}{char\_number}};}
-\DoxyCodeLine{236 \} \mbox{\hyperlink{scan_8h_ae95ed9c09d4ff44297273224ccfbe1dd}{position}};}
+\DoxyCodeLine{226 \textcolor{preprocessor}{\#define TOKENTYPE\_IS\_LOGICAL\_OPERATOR(type) (type >= T\_AND \&\& type <= T\_XNOR)}}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{231 \textcolor{preprocessor}{\#define number\_literal\_type long long int}}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{236 \textcolor{preprocessor}{\#define MAX\_NUMBER\_LITERAL\_DIGITS 19}}
 \DoxyCodeLine{237 }
-\DoxyCodeLine{241 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structToken}{Token}} \{}
-\DoxyCodeLine{243     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}{type}};}
-\DoxyCodeLine{245     \mbox{\hyperlink{structposition}{position}} \mbox{\hyperlink{structToken_a48d7b8b962d238a7548ba7358332c257}{pos}};}
-\DoxyCodeLine{247     \textcolor{keyword}{union }\{}
-\DoxyCodeLine{249         \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{structToken_ad265a3d310ddd105154db303962f4a85}{number\_value}};}
-\DoxyCodeLine{251         \textcolor{keywordtype}{char} \mbox{\hyperlink{structToken_ababe6c2810ecc25eba4729050e99af0c}{symbol\_name}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}}];}
-\DoxyCodeLine{252     \} \mbox{\hyperlink{structToken_aa8cbd23eb93e4c0f3f2627c3e5b5591d}{value}};}
-\DoxyCodeLine{253 \} \mbox{\hyperlink{scan_8h_ae88d5c0259051080fda097b92d99d7ee}{Token}};}
-\DoxyCodeLine{254 }
-\DoxyCodeLine{255 \textcolor{keywordtype}{char} \mbox{\hyperlink{scan_8h_a0de139c03356d8fe5eef9b03661dc5b0}{next}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{256 \textcolor{keywordtype}{void} \mbox{\hyperlink{scan_8h_ad98ab6a95acd6305158f34a8edb0e4f1}{put\_back\_into\_stream}}(\textcolor{keywordtype}{char} c);}
-\DoxyCodeLine{257 \textcolor{keywordtype}{bool} \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}}(\mbox{\hyperlink{structToken}{Token}}* t);}
-\DoxyCodeLine{258 }
-\DoxyCodeLine{259 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SCAN\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{241 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structposition}{position}} \{}
+\DoxyCodeLine{243     \textcolor{keywordtype}{char} \mbox{\hyperlink{structposition_a9ec1dda88ec8d157b7e8d9e52235f031}{filename}}[256];}
+\DoxyCodeLine{245     \textcolor{keywordtype}{int} \mbox{\hyperlink{structposition_a19a7fc8ddc793e56768c426d48582987}{line\_number}};}
+\DoxyCodeLine{247     \textcolor{keywordtype}{int} \mbox{\hyperlink{structposition_a27f45e9d4ef01bc81be9b5d906f78799}{char\_number}};}
+\DoxyCodeLine{248 \} \mbox{\hyperlink{scan_8h_ae95ed9c09d4ff44297273224ccfbe1dd}{position}};}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{253 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structToken}{Token}} \{}
+\DoxyCodeLine{255     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structToken_a67919af9f3a80dc0b28a0ab1e6d5bf8a}{type}};}
+\DoxyCodeLine{257     \mbox{\hyperlink{structposition}{position}} \mbox{\hyperlink{structToken_a48d7b8b962d238a7548ba7358332c257}{pos}};}
+\DoxyCodeLine{259     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{261         \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{structToken_ad265a3d310ddd105154db303962f4a85}{number\_value}};}
+\DoxyCodeLine{263         \textcolor{keywordtype}{char} \mbox{\hyperlink{structToken_ababe6c2810ecc25eba4729050e99af0c}{symbol\_name}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}}];}
+\DoxyCodeLine{264     \} \mbox{\hyperlink{structToken_aa8cbd23eb93e4c0f3f2627c3e5b5591d}{value}};}
+\DoxyCodeLine{265 \} \mbox{\hyperlink{scan_8h_ae88d5c0259051080fda097b92d99d7ee}{Token}};}
+\DoxyCodeLine{266 }
+\DoxyCodeLine{267 \textcolor{keywordtype}{char} \mbox{\hyperlink{scan_8h_a0de139c03356d8fe5eef9b03661dc5b0}{next}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{268 \textcolor{keywordtype}{void} \mbox{\hyperlink{scan_8h_ad98ab6a95acd6305158f34a8edb0e4f1}{put\_back\_into\_stream}}(\textcolor{keywordtype}{char} c);}
+\DoxyCodeLine{269 \textcolor{keywordtype}{bool} \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}}(\mbox{\hyperlink{structToken}{Token}}* t);}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{271 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* SCAN\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

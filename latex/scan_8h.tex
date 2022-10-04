@@ -28,7 +28,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structposition}{position}}
-\item 
+\begin{DoxyCompactList}\small\item\em Structure containing information about a \mbox{\hyperlink{structToken}{Token}}\textquotesingle{}s position in the input. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structToken}{Token}}
 \begin{DoxyCompactList}\small\item\em Structure containing information about individual scannable tokens. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Macros}
@@ -146,6 +146,8 @@ struct \mbox{\hyperlink{structToken}{Token}}
 \begin{DoxyCompactList}\small\item\em Determines if a Token\+Type is associated with a binary arithmetic operation. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scan_8h_a25f96fd1446a9c6f4cfbbbbb8b32b540}{TOKENTYPE\+\_\+\+IS\+\_\+\+TYPE}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf}{T\+\_\+\+BOOL}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842}{T\+\_\+\+LONG}})
 \begin{DoxyCompactList}\small\item\em Determines if a Token\+Type is associated with a type keyword. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{scan_8h_a687840c3bb584fbb121be2e4d780a036}{TOKENTYPE\+\_\+\+IS\+\_\+\+NUMBER\+\_\+\+TYPE}}(tt)~    ((tt $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf}{T\+\_\+\+BOOL}} \&\& tt $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842}{T\+\_\+\+LONG}}) $\vert$$\vert$ (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075}{T\+\_\+\+TRUE}} $<$= tt \&\& tt $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796}{T\+\_\+\+LONG\+\_\+\+LITERAL}}))
+\begin{DoxyCompactList}\small\item\em Determines if a Token\+Type is associated with a number type keyword or a number literal. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scan_8h_a87af1be2659dcfd57ec2e73dcd0470c5}{TOKENTYPE\+\_\+\+IS\+\_\+\+LITERAL}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075}{T\+\_\+\+TRUE}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796}{T\+\_\+\+LONG\+\_\+\+LITERAL}})
 \begin{DoxyCompactList}\small\item\em Determines if a Token\+Type is associated with a literal value. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scan_8h_a00b96c3bd6c8744e967fe60cc676fa35}{TOKENTYPE\+\_\+\+IS\+\_\+\+BOOL\+\_\+\+LITERAL}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075}{T\+\_\+\+TRUE}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad04c6fedfc6e82b9cd961d926579f541}{T\+\_\+\+FALSE}})
@@ -164,7 +166,7 @@ struct \mbox{\hyperlink{structToken}{Token}}
 \begin{DoxyCompactItemize}
 \item 
 typedef struct \mbox{\hyperlink{structposition}{position}} \mbox{\hyperlink{scan_8h_ae95ed9c09d4ff44297273224ccfbe1dd}{position}}
-\item 
+\begin{DoxyCompactList}\small\item\em Structure containing information about a \mbox{\hyperlink{structToken}{Token}}\textquotesingle{}s position in the input. \end{DoxyCompactList}\item 
 typedef struct \mbox{\hyperlink{structToken}{Token}} \mbox{\hyperlink{scan_8h_ae88d5c0259051080fda097b92d99d7ee}{Token}}
 \begin{DoxyCompactList}\small\item\em Structure containing information about individual scannable tokens. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
@@ -380,6 +382,16 @@ Determines if a Token\+Type is associated with a literal value.
 
 
 Determines if a Token\+Type is associated with a logical operator. 
+
+\mbox{\Hypertarget{scan_8h_a687840c3bb584fbb121be2e4d780a036}\label{scan_8h_a687840c3bb584fbb121be2e4d780a036}} 
+\index{scan.h@{scan.h}!TOKENTYPE\_IS\_NUMBER\_TYPE@{TOKENTYPE\_IS\_NUMBER\_TYPE}}
+\index{TOKENTYPE\_IS\_NUMBER\_TYPE@{TOKENTYPE\_IS\_NUMBER\_TYPE}!scan.h@{scan.h}}
+\doxysubsubsection{\texorpdfstring{TOKENTYPE\_IS\_NUMBER\_TYPE}{TOKENTYPE\_IS\_NUMBER\_TYPE}}
+{\footnotesize\ttfamily \#define TOKENTYPE\+\_\+\+IS\+\_\+\+NUMBER\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{tt }\end{DoxyParamCaption})~    ((tt $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf}{T\+\_\+\+BOOL}} \&\& tt $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842}{T\+\_\+\+LONG}}) $\vert$$\vert$ (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075}{T\+\_\+\+TRUE}} $<$= tt \&\& tt $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796}{T\+\_\+\+LONG\+\_\+\+LITERAL}}))}
+
+
+
+Determines if a Token\+Type is associated with a number type keyword or a number literal. 
 
 \mbox{\Hypertarget{scan_8h_a25f96fd1446a9c6f4cfbbbbb8b32b540}\label{scan_8h_a25f96fd1446a9c6f4cfbbbbb8b32b540}} 
 \index{scan.h@{scan.h}!TOKENTYPE\_IS\_TYPE@{TOKENTYPE\_IS\_TYPE}}
@@ -681,6 +693,10 @@ Determines if a Token\+Type is associated with a type keyword.
 \index{position@{position}!scan.h@{scan.h}}
 \doxysubsubsection{\texorpdfstring{position}{position}}
 {\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structposition}{position}} \mbox{\hyperlink{structposition}{position}}}
+
+
+
+Structure containing information about a \mbox{\hyperlink{structToken}{Token}}\textquotesingle{}s position in the input. 
 
 \mbox{\Hypertarget{scan_8h_ae88d5c0259051080fda097b92d99d7ee}\label{scan_8h_ae88d5c0259051080fda097b92d99d7ee}} 
 \index{scan.h@{scan.h}!Token@{Token}}

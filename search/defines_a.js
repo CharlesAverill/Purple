@@ -7,7 +7,7 @@ var searchData=
   ['tokentype_5fis_5fidentifier_4',['TOKENTYPE_IS_IDENTIFIER',['../scan_8h.html#a10cb0c84238158232dc389584ea0e2eb',1,'scan.h']]],
   ['tokentype_5fis_5fliteral_5',['TOKENTYPE_IS_LITERAL',['../scan_8h.html#a87af1be2659dcfd57ec2e73dcd0470c5',1,'scan.h']]],
   ['tokentype_5fis_5flogical_5foperator_6',['TOKENTYPE_IS_LOGICAL_OPERATOR',['../scan_8h.html#a9c3909916472f14fb12d61f57af640be',1,'scan.h']]],
-  ['tokentype_5fis_5fnumber_5ftype_7',['TOKENTYPE_IS_NUMBER_TYPE',['../type_8h.html#a687840c3bb584fbb121be2e4d780a036',1,'type.h']]],
+  ['tokentype_5fis_5fnumber_5ftype_7',['TOKENTYPE_IS_NUMBER_TYPE',['../scan_8h.html#a687840c3bb584fbb121be2e4d780a036',1,'scan.h']]],
   ['tokentype_5fis_5ftype_8',['TOKENTYPE_IS_TYPE',['../scan_8h.html#a25f96fd1446a9c6f4cfbbbbb8b32b540',1,'scan.h']]],
   ['tts_5fand_9',['TTS_AND',['../scan_8h.html#a0913251ea2648b3d78d305822f1a2c88',1,'scan.h']]],
   ['tts_5fassign_10',['TTS_ASSIGN',['../scan_8h.html#a6fab4f8e45fe721285aa5c861c37e0c1',1,'scan.h']]],
@@ -57,9 +57,9 @@ var searchData=
   ['tts_5fxnor_54',['TTS_XNOR',['../scan_8h.html#aa9d45ad88120b4864135657b17650c69',1,'scan.h']]],
   ['tts_5fxor_55',['TTS_XOR',['../scan_8h.html#af1c57a1b70cbb2f3205b95aafbc06ea9',1,'scan.h']]],
   ['type_5flabel_56',['type_label',['../llvm__stack__entry_8h.html#a5a55d7544c78159d2429f84d79a87b6c',1,'llvm_stack_entry.h']]],
-  ['type_5fnumber_57',['TYPE_NUMBER',['../type_8h.html#af6991466b578a05b9dc8e808c00ef2e8',1,'type.h']]],
-  ['type_5fnumber_5ftoken_58',['TYPE_NUMBER_TOKEN',['../type_8h.html#a0815223a8c5fd458ad2051fb3371ed1f',1,'type.h']]],
-  ['type_5fnumber_5fval_59',['TYPE_NUMBER_VAL',['../type_8h.html#af38880ae77064175c6133f1339ba6945',1,'type.h']]],
+  ['type_5fnumber_5ffrom_5fnumbertype_57',['TYPE_NUMBER_FROM_NUMBERTYPE',['../type_8h.html#a25fe96ddc7195fc8910ee54412fe6478',1,'type.h']]],
+  ['type_5fnumber_5ffrom_5fnumbertype_5ffrom_5fnumber_58',['TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER',['../type_8h.html#ab320eb9d03acd62a00d9bb0a97e93892',1,'type.h']]],
+  ['type_5fnumber_5ffrom_5fnumbertype_5ffrom_5ftoken_59',['TYPE_NUMBER_FROM_NUMBERTYPE_FROM_TOKEN',['../type_8h.html#a3ee1a2b9000623e69d861068cd0d4653',1,'type.h']]],
   ['type_5fregister_60',['type_register',['../llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e',1,'llvm_stack_entry.h']]],
   ['type_5fvoid_61',['TYPE_VOID',['../type_8h.html#a455edbbc0a157643b4d101447188e905',1,'type.h']]]
 ];

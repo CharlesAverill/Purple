@@ -131,13 +131,14 @@ Functions</h2></td></tr>
 <tr class="memdesc:ac977d1d6aef44e3b2087f9b231723342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update loaded register linked list to include new register.  <a href="llvm_8c.html#ac977d1d6aef44e3b2087f9b231723342">More...</a><br /></td></tr>
 <tr class="separator:ac977d1d6aef44e3b2087f9b231723342"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabeadacb10dc9e1bcf23d31833d1bb8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#aabeadacb10dc9e1bcf23d31833d1bb8b">llvm_ensure_registers_loaded</a> (int n_registers, <a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> registers[], <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> number_type)</td></tr>
+<tr class="memdesc:aabeadacb10dc9e1bcf23d31833d1bb8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure that the values of a set of registers are loaded.  <a href="llvm_8c.html#aabeadacb10dc9e1bcf23d31833d1bb8b">More...</a><br /></td></tr>
 <tr class="separator:aabeadacb10dc9e1bcf23d31833d1bb8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a71cd943c755c45ce34a623e8a9b6c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a2a71cd943c755c45ce34a623e8a9b6c2">llvm_preamble</a> ()</td></tr>
-<tr class="memdesc:a2a71cd943c755c45ce34a623e8a9b6c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generated program's preamble.  <a href="llvm_8c.html#a2a71cd943c755c45ce34a623e8a9b6c2">More...</a><br /></td></tr>
-<tr class="separator:a2a71cd943c755c45ce34a623e8a9b6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f43471ff369b4c5cc066b16f61ebbf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a6f43471ff369b4c5cc066b16f61ebbf3">llvm_postamble</a> ()</td></tr>
-<tr class="memdesc:a6f43471ff369b4c5cc066b16f61ebbf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generated program's postamble.  <a href="llvm_8c.html#a6f43471ff369b4c5cc066b16f61ebbf3">More...</a><br /></td></tr>
-<tr class="separator:a6f43471ff369b4c5cc066b16f61ebbf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76498db4c0864f14519dad7627a3cb16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a76498db4c0864f14519dad7627a3cb16">llvm_preamble</a> (void)</td></tr>
+<tr class="memdesc:a76498db4c0864f14519dad7627a3cb16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generated program's preamble.  <a href="llvm_8c.html#a76498db4c0864f14519dad7627a3cb16">More...</a><br /></td></tr>
+<tr class="separator:a76498db4c0864f14519dad7627a3cb16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29f6abda9d506deee8732fd4c558fc15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a29f6abda9d506deee8732fd4c558fc15">llvm_postamble</a> (void)</td></tr>
+<tr class="memdesc:a29f6abda9d506deee8732fd4c558fc15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generated program's postamble.  <a href="llvm_8c.html#a29f6abda9d506deee8732fd4c558fc15">More...</a><br /></td></tr>
+<tr class="separator:a29f6abda9d506deee8732fd4c558fc15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74810a264e58860726fc4838a0e9c286"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a74810a264e58860726fc4838a0e9c286">llvm_stack_allocation</a> (<a class="el" href="structLLVMStackEntryNode.html">LLVMStackEntryNode</a> *stack_entries)</td></tr>
 <tr class="memdesc:a74810a264e58860726fc4838a0e9c286"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate space on stack for variables.  <a href="llvm_8c.html#a74810a264e58860726fc4838a0e9c286">More...</a><br /></td></tr>
 <tr class="separator:a74810a264e58860726fc4838a0e9c286"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -208,8 +209,8 @@ Functions</h2></td></tr>
 <tr class="separator:a492b6193f6cfe59c435bf09ee99f0a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43b3adedb0a09aa7422dd249ee79c9e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a43b3adedb0a09aa7422dd249ee79c9e4">llvm_function_preamble</a> (char *symbol_name)</td></tr>
 <tr class="separator:a43b3adedb0a09aa7422dd249ee79c9e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ced2f8d0bed85c2be23001a3d0e7a9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a1ced2f8d0bed85c2be23001a3d0e7a9e">llvm_function_postamble</a> ()</td></tr>
-<tr class="separator:a1ced2f8d0bed85c2be23001a3d0e7a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53f223d3ffdbcf048fedd7e39a95d7f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a53f223d3ffdbcf048fedd7e39a95d7f3">llvm_function_postamble</a> (void)</td></tr>
+<tr class="separator:a53f223d3ffdbcf048fedd7e39a95d7f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -647,10 +648,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Ensure that the values of a set of registers are loaded. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_registers</td><td><a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a> of registers to ensure </td></tr>
+    <tr><td class="paramname">registers</td><td>Array of register indices to ensure </td></tr>
+    <tr><td class="paramname">number_type</td><td>NumberType of registers to ensure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>type_register* If the registers were not loaded, this array contains the loaded registers </dd></dl>
+
 </div>
 </div>
-<a id="a1ced2f8d0bed85c2be23001a3d0e7a9e" name="a1ced2f8d0bed85c2be23001a3d0e7a9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ced2f8d0bed85c2be23001a3d0e7a9e">&#9670;&nbsp;</a></span>llvm_function_postamble()</h2>
+<a id="a53f223d3ffdbcf048fedd7e39a95d7f3" name="a53f223d3ffdbcf048fedd7e39a95d7f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53f223d3ffdbcf048fedd7e39a95d7f3">&#9670;&nbsp;</a></span>llvm_function_postamble()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -858,8 +870,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a6f43471ff369b4c5cc066b16f61ebbf3" name="a6f43471ff369b4c5cc066b16f61ebbf3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f43471ff369b4c5cc066b16f61ebbf3">&#9670;&nbsp;</a></span>llvm_postamble()</h2>
+<a id="a29f6abda9d506deee8732fd4c558fc15" name="a29f6abda9d506deee8732fd4c558fc15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29f6abda9d506deee8732fd4c558fc15">&#9670;&nbsp;</a></span>llvm_postamble()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -867,6 +879,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void llvm_postamble </td>
           <td>(</td>
+          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -877,8 +890,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a2a71cd943c755c45ce34a623e8a9b6c2" name="a2a71cd943c755c45ce34a623e8a9b6c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a71cd943c755c45ce34a623e8a9b6c2">&#9670;&nbsp;</a></span>llvm_preamble()</h2>
+<a id="a76498db4c0864f14519dad7627a3cb16" name="a76498db4c0864f14519dad7627a3cb16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76498db4c0864f14519dad7627a3cb16">&#9670;&nbsp;</a></span>llvm_preamble()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -886,6 +899,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void llvm_preamble </td>
           <td>(</td>
+          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>

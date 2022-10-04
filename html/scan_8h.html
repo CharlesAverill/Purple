@@ -140,6 +140,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structposition.html">position</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about a <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>'s position in the input.  <a href="structposition.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structToken.html">Token</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about individual scannable tokens.  <a href="structToken.html#details">More...</a><br /></td></tr>
@@ -261,6 +262,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a25f96fd1446a9c6f4cfbbbbb8b32b540"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a25f96fd1446a9c6f4cfbbbbb8b32b540">TOKENTYPE_IS_TYPE</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf">T_BOOL</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842">T_LONG</a>)</td></tr>
 <tr class="memdesc:a25f96fd1446a9c6f4cfbbbbb8b32b540"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if a TokenType is associated with a type keyword.  <a href="scan_8h.html#a25f96fd1446a9c6f4cfbbbbb8b32b540">More...</a><br /></td></tr>
 <tr class="separator:a25f96fd1446a9c6f4cfbbbbb8b32b540"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a687840c3bb584fbb121be2e4d780a036"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a687840c3bb584fbb121be2e4d780a036">TOKENTYPE_IS_NUMBER_TYPE</a>(tt)&#160;&#160;&#160;    ((tt &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf">T_BOOL</a> &amp;&amp; tt &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842">T_LONG</a>) || (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075">T_TRUE</a> &lt;= tt &amp;&amp; tt &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796">T_LONG_LITERAL</a>))</td></tr>
+<tr class="memdesc:a687840c3bb584fbb121be2e4d780a036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if a TokenType is associated with a number type keyword or a number literal.  <a href="scan_8h.html#a687840c3bb584fbb121be2e4d780a036">More...</a><br /></td></tr>
+<tr class="separator:a687840c3bb584fbb121be2e4d780a036"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87af1be2659dcfd57ec2e73dcd0470c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a87af1be2659dcfd57ec2e73dcd0470c5">TOKENTYPE_IS_LITERAL</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075">T_TRUE</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796">T_LONG_LITERAL</a>)</td></tr>
 <tr class="memdesc:a87af1be2659dcfd57ec2e73dcd0470c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if a TokenType is associated with a literal value.  <a href="scan_8h.html#a87af1be2659dcfd57ec2e73dcd0470c5">More...</a><br /></td></tr>
 <tr class="separator:a87af1be2659dcfd57ec2e73dcd0470c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -286,6 +290,7 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ae95ed9c09d4ff44297273224ccfbe1dd"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structposition.html">position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#ae95ed9c09d4ff44297273224ccfbe1dd">position</a></td></tr>
+<tr class="memdesc:ae95ed9c09d4ff44297273224ccfbe1dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about a <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>'s position in the input.  <a href="scan_8h.html#ae95ed9c09d4ff44297273224ccfbe1dd">More...</a><br /></td></tr>
 <tr class="separator:ae95ed9c09d4ff44297273224ccfbe1dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae88d5c0259051080fda097b92d99d7ee"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structToken.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#ae88d5c0259051080fda097b92d99d7ee">Token</a></td></tr>
 <tr class="memdesc:ae88d5c0259051080fda097b92d99d7ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about individual scannable tokens.  <a href="scan_8h.html#ae88d5c0259051080fda097b92d99d7ee">More...</a><br /></td></tr>
@@ -627,6 +632,26 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Determines if a TokenType is associated with a logical operator. </p>
+
+</div>
+</div>
+<a id="a687840c3bb584fbb121be2e4d780a036" name="a687840c3bb584fbb121be2e4d780a036"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a687840c3bb584fbb121be2e4d780a036">&#9670;&nbsp;</a></span>TOKENTYPE_IS_NUMBER_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TOKENTYPE_IS_NUMBER_TYPE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">tt</td><td>)</td>
+          <td>&#160;&#160;&#160;    ((tt &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf">T_BOOL</a> &amp;&amp; tt &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842">T_LONG</a>) || (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075">T_TRUE</a> &lt;= tt &amp;&amp; tt &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796">T_LONG_LITERAL</a>))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines if a TokenType is associated with a number type keyword or a number literal. </p>
 
 </div>
 </div>
@@ -1320,6 +1345,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Structure containing information about a <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>'s position in the input. </p>
 
 </div>
 </div>

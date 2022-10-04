@@ -81,8 +81,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle"><div class="title">type.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -143,62 +142,35 @@ Macros</h2></td></tr>
 <tr class="memitem:a455edbbc0a157643b4d101447188e905"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="type_8h.html#a455edbbc0a157643b4d101447188e905">TYPE_VOID</a></td></tr>
 <tr class="memdesc:a455edbbc0a157643b4d101447188e905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a void type struct.  <a href="type_8h.html#a455edbbc0a157643b4d101447188e905">More...</a><br /></td></tr>
 <tr class="separator:a455edbbc0a157643b4d101447188e905"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0815223a8c5fd458ad2051fb3371ed1f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="type_8h.html#a0815223a8c5fd458ad2051fb3371ed1f">TYPE_NUMBER_TOKEN</a>(ttype)</td></tr>
-<tr class="separator:a0815223a8c5fd458ad2051fb3371ed1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af38880ae77064175c6133f1339ba6945"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="type_8h.html#af38880ae77064175c6133f1339ba6945">TYPE_NUMBER_VAL</a>(n)</td></tr>
-<tr class="memdesc:af38880ae77064175c6133f1339ba6945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a number type struct given a <a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a>.  <a href="type_8h.html#af38880ae77064175c6133f1339ba6945">More...</a><br /></td></tr>
-<tr class="separator:af38880ae77064175c6133f1339ba6945"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6991466b578a05b9dc8e808c00ef2e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="type_8h.html#af6991466b578a05b9dc8e808c00ef2e8">TYPE_NUMBER</a>(nt)</td></tr>
-<tr class="memdesc:af6991466b578a05b9dc8e808c00ef2e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a number type struct given a NumberType.  <a href="type_8h.html#af6991466b578a05b9dc8e808c00ef2e8">More...</a><br /></td></tr>
-<tr class="separator:af6991466b578a05b9dc8e808c00ef2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a687840c3bb584fbb121be2e4d780a036"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="type_8h.html#a687840c3bb584fbb121be2e4d780a036">TOKENTYPE_IS_NUMBER_TYPE</a>(tt)&#160;&#160;&#160;    ((tt &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf">T_BOOL</a> &amp;&amp; tt &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842">T_LONG</a>) || (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075">T_TRUE</a> &lt;= tt &amp;&amp; tt &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796">T_LONG_LITERAL</a>))</td></tr>
-<tr class="separator:a687840c3bb584fbb121be2e4d780a036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ee1a2b9000623e69d861068cd0d4653"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="type_8h.html#a3ee1a2b9000623e69d861068cd0d4653">TYPE_NUMBER_FROM_NUMBERTYPE_FROM_TOKEN</a>(ttype)</td></tr>
+<tr class="memdesc:a3ee1a2b9000623e69d861068cd0d4653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a number type struct given a TokenType.  <a href="type_8h.html#a3ee1a2b9000623e69d861068cd0d4653">More...</a><br /></td></tr>
+<tr class="separator:a3ee1a2b9000623e69d861068cd0d4653"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab320eb9d03acd62a00d9bb0a97e93892"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="type_8h.html#ab320eb9d03acd62a00d9bb0a97e93892">TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER</a>(n)</td></tr>
+<tr class="memdesc:ab320eb9d03acd62a00d9bb0a97e93892"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a number type struct given a <a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a>.  <a href="type_8h.html#ab320eb9d03acd62a00d9bb0a97e93892">More...</a><br /></td></tr>
+<tr class="separator:ab320eb9d03acd62a00d9bb0a97e93892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25fe96ddc7195fc8910ee54412fe6478"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="type_8h.html#a25fe96ddc7195fc8910ee54412fe6478">TYPE_NUMBER_FROM_NUMBERTYPE</a>(nt)</td></tr>
+<tr class="memdesc:a25fe96ddc7195fc8910ee54412fe6478"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a number type struct given a NumberType.  <a href="type_8h.html#a25fe96ddc7195fc8910ee54412fe6478">More...</a><br /></td></tr>
+<tr class="separator:a25fe96ddc7195fc8910ee54412fe6478"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a1ac75f8fee198af783521627f1fecfbc"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structType.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="type_8h.html#a1ac75f8fee198af783521627f1fecfbc">Type</a></td></tr>
 <tr class="memdesc:a1ac75f8fee198af783521627f1fecfbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for type data.  <a href="type_8h.html#a1ac75f8fee198af783521627f1fecfbc">More...</a><br /></td></tr>
 <tr class="separator:a1ac75f8fee198af783521627f1fecfbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a699ee47af4514d73f0f555d4696bc0ee"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="type_8h.html#a699ee47af4514d73f0f555d4696bc0ee">TypeType</a> { <a class="el" href="type_8h.html#a699ee47af4514d73f0f555d4696bc0eea28299b2e38566e2c97826302cfa65028">TT_VOID</a>
-, <a class="el" href="type_8h.html#a699ee47af4514d73f0f555d4696bc0eea71d6777fe79532b9c0e1a8dd3afc9f49">TT_NUMBER</a>
- }</td></tr>
-<tr class="memdesc:a699ee47af4514d73f0f555d4696bc0ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types of types.  <a href="type_8h.html#a699ee47af4514d73f0f555d4696bc0ee">More...</a><br /></td></tr>
-<tr class="separator:a699ee47af4514d73f0f555d4696bc0ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Function headers and defines for. </p>
 <dl class="section author"><dt>Author</dt><dd>Charles Averill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>28-Sep-2022 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a687840c3bb584fbb121be2e4d780a036" name="a687840c3bb584fbb121be2e4d780a036"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a687840c3bb584fbb121be2e4d780a036">&#9670;&nbsp;</a></span>TOKENTYPE_IS_NUMBER_TYPE</h2>
+<a id="a25fe96ddc7195fc8910ee54412fe6478" name="a25fe96ddc7195fc8910ee54412fe6478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25fe96ddc7195fc8910ee54412fe6478">&#9670;&nbsp;</a></span>TYPE_NUMBER_FROM_NUMBERTYPE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TOKENTYPE_IS_NUMBER_TYPE</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">tt</td><td>)</td>
-          <td>&#160;&#160;&#160;    ((tt &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf">T_BOOL</a> &amp;&amp; tt &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842">T_LONG</a>) || (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075">T_TRUE</a> &lt;= tt &amp;&amp; tt &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796">T_LONG_LITERAL</a>))</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af6991466b578a05b9dc8e808c00ef2e8" name="af6991466b578a05b9dc8e808c00ef2e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6991466b578a05b9dc8e808c00ef2e8">&#9670;&nbsp;</a></span>TYPE_NUMBER</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TYPE_NUMBER</td>
+          <td class="memname">#define TYPE_NUMBER_FROM_NUMBERTYPE</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">nt</td><td>)</td>
@@ -221,14 +193,38 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="a0815223a8c5fd458ad2051fb3371ed1f" name="a0815223a8c5fd458ad2051fb3371ed1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0815223a8c5fd458ad2051fb3371ed1f">&#9670;&nbsp;</a></span>TYPE_NUMBER_TOKEN</h2>
+<a id="ab320eb9d03acd62a00d9bb0a97e93892" name="ab320eb9d03acd62a00d9bb0a97e93892"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab320eb9d03acd62a00d9bb0a97e93892">&#9670;&nbsp;</a></span>TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TYPE_NUMBER_TOKEN</td>
+          <td class="memname">#define TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    (<a class="code hl_typedef" href="type_8h.html#a1ac75f8fee198af783521627f1fecfbc">Type</a>)                                                                                         \</div>
+<div class="line">    {                                                                                              \</div>
+<div class="line">        .type = <a class="code hl_function" href="number_8h.html#a6ba66dfa3fa11b0ccefce0ed54080eef">number_to_token_type</a>(n), .value.number = n                                         \</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p>Generates a number type struct given a <a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a>. </p>
+
+</div>
+</div>
+<a id="a3ee1a2b9000623e69d861068cd0d4653" name="a3ee1a2b9000623e69d861068cd0d4653"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ee1a2b9000623e69d861068cd0d4653">&#9670;&nbsp;</a></span>TYPE_NUMBER_FROM_NUMBERTYPE_FROM_TOKEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TYPE_NUMBER_FROM_NUMBERTYPE_FROM_TOKEN</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">ttype</td><td>)</td>
@@ -243,29 +239,7 @@ Enumerations</h2></td></tr>
 <div class="ttc" id="anumber_8h_html_a242dd91fc5b139e8048fb50fac323dee"><div class="ttname"><a href="number_8h.html#a242dd91fc5b139e8048fb50fac323dee">token_type_to_number_type</a></div><div class="ttdeci">NumberType token_type_to_number_type(int token_type)</div><div class="ttdoc">Convert a TokenType to a NumberType.</div><div class="ttdef"><b>Definition:</b> number.c:17</div></div>
 <div class="ttc" id="anumber_8h_html_add3ecbbfaff5335401b5bd7180e9019b"><div class="ttname"><a href="number_8h.html#add3ecbbfaff5335401b5bd7180e9019b">NUMBER_FROM_TYPE_VAL</a></div><div class="ttdeci">#define NUMBER_FROM_TYPE_VAL(t, v)</div><div class="ttdoc">Generates a Number struct given a NumberType and a value.</div><div class="ttdef"><b>Definition:</b> number.h:107</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="af38880ae77064175c6133f1339ba6945" name="af38880ae77064175c6133f1339ba6945"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af38880ae77064175c6133f1339ba6945">&#9670;&nbsp;</a></span>TYPE_NUMBER_VAL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TYPE_NUMBER_VAL</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">n</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    (<a class="code hl_typedef" href="type_8h.html#a1ac75f8fee198af783521627f1fecfbc">Type</a>)                                                                                         \</div>
-<div class="line">    {                                                                                              \</div>
-<div class="line">        .type = <a class="code hl_function" href="number_8h.html#a6ba66dfa3fa11b0ccefce0ed54080eef">number_to_token_type</a>(n), .value.number = n                                         \</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
-<p>Generates a number type struct given a <a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a>. </p>
+<p>Generates a number type struct given a TokenType. </p>
 
 </div>
 </div>
@@ -304,45 +278,6 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Container for type data. </p>
-<blockquote class="doxtable">
-<blockquote class="doxtable">
-<blockquote class="doxtable">
-<blockquote class="doxtable">
-<blockquote class="doxtable">
-<blockquote class="doxtable">
-<blockquote class="doxtable">
-<p >&zwj;354a5d8addecd42f91cf66194e08c823fa86e051</p>
-<p ></p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a699ee47af4514d73f0f555d4696bc0ee" name="a699ee47af4514d73f0f555d4696bc0ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a699ee47af4514d73f0f555d4696bc0ee">&#9670;&nbsp;</a></span>TypeType</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="type_8h.html#a699ee47af4514d73f0f555d4696bc0ee">TypeType</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Types of types. </p>
-<h1><a class="anchor" id="autotoc_md0"></a>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h1>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a699ee47af4514d73f0f555d4696bc0eea28299b2e38566e2c97826302cfa65028" name="a699ee47af4514d73f0f555d4696bc0eea28299b2e38566e2c97826302cfa65028"></a>TT_VOID&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a699ee47af4514d73f0f555d4696bc0eea71d6777fe79532b9c0e1a8dd3afc9f49" name="a699ee47af4514d73f0f555d4696bc0eea71d6777fe79532b9c0e1a8dd3afc9f49"></a>TT_NUMBER&#160;</td><td class="fielddoc"></td></tr>
-</table>
 
 </div>
 </div>

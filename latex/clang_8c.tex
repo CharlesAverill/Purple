@@ -25,15 +25,15 @@ Include dependency graph for clang.\+c\+:
 \item 
 const char $\ast$ \mbox{\hyperlink{clang_8c_ad757e0b452602859654ba026c29b5024}{get\+\_\+temp\+\_\+dir}} (void)
 \begin{DoxyCompactList}\small\item\em Get the default temporary directory. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{clang_8c_a3b369fac9808777478e63f68f41d5270}{create\+\_\+tmp\+\_\+generator\+\_\+program}} ()
+void \mbox{\hyperlink{clang_8c_a1304632607a0038e92588ecffdf652c5}{create\+\_\+tmp\+\_\+generator\+\_\+program}} (void)
 \begin{DoxyCompactList}\small\item\em Create a temporary file for a generator program used to determine compilation information. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{clang_8c_a3d84b3d464dde7bb8b1f557995ddeef5}{link\+\_\+globals}} (void)
 \begin{DoxyCompactList}\small\item\em Link globals.\+ll to main LLVM file by copying the contents of each LLVM file into a temporary file, then copying back to the main LLVM file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{clang_8c_a3ef9aa60f9d1860c6a5b0ce0c983dedd}{clang\+\_\+compile\+\_\+llvm}} (const char $\ast$fn)
 \begin{DoxyCompactList}\small\item\em Starts up the clang compiler to compile the generated LLVM-\/\+IR into a binary. \end{DoxyCompactList}\item 
-char $\ast$ \mbox{\hyperlink{clang_8c_aad50747c930d7d8fe05d741b81501f5c}{get\+\_\+target\+\_\+datalayout}} ()
+char $\ast$ \mbox{\hyperlink{clang_8c_a8e9defa9881ad0ac71de6c1b13b9d2bc}{get\+\_\+target\+\_\+datalayout}} (void)
 \begin{DoxyCompactList}\small\item\em Search through GENERATOR\+\_\+\+PROGRAM for the target datalayout. \end{DoxyCompactList}\item 
-char $\ast$ \mbox{\hyperlink{clang_8c_ae6b73131bb54576584f6bdb9dc6378a7}{get\+\_\+target\+\_\+triple}} ()
+char $\ast$ \mbox{\hyperlink{clang_8c_a3a1904aa543eeb8ddc87cb2db56a0f24}{get\+\_\+target\+\_\+triple}} (void)
 \begin{DoxyCompactList}\small\item\em Get the target triple for the current target. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{clang_8c_a90aaa0f0e2c76dc8c5631842644b5282}{regex\+\_\+match}} (const char $\ast$regex, char $\ast$target\+\_\+str, int len, int group\+\_\+index)
 \begin{DoxyCompactList}\small\item\em Simple regex parser. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -66,21 +66,21 @@ Starts up the clang compiler to compile the generated LLVM-\/\+IR into a binary.
 {\em fn} & Name of file to compile \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{clang_8c_a3b369fac9808777478e63f68f41d5270}\label{clang_8c_a3b369fac9808777478e63f68f41d5270}} 
+\mbox{\Hypertarget{clang_8c_a1304632607a0038e92588ecffdf652c5}\label{clang_8c_a1304632607a0038e92588ecffdf652c5}} 
 \index{clang.c@{clang.c}!create\_tmp\_generator\_program@{create\_tmp\_generator\_program}}
 \index{create\_tmp\_generator\_program@{create\_tmp\_generator\_program}!clang.c@{clang.c}}
 \doxysubsubsection{\texorpdfstring{create\_tmp\_generator\_program()}{create\_tmp\_generator\_program()}}
-{\footnotesize\ttfamily void create\+\_\+tmp\+\_\+generator\+\_\+program (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void create\+\_\+tmp\+\_\+generator\+\_\+program (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
 Create a temporary file for a generator program used to determine compilation information. 
 
-\mbox{\Hypertarget{clang_8c_aad50747c930d7d8fe05d741b81501f5c}\label{clang_8c_aad50747c930d7d8fe05d741b81501f5c}} 
+\mbox{\Hypertarget{clang_8c_a8e9defa9881ad0ac71de6c1b13b9d2bc}\label{clang_8c_a8e9defa9881ad0ac71de6c1b13b9d2bc}} 
 \index{clang.c@{clang.c}!get\_target\_datalayout@{get\_target\_datalayout}}
 \index{get\_target\_datalayout@{get\_target\_datalayout}!clang.c@{clang.c}}
 \doxysubsubsection{\texorpdfstring{get\_target\_datalayout()}{get\_target\_datalayout()}}
-{\footnotesize\ttfamily char $\ast$ get\+\_\+target\+\_\+datalayout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily char $\ast$ get\+\_\+target\+\_\+datalayout (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -89,11 +89,11 @@ Search through GENERATOR\+\_\+\+PROGRAM for the target datalayout.
 \begin{DoxyReturn}{Returns}
 char$\ast$ Pointer to target datalayout string 
 \end{DoxyReturn}
-\mbox{\Hypertarget{clang_8c_ae6b73131bb54576584f6bdb9dc6378a7}\label{clang_8c_ae6b73131bb54576584f6bdb9dc6378a7}} 
+\mbox{\Hypertarget{clang_8c_a3a1904aa543eeb8ddc87cb2db56a0f24}\label{clang_8c_a3a1904aa543eeb8ddc87cb2db56a0f24}} 
 \index{clang.c@{clang.c}!get\_target\_triple@{get\_target\_triple}}
 \index{get\_target\_triple@{get\_target\_triple}!clang.c@{clang.c}}
 \doxysubsubsection{\texorpdfstring{get\_target\_triple()}{get\_target\_triple()}}
-{\footnotesize\ttfamily char $\ast$ get\+\_\+target\+\_\+triple (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily char $\ast$ get\+\_\+target\+\_\+triple (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
