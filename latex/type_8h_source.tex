@@ -8,40 +8,39 @@
 \DoxyCodeLine{10 }
 \DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{number_8h}{types/number.h}}"{}}}
 \DoxyCodeLine{12 }
-\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
-\DoxyCodeLine{17 \{}
-\DoxyCodeLine{18     \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0eea28299b2e38566e2c97826302cfa65028}{TT\_VOID}},}
-\DoxyCodeLine{19     \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0eea71d6777fe79532b9c0e1a8dd3afc9f49}{TT\_NUMBER}}}
-\DoxyCodeLine{20 \} \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0ee}{TypeType}};}
-\DoxyCodeLine{21 }
-\DoxyCodeLine{25 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structType}{Type}} \{}
-\DoxyCodeLine{27     \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0ee}{TypeType}} \mbox{\hyperlink{structType_a4a104a7251a624b3966a6d8c0c52ca48}{type}};}
-\DoxyCodeLine{29     \textcolor{keyword}{union }\{}
-\DoxyCodeLine{30         \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{structType_a78b8fbf7340e9445efa5bb9731367931}{number}};}
-\DoxyCodeLine{31     \} \mbox{\hyperlink{structType_af6d57ad268d222017f11c099570d378b}{value}};}
-\DoxyCodeLine{32 \} \mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}};}
-\DoxyCodeLine{33 }
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#define TYPE\_VOID                                                                                  \(\backslash\)}}
-\DoxyCodeLine{38 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
-\DoxyCodeLine{39 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{40 \textcolor{preprocessor}{        .type = TT\_VOID                                                                            \(\backslash\)}}
-\DoxyCodeLine{41 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{42 }
-\DoxyCodeLine{46 \textcolor{preprocessor}{\#define TYPE\_NUMBER\_VAL(n)                                                                         \(\backslash\)}}
-\DoxyCodeLine{47 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
-\DoxyCodeLine{48 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{49 \textcolor{preprocessor}{        .type = TT\_NUMBER, .value.number = n                                                       \(\backslash\)}}
-\DoxyCodeLine{50 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{51 }
-\DoxyCodeLine{55 \textcolor{preprocessor}{\#define TYPE\_NUMBER(nt)                                                                            \(\backslash\)}}
-\DoxyCodeLine{56 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
-\DoxyCodeLine{57 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{58 \textcolor{preprocessor}{        .type = TT\_NUMBER, .value.number = (Number)                                                \(\backslash\)}}
-\DoxyCodeLine{59 \textcolor{preprocessor}{        \{                                                                                          \(\backslash\)}}
-\DoxyCodeLine{60 \textcolor{preprocessor}{            .type = nt                                                                             \(\backslash\)}}
-\DoxyCodeLine{61 \textcolor{preprocessor}{        \}                                                                                          \(\backslash\)}}
-\DoxyCodeLine{62 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{63 }
-\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TYPE\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{17     \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0eea28299b2e38566e2c97826302cfa65028}{TT\_VOID}},}
+\DoxyCodeLine{18     \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0eea71d6777fe79532b9c0e1a8dd3afc9f49}{TT\_NUMBER}}}
+\DoxyCodeLine{19 \} \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0ee}{TypeType}};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{24 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structType}{Type}} \{}
+\DoxyCodeLine{26     \mbox{\hyperlink{type_8h_a699ee47af4514d73f0f555d4696bc0ee}{TypeType}} \mbox{\hyperlink{structType_a4a104a7251a624b3966a6d8c0c52ca48}{type}};}
+\DoxyCodeLine{28     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{29         \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{structType_a78b8fbf7340e9445efa5bb9731367931}{number}};}
+\DoxyCodeLine{30     \} \mbox{\hyperlink{structType_af6d57ad268d222017f11c099570d378b}{value}};}
+\DoxyCodeLine{31 \} \mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define TYPE\_VOID                                                                                  \(\backslash\)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{        .type = TT\_VOID                                                                            \(\backslash\)}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define TYPE\_NUMBER\_VAL(n)                                                                         \(\backslash\)}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{        .type = TT\_NUMBER, .value.number = n                                                       \(\backslash\)}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define TYPE\_NUMBER(nt)                                                                            \(\backslash\)}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{        .type = TT\_NUMBER, .value.number = (Number)                                                \(\backslash\)}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{        \{                                                                                          \(\backslash\)}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{            .type = nt                                                                             \(\backslash\)}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{        \}                                                                                          \(\backslash\)}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TYPE\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}
