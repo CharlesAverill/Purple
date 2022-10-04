@@ -228,7 +228,7 @@ static LLVMValue print_ast_to_llvm(ASTNode* root, type_register virtual_register
             print_type = number_to_token_type((Number){.type = root->left->largest_number_type});
         }
 
-        if (print_type == T_BYTE_LITERAL && root->left->is_char_arithmetic) {
+        if (print_type == T_BYTE_LITERAL || root->left->is_char_arithmetic) {
             print_type = T_CHAR_LITERAL;
         }
 

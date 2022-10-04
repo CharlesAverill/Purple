@@ -12,6 +12,18 @@
 #include "types/number.h"
 
 /**
+<<<<<<< HEAD
+=======
+ * @brief Types of types
+ */
+typedef enum
+{
+    TT_VOID,
+    TT_NUMBER
+} TypeType;
+
+/**
+>>>>>>> 354a5d8addecd42f91cf66194e08c823fa86e051
  * @brief Container for type data
  */
 typedef struct Type {

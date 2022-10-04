@@ -132,6 +132,7 @@ static Number parse_number_literal(char* literal, int length, int base)
     }
 
     // Check size
+    /*
     for (NumberType number_type = NT_INT64; number_type >= NT_INT8; number_type--) {
         long long int max_value = numberTypeMaxValues[number_type];
         if (-1 * max_value <= out.value && out.value <= max_value - 1) {
@@ -140,6 +141,7 @@ static Number parse_number_literal(char* literal, int length, int base)
             break;
         }
     }
+    */
 
     return out;
 }
