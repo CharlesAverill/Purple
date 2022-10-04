@@ -8,23 +8,15 @@
 #ifndef TYPE_H
 #define TYPE_H
 
+#include "scan.h"
 #include "types/number.h"
-
-/**
- * @brief Types of types
- */
-typedef enum
-{
-    TT_VOID,
-    TT_NUMBER
-} TypeType;
 
 /**
  * @brief Container for type data
  */
 typedef struct Type {
     /**Type of this type*/
-    TypeType type;
+    TokenType type;
     /**Value of this type*/
     union {
         Number number;
@@ -37,7 +29,13 @@ typedef struct Type {
 #define TYPE_VOID                                                                                  \
     (Type)                                                                                         \
     {                                                                                              \
-        .type = TT_VOID                                                                            \
+        .type = T_VOID                                                                             \
+    }
+
+#define TYPE_NUMBER_TOKEN(ttype)                                                                   \
+    (Type)                                                                                         \
+    {                                                                                              \
+        .type = ttype, .value.number = NUMBER_FROM_TYPE_VAL(token_type_to_number_type(ttype), 0)   \
     }
 
 /**
@@ -46,7 +44,7 @@ typedef struct Type {
 #define TYPE_NUMBER_VAL(n)                                                                         \
     (Type)                                                                                         \
     {                                                                                              \
-        .type = TT_NUMBER, .value.number = n                                                       \
+        .type = number_to_token_type(n), .value.number = n                                         \
     }
 
 /**
@@ -55,10 +53,13 @@ typedef struct Type {
 #define TYPE_NUMBER(nt)                                                                            \
     (Type)                                                                                         \
     {                                                                                              \
-        .type = TT_NUMBER, .value.number = (Number)                                                \
+        .type = number_to_token_type((Number){.type = nt}), .value.number = (Number)               \
         {                                                                                          \
             .type = nt                                                                             \
         }                                                                                          \
     }
+
+#define TOKENTYPE_IS_NUMBER_TYPE(tt)                                                               \
+    ((tt >= T_BOOL && tt <= T_LONG) || (T_TRUE <= tt && tt <= T_LONG_LITERAL))
 
 #endif /* TYPE_H */

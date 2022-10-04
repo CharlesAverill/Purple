@@ -8,6 +8,7 @@
 #include "translate/llvm.h"
 #include "data.h"
 #include "translate/translate.h"
+#include "types/type.h"
 #include "utils/clang.h"
 #include "utils/formatting.h"
 #include "utils/logging.h"
@@ -392,7 +393,7 @@ void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register)
         free(loaded_registers);
     }
 
-    if (symbol->type.type == TT_NUMBER &&
+    if (TOKENTYPE_IS_NUMBER_TYPE(symbol->type.type) &&
         rvalue_register.number_type != symbol->type.value.number.type) {
         if (numberTypeBitSizes[rvalue_register.number_type] <
             numberTypeBitSizes[symbol->type.value.number.type]) {

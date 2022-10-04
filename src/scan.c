@@ -550,7 +550,7 @@ bool scan(Token* t)
         t->pos.char_number = D_GLOBAL_TOKEN.pos.char_number;
         // Scan identifier string into buffer
         int scan_ident_result = 0;
-        if ((scan_ident_result = scan_identifier(c, D_IDENTIFIER_BUFFER, D_MAX_IDENTIFIER_LENGTH)) <
+        if ((scan_ident_result = scan_identifier(c, D_IDENTIFIER_BUFFER, MAX_IDENTIFIER_LENGTH)) <
             0) {
             purple_log(LOG_DEBUG, "Encounter %s character, reading in number literal",
                        scan_ident_result == -1 ? "base delimiter" : "literal separator");

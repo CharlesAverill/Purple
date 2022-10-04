@@ -10,7 +10,8 @@
 
 #include <stdbool.h>
 
-#include "translate/symbol_table.h"
+#include "types/identifier.h"
+#include "types/number.h"
 
 /**
  * @brief Types of scannable tokens
@@ -247,7 +248,7 @@ typedef struct Token {
         /**Value of integer Token*/
         Number number_value;
         /**Name of identifier Token*/
-        char symbol_name[D_MAX_IDENTIFIER_LENGTH];
+        char symbol_name[MAX_IDENTIFIER_LENGTH];
     } value;
 } Token;
 

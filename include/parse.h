@@ -50,7 +50,7 @@ static int operatorPrecedence[] = {
 
 ASTNode* parse_binary_expression(void);
 void match_token(TokenType type);
-NumberType match_type(void);
+TokenType match_type(void);
 void variable_declaration(void);
 ASTNode* function_declaration(void);
 ASTNode* parse_statements(void);

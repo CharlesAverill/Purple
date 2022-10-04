@@ -21,6 +21,11 @@ Purple is a simple compiled language. Right now it supports:
 
 View the source <a href="https://github.com/CharlesAverill/Purple" target="_blank">here</a>.
 
+### Dependencies
+
+- `clang-{10+}`
+- `libclang-{10+}-dev`
+
 Purple may be built with cmake:
 ```bash
 cmake -B build

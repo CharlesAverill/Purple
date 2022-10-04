@@ -29,7 +29,7 @@ void match_token(TokenType type)
  * 
  * @return NumberType Type of variable
  */
-NumberType match_type(void)
+TokenType match_type(void)
 {
     TokenType ttype = D_GLOBAL_TOKEN.type;
     if (TOKENTYPE_IS_TYPE(ttype)) {
@@ -38,7 +38,7 @@ NumberType match_type(void)
         syntax_error(0, 0, 0, "Expected type");
     }
 
-    return token_type_to_number_type(ttype);
+    return ttype;
 }
 
 /**

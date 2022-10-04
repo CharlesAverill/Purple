@@ -43,7 +43,7 @@ typedef struct ASTNode {
         /**Value of integer token*/
         number_literal_type number_value;
         /**Name of this identifier token*/
-        char symbol_name[D_MAX_IDENTIFIER_LENGTH];
+        char symbol_name[MAX_IDENTIFIER_LENGTH];
     } value;
 } ASTNode;
 

@@ -10,19 +10,17 @@
 
 #include <stdbool.h>
 
+#include "types/identifier.h"
 #include "types/type.h"
 
 #define SYMBOL_TABLE_DEFAULT_LENGTH 1024
-
-/**Purple identifiers can be a maximum of 255 bytes in length*/
-#define D_MAX_IDENTIFIER_LENGTH 255
 
 /**
  * @brief Struct holding data about a symbol
  */
 typedef struct SymbolTableEntry {
     /**Name of symbol*/
-    char symbol_name[D_MAX_IDENTIFIER_LENGTH + 1];
+    char symbol_name[MAX_IDENTIFIER_LENGTH + 1];
     /**Length of name*/
     unsigned int length;
     /**Index of symbol in Symbol Table*/

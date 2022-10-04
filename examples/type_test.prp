@@ -12,6 +12,7 @@ void main(void) {
     char c;
     c = 'a' + 'z' - 'x';
     print c;                       // c
+    print 'a' + 'z' - 'x';         // c
     long l;
     l = 2147483647L + 2147483647L; // 4294967294
     print l;

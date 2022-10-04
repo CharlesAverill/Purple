@@ -45,7 +45,7 @@ extern_ unsigned long long int D_LABEL_INDEX;
 extern_ bool D_CURRENT_FUNCTION_PREAMBLE_PRINTED;
 
 /**Buffer to read identifiers into*/
-extern_ char D_IDENTIFIER_BUFFER[D_MAX_IDENTIFIER_LENGTH + 1];
+extern_ char D_IDENTIFIER_BUFFER[MAX_IDENTIFIER_LENGTH + 1];
 
 /**Activates debug behavior*/
 extern_ int D_DEBUG;
