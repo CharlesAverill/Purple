@@ -20,6 +20,7 @@ var searchData=
   ['d_5fsymbol_5ftable_5fstack_17',['D_SYMBOL_TABLE_STACK',['../data_8h.html#a1b776b58bc391d4b2b0ad9110d862f1c',1,'data.h']]],
   ['data_2eh_18',['data.h',['../data_8h.html',1,'']]],
   ['declaration_2ec_19',['declaration.c',['../declaration_8c.html',1,'']]],
-  ['determine_5fbinary_5fexpression_5fstack_5fallocation_20',['determine_binary_expression_stack_allocation',['../translate_8h.html#a7abbf5b5f5d3fc9d561f7e080077bb9e',1,'determine_binary_expression_stack_allocation(ASTNode *root):&#160;translate.c'],['../translate_8c.html#a7abbf5b5f5d3fc9d561f7e080077bb9e',1,'determine_binary_expression_stack_allocation(ASTNode *root):&#160;translate.c']]],
-  ['doc_21',['doc',['../arguments_8c.html#af6164deb8a824f8cb2b9147cfc3174f5',1,'arguments.c']]]
+  ['default_5fclang_5fexecutable_5fpath_20',['DEFAULT_CLANG_EXECUTABLE_PATH',['../info_8h.html#a45cd2cf0df774e6893fe020b85b31ff5',1,'info.h']]],
+  ['determine_5fbinary_5fexpression_5fstack_5fallocation_21',['determine_binary_expression_stack_allocation',['../translate_8h.html#a7abbf5b5f5d3fc9d561f7e080077bb9e',1,'determine_binary_expression_stack_allocation(ASTNode *root):&#160;translate.c'],['../translate_8c.html#a7abbf5b5f5d3fc9d561f7e080077bb9e',1,'determine_binary_expression_stack_allocation(ASTNode *root):&#160;translate.c']]],
+  ['doc_22',['doc',['../arguments_8c.html#af6164deb8a824f8cb2b9147cfc3174f5',1,'arguments.c']]]
 ];
