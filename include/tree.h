@@ -52,7 +52,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
 void add_position_info(ASTNode* dest, position p);
 ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, Type type);
 ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name);
-ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, Type type);
+ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, Type type, char* symbol_name);
 void ast_debug_level_order(ASTNode* root, LogLevel log_level);
 
 #endif /* TREE_H */

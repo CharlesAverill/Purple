@@ -114,6 +114,8 @@ static ASTNode* parse_binary_expression_recursive(int previous_token_precedence,
  */
 ASTNode* parse_binary_expression(void)
 {
+    purple_log(LOG_DEBUG, "Parsing binary expression");
+
     NumberType maximum = NT_INT1;
     ASTNode* out = parse_binary_expression_recursive(0, &maximum);
     out->largest_number_type = maximum;

@@ -20,7 +20,7 @@
  * @param mid Middle child subtree of the new AST Node
  * @param right Right child subtree of the new AST Node
  * @param type Type of the new AST Node
- * @param symbol_name if TokenType == T_IDENTIFIER, then the string for the identifier
+ * @param symbol_name The identifier for the provided Token information
  * @return ASTNode* The pointer to a new AST Node with the provided values
  */
 ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right, Type type,
@@ -65,11 +65,27 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
         out->is_char_arithmetic = left->is_char_arithmetic;
     } else if (TOKENTYPE_IS_COMPARATOR(ttype)) {
         out->number_type = NT_INT1;
+    } else if (ttype == T_FUNCTION) {
+        if (symbol_name == NULL) {
+            fatal(RC_COMPILER_ERROR,
+                  "Tried to create identifier node, but passed symbol_name is NULL");
+        }
+        SymbolTableEntry* found_entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+        if (found_entry == NULL) {
+            fatal(RC_COMPILER_ERROR,
+                  "create_ast_node received identifier name that is not defined in the GST");
+        }
     }
 
     return out;
 }
 
+/**
+ * @brief Add position information to an ASTNode
+ * 
+ * @param dest Destination ASTNode pointer
+ * @param p Position information
+ */
 void add_position_info(ASTNode* dest, position p)
 {
     strcpy(dest->filename, p.filename);
@@ -93,7 +109,7 @@ ASTNode* create_ast_nonidentifier_leaf(TokenType ttype, Type type)
  * @brief Constructs a new AST Leaf Node with the provided values for a token that is an identifier
  * 
  * @param ttype TokenType of the new AST Node
- * @param gst_entry SymbolTableEntry in Global Symbol Table for this token
+ * @param symbol_name The identifier for the provided Token information
  * @return ASTNode* The pointer to a new AST Leaf Node with the provided values
  */
 ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name)
@@ -107,11 +123,12 @@ ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name)
  * @param ttype TokenType of the new AST Node
  * @param child The AST Node's single child
  * @param type Type of the new AST Node
+ * @param symbol_name The identifier for the provided Token information
  * @return ASTNode* The pointer to a new AST Unary Parent Node with the provided values
  */
-ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, Type type)
+ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, Type type, char* symbol_name)
 {
-    return create_ast_node(ttype, child, NULL, NULL, type, NULL);
+    return create_ast_node(ttype, child, NULL, NULL, type, symbol_name);
 }
 
 /**
