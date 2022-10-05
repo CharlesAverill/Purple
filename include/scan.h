@@ -16,8 +16,7 @@
 /**
  * @brief Types of scannable tokens
  */
-typedef enum
-{
+typedef enum {
     T_EOF,
     // Arithmetic Operators
     T_PLUS,
@@ -63,6 +62,7 @@ typedef enum
     T_ELSE,
     T_WHILE,
     T_FOR,
+    T_RETURN,
     // Miscellaneous
     T_SEMICOLON,
     T_LEFT_PAREN,
@@ -125,6 +125,7 @@ static char* tokenStrings[] = {"EOF",
                                "else",
                                "while",
                                "for",
+                               "return",
                                ";",
                                "(",
                                ")",

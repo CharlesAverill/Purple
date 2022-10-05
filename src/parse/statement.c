@@ -57,10 +57,9 @@ static ASTNode* print_statement(void)
     position print_position = D_GLOBAL_TOKEN.pos;
 
     // Parse printed value
-    purple_log(LOG_DEBUG, "Parsing binary expression for print statement");
     root = parse_binary_expression();
 
-    root = create_unary_ast_node(T_PRINT, root, TYPE_VOID);
+    root = create_unary_ast_node(T_PRINT, root, TYPE_VOID, NULL);
     add_position_info(root, print_position);
 
     return root;
@@ -83,7 +82,6 @@ static ASTNode* assignment_statement(void)
     // Read identifier
     position ident_pos = D_GLOBAL_TOKEN.pos;
     match_token(T_IDENTIFIER);
-    //position ident_pos = D_GLOBAL_TOKEN.pos;
 
     // Ensure identifier name has been declared
     purple_log(LOG_DEBUG, "Searching for identifier name in global symbol table");
@@ -101,7 +99,6 @@ static ASTNode* assignment_statement(void)
     position assign_pos = D_GLOBAL_TOKEN.pos;
 
     // Parse assignment expression
-    purple_log(LOG_DEBUG, "Parsing binary expression for assign statement");
     left = parse_binary_expression();
 
     right->is_char_arithmetic = left->is_char_arithmetic;
@@ -245,6 +242,38 @@ static ASTNode* for_statement(void)
     return out;
 }
 
+ASTNode* function_call_statement(void)
+{
+    ASTNode* root;
+    ASTNode* parameter;
+    SymbolTableEntry* found_entry;
+
+    purple_log(LOG_DEBUG, "Parsing function call statement");
+
+    // Read identifier
+    position ident_pos = D_GLOBAL_TOKEN.pos;
+    match_token(T_IDENTIFIER);
+
+    // Ensure identifier name has been declared
+    purple_log(LOG_DEBUG, "Searching for identifier name in global symbol table");
+    if ((found_entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER)) ==
+        NULL) {
+        identifier_error(0, 0, 0, "Identifier name \"%s\" has not been declared",
+                         D_IDENTIFIER_BUFFER);
+    }
+
+    match_token(T_LEFT_PAREN);
+    parameter = parse_binary_expression();
+    match_token(T_RIGHT_PAREN);
+
+    // Make a terminal node for the identifier
+    root =
+        create_unary_ast_node(T_FUNCTION, parameter, found_entry->type, found_entry->symbol_name);
+    add_position_info(root, ident_pos);
+
+    return root;
+}
+
 /**
  * @brief Parse a set of statements into ASTs and generate them into an AST
  * 
@@ -257,6 +286,8 @@ ASTNode* parse_statements(void)
     ASTNode* left = NULL;
     ASTNode* root;
     LLVMValue cg_output;
+
+    SymbolTableEntry* symbol;
 
     match_token(T_LEFT_BRACE);
 
@@ -273,7 +304,13 @@ ASTNode* parse_statements(void)
                 root = print_statement();
                 break;
             case T_IDENTIFIER:
-                root = assignment_statement();
+                symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE,
+                                                 D_GLOBAL_TOKEN.value.symbol_name);
+                if (symbol->type.type == T_FUNCTION) {
+                    root = function_call_statement();
+                } else {
+                    root = assignment_statement();
+                }
                 break;
             case T_IF:
                 root = if_statement();

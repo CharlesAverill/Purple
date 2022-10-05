@@ -363,6 +363,10 @@ static TokenType parse_keyword(char* keyword_string)
             return T_PRINT;
         }
         break;
+    case 'r':
+        if (!strcmp(keyword_string, tokenStrings[T_RETURN])) {
+            return T_RETURN;
+        }
     case 's':
         if (!strcmp(keyword_string, tokenStrings[T_SHORT])) {
             return T_SHORT;

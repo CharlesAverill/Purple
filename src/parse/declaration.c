@@ -54,7 +54,8 @@ ASTNode* function_declaration(void)
 
     out = parse_statements();
 
-    out = create_ast_node(T_FUNCTION, out, NULL, NULL, TYPE_VOID, entry->symbol_name);
+    out = create_ast_node(T_FUNCTION, out, NULL, NULL, TYPE_FUNCTION(T_VOID, T_VOID),
+                          entry->symbol_name);
     add_position_info(out, ident_pos);
     return out;
 }
