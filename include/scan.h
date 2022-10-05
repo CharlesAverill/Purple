@@ -75,54 +75,6 @@ typedef enum
     T_FUNCTION,
 } TokenType;
 
-#define TTS_EOF "EOF"
-#define TTS_PLUS "+"
-#define TTS_MINUS "-"
-#define TTS_STAR "*"
-#define TTS_SLASH "/"
-#define TTS_EXPONENT "**"
-#define TTS_EQ "=="
-#define TTS_NEQ "!="
-#define TTS_LT "<"
-#define TTS_GT ">"
-#define TTS_LE "<="
-#define TTS_GE ">="
-#define TTS_AND "and"
-#define TTS_OR "or"
-#define TTS_XOR "xor"
-#define TTS_NAND "nand"
-#define TTS_NOR "nor"
-#define TTS_XNOR "xnor"
-#define TTS_TRUE "true"
-#define TTS_FALSE "false"
-#define TTS_BYTE_LITERAL "byte literal"
-#define TTS_CHAR_LITERAL "character literal"
-#define TTS_SHORT_LITERAL "short literal"
-#define TTS_INTEGER_LITERAL "integer literal"
-#define TTS_LONG_LITERAL "long literal"
-#define TTS_VOID "void"
-#define TTS_BOOL "bool"
-#define TTS_BYTE "byte"
-#define TTS_CHAR "char"
-#define TTS_SHORT "short"
-#define TTS_INT "int"
-#define TTS_LONG "long"
-#define TTS_ASSIGN "="
-#define TTS_PRINT "print"
-#define TTS_IF "if"
-#define TTS_ELSE "else"
-#define TTS_WHILE "while"
-#define TTS_FOR "for"
-#define TTS_SEMICOLON ";"
-#define TTS_LEFT_PAREN "("
-#define TTS_RIGHT_PAREN ")"
-#define TTS_LEFT_BRACE "{"
-#define TTS_RIGHT_BRACE "}"
-#define TTS_IDENTIFIER "identifier"
-#define TTS_LVALUE_IDENTIFIER "lvalue identifier"
-#define TTS_AST_GLUE "ast glue"
-#define TTS_FUNCTION "function"
-
 #define NUMBER_LITERAL_BASE_PREFIX '0'
 #define NUMBER_LITERAL_BIN_PREFIX 'b'
 #define NUMBER_LITERAL_OCT_PREFIX 'o'
@@ -135,53 +87,53 @@ typedef enum
 /**
  * @brief Token string equivalents
  */
-static char* tokenStrings[] = {TTS_EOF,
-                               TTS_PLUS,
-                               TTS_MINUS,
-                               TTS_STAR,
-                               TTS_SLASH,
-                               TTS_EXPONENT,
-                               TTS_EQ,
-                               TTS_NEQ,
-                               TTS_LT,
-                               TTS_GT,
-                               TTS_LE,
-                               TTS_GE,
-                               TTS_AND,
-                               TTS_OR,
-                               TTS_XOR,
-                               TTS_NAND,
-                               TTS_NOR,
-                               TTS_XNOR,
-                               TTS_TRUE,
-                               TTS_FALSE,
-                               TTS_BYTE_LITERAL,
-                               TTS_CHAR_LITERAL,
-                               TTS_SHORT_LITERAL,
-                               TTS_INTEGER_LITERAL,
-                               TTS_LONG_LITERAL,
-                               TTS_VOID,
-                               TTS_BOOL,
-                               TTS_BYTE,
-                               TTS_CHAR,
-                               TTS_SHORT,
-                               TTS_INT,
-                               TTS_LONG,
-                               TTS_ASSIGN,
-                               TTS_PRINT,
-                               TTS_IF,
-                               TTS_ELSE,
-                               TTS_WHILE,
-                               TTS_FOR,
-                               TTS_SEMICOLON,
-                               TTS_LEFT_PAREN,
-                               TTS_RIGHT_PAREN,
-                               TTS_LEFT_BRACE,
-                               TTS_RIGHT_BRACE,
-                               TTS_IDENTIFIER,
-                               TTS_LVALUE_IDENTIFIER,
-                               TTS_AST_GLUE,
-                               TTS_FUNCTION};
+static char* tokenStrings[] = {"EOF",
+                               "+",
+                               "-",
+                               "*",
+                               "/",
+                               "**",
+                               "==",
+                               "!=",
+                               "<",
+                               ">",
+                               "<=",
+                               ">=",
+                               "and",
+                               "or",
+                               "xor",
+                               "nand",
+                               "nor",
+                               "xnor",
+                               "true",
+                               "false",
+                               "byte literal",
+                               "character literal",
+                               "short literal",
+                               "integer literal",
+                               "long literal",
+                               "void",
+                               "bool",
+                               "byte",
+                               "char",
+                               "short",
+                               "int",
+                               "long",
+                               "=",
+                               "print",
+                               "if",
+                               "else",
+                               "while",
+                               "for",
+                               ";",
+                               "(",
+                               ")",
+                               "{",
+                               "}",
+                               "identifier",
+                               "lvalue identifier",
+                               "ast glue",
+                               "function"};
 
 /**
  * @brief Determines if a TokenType is associated with a binary arithmetic operation

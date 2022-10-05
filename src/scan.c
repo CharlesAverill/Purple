@@ -308,85 +308,85 @@ static TokenType parse_keyword(char* keyword_string)
 {
     switch (keyword_string[0]) {
     case 'a':
-        if (!strcmp(keyword_string, TTS_AND)) {
+        if (!strcmp(keyword_string, tokenStrings[T_AND])) {
             return T_AND;
         }
         break;
     case 'b':
-        if (!strcmp(keyword_string, TTS_BOOL)) {
+        if (!strcmp(keyword_string, tokenStrings[T_BOOL])) {
             return T_BOOL;
-        } else if (!strcmp(keyword_string, TTS_BYTE)) {
+        } else if (!strcmp(keyword_string, tokenStrings[T_BYTE])) {
             fatal(RC_COMPILER_ERROR, "byte type not yet implemented");
             return T_BYTE;
         }
         break;
     case 'c':
-        if (!strcmp(keyword_string, TTS_CHAR)) {
+        if (!strcmp(keyword_string, tokenStrings[T_CHAR])) {
             return T_CHAR;
         }
         break;
     case 'e':
-        if (!strcmp(keyword_string, TTS_ELSE)) {
+        if (!strcmp(keyword_string, tokenStrings[T_ELSE])) {
             return T_ELSE;
         }
     case 'f':
-        if (!strcmp(keyword_string, TTS_FALSE)) {
+        if (!strcmp(keyword_string, tokenStrings[T_FALSE])) {
             return T_FALSE;
-        } else if (!strcmp(keyword_string, TTS_FOR)) {
+        } else if (!strcmp(keyword_string, tokenStrings[T_FOR])) {
             return T_FOR;
         }
     case 'i':
-        if (!strcmp(keyword_string, TTS_IF)) {
+        if (!strcmp(keyword_string, tokenStrings[T_IF])) {
             return T_IF;
-        } else if (!strcmp(keyword_string, TTS_INT)) {
+        } else if (!strcmp(keyword_string, tokenStrings[T_INT])) {
             return T_INT;
         }
         break;
     case 'l':
-        if (!strcmp(keyword_string, TTS_LONG)) {
+        if (!strcmp(keyword_string, tokenStrings[T_LONG])) {
             return T_LONG;
         }
         break;
     case 'n':
-        if (!strcmp(keyword_string, TTS_NAND)) {
+        if (!strcmp(keyword_string, tokenStrings[T_NAND])) {
             return T_NAND;
-        } else if (!strcmp(keyword_string, TTS_NOR)) {
+        } else if (!strcmp(keyword_string, tokenStrings[T_NOR])) {
             return T_NOR;
         }
         break;
     case 'o':
-        if (!strcmp(keyword_string, TTS_OR)) {
+        if (!strcmp(keyword_string, tokenStrings[T_OR])) {
             return T_OR;
         }
     case 'p':
-        if (!strcmp(keyword_string, TTS_PRINT)) {
+        if (!strcmp(keyword_string, tokenStrings[T_PRINT])) {
             return T_PRINT;
         }
         break;
     case 's':
-        if (!strcmp(keyword_string, TTS_SHORT)) {
+        if (!strcmp(keyword_string, tokenStrings[T_SHORT])) {
             return T_SHORT;
         }
         break;
     case 't':
-        if (!strcmp(keyword_string, TTS_TRUE)) {
+        if (!strcmp(keyword_string, tokenStrings[T_TRUE])) {
             return T_TRUE;
         }
         break;
     case 'v':
-        if (!strcmp(keyword_string, TTS_VOID)) {
+        if (!strcmp(keyword_string, tokenStrings[T_VOID])) {
             return T_VOID;
         }
         break;
     case 'w':
-        if (!strcmp(keyword_string, TTS_WHILE)) {
+        if (!strcmp(keyword_string, tokenStrings[T_WHILE])) {
             return T_WHILE;
         }
         break;
     case 'x':
-        if (!strcmp(keyword_string, TTS_XOR)) {
+        if (!strcmp(keyword_string, tokenStrings[T_XOR])) {
             return T_XOR;
-        } else if (!strcmp(keyword_string, TTS_XNOR)) {
+        } else if (!strcmp(keyword_string, tokenStrings[T_XNOR])) {
             return T_XNOR;
         }
         break;
