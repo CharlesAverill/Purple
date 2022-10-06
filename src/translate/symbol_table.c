@@ -11,6 +11,7 @@
 
 #include "translate/symbol_table.h"
 #include "utils/hash.h"
+#include "utils/logging.h"
 
 /**
  * @brief Create a new Symbol Table Stack
@@ -196,6 +197,12 @@ SymbolTableEntry* new_symbol_table_entry(char* symbol_name)
  */
 SymbolTableEntry* add_symbol_table_entry(SymbolTable* table, char* symbol_name, Type type)
 {
+    SymbolTableEntry* found = find_symbol_table_entry(table, symbol_name);
+    if (found != NULL) {
+        identifier_error(0, 0, 0, "Identifier \"%s\" already exists with type \"%s\" in this scope",
+                         symbol_name, tokenStrings[found->type.type]);
+    }
+
     SymbolTableEntry* entry = new_symbol_table_entry(symbol_name);
     entry->bucket_index = FNV_1(symbol_name) % table->total_buckets;
     entry->type = type;
