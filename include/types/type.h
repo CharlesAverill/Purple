@@ -65,11 +65,11 @@ typedef struct Type {
         .value.number = NUMBER_FROM_TYPE_VAL(nt, 0)                                                \
     }
 
-#define TYPE_FUNCTION(out, ...)                                                                    \
+#define TYPE_FUNCTION(out, input_list, num_inputs)                                                 \
     (Type)                                                                                         \
     {                                                                                              \
         .type = T_FUNCTION_DECLARATION, .is_function = true,                                       \
-        .value.function = FUNCTION_FROM_OUT_IN(out, (TokenType[]){__VA_ARGS__})                    \
+        .value.function = FUNCTION_FROM_OUT_IN(out, input_list, num_inputs)                        \
     }
 
 #endif /* TYPE_H */

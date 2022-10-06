@@ -102,7 +102,8 @@ base_test_output="61455
 
 function_test_output="X
 !
-42"
+42
+5"
 
 rm a.out
 echo -n "[Variable Test]: "

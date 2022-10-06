@@ -50,11 +50,42 @@ ASTNode* function_declaration(void)
     position ident_pos = D_GLOBAL_TOKEN.pos;
     ident_pos.char_number -= strlen(D_GLOBAL_TOKEN.value.symbol_name) - 1;
 
-    Type function_type = TYPE_FUNCTION(function_return_type, T_VOID);
+    Type function_type = TYPE_FUNCTION(function_return_type, 0, 0);
     entry = add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER, function_type);
 
     match_token(T_LEFT_PAREN);
-    match_token(T_VOID);
+
+    unsigned long long int parameters_size = 32;
+    int num_inputs = 0;
+    FunctionParameter* parameters =
+        (FunctionParameter*)malloc(sizeof(FunctionParameter) * parameters_size);
+    while (D_GLOBAL_TOKEN.type != T_RIGHT_PAREN) {
+        parameters[num_inputs].parameter_type = match_type();
+        if (num_inputs >= parameters_size) {
+            parameters_size *= 2;
+            parameters = (FunctionParameter*)realloc(parameters, parameters_size);
+        }
+
+        num_inputs++;
+
+        if (parameters[num_inputs - 1].parameter_type == T_VOID) {
+            continue;
+        }
+
+        match_token(T_IDENTIFIER);
+        strcpy(parameters[num_inputs - 1].parameter_name, D_IDENTIFIER_BUFFER);
+
+        // TODO : Locals
+        add_symbol_table_entry(
+            D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER,
+            TYPE_NUMBER_FROM_NUMBERTYPE_FROM_TOKEN(parameters[num_inputs - 1].parameter_type));
+        llvm_declare_global_number_variable(
+            D_IDENTIFIER_BUFFER,
+            token_type_to_number_type(parameters[num_inputs - 1].parameter_type));
+    }
+
+    function_type.value.function.parameters = parameters;
+
     match_token(T_RIGHT_PAREN);
 
     out = parse_statements();
