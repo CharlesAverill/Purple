@@ -25,6 +25,39 @@ static int get_operator_precedence(Token t)
     return prec;
 }
 
+ASTNode* function_call_expression(void)
+{
+    ASTNode* root;
+    ASTNode* parameter;
+    SymbolTableEntry* found_entry;
+
+    purple_log(LOG_DEBUG, "Parsing function call statement");
+
+    // Read identifier
+    position ident_pos = D_GLOBAL_TOKEN.pos;
+    match_token(T_IDENTIFIER);
+
+    // Ensure identifier name has been declared
+    purple_log(LOG_DEBUG, "Searching for function identifier name in global symbol table");
+    if ((found_entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER)) ==
+        NULL) {
+        identifier_error(0, 0, 0, "Function dentifier name \"%s\" has not been declared",
+                         D_IDENTIFIER_BUFFER);
+    }
+
+    match_token(T_LEFT_PAREN);
+    parameter = parse_binary_expression();
+    match_token(T_RIGHT_PAREN);
+
+    // Make a terminal node for the identifier
+    root = create_unary_ast_node(T_FUNCTION_CALL, parameter, found_entry->type,
+                                 found_entry->symbol_name);
+    root->number_type = token_type_to_number_type(found_entry->type.value.function.return_type);
+    add_position_info(root, ident_pos);
+
+    return root;
+}
+
 /**
  * @brief Build a terminal AST Node for a given Token, exit if not a valid primary Token
  * 
@@ -42,17 +75,23 @@ static ASTNode* create_terminal_node(Token* t)
     } else {
         switch (t->type) {
         case T_IDENTIFIER:
-            if (!find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, t->value.symbol_name)) {
+            if (!(entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, t->value.symbol_name))) {
                 identifier_error(0, 0, 0, "Undeclared identifier %s", t->value.symbol_name);
             }
-            out = create_ast_identifier_leaf(T_IDENTIFIER, t->value.symbol_name);
+
+            if (entry->type.is_function) {
+                return function_call_expression();
+            } else {
+                out = create_ast_identifier_leaf(T_IDENTIFIER, t->value.symbol_name);
+            }
+            break;
+        case T_RIGHT_PAREN:
+            return create_ast_nonidentifier_leaf(
+                T_INTEGER_LITERAL, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(NUMBER_INT(0)));
             break;
         default:
-            syntax_error(0, 0, 0, "Unexpected end of expression");
-            /*
-            fatal(RC_COMPILER_ERROR, "Tried creating a terminal node with token type \"%s\"",
-                  tokenStrings[t->type]);
-            */
+            syntax_error(0, 0, 0, "Unexpected end of expression, got \"%s\"",
+                         tokenStrings[t->type]);
         }
     }
 

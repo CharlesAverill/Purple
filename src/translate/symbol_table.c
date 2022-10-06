@@ -98,6 +98,7 @@ void pop_and_free_symbol_table(SymbolTableStack* stack)
 {
     SymbolTable* table = stack->top;
     stack->top = stack->top->next;
+    purple_log(LOG_DEBUG, "Freeing %s in %s", "table", "pop_and_free_symbol_table");
     free(table);
     stack->length--;
 }

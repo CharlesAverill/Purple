@@ -41,12 +41,17 @@ ASTNode* function_declaration(void)
     ASTNode* out;
     SymbolTableEntry* entry;
 
-    match_token(T_VOID);
+    TokenType function_return_type = match_type();
     match_token(T_IDENTIFIER);
+
+    D_CURRENT_FUNCTION_BUFFER[0] = '\0';
+    strcpy(D_CURRENT_FUNCTION_BUFFER, D_GLOBAL_TOKEN.value.symbol_name);
+
     position ident_pos = D_GLOBAL_TOKEN.pos;
     ident_pos.char_number -= strlen(D_GLOBAL_TOKEN.value.symbol_name) - 1;
 
-    entry = add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER, TYPE_VOID);
+    Type function_type = TYPE_FUNCTION(function_return_type, T_VOID);
+    entry = add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER, function_type);
 
     match_token(T_LEFT_PAREN);
     match_token(T_VOID);
@@ -54,8 +59,8 @@ ASTNode* function_declaration(void)
 
     out = parse_statements();
 
-    out = create_ast_node(T_FUNCTION, out, NULL, NULL, TYPE_FUNCTION(T_VOID, T_VOID),
-                          entry->symbol_name);
+    out =
+        create_ast_node(T_FUNCTION_DECLARATION, out, NULL, NULL, function_type, entry->symbol_name);
     add_position_info(out, ident_pos);
     return out;
 }

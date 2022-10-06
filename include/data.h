@@ -41,8 +41,12 @@ extern_ char* D_LLVM_GLOBALS_FN;
 extern_ unsigned long long int D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER;
 /**Current label index*/
 extern_ unsigned long long int D_LABEL_INDEX;
+/**The symbol name of the function currently being parsed*/
+extern_ char D_CURRENT_FUNCTION_BUFFER[MAX_IDENTIFIER_LENGTH + 1];
 /**Whether or not the current function has printed its preamble to LLVM_FILE yet*/
 extern_ bool D_CURRENT_FUNCTION_PREAMBLE_PRINTED;
+/**Whether or not the current function has returned a value*/
+extern_ bool D_CURRENT_FUNCTION_HAS_RETURNED;
 
 /**Buffer to read identifiers into*/
 extern_ char D_IDENTIFIER_BUFFER[MAX_IDENTIFIER_LENGTH + 1];

@@ -30,10 +30,12 @@ extern LLVMStackEntryNode* freeVirtualRegistersHead;
 /**
  * @brief Types of values possibly returned by ast_to_llvm
  */
-typedef enum {
+typedef enum
+{
     LLVMVALUETYPE_NONE,
     LLVMVALUETYPE_VIRTUAL_REGISTER,
     LLVMVALUETYPE_LABEL,
+    LLVMVALUETYPE_CONSTANT,
 } LLVMValueType;
 
 /**
@@ -50,6 +52,8 @@ typedef struct LLVMValue {
     union {
         /**Index of a virtual register*/
         type_register virtual_register_index;
+        /**Constant value*/
+        long long int constant;
         /**Index of an LLVM label*/
         type_label label_index;
     } value;
@@ -62,6 +66,15 @@ typedef struct LLVMValue {
     (LLVMValue)                                                                                    \
     {                                                                                              \
         .value_type = LLVMVALUETYPE_NONE, .value = 0                                               \
+    }
+
+/**
+ * @brief Generates an LLVMValue struct with a constant value
+ */
+#define LLVMVALUE_CONSTANT(c)                                                                      \
+    (LLVMValue)                                                                                    \
+    {                                                                                              \
+        .value_type = LLVMVALUETYPE_CONSTANT, .value.constant = c                                  \
     }
 
 /**
@@ -128,5 +141,8 @@ void llvm_conditional_jump(LLVMValue condition_register, LLVMValue true_label,
                            LLVMValue false_label);
 void llvm_function_preamble(char* symbol_name);
 void llvm_function_postamble(void);
+LLVMValue llvm_call_function(LLVMValue virtual_register, char* symbol_name);
+const char* type_to_llvm_type(TokenType type);
+void llvm_return(LLVMValue virtual_register, char* symbol_name);
 
 #endif /* LLVM_H */

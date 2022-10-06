@@ -5,8 +5,10 @@
  * @date 12-Sep-2022
  */
 
-#include "translate/llvm.h"
+#include <string.h>
+
 #include "data.h"
+#include "translate/llvm.h"
 #include "translate/translate.h"
 #include "types/type.h"
 #include "utils/clang.h"
@@ -99,10 +101,14 @@ void llvm_preamble(void)
     // Target layout
     char* target_datalayout = get_target_datalayout();
     fprintf(D_LLVM_FILE, "target datalayout = \"%s\"" NEWLINE, target_datalayout);
+    purple_log(LOG_DEBUG, "Freeing %s", "target_datalayout");
     free(target_datalayout);
+
     // Target triple
     char* target_triple = get_target_triple();
     fprintf(D_LLVM_FILE, "target triple = \"%s\"" NEWLINE NEWLINE, target_triple);
+    purple_log(LOG_DEBUG, "Freeing %s", "target_triple");
+    free(target_triple);
 
     // Globals placeholder
     fprintf(D_LLVM_FILE, PURPLE_GLOBALS_PLACEHOLDER NEWLINE NEWLINE);
@@ -273,6 +279,7 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
         left_virtual_register.number_type);
     if (loaded_registers != NULL) {
         left_virtual_register.value.virtual_register_index = loaded_registers[0];
+        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers (1)", "llvm_binary_arithmetic");
         free(loaded_registers);
         loaded_registers = NULL;
     }
@@ -282,6 +289,7 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
         right_virtual_register.number_type);
     if (loaded_registers != NULL) {
         right_virtual_register.value.virtual_register_index = loaded_registers[0];
+        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers (2)", "llvm_binary_arithmetic");
         free(loaded_registers);
     }
 
@@ -398,6 +406,7 @@ void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register)
         rvalue_register.number_type);
     if (loaded_registers) {
         rvalue_register.value.virtual_register_index = loaded_registers[0];
+        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_store_global_variable");
         free(loaded_registers);
     }
 
@@ -483,6 +492,7 @@ void llvm_print_int(type_register print_vr, TokenType type)
                                                                   token_type_to_number_type(type));
     if (loaded_register) {
         print_vr = loaded_register[0];
+        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_register", "llvm_print_int");
         free(loaded_register);
     }
 
@@ -637,6 +647,7 @@ LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_registe
         left_virtual_register.number_type);
     if (loaded_registers != NULL) {
         left_virtual_register.value.virtual_register_index = loaded_registers[0];
+        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_compare");
         free(loaded_registers);
     }
 
@@ -645,6 +656,7 @@ LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_registe
         right_virtual_register.number_type);
     if (loaded_registers != NULL) {
         right_virtual_register.value.virtual_register_index = loaded_registers[0];
+        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_compare");
         free(loaded_registers);
         loaded_registers = NULL;
     }
@@ -770,8 +782,20 @@ void llvm_conditional_jump(LLVMValue condition_register, LLVMValue true_label,
 
 void llvm_function_preamble(char* symbol_name)
 {
+    SymbolTableEntry* entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+    if (!entry) {
+        fatal(RC_COMPILER_ERROR,
+              "llvm_call_function received symbol name \"%s\", which is not an identifier",
+              symbol_name);
+    } else if (!entry->type.is_function) {
+        fatal(RC_COMPILER_ERROR,
+              "llvm_call_function received an identifier name that is not a function: \"%s\"",
+              symbol_name);
+    }
+
     D_CURRENT_FUNCTION_PREAMBLE_PRINTED = true;
-    fprintf(D_LLVM_FILE, "define dso_local i32 @%s() #0 {" NEWLINE, symbol_name);
+    fprintf(D_LLVM_FILE, "define dso_local %s @%s() #0 {" NEWLINE,
+            type_to_llvm_type(entry->type.value.function.return_type), symbol_name);
 
     // Print our buffered stack entries
     if (buffered_stack_entries_head != NULL) {
@@ -783,5 +807,93 @@ void llvm_function_preamble(char* symbol_name)
 
 void llvm_function_postamble(void)
 {
-    fprintf(D_LLVM_FILE, TAB "ret i32 0" NEWLINE "}" NEWLINE NEWLINE);
+    fprintf(D_LLVM_FILE, "}" NEWLINE NEWLINE);
+}
+
+const char* type_to_llvm_type(TokenType type)
+{
+    if (type == T_VOID) {
+        return "void";
+    } else {
+        return numberTypeLLVMReprs[token_type_to_number_type(type)];
+    }
+}
+
+LLVMValue llvm_call_function(LLVMValue virtual_register, char* symbol_name)
+{
+    LLVMValue out = LLVMVALUE_NULL;
+
+    SymbolTableEntry* entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+    if (!entry) {
+        fatal(RC_COMPILER_ERROR,
+              "llvm_call_function received symbol name \"%s\", which is not an identifier",
+              symbol_name);
+    } else if (!entry->type.is_function) {
+        fatal(RC_COMPILER_ERROR,
+              "llvm_call_function received an identifier name that is not a function: \"%s\"",
+              symbol_name);
+    }
+
+    fprintf(D_LLVM_FILE, TAB);
+
+    if (entry->type.value.function.return_type != T_VOID) {
+        out = LLVMVALUE_VIRTUAL_REGISTER(
+            get_next_local_virtual_register(),
+            token_type_to_number_type(entry->type.value.function.return_type));
+        fprintf(D_LLVM_FILE, "%%%llu = ", out.value.virtual_register_index);
+    }
+
+    fprintf(D_LLVM_FILE, "call %s () @%s()" NEWLINE,
+            type_to_llvm_type(entry->type.value.function.return_type), symbol_name);
+
+    prepend_loaded(out.value.virtual_register_index);
+
+    return out;
+}
+
+void llvm_return(LLVMValue value, char* symbol_name)
+{
+    SymbolTableEntry* entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+    if (!entry) {
+        fatal(RC_COMPILER_ERROR,
+              "llvm_call_function received symbol name \"%s\", which is not an identifier",
+              symbol_name);
+    } else if (!entry->type.is_function) {
+        fatal(RC_COMPILER_ERROR,
+              "llvm_call_function received an identifier name that is not a function: \"%s\"",
+              symbol_name);
+    }
+
+    if (value.value_type != LLVMVALUETYPE_CONSTANT &&
+        entry->type.value.function.return_type != T_VOID) {
+
+        type_register* loaded_registers = llvm_ensure_registers_loaded(
+            1, (type_register[]){value.value.virtual_register_index}, value.number_type);
+        if (loaded_registers != NULL) {
+            value.value.virtual_register_index = loaded_registers[0];
+            purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_return");
+            free(loaded_registers);
+        }
+    }
+
+    fprintf(D_LLVM_FILE, TAB "ret %s", type_to_llvm_type(entry->type.value.function.return_type));
+
+    if (entry->type.value.function.return_type != T_VOID) {
+        switch (value.value_type) {
+        case LLVMVALUETYPE_CONSTANT:
+            fprintf(D_LLVM_FILE, " %llu", value.value.constant);
+            break;
+        case LLVMVALUETYPE_VIRTUAL_REGISTER:
+            fprintf(D_LLVM_FILE, " %%%llu", value.value.virtual_register_index);
+            break;
+        default:
+            fatal(RC_COMPILER_ERROR, "llvm_return got LLVMValueType %d", value.value_type);
+        }
+    } else if (strcmp("main", symbol_name) == 0) {
+        purple_log(LOG_WARNING, "Change \"main\" function return type to int");
+    }
+
+    fprintf(D_LLVM_FILE, NEWLINE);
+
+    D_CURRENT_FUNCTION_HAS_RETURNED = true;
 }

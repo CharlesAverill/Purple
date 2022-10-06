@@ -74,6 +74,8 @@ void free_llvm_stack_entry_node_list(LLVMStackEntryNode* head)
     while (current) {
         prev = current;
         current = current->next;
+        purple_log(LOG_DEBUG, "Freeing LLVMStackEntryNode at %p in free_llvm_stack_entry_node_list",
+                   prev);
         free(prev);
     }
     head = NULL;

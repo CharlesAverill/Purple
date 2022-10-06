@@ -55,6 +55,8 @@ error_t parse_opt(int key, char* arg, struct argp_state* state)
             arguments->logging = LOG_ERROR;
         } else if (!strcmp("CRITICAL", arg)) {
             arguments->logging = LOG_CRITICAL;
+        } else {
+            argp_usage(state);
         }
         break;
     case 'o':

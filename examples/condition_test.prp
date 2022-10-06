@@ -5,7 +5,7 @@
  * @date 08-Sep-2022
  */
 
-void main(void) {
+int main(void) {
     int i;
     int j;
     i = 6;

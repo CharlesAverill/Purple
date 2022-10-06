@@ -9,7 +9,12 @@ void test_function(void) {
     print '!';
 }
 
-void main(void) {
+int one(void) {
+    return 1;
+}
+
+int main(void) {
     print 'X';       // X
-    //test_function(); // !
+    test_function();
+    print 41 + one();
 }

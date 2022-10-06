@@ -16,7 +16,8 @@
 /**
  * @brief Types of scannable tokens
  */
-typedef enum {
+typedef enum
+{
     T_EOF,
     // Arithmetic Operators
     T_PLUS,
@@ -72,7 +73,8 @@ typedef enum {
     T_IDENTIFIER,
     T_LVALUE_IDENTIFIER,
     T_AST_GLUE,
-    T_FUNCTION,
+    T_FUNCTION_DECLARATION,
+    T_FUNCTION_CALL,
 } TokenType;
 
 #define NUMBER_LITERAL_BASE_PREFIX '0'
@@ -134,7 +136,8 @@ static char* tokenStrings[] = {"EOF",
                                "identifier",
                                "lvalue identifier",
                                "ast glue",
-                               "function"};
+                               "function",
+                               "function call"};
 
 /**
  * @brief Determines if a TokenType is associated with a binary arithmetic operation
@@ -144,7 +147,7 @@ static char* tokenStrings[] = {"EOF",
 /**
  * @brief Determines if a TokenType is associated with a type keyword
  */
-#define TOKENTYPE_IS_TYPE(type) (type >= T_BOOL && type <= T_LONG)
+#define TOKENTYPE_IS_TYPE(type) (type >= T_VOID && type <= T_LONG)
 
 /**
  * @brief Determines if a TokenType is associated with a number type keyword or a number literal

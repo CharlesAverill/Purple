@@ -43,7 +43,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
         out->value.number_value = type.value.number.value;
         out->number_type = type.value.number.type;
         out->is_char_arithmetic = ttype == T_CHAR || ttype == T_CHAR_LITERAL;
-    } else if (TOKENTYPE_IS_IDENTIFIER(ttype) || ttype == T_FUNCTION) {
+    } else if (TOKENTYPE_IS_IDENTIFIER(ttype) || ttype == T_FUNCTION_CALL) {
         if (symbol_name == NULL) {
             fatal(RC_COMPILER_ERROR,
                   "Tried to create identifier node, but passed symbol_name is NULL");
@@ -65,16 +65,21 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
         out->is_char_arithmetic = left->is_char_arithmetic;
     } else if (TOKENTYPE_IS_COMPARATOR(ttype)) {
         out->number_type = NT_INT1;
-    } else if (ttype == T_FUNCTION) {
+    } else if (ttype == T_FUNCTION_DECLARATION) {
         if (symbol_name == NULL) {
             fatal(RC_COMPILER_ERROR,
-                  "Tried to create identifier node, but passed symbol_name is NULL");
+                  "Tried to create function declaration node, but passed symbol_name is NULL");
         }
+
+        strcpy(out->value.symbol_name, symbol_name);
+
         SymbolTableEntry* found_entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
         if (found_entry == NULL) {
             fatal(RC_COMPILER_ERROR,
-                  "create_ast_node received identifier name that is not defined in the GST");
+                  "create_ast_node received function name that is not defined in the GST");
         }
+    } else if (ttype == T_RETURN) {
+        strcpy(out->value.symbol_name, symbol_name);
     }
 
     return out;

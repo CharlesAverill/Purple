@@ -15,6 +15,7 @@ https://llvm.org/docs/LangRef.html#function-attributes (`optnone`)
 
 - Open chunk of memory to be accessed between two or more simultaneously-running programs
 - Likely to be approached alongside the development of upcoming PurpleOS (better name also coming)
+    - Maybe can bypass this with a "purple daemon" running in background at all times that receives requests for memory tunnels and returns pointers?
 
 ## Struct operator overloading
 
