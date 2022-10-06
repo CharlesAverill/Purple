@@ -110,11 +110,19 @@ loopStatement: whileStatement
              | forStatement
              ;
 
+functionCallStatement: T_IDENTIFIER '(' expression ')'
+                     ;
+
+returnStatement: 'return' expression
+               ;
+
 statementType: printStatement
              | assignmentExpression
              | declareStatement
              | ifStatement
              | loopStatement
+             | functionCallStatement
+             | returnStatement
              ;
 
 statement: statementType ';'

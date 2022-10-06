@@ -42,5 +42,6 @@ void shutdown(void)
 
     if (args) {
         free(args);
+        args = NULL;
     }
 }

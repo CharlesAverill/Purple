@@ -11,7 +11,9 @@ function strings_are_okay() {
     printf "${ANSI_RESET}"
     bin/purple $2 > /dev/null
     prog_output=$(./a.out)
-    if [ $? -ne 0 ] ; then
+    prog_rc=$?
+    if [ $prog_rc -ne 0 ] ; then
+        printf "Exited with code $ANSI_RED$ANSI_BOLD$prog_rc\n"
         return 1
     fi
 
@@ -98,7 +100,10 @@ base_test_output="61455
 61455
 194"
 
-function_test_output="X"
+function_test_output="X
+!
+42
+5"
 
 rm a.out
 echo -n "[Variable Test]: "

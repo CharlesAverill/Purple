@@ -35,7 +35,7 @@ TokenType match_type(void)
     if (TOKENTYPE_IS_TYPE(ttype)) {
         scan(&D_GLOBAL_TOKEN);
     } else {
-        syntax_error(0, 0, 0, "Expected type");
+        syntax_error(0, 0, 0, "Expected type but got \"%s\"", tokenStrings[ttype]);
     }
 
     return ttype;
@@ -57,10 +57,9 @@ static ASTNode* print_statement(void)
     position print_position = D_GLOBAL_TOKEN.pos;
 
     // Parse printed value
-    purple_log(LOG_DEBUG, "Parsing binary expression for print statement");
     root = parse_binary_expression();
 
-    root = create_unary_ast_node(T_PRINT, root, TYPE_VOID);
+    root = create_unary_ast_node(T_PRINT, root, TYPE_VOID, NULL);
     add_position_info(root, print_position);
 
     return root;
@@ -83,7 +82,6 @@ static ASTNode* assignment_statement(void)
     // Read identifier
     position ident_pos = D_GLOBAL_TOKEN.pos;
     match_token(T_IDENTIFIER);
-    //position ident_pos = D_GLOBAL_TOKEN.pos;
 
     // Ensure identifier name has been declared
     purple_log(LOG_DEBUG, "Searching for identifier name in global symbol table");
@@ -101,7 +99,6 @@ static ASTNode* assignment_statement(void)
     position assign_pos = D_GLOBAL_TOKEN.pos;
 
     // Parse assignment expression
-    purple_log(LOG_DEBUG, "Parsing binary expression for assign statement");
     left = parse_binary_expression();
 
     right->is_char_arithmetic = left->is_char_arithmetic;
@@ -245,6 +242,33 @@ static ASTNode* for_statement(void)
     return out;
 }
 
+static ASTNode* return_statement(void)
+{
+    ASTNode* out;
+
+    SymbolTableEntry* entry =
+        find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_CURRENT_FUNCTION_BUFFER);
+    if (!entry) {
+        fatal(RC_COMPILER_ERROR,
+              "return_statement received symbol name \"%s\", which is not an identifier",
+              D_CURRENT_FUNCTION_BUFFER);
+    } else if (!entry->type.is_function) {
+        fatal(RC_COMPILER_ERROR,
+              "return_statement received an identifier name that is not a function: \"%s\"",
+              D_CURRENT_FUNCTION_BUFFER);
+    }
+
+    match_token(T_RETURN);
+
+    if (entry->type.value.function.return_type == T_VOID) {
+        return create_unary_ast_node(T_RETURN, NULL, TYPE_VOID, D_CURRENT_FUNCTION_BUFFER);
+    }
+
+    out = parse_binary_expression();
+
+    return create_unary_ast_node(T_RETURN, out, entry->type, D_CURRENT_FUNCTION_BUFFER);
+}
+
 /**
  * @brief Parse a set of statements into ASTs and generate them into an AST
  * 
@@ -257,6 +281,8 @@ ASTNode* parse_statements(void)
     ASTNode* left = NULL;
     ASTNode* root;
     LLVMValue cg_output;
+
+    SymbolTableEntry* symbol;
 
     match_token(T_LEFT_BRACE);
 
@@ -273,7 +299,13 @@ ASTNode* parse_statements(void)
                 root = print_statement();
                 break;
             case T_IDENTIFIER:
-                root = assignment_statement();
+                symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE,
+                                                 D_GLOBAL_TOKEN.value.symbol_name);
+                if (symbol->type.is_function) {
+                    root = function_call_expression();
+                } else {
+                    root = assignment_statement();
+                }
                 break;
             case T_IF:
                 root = if_statement();
@@ -291,6 +323,9 @@ ASTNode* parse_statements(void)
                 match_token(T_RIGHT_BRACE);
                 return_left = true;
                 match_semicolon = false;
+                break;
+            case T_RETURN:
+                root = return_statement();
                 break;
             default:
                 syntax_error(0, 0, 0, "Unexpected token %s", tokenStrings[D_GLOBAL_TOKEN.type]);

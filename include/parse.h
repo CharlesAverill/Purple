@@ -53,6 +53,7 @@ void match_token(TokenType type);
 TokenType match_type(void);
 void variable_declaration(void);
 ASTNode* function_declaration(void);
+ASTNode* function_call_expression(void);
 ASTNode* parse_statements(void);
 
 #endif /* PARSE_H */

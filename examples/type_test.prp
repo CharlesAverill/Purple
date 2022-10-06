@@ -5,7 +5,7 @@
  * @date 27-Sep-2022
  */
 
-void main(void) {
+int main(void) {
     int x;
     x = 2 * 3 + 0o5 + 6 / 3 + 1;
     print x;                       // 14
