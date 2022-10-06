@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['token_0',['Token',['../scan_8h.html#ae88d5c0259051080fda097b92d99d7ee',1,'scan.h']]],
-  ['type_1',['Type',['../type_8h.html#a1ac75f8fee198af783521627f1fecfbc',1,'type.h']]]
+  ['symboltable_0',['SymbolTable',['../symbol__table_8h.html#a0ef213c033eadd9c99ef43c1df3d9bd5',1,'symbol_table.h']]],
+  ['symboltableentry_1',['SymbolTableEntry',['../symbol__table_8h.html#a70075dcb3cfa8811d6771d902040ede1',1,'symbol_table.h']]],
+  ['symboltablestack_2',['SymbolTableStack',['../symbol__table_8h.html#a13eccf949a1c465b7662b74e0d880409',1,'symbol_table.h']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['token_0',['Token',['../structToken.html',1,'']]],
-  ['type_1',['Type',['../structType.html',1,'']]]
+  ['symboltable_0',['SymbolTable',['../structSymbolTable.html',1,'']]],
+  ['symboltableentry_1',['SymbolTableEntry',['../structSymbolTableEntry.html',1,'']]],
+  ['symboltablestack_2',['SymbolTableStack',['../structSymbolTableStack.html',1,'']]]
 ];

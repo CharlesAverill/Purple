@@ -90,8 +90,10 @@ Collaboration diagram for Type:</div>
 <div class="dyncontent">
 <div class="center"><img src="structType__coll__graph.png" border="0" usemap="#aType_coll__map" alt="Collaboration graph"/></div>
 <map name="aType_coll__map" id="aType_coll__map">
-<area shape="rect" title="Container for type data." alt="" coords="7,160,71,252"/>
-<area shape="rect" href="structNumber.html" title="Container for various kinds of number data." alt="" coords="5,5,73,97"/>
+<area shape="rect" title="Container for type data." alt="" coords="43,315,139,421"/>
+<area shape="rect" href="structNumber.html" title="Container for various kinds of number data." alt="" coords="5,160,73,252"/>
+<area shape="rect" href="structFunction.html" title="Container for function information." alt="" coords="97,160,227,252"/>
+<area shape="rect" href="structFunctionParameter.html" title="Container for function parameter information." alt="" coords="96,5,228,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -99,15 +101,48 @@ Collaboration diagram for Type:</div>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ab90888b18d5dfabe3014052b41282591"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structType.html#ab90888b18d5dfabe3014052b41282591">type</a></td></tr>
 <tr class="separator:ab90888b18d5dfabe3014052b41282591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a068d21067fcb3e97de0144eb62b0da"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structType.html#a3a068d21067fcb3e97de0144eb62b0da">is_function</a></td></tr>
+<tr class="separator:a3a068d21067fcb3e97de0144eb62b0da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6d57ad268d222017f11c099570d378b"><td class="memItemLeft" >union {</td></tr>
 <tr class="memitem:adad436136e7b8e7363d45713104c6e25"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="structNumber.html">Number</a>&#160;&#160;&#160;<a class="el" href="structType.html#a78b8fbf7340e9445efa5bb9731367931">number</a></td></tr>
 <tr class="separator:adad436136e7b8e7363d45713104c6e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5641dd09832476cf099f8fe1152ab57"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="structFunction.html">Function</a>&#160;&#160;&#160;<a class="el" href="structType.html#a06f8fd59ce6ac97c4020bd49c9cd558e">function</a></td></tr>
+<tr class="separator:aa5641dd09832476cf099f8fe1152ab57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6d57ad268d222017f11c099570d378b"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structType.html#af6d57ad268d222017f11c099570d378b">value</a></td></tr>
 <tr class="separator:af6d57ad268d222017f11c099570d378b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Container for type data. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a06f8fd59ce6ac97c4020bd49c9cd558e" name="a06f8fd59ce6ac97c4020bd49c9cd558e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06f8fd59ce6ac97c4020bd49c9cd558e">&#9670;&nbsp;</a></span>function</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structFunction.html">Function</a> Type::function</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a068d21067fcb3e97de0144eb62b0da" name="a3a068d21067fcb3e97de0144eb62b0da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a068d21067fcb3e97de0144eb62b0da">&#9670;&nbsp;</a></span>is_function</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Type::is_function</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Whether or not this is the type of a function </p>
+
+</div>
+</div>
 <a id="a78b8fbf7340e9445efa5bb9731367931" name="a78b8fbf7340e9445efa5bb9731367931"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a78b8fbf7340e9445efa5bb9731367931">&#9670;&nbsp;</a></span>number</h2>
 

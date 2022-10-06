@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['position_0',['position',['../scan_8h.html#ae95ed9c09d4ff44297273224ccfbe1dd',1,'scan.h']]],
-  ['purpleargs_1',['PurpleArgs',['../arguments_8h.html#a5b56d2fb6df7bf6bea59b8373b25b068',1,'arguments.h']]]
+  ['number_0',['Number',['../number_8h.html#a3942c9e8f0f4fb3367a4b5631b66f915',1,'number.h']]]
 ];

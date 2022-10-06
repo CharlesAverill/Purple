@@ -115,11 +115,19 @@ This file contains the BNF grammar for Purple in a format recognized by ANTLR4.
 \DoxyCodeLine{             | forStatement}
 \DoxyCodeLine{             ;}
 \DoxyCodeLine{}
+\DoxyCodeLine{functionCallStatement: T\_IDENTIFIER '(' expression ')'}
+\DoxyCodeLine{                     ;}
+\DoxyCodeLine{}
+\DoxyCodeLine{returnStatement: 'return' expression}
+\DoxyCodeLine{               ;}
+\DoxyCodeLine{}
 \DoxyCodeLine{statementType: printStatement}
 \DoxyCodeLine{             | assignmentExpression}
 \DoxyCodeLine{             | declareStatement}
 \DoxyCodeLine{             | ifStatement}
 \DoxyCodeLine{             | loopStatement}
+\DoxyCodeLine{             | functionCallStatement}
+\DoxyCodeLine{             | returnStatement}
 \DoxyCodeLine{             ;}
 \DoxyCodeLine{}
 \DoxyCodeLine{statement: statementType ';'}

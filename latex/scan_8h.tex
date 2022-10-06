@@ -50,7 +50,7 @@ struct \mbox{\hyperlink{structToken}{Token}}
 \item 
 \#define \mbox{\hyperlink{scan_8h_a58f4872f7a38784336953acff530cb27}{TOKENTYPE\+\_\+\+IS\+\_\+\+BINARY\+\_\+\+ARITHMETIC}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2}{T\+\_\+\+PLUS}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd}{T\+\_\+\+EXPONENT}})
 \begin{DoxyCompactList}\small\item\em Determines if a Token\+Type is associated with a binary arithmetic operation. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{scan_8h_a25f96fd1446a9c6f4cfbbbbb8b32b540}{TOKENTYPE\+\_\+\+IS\+\_\+\+TYPE}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf}{T\+\_\+\+BOOL}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842}{T\+\_\+\+LONG}})
+\#define \mbox{\hyperlink{scan_8h_a25f96fd1446a9c6f4cfbbbbb8b32b540}{TOKENTYPE\+\_\+\+IS\+\_\+\+TYPE}}(type)~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99}{T\+\_\+\+VOID}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842}{T\+\_\+\+LONG}})
 \begin{DoxyCompactList}\small\item\em Determines if a Token\+Type is associated with a type keyword. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scan_8h_a687840c3bb584fbb121be2e4d780a036}{TOKENTYPE\+\_\+\+IS\+\_\+\+NUMBER\+\_\+\+TYPE}}(tt)~    ((tt $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf}{T\+\_\+\+BOOL}} \&\& tt $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842}{T\+\_\+\+LONG}}) $\vert$$\vert$ (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075}{T\+\_\+\+TRUE}} $<$= tt \&\& tt $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a7af6069db39ea230344cb539eca65796}{T\+\_\+\+LONG\+\_\+\+LITERAL}}))
 \begin{DoxyCompactList}\small\item\em Determines if a Token\+Type is associated with a number type keyword or a number literal. \end{DoxyCompactList}\item 
@@ -126,17 +126,20 @@ enum \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \
 , \newline
 \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a53ea0dd1b6eff99840e43263e461db90}{T\+\_\+\+WHILE}}
 , \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a015a67f9192b6e93aefaad3ff8e4d534}{T\+\_\+\+FOR}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af67d7abdf9bc69bb6816d55d8c45d1ce}{T\+\_\+\+RETURN}}
 , \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf}{T\+\_\+\+SEMICOLON}}
-, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad3c00dadab635871936786d06435b597}{T\+\_\+\+LEFT\+\_\+\+PAREN}}
 , \newline
-\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a424e527b30e941f85bd06be98649c9e4}{T\+\_\+\+RIGHT\+\_\+\+PAREN}}
+\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ad3c00dadab635871936786d06435b597}{T\+\_\+\+LEFT\+\_\+\+PAREN}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a424e527b30e941f85bd06be98649c9e4}{T\+\_\+\+RIGHT\+\_\+\+PAREN}}
 , \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af80c03e581832d0539f935ad06c55644}{T\+\_\+\+LEFT\+\_\+\+BRACE}}
 , \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a0c4f26d5004adf7f0ae46c972d47c641}{T\+\_\+\+RIGHT\+\_\+\+BRACE}}
-, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a}{T\+\_\+\+IDENTIFIER}}
 , \newline
-\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63}{T\+\_\+\+LVALUE\+\_\+\+IDENTIFIER}}
+\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a}{T\+\_\+\+IDENTIFIER}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63}{T\+\_\+\+LVALUE\+\_\+\+IDENTIFIER}}
 , \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ab1647682cc68bc1ae29602d185992e7a}{T\+\_\+\+AST\+\_\+\+GLUE}}
-, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ac8d14b8d5356398c7927dd298565f23a}{T\+\_\+\+FUNCTION}}
+, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340}{T\+\_\+\+FUNCTION\+\_\+\+DECLARATION}}
+, \newline
+\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921ab5fa589fc955a68223a4fa2d68bcfd31}{T\+\_\+\+FUNCTION\+\_\+\+CALL}}
  \}
 \begin{DoxyCompactList}\small\item\em Types of scannable tokens. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
@@ -303,7 +306,7 @@ Determines if a Token\+Type is associated with a number type keyword or a number
 \index{scan.h@{scan.h}!TOKENTYPE\_IS\_TYPE@{TOKENTYPE\_IS\_TYPE}}
 \index{TOKENTYPE\_IS\_TYPE@{TOKENTYPE\_IS\_TYPE}!scan.h@{scan.h}}
 \doxysubsubsection{\texorpdfstring{TOKENTYPE\_IS\_TYPE}{TOKENTYPE\_IS\_TYPE}}
-{\footnotesize\ttfamily \#define TOKENTYPE\+\_\+\+IS\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a7af48b89eafa6f3fc499363a6189f2cf}{T\+\_\+\+BOOL}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842}{T\+\_\+\+LONG}})}
+{\footnotesize\ttfamily \#define TOKENTYPE\+\_\+\+IS\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})~(type $>$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99}{T\+\_\+\+VOID}} \&\& type $<$= \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a1f8887255ce9ce523e5c497f14d9d842}{T\+\_\+\+LONG}})}
 
 
 
@@ -498,6 +501,10 @@ T\+\_\+\+WHILE&\\
 T\+\_\+\+FOR&\\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_RETURN@{T\_RETURN}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_RETURN@{T\_RETURN}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921af67d7abdf9bc69bb6816d55d8c45d1ce}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921af67d7abdf9bc69bb6816d55d8c45d1ce}} 
+T\+\_\+\+RETURN&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{T\_SEMICOLON@{T\_SEMICOLON}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_SEMICOLON@{T\_SEMICOLON}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921a4039443f93e2fd03579606d7b2d02dbf}} 
 T\+\_\+\+SEMICOLON&\\
 \hline
@@ -530,8 +537,12 @@ T\+\_\+\+LVALUE\+\_\+\+IDENTIFIER&\\
 T\+\_\+\+AST\+\_\+\+GLUE&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_FUNCTION@{T\_FUNCTION}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_FUNCTION@{T\_FUNCTION}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921ac8d14b8d5356398c7927dd298565f23a}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921ac8d14b8d5356398c7927dd298565f23a}} 
-T\+\_\+\+FUNCTION&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_FUNCTION\_DECLARATION@{T\_FUNCTION\_DECLARATION}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_FUNCTION\_DECLARATION@{T\_FUNCTION\_DECLARATION}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340}} 
+T\+\_\+\+FUNCTION\+\_\+\+DECLARATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\_FUNCTION\_CALL@{T\_FUNCTION\_CALL}!scan.h@{scan.h}}\index{scan.h@{scan.h}!T\_FUNCTION\_CALL@{T\_FUNCTION\_CALL}}}\mbox{\Hypertarget{scan_8h_aa520fbf142ba1e7e659590c07da31921ab5fa589fc955a68223a4fa2d68bcfd31}\label{scan_8h_aa520fbf142ba1e7e659590c07da31921ab5fa589fc955a68223a4fa2d68bcfd31}} 
+T\+\_\+\+FUNCTION\+\_\+\+CALL&\\
 \hline
 
 \end{DoxyEnumFields}

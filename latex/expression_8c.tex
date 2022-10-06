@@ -20,6 +20,8 @@ Include dependency graph for expression.\+c\+:
 \item 
 static int \mbox{\hyperlink{expression_8c_a3894f429297d723b0874c729e033242b}{get\+\_\+operator\+\_\+precedence}} (\mbox{\hyperlink{structToken}{Token}} t)
 \begin{DoxyCompactList}\small\item\em Get the integer operator precedence value of a \mbox{\hyperlink{structToken}{Token}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{expression_8c_a10b90c295eee70af76ca7abd63958d6d}{function\+\_\+call\+\_\+expression}} (void)
+\item 
 static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{expression_8c_a53c43318e486672b8d59f9bb60e4105c}{create\+\_\+terminal\+\_\+node}} (\mbox{\hyperlink{structToken}{Token}} $\ast$t)
 \begin{DoxyCompactList}\small\item\em Build a terminal AST Node for a given \mbox{\hyperlink{structToken}{Token}}, exit if not a valid primary \mbox{\hyperlink{structToken}{Token}}. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{expression_8c_a954be732c0f4936d3732a6c5eaf02741}{parse\+\_\+binary\+\_\+expression\+\_\+recursive}} (int previous\+\_\+token\+\_\+precedence, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} $\ast$nt\+\_\+max)
@@ -58,6 +60,12 @@ Build a terminal AST Node for a given \mbox{\hyperlink{structToken}{Token}}, exi
 \begin{DoxyReturn}{Returns}
 An AST Node built from the provided \mbox{\hyperlink{structToken}{Token}}, or an error if the \mbox{\hyperlink{structToken}{Token}} is non-\/terminal 
 \end{DoxyReturn}
+\mbox{\Hypertarget{expression_8c_a10b90c295eee70af76ca7abd63958d6d}\label{expression_8c_a10b90c295eee70af76ca7abd63958d6d}} 
+\index{expression.c@{expression.c}!function\_call\_expression@{function\_call\_expression}}
+\index{function\_call\_expression@{function\_call\_expression}!expression.c@{expression.c}}
+\doxysubsubsection{\texorpdfstring{function\_call\_expression()}{function\_call\_expression()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ function\+\_\+call\+\_\+expression (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{expression_8c_a3894f429297d723b0874c729e033242b}\label{expression_8c_a3894f429297d723b0874c729e033242b}} 
 \index{expression.c@{expression.c}!get\_operator\_precedence@{get\_operator\_precedence}}
 \index{get\_operator\_precedence@{get\_operator\_precedence}!expression.c@{expression.c}}

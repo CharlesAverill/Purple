@@ -5,8 +5,9 @@
 LLVM-\/\+IR emission.  
 
 
-{\ttfamily \#include \char`\"{}translate/llvm.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}translate/llvm.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}translate/translate.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}types/type.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils/clang.\+h\char`\"{}}\newline
@@ -82,6 +83,12 @@ void \mbox{\hyperlink{llvm_8c_a492b6193f6cfe59c435bf09ee99f0a54}{llvm\+\_\+condi
 void \mbox{\hyperlink{llvm_8c_a43b3adedb0a09aa7422dd249ee79c9e4}{llvm\+\_\+function\+\_\+preamble}} (char $\ast$symbol\+\_\+name)
 \item 
 void \mbox{\hyperlink{llvm_8c_a53f223d3ffdbcf048fedd7e39a95d7f3}{llvm\+\_\+function\+\_\+postamble}} (void)
+\item 
+const char $\ast$ \mbox{\hyperlink{llvm_8c_af4ccee4ae68116bfc0860b6d19090bde}{type\+\_\+to\+\_\+llvm\+\_\+type}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
+\item 
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_a1ceb23c144fc42a3004d62a4cdb4f840}{llvm\+\_\+call\+\_\+function}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} virtual\+\_\+register, char $\ast$symbol\+\_\+name)
+\item 
+void \mbox{\hyperlink{llvm_8c_a0db1e84c33f375b218a6010fee7a4b90}{llvm\+\_\+return}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} value, char $\ast$symbol\+\_\+name)
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -170,6 +177,12 @@ Generates LLVM-\/\+IR for various binary arithmetic expressions.
 \begin{DoxyReturn}{Returns}
 int \mbox{\hyperlink{structNumber}{Number}} of virtual register in which the result is stored 
 \end{DoxyReturn}
+\mbox{\Hypertarget{llvm_8c_a1ceb23c144fc42a3004d62a4cdb4f840}\label{llvm_8c_a1ceb23c144fc42a3004d62a4cdb4f840}} 
+\index{llvm.c@{llvm.c}!llvm\_call\_function@{llvm\_call\_function}}
+\index{llvm\_call\_function@{llvm\_call\_function}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvm\_call\_function()}{llvm\_call\_function()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+call\+\_\+function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{virtual\+\_\+register,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{llvm_8c_a2dc07af05a8028e1c21b2822c12c171d}\label{llvm_8c_a2dc07af05a8028e1c21b2822c12c171d}} 
 \index{llvm.c@{llvm.c}!llvm\_compare@{llvm\_compare}}
 \index{llvm\_compare@{llvm\_compare}!llvm.c@{llvm.c}}
@@ -455,6 +468,12 @@ Generate code to print an integer.
 \doxysubsubsection{\texorpdfstring{llvm\_relational\_compare()}{llvm\_relational\_compare()}}
 {\footnotesize\ttfamily static void llvm\+\_\+relational\+\_\+compare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{comparison\+\_\+type,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{out\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{left\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{right\+\_\+virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+\mbox{\Hypertarget{llvm_8c_a0db1e84c33f375b218a6010fee7a4b90}\label{llvm_8c_a0db1e84c33f375b218a6010fee7a4b90}} 
+\index{llvm.c@{llvm.c}!llvm\_return@{llvm\_return}}
+\index{llvm\_return@{llvm\_return}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvm\_return()}{llvm\_return()}}
+{\footnotesize\ttfamily void llvm\+\_\+return (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{value,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{llvm_8c_a4a93bf1a762be7609ca6d328e1162d12}\label{llvm_8c_a4a93bf1a762be7609ca6d328e1162d12}} 
 \index{llvm.c@{llvm.c}!llvm\_signed\_extend@{llvm\_signed\_extend}}
 \index{llvm\_signed\_extend@{llvm\_signed\_extend}!llvm.c@{llvm.c}}
@@ -555,6 +574,12 @@ Update loaded register linked list to include new register.
 {\em reg} & Register to include in list \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{llvm_8c_af4ccee4ae68116bfc0860b6d19090bde}\label{llvm_8c_af4ccee4ae68116bfc0860b6d19090bde}} 
+\index{llvm.c@{llvm.c}!type\_to\_llvm\_type@{type\_to\_llvm\_type}}
+\index{type\_to\_llvm\_type@{type\_to\_llvm\_type}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{type\_to\_llvm\_type()}{type\_to\_llvm\_type()}}
+{\footnotesize\ttfamily const char $\ast$ type\+\_\+to\+\_\+llvm\+\_\+type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{type }\end{DoxyParamCaption})}
+
 
 
 \doxysubsection{Variable Documentation}

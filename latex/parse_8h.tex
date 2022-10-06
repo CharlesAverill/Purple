@@ -2,7 +2,7 @@
 \label{parse_8h}\index{include/parse.h@{include/parse.h}}
 
 
-Function headers for parsing and operator precedence values.  
+\mbox{\hyperlink{structFunction}{Function}} headers for parsing and operator precedence values.  
 
 
 {\ttfamily \#include \char`\"{}tree.\+h\char`\"{}}\newline
@@ -36,6 +36,8 @@ void \mbox{\hyperlink{parse_8h_a5975acb392673971cc8f96e720e23de7}{variable\+\_\+
 \begin{DoxyCompactList}\small\item\em Parse a variable declaration statement into an AST. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_a144fb627a89093eec468cacb91eacd3d}{function\+\_\+declaration}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a function declaration statement into an AST. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_a10b90c295eee70af76ca7abd63958d6d}{function\+\_\+call\+\_\+expression}} (void)
+\item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{parse_8h_a72e124e2436e13e1d8c09a0616245c12}{parse\+\_\+statements}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into an AST. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
@@ -46,7 +48,7 @@ static int \mbox{\hyperlink{parse_8h_aceb30c679b898ce21cad0d777c82664b}{operator
 
 
 \doxysubsection{Detailed Description}
-Function headers for parsing and operator precedence values. 
+\mbox{\hyperlink{structFunction}{Function}} headers for parsing and operator precedence values. 
 
 \begin{DoxyAuthor}{Author}
 Charles Averill 
@@ -71,7 +73,7 @@ This table outlines Purple\textquotesingle{}s operator precedence values. A high
  {\ttfamily .} ~\newline
  {\ttfamily -\/\texorpdfstring{$>$}{>}} ~\newline
  {\itshape {\ttfamily (type)\{list\}}}    &Postfix increment/decrement ~\newline
- Function call ~\newline
+ \mbox{\hyperlink{structFunction}{Function}} call ~\newline
  Array subscript ~\newline
  Structure and Union member access ~\newline
  Structure and union pointer member access ~\newline
@@ -125,6 +127,12 @@ This table outlines Purple\textquotesingle{}s operator precedence values. A high
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{parse_8h_a10b90c295eee70af76ca7abd63958d6d}\label{parse_8h_a10b90c295eee70af76ca7abd63958d6d}} 
+\index{parse.h@{parse.h}!function\_call\_expression@{function\_call\_expression}}
+\index{function\_call\_expression@{function\_call\_expression}!parse.h@{parse.h}}
+\doxysubsubsection{\texorpdfstring{function\_call\_expression()}{function\_call\_expression()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ function\+\_\+call\+\_\+expression (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{parse_8h_a144fb627a89093eec468cacb91eacd3d}\label{parse_8h_a144fb627a89093eec468cacb91eacd3d}} 
 \index{parse.h@{parse.h}!function\_declaration@{function\_declaration}}
 \index{function\_declaration@{function\_declaration}!parse.h@{parse.h}}

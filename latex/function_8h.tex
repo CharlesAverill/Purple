@@ -1,0 +1,98 @@
+\hypertarget{function_8h}{}\doxysection{include/types/function.h File Reference}
+\label{function_8h}\index{include/types/function.h@{include/types/function.h}}
+
+
+Struct definitions and macros for functions.  
+
+
+{\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
+Include dependency graph for function.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{function_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{function_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structFunctionParameter}{Function\+Parameter}}
+\begin{DoxyCompactList}\small\item\em Container for function parameter information. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structFunction}{Function}}
+\begin{DoxyCompactList}\small\item\em Container for function information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{function_8h_ae69f7a0edb7bbad52c39bab5abb2d963}{FUNCTION\+\_\+\+FROM\+\_\+\+OUT\+\_\+\+IN}}(output\+\_\+type,  input\+\_\+list,  num\+\_\+inputs)
+\begin{DoxyCompactList}\small\item\em Generates a \mbox{\hyperlink{structFunction}{Function}} struct given an output type and a linked list of input types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structFunctionParameter}{Function\+Parameter}} \mbox{\hyperlink{function_8h_a2fa94693cb3efe32c507426552b27f21}{Function\+Parameter}}
+\begin{DoxyCompactList}\small\item\em Container for function parameter information. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structFunction}{Function}} \mbox{\hyperlink{function_8h_a04df4dd659c1b87b4ebf9624bec6cea1}{Function}}
+\begin{DoxyCompactList}\small\item\em Container for function information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct definitions and macros for functions. 
+
+\begin{DoxyAuthor}{Author}
+Charles Averill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+05-\/Oct-\/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{function_8h_ae69f7a0edb7bbad52c39bab5abb2d963}\label{function_8h_ae69f7a0edb7bbad52c39bab5abb2d963}} 
+\index{function.h@{function.h}!FUNCTION\_FROM\_OUT\_IN@{FUNCTION\_FROM\_OUT\_IN}}
+\index{FUNCTION\_FROM\_OUT\_IN@{FUNCTION\_FROM\_OUT\_IN}!function.h@{function.h}}
+\doxysubsubsection{\texorpdfstring{FUNCTION\_FROM\_OUT\_IN}{FUNCTION\_FROM\_OUT\_IN}}
+{\footnotesize\ttfamily \#define FUNCTION\+\_\+\+FROM\+\_\+\+OUT\+\_\+\+IN(\begin{DoxyParamCaption}\item[{}]{output\+\_\+type,  }\item[{}]{input\+\_\+list,  }\item[{}]{num\+\_\+inputs }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    (\mbox{\hyperlink{function_8h_a04df4dd659c1b87b4ebf9624bec6cea1}{Function}})                                                                                     \(\backslash\)}
+\DoxyCodeLine{    \{                                                                                              \(\backslash\)}
+\DoxyCodeLine{        .return\_type = output\_type, .parameters = input\_list, .num\_parameters = num\_inputs         \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+
+
+Generates a \mbox{\hyperlink{structFunction}{Function}} struct given an output type and a linked list of input types. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{function_8h_a04df4dd659c1b87b4ebf9624bec6cea1}\label{function_8h_a04df4dd659c1b87b4ebf9624bec6cea1}} 
+\index{function.h@{function.h}!Function@{Function}}
+\index{Function@{Function}!function.h@{function.h}}
+\doxysubsubsection{\texorpdfstring{Function}{Function}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structFunction}{Function}} \mbox{\hyperlink{structFunction}{Function}}}
+
+
+
+Container for function information. 
+
+\mbox{\Hypertarget{function_8h_a2fa94693cb3efe32c507426552b27f21}\label{function_8h_a2fa94693cb3efe32c507426552b27f21}} 
+\index{function.h@{function.h}!FunctionParameter@{FunctionParameter}}
+\index{FunctionParameter@{FunctionParameter}!function.h@{function.h}}
+\doxysubsubsection{\texorpdfstring{FunctionParameter}{FunctionParameter}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structFunctionParameter}{Function\+Parameter}} \mbox{\hyperlink{structFunctionParameter}{Function\+Parameter}}}
+
+
+
+Container for function parameter information. 
+

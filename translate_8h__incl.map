@@ -1,17 +1,18 @@
 <map id="include/translate/translate.h" name="include/translate/translate.h">
-<area shape="rect" id="node1" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="167,5,349,32"/>
-<area shape="rect" id="node2" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="226,80,290,107"/>
-<area shape="rect" id="node3" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="343,155,397,181"/>
-<area shape="rect" id="node14" href="$llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="104,304,215,331"/>
-<area shape="rect" id="node8" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="197,453,308,480"/>
-<area shape="rect" id="node4" title=" " alt="" coords="279,229,341,256"/>
-<area shape="rect" id="node5" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="312,379,372,405"/>
-<area shape="rect" id="node10" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="417,229,579,256"/>
-<area shape="rect" id="node12" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="603,229,705,256"/>
-<area shape="rect" id="node6" title=" " alt="" coords="367,453,442,480"/>
-<area shape="rect" id="node7" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="483,453,598,480"/>
-<area shape="rect" id="node9" title=" " alt="" coords="221,528,284,555"/>
-<area shape="rect" id="node11" href="$type_8h.html" title="Function headers and defines for." alt="" coords="375,304,466,331"/>
-<area shape="rect" id="node13" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="596,304,712,331"/>
-<area shape="rect" id="node15" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="5,379,164,405"/>
+<area shape="rect" id="node1" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="185,5,366,32"/>
+<area shape="rect" id="node2" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="243,80,307,107"/>
+<area shape="rect" id="node3" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="339,155,393,181"/>
+<area shape="rect" id="node15" href="$llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="104,379,215,405"/>
+<area shape="rect" id="node8" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="197,528,308,555"/>
+<area shape="rect" id="node4" title=" " alt="" coords="275,229,337,256"/>
+<area shape="rect" id="node5" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="432,453,492,480"/>
+<area shape="rect" id="node10" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="566,229,729,256"/>
+<area shape="rect" id="node13" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="413,229,514,256"/>
+<area shape="rect" id="node6" title=" " alt="" coords="651,528,726,555"/>
+<area shape="rect" id="node7" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="441,528,555,555"/>
+<area shape="rect" id="node9" title=" " alt="" coords="221,603,284,629"/>
+<area shape="rect" id="node11" href="$type_8h.html" title="Function headers and defines for." alt="" coords="546,304,637,331"/>
+<area shape="rect" id="node12" href="$function_8h.html" title="Struct definitions and macros for functions." alt="" coords="405,379,519,405"/>
+<area shape="rect" id="node14" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="405,304,521,331"/>
+<area shape="rect" id="node16" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="5,453,164,480"/>
 </map>

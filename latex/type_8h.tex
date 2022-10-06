@@ -2,10 +2,11 @@
 \label{type_8h}\index{include/types/type.h@{include/types/type.h}}
 
 
-Function headers and defines for.  
+\mbox{\hyperlink{structFunction}{Function}} headers and defines for.  
 
 
 {\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}types/function.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}types/number.\+h\char`\"{}}\newline
 Include dependency graph for type.\+h\+:
 \nopagebreak
@@ -38,7 +39,9 @@ struct \mbox{\hyperlink{structType}{Type}}
 \#define \mbox{\hyperlink{type_8h_ab320eb9d03acd62a00d9bb0a97e93892}{TYPE\+\_\+\+NUMBER\+\_\+\+FROM\+\_\+\+NUMBERTYPE\+\_\+\+FROM\+\_\+\+NUMBER}}(n)
 \begin{DoxyCompactList}\small\item\em Generates a number type struct given a \mbox{\hyperlink{structNumber}{Number}}. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{type_8h_a25fe96ddc7195fc8910ee54412fe6478}{TYPE\+\_\+\+NUMBER\+\_\+\+FROM\+\_\+\+NUMBERTYPE}}(nt)
-\begin{DoxyCompactList}\small\item\em Generates a number type struct given a Number\+Type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generates a number type struct given a Number\+Type. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{type_8h_addbc26601b7a78274fc74e8fec4c06ca}{TYPE\+\_\+\+FUNCTION}}(out,  input\+\_\+list,  num\+\_\+inputs)
+\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,7 +50,7 @@ typedef struct \mbox{\hyperlink{structType}{Type}} \mbox{\hyperlink{type_8h_a1ac
 
 
 \doxysubsection{Detailed Description}
-Function headers and defines for. 
+\mbox{\hyperlink{structFunction}{Function}} headers and defines for. 
 
 \begin{DoxyAuthor}{Author}
 Charles Averill 
@@ -58,6 +61,21 @@ Charles Averill
 
 
 \doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{type_8h_addbc26601b7a78274fc74e8fec4c06ca}\label{type_8h_addbc26601b7a78274fc74e8fec4c06ca}} 
+\index{type.h@{type.h}!TYPE\_FUNCTION@{TYPE\_FUNCTION}}
+\index{TYPE\_FUNCTION@{TYPE\_FUNCTION}!type.h@{type.h}}
+\doxysubsubsection{\texorpdfstring{TYPE\_FUNCTION}{TYPE\_FUNCTION}}
+{\footnotesize\ttfamily \#define TYPE\+\_\+\+FUNCTION(\begin{DoxyParamCaption}\item[{}]{out,  }\item[{}]{input\+\_\+list,  }\item[{}]{num\+\_\+inputs }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
+\DoxyCodeLine{    \{                                                                                              \(\backslash\)}
+\DoxyCodeLine{        .type = \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340}{T\_FUNCTION\_DECLARATION}}, .is\_function = \textcolor{keyword}{true},                                       \(\backslash\)}
+\DoxyCodeLine{        .value.function = \mbox{\hyperlink{function_8h_ae69f7a0edb7bbad52c39bab5abb2d963}{FUNCTION\_FROM\_OUT\_IN}}(out, input\_list, num\_inputs)                        \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
 \mbox{\Hypertarget{type_8h_a25fe96ddc7195fc8910ee54412fe6478}\label{type_8h_a25fe96ddc7195fc8910ee54412fe6478}} 
 \index{type.h@{type.h}!TYPE\_NUMBER\_FROM\_NUMBERTYPE@{TYPE\_NUMBER\_FROM\_NUMBERTYPE}}
 \index{TYPE\_NUMBER\_FROM\_NUMBERTYPE@{TYPE\_NUMBER\_FROM\_NUMBERTYPE}!type.h@{type.h}}
@@ -68,10 +86,8 @@ Charles Averill
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{number_8h_a6ba66dfa3fa11b0ccefce0ed54080eef}{number\_to\_token\_type}}((\mbox{\hyperlink{structNumber}{Number}})\{.type = nt\}), .value.number = (\mbox{\hyperlink{structNumber}{Number}})               \(\backslash\)}
-\DoxyCodeLine{        \{                                                                                          \(\backslash\)}
-\DoxyCodeLine{            .type = nt                                                                             \(\backslash\)}
-\DoxyCodeLine{        \}                                                                                          \(\backslash\)}
+\DoxyCodeLine{        .type = \mbox{\hyperlink{number_8h_a6ba66dfa3fa11b0ccefce0ed54080eef}{number\_to\_token\_type}}((\mbox{\hyperlink{structNumber}{Number}})\{.type = nt\}), .is\_function = \textcolor{keyword}{false},                  \(\backslash\)}
+\DoxyCodeLine{        .value.number = \mbox{\hyperlink{number_8h_add3ecbbfaff5335401b5bd7180e9019b}{NUMBER\_FROM\_TYPE\_VAL}}(nt, 0)                                                \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
@@ -89,7 +105,7 @@ Generates a number type struct given a Number\+Type.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{number_8h_a6ba66dfa3fa11b0ccefce0ed54080eef}{number\_to\_token\_type}}(n), .value.number = n                                         \(\backslash\)}
+\DoxyCodeLine{        .type = \mbox{\hyperlink{number_8h_a6ba66dfa3fa11b0ccefce0ed54080eef}{number\_to\_token\_type}}(n), .value.number = n, .is\_function = \textcolor{keyword}{false}                   \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
@@ -107,7 +123,8 @@ Generates a number type struct given a \mbox{\hyperlink{structNumber}{Number}}.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = ttype, .value.number = \mbox{\hyperlink{number_8h_add3ecbbfaff5335401b5bd7180e9019b}{NUMBER\_FROM\_TYPE\_VAL}}(\mbox{\hyperlink{number_8h_a242dd91fc5b139e8048fb50fac323dee}{token\_type\_to\_number\_type}}(ttype), 0)   \(\backslash\)}
+\DoxyCodeLine{        .type = ttype, .value.number = \mbox{\hyperlink{number_8h_add3ecbbfaff5335401b5bd7180e9019b}{NUMBER\_FROM\_TYPE\_VAL}}(\mbox{\hyperlink{number_8h_a242dd91fc5b139e8048fb50fac323dee}{token\_type\_to\_number\_type}}(ttype), 0),  \(\backslash\)}
+\DoxyCodeLine{        .is\_function = \textcolor{keyword}{false}                                                                       \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
@@ -125,7 +142,7 @@ Generates a number type struct given a Token\+Type.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99}{T\_VOID}}                                                                             \(\backslash\)}
+\DoxyCodeLine{        .type = \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99}{T\_VOID}}, .is\_function = \textcolor{keyword}{false}                                                       \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}

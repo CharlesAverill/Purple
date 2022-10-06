@@ -1,9 +1,10 @@
 <map id="include/translate/symbol_table.h" name="include/translate/symbol_table.h">
-<area shape="rect" id="node1" title="Function headers and definitions for the global and local symbol tables." alt="" coords="88,5,251,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,244,80,271"/>
-<area shape="rect" id="node3" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="240,244,355,271"/>
-<area shape="rect" id="node4" href="$type_8h.html" title="Function headers and defines for." alt="" coords="124,95,215,121"/>
-<area shape="rect" id="node5" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="181,169,241,196"/>
-<area shape="rect" id="node6" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="105,244,215,271"/>
-<area shape="rect" id="node7" title=" " alt="" coords="129,319,191,345"/>
+<area shape="rect" id="node1" title="Function headers and definitions for the global and local symbol tables." alt="" coords="99,5,261,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,319,80,345"/>
+<area shape="rect" id="node3" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="257,319,372,345"/>
+<area shape="rect" id="node4" href="$type_8h.html" title="Function headers and defines for." alt="" coords="135,95,225,121"/>
+<area shape="rect" id="node5" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="150,244,210,271"/>
+<area shape="rect" id="node6" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="111,319,222,345"/>
+<area shape="rect" id="node8" href="$function_8h.html" title="Struct definitions and macros for functions." alt="" coords="123,169,237,196"/>
+<area shape="rect" id="node7" title=" " alt="" coords="135,393,198,420"/>
 </map>

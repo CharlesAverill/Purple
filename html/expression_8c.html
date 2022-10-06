@@ -93,24 +93,25 @@ Include dependency graph for expression.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="expression_8c__incl.png" border="0" usemap="#asrc_2parse_2expression_8c" alt=""/></div>
 <map name="asrc_2parse_2expression_8c" id="asrc_2parse_2expression_8c">
-<area shape="rect" title="Logic for parsing expressions into an AST." alt="" coords="339,5,491,32"/>
-<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="233,155,290,181"/>
-<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="501,80,565,107"/>
-<area shape="rect" title=" " alt="" coords="163,229,223,256"/>
-<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="361,379,421,405"/>
-<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="299,229,461,256"/>
-<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="18,229,139,256"/>
-<area shape="rect" title=" " alt="" coords="301,453,376,480"/>
-<area shape="rect" href="identifier_8h.html" title="Definitions for identifiers." alt="" coords="157,453,272,480"/>
-<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="403,453,514,480"/>
-<area shape="rect" title=" " alt="" coords="427,528,490,555"/>
-<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="360,304,451,331"/>
-<area shape="rect" title=" " alt="" coords="83,304,141,331"/>
-<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="5,304,59,331"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="506,155,561,181"/>
-<area shape="rect" title=" " alt="" coords="537,229,599,256"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="624,229,725,256"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="609,304,725,331"/>
+<area shape="rect" title="Logic for parsing expressions into an AST." alt="" coords="305,5,457,32"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="137,155,195,181"/>
+<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="510,80,574,107"/>
+<area shape="rect" title=" " alt="" coords="21,229,81,256"/>
+<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="371,453,431,480"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="251,229,414,256"/>
+<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="105,229,227,256"/>
+<area shape="rect" title=" " alt="" coords="363,528,438,555"/>
+<area shape="rect" href="identifier_8h.html" title="Definitions for identifiers." alt="" coords="225,528,339,555"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="517,528,628,555"/>
+<area shape="rect" title=" " alt="" coords="541,603,604,629"/>
+<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="370,304,461,331"/>
+<area shape="rect" href="function_8h.html" title="Struct definitions and macros for functions." alt="" coords="421,379,535,405"/>
+<area shape="rect" title=" " alt="" coords="161,304,219,331"/>
+<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="83,304,137,331"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="515,155,569,181"/>
+<area shape="rect" title=" " alt="" coords="564,229,627,256"/>
+<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="438,229,539,256"/>
+<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="485,304,601,331"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -119,6 +120,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a3894f429297d723b0874c729e033242b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="expression_8c.html#a3894f429297d723b0874c729e033242b">get_operator_precedence</a> (<a class="el" href="structToken.html">Token</a> t)</td></tr>
 <tr class="memdesc:a3894f429297d723b0874c729e033242b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the integer operator precedence value of a <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>.  <a href="expression_8c.html#a3894f429297d723b0874c729e033242b">More...</a><br /></td></tr>
 <tr class="separator:a3894f429297d723b0874c729e033242b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10b90c295eee70af76ca7abd63958d6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="expression_8c.html#a10b90c295eee70af76ca7abd63958d6d">function_call_expression</a> (void)</td></tr>
+<tr class="separator:a10b90c295eee70af76ca7abd63958d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53c43318e486672b8d59f9bb60e4105c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="expression_8c.html#a53c43318e486672b8d59f9bb60e4105c">create_terminal_node</a> (<a class="el" href="structToken.html">Token</a> *t)</td></tr>
 <tr class="memdesc:a53c43318e486672b8d59f9bb60e4105c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a terminal AST Node for a given <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>, exit if not a valid primary <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>.  <a href="expression_8c.html#a53c43318e486672b8d59f9bb60e4105c">More...</a><br /></td></tr>
 <tr class="separator:a53c43318e486672b8d59f9bb60e4105c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,6 +169,24 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An AST Node built from the provided <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a>, or an error if the <a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> is non-terminal </dd></dl>
+
+</div>
+</div>
+<a id="a10b90c295eee70af76ca7abd63958d6d" name="a10b90c295eee70af76ca7abd63958d6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10b90c295eee70af76ca7abd63958d6d">&#9670;&nbsp;</a></span>function_call_expression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structASTNode.html">ASTNode</a> * function_call_expression </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

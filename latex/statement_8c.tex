@@ -34,6 +34,8 @@ static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{stateme
 \begin{DoxyCompactList}\small\item\em Parse a while statement into an AST. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_ac24b43c70d7c71aac2b50ab622019ec5}{for\+\_\+statement}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a for statement into an AST. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_a03bc4758272d98fd6a9d8f20a8f45b48}{return\+\_\+statement}} (void)
+\item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_a72e124e2436e13e1d8c09a0616245c12}{parse\+\_\+statements}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a set of statements into ASTs and generate them into an AST. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -143,6 +145,12 @@ Parse a print statement into an AST.
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ AST for print statement 
 \end{DoxyReturn}
+\mbox{\Hypertarget{statement_8c_a03bc4758272d98fd6a9d8f20a8f45b48}\label{statement_8c_a03bc4758272d98fd6a9d8f20a8f45b48}} 
+\index{statement.c@{statement.c}!return\_statement@{return\_statement}}
+\index{return\_statement@{return\_statement}!statement.c@{statement.c}}
+\doxysubsubsection{\texorpdfstring{return\_statement()}{return\_statement()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ return\+\_\+statement (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \mbox{\Hypertarget{statement_8c_a7d14d1c0b95607a7e64a4889ba0c8cc9}\label{statement_8c_a7d14d1c0b95607a7e64a4889ba0c8cc9}} 
 \index{statement.c@{statement.c}!while\_statement@{while\_statement}}
 \index{while\_statement@{while\_statement}!statement.c@{statement.c}}

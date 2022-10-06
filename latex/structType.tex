@@ -16,7 +16,7 @@ Collaboration diagram for Type\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=147pt]{structType__coll__graph}
+\includegraphics[width=256pt]{structType__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Attributes}
@@ -24,10 +24,13 @@ Collaboration diagram for Type\+:
 \item 
 \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \mbox{\hyperlink{structType_ab90888b18d5dfabe3014052b41282591}{type}}
 \item 
+bool \mbox{\hyperlink{structType_a3a068d21067fcb3e97de0144eb62b0da}{is\+\_\+function}}
+\item 
 \begin{tabbing}
 xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
 union \{\\
 \>\mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{structType_a78b8fbf7340e9445efa5bb9731367931}{number}}\\
+\>\mbox{\hyperlink{structFunction}{Function}} \mbox{\hyperlink{structType_a06f8fd59ce6ac97c4020bd49c9cd558e}{function}}\\
 \} \mbox{\hyperlink{structType_af6d57ad268d222017f11c099570d378b}{value}}\\
 
 \end{tabbing}\end{DoxyCompactItemize}
@@ -37,7 +40,19 @@ union \{\\
 Container for type data. 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{structType_a78b8fbf7340e9445efa5bb9731367931}\label{structType_a78b8fbf7340e9445efa5bb9731367931}} 
+\mbox{\Hypertarget{structType_a06f8fd59ce6ac97c4020bd49c9cd558e}\label{structType_a06f8fd59ce6ac97c4020bd49c9cd558e}} 
+\index{Type@{Type}!function@{function}}
+\index{function@{function}!Type@{Type}}
+\doxysubsubsection{\texorpdfstring{function}{function}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structFunction}{Function}} Type\+::function}
+
+\mbox{\Hypertarget{structType_a3a068d21067fcb3e97de0144eb62b0da}\label{structType_a3a068d21067fcb3e97de0144eb62b0da}} 
+\index{Type@{Type}!is\_function@{is\_function}}
+\index{is\_function@{is\_function}!Type@{Type}}
+\doxysubsubsection{\texorpdfstring{is\_function}{is\_function}}
+{\footnotesize\ttfamily bool Type\+::is\+\_\+function}
+
+Whether or not this is the type of a function \mbox{\Hypertarget{structType_a78b8fbf7340e9445efa5bb9731367931}\label{structType_a78b8fbf7340e9445efa5bb9731367931}} 
 \index{Type@{Type}!number@{number}}
 \index{number@{number}!Type@{Type}}
 \doxysubsubsection{\texorpdfstring{number}{number}}

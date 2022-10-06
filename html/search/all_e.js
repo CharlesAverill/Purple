@@ -11,7 +11,9 @@ var searchData=
   ['reg_8',['reg',['../structLLVMStackEntryNode.html#aaff603b17fe1999a2f722998c3b47387',1,'LLVMStackEntryNode']]],
   ['regex_5fmatch_9',['regex_match',['../clang_8h.html#a90aaa0f0e2c76dc8c5631842644b5282',1,'regex_match(const char *regex, char *target_str, int len, int group_index):&#160;clang.c'],['../clang_8c.html#a90aaa0f0e2c76dc8c5631842644b5282',1,'regex_match(const char *regex, char *target_str, int len, int group_index):&#160;clang.c']]],
   ['resize_5fsymbol_5ftable_10',['resize_symbol_table',['../symbol__table_8h.html#ace4eaeafa7e20975b8dc696cf7705b1f',1,'resize_symbol_table(SymbolTable *table):&#160;symbol_table.c'],['../symbol__table_8c.html#ace4eaeafa7e20975b8dc696cf7705b1f',1,'resize_symbol_table(SymbolTable *table):&#160;symbol_table.c']]],
-  ['returncode_11',['ReturnCode',['../logging_8h.html#a5a2236a3693e3930b2c9fbe1fe7144ec',1,'logging.h']]],
-  ['returncodestrings_12',['returnCodeStrings',['../logging_8h.html#ac056197f8b96c1d78e1858c19eadcb0a',1,'logging.h']]],
-  ['right_13',['right',['../structASTNode.html#ab3fac314ab87bbccda872cde9678b5b3',1,'ASTNode']]]
+  ['return_5fstatement_11',['return_statement',['../statement_8c.html#a03bc4758272d98fd6a9d8f20a8f45b48',1,'statement.c']]],
+  ['return_5ftype_12',['return_type',['../structFunction.html#ae499301ee2bc3d6c690b293a7971fe24',1,'Function']]],
+  ['returncode_13',['ReturnCode',['../logging_8h.html#a5a2236a3693e3930b2c9fbe1fe7144ec',1,'logging.h']]],
+  ['returncodestrings_14',['returnCodeStrings',['../logging_8h.html#ac056197f8b96c1d78e1858c19eadcb0a',1,'logging.h']]],
+  ['right_15',['right',['../structASTNode.html#ab3fac314ab87bbccda872cde9678b5b3',1,'ASTNode']]]
 ];

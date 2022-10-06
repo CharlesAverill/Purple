@@ -2,7 +2,7 @@
 \label{llvm_8h}\index{include/translate/llvm.h@{include/translate/llvm.h}}
 
 
-Function headers for LLVM-\/\+IR emission.  
+\mbox{\hyperlink{structFunction}{Function}} headers for LLVM-\/\+IR emission.  
 
 
 {\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
@@ -34,6 +34,8 @@ struct \mbox{\hyperlink{structLLVMValue}{LLVMValue}}
 \item 
 \#define \mbox{\hyperlink{llvm_8h_a0a7343e65b9eb01a2c42da63bd9b3964}{LLVMVALUE\+\_\+\+NULL}}
 \begin{DoxyCompactList}\small\item\em A standard \char`\"{}null\char`\"{} \mbox{\hyperlink{structLLVMValue}{LLVMValue}} struct returned in some scenarios. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{llvm_8h_ae88c98900bb55cbdedfc1271b3d61f43}{LLVMVALUE\+\_\+\+CONSTANT}}(c)
+\begin{DoxyCompactList}\small\item\em Generates an \mbox{\hyperlink{structLLVMValue}{LLVMValue}} struct with a constant value. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{llvm_8h_a63973b129e0313736142cf1d6cbb06d3}{LLVMVALUE\+\_\+\+VIRTUAL\+\_\+\+REGISTER}}(register\+\_\+number,  n\+\_\+t)
 \begin{DoxyCompactList}\small\item\em Inline-\/initializes an \mbox{\hyperlink{structLLVMValue}{LLVMValue}} struct from a virtual register number. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{llvm_8h_a91cf5e6a762470df551b0f87f43b4ee0}{LLVMVALUE\+\_\+\+VIRTUAL\+\_\+\+REGISTER\+\_\+\+POINTER}}(register\+\_\+number,  n\+\_\+t)
@@ -53,6 +55,7 @@ typedef struct \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{ll
 enum \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79c}{LLVMValue\+Type}} \{ \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79ca904a5cacf68c6ec7a9f9685372a334f0}{LLVMVALUETYPE\+\_\+\+NONE}}
 , \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f}{LLVMVALUETYPE\+\_\+\+VIRTUAL\+\_\+\+REGISTER}}
 , \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79cad1194c945875d78e7a7a1a3070447333}{LLVMVALUETYPE\+\_\+\+LABEL}}
+, \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79cadb9c7f30dce13521152fe4850cce7fbd}{LLVMVALUETYPE\+\_\+\+CONSTANT}}
  \}
 \begin{DoxyCompactList}\small\item\em Types of values possibly returned by ast\+\_\+to\+\_\+llvm. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
@@ -103,6 +106,12 @@ void \mbox{\hyperlink{llvm_8h_a492b6193f6cfe59c435bf09ee99f0a54}{llvm\+\_\+condi
 void \mbox{\hyperlink{llvm_8h_a43b3adedb0a09aa7422dd249ee79c9e4}{llvm\+\_\+function\+\_\+preamble}} (char $\ast$symbol\+\_\+name)
 \item 
 void \mbox{\hyperlink{llvm_8h_a53f223d3ffdbcf048fedd7e39a95d7f3}{llvm\+\_\+function\+\_\+postamble}} (void)
+\item 
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a1ceb23c144fc42a3004d62a4cdb4f840}{llvm\+\_\+call\+\_\+function}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} virtual\+\_\+register, char $\ast$symbol\+\_\+name)
+\item 
+const char $\ast$ \mbox{\hyperlink{llvm_8h_af4ccee4ae68116bfc0860b6d19090bde}{type\+\_\+to\+\_\+llvm\+\_\+type}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
+\item 
+void \mbox{\hyperlink{llvm_8h_ae0eb304222b073e4a66a650d63e69207}{llvm\+\_\+return}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} virtual\+\_\+register, char $\ast$symbol\+\_\+name)
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -116,7 +125,7 @@ static const char $\ast$ \mbox{\hyperlink{llvm_8h_ac126174f25ba15725681e50ce7a7d
 
 
 \doxysubsection{Detailed Description}
-Function headers for LLVM-\/\+IR emission. 
+\mbox{\hyperlink{structFunction}{Function}} headers for LLVM-\/\+IR emission. 
 
 \begin{DoxyAuthor}{Author}
 Charles Averill 
@@ -127,6 +136,24 @@ Charles Averill
 
 
 \doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{llvm_8h_ae88c98900bb55cbdedfc1271b3d61f43}\label{llvm_8h_ae88c98900bb55cbdedfc1271b3d61f43}} 
+\index{llvm.h@{llvm.h}!LLVMVALUE\_CONSTANT@{LLVMVALUE\_CONSTANT}}
+\index{LLVMVALUE\_CONSTANT@{LLVMVALUE\_CONSTANT}!llvm.h@{llvm.h}}
+\doxysubsubsection{\texorpdfstring{LLVMVALUE\_CONSTANT}{LLVMVALUE\_CONSTANT}}
+{\footnotesize\ttfamily \#define LLVMVALUE\+\_\+\+CONSTANT(\begin{DoxyParamCaption}\item[{}]{c }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    (\mbox{\hyperlink{llvm_8h_a996ef903919a3c100bb6c98f81a47a48}{LLVMValue}})                                                                                    \(\backslash\)}
+\DoxyCodeLine{    \{                                                                                              \(\backslash\)}
+\DoxyCodeLine{        .value\_type = \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79cadb9c7f30dce13521152fe4850cce7fbd}{LLVMVALUETYPE\_CONSTANT}}, .value.constant = c                                  \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+
+
+Generates an \mbox{\hyperlink{structLLVMValue}{LLVMValue}} struct with a constant value. 
+
 \mbox{\Hypertarget{llvm_8h_a36d5d6bad52983ad8e68bb273652d05c}\label{llvm_8h_a36d5d6bad52983ad8e68bb273652d05c}} 
 \index{llvm.h@{llvm.h}!LLVMVALUE\_LABEL@{LLVMVALUE\_LABEL}}
 \index{LLVMVALUE\_LABEL@{LLVMVALUE\_LABEL}!llvm.h@{llvm.h}}
@@ -246,6 +273,10 @@ LLVMVALUETYPE\+\_\+\+VIRTUAL\+\_\+\+REGISTER&\\
 LLVMVALUETYPE\+\_\+\+LABEL&\\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LLVMVALUETYPE\_CONSTANT@{LLVMVALUETYPE\_CONSTANT}!llvm.h@{llvm.h}}\index{llvm.h@{llvm.h}!LLVMVALUETYPE\_CONSTANT@{LLVMVALUETYPE\_CONSTANT}}}\mbox{\Hypertarget{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79cadb9c7f30dce13521152fe4850cce7fbd}\label{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79cadb9c7f30dce13521152fe4850cce7fbd}} 
+LLVMVALUETYPE\+\_\+\+CONSTANT&\\
+\hline
+
 \end{DoxyEnumFields}
 
 
@@ -298,6 +329,12 @@ Generates LLVM-\/\+IR for various binary arithmetic expressions.
 \begin{DoxyReturn}{Returns}
 int \mbox{\hyperlink{structNumber}{Number}} of virtual register in which the result is stored 
 \end{DoxyReturn}
+\mbox{\Hypertarget{llvm_8h_a1ceb23c144fc42a3004d62a4cdb4f840}\label{llvm_8h_a1ceb23c144fc42a3004d62a4cdb4f840}} 
+\index{llvm.h@{llvm.h}!llvm\_call\_function@{llvm\_call\_function}}
+\index{llvm\_call\_function@{llvm\_call\_function}!llvm.h@{llvm.h}}
+\doxysubsubsection{\texorpdfstring{llvm\_call\_function()}{llvm\_call\_function()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+call\+\_\+function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{virtual\+\_\+register,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{llvm_8h_a2dc07af05a8028e1c21b2822c12c171d}\label{llvm_8h_a2dc07af05a8028e1c21b2822c12c171d}} 
 \index{llvm.h@{llvm.h}!llvm\_compare@{llvm\_compare}}
 \index{llvm\_compare@{llvm\_compare}!llvm.h@{llvm.h}}
@@ -531,6 +568,12 @@ Generate code to print an integer.
 {\em type} & \mbox{\hyperlink{structType}{Type}} of int (byte, char, int, long) to print \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{llvm_8h_ae0eb304222b073e4a66a650d63e69207}\label{llvm_8h_ae0eb304222b073e4a66a650d63e69207}} 
+\index{llvm.h@{llvm.h}!llvm\_return@{llvm\_return}}
+\index{llvm\_return@{llvm\_return}!llvm.h@{llvm.h}}
+\doxysubsubsection{\texorpdfstring{llvm\_return()}{llvm\_return()}}
+{\footnotesize\ttfamily void llvm\+\_\+return (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{virtual\+\_\+register,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{llvm_8h_a4a93bf1a762be7609ca6d328e1162d12}\label{llvm_8h_a4a93bf1a762be7609ca6d328e1162d12}} 
 \index{llvm.h@{llvm.h}!llvm\_signed\_extend@{llvm\_signed\_extend}}
 \index{llvm\_signed\_extend@{llvm\_signed\_extend}!llvm.h@{llvm.h}}
@@ -595,6 +638,12 @@ Store a value into a global variable.
 \index{llvm\_truncate@{llvm\_truncate}!llvm.h@{llvm.h}}
 \doxysubsubsection{\texorpdfstring{llvm\_truncate()}{llvm\_truncate()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+truncate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{reg,  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{new\+\_\+type,  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{old\+\_\+type }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{llvm_8h_af4ccee4ae68116bfc0860b6d19090bde}\label{llvm_8h_af4ccee4ae68116bfc0860b6d19090bde}} 
+\index{llvm.h@{llvm.h}!type\_to\_llvm\_type@{type\_to\_llvm\_type}}
+\index{type\_to\_llvm\_type@{type\_to\_llvm\_type}!llvm.h@{llvm.h}}
+\doxysubsubsection{\texorpdfstring{type\_to\_llvm\_type()}{type\_to\_llvm\_type()}}
+{\footnotesize\ttfamily const char $\ast$ type\+\_\+to\+\_\+llvm\+\_\+type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{type }\end{DoxyParamCaption})}
 
 
 
