@@ -90,7 +90,8 @@ Collaboration diagram for ASTNode:</div>
 <div class="dyncontent">
 <div class="center"><img src="structASTNode__coll__graph.png" border="0" usemap="#aASTNode_coll__map" alt="Collaboration graph"/></div>
 <map name="aASTNode_coll__map" id="aASTNode_coll__map">
-<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,5,159,215"/>
+<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,175,159,369"/>
+<area shape="rect" href="structNumber.html" title="Container for various kinds of number data." alt="" coords="27,5,137,112"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -105,8 +106,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ae1b629d9a274de8b4afbe2382b81e072"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3fac314ab87bbccda872cde9678b5b3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#ab3fac314ab87bbccda872cde9678b5b3">right</a></td></tr>
 <tr class="separator:ab3fac314ab87bbccda872cde9678b5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58fd804bfb87d7a797a8d133147e15ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#a58fd804bfb87d7a797a8d133147e15ca">number_type</a></td></tr>
-<tr class="separator:a58fd804bfb87d7a797a8d133147e15ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1288942cb053f9169b09237a5ea70aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNumber.html">Number</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#ad1288942cb053f9169b09237a5ea70aa">tree_type</a></td></tr>
+<tr class="separator:ad1288942cb053f9169b09237a5ea70aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6677f563bdbc8015f5067296bfefc2f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#a6677f563bdbc8015f5067296bfefc2f2">largest_number_type</a></td></tr>
 <tr class="separator:a6677f563bdbc8015f5067296bfefc2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62d58599dca37a47743243ae2cebb0e9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#a62d58599dca37a47743243ae2cebb0e9">is_char_arithmetic</a></td></tr>
@@ -233,21 +234,6 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a58fd804bfb87d7a797a8d133147e15ca" name="a58fd804bfb87d7a797a8d133147e15ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58fd804bfb87d7a797a8d133147e15ca">&#9670;&nbsp;</a></span>number_type</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> ASTNode::number_type</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p ><a class="el" href="structType.html" title="Container for type data.">Type</a> of number token </p>
-
-</div>
-</div>
 <a id="ad4fae0832953dd1d0598a3c9ec85429f" name="ad4fae0832953dd1d0598a3c9ec85429f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad4fae0832953dd1d0598a3c9ec85429f">&#9670;&nbsp;</a></span>number_value</h2>
 
@@ -290,6 +276,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >Name of this identifier token </p>
+
+</div>
+</div>
+<a id="ad1288942cb053f9169b09237a5ea70aa" name="ad1288942cb053f9169b09237a5ea70aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1288942cb053f9169b09237a5ea70aa">&#9670;&nbsp;</a></span>tree_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structNumber.html">Number</a> ASTNode::tree_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Numerical type of tree </p>
 
 </div>
 </div>

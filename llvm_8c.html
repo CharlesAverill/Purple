@@ -130,12 +130,12 @@ Include dependency graph for llvm.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac977d1d6aef44e3b2087f9b231723342"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#ac977d1d6aef44e3b2087f9b231723342">prepend_loaded</a> (<a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> reg)</td></tr>
-<tr class="memdesc:ac977d1d6aef44e3b2087f9b231723342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update loaded register linked list to include new register.  <a href="llvm_8c.html#ac977d1d6aef44e3b2087f9b231723342">More...</a><br /></td></tr>
-<tr class="separator:ac977d1d6aef44e3b2087f9b231723342"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabeadacb10dc9e1bcf23d31833d1bb8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#aabeadacb10dc9e1bcf23d31833d1bb8b">llvm_ensure_registers_loaded</a> (int n_registers, <a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> registers[], <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> number_type)</td></tr>
-<tr class="memdesc:aabeadacb10dc9e1bcf23d31833d1bb8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure that the values of a set of registers are loaded.  <a href="llvm_8c.html#aabeadacb10dc9e1bcf23d31833d1bb8b">More...</a><br /></td></tr>
-<tr class="separator:aabeadacb10dc9e1bcf23d31833d1bb8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fd2a0a3e7ea9b694b08e4a58596de5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a4fd2a0a3e7ea9b694b08e4a58596de5c">llvm_ensure_registers_loaded</a> (int n_registers, <a class="el" href="structLLVMValue.html">LLVMValue</a> registers[], <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> number_type, int load_depth)</td></tr>
+<tr class="memdesc:a4fd2a0a3e7ea9b694b08e4a58596de5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure that the values of a set of registers are loaded.  <a href="llvm_8c.html#a4fd2a0a3e7ea9b694b08e4a58596de5c">More...</a><br /></td></tr>
+<tr class="separator:a4fd2a0a3e7ea9b694b08e4a58596de5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f99975bf0f3114b46faf37211a9c3fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a3f99975bf0f3114b46faf37211a9c3fb">llvm_ensure_registers_fully_loaded</a> (int n_registers, <a class="el" href="structLLVMValue.html">LLVMValue</a> registers[], <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> number_type)</td></tr>
+<tr class="memdesc:a3f99975bf0f3114b46faf37211a9c3fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloaded version of llvm_ensure_registers_loaded where load_depth=0.  <a href="llvm_8c.html#a3f99975bf0f3114b46faf37211a9c3fb">More...</a><br /></td></tr>
+<tr class="separator:a3f99975bf0f3114b46faf37211a9c3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76498db4c0864f14519dad7627a3cb16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a76498db4c0864f14519dad7627a3cb16">llvm_preamble</a> (void)</td></tr>
 <tr class="memdesc:a76498db4c0864f14519dad7627a3cb16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generated program's preamble.  <a href="llvm_8c.html#a76498db4c0864f14519dad7627a3cb16">More...</a><br /></td></tr>
 <tr class="separator:a76498db4c0864f14519dad7627a3cb16"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,12 +182,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a3d975b70508857ae99ff02c02f2712d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a3d975b70508857ae99ff02c02f2712d1">llvm_declare_assign_global_number_variable</a> (char *symbol_name, <a class="el" href="structNumber.html">Number</a> number)</td></tr>
 <tr class="memdesc:a3d975b70508857ae99ff02c02f2712d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare a global variable with an assigned number value.  <a href="llvm_8c.html#a3d975b70508857ae99ff02c02f2712d1">More...</a><br /></td></tr>
 <tr class="separator:a3d975b70508857ae99ff02c02f2712d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a031af08abcc558123b3ff132eb9aa142"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a031af08abcc558123b3ff132eb9aa142">llvm_print_int</a> (<a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> print_vr, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type)</td></tr>
-<tr class="memdesc:a031af08abcc558123b3ff132eb9aa142"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print an integer.  <a href="llvm_8c.html#a031af08abcc558123b3ff132eb9aa142">More...</a><br /></td></tr>
-<tr class="separator:a031af08abcc558123b3ff132eb9aa142"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a549185ec39141a09db11a45ec6c3363d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a549185ec39141a09db11a45ec6c3363d">llvm_print_bool</a> (<a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> print_vr)</td></tr>
-<tr class="memdesc:a549185ec39141a09db11a45ec6c3363d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print a boolean value.  <a href="llvm_8c.html#a549185ec39141a09db11a45ec6c3363d">More...</a><br /></td></tr>
-<tr class="separator:a549185ec39141a09db11a45ec6c3363d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93722ca744527991108536664139bef2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a93722ca744527991108536664139bef2">llvm_print_int</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> print_vr)</td></tr>
+<tr class="memdesc:a93722ca744527991108536664139bef2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print an integer.  <a href="llvm_8c.html#a93722ca744527991108536664139bef2">More...</a><br /></td></tr>
+<tr class="separator:a93722ca744527991108536664139bef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78081f32a56e484cb74dfb926be24ac2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a78081f32a56e484cb74dfb926be24ac2">llvm_print_bool</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> print_vr)</td></tr>
+<tr class="memdesc:a78081f32a56e484cb74dfb926be24ac2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print a boolean value.  <a href="llvm_8c.html#a78081f32a56e484cb74dfb926be24ac2">More...</a><br /></td></tr>
+<tr class="separator:a78081f32a56e484cb74dfb926be24ac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cabc3424855d1740d8c12b93e20f2b3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a7cabc3424855d1740d8c12b93e20f2b3">llvm_relational_compare</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> comparison_type, <a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> out_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> left_virtual_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> right_virtual_register)</td></tr>
 <tr class="separator:a7cabc3424855d1740d8c12b93e20f2b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9458fbf7cb6c31d4eed7be16c8b24a80"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a9458fbf7cb6c31d4eed7be16c8b24a80">llvm_logical_compare</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> comparison_type, <a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> out_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> left_virtual_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> right_virtual_register)</td></tr>
@@ -653,14 +653,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aabeadacb10dc9e1bcf23d31833d1bb8b" name="aabeadacb10dc9e1bcf23d31833d1bb8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabeadacb10dc9e1bcf23d31833d1bb8b">&#9670;&nbsp;</a></span>llvm_ensure_registers_loaded()</h2>
+<a id="a3f99975bf0f3114b46faf37211a9c3fb" name="a3f99975bf0f3114b46faf37211a9c3fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f99975bf0f3114b46faf37211a9c3fb">&#9670;&nbsp;</a></span>llvm_ensure_registers_fully_loaded()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a> * llvm_ensure_registers_loaded </td>
+          <td class="memname"><a class="el" href="structLLVMValue.html">LLVMValue</a> * llvm_ensure_registers_fully_loaded </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>n_registers</em>, </td>
@@ -668,7 +668,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
           <td class="paramname"><em>registers</em>[], </td>
         </tr>
         <tr>
@@ -685,16 +685,59 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Overloaded version of llvm_ensure_registers_loaded where load_depth=0. </p>
+
+</div>
+</div>
+<a id="a4fd2a0a3e7ea9b694b08e4a58596de5c" name="a4fd2a0a3e7ea9b694b08e4a58596de5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd2a0a3e7ea9b694b08e4a58596de5c">&#9670;&nbsp;</a></span>llvm_ensure_registers_loaded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLLVMValue.html">LLVMValue</a> * llvm_ensure_registers_loaded </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_registers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>registers</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a>&#160;</td>
+          <td class="paramname"><em>number_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>load_depth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 <p>Ensure that the values of a set of registers are loaded. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n_registers</td><td><a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a> of registers to ensure </td></tr>
     <tr><td class="paramname">registers</td><td>Array of register indices to ensure </td></tr>
     <tr><td class="paramname">number_type</td><td>NumberType of registers to ensure </td></tr>
+    <tr><td class="paramname">load_depth</td><td>Pointer depth to be considered "loaded" </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>type_register* If the registers were not loaded, this array contains the loaded registers </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>LLVMValue* If the registers were not loaded, this array contains the loaded registers </dd></dl>
 
 </div>
 </div>
@@ -947,8 +990,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a549185ec39141a09db11a45ec6c3363d" name="a549185ec39141a09db11a45ec6c3363d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a549185ec39141a09db11a45ec6c3363d">&#9670;&nbsp;</a></span>llvm_print_bool()</h2>
+<a id="a78081f32a56e484cb74dfb926be24ac2" name="a78081f32a56e484cb74dfb926be24ac2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78081f32a56e484cb74dfb926be24ac2">&#9670;&nbsp;</a></span>llvm_print_bool()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -956,7 +999,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void llvm_print_bool </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
           <td class="paramname"><em>print_vr</em></td><td>)</td>
           <td></td>
         </tr>
@@ -973,8 +1016,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a031af08abcc558123b3ff132eb9aa142" name="a031af08abcc558123b3ff132eb9aa142"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a031af08abcc558123b3ff132eb9aa142">&#9670;&nbsp;</a></span>llvm_print_int()</h2>
+<a id="a93722ca744527991108536664139bef2" name="a93722ca744527991108536664139bef2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93722ca744527991108536664139bef2">&#9670;&nbsp;</a></span>llvm_print_int()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -982,19 +1025,9 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void llvm_print_int </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
-          <td class="paramname"><em>print_vr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>print_vr</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1003,7 +1036,6 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">print_vr</td><td>Register holding value to print </td></tr>
-    <tr><td class="paramname">type</td><td><a class="el" href="structType.html" title="Container for type data.">Type</a> of int (byte, char, int, long) to print </td></tr>
   </table>
   </dd>
 </dl>
@@ -1288,32 +1320,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac977d1d6aef44e3b2087f9b231723342" name="ac977d1d6aef44e3b2087f9b231723342"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac977d1d6aef44e3b2087f9b231723342">&#9670;&nbsp;</a></span>prepend_loaded()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void prepend_loaded </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="llvm__stack__entry_8h.html#a03da1d5061280400be8365177df15c4e">type_register</a>&#160;</td>
-          <td class="paramname"><em>reg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Update loaded register linked list to include new register. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">reg</td><td>Register to include in list </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

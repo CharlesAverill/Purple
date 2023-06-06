@@ -26,56 +26,59 @@
 \DoxyCodeLine{40 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{number_8h_a9ed97c3ae75b8e5f394aad47652cd30a}{numberTypeMaxValues}}[] = \{1, CHAR\_MAX, SHRT\_MAX, INT\_MAX,}
 \DoxyCodeLine{41                                                              LONG\_MAX\};}
 \DoxyCodeLine{42 }
-\DoxyCodeLine{46 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{number_8h_a5d1eb1fc26fc937144216a3cd0cc0b4e}{numberTypeFormatStrings}}[] = \{\textcolor{stringliteral}{"{}\%d"{}}, \textcolor{stringliteral}{"{}\%d"{}}, \textcolor{stringliteral}{"{}\%d"{}}, \textcolor{stringliteral}{"{}\%d"{}}, \textcolor{stringliteral}{"{}\%ld"{}}\};}
+\DoxyCodeLine{46 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{number_8h_ab59ec471c81868c59cde6b7b60fa5583}{numberTypeNames}}[] = \{\textcolor{stringliteral}{"{}bool"{}}, \textcolor{stringliteral}{"{}char"{}}, \textcolor{stringliteral}{"{}short"{}}, \textcolor{stringliteral}{"{}int"{}}, \textcolor{stringliteral}{"{}long"{}}\};}
 \DoxyCodeLine{47 }
-\DoxyCodeLine{51 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structNumber}{Number}} \{}
-\DoxyCodeLine{53     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{structNumber_ace28dcb37d2be0e9b881744c1e0c01d1}{type}};}
-\DoxyCodeLine{55     \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structNumber_a50ded97f4b78b9de224d51cff81a25eb}{value}};}
-\DoxyCodeLine{56 \} \mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}};}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{61 \textcolor{preprocessor}{\#define NUMBER\_BOOL(v)                                                                             \(\backslash\)}}
-\DoxyCodeLine{62 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
-\DoxyCodeLine{63 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{64 \textcolor{preprocessor}{        .type = NT\_INT1, .value = v                                                                \(\backslash\)}}
-\DoxyCodeLine{65 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{66 }
-\DoxyCodeLine{70 \textcolor{preprocessor}{\#define NUMBER\_CHAR(v)                                                                             \(\backslash\)}}
-\DoxyCodeLine{71 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
-\DoxyCodeLine{72 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{73 \textcolor{preprocessor}{        .type = NT\_INT8, .value = v                                                                \(\backslash\)}}
-\DoxyCodeLine{74 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{75 }
-\DoxyCodeLine{80 \textcolor{preprocessor}{\#define NUMBER\_SHORT(v)                                                                            \(\backslash\)}}
-\DoxyCodeLine{81 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
-\DoxyCodeLine{82 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{83 \textcolor{preprocessor}{        .type = NT\_INT16, .value = v                                                               \(\backslash\)}}
-\DoxyCodeLine{84 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{85 }
-\DoxyCodeLine{89 \textcolor{preprocessor}{\#define NUMBER\_INT(v)                                                                              \(\backslash\)}}
-\DoxyCodeLine{90 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
-\DoxyCodeLine{91 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{92 \textcolor{preprocessor}{        .type = NT\_INT32, .value = v                                                               \(\backslash\)}}
-\DoxyCodeLine{93 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{94 }
-\DoxyCodeLine{98 \textcolor{preprocessor}{\#define NUMBER\_LONG(v)                                                                             \(\backslash\)}}
-\DoxyCodeLine{99 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
-\DoxyCodeLine{100 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{101 \textcolor{preprocessor}{        .type = NT\_INT64, .value = v                                                               \(\backslash\)}}
-\DoxyCodeLine{102 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{103 }
-\DoxyCodeLine{107 \textcolor{preprocessor}{\#define NUMBER\_FROM\_TYPE\_VAL(t, v)                                                                 \(\backslash\)}}
-\DoxyCodeLine{108 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
-\DoxyCodeLine{109 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{110 \textcolor{preprocessor}{        .type = t, .value = v                                                                      \(\backslash\)}}
-\DoxyCodeLine{111 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{112 }
-\DoxyCodeLine{116 \textcolor{preprocessor}{\#define NT\_MAX(a, b) (a > b ? a : b)}}
-\DoxyCodeLine{117 }
-\DoxyCodeLine{121 \textcolor{preprocessor}{\#define NT\_MIN(a, b) (NT\_MAX(a, b) == a ? b : a)}}
-\DoxyCodeLine{122 }
-\DoxyCodeLine{123 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{number_8h_a242dd91fc5b139e8048fb50fac323dee}{token\_type\_to\_number\_type}}(\textcolor{keywordtype}{int} token\_type);}
-\DoxyCodeLine{124 \textcolor{keywordtype}{int} \mbox{\hyperlink{number_8h_a6ba66dfa3fa11b0ccefce0ed54080eef}{number\_to\_token\_type}}(\mbox{\hyperlink{structNumber}{Number}} number);}
-\DoxyCodeLine{125 }
-\DoxyCodeLine{126 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* NUMBER\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{51 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{number_8h_a5d1eb1fc26fc937144216a3cd0cc0b4e}{numberTypeFormatStrings}}[] = \{\textcolor{stringliteral}{"{}\%d"{}}, \textcolor{stringliteral}{"{}\%d"{}}, \textcolor{stringliteral}{"{}\%d"{}}, \textcolor{stringliteral}{"{}\%d"{}}, \textcolor{stringliteral}{"{}\%ld"{}}\};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{56 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structNumber}{Number}} \{}
+\DoxyCodeLine{58     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{structNumber_ace28dcb37d2be0e9b881744c1e0c01d1}{type}};}
+\DoxyCodeLine{60     \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structNumber_a50ded97f4b78b9de224d51cff81a25eb}{value}};}
+\DoxyCodeLine{62     \textcolor{keywordtype}{int} \mbox{\hyperlink{structNumber_a6f0e87cda12f0900aff39f881c4d7a13}{pointer\_depth}};}
+\DoxyCodeLine{63 \} \mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define NUMBER\_BOOL(v)                                                                             \(\backslash\)}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{        .type = NT\_INT1, .value = v                                                                \(\backslash\)}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define NUMBER\_CHAR(v)                                                                             \(\backslash\)}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{        .type = NT\_INT8, .value = v                                                                \(\backslash\)}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#define NUMBER\_SHORT(v)                                                                            \(\backslash\)}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{90 \textcolor{preprocessor}{        .type = NT\_INT16, .value = v                                                               \(\backslash\)}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#define NUMBER\_INT(v)                                                                              \(\backslash\)}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{        .type = NT\_INT32, .value = v                                                               \(\backslash\)}}
+\DoxyCodeLine{100 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#define NUMBER\_LONG(v)                                                                             \(\backslash\)}}
+\DoxyCodeLine{106 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
+\DoxyCodeLine{107 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{        .type = NT\_INT64, .value = v                                                               \(\backslash\)}}
+\DoxyCodeLine{109 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#define NUMBER\_FROM\_TYPE\_VAL(t, v)                                                                 \(\backslash\)}}
+\DoxyCodeLine{115 \textcolor{preprocessor}{    (Number)                                                                                       \(\backslash\)}}
+\DoxyCodeLine{116 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{117 \textcolor{preprocessor}{        .type = t, .value = v                                                                      \(\backslash\)}}
+\DoxyCodeLine{118 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#define NT\_MAX(a, b) (a > b ? a : b)}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{128 \textcolor{preprocessor}{\#define NT\_MIN(a, b) (NT\_MAX(a, b) == a ? b : a)}}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{number_8h_a242dd91fc5b139e8048fb50fac323dee}{token\_type\_to\_number\_type}}(\textcolor{keywordtype}{int} token\_type);}
+\DoxyCodeLine{131 \textcolor{keywordtype}{int} \mbox{\hyperlink{number_8h_a6ba66dfa3fa11b0ccefce0ed54080eef}{number\_to\_token\_type}}(\mbox{\hyperlink{structNumber}{Number}} number);}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* NUMBER\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

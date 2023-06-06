@@ -1,9 +1,9 @@
 <map id="SymbolTableStack" name="SymbolTableStack">
-<area shape="rect" id="node1" title="Stack of Symbol Tables used for scoping." alt="" coords="26,837,157,915"/>
-<area shape="rect" id="node2" href="$structSymbolTable.html" title="Holds data for symbols within a scope." alt="" coords="36,668,147,775"/>
-<area shape="rect" id="node3" href="$structSymbolTableEntry.html" title="Struct holding data about a symbol." alt="" coords="28,484,155,605"/>
-<area shape="rect" id="node4" href="$structType.html" title="Container for type data." alt="" coords="43,315,139,421"/>
-<area shape="rect" id="node5" href="$structNumber.html" title="Container for various kinds of number data." alt="" coords="5,160,73,252"/>
-<area shape="rect" id="node6" href="$structFunction.html" title="Container for function information." alt="" coords="97,160,227,252"/>
-<area shape="rect" id="node7" href="$structFunctionParameter.html" title="Container for function parameter information." alt="" coords="96,5,228,97"/>
+<area shape="rect" id="node1" title="Stack of Symbol Tables used for scoping." alt="" coords="38,852,169,929"/>
+<area shape="rect" id="node2" href="$structSymbolTable.html" title="Holds data for symbols within a scope." alt="" coords="48,683,159,789"/>
+<area shape="rect" id="node3" href="$structSymbolTableEntry.html" title="Struct holding data about a symbol." alt="" coords="40,499,167,620"/>
+<area shape="rect" id="node4" href="$structType.html" title="Container for type data." alt="" coords="55,329,151,436"/>
+<area shape="rect" id="node5" href="$structNumber.html" title="Container for various kinds of number data." alt="" coords="5,160,116,267"/>
+<area shape="rect" id="node6" href="$structFunction.html" title="Container for function information." alt="" coords="141,167,271,259"/>
+<area shape="rect" id="node7" href="$structFunctionParameter.html" title="Container for function parameter information." alt="" coords="140,5,272,97"/>
 </map>

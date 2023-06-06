@@ -24,10 +24,10 @@ Include dependency graph for llvm.\+c\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{llvm_8c_ac977d1d6aef44e3b2087f9b231723342}{prepend\+\_\+loaded}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} reg)
-\begin{DoxyCompactList}\small\item\em Update loaded register linked list to include new register. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} $\ast$ \mbox{\hyperlink{llvm_8c_aabeadacb10dc9e1bcf23d31833d1bb8b}{llvm\+\_\+ensure\+\_\+registers\+\_\+loaded}} (int n\+\_\+registers, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} registers\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} number\+\_\+type)
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} $\ast$ \mbox{\hyperlink{llvm_8c_a4fd2a0a3e7ea9b694b08e4a58596de5c}{llvm\+\_\+ensure\+\_\+registers\+\_\+loaded}} (int n\+\_\+registers, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} registers\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} number\+\_\+type, int load\+\_\+depth)
 \begin{DoxyCompactList}\small\item\em Ensure that the values of a set of registers are loaded. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} $\ast$ \mbox{\hyperlink{llvm_8c_a3f99975bf0f3114b46faf37211a9c3fb}{llvm\+\_\+ensure\+\_\+registers\+\_\+fully\+\_\+loaded}} (int n\+\_\+registers, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} registers\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} number\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Overloaded version of llvm\+\_\+ensure\+\_\+registers\+\_\+loaded where load\+\_\+depth=0. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a76498db4c0864f14519dad7627a3cb16}{llvm\+\_\+preamble}} (void)
 \begin{DoxyCompactList}\small\item\em Generated program\textquotesingle{}s preamble. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a29f6abda9d506deee8732fd4c558fc15}{llvm\+\_\+postamble}} (void)
@@ -60,9 +60,9 @@ void \mbox{\hyperlink{llvm_8c_aeab3cd1ced090b1a1895f4db2ae4a387}{llvm\+\_\+decla
 \begin{DoxyCompactList}\small\item\em Declare a global variable. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a3d975b70508857ae99ff02c02f2712d1}{llvm\+\_\+declare\+\_\+assign\+\_\+global\+\_\+number\+\_\+variable}} (char $\ast$symbol\+\_\+name, \mbox{\hyperlink{structNumber}{Number}} number)
 \begin{DoxyCompactList}\small\item\em Declare a global variable with an assigned number value. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{llvm_8c_a031af08abcc558123b3ff132eb9aa142}{llvm\+\_\+print\+\_\+int}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} print\+\_\+vr, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
+void \mbox{\hyperlink{llvm_8c_a93722ca744527991108536664139bef2}{llvm\+\_\+print\+\_\+int}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} print\+\_\+vr)
 \begin{DoxyCompactList}\small\item\em Generate code to print an integer. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{llvm_8c_a549185ec39141a09db11a45ec6c3363d}{llvm\+\_\+print\+\_\+bool}} (\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} print\+\_\+vr)
+void \mbox{\hyperlink{llvm_8c_a78081f32a56e484cb74dfb926be24ac2}{llvm\+\_\+print\+\_\+bool}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} print\+\_\+vr)
 \begin{DoxyCompactList}\small\item\em Generate code to print a boolean value. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{llvm_8c_a7cabc3424855d1740d8c12b93e20f2b3}{llvm\+\_\+relational\+\_\+compare}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} comparison\+\_\+type, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} out\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
 \item 
@@ -302,11 +302,21 @@ Generate code for unsigned binary division.
 \begin{DoxyReturn}{Returns}
 type\+\_\+register Virtual register holding result 
 \end{DoxyReturn}
-\mbox{\Hypertarget{llvm_8c_aabeadacb10dc9e1bcf23d31833d1bb8b}\label{llvm_8c_aabeadacb10dc9e1bcf23d31833d1bb8b}} 
+\mbox{\Hypertarget{llvm_8c_a3f99975bf0f3114b46faf37211a9c3fb}\label{llvm_8c_a3f99975bf0f3114b46faf37211a9c3fb}} 
+\index{llvm.c@{llvm.c}!llvm\_ensure\_registers\_fully\_loaded@{llvm\_ensure\_registers\_fully\_loaded}}
+\index{llvm\_ensure\_registers\_fully\_loaded@{llvm\_ensure\_registers\_fully\_loaded}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvm\_ensure\_registers\_fully\_loaded()}{llvm\_ensure\_registers\_fully\_loaded()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} $\ast$ llvm\+\_\+ensure\+\_\+registers\+\_\+fully\+\_\+loaded (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+registers,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{registers\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{number\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Overloaded version of llvm\+\_\+ensure\+\_\+registers\+\_\+loaded where load\+\_\+depth=0. 
+
+\mbox{\Hypertarget{llvm_8c_a4fd2a0a3e7ea9b694b08e4a58596de5c}\label{llvm_8c_a4fd2a0a3e7ea9b694b08e4a58596de5c}} 
 \index{llvm.c@{llvm.c}!llvm\_ensure\_registers\_loaded@{llvm\_ensure\_registers\_loaded}}
 \index{llvm\_ensure\_registers\_loaded@{llvm\_ensure\_registers\_loaded}!llvm.c@{llvm.c}}
 \doxysubsubsection{\texorpdfstring{llvm\_ensure\_registers\_loaded()}{llvm\_ensure\_registers\_loaded()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} $\ast$ llvm\+\_\+ensure\+\_\+registers\+\_\+loaded (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+registers,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{registers\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{number\+\_\+type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} $\ast$ llvm\+\_\+ensure\+\_\+registers\+\_\+loaded (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+registers,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{registers\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{number\+\_\+type,  }\item[{int}]{load\+\_\+depth }\end{DoxyParamCaption})}
 
 
 
@@ -320,9 +330,11 @@ Ensure that the values of a set of registers are loaded.
 \hline
 {\em number\+\_\+type} & Number\+Type of registers to ensure \\
 \hline
+{\em load\+\_\+depth} & Pointer depth to be considered \char`\"{}loaded\char`\"{} \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-type\+\_\+register$\ast$ If the registers were not loaded, this array contains the loaded registers 
+LLVMValue$\ast$ If the registers were not loaded, this array contains the loaded registers 
 \end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_a53f223d3ffdbcf048fedd7e39a95d7f3}\label{llvm_8c_a53f223d3ffdbcf048fedd7e39a95d7f3}} 
 \index{llvm.c@{llvm.c}!llvm\_function\_postamble@{llvm\_function\_postamble}}
@@ -430,11 +442,11 @@ Generated program\textquotesingle{}s postamble.
 
 Generated program\textquotesingle{}s preamble. 
 
-\mbox{\Hypertarget{llvm_8c_a549185ec39141a09db11a45ec6c3363d}\label{llvm_8c_a549185ec39141a09db11a45ec6c3363d}} 
+\mbox{\Hypertarget{llvm_8c_a78081f32a56e484cb74dfb926be24ac2}\label{llvm_8c_a78081f32a56e484cb74dfb926be24ac2}} 
 \index{llvm.c@{llvm.c}!llvm\_print\_bool@{llvm\_print\_bool}}
 \index{llvm\_print\_bool@{llvm\_print\_bool}!llvm.c@{llvm.c}}
 \doxysubsubsection{\texorpdfstring{llvm\_print\_bool()}{llvm\_print\_bool()}}
-{\footnotesize\ttfamily void llvm\+\_\+print\+\_\+bool (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{print\+\_\+vr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void llvm\+\_\+print\+\_\+bool (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{print\+\_\+vr }\end{DoxyParamCaption})}
 
 
 
@@ -445,11 +457,11 @@ Generate code to print a boolean value.
 {\em print\+\_\+vr} & Register holding value to print \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{llvm_8c_a031af08abcc558123b3ff132eb9aa142}\label{llvm_8c_a031af08abcc558123b3ff132eb9aa142}} 
+\mbox{\Hypertarget{llvm_8c_a93722ca744527991108536664139bef2}\label{llvm_8c_a93722ca744527991108536664139bef2}} 
 \index{llvm.c@{llvm.c}!llvm\_print\_int@{llvm\_print\_int}}
 \index{llvm\_print\_int@{llvm\_print\_int}!llvm.c@{llvm.c}}
 \doxysubsubsection{\texorpdfstring{llvm\_print\_int()}{llvm\_print\_int()}}
-{\footnotesize\ttfamily void llvm\+\_\+print\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{print\+\_\+vr,  }\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void llvm\+\_\+print\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{print\+\_\+vr }\end{DoxyParamCaption})}
 
 
 
@@ -458,8 +470,6 @@ Generate code to print an integer.
 
 \begin{DoxyParams}{Parameters}
 {\em print\+\_\+vr} & Register holding value to print \\
-\hline
-{\em type} & \mbox{\hyperlink{structType}{Type}} of int (byte, char, int, long) to print \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{llvm_8c_a7cabc3424855d1740d8c12b93e20f2b3}\label{llvm_8c_a7cabc3424855d1740d8c12b93e20f2b3}} 
@@ -559,21 +569,6 @@ type\+\_\+register Virtual register holding result
 \doxysubsubsection{\texorpdfstring{llvm\_truncate()}{llvm\_truncate()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+truncate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{reg,  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{new\+\_\+type,  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{old\+\_\+type }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{llvm_8c_ac977d1d6aef44e3b2087f9b231723342}\label{llvm_8c_ac977d1d6aef44e3b2087f9b231723342}} 
-\index{llvm.c@{llvm.c}!prepend\_loaded@{prepend\_loaded}}
-\index{prepend\_loaded@{prepend\_loaded}!llvm.c@{llvm.c}}
-\doxysubsubsection{\texorpdfstring{prepend\_loaded()}{prepend\_loaded()}}
-{\footnotesize\ttfamily void prepend\+\_\+loaded (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{reg }\end{DoxyParamCaption})}
-
-
-
-Update loaded register linked list to include new register. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em reg} & Register to include in list \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{llvm_8c_af4ccee4ae68116bfc0860b6d19090bde}\label{llvm_8c_af4ccee4ae68116bfc0860b6d19090bde}} 
 \index{llvm.c@{llvm.c}!type\_to\_llvm\_type@{type\_to\_llvm\_type}}
 \index{type\_to\_llvm\_type@{type\_to\_llvm\_type}!llvm.c@{llvm.c}}

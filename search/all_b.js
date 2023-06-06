@@ -5,7 +5,7 @@ var searchData=
   ['new_5fsymbol_5ftable_2',['new_symbol_table',['../symbol__table_8c.html#a66d50bceed619e9635d0ff0f0639d55d',1,'new_symbol_table(void):&#160;symbol_table.c'],['../symbol__table_8h.html#a66d50bceed619e9635d0ff0f0639d55d',1,'new_symbol_table(void):&#160;symbol_table.c']]],
   ['new_5fsymbol_5ftable_5fentry_3',['new_symbol_table_entry',['../symbol__table_8c.html#a19902129ff999624837d473ed4d77674',1,'new_symbol_table_entry(char *symbol_name):&#160;symbol_table.c'],['../symbol__table_8h.html#a19902129ff999624837d473ed4d77674',1,'new_symbol_table_entry(char *symbol_name):&#160;symbol_table.c']]],
   ['new_5fsymbol_5ftable_5fstack_4',['new_symbol_table_stack',['../symbol__table_8c.html#a78f6b09625b0bd2da6bcf366eb1a6c03',1,'new_symbol_table_stack(void):&#160;symbol_table.c'],['../symbol__table_8h.html#a78f6b09625b0bd2da6bcf366eb1a6c03',1,'new_symbol_table_stack(void):&#160;symbol_table.c']]],
-  ['new_5fsymbol_5ftable_5fwith_5flength_5',['new_symbol_table_with_length',['../symbol__table_8h.html#a9ee026e65506b668f3ea22de08b22b8c',1,'new_symbol_table_with_length(int length):&#160;symbol_table.c'],['../symbol__table_8c.html#a9ee026e65506b668f3ea22de08b22b8c',1,'new_symbol_table_with_length(int length):&#160;symbol_table.c']]],
+  ['new_5fsymbol_5ftable_5fwith_5flength_5',['new_symbol_table_with_length',['../symbol__table_8c.html#a9ee026e65506b668f3ea22de08b22b8c',1,'new_symbol_table_with_length(int length):&#160;symbol_table.c'],['../symbol__table_8h.html#a9ee026e65506b668f3ea22de08b22b8c',1,'new_symbol_table_with_length(int length):&#160;symbol_table.c']]],
   ['newline_6',['NEWLINE',['../formatting_8h.html#a806511f4930171733227c99101dc0606',1,'formatting.h']]],
   ['next_7',['next',['../scan_8h.html#a0de139c03356d8fe5eef9b03661dc5b0',1,'next(void):&#160;scan.c'],['../scan_8c.html#a0de139c03356d8fe5eef9b03661dc5b0',1,'next(void):&#160;scan.c'],['../structLLVMStackEntryNode.html#af41081ec828f9c96779a56043a9fef04',1,'LLVMStackEntryNode::next()'],['../structSymbolTable.html#afce59ce70989d0f787d63f192504479c',1,'SymbolTable::next()'],['../structSymbolTableEntry.html#adf808305494a748a34cb14340e90bfe1',1,'SymbolTableEntry::next()']]],
   ['nt_5fint1_8',['NT_INT1',['../number_8h.html#ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3',1,'number.h']]],
@@ -36,12 +36,13 @@ var searchData=
   ['number_5flong_33',['NUMBER_LONG',['../number_8h.html#a9d46686bcc8f1545affc9a6be9154f10',1,'number.h']]],
   ['number_5fshort_34',['NUMBER_SHORT',['../number_8h.html#a1545b55a23b8ebfe8fc05f673f429a4d',1,'number.h']]],
   ['number_5fto_5ftoken_5ftype_35',['number_to_token_type',['../number_8h.html#a6ba66dfa3fa11b0ccefce0ed54080eef',1,'number_to_token_type(Number number):&#160;number.c'],['../number_8c.html#a6ba66dfa3fa11b0ccefce0ed54080eef',1,'number_to_token_type(Number number):&#160;number.c']]],
-  ['number_5ftype_36',['number_type',['../structLLVMValue.html#ab861347e6821dd7531d9d2c5c8240cae',1,'LLVMValue::number_type()'],['../structASTNode.html#a58fd804bfb87d7a797a8d133147e15ca',1,'ASTNode::number_type()']]],
+  ['number_5ftype_36',['number_type',['../structLLVMValue.html#ab861347e6821dd7531d9d2c5c8240cae',1,'LLVMValue']]],
   ['number_5fvalue_37',['number_value',['../structToken.html#ad265a3d310ddd105154db303962f4a85',1,'Token::number_value()'],['../structASTNode.html#ad4fae0832953dd1d0598a3c9ec85429f',1,'ASTNode::number_value()']]],
   ['numbertype_38',['NumberType',['../number_8h.html#ae33bf5f4db440a147780b796497d1ef5',1,'number.h']]],
   ['numbertypebitsizes_39',['numberTypeBitSizes',['../number_8h.html#ac642e19d2a6cd57492068f449810084c',1,'number.h']]],
   ['numbertypebytesizes_40',['numberTypeByteSizes',['../number_8h.html#a7be529595168c4c54f828029dd48f054',1,'number.h']]],
   ['numbertypeformatstrings_41',['numberTypeFormatStrings',['../number_8h.html#a5d1eb1fc26fc937144216a3cd0cc0b4e',1,'number.h']]],
   ['numbertypellvmreprs_42',['numberTypeLLVMReprs',['../llvm_8h.html#ac126174f25ba15725681e50ce7a7d558',1,'llvm.h']]],
-  ['numbertypemaxvalues_43',['numberTypeMaxValues',['../number_8h.html#a9ed97c3ae75b8e5f394aad47652cd30a',1,'number.h']]]
+  ['numbertypemaxvalues_43',['numberTypeMaxValues',['../number_8h.html#a9ed97c3ae75b8e5f394aad47652cd30a',1,'number.h']]],
+  ['numbertypenames_44',['numberTypeNames',['../number_8h.html#ab59ec471c81868c59cde6b7b60fa5583',1,'number.h']]]
 ];

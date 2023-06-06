@@ -27,7 +27,7 @@ static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_
 \begin{DoxyCompactList}\small\item\em Generate LLVM-\/\+IR for an if statement AST. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_a3a5ce1830c21d69ecf8ec4b744af6882}{while\+\_\+else\+\_\+ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n)
 \begin{DoxyCompactList}\small\item\em Generate LLVM-\/\+IR for a while-\/else statement AST. \end{DoxyCompactList}\item 
-static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_a1073b5f001944206d99a8e4e641523bd}{print\+\_\+ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} virtual\+\_\+register)
+static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_a4f503b06321e4420c32ba6ac07332e16}{print\+\_\+ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} virtual\+\_\+register)
 \begin{DoxyCompactList}\small\item\em Generate LLVM-\/\+IR for a print statement. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_ac03b5f4edcb74722ca4643fd469712e9}{ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+value, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} parent\+\_\+operation)
 \begin{DoxyCompactList}\small\item\em Generates LLVM-\/\+IR from a given AST. \end{DoxyCompactList}\item 
@@ -36,8 +36,6 @@ void \mbox{\hyperlink{translate_8c_ac2560f9333db7b4bc4b0dd4ef15b3dcc}{generate\+
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{translate_8c_a34ca54a9e8ecfdea8744a76677de7325}{loaded\+Registers\+Head}} = NULL
-\begin{DoxyCompactList}\small\item\em Head node of linked list containing register indices that have loaded values. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}} $\ast$ \mbox{\hyperlink{translate_8c_a14931181b0e852af3c22f3d9f3678e48}{free\+Virtual\+Registers\+Head}} = NULL
 \begin{DoxyCompactList}\small\item\em Head node of linked list containing register indices that are free to have values stored in them. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -124,11 +122,11 @@ jump false\+\_\+label if !condition body() jump end\+\_\+label false\+\_\+label\
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} LLVMVALUE\+\_\+\+NULL 
 \end{DoxyReturn}
-\mbox{\Hypertarget{translate_8c_a1073b5f001944206d99a8e4e641523bd}\label{translate_8c_a1073b5f001944206d99a8e4e641523bd}} 
+\mbox{\Hypertarget{translate_8c_a4f503b06321e4420c32ba6ac07332e16}\label{translate_8c_a4f503b06321e4420c32ba6ac07332e16}} 
 \index{translate.c@{translate.c}!print\_ast\_to\_llvm@{print\_ast\_to\_llvm}}
 \index{print\_ast\_to\_llvm@{print\_ast\_to\_llvm}!translate.c@{translate.c}}
 \doxysubsubsection{\texorpdfstring{print\_ast\_to\_llvm()}{print\_ast\_to\_llvm()}}
-{\footnotesize\ttfamily static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} print\+\_\+ast\+\_\+to\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root,  }\item[{\mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}}}]{virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} print\+\_\+ast\+\_\+to\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -184,14 +182,4 @@ condition\+\_\+label\+: jump else\+\_\+label if !condition body() jump condition
 
 
 Head node of linked list containing register indices that are free to have values stored in them. 
-
-\mbox{\Hypertarget{translate_8c_a34ca54a9e8ecfdea8744a76677de7325}\label{translate_8c_a34ca54a9e8ecfdea8744a76677de7325}} 
-\index{translate.c@{translate.c}!loadedRegistersHead@{loadedRegistersHead}}
-\index{loadedRegistersHead@{loadedRegistersHead}!translate.c@{translate.c}}
-\doxysubsubsection{\texorpdfstring{loadedRegistersHead}{loadedRegistersHead}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}}$\ast$ loaded\+Registers\+Head = NULL}
-
-
-
-Head node of linked list containing register indices that have loaded values. 
 
