@@ -18,11 +18,6 @@
 static const char* numberTypeLLVMReprs[] = {"i1", "i8", "i16", "i32", "i64"};
 
 /**
- * @brief Head node of linked list containing register indices that have loaded values
- */
-extern LLVMStackEntryNode* loadedRegistersHead;
-
-/**
  * @brief Head node of linked list containing register indices that are free to have values stored in them
  */
 extern LLVMStackEntryNode* freeVirtualRegistersHead;
@@ -48,6 +43,8 @@ typedef struct LLVMValue {
     bool stores_pointer;
     /**If a number is stored*/
     NumberType number_type;
+    /**How many pointers deep this LLVMValue is*/
+    int pointer_depth;
     /**Contents of the value returned*/
     union {
         /**Index of a virtual register*/
@@ -83,17 +80,17 @@ typedef struct LLVMValue {
 #define LLVMVALUE_VIRTUAL_REGISTER(register_number, n_t)                                           \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .stores_pointer = false,                     \
+        .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .pointer_depth = 0,                          \
         .value.virtual_register_index = register_number, .number_type = n_t                        \
     }
 
 /**
  * @brief Inline-initializes an LLVMValue struct from the number of a virtual register that stores a pointer
  */
-#define LLVMVALUE_VIRTUAL_REGISTER_POINTER(register_number, n_t)                                   \
+#define LLVMVALUE_VIRTUAL_REGISTER_POINTER(register_number, n_t, depth)                            \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .stores_pointer = true,                      \
+        .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .pointer_depth = depth,                      \
         .value.virtual_register_index = register_number, .number_type = n_t                        \
     }
 
@@ -109,8 +106,8 @@ typedef struct LLVMValue {
 /**Prefix to prepend to LLVM label indices*/
 #define PURPLE_LABEL_PREFIX "L"
 
-type_register* llvm_ensure_registers_loaded(int n_registers, type_register registers[],
-                                            NumberType number_type);
+LLVMValue* llvm_ensure_registers_loaded(int n_registers, LLVMValue registers[],
+                                        NumberType number_type, int load_depth);
 
 void llvm_preamble(void);
 void llvm_postamble(void);
@@ -129,8 +126,8 @@ void llvm_declare_global_number_variable(char* symbol_name, NumberType number_ty
 LLVMValue llvm_signed_extend(LLVMValue reg, NumberType new_type, NumberType old_type);
 LLVMValue llvm_truncate(LLVMValue reg, NumberType new_type, NumberType old_type);
 void llvm_declare_assign_global_number_variable(char* symbol_name, Number number);
-void llvm_print_int(type_register print_vr, TokenType type);
-void llvm_print_bool(type_register print_vr);
+void llvm_print_int(LLVMValue print_vr);
+void llvm_print_bool(LLVMValue print_vr);
 LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_register,
                        LLVMValue right_virtual_register);
 LLVMValue llvm_compare_jump(TokenType comparison_type, LLVMValue left_virtual_register,

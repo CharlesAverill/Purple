@@ -39,6 +39,9 @@ typedef enum
     T_NAND,
     T_NOR,
     T_XNOR,
+    // Pointer operators
+    T_AMPERSAND,
+    T_DEREFERENCE,
     // Literals
     T_TRUE,
     T_FALSE,
@@ -107,6 +110,8 @@ static char* tokenStrings[] = {"EOF",
                                "nand",
                                "nor",
                                "xnor",
+                               "&",
+                               "*",
                                "true",
                                "false",
                                "byte literal",

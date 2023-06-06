@@ -25,46 +25,13 @@ static int get_operator_precedence(Token t)
     return prec;
 }
 
-ASTNode* function_call_expression(void)
-{
-    ASTNode* root;
-    ASTNode* parameter;
-    SymbolTableEntry* found_entry;
-
-    purple_log(LOG_DEBUG, "Parsing function call statement");
-
-    // Read identifier
-    position ident_pos = D_GLOBAL_TOKEN.pos;
-    match_token(T_IDENTIFIER);
-
-    // Ensure identifier name has been declared
-    purple_log(LOG_DEBUG, "Searching for function identifier name in global symbol table");
-    if ((found_entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER)) ==
-        NULL) {
-        identifier_error(0, 0, 0, "Function dentifier name \"%s\" has not been declared",
-                         D_IDENTIFIER_BUFFER);
-    }
-
-    match_token(T_LEFT_PAREN);
-    parameter = parse_binary_expression();
-    match_token(T_RIGHT_PAREN);
-
-    // Make a terminal node for the identifier
-    root = create_unary_ast_node(T_FUNCTION_CALL, parameter, found_entry->type,
-                                 found_entry->symbol_name);
-    root->number_type = token_type_to_number_type(found_entry->type.value.function.return_type);
-    add_position_info(root, ident_pos);
-
-    return root;
-}
-
 /**
  * @brief Build a terminal AST Node for a given Token, exit if not a valid primary Token
  * 
  * @param t The Token to check and build
  * @return An AST Node built from the provided Token, or an error if the Token is non-terminal
  */
-static ASTNode* create_terminal_node(Token* t)
+static ASTNode* parse_terminal_node(Token* t)
 {
     ASTNode* out;
     SymbolTableEntry* entry;
@@ -101,6 +68,88 @@ static ASTNode* create_terminal_node(Token* t)
 }
 
 /**
+ * @brief Look for prefix operators, otherwise pass through to parse_terminal_node
+ * 
+ * @return ASTNode* An AST Node containing data for a prefix operator, or a terminal AST Node
+ */
+ASTNode* prefix_operator_passthrough(void)
+{
+    ASTNode* out;
+
+    purple_log(LOG_DEBUG, "Checking for prefix operators");
+
+    if (D_GLOBAL_TOKEN.type == T_AMPERSAND) {
+        purple_log(LOG_DEBUG, "Found address prefix operator");
+
+        scan(&D_GLOBAL_TOKEN);
+        out = prefix_operator_passthrough();
+
+        if (out->ttype != T_IDENTIFIER) {
+            syntax_error(0, 0, 0, "Cannot take the address of a non-identifier operand");
+        }
+
+        out->ttype = T_AMPERSAND;
+        out->tree_type.pointer_depth++;
+
+    } else if (D_GLOBAL_TOKEN.type == T_STAR) {
+        purple_log(LOG_DEBUG, "Found dereference prefix operator");
+
+        scan(&D_GLOBAL_TOKEN);
+        out = prefix_operator_passthrough();
+
+        if (out->ttype != T_IDENTIFIER && out->ttype != T_DEREFERENCE) {
+            syntax_error(0, 0, 0, "Cannot dereference a non-pointer operand");
+        }
+
+        out->tree_type.pointer_depth--;
+
+        out = create_unary_ast_node(T_DEREFERENCE, out, TYPE_VOID, NULL);
+    } else {
+        out = parse_terminal_node(&D_GLOBAL_TOKEN);
+    }
+
+    return out;
+}
+
+/**
+ * @brief Parse a function call expression into an AST
+ * 
+ * @return ASTNode* AST Node containing function call data
+ */
+ASTNode* function_call_expression(void)
+{
+    ASTNode* root;
+    ASTNode* parameter;
+    SymbolTableEntry* found_entry;
+
+    purple_log(LOG_DEBUG, "Parsing function call statement");
+
+    // Read identifier
+    position ident_pos = D_GLOBAL_TOKEN.pos;
+    match_token(T_IDENTIFIER);
+
+    // Ensure identifier name has been declared
+    purple_log(LOG_DEBUG, "Searching for function identifier name in global symbol table");
+    if ((found_entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER)) ==
+        NULL) {
+        identifier_error(0, 0, 0, "Function dentifier name \"%s\" has not been declared",
+                         D_IDENTIFIER_BUFFER);
+    }
+
+    match_token(T_LEFT_PAREN);
+    parameter = parse_binary_expression();
+    match_token(T_RIGHT_PAREN);
+
+    // Make a terminal node for the identifier
+    root = create_unary_ast_node(T_FUNCTION_CALL, parameter, found_entry->type,
+                                 found_entry->symbol_name);
+    root->tree_type.type = token_type_to_number_type(found_entry->type.value.function.return_type);
+    add_position_info(root, ident_pos);
+
+    return root;
+}
+
+/**
  * @brief Recursively parse binary expressions into an AST
  * 
  * @param previous_token_precedence The integer precedence value of the previous Token
@@ -115,8 +164,8 @@ static ASTNode* parse_binary_expression_recursive(int previous_token_precedence,
 
     // Get the terminal token (literal, variable identifier, etc) on the left and scan the next Token
     position pre_pos = D_GLOBAL_TOKEN.pos;
-    left = create_terminal_node(&D_GLOBAL_TOKEN);
-    *nt_max = NT_MAX(*nt_max, left->number_type);
+    left = prefix_operator_passthrough();
+    *nt_max = NT_MAX(*nt_max, left->tree_type.type);
     add_position_info(left, pre_pos);
     current_ttype = D_GLOBAL_TOKEN.type;
     if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {

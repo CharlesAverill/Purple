@@ -41,6 +41,11 @@ static const unsigned long long int numberTypeMaxValues[] = {1, CHAR_MAX, SHRT_M
                                                              LONG_MAX};
 
 /**
+ * @brief Names of each NumberType
+ */
+static const char* numberTypeNames[] = {"bool", "char", "short", "int", "long"};
+
+/**
  * @brief Format strings for each data type
  */
 static const char* numberTypeFormatStrings[] = {"%d", "%d", "%d", "%d", "%ld"};
@@ -53,6 +58,8 @@ typedef struct Number {
     NumberType type;
     /**Value of number*/
     long long int value;
+    /**How many pointers deep this Number object is*/
+    int pointer_depth;
 } Number;
 
 /**

@@ -26,8 +26,8 @@ typedef struct ASTNode {
     struct ASTNode* mid;
     /**The right child of the AST Node*/
     struct ASTNode* right;
-    /**Type of number token*/
-    NumberType number_type;
+    /**Numerical type of tree*/
+    Number tree_type;
     /**Largest NumberType in subtree*/
     NumberType largest_number_type;
     /**Whether or not a binary arithmetic node is dealing with chars*/

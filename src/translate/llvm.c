@@ -16,79 +16,59 @@
 #include "utils/logging.h"
 
 /**
- * @brief Update loaded register linked list to include new register
- * 
- * @param reg Register to include in list
- */
-void prepend_loaded(type_register reg)
-{
-    LLVMStackEntryNode* new = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
-    new->reg = reg;
-    new->next = NULL;
-
-    if (loadedRegistersHead == NULL) {
-        loadedRegistersHead = new;
-    } else {
-        LLVMStackEntryNode* temp = loadedRegistersHead;
-        while (temp != NULL) {
-            if (temp == new) {
-                return;
-            }
-            temp = temp->next;
-        }
-        new->next = loadedRegistersHead;
-        loadedRegistersHead = new;
-    }
-}
-
-/**
  * @brief Ensure that the values of a set of registers are loaded
  * 
  * @param n_registers Number of registers to ensure
  * @param registers Array of register indices to ensure
  * @param number_type NumberType of registers to ensure
- * @return type_register* If the registers were not loaded, this array contains the loaded registers
+ * @param load_depth Pointer depth to be considered "loaded"
+ * @return LLVMValue* If the registers were not loaded, this array contains the loaded registers
  */
-type_register* llvm_ensure_registers_loaded(int n_registers, type_register registers[],
-                                            NumberType number_type)
+LLVMValue* llvm_ensure_registers_loaded(int n_registers, LLVMValue registers[],
+                                        NumberType number_type, int load_depth)
 {
-    LLVMStackEntryNode* current = loadedRegistersHead;
     bool found_registers[n_registers];
-
+    int n_found = 0;
     for (int i = 0; i < n_registers; i++) {
-        found_registers[i] = 0;
+        found_registers[i] = false;
     }
 
-    int found = 0;
-    while (current) {
-        for (int i = 0; i < n_registers; i++) {
-            if (!found_registers[i] && current->reg == registers[i]) {
-                found_registers[i] = true;
-                found++;
-            }
-
-            if (found == n_registers) {
-                return NULL;
-            }
+    for (int i = 0; i < n_registers; i++) {
+        if (registers[i].pointer_depth <= load_depth) {
+            found_registers[i] = true;
+            n_found++;
         }
-        current = current->next;
+
+        if (n_found >= n_registers) {
+            return NULL;
+        }
     }
 
     // Haven't loaded all of our registers yet
-    type_register* loaded_registers =
-        (type_register*)malloc(sizeof(type_register) * (n_registers - found));
+    LLVMValue* loaded_registers = (LLVMValue*)malloc(sizeof(LLVMValue) * (n_registers - n_found));
     for (int i = 0; i < n_registers; i++) {
-        loaded_registers[i] = registers[i];
-        if (!found_registers[i]) {
-            loaded_registers[i] = get_next_local_virtual_register();
+        if (found_registers[i]) {
+            loaded_registers[i] = registers[i];
+        } else {
+            int new_reg = get_next_local_virtual_register();
+            loaded_registers[i] = LLVMVALUE_VIRTUAL_REGISTER(new_reg, registers[i].number_type);
             fprintf(D_LLVM_FILE, TAB "%%%llu = load %s, %s* %%%llu, align %d" NEWLINE,
-                    loaded_registers[i], numberTypeLLVMReprs[number_type],
-                    numberTypeLLVMReprs[number_type], registers[i], numberTypeByteSizes[i]);
-            prepend_loaded(loaded_registers[i]);
+                    loaded_registers[i].value.virtual_register_index,
+                    numberTypeLLVMReprs[number_type], numberTypeLLVMReprs[number_type],
+                    registers[i].value.virtual_register_index, numberTypeByteSizes[i]);
         }
     }
 
     return loaded_registers;
+}
+
+/**
+ * @brief Overloaded version of llvm_ensure_registers_loaded where load_depth=0
+ */
+LLVMValue* llvm_ensure_registers_fully_loaded(int n_registers, LLVMValue registers[],
+                                              NumberType number_type)
+{
+    return llvm_ensure_registers_loaded(n_registers, registers, number_type, 0);
 }
 
 /**
@@ -274,21 +254,19 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
 {
     type_register out_register;
 
-    type_register* loaded_registers = llvm_ensure_registers_loaded(
-        1, (type_register[]){left_virtual_register.value.virtual_register_index},
-        left_virtual_register.number_type);
+    LLVMValue* loaded_registers = llvm_ensure_registers_fully_loaded(
+        1, (LLVMValue[]){left_virtual_register}, left_virtual_register.number_type);
     if (loaded_registers != NULL) {
-        left_virtual_register.value.virtual_register_index = loaded_registers[0];
+        left_virtual_register = loaded_registers[0];
         purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers (1)", "llvm_binary_arithmetic");
         free(loaded_registers);
         loaded_registers = NULL;
     }
 
-    loaded_registers = llvm_ensure_registers_loaded(
-        1, (type_register[]){right_virtual_register.value.virtual_register_index},
-        right_virtual_register.number_type);
+    loaded_registers = llvm_ensure_registers_fully_loaded(1, (LLVMValue[]){right_virtual_register},
+                                                          right_virtual_register.number_type);
     if (loaded_registers != NULL) {
-        right_virtual_register.value.virtual_register_index = loaded_registers[0];
+        right_virtual_register = loaded_registers[0];
         purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers (2)", "llvm_binary_arithmetic");
         free(loaded_registers);
     }
@@ -299,13 +277,10 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
             left_virtual_register =
                 llvm_signed_extend(left_virtual_register, right_virtual_register.number_type,
                                    left_virtual_register.number_type);
-            prepend_loaded(left_virtual_register.value.virtual_register_index);
         } else {
             right_virtual_register =
                 llvm_signed_extend(right_virtual_register, left_virtual_register.number_type,
                                    right_virtual_register.number_type);
-
-            prepend_loaded(right_virtual_register.value.virtual_register_index);
         }
     }
 
@@ -332,8 +307,6 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
               tokenStrings[operation]);
     }
 
-    prepend_loaded(out_register);
-
     return LLVMVALUE_VIRTUAL_REGISTER(out_register, left_virtual_register.number_type);
 }
 
@@ -351,7 +324,7 @@ LLVMValue llvm_store_constant(Number value)
     fprintf(D_LLVM_FILE, numberTypeFormatStrings[value.type], value.value);
     fprintf(D_LLVM_FILE, ", %s* %%%llu, align %d" NEWLINE, numberTypeLLVMReprs[value.type],
             out_register_number, numberTypeByteSizes[value.type]);
-    return LLVMVALUE_VIRTUAL_REGISTER_POINTER(out_register_number, value.type);
+    return LLVMVALUE_VIRTUAL_REGISTER_POINTER(out_register_number, value.type, 1);
 }
 
 /**
@@ -383,7 +356,7 @@ LLVMValue llvm_load_global_variable(char* symbol_name)
     fprintf(D_LLVM_FILE, TAB "%%%llu = load %s, %s* @%s" NEWLINE, out_register_number,
             numberTypeLLVMReprs[symbol->type.value.number.type],
             numberTypeLLVMReprs[symbol->type.value.number.type], symbol_name);
-    prepend_loaded(out_register_number);
+
     return LLVMVALUE_VIRTUAL_REGISTER(out_register_number, symbol->type.value.number.type);
 }
 
@@ -401,11 +374,10 @@ void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register)
               symbol_name);
     }
 
-    type_register* loaded_registers = llvm_ensure_registers_loaded(
-        1, (type_register[]){rvalue_register.value.virtual_register_index},
-        rvalue_register.number_type);
+    LLVMValue* loaded_registers = llvm_ensure_registers_fully_loaded(
+        1, (LLVMValue[]){rvalue_register}, rvalue_register.number_type);
     if (loaded_registers) {
-        rvalue_register.value.virtual_register_index = loaded_registers[0];
+        rvalue_register = loaded_registers[0];
         purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_store_global_variable");
         free(loaded_registers);
     }
@@ -420,8 +392,6 @@ void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register)
             rvalue_register = llvm_truncate(rvalue_register, symbol->type.value.number.type,
                                             rvalue_register.number_type);
         }
-
-        prepend_loaded(rvalue_register.value.virtual_register_index);
     }
 
     fprintf(D_LLVM_FILE, TAB "store %s %%%llu, %s* @%s" NEWLINE,
@@ -484,12 +454,11 @@ void llvm_declare_assign_global_number_variable(char* symbol_name, Number number
  * @brief Generate code to print an integer
  * 
  * @param print_vr Register holding value to print
- * @param type Type of int (byte, char, int, long) to print
  */
-void llvm_print_int(type_register print_vr, TokenType type)
+void llvm_print_int(LLVMValue print_vr)
 {
-    type_register* loaded_register = llvm_ensure_registers_loaded(1, (type_register[]){print_vr},
-                                                                  token_type_to_number_type(type));
+    LLVMValue* loaded_register =
+        llvm_ensure_registers_fully_loaded(1, (LLVMValue[]){print_vr}, print_vr.number_type);
     if (loaded_register) {
         print_vr = loaded_register[0];
         purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_register", "llvm_print_int");
@@ -497,34 +466,29 @@ void llvm_print_int(type_register print_vr, TokenType type)
     }
 
     get_next_local_virtual_register();
-    switch (type) {
-    case T_CHAR:
-    case T_CHAR_LITERAL:
+    switch (print_vr.number_type) {
+    case NT_INT8:
         fprintf(D_LLVM_FILE,
                 TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
                     "i8]* @print_char_fstring , i32 0, i32 0), %s %%%llu)" NEWLINE,
-                numberTypeLLVMReprs[NT_INT8], print_vr);
+                numberTypeLLVMReprs[NT_INT8], print_vr.value.virtual_register_index);
         break;
-    case T_BYTE:
-    case T_BYTE_LITERAL:
-    case T_SHORT:
-    case T_SHORT_LITERAL:
-    case T_INT:
-    case T_INTEGER_LITERAL:
+    case NT_INT16:
+    case NT_INT32:
         fprintf(D_LLVM_FILE,
                 TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
                     "i8]* @print_int_fstring , i32 0, i32 0), %s %%%llu)" NEWLINE,
-                numberTypeLLVMReprs[token_type_to_number_type(type)], print_vr);
+                numberTypeLLVMReprs[print_vr.number_type], print_vr.value.virtual_register_index);
         break;
-    case T_LONG:
-    case T_LONG_LITERAL:
+    case NT_INT64:
         fprintf(D_LLVM_FILE,
                 TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([5 x i8], [5 x "
                     "i8]* @print_long_fstring , i32 0, i32 0), %s %%%llu)" NEWLINE,
-                numberTypeLLVMReprs[NT_INT64], print_vr);
+                numberTypeLLVMReprs[NT_INT64], print_vr.value.virtual_register_index);
         break;
     default:
-        fatal(RC_COMPILER_ERROR, "Unrecognized TokenType %s", tokenStrings[type]);
+        fatal(RC_COMPILER_ERROR, "Unrecognized NumberType %s",
+              numberTypeNames[print_vr.number_type]);
     }
 }
 
@@ -533,22 +497,21 @@ void llvm_print_int(type_register print_vr, TokenType type)
  * 
  * @param print_vr Register holding value to print
  */
-void llvm_print_bool(type_register print_vr)
+void llvm_print_bool(LLVMValue print_vr)
 {
-    type_register* loaded_register =
-        llvm_ensure_registers_loaded(1, (type_register[]){print_vr}, NT_INT1);
+    LLVMValue* loaded_register =
+        llvm_ensure_registers_fully_loaded(1, (LLVMValue[]){print_vr}, NT_INT1);
     if (loaded_register) {
         print_vr = loaded_register[0];
     }
 
-    type_register compare_register = print_vr;
+    LLVMValue compare_register = print_vr;
     LLVMValue true_label, false_label, end_label;
     true_label = get_next_label();
     false_label = get_next_label();
     end_label = get_next_label();
 
-    llvm_conditional_jump(LLVMVALUE_VIRTUAL_REGISTER(compare_register, NT_INT1), true_label,
-                          false_label);
+    llvm_conditional_jump(compare_register, true_label, false_label);
     llvm_label(true_label);
     get_next_local_virtual_register();
     fprintf(D_LLVM_FILE,
@@ -642,20 +605,18 @@ static void llvm_logical_compare(TokenType comparison_type, type_register out_re
 LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_register,
                        LLVMValue right_virtual_register)
 {
-    type_register* loaded_registers = llvm_ensure_registers_loaded(
-        1, (type_register[]){left_virtual_register.value.virtual_register_index},
-        left_virtual_register.number_type);
+    LLVMValue* loaded_registers = llvm_ensure_registers_fully_loaded(
+        1, (LLVMValue[]){left_virtual_register}, left_virtual_register.number_type);
     if (loaded_registers != NULL) {
-        left_virtual_register.value.virtual_register_index = loaded_registers[0];
+        left_virtual_register = loaded_registers[0];
         purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_compare");
         free(loaded_registers);
     }
 
-    loaded_registers = llvm_ensure_registers_loaded(
-        1, (type_register[]){right_virtual_register.value.virtual_register_index},
-        right_virtual_register.number_type);
+    loaded_registers = llvm_ensure_registers_fully_loaded(1, (LLVMValue[]){right_virtual_register},
+                                                          right_virtual_register.number_type);
     if (loaded_registers != NULL) {
-        right_virtual_register.value.virtual_register_index = loaded_registers[0];
+        right_virtual_register = loaded_registers[0];
         purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_compare");
         free(loaded_registers);
         loaded_registers = NULL;
@@ -667,13 +628,10 @@ LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_registe
             left_virtual_register =
                 llvm_signed_extend(left_virtual_register, right_virtual_register.number_type,
                                    left_virtual_register.number_type);
-            prepend_loaded(left_virtual_register.value.virtual_register_index);
         } else {
             right_virtual_register =
                 llvm_signed_extend(right_virtual_register, left_virtual_register.number_type,
                                    right_virtual_register.number_type);
-
-            prepend_loaded(right_virtual_register.value.virtual_register_index);
         }
     }
 
@@ -686,8 +644,6 @@ LLVMValue llvm_compare(TokenType comparison_type, LLVMValue left_virtual_registe
         llvm_logical_compare(comparison_type, out_register, left_virtual_register,
                              right_virtual_register);
     }
-
-    prepend_loaded(out_register);
 
     return LLVMVALUE_VIRTUAL_REGISTER(out_register, NT_INT1);
 }
@@ -846,8 +802,6 @@ LLVMValue llvm_call_function(LLVMValue virtual_register, char* symbol_name)
     fprintf(D_LLVM_FILE, "call %s () @%s()" NEWLINE,
             type_to_llvm_type(entry->type.value.function.return_type), symbol_name);
 
-    prepend_loaded(out.value.virtual_register_index);
-
     return out;
 }
 
@@ -867,10 +821,10 @@ void llvm_return(LLVMValue value, char* symbol_name)
     if (value.value_type != LLVMVALUETYPE_CONSTANT &&
         entry->type.value.function.return_type != T_VOID) {
 
-        type_register* loaded_registers = llvm_ensure_registers_loaded(
-            1, (type_register[]){value.value.virtual_register_index}, value.number_type);
+        LLVMValue* loaded_registers =
+            llvm_ensure_registers_fully_loaded(1, (LLVMValue[]){value}, value.number_type);
         if (loaded_registers != NULL) {
-            value.value.virtual_register_index = loaded_registers[0];
+            value = loaded_registers[0];
             purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_return");
             free(loaded_registers);
         }
