@@ -14,14 +14,28 @@ int one(void) {
 }
 
 int add_five(int target) {
-    return target + 5;
+    return target + 5;      // target defaults to 0 and can't be set by a function call, it's like a static variable
+}
+
+int factorial(int z) {
+    z = 5;
+    int y;
+    y = z - 1;
+
+    while (y > 0) {
+        z = z * y;
+        y = y - 1;
+    }
+
+    return z;
 }
 
 int main(void) {
-    print 'X';            // X
-    test_function();      // !
-    print 41 + one();     // 42
+    print 'X';              // X
+    test_function();        // !
+    print 41 + one();       // 42
     int x;
     x = add_five(5);
-    print x;              // 10
+    print x;                // 5 (can't pass in function parameters yet)
+    print factorial(6);     // 120
 }

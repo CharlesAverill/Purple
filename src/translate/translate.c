@@ -217,13 +217,11 @@ static LLVMValue print_ast_to_llvm(ASTNode* root, type_register virtual_register
             print_type = number_to_token_type((Number){.type = root->left->largest_number_type});
         }
 
-        /*
         if (print_type == T_FUNCTION_CALL) {
             print_type =
                 find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, root->left->value.symbol_name)
                     ->type.value.function.return_type;
         }
-        */
 
         if (TOKENTYPE_IS_BINARY_ARITHMETIC(print_type)) {
             print_type = number_to_token_type((Number){.type = root->left->largest_number_type});
