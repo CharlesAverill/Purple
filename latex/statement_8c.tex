@@ -22,7 +22,11 @@ Include dependency graph for statement.\+c\+:
 \item 
 void \mbox{\hyperlink{statement_8c_a50272a0b5fea28f10f872dda4641d1a4}{match\+\_\+token}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Ensure current token is of a given type, and scan the next token if so. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \mbox{\hyperlink{statement_8c_a81569fce367de2cb43f955fc1b154e55}{match\+\_\+type}} (void)
+\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \mbox{\hyperlink{statement_8c_ab8449cecc9d2a09f9a5a8f0ccddab291}{match\+\_\+tokens}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} types\mbox{[}$\,$\mbox{]}, int n\+\_\+types)
+\item 
+int \mbox{\hyperlink{statement_8c_ac45ec4bf4da312ba03500cd5d6be33d6}{match\+\_\+type}} (\mbox{\hyperlink{structNumber}{Number}} $\ast$out)
+\item 
+\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \mbox{\hyperlink{statement_8c_a3cff6fe0533cdb002d50a1a1ca48e404}{check\+\_\+for\+\_\+type}} (void)
 \begin{DoxyCompactList}\small\item\em Ensure current token is a type token, and scan the next token if so. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_a5dcc808163fdfc0d3d90b2764cb7b4e0}{print\+\_\+statement}} (void)
 \begin{DoxyCompactList}\small\item\em Parse a print statement into an AST. \end{DoxyCompactList}\item 
@@ -65,6 +69,19 @@ Parse an assignment statement into an AST.
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ AST for assignment 
 \end{DoxyReturn}
+\mbox{\Hypertarget{statement_8c_a3cff6fe0533cdb002d50a1a1ca48e404}\label{statement_8c_a3cff6fe0533cdb002d50a1a1ca48e404}} 
+\index{statement.c@{statement.c}!check\_for\_type@{check\_for\_type}}
+\index{check\_for\_type@{check\_for\_type}!statement.c@{statement.c}}
+\doxysubsubsection{\texorpdfstring{check\_for\_type()}{check\_for\_type()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} check\+\_\+for\+\_\+type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Ensure current token is a type token, and scan the next token if so. 
+
+\begin{DoxyReturn}{Returns}
+Number\+Type \mbox{\hyperlink{structType}{Type}} of variable 
+\end{DoxyReturn}
 \mbox{\Hypertarget{statement_8c_ac24b43c70d7c71aac2b50ab622019ec5}\label{statement_8c_ac24b43c70d7c71aac2b50ab622019ec5}} 
 \index{statement.c@{statement.c}!for\_statement@{for\_statement}}
 \index{for\_statement@{for\_statement}!statement.c@{statement.c}}
@@ -106,19 +123,18 @@ Ensure current token is of a given type, and scan the next token if so.
 {\em type} & Token\+Type to ensure \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{statement_8c_a81569fce367de2cb43f955fc1b154e55}\label{statement_8c_a81569fce367de2cb43f955fc1b154e55}} 
+\mbox{\Hypertarget{statement_8c_ab8449cecc9d2a09f9a5a8f0ccddab291}\label{statement_8c_ab8449cecc9d2a09f9a5a8f0ccddab291}} 
+\index{statement.c@{statement.c}!match\_tokens@{match\_tokens}}
+\index{match\_tokens@{match\_tokens}!statement.c@{statement.c}}
+\doxysubsubsection{\texorpdfstring{match\_tokens()}{match\_tokens()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} match\+\_\+tokens (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{types\mbox{[}$\,$\mbox{]},  }\item[{int}]{n\+\_\+types }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{statement_8c_ac45ec4bf4da312ba03500cd5d6be33d6}\label{statement_8c_ac45ec4bf4da312ba03500cd5d6be33d6}} 
 \index{statement.c@{statement.c}!match\_type@{match\_type}}
 \index{match\_type@{match\_type}!statement.c@{statement.c}}
 \doxysubsubsection{\texorpdfstring{match\_type()}{match\_type()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} match\+\_\+type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int match\+\_\+type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structNumber}{Number}} $\ast$}]{out }\end{DoxyParamCaption})}
 
-
-
-Ensure current token is a type token, and scan the next token if so. 
-
-\begin{DoxyReturn}{Returns}
-Number\+Type \mbox{\hyperlink{structType}{Type}} of variable 
-\end{DoxyReturn}
 \mbox{\Hypertarget{statement_8c_a72e124e2436e13e1d8c09a0616245c12}\label{statement_8c_a72e124e2436e13e1d8c09a0616245c12}} 
 \index{statement.c@{statement.c}!parse\_statements@{parse\_statements}}
 \index{parse\_statements@{parse\_statements}!statement.c@{statement.c}}

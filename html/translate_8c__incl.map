@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title="Functions for LLVM&#45;IR translation." alt="" coords="326,5,484,32"/>
 <area shape="rect" id="node2" href="$translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="206,80,342,107"/>
 <area shape="rect" id="node14" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="354,304,456,331"/>
-<area shape="rect" id="node18" href="$data_8h.html" title="Project&#45;wide variables." alt="" coords="655,229,712,256"/>
+<area shape="rect" id="node18" href="$data_8h.html" title="Project&#45;wide variables." alt="" coords="690,229,747,256"/>
 <area shape="rect" id="node3" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="216,155,280,181"/>
 <area shape="rect" id="node4" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="290,229,344,256"/>
 <area shape="rect" id="node16" href="$llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="60,453,171,480"/>
@@ -17,8 +17,9 @@
 <area shape="rect" id="node13" href="$function_8h.html" title="Struct definitions and macros for functions." alt="" coords="431,453,544,480"/>
 <area shape="rect" id="node15" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="314,379,430,405"/>
 <area shape="rect" id="node17" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="24,528,183,555"/>
-<area shape="rect" id="node19" title=" " alt="" coords="722,304,782,331"/>
-<area shape="rect" id="node20" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="806,304,927,331"/>
-<area shape="rect" id="node21" title=" " alt="" coords="798,379,855,405"/>
-<area shape="rect" id="node22" href="$info_8h.html" title="CMake config definitions." alt="" coords="880,379,933,405"/>
+<area shape="rect" id="node19" title=" " alt="" coords="955,304,1015,331"/>
+<area shape="rect" id="node20" title=" " alt="" coords="721,304,785,331"/>
+<area shape="rect" id="node21" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="810,304,931,331"/>
+<area shape="rect" id="node22" title=" " alt="" coords="882,379,939,405"/>
+<area shape="rect" id="node23" href="$info_8h.html" title="CMake config definitions." alt="" coords="804,379,857,405"/>
 </map>

@@ -1,27 +1,27 @@
 <map id="src/translate/llvm.c" name="src/translate/llvm.c">
-<area shape="rect" id="node1" title="LLVM&#45;IR emission." alt="" coords="649,5,781,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="357,80,421,107"/>
-<area shape="rect" id="node3" href="$data_8h.html" title="Project&#45;wide variables." alt="" coords="233,229,290,256"/>
-<area shape="rect" id="node11" href="$type_8h.html" title="Function headers and defines for." alt="" coords="456,379,547,405"/>
-<area shape="rect" id="node16" href="$llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="641,453,751,480"/>
-<area shape="rect" id="node18" href="$translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="577,80,713,107"/>
-<area shape="rect" id="node22" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="736,304,837,331"/>
-<area shape="rect" id="node24" href="$clang_8h.html" title="Function headers for interacting with clang." alt="" coords="967,80,1057,107"/>
-<area shape="rect" id="node25" href="$formatting_8h.html" title="Definitions for string formatting." alt="" coords="1082,80,1201,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="163,304,223,331"/>
-<area shape="rect" id="node5" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="415,528,475,555"/>
-<area shape="rect" id="node10" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="299,304,461,331"/>
-<area shape="rect" id="node13" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="18,304,139,331"/>
-<area shape="rect" id="node6" title=" " alt="" coords="251,603,325,629"/>
-<area shape="rect" id="node7" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="369,603,484,629"/>
-<area shape="rect" id="node8" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="614,603,725,629"/>
-<area shape="rect" id="node9" title=" " alt="" coords="638,677,701,704"/>
-<area shape="rect" id="node12" href="$function_8h.html" title="Struct definitions and macros for functions." alt="" coords="350,453,463,480"/>
-<area shape="rect" id="node14" title=" " alt="" coords="83,379,141,405"/>
-<area shape="rect" id="node15" href="$info_8h.html" title="CMake config definitions." alt="" coords="5,379,59,405"/>
-<area shape="rect" id="node17" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="590,528,749,555"/>
-<area shape="rect" id="node19" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="597,155,661,181"/>
-<area shape="rect" id="node20" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="575,229,630,256"/>
-<area shape="rect" id="node21" title=" " alt="" coords="598,304,661,331"/>
-<area shape="rect" id="node23" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="725,379,841,405"/>
+<area shape="rect" id="node1" title="LLVM&#45;IR emission." alt="" coords="617,5,749,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="113,155,177,181"/>
+<area shape="rect" id="node3" href="$data_8h.html" title="Project&#45;wide variables." alt="" coords="346,80,403,107"/>
+<area shape="rect" id="node11" href="$type_8h.html" title="Function headers and defines for." alt="" coords="168,379,259,405"/>
+<area shape="rect" id="node16" href="$llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="731,453,842,480"/>
+<area shape="rect" id="node18" href="$translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="555,80,691,107"/>
+<area shape="rect" id="node22" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="648,304,749,331"/>
+<area shape="rect" id="node24" href="$clang_8h.html" title="Function headers for interacting with clang." alt="" coords="875,80,965,107"/>
+<area shape="rect" id="node25" href="$formatting_8h.html" title="Definitions for string formatting." alt="" coords="990,80,1109,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="398,155,458,181"/>
+<area shape="rect" id="node5" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="363,528,423,555"/>
+<area shape="rect" id="node10" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="5,304,168,331"/>
+<area shape="rect" id="node13" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="253,155,374,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="300,603,375,629"/>
+<area shape="rect" id="node7" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="51,603,165,629"/>
+<area shape="rect" id="node8" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="539,603,650,629"/>
+<area shape="rect" id="node9" title=" " alt="" coords="563,677,626,704"/>
+<area shape="rect" id="node12" href="$function_8h.html" title="Struct definitions and macros for functions." alt="" coords="270,453,383,480"/>
+<area shape="rect" id="node14" title=" " alt="" coords="269,229,326,256"/>
+<area shape="rect" id="node15" href="$info_8h.html" title="CMake config definitions." alt="" coords="351,229,404,256"/>
+<area shape="rect" id="node17" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="633,528,791,555"/>
+<area shape="rect" id="node19" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="584,155,648,181"/>
+<area shape="rect" id="node20" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="517,229,571,256"/>
+<area shape="rect" id="node21" title=" " alt="" coords="510,304,573,331"/>
+<area shape="rect" id="node23" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="633,379,749,405"/>
 </map>

@@ -20,7 +20,7 @@ Include dependency graph for expression.\+c\+:
 \item 
 static int \mbox{\hyperlink{expression_8c_a3894f429297d723b0874c729e033242b}{get\+\_\+operator\+\_\+precedence}} (\mbox{\hyperlink{structToken}{Token}} t)
 \begin{DoxyCompactList}\small\item\em Get the integer operator precedence value of a \mbox{\hyperlink{structToken}{Token}}. \end{DoxyCompactList}\item 
-static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{expression_8c_a70fda42b1c6ce71b82d7d1835805b6a8}{parse\+\_\+terminal\+\_\+node}} (\mbox{\hyperlink{structToken}{Token}} $\ast$t)
+static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{expression_8c_ac3d50a177ee32bb4bf327859449a2e15}{parse\+\_\+terminal\+\_\+node}} ()
 \begin{DoxyCompactList}\small\item\em Build a terminal AST Node for a given \mbox{\hyperlink{structToken}{Token}}, exit if not a valid primary \mbox{\hyperlink{structToken}{Token}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{expression_8c_ade37f33356626c1fa4249fc674949e66}{prefix\+\_\+operator\+\_\+passthrough}} (void)
 \begin{DoxyCompactList}\small\item\em Look for prefix operators, otherwise pass through to parse\+\_\+terminal\+\_\+node. \end{DoxyCompactList}\item 
@@ -108,21 +108,16 @@ Recursively parse binary expressions into an AST.
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ An AST or AST Subtree of the binary expressions in D\+\_\+\+INPUT\+\_\+\+FILE 
 \end{DoxyReturn}
-\mbox{\Hypertarget{expression_8c_a70fda42b1c6ce71b82d7d1835805b6a8}\label{expression_8c_a70fda42b1c6ce71b82d7d1835805b6a8}} 
+\mbox{\Hypertarget{expression_8c_ac3d50a177ee32bb4bf327859449a2e15}\label{expression_8c_ac3d50a177ee32bb4bf327859449a2e15}} 
 \index{expression.c@{expression.c}!parse\_terminal\_node@{parse\_terminal\_node}}
 \index{parse\_terminal\_node@{parse\_terminal\_node}!expression.c@{expression.c}}
 \doxysubsubsection{\texorpdfstring{parse\_terminal\_node()}{parse\_terminal\_node()}}
-{\footnotesize\ttfamily static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ parse\+\_\+terminal\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structToken}{Token}} $\ast$}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ parse\+\_\+terminal\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
 Build a terminal AST Node for a given \mbox{\hyperlink{structToken}{Token}}, exit if not a valid primary \mbox{\hyperlink{structToken}{Token}}. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em t} & The \mbox{\hyperlink{structToken}{Token}} to check and build \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 An AST Node built from the provided \mbox{\hyperlink{structToken}{Token}}, or an error if the \mbox{\hyperlink{structToken}{Token}} is non-\/terminal 
 \end{DoxyReturn}

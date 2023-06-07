@@ -1,27 +1,27 @@
 <map id="src/purple.c" name="src/purple.c">
-<area shape="rect" id="node1" title="Compiler entrypoint and setup." alt="" coords="385,5,475,32"/>
+<area shape="rect" id="node1" title="Compiler entrypoint and setup." alt="" coords="437,5,527,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,80,68,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="119,603,194,629"/>
-<area shape="rect" id="node4" title=" " alt="" coords="200,155,260,181"/>
-<area shape="rect" id="node5" title=" " alt="" coords="440,304,503,331"/>
-<area shape="rect" id="node6" title=" " alt="" coords="246,80,310,107"/>
-<area shape="rect" id="node7" href="$data_8h.html" title="Project&#45;wide variables." alt="" coords="335,80,392,107"/>
-<area shape="rect" id="node8" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="453,528,513,555"/>
-<area shape="rect" id="node12" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="153,304,315,331"/>
-<area shape="rect" id="node15" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="440,155,561,181"/>
-<area shape="rect" id="node18" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="715,155,779,181"/>
-<area shape="rect" id="node20" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="781,304,882,331"/>
-<area shape="rect" id="node22" href="$translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="563,80,699,107"/>
-<area shape="rect" id="node25" href="$clang_8h.html" title="Function headers for interacting with clang." alt="" coords="973,80,1063,107"/>
-<area shape="rect" id="node9" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="287,603,402,629"/>
-<area shape="rect" id="node10" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="496,603,607,629"/>
-<area shape="rect" id="node11" title=" " alt="" coords="520,677,583,704"/>
-<area shape="rect" id="node13" href="$type_8h.html" title="Function headers and defines for." alt="" coords="277,379,367,405"/>
-<area shape="rect" id="node14" href="$function_8h.html" title="Struct definitions and macros for functions." alt="" coords="296,453,409,480"/>
-<area shape="rect" id="node16" title=" " alt="" coords="440,229,497,256"/>
-<area shape="rect" id="node17" href="$info_8h.html" title="CMake config definitions." alt="" coords="522,229,575,256"/>
-<area shape="rect" id="node19" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="600,229,655,256"/>
-<area shape="rect" id="node21" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="781,379,897,405"/>
-<area shape="rect" id="node23" href="$llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="637,453,748,480"/>
-<area shape="rect" id="node24" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="589,528,748,555"/>
+<area shape="rect" id="node3" title=" " alt="" coords="263,603,338,629"/>
+<area shape="rect" id="node4" title=" " alt="" coords="195,155,255,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="571,304,633,331"/>
+<area shape="rect" id="node6" title=" " alt="" coords="279,155,343,181"/>
+<area shape="rect" id="node7" href="$data_8h.html" title="Project&#45;wide variables." alt="" coords="369,80,427,107"/>
+<area shape="rect" id="node8" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="612,528,672,555"/>
+<area shape="rect" id="node12" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="281,304,443,331"/>
+<area shape="rect" id="node15" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="520,155,641,181"/>
+<area shape="rect" id="node18" href="$parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="789,155,853,181"/>
+<area shape="rect" id="node20" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="839,304,941,331"/>
+<area shape="rect" id="node22" href="$translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="721,80,857,107"/>
+<area shape="rect" id="node25" href="$clang_8h.html" title="Function headers for interacting with clang." alt="" coords="931,80,1022,107"/>
+<area shape="rect" id="node9" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="474,603,589,629"/>
+<area shape="rect" id="node10" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="739,603,849,629"/>
+<area shape="rect" id="node11" title=" " alt="" coords="763,677,825,704"/>
+<area shape="rect" id="node13" href="$type_8h.html" title="Function headers and defines for." alt="" coords="421,379,511,405"/>
+<area shape="rect" id="node14" href="$function_8h.html" title="Struct definitions and macros for functions." alt="" coords="440,453,553,480"/>
+<area shape="rect" id="node16" title=" " alt="" coords="520,229,577,256"/>
+<area shape="rect" id="node17" href="$info_8h.html" title="CMake config definitions." alt="" coords="602,229,655,256"/>
+<area shape="rect" id="node19" href="$tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="731,229,785,256"/>
+<area shape="rect" id="node21" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="832,379,948,405"/>
+<area shape="rect" id="node23" href="$llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="869,453,980,480"/>
+<area shape="rect" id="node24" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="883,528,1041,555"/>
 </map>

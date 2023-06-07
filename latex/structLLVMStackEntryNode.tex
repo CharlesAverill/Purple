@@ -24,6 +24,8 @@ Collaboration diagram for LLVMStack\+Entry\+Node\+:
 \item 
 \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\+\_\+register}} \mbox{\hyperlink{structLLVMStackEntryNode_aaff603b17fe1999a2f722998c3b47387}{reg}}
 \item 
+int \mbox{\hyperlink{structLLVMStackEntryNode_a24df8fb3942e5397355169d18e5cbfcc}{pointer\+\_\+depth}}
+\item 
 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \mbox{\hyperlink{structLLVMStackEntryNode_aa6c8f96e14ee1679c7ee60f818f02941}{type}}
 \item 
 int \mbox{\hyperlink{structLLVMStackEntryNode_ab78e4f0785ccaad88dce16d7f6ad7b46}{align\+\_\+bytes}}
@@ -48,7 +50,13 @@ Node of a linked list containing information about required stack allocation for
 \doxysubsubsection{\texorpdfstring{next}{next}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStack\+Entry\+Node}}$\ast$ LLVMStack\+Entry\+Node\+::next}
 
-Next node in linked list \mbox{\Hypertarget{structLLVMStackEntryNode_aaff603b17fe1999a2f722998c3b47387}\label{structLLVMStackEntryNode_aaff603b17fe1999a2f722998c3b47387}} 
+Next node in linked list \mbox{\Hypertarget{structLLVMStackEntryNode_a24df8fb3942e5397355169d18e5cbfcc}\label{structLLVMStackEntryNode_a24df8fb3942e5397355169d18e5cbfcc}} 
+\index{LLVMStackEntryNode@{LLVMStackEntryNode}!pointer\_depth@{pointer\_depth}}
+\index{pointer\_depth@{pointer\_depth}!LLVMStackEntryNode@{LLVMStackEntryNode}}
+\doxysubsubsection{\texorpdfstring{pointer\_depth}{pointer\_depth}}
+{\footnotesize\ttfamily int LLVMStack\+Entry\+Node\+::pointer\+\_\+depth}
+
+Pointer depth of the current node \mbox{\Hypertarget{structLLVMStackEntryNode_aaff603b17fe1999a2f722998c3b47387}\label{structLLVMStackEntryNode_aaff603b17fe1999a2f722998c3b47387}} 
 \index{LLVMStackEntryNode@{LLVMStackEntryNode}!reg@{reg}}
 \index{reg@{reg}!LLVMStackEntryNode@{LLVMStackEntryNode}}
 \doxysubsubsection{\texorpdfstring{reg}{reg}}

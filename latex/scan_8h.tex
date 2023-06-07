@@ -151,7 +151,7 @@ char \mbox{\hyperlink{scan_8h_a0de139c03356d8fe5eef9b03661dc5b0}{next}} (void)
 \begin{DoxyCompactList}\small\item\em Get the next valid character from the current input file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{scan_8h_ad98ab6a95acd6305158f34a8edb0e4f1}{put\+\_\+back\+\_\+into\+\_\+stream}} (char c)
 \begin{DoxyCompactList}\small\item\em Put a character back into the input stream. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}{scan}} (\mbox{\hyperlink{structToken}{Token}} $\ast$t)
+bool \mbox{\hyperlink{scan_8h_a9a87d682ab4acee4203574e19ed55229}{scan}} ()
 \begin{DoxyCompactList}\small\item\em Scan tokens into the \mbox{\hyperlink{structToken}{Token}} struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -587,21 +587,16 @@ Put a character back into the input stream.
 {\em c} & Character to be placed into the input stream \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}\label{scan_8h_ab0c54e61d886e8dfe989cfc440c57a35}} 
+\mbox{\Hypertarget{scan_8h_a9a87d682ab4acee4203574e19ed55229}\label{scan_8h_a9a87d682ab4acee4203574e19ed55229}} 
 \index{scan.h@{scan.h}!scan@{scan}}
 \index{scan@{scan}!scan.h@{scan.h}}
 \doxysubsubsection{\texorpdfstring{scan()}{scan()}}
-{\footnotesize\ttfamily bool scan (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structToken}{Token}} $\ast$}]{t }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool scan (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Scan tokens into the \mbox{\hyperlink{structToken}{Token}} struct. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em t} & \mbox{\hyperlink{structToken}{Token}} to scan data into \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 bool Returns true if a \mbox{\hyperlink{structToken}{Token}} was scanned successfully 
 \end{DoxyReturn}

@@ -14,16 +14,17 @@
 \DoxyCodeLine{22 }
 \DoxyCodeLine{28 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}} \{}
 \DoxyCodeLine{30     \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\_register}} \mbox{\hyperlink{structLLVMStackEntryNode_aaff603b17fe1999a2f722998c3b47387}{reg}};}
-\DoxyCodeLine{32     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{structLLVMStackEntryNode_aa6c8f96e14ee1679c7ee60f818f02941}{type}};}
-\DoxyCodeLine{34     \textcolor{keywordtype}{int} \mbox{\hyperlink{structLLVMStackEntryNode_ab78e4f0785ccaad88dce16d7f6ad7b46}{align\_bytes}};}
-\DoxyCodeLine{36     \textcolor{keyword}{struct }\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}* \mbox{\hyperlink{structLLVMStackEntryNode_af41081ec828f9c96779a56043a9fef04}{next}};}
-\DoxyCodeLine{37 \} \mbox{\hyperlink{llvm__stack__entry_8h_a73e6e02db92b4cae40010589065ac79a}{LLVMStackEntryNode}};}
-\DoxyCodeLine{38 }
-\DoxyCodeLine{39 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm__stack__entry_8h_a8fa2f2bf229b53383166e64c9f631cd6}{initialize\_stack\_entry\_linked\_list}}(\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}** head);}
-\DoxyCodeLine{40 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm__stack__entry_8h_a687e029c1aee69283c86cca194374eb1}{prepend\_stack\_entry\_linked\_list}}(\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}** head, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\_register}} register\_index);}
-\DoxyCodeLine{41 \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\_register}} \mbox{\hyperlink{llvm__stack__entry_8h_aa9f09b232b9d0e2e3b2e0de2f012aa4f}{pop\_stack\_entry\_linked\_list}}(\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}** head);}
-\DoxyCodeLine{42 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm__stack__entry_8h_a24f6f1959edad4155dc0418b5f041948}{free\_llvm\_stack\_entry\_node\_list}}(\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}* head);}
-\DoxyCodeLine{43 }
-\DoxyCodeLine{44 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* LLVM\_STACK\_ENTRY\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{32     \textcolor{keywordtype}{int} \mbox{\hyperlink{structLLVMStackEntryNode_a24df8fb3942e5397355169d18e5cbfcc}{pointer\_depth}};}
+\DoxyCodeLine{34     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{structLLVMStackEntryNode_aa6c8f96e14ee1679c7ee60f818f02941}{type}};}
+\DoxyCodeLine{36     \textcolor{keywordtype}{int} \mbox{\hyperlink{structLLVMStackEntryNode_ab78e4f0785ccaad88dce16d7f6ad7b46}{align\_bytes}};}
+\DoxyCodeLine{38     \textcolor{keyword}{struct }\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}* \mbox{\hyperlink{structLLVMStackEntryNode_af41081ec828f9c96779a56043a9fef04}{next}};}
+\DoxyCodeLine{39 \} \mbox{\hyperlink{llvm__stack__entry_8h_a73e6e02db92b4cae40010589065ac79a}{LLVMStackEntryNode}};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm__stack__entry_8h_a8fa2f2bf229b53383166e64c9f631cd6}{initialize\_stack\_entry\_linked\_list}}(\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}** head);}
+\DoxyCodeLine{42 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm__stack__entry_8h_a687e029c1aee69283c86cca194374eb1}{prepend\_stack\_entry\_linked\_list}}(\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}** head, \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\_register}} register\_index);}
+\DoxyCodeLine{43 \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\_register}} \mbox{\hyperlink{llvm__stack__entry_8h_aa9f09b232b9d0e2e3b2e0de2f012aa4f}{pop\_stack\_entry\_linked\_list}}(\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}** head);}
+\DoxyCodeLine{44 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm__stack__entry_8h_a24f6f1959edad4155dc0418b5f041948}{free\_llvm\_stack\_entry\_node\_list}}(\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}* head);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* LLVM\_STACK\_ENTRY\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

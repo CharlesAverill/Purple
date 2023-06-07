@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['scan_0',['scan',['../scan_8h.html#ab0c54e61d886e8dfe989cfc440c57a35',1,'scan(Token *t):&#160;scan.c'],['../scan_8c.html#ab0c54e61d886e8dfe989cfc440c57a35',1,'scan(Token *t):&#160;scan.c']]],
+  ['scan_0',['scan',['../scan_8h.html#a9a87d682ab4acee4203574e19ed55229',1,'scan():&#160;scan.c'],['../scan_8c.html#a9a87d682ab4acee4203574e19ed55229',1,'scan():&#160;scan.c']]],
   ['scan_5fchar_5fliteral_1',['scan_char_literal',['../scan_8c.html#a1ee1bedd421d3170301a832f9da64141',1,'scan.c']]],
   ['scan_5fcheck_5fchar_5fliteral_2',['scan_check_char_literal',['../scan_8c.html#afb1697ee4397804cf651be74e5275f2c',1,'scan.c']]],
   ['scan_5fcheck_5finteger_5fliteral_3',['scan_check_integer_literal',['../scan_8c.html#a19c617b4a85050eaeabc8070ae57d6de',1,'scan.c']]],

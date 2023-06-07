@@ -49,7 +49,7 @@ static bool \mbox{\hyperlink{scan_8c_afb1697ee4397804cf651be74e5275f2c}{scan\+\_
 \begin{DoxyCompactList}\small\item\em Check if the current character is the start of a character literal. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{scan_8c_aaf98163176a0561ae72bdecf28763636}{scan\+\_\+check\+\_\+keyword\+\_\+identifier}} (char c)
 \begin{DoxyCompactList}\small\item\em Check if the current character is the start of a keyword or identifier. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{scan_8c_ab0c54e61d886e8dfe989cfc440c57a35}{scan}} (\mbox{\hyperlink{structToken}{Token}} $\ast$t)
+bool \mbox{\hyperlink{scan_8c_a9a87d682ab4acee4203574e19ed55229}{scan}} ()
 \begin{DoxyCompactList}\small\item\em Scan tokens into the \mbox{\hyperlink{structToken}{Token}} struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -177,21 +177,16 @@ Put a character back into the input stream.
 {\em c} & Character to be placed into the input stream \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{scan_8c_ab0c54e61d886e8dfe989cfc440c57a35}\label{scan_8c_ab0c54e61d886e8dfe989cfc440c57a35}} 
+\mbox{\Hypertarget{scan_8c_a9a87d682ab4acee4203574e19ed55229}\label{scan_8c_a9a87d682ab4acee4203574e19ed55229}} 
 \index{scan.c@{scan.c}!scan@{scan}}
 \index{scan@{scan}!scan.c@{scan.c}}
 \doxysubsubsection{\texorpdfstring{scan()}{scan()}}
-{\footnotesize\ttfamily bool scan (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structToken}{Token}} $\ast$}]{t }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool scan (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Scan tokens into the \mbox{\hyperlink{structToken}{Token}} struct. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em t} & \mbox{\hyperlink{structToken}{Token}} to scan data into \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 bool Returns true if a \mbox{\hyperlink{structToken}{Token}} was scanned successfully 
 \end{DoxyReturn}

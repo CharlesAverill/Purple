@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['reg_0',['reg',['../structLLVMStackEntryNode.html#aaff603b17fe1999a2f722998c3b47387',1,'LLVMStackEntryNode']]],
-  ['return_5ftype_1',['return_type',['../structFunction.html#ae499301ee2bc3d6c690b293a7971fe24',1,'Function']]],
-  ['returncodestrings_2',['returnCodeStrings',['../logging_8h.html#ac056197f8b96c1d78e1858c19eadcb0a',1,'logging.h']]],
-  ['right_3',['right',['../structASTNode.html#ab3fac314ab87bbccda872cde9678b5b3',1,'ASTNode']]]
+  ['parameter_5fname_0',['parameter_name',['../structFunctionParameter.html#adf41f618740a3496e78ce1f605e88a08',1,'FunctionParameter']]],
+  ['parameter_5ftype_1',['parameter_type',['../structFunctionParameter.html#a04a4c819339988e3987bdbc15195cd53',1,'FunctionParameter']]],
+  ['parameters_2',['parameters',['../structFunction.html#a2ecc4077c115f740ecdc4fd2c4c8b509',1,'Function']]],
+  ['pointer_5fdepth_3',['pointer_depth',['../structLLVMValue.html#a31b54f4125f185f3d69dfec82d47a60b',1,'LLVMValue::pointer_depth()'],['../structNumber.html#a6f0e87cda12f0900aff39f881c4d7a13',1,'Number::pointer_depth()'],['../structLLVMStackEntryNode.html#a24df8fb3942e5397355169d18e5cbfcc',1,'LLVMStackEntryNode::pointer_depth()']]],
+  ['pos_4',['pos',['../structToken.html#a48d7b8b962d238a7548ba7358332c257',1,'Token']]]
 ];

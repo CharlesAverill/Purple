@@ -6,5 +6,5 @@ var searchData=
   ['ast_5fdebug_5fcurrent_5flevel_3',['ast_debug_current_level',['../tree_8c.html#a21971a3ce9a67483f03a909ed0ab9a8d',1,'tree.c']]],
   ['ast_5fdebug_5flevel_5forder_4',['ast_debug_level_order',['../tree_8h.html#a5a2821d5f8274f595c2057a9ead90fa9',1,'ast_debug_level_order(ASTNode *root, LogLevel log_level):&#160;tree.c'],['../tree_8c.html#a5a2821d5f8274f595c2057a9ead90fa9',1,'ast_debug_level_order(ASTNode *root, LogLevel log_level):&#160;tree.c']]],
   ['ast_5fnode_5fheight_5',['ast_node_height',['../tree_8c.html#ab6c2c2c6938ab1abcc61eca99cb85394',1,'tree.c']]],
-  ['ast_5fto_5fllvm_6',['ast_to_llvm',['../translate_8h.html#ac03b5f4edcb74722ca4643fd469712e9',1,'ast_to_llvm(ASTNode *n, LLVMValue llvm_value, TokenType parent_operation):&#160;translate.c'],['../translate_8c.html#ac03b5f4edcb74722ca4643fd469712e9',1,'ast_to_llvm(ASTNode *n, LLVMValue llvm_value, TokenType parent_operation):&#160;translate.c']]]
+  ['ast_5fto_5fllvm_6',['ast_to_llvm',['../translate_8h.html#ac03b5f4edcb74722ca4643fd469712e9',1,'ast_to_llvm(ASTNode *n, LLVMValue llvm_value, TokenType parent_operation):&#160;translate.c'],['../translate_8c.html#ad58fb60b0c36c33bd29776762e5f2d18',1,'ast_to_llvm(ASTNode *root, LLVMValue llvm_value, TokenType parent_operation):&#160;translate.c']]]
 ];

@@ -29,7 +29,7 @@ static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_
 \begin{DoxyCompactList}\small\item\em Generate LLVM-\/\+IR for a while-\/else statement AST. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_a4f503b06321e4420c32ba6ac07332e16}{print\+\_\+ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} virtual\+\_\+register)
 \begin{DoxyCompactList}\small\item\em Generate LLVM-\/\+IR for a print statement. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_ac03b5f4edcb74722ca4643fd469712e9}{ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$n, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+value, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} parent\+\_\+operation)
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{translate_8c_ad58fb60b0c36c33bd29776762e5f2d18}{ast\+\_\+to\+\_\+llvm}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+value, \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} parent\+\_\+operation)
 \begin{DoxyCompactList}\small\item\em Generates LLVM-\/\+IR from a given AST. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{translate_8c_ac2560f9333db7b4bc4b0dd4ef15b3dcc}{generate\+\_\+llvm}} (void)
 \begin{DoxyCompactList}\small\item\em Wrapper function for generating LLVM. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -52,11 +52,11 @@ Charles Averill
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{translate_8c_ac03b5f4edcb74722ca4643fd469712e9}\label{translate_8c_ac03b5f4edcb74722ca4643fd469712e9}} 
+\mbox{\Hypertarget{translate_8c_ad58fb60b0c36c33bd29776762e5f2d18}\label{translate_8c_ad58fb60b0c36c33bd29776762e5f2d18}} 
 \index{translate.c@{translate.c}!ast\_to\_llvm@{ast\_to\_llvm}}
 \index{ast\_to\_llvm@{ast\_to\_llvm}!translate.c@{translate.c}}
 \doxysubsubsection{\texorpdfstring{ast\_to\_llvm()}{ast\_to\_llvm()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} ast\+\_\+to\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{n,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{llvm\+\_\+value,  }\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{parent\+\_\+operation }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} ast\+\_\+to\+\_\+llvm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{llvm\+\_\+value,  }\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{parent\+\_\+operation }\end{DoxyParamCaption})}
 
 
 

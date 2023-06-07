@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['stores_5fpointer_0',['stores_pointer',['../structLLVMValue.html#a781b99846c8053f0557e5db87b954296',1,'LLVMValue']]],
-  ['symbol_5fname_1',['symbol_name',['../structToken.html#ababe6c2810ecc25eba4729050e99af0c',1,'Token::symbol_name()'],['../structSymbolTableEntry.html#a38ee057417f64c55de9d8e1a4c22ae39',1,'SymbolTableEntry::symbol_name()'],['../structASTNode.html#a0f5d9c29429ab4a530f6e36ba3d14329',1,'ASTNode::symbol_name()']]]
+  ['reg_0',['reg',['../structLLVMStackEntryNode.html#aaff603b17fe1999a2f722998c3b47387',1,'LLVMStackEntryNode']]],
+  ['return_5ftype_1',['return_type',['../structFunction.html#ae499301ee2bc3d6c690b293a7971fe24',1,'Function']]],
+  ['returncodestrings_2',['returnCodeStrings',['../logging_8h.html#ac056197f8b96c1d78e1858c19eadcb0a',1,'logging.h']]],
+  ['right_3',['right',['../structASTNode.html#ab3fac314ab87bbccda872cde9678b5b3',1,'ASTNode']]]
 ];

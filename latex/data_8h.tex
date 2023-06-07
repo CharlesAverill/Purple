@@ -6,6 +6,7 @@ Project-\/wide variables.
 
 
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}translate/symbol\+\_\+table.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils/arguments.\+h\char`\"{}}\newline
@@ -60,6 +61,8 @@ This graph shows which files directly or indirectly include this file\+:
 \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} bool \mbox{\hyperlink{data_8h_a2314c61c4f40bf61f512186462ca8eb3}{D\+\_\+\+CURRENT\+\_\+\+FUNCTION\+\_\+\+PREAMBLE\+\_\+\+PRINTED}}
 \item 
 \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} bool \mbox{\hyperlink{data_8h_a06d6e649c3d513c4b9f01824dbf874b5}{D\+\_\+\+CURRENT\+\_\+\+FUNCTION\+\_\+\+HAS\+\_\+\+RETURNED}}
+\item 
+\mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} bool \mbox{\hyperlink{data_8h_abc6417a9933a4475be9df54f02beff2c}{D\+\_\+\+SCANNING\+\_\+\+TYPE}}
 \item 
 \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} char \mbox{\hyperlink{data_8h_ace794a026d785b07331f83b432be3b66}{D\+\_\+\+IDENTIFIER\+\_\+\+BUFFER}} \mbox{[}\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\+\_\+\+IDENTIFIER\+\_\+\+LENGTH}}+1\mbox{]}
 \item 
@@ -210,7 +213,13 @@ Current number of the latest-\/used LLVM virtual register within a function \mbo
 \doxysubsubsection{\texorpdfstring{D\_PUT\_BACK}{D\_PUT\_BACK}}
 {\footnotesize\ttfamily \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} char D\+\_\+\+PUT\+\_\+\+BACK}
 
-If defined, this character will be put back into the input stream \mbox{\Hypertarget{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}\label{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}} 
+If defined, this character will be put back into the input stream \mbox{\Hypertarget{data_8h_abc6417a9933a4475be9df54f02beff2c}\label{data_8h_abc6417a9933a4475be9df54f02beff2c}} 
+\index{data.h@{data.h}!D\_SCANNING\_TYPE@{D\_SCANNING\_TYPE}}
+\index{D\_SCANNING\_TYPE@{D\_SCANNING\_TYPE}!data.h@{data.h}}
+\doxysubsubsection{\texorpdfstring{D\_SCANNING\_TYPE}{D\_SCANNING\_TYPE}}
+{\footnotesize\ttfamily \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} bool D\+\_\+\+SCANNING\+\_\+\+TYPE}
+
+Whether or not a type is currently being scanned in \mbox{\Hypertarget{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}\label{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}} 
 \index{data.h@{data.h}!D\_SYMBOL\_TABLE\_STACK@{D\_SYMBOL\_TABLE\_STACK}}
 \index{D\_SYMBOL\_TABLE\_STACK@{D\_SYMBOL\_TABLE\_STACK}!data.h@{data.h}}
 \doxysubsubsection{\texorpdfstring{D\_SYMBOL\_TABLE\_STACK}{D\_SYMBOL\_TABLE\_STACK}}
