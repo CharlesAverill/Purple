@@ -12,9 +12,16 @@ int main(void) {
     bob = 5;
     alice = 10;
 
-    print bob + alice;                 // 15
+    print bob + alice;                  // 15
 
     int bob_alice;
     bob_alice = 10 + 10 + bob + alice;
-    print bob_alice;                   // 35
+    print bob_alice;                    // 35
+
+    char x;
+    x = 'a';    print x;                // a
+    x = x + 1;  print x;                // b
+    x = x + 1;  print x;                // c
+    x = x + 1;  print x;                // d
+    x = x + 1;  print x;                // e
 }

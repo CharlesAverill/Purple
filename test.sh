@@ -22,16 +22,28 @@ function strings_are_okay() {
         return 0
     else
         printf "${ANSI_RED}${ANSI_BOLD}NOT OK${ANSI_RESET}\n"
-        printf "${ANSI_BOLD}EXPECTED${ANSI_RESET}\n"
+        printf "${ANSI_BOLD}EXPECTED${ANSI_GREEN}\n"
         echo "<<<<<"
         echo -e $1
         echo "<<<<<"
-        printf "${ANSI_BOLD}BUT GOT${ANSI_RESET}\n"
+        printf "${ANSI_RESET}${ANSI_BOLD}BUT GOT${ANSI_RED}\n"
         echo ">>>>>"
         echo -e $prog_output
-        echo ">>>>>"
+        printf ">>>>>${ANSI_RESET}\n"
         echo $2
         return 1
+    fi
+}
+
+function run_test() {
+    rm a.out
+    TEST_OUTPUT=$(strings_are_okay "$2" "$3")
+    if [ $? -ne 0 ] ; then 
+        printf "%-25s" "[$1 Test]:" 
+        echo "$TEST_OUTPUT"
+        exit 1
+    else
+        printf "%-25s%2s\n" "[$1 Test]:" $TEST_OUTPUT
     fi
 }
 
@@ -62,7 +74,12 @@ c
 4294967507"
 
 variable_test_output="15
-35"
+35
+a
+b
+c
+d
+e"
 
 loop_test_output="0
 1
@@ -106,44 +123,20 @@ function_test_output="X
 5
 120"
 
-rm a.out
-echo -n "[Variable Test]: "
-strings_are_okay "$variable_test_output" "examples/variable_test.prp"
-if [ $? -ne 0 ] ; then
-    exit 1
-fi
+comparison_test_output="1
+true
+1
+true
+0
+false
+0
+false"
 
-rm a.out
-echo -n "[Condition Test]: "
-strings_are_okay "$condition_test_output" "examples/condition_test.prp"
-if [ $? -ne 0 ] ; then
-    exit 1
-fi
-
-rm a.out
-echo -n "[Type Test]: "
-strings_are_okay "$type_test_output" "examples/type_test.prp"
-if [ $? -ne 0 ] ; then
-    exit 1
-fi
-
-rm a.out
-echo -n "[Loop Test]: "
-strings_are_okay "$loop_test_output" "examples/loop_test.prp"
-if [ $? -ne 0 ] ; then
-    exit 1
-fi
-
-rm a.out
-echo -n "[Base Test]: "
-strings_are_okay "$base_test_output" "examples/base_test.prp"
-if [ $? -ne 0 ] ; then
-    exit 1
-fi
-
-rm a.out
-echo -n "[Function Test]: "
-strings_are_okay "$function_test_output" "examples/function_test.prp"
-if [ $? -ne 0 ] ; then
-    exit 1
-fi
+run_test    "Variable"      "$variable_test_output"     "examples/variable_test.prp"
+run_test    "Condition"     "$condition_test_output"    "examples/condition_test.prp"
+run_test    "Type"          "$type_test_output"         "examples/type_test.prp"
+run_test    "Loop"          "$loop_test_output"         "examples/loop_test.prp"
+run_test    "Base"          "$base_test_output"         "examples/base_test.prp"
+run_test    "Function"      "$function_test_output"     "examples/function_test.prp"
+run_test    "Comparison"    "$comparison_test_output"   "examples/comparison_test.prp"
+run_test    "Empty Program" ""                          "examples/empty_prog.prp"

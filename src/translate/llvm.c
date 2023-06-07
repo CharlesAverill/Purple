@@ -407,7 +407,7 @@ LLVMValue llvm_signed_extend(LLVMValue reg, NumberType new_type, NumberType old_
     }
 
     LLVMValue out = LLVMVALUE_VIRTUAL_REGISTER(get_next_local_virtual_register(), new_type);
-    fprintf(D_LLVM_FILE, TAB "%%%llu = sext %s %%%llu to %s" NEWLINE,
+    fprintf(D_LLVM_FILE, TAB "%%%llu = zext %s %%%llu to %s" NEWLINE,
             out.value.virtual_register_index, numberTypeLLVMReprs[old_type],
             reg.value.virtual_register_index, numberTypeLLVMReprs[new_type]);
     return out;

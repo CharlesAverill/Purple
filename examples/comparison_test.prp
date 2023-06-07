@@ -1,0 +1,12 @@
+int main(void) {
+    int x;
+    bool b;
+    x = 7 < 9;  print x; // 1
+    b = 7 <= 9; print b; // true
+    x = 7 != 9; print x; // 1
+    b = 7 == 7; print b; // true
+    x = 7 >= 8; print x; // 0
+    b = 7 <= 6; print b; // false
+    x = 9 > 10;  print x; // 0
+    b = 9 >= 11; print b; // false
+}
