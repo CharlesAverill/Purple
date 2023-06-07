@@ -28,6 +28,8 @@
 typedef struct LLVMStackEntryNode {
     /**Register number of the current node*/
     type_register reg;
+    /**Pointer depth of the current node*/
+    int pointer_depth;
     /**Data type of the current node*/
     NumberType type;
     /**Number of bytes to align stack to for this data*/

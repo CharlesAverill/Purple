@@ -1,5 +1,8 @@
 if [[ $1 != "--no-compile" ]] ; then
     ./compile.sh
+    if [ $? -ne 0 ] ; then
+        exit 1
+    fi
 fi
 
 ANSI_RED='\033[0;31m'
@@ -132,6 +135,12 @@ false
 0
 false"
 
+pointer_test_output="18
+18
+12
+12
+5"
+
 run_test    "Variable"      "$variable_test_output"     "examples/variable_test.prp"
 run_test    "Condition"     "$condition_test_output"    "examples/condition_test.prp"
 run_test    "Type"          "$type_test_output"         "examples/type_test.prp"
@@ -140,3 +149,4 @@ run_test    "Base"          "$base_test_output"         "examples/base_test.prp"
 run_test    "Function"      "$function_test_output"     "examples/function_test.prp"
 run_test    "Comparison"    "$comparison_test_output"   "examples/comparison_test.prp"
 run_test    "Empty Program" ""                          "examples/empty_prog.prp"
+run_test    "Pointer"       "$pointer_test_output"      "examples/pointer_test.prp"

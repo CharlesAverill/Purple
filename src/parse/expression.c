@@ -28,13 +28,13 @@ static int get_operator_precedence(Token t)
 /**
  * @brief Build a terminal AST Node for a given Token, exit if not a valid primary Token
  * 
- * @param t The Token to check and build
  * @return An AST Node built from the provided Token, or an error if the Token is non-terminal
  */
-static ASTNode* parse_terminal_node(Token* t)
+static ASTNode* parse_terminal_node()
 {
     ASTNode* out;
     SymbolTableEntry* entry;
+    Token* t = &D_GLOBAL_TOKEN;
 
     if (TOKENTYPE_IS_LITERAL(t->type)) {
         out = create_ast_nonidentifier_leaf(
@@ -62,7 +62,7 @@ static ASTNode* parse_terminal_node(Token* t)
         }
     }
 
-    scan(t);
+    scan();
 
     return out;
 }
@@ -81,7 +81,7 @@ ASTNode* prefix_operator_passthrough(void)
     if (D_GLOBAL_TOKEN.type == T_AMPERSAND) {
         purple_log(LOG_DEBUG, "Found address prefix operator");
 
-        scan(&D_GLOBAL_TOKEN);
+        scan();
         out = prefix_operator_passthrough();
 
         if (out->ttype != T_IDENTIFIER) {
@@ -94,7 +94,7 @@ ASTNode* prefix_operator_passthrough(void)
     } else if (D_GLOBAL_TOKEN.type == T_STAR) {
         purple_log(LOG_DEBUG, "Found dereference prefix operator");
 
-        scan(&D_GLOBAL_TOKEN);
+        scan();
         out = prefix_operator_passthrough();
 
         if (out->ttype != T_IDENTIFIER && out->ttype != T_DEREFERENCE) {
@@ -102,10 +102,14 @@ ASTNode* prefix_operator_passthrough(void)
         }
 
         out->tree_type.pointer_depth--;
+        // if (out->tree_type.pointer_depth < 0) {
+        //     syntax_error(0, 0, 0, "Dereference operator on a non-pointer type is invalid");
+        // }
 
         out = create_unary_ast_node(T_DEREFERENCE, out, TYPE_VOID, NULL);
     } else {
-        out = parse_terminal_node(&D_GLOBAL_TOKEN);
+        purple_log(LOG_DEBUG, "Passing through to parse_terminal_node");
+        out = parse_terminal_node();
     }
 
     return out;
@@ -176,7 +180,7 @@ static ASTNode* parse_binary_expression_recursive(int previous_token_precedence,
     while (get_operator_precedence(D_GLOBAL_TOKEN) > previous_token_precedence) {
         // Scan the next Token
         position pos = D_GLOBAL_TOKEN.pos;
-        scan(&D_GLOBAL_TOKEN);
+        scan();
 
         // Recursively build the right AST subtree
         right = parse_binary_expression_recursive(operatorPrecedence[current_ttype], nt_max);

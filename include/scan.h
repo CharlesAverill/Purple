@@ -227,6 +227,6 @@ typedef struct Token {
 
 char next(void);
 void put_back_into_stream(char c);
-bool scan(Token* t);
+bool scan();
 
 #endif /* SCAN_H */

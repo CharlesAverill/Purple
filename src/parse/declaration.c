@@ -19,16 +19,16 @@ void variable_declaration(void)
 {
     purple_log(LOG_DEBUG, "Parsing variable declaration statement");
 
-    TokenType variable_type = match_type();
-    if (variable_type == 0) {
+    Number n;
+    if (match_type(&n) > 1) {
         fatal(RC_COMPILER_ERROR, "Failed to match variable type in variable_declaration");
     }
+    n.pointer_depth++;
 
     match_token(T_IDENTIFIER);
     add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER,
-                           TYPE_NUMBER_FROM_NUMBERTYPE_FROM_TOKEN(variable_type));
-    llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER,
-                                        token_type_to_number_type(variable_type));
+                           TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(n));
+    llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, n);
 }
 
 /**
@@ -41,7 +41,7 @@ ASTNode* function_declaration(void)
     ASTNode* out;
     SymbolTableEntry* entry;
 
-    TokenType function_return_type = match_type();
+    TokenType function_return_type = check_for_type();
     match_token(T_IDENTIFIER);
 
     D_CURRENT_FUNCTION_BUFFER[0] = '\0';
@@ -60,7 +60,13 @@ ASTNode* function_declaration(void)
     FunctionParameter* parameters =
         (FunctionParameter*)malloc(sizeof(FunctionParameter) * parameters_size);
     while (D_GLOBAL_TOKEN.type != T_RIGHT_PAREN) {
-        parameters[num_inputs].parameter_type = match_type();
+        Number param_type;
+        if (match_type(&param_type) == 1) {
+            break;
+        }
+        param_type.pointer_depth++;
+
+        parameters[num_inputs].parameter_type = number_to_token_type(param_type);
         if (num_inputs >= parameters_size) {
             parameters_size *= 2;
             parameters = (FunctionParameter*)realloc(parameters, parameters_size);
@@ -76,12 +82,9 @@ ASTNode* function_declaration(void)
         strcpy(parameters[num_inputs - 1].parameter_name, D_IDENTIFIER_BUFFER);
 
         // TODO : Locals
-        add_symbol_table_entry(
-            D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER,
-            TYPE_NUMBER_FROM_NUMBERTYPE_FROM_TOKEN(parameters[num_inputs - 1].parameter_type));
-        llvm_declare_global_number_variable(
-            D_IDENTIFIER_BUFFER,
-            token_type_to_number_type(parameters[num_inputs - 1].parameter_type));
+        add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER,
+                               TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(param_type));
+        llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, param_type);
     }
 
     function_type.value.function.parameters = parameters;

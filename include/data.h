@@ -9,6 +9,7 @@
 #define DATA_H
 
 #include <stdio.h>
+#include <string.h>
 
 #include "scan.h"
 #include "translate/symbol_table.h"
@@ -47,6 +48,8 @@ extern_ char D_CURRENT_FUNCTION_BUFFER[MAX_IDENTIFIER_LENGTH + 1];
 extern_ bool D_CURRENT_FUNCTION_PREAMBLE_PRINTED;
 /**Whether or not the current function has returned a value*/
 extern_ bool D_CURRENT_FUNCTION_HAS_RETURNED;
+/**Whether or not a type is currently being scanned in*/
+extern_ bool D_SCANNING_TYPE;
 
 /**Buffer to read identifiers into*/
 extern_ char D_IDENTIFIER_BUFFER[MAX_IDENTIFIER_LENGTH + 1];

@@ -1,0 +1,18 @@
+
+int main(void) {
+    int a; int b;
+    int c; int d;
+    int *e; int *f;
+
+    a = 18; print a;                    // 18
+    e = &a; b = *e; print b;            // 18
+
+    c = 12; print c;                    // 12
+    f = &c; d = *f; print d;            // 12
+
+    int g; int *h; int **j; int ***k;
+    g = 5; h = &g; j = &h; k = &j;
+    int n; int *m; int **l;
+    l = *k; m = *l; n = *m;
+    print n;                            // 5
+}

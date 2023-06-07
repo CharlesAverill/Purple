@@ -60,7 +60,7 @@ static void init(int argc, char* argv[])
     D_PUT_BACK = '\n';
 
     // Global Token
-    scan(&D_GLOBAL_TOKEN);
+    scan();
 
     // Symbol Tables
     D_SYMBOL_TABLE_STACK = new_nonempty_symbol_table_stack();

@@ -18,10 +18,53 @@
 void match_token(TokenType type)
 {
     if (D_GLOBAL_TOKEN.type == type) {
-        scan(&D_GLOBAL_TOKEN);
+        scan();
     } else {
         syntax_error(0, 0, 0, "Expected token \"%s\"", tokenStrings[type]);
     }
+}
+
+TokenType match_tokens(TokenType types[], int n_types)
+{
+    char possible_types[256];
+
+    int last_type_length = 0;
+    for (int i = 0; i < n_types; i++) {
+        sprintf(possible_types + (sizeof(char) * last_type_length), "%s ", tokenStrings[types[i]]);
+        last_type_length += strlen(tokenStrings[types[i]]) + 1;
+
+        if (D_GLOBAL_TOKEN.type == types[i]) {
+            scan();
+            return types[i];
+        }
+    }
+
+    syntax_error(0, 0, 0, "Expected one of: [ %s] but got \'%s\'", possible_types,
+                 tokenStrings[D_GLOBAL_TOKEN.type]);
+    return 0;
+}
+
+int match_type(Number* out)
+{
+    D_SCANNING_TYPE = true;
+
+    TokenType ttype =
+        match_tokens((TokenType[]){T_VOID, T_BOOL, T_BYTE, T_CHAR, T_SHORT, T_INT, T_LONG}, 7);
+
+    int pointer_depth;
+    for (pointer_depth = 0; D_GLOBAL_TOKEN.type == T_STAR; pointer_depth++) {
+        scan();
+    }
+
+    if (ttype == T_VOID && pointer_depth == 0) {
+        return 1;
+    }
+
+    *out = (Number){
+        .type = token_type_to_number_type(ttype), .pointer_depth = pointer_depth, .value = 0};
+
+    D_SCANNING_TYPE = false;
+    return 0;
 }
 
 /**
@@ -29,11 +72,11 @@ void match_token(TokenType type)
  * 
  * @return NumberType Type of variable
  */
-TokenType match_type(void)
+TokenType check_for_type(void)
 {
     TokenType ttype = D_GLOBAL_TOKEN.type;
     if (TOKENTYPE_IS_TYPE(ttype)) {
-        scan(&D_GLOBAL_TOKEN);
+        scan();
     } else {
         syntax_error(0, 0, 0, "Expected type but got \"%s\"", tokenStrings[ttype]);
     }
@@ -301,7 +344,10 @@ ASTNode* parse_statements(void)
             case T_IDENTIFIER:
                 symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE,
                                                  D_GLOBAL_TOKEN.value.symbol_name);
-                if (symbol->type.is_function) {
+                if (!symbol) {
+                    identifier_error(0, 0, 0, "Use of undeclared identifier \'%s\'",
+                                     D_GLOBAL_TOKEN.value.symbol_name);
+                } else if (symbol->type.is_function) {
                     root = function_call_expression();
                 } else {
                     root = assignment_statement();

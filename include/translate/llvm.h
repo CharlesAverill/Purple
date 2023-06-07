@@ -23,6 +23,11 @@ static const char* numberTypeLLVMReprs[] = {"i1", "i8", "i16", "i32", "i64"};
 extern LLVMStackEntryNode* freeVirtualRegistersHead;
 
 /**
+ * @brief Temporary buffer used to generate pointer star strings for LLVM code
+ */
+static char _refstring_buf[256];
+
+/**
  * @brief Types of values possibly returned by ast_to_llvm
  */
 typedef enum
@@ -62,7 +67,7 @@ typedef struct LLVMValue {
 #define LLVMVALUE_NULL                                                                             \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_NONE, .value = 0                                               \
+        .value_type = LLVMVALUETYPE_NONE, .value = 0, .pointer_depth = 0                           \
     }
 
 /**
@@ -71,7 +76,7 @@ typedef struct LLVMValue {
 #define LLVMVALUE_CONSTANT(c)                                                                      \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_CONSTANT, .value.constant = c                                  \
+        .value_type = LLVMVALUETYPE_CONSTANT, .value.constant = c, .pointer_depth = 0              \
     }
 
 /**
@@ -100,7 +105,7 @@ typedef struct LLVMValue {
 #define LLVMVALUE_LABEL(label_number)                                                              \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number                       \
+        .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number, .pointer_depth = 0   \
     }
 
 /**Prefix to prepend to LLVM label indices*/
@@ -122,7 +127,7 @@ LLVMValue get_next_label(void);
 
 LLVMValue llvm_load_global_variable(char* symbol_name);
 void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register);
-void llvm_declare_global_number_variable(char* symbol_name, NumberType number_type);
+void llvm_declare_global_number_variable(char* symbol_name, Number n);
 LLVMValue llvm_signed_extend(LLVMValue reg, NumberType new_type, NumberType old_type);
 LLVMValue llvm_truncate(LLVMValue reg, NumberType new_type, NumberType old_type);
 void llvm_declare_assign_global_number_variable(char* symbol_name, Number number);
@@ -141,5 +146,14 @@ void llvm_function_postamble(void);
 LLVMValue llvm_call_function(LLVMValue virtual_register, char* symbol_name);
 const char* type_to_llvm_type(TokenType type);
 void llvm_return(LLVMValue virtual_register, char* symbol_name);
+char* refstring(char* buf, int pointer_depth);
+LLVMValue llvm_get_address(char* symbol_name);
+LLVMValue llvm_dereference(LLVMValue reg);
+
+/**
+ * @brief Wrapper for _refstring - WARNING - only one call to REFSTRING may be made per statement, due to 
+ * _refstring_buf being used in it. Multiple uses will overwrite all but the last occurrance
+ */
+#define REFSTRING(depth) refstring(_refstring_buf, depth)
 
 #endif /* LLVM_H */

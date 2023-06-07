@@ -435,13 +435,13 @@ static bool scan_check_keyword_identifier(char c)
 /**
  * @brief Scan tokens into the Token struct
  * 
- * @param t Token to scan data into
  * @return bool Returns true if a Token was scanned successfully
  */
-bool scan(Token* t)
+bool scan()
 {
     char c;
     TokenType temp_type;
+    Token* t = &D_GLOBAL_TOKEN;
 
     strcpy(t->pos.filename, D_INPUT_FN);
     t->pos.line_number = D_LINE_NUMBER;
@@ -463,7 +463,7 @@ bool scan(Token* t)
         t->type = T_MINUS;
         break;
     case '*':
-        if ((c = next()) == '*') {
+        if ((c = next()) == '*' && !D_SCANNING_TYPE) {
             t->type = T_EXPONENT;
         } else {
             put_back_into_stream(c);
@@ -537,6 +537,9 @@ bool scan(Token* t)
         break;
     case '}':
         t->type = T_RIGHT_BRACE;
+        break;
+    case '&':
+        t->type = T_AMPERSAND;
         break;
     case NUMBER_LITERAL_BASE_SEPARATOR:
         syntax_error(0, 0, t->pos.char_number + 2,
