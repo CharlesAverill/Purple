@@ -417,8 +417,13 @@ LLVMValue llvm_load_global_variable(char* symbol_name)
     fprintf(D_LLVM_FILE, "%s%s @%s" NEWLINE, numberTypeLLVMReprs[symbol->type.value.number.type],
             REFSTRING(symbol->type.value.number.pointer_depth), symbol_name);
 
-    return LLVMVALUE_VIRTUAL_REGISTER_POINTER(out_register_number, symbol->type.value.number.type,
-                                              symbol->type.value.number.pointer_depth - 1);
+    LLVMValue out =
+        LLVMVALUE_VIRTUAL_REGISTER_POINTER(out_register_number, symbol->type.value.number.type,
+                                           symbol->type.value.number.pointer_depth - 1);
+
+    memset(out.just_loaded, 0, MAX_IDENTIFIER_LENGTH);
+    sprintf(out.just_loaded, "%s", symbol_name);
+    return out;
 }
 
 /**
@@ -1126,6 +1131,12 @@ LLVMValue llvm_dereference(LLVMValue reg)
     return out;
 }
 
+/**
+ * @brief Generates code to store a value into a dereferenced value
+ * 
+ * @param destination   Destination register or variable to store into
+ * @param value         Value to store
+ */
 void llvm_store_dereference(LLVMValue destination, LLVMValue value)
 {
     LLVMValue* loaded_registers =
@@ -1146,6 +1157,8 @@ void llvm_store_dereference(LLVMValue destination, LLVMValue value)
         loaded_registers = NULL;
     }
 
+    // I'm actually not sure why we need the second clause in this condition,
+    // but if I take it out we get pointer mismatches
     if (strlen(destination.just_loaded) == 0 ||
         destination.pointer_depth == value.pointer_depth + 1) {
         fprintf(D_LLVM_FILE, TAB "store %s%s %s%lld, ", numberTypeLLVMReprs[value.number_type],
@@ -1153,8 +1166,11 @@ void llvm_store_dereference(LLVMValue destination, LLVMValue value)
                 value.value.virtual_register_index);
         fprintf(D_LLVM_FILE, "%s%s %%%llu" NEWLINE, numberTypeLLVMReprs[destination.number_type],
                 REFSTRING(destination.pointer_depth), destination.value.virtual_register_index);
-        // fprintf(D_LLVM_FILE, "%s%s* @%s" NEWLINE, numberTypeLLVMReprs[destination.number_type],
-        //         REFSTRING(destination.pointer_depth), destination.just_loaded);
     } else {
+        fprintf(D_LLVM_FILE, TAB "store %s%s %s%lld, ", numberTypeLLVMReprs[value.number_type],
+                REFSTRING(value.pointer_depth), LLVMVALUE_REGMARKER(value),
+                value.value.virtual_register_index);
+        fprintf(D_LLVM_FILE, "%s%s* @%s" NEWLINE, numberTypeLLVMReprs[destination.number_type],
+                REFSTRING(destination.pointer_depth), destination.just_loaded);
     }
 }
