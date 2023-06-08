@@ -16,10 +16,10 @@ LLVMStackEntryNode* freeVirtualRegistersHead = NULL;
  */
 static void translate_init(void)
 {
-    D_LLVM_FN = args->filenames[1];
-    D_LLVM_FILE = fopen(args->filenames[1], "w");
+    D_LLVM_FN = D_ARGS->filenames[1];
+    D_LLVM_FILE = fopen(D_ARGS->filenames[1], "w");
     if (D_LLVM_FILE == NULL) {
-        fatal(RC_FILE_ERROR, "Could not open %s for writing LLVM", args->filenames[1]);
+        fatal(RC_FILE_ERROR, "Could not open %s for writing LLVM", D_ARGS->filenames[1]);
     }
 
     D_LLVM_GLOBALS_FN = "globals.ll";
@@ -70,6 +70,10 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
 
         return temp_left;
     } else if (TOKENTYPE_IS_LITERAL(root->ttype)) {
+        if (D_ARGS->const_expr_reduce) {
+            return NULL;
+        }
+
         LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
 
         current->reg = get_next_local_virtual_register();
@@ -288,6 +292,7 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
     for (int i = 0; i < 2; i++) {
         switch (temp_values[i].value_type) {
         case LLVMVALUETYPE_VIRTUAL_REGISTER:
+        case LLVMVALUETYPE_CONSTANT:
             virtual_registers[i] = temp_values[i];
             break;
         case LLVMVALUETYPE_NONE:
@@ -332,6 +337,12 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
             return llvm_compare(root->ttype, left_vr, right_vr);
         }
     } else if (TOKENTYPE_IS_LITERAL(root->ttype)) {
+        if (D_ARGS->const_expr_reduce) {
+            LLVMValue out = LLVMVALUE_CONSTANT(root->value.number_value);
+            out.number_type = token_type_to_number_type(root->ttype);
+            return out;
+        }
+
         // Allocate stack space
         purple_log(LOG_DEBUG, "Determining stack space");
         LLVMStackEntryNode* stack_entries = determine_binary_expression_stack_allocation(root);
@@ -366,7 +377,7 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
             return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index,
                                               symbol->type.value.number.type);
         case T_ASSIGN:
-            return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index, NT_INT1);
+            return right_vr;
         case T_PRINT:
             return print_ast_to_llvm(root, left_vr);
         case T_FUNCTION_CALL:;

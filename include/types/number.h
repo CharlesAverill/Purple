@@ -129,5 +129,6 @@ typedef struct Number {
 
 NumberType token_type_to_number_type(int token_type);
 int number_to_token_type(Number number);
+NumberType max_numbertype_for_val(long long int value);
 
 #endif /* NUMBER_H */

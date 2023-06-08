@@ -5,6 +5,7 @@
  * @date 08-Sep-2022
  */
 
+#include <stdlib.h>
 #include <string.h>
 
 #include "info.h"
@@ -24,8 +25,10 @@ static struct argp_option options[] = {
      "Alternate path to clang executable (default is \"" DEFAULT_CLANG_EXECUTABLE_PATH "\"", 0},
     {"cmd", 'c', "PROGRAM", 0, "Program passed in as a string", 0},
     {"output", 'o', "FILE", 0, "Path to the generated LLVM file", 0},
+    {"opt", 'O', "OPTLEVEL", 0, "Level of optimization to enable (0-3)"},
     {"quiet", 'q', 0, 0, "Equivalent to --logging=NONE", 0},
     {"verbose", 'v', 0, 0, "Equivalent to --logging=DEBUG", 0},
+    {"fconst-expr-reduce", FCONST_EXPR_REDUCE_CODE, 0, OPTION_HIDDEN, 0, 0},
     {0},
 };
 
@@ -68,6 +71,15 @@ error_t parse_opt(int key, char* arg, struct argp_state* state)
     case 'v':
         arguments->logging = LOG_DEBUG;
         break;
+    case 'O':
+        if (!arg) {
+            fatal(RC_ARG_ERROR, "Expected optimization level");
+        }
+        set_opt_level(arguments, atoi(arg));
+        break;
+    case FCONST_EXPR_REDUCE_CODE:
+        arguments->const_expr_reduce = true;
+        break;
     case ARGP_KEY_ARG:
         // Check for too many arguments
         if (state->arg_num > 1) {
@@ -104,4 +116,19 @@ void parse_args(PurpleArgs* args, int argc, char* argv[])
     args->from_command_line_argument = NULL;
 
     argp_parse(&argp, argc, argv, 0, 0, args);
+}
+
+void set_opt_level(PurpleArgs* args, int opt_level)
+{
+    switch (opt_level) {
+    // On-purpose fallthrough so that higher levels automatically
+    // set the flags from lower levels
+    case 3:
+    case 2:
+    case 1:
+        args->const_expr_reduce = true;
+        break;
+    default:
+        break;
+    }
 }

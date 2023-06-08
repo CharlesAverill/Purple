@@ -40,8 +40,8 @@ void shutdown(void)
 
     close_files();
 
-    if (args) {
-        free(args);
-        args = NULL;
+    if (D_ARGS) {
+        free(D_ARGS);
+        D_ARGS = NULL;
     }
 }

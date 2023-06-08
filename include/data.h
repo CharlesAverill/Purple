@@ -5,15 +5,13 @@
  * @date 08-Sep-2022
  */
 
-#ifndef DATA_H
-#define DATA_H
-
-#include <stdio.h>
-#include <string.h>
+#ifndef DATA
+#define DATA
 
 #include "scan.h"
 #include "translate/symbol_table.h"
 #include "utils/arguments.h"
+#include "utils/misc.h"
 
 /**extern_ will be undefined in purple.c, causing purple.c to "own" these variables*/
 #ifndef extern_
@@ -58,7 +56,7 @@ extern_ char D_IDENTIFIER_BUFFER[MAX_IDENTIFIER_LENGTH + 1];
 extern_ int D_DEBUG;
 
 /**Command line arguments*/
-extern_ PurpleArgs* args;
+extern_ PurpleArgs* D_ARGS;
 
 /**Most recently-parsed token*/
 extern_ struct Token D_GLOBAL_TOKEN;
@@ -68,4 +66,4 @@ extern_ SymbolTableStack* D_SYMBOL_TABLE_STACK;
 /**Global Symbol Table (pointer to bottom of D_SYMBOL_TABLE_STACK)*/
 extern_ SymbolTable* D_GLOBAL_SYMBOL_TABLE;
 
-#endif /* DATA_H */
+#endif /* DATA */

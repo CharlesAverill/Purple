@@ -22,6 +22,7 @@ static const char* numberTypeLLVMReprs[] = {"i1", "i8", "i16", "i32", "i64"};
  */
 extern LLVMStackEntryNode* freeVirtualRegistersHead;
 
+#define REFSTRING_BUF_MAXLEN 256
 /**
  * @brief Temporary buffer used to generate pointer star strings for LLVM code
  */
@@ -38,14 +39,14 @@ typedef enum
     LLVMVALUETYPE_CONSTANT,
 } LLVMValueType;
 
+static const char* valueTypeStrings[] = {"None", "Virtual Register", "Label", "Constant"};
+
 /**
  * @brief Value returned by ast_to_llvm
  */
 typedef struct LLVMValue {
     /**What kind of value is being returned*/
     LLVMValueType value_type;
-    /**Stores a pointer?*/
-    bool stores_pointer;
     /**If a number is stored*/
     NumberType number_type;
     /**How many pointers deep this LLVMValue is*/
@@ -60,6 +61,14 @@ typedef struct LLVMValue {
         type_label label_index;
     } value;
 } LLVMValue;
+
+#define PRINT_LLVMVALUE(val)                                                                       \
+    printf("LLVMValue Information\n");                                                             \
+    printf("---------------------\n");                                                             \
+    printf("Value Type: %s\n", valueTypeStrings[val.value_type]);                                  \
+    printf("Number Type: %s\n", numberTypeLLVMReprs[val.number_type]);                             \
+    printf("Pointer Depth: %d\n", val.pointer_depth);                                              \
+    printf("Contents: %lld\n", val.value.constant);
 
 /**
  * @brief A standard "null" LLVMValue struct returned in some scenarios
@@ -76,7 +85,8 @@ typedef struct LLVMValue {
 #define LLVMVALUE_CONSTANT(c)                                                                      \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_CONSTANT, .value.constant = c, .pointer_depth = 0              \
+        .value_type = LLVMVALUETYPE_CONSTANT, .value.constant = c, .pointer_depth = 0,             \
+        .number_type = max_numbertype_for_val(c)                                                   \
     }
 
 /**
@@ -108,6 +118,8 @@ typedef struct LLVMValue {
         .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number, .pointer_depth = 0   \
     }
 
+#define LLVMVALUE_REGMARKER(llvmvalue) (llvmvalue.value_type == LLVMVALUETYPE_CONSTANT ? "" : "%")
+
 /**Prefix to prepend to LLVM label indices*/
 #define PURPLE_LABEL_PREFIX "L"
 
@@ -128,8 +140,7 @@ LLVMValue get_next_label(void);
 LLVMValue llvm_load_global_variable(char* symbol_name);
 void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register);
 void llvm_declare_global_number_variable(char* symbol_name, Number n);
-LLVMValue llvm_signed_extend(LLVMValue reg, NumberType new_type, NumberType old_type);
-LLVMValue llvm_truncate(LLVMValue reg, NumberType new_type, NumberType old_type);
+LLVMValue llvm_int_resize(LLVMValue reg, NumberType new_tye);
 void llvm_declare_assign_global_number_variable(char* symbol_name, Number number);
 void llvm_print_int(LLVMValue print_vr);
 void llvm_print_bool(LLVMValue print_vr);
