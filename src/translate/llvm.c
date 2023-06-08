@@ -281,6 +281,9 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
 
     if (left_virtual_register.value_type == LLVMVALUETYPE_CONSTANT &&
         right_virtual_register.value_type == LLVMVALUETYPE_CONSTANT) {
+        out_register = LLVMVALUE_CONSTANT(0);
+        out_register.number_type =
+            MAX(left_virtual_register.number_type, right_virtual_register.number_type);
         switch (operation) {
         case T_PLUS:
             out_register.value.constant =
@@ -299,8 +302,8 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
                 left_virtual_register.value.constant / right_virtual_register.value.constant;
             break;
         case T_EXPONENT:
-            out_register.value.constant =
-                pow(left_virtual_register.value.constant, right_virtual_register.value.constant);
+            out_register.value.constant = (int)pow(left_virtual_register.value.constant,
+                                                   right_virtual_register.value.constant);
             break;
         default:
             fatal(RC_COMPILER_ERROR,
@@ -311,6 +314,7 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
         return out_register;
     }
 
+    PRINT_LLVMVALUE(left_virtual_register);
     LLVMValue* loaded_registers = llvm_ensure_registers_fully_loaded(
         1, (LLVMValue[]){left_virtual_register}, left_virtual_register.number_type);
     if (loaded_registers != NULL) {
@@ -329,6 +333,9 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
     }
 
     if (left_virtual_register.number_type != right_virtual_register.number_type) {
+        PRINT_LLVMVALUE(left_virtual_register);
+        PRINT_LLVMVALUE(right_virtual_register);
+        printf("---\n");
         if (left_virtual_register.number_type < right_virtual_register.number_type) {
             left_virtual_register =
                 llvm_int_resize(left_virtual_register, right_virtual_register.number_type);
@@ -425,14 +432,17 @@ LLVMValue llvm_load_global_variable(char* symbol_name)
  */
 void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register)
 {
+    if (rvalue_register.value_type != LLVMVALUETYPE_CONSTANT &&
+        rvalue_register.value_type != LLVMVALUETYPE_VIRTUAL_REGISTER) {
+        fatal(RC_COMPILER_ERROR, "Non-value passed to llvm_store_global_variable");
+    }
+
     SymbolTableEntry* symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
     if (symbol == NULL) {
         fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
               symbol_name);
     }
 
-    printf("%d %d %d\n", rvalue_register.value.virtual_register_index,
-           rvalue_register.pointer_depth, symbol->type.value.number.pointer_depth);
     LLVMValue* loaded_registers =
         llvm_ensure_registers_loaded(1, (LLVMValue[]){rvalue_register}, rvalue_register.number_type,
                                      symbol->type.value.number.pointer_depth - 1);

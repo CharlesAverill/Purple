@@ -68,9 +68,7 @@ typedef struct LLVMValue {
     printf("Value Type: %s\n", valueTypeStrings[val.value_type]);                                  \
     printf("Number Type: %s\n", numberTypeLLVMReprs[val.number_type]);                             \
     printf("Pointer Depth: %d\n", val.pointer_depth);                                              \
-    printf("Contents: ");                                                                          \
-    printf(val.value_type != LLVMVALUETYPE_CONSTANT ? "%lld\n" : "%ld\n",                          \
-           val.value.virtual_register_index);
+    printf("Contents: %lld\n", val.value.constant);
 
 /**
  * @brief A standard "null" LLVMValue struct returned in some scenarios

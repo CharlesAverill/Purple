@@ -61,7 +61,7 @@ int number_to_token_type(Number number)
 NumberType max_numbertype_for_val(long long int value)
 {
     for (int i = NT_INT64; i >= NT_INT1; i--) {
-        if (value >= pow(2, numberTypeByteSizes[i]) - 1) {
+        if (value >= (int)pow(2, numberTypeByteSizes[i]) - 1) {
             return i;
         }
     }

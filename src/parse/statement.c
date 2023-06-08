@@ -92,7 +92,6 @@ TokenType check_for_type(void)
 static ASTNode* print_statement(void)
 {
     ASTNode* root;
-    LLVMValue cg_output;
 
     purple_log(LOG_DEBUG, "Parsing print statement");
 
@@ -323,7 +322,6 @@ ASTNode* parse_statements(void)
 
     ASTNode* left = NULL;
     ASTNode* root;
-    LLVMValue cg_output;
 
     SymbolTableEntry* symbol;
 

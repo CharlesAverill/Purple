@@ -377,7 +377,7 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
             return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index,
                                               symbol->type.value.number.type);
         case T_ASSIGN:
-            return llvm_value;
+            return right_vr;
         case T_PRINT:
             return print_ast_to_llvm(root, left_vr);
         case T_FUNCTION_CALL:;
