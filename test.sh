@@ -12,7 +12,7 @@ ANSI_RESET='\033[0m'
 
 function strings_are_okay() {
     printf "${ANSI_RESET}"
-    bin/purple $2 > /dev/null
+    bin/purple $2 -O$3 > /dev/null
     prog_output=$(./a.out)
     prog_rc=$?
     if [ $prog_rc -ne 0 ] ; then
@@ -38,16 +38,23 @@ function strings_are_okay() {
     fi
 }
 
+# Print column headers
+printf "%-25s%2s %2s\n" "Test Name" "O0" "O1"
+echo "------------------------------"
 function run_test() {
-    rm a.out
-    TEST_OUTPUT=$(strings_are_okay "$2" "$3")
-    if [ $? -ne 0 ] ; then 
-        printf "%-25s" "[$1 Test]:" 
-        echo "$TEST_OUTPUT"
-        exit 1
-    else
-        printf "%-25s%2s\n" "[$1 Test]:" $TEST_OUTPUT
-    fi
+    printf "%-25s" "[$1]" 
+    for OPTLEVEL in 0 1
+    do
+        [ -f a.out ] && rm a.out
+        TEST_OUTPUT=$(strings_are_okay "$2" "$3" "$OPTLEVEL")
+        if [ $? -ne 0 ] ; then 
+            printf "%s " "$TEST_OUTPUT"
+            exit 1
+        else
+            printf "%s " "$TEST_OUTPUT"
+        fi
+    done
+    echo ""
 }
 
 condition_test_output="true
@@ -150,3 +157,6 @@ run_test    "Function"      "$function_test_output"     "examples/function_test.
 run_test    "Comparison"    "$comparison_test_output"   "examples/comparison_test.prp"
 run_test    "Empty Program" ""                          "examples/empty_prog.prp"
 run_test    "Pointer"       "$pointer_test_output"      "examples/pointer_test.prp"
+
+rm a.ll
+rm a.out

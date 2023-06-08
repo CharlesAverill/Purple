@@ -74,9 +74,9 @@ void create_tmp_generator_program(void)
     int clang_status;
     char process_out[256];
     // Generate the clang command
-    char cmd[sizeof(args->clang_executable) + 270] = {0};
+    char cmd[sizeof(D_ARGS->clang_executable) + 270] = {0};
 
-    strcat(cmd, args->clang_executable);
+    strcat(cmd, D_ARGS->clang_executable);
     strcat(cmd, " -S -emit-llvm -w ");
     strcat(cmd, generatorProgramFullPath);
     strcat(cmd, " -o ");
@@ -88,7 +88,7 @@ void create_tmp_generator_program(void)
 
     // Let process run
     while (fgets(process_out, 256, clang_process) != NULL) {
-        if (args->logging == LOG_DEBUG) {
+        if (D_ARGS->logging == LOG_DEBUG) {
             printf("%s", process_out);
         }
     }
@@ -180,9 +180,9 @@ void clang_compile_llvm(const char* fn)
     char* process_out;
     size_t process_out_buf_len = 256;
     // Generate the clang command
-    char cmd[sizeof(args->clang_executable) + 270] = {0};
+    char cmd[sizeof(D_ARGS->clang_executable) + 270] = {0};
 
-    strcat(cmd, args->clang_executable);
+    strcat(cmd, D_ARGS->clang_executable);
     strcat(cmd, " ");
     strcat(cmd, fn);
 
@@ -192,7 +192,7 @@ void clang_compile_llvm(const char* fn)
 
     // Let process run
     while (getline(&process_out, &process_out_buf_len, clang_process) >= 0) {
-        if (args->logging == LOG_DEBUG) {
+        if (D_ARGS->logging == LOG_DEBUG) {
             printf("%s", process_out);
         }
     }
@@ -256,8 +256,8 @@ char* get_target_triple(void)
     purple_log(LOG_DEBUG, "Retrieving target triple");
 
     // Open the process
-    char process_cmd[strlen(args->clang_executable) + 22];
-    sprintf(process_cmd, "%s %s", args->clang_executable, "-print-target-triple");
+    char process_cmd[strlen(D_ARGS->clang_executable) + 22];
+    sprintf(process_cmd, "%s %s", D_ARGS->clang_executable, "-print-target-triple");
     FILE* clang_process = popen(process_cmd, "r");
 
     // Let process run

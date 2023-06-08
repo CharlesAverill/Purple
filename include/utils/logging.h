@@ -73,14 +73,15 @@ typedef enum
     RC_FILE_ERROR,
     RC_COMPILER_ERROR,
     RC_IDENTIFIER_ERROR,
+    RC_ARG_ERROR
 } ReturnCode;
 
 /**
  * @brief String representation of return codes
  */
 static const char* returnCodeStrings[] = {
-    "OK",         "ERROR",          "SYNTAX ERROR",    "MEMORY ERROR",
-    "FILE ERROR", "COMPILER ERROR", "IDENTIFIER ERROR"};
+    "OK",         "ERROR",          "SYNTAX ERROR",     "MEMORY ERROR",
+    "FILE ERROR", "COMPILER ERROR", "IDENTIFIER ERROR", "ARGUMENT ERROR"};
 
 void fatal(ReturnCode rc, const char* fmt, ...);
 void syntax_error(char* fn, int line_number, int char_number, const char* fmt, ...);

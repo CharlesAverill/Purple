@@ -120,12 +120,12 @@ void purple_log(LogLevel level, const char* fmt, ...)
     va_list func_args;
     FILE* output_stream;
 
-    if (args) {
-        if (args->logging == LOG_NONE || args->logging > level) {
+    if (D_ARGS) {
+        if (D_ARGS->logging == LOG_NONE || D_ARGS->logging > level) {
             return;
         }
 
-        if (args->logging > LOG_INFO) {
+        if (D_ARGS->logging > LOG_INFO) {
             output_stream = stderr;
         } else {
             output_stream = stdout;

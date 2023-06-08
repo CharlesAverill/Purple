@@ -33,24 +33,26 @@
 static void init(int argc, char* argv[])
 {
     // Argument parsing
-    args = malloc(sizeof(PurpleArgs));
-    if (args == NULL) {
+    // D_ARGS must be 0-initialized so that default-0 flags don't need to be set
+    // in the compiler
+    D_ARGS = calloc(1, sizeof(PurpleArgs));
+    if (D_ARGS == NULL) {
         fatal(RC_MEMORY_ERROR, "Unable to allocate memory for command line arguments");
     }
 
-    parse_args(args, argc, argv);
+    parse_args(D_ARGS, argc, argv);
 
-    if (args->from_command_line_argument != NULL) {
+    if (D_ARGS->from_command_line_argument != NULL) {
         D_INPUT_FN = "argument";
         D_INPUT_FILE = tmpfile();
-        fwrite(args->from_command_line_argument, strlen(args->from_command_line_argument), 1,
+        fwrite(D_ARGS->from_command_line_argument, strlen(D_ARGS->from_command_line_argument), 1,
                D_INPUT_FILE);
         rewind(D_INPUT_FILE);
     } else {
-        D_INPUT_FN = args->filenames[0];
+        D_INPUT_FN = D_ARGS->filenames[0];
         D_INPUT_FILE = fopen(D_INPUT_FN, "r");
         if (D_INPUT_FILE == NULL) {
-            fatal(RC_FILE_ERROR, "Unable to open %s: %s\n", D_INPUT_FN, strerror(errno));
+            fatal(RC_FILE_ERROR, "Unable to open %s: %s", D_INPUT_FN, strerror(errno));
         }
     }
 
