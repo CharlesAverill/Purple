@@ -7,10 +7,10 @@ int main() {
     y = &x; *y = 5;
     print x;
 
-    //int n;
-    //n = 50;
-    //int **z; z = &y; **z = n;
-    //print x;
+    int n;
+    n = 50;
+    int **z; z = &y; **z = n;
+    print x;
 
     // We will eventually un-comment this field
     // when we add local variables

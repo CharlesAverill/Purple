@@ -95,7 +95,7 @@ typedef enum
  * @brief Token string equivalents
  */
 static char* tokenStrings[] = {
-    "EOF", "+", "-", "*", "/", "**", "==", "!=", "<", ">", "<=", ">=", "and", "or", "xor", "nand",
+    "EOF", "+", "-", "*", "/", "pow", "==", "!=", "<", ">", "<=", ">=", "and", "or", "xor", "nand",
     "nor", "xnor", "&", "*", "true", "false", "byte literal", "character literal", "short literal",
     "integer literal", "long literal", "void", "bool", "byte", "char", "short", "int", "long", "=",
     "print", "if", "else", "while", "for", "return", ";", "(", ")", "{", "}", "identifier",

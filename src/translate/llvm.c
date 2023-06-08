@@ -1137,6 +1137,15 @@ void llvm_store_dereference(LLVMValue destination, LLVMValue value)
         loaded_registers = NULL;
     }
 
+    loaded_registers =
+        llvm_ensure_registers_loaded(1, (LLVMValue[]){value}, destination.pointer_depth - 1);
+    if (loaded_registers) {
+        value = loaded_registers[0];
+        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers (1)", "llvm_store_dereference");
+        free(loaded_registers);
+        loaded_registers = NULL;
+    }
+
     if (strlen(destination.just_loaded) == 0 ||
         destination.pointer_depth == value.pointer_depth + 1) {
         fprintf(D_LLVM_FILE, TAB "store %s%s %s%lld, ", numberTypeLLVMReprs[value.number_type],
