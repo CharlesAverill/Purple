@@ -22,7 +22,11 @@ static const char* numberTypeLLVMReprs[] = {"i1", "i8", "i16", "i32", "i64"};
  */
 extern LLVMStackEntryNode* freeVirtualRegistersHead;
 
+/**
+ * @brief Size of buffer for generating refstrings
+ */
 #define REFSTRING_BUF_MAXLEN 256
+
 /**
  * @brief Temporary buffer used to generate pointer star strings for LLVM code
  */
@@ -39,6 +43,9 @@ typedef enum
     LLVMVALUETYPE_CONSTANT,
 } LLVMValueType;
 
+/**
+ * @brief String representations of LLVMValueTypes for debugging
+ */
 static const char* valueTypeStrings[] = {"None", "Virtual Register", "Label", "Constant"};
 
 /**
@@ -62,6 +69,9 @@ typedef struct LLVMValue {
     } value;
 } LLVMValue;
 
+/**
+ * @brief Debug print method for LLVMValues
+ */
 #define PRINT_LLVMVALUE(val)                                                                       \
     printf("LLVMValue Information\n");                                                             \
     printf("---------------------\n");                                                             \
@@ -118,6 +128,9 @@ typedef struct LLVMValue {
         .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number, .pointer_depth = 0   \
     }
 
+/**
+ * @brief Shorthand for providing a "%" string if needed in generation statements
+ */
 #define LLVMVALUE_REGMARKER(llvmvalue) (llvmvalue.value_type == LLVMVALUETYPE_CONSTANT ? "" : "%")
 
 /**Prefix to prepend to LLVM label indices*/

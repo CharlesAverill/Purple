@@ -473,6 +473,13 @@ void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register)
             REFSTRING(symbol->type.value.number.pointer_depth), symbol_name);
 }
 
+/**
+ * @brief Generates an extend or truncate statement to change the bit-width of an integer
+ * 
+ * @param reg           Register whose contents are to be resized
+ * @param new_type      New NumberType to resize to
+ * @return LLVMValue    Resized LLVMValue
+ */
 LLVMValue llvm_int_resize(LLVMValue reg, NumberType new_type)
 {
     if (reg.value_type == LLVMVALUETYPE_CONSTANT) {
@@ -612,6 +619,14 @@ void llvm_print_bool(LLVMValue print_vr)
     llvm_label(end_label);
 }
 
+/**
+ * @brief Generates a relational (inline) comparison statement
+ * 
+ * @param comparison_type           What kind of comparison to generate
+ * @param out_register              Register to store output into
+ * @param left_virtual_register     Left comparison operand
+ * @param right_virtual_register    Right comparison operand
+ */
 static void llvm_relational_compare(TokenType comparison_type, LLVMValue out_register,
                                     LLVMValue left_virtual_register,
                                     LLVMValue right_virtual_register)
@@ -651,6 +666,14 @@ static void llvm_relational_compare(TokenType comparison_type, LLVMValue out_reg
             right_virtual_register.value.virtual_register_index);
 }
 
+/**
+ * @brief Generates a logical (statement-level) comparison statement
+ * 
+ * @param comparison_type           What kind of comparison to generate
+ * @param out_register              Register to store output into
+ * @param left_virtual_register     Left comparison operand
+ * @param right_virtual_register    Right comparison operand
+ */
 static void llvm_logical_compare(TokenType comparison_type, LLVMValue out_register,
                                  LLVMValue left_virtual_register, LLVMValue right_virtual_register)
 {
@@ -1031,6 +1054,13 @@ void llvm_return(LLVMValue value, char* symbol_name)
     D_CURRENT_FUNCTION_HAS_RETURNED = true;
 }
 
+/**
+ * @brief Generate a string containing pointer stars
+ * 
+ * @param buf               Buffer to fill with pointer stars
+ * @param pointer_depth     Number of pointer stars to fill
+ * @return char*            Resulting string (for inline use)
+ */
 char* refstring(char* buf, int pointer_depth)
 {
     if (pointer_depth >= REFSTRING_BUF_MAXLEN) {
@@ -1046,6 +1076,12 @@ char* refstring(char* buf, int pointer_depth)
     return buf;
 }
 
+/**
+ * @brief Generate an addressing statement
+ * 
+ * @param symbol_name   Symbol to take the address of
+ * @return LLVMValue    LLVMValue containing address of symbol
+ */
 LLVMValue llvm_get_address(char* symbol_name)
 {
     SymbolTableEntry* entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
@@ -1079,6 +1115,12 @@ LLVMValue llvm_get_address(char* symbol_name)
     return lv;
 }
 
+/**
+ * @brief Generate a dereference (load) statement
+ * 
+ * @param reg           Register to dereference
+ * @return LLVMValue    LLVMValue containing loaded value
+ */
 LLVMValue llvm_dereference(LLVMValue reg)
 {
     LLVMValue out = LLVMVALUE_VIRTUAL_REGISTER_POINTER(get_next_local_virtual_register(),

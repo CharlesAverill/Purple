@@ -33,6 +33,9 @@ typedef struct PurpleArgs {
 void parse_args(PurpleArgs* args, int argc, char* argv[]);
 void set_opt_level(PurpleArgs* args, int opt_level);
 
+/**
+ * @brief Argument shorthand code for the -fconst-expr-reduce flag
+ */
 #define FCONST_EXPR_REDUCE_CODE 0x100
 
 #endif /* ARGUMENTS_H */

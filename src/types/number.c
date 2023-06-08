@@ -58,6 +58,12 @@ int number_to_token_type(Number number)
     }
 }
 
+/**
+ * @brief Finds the maximum NumberType possible for a given value
+ * 
+ * @param value         Value to check
+ * @return NumberType   Corresponding NumberType, or -1 if none was found
+ */
 NumberType max_numbertype_for_val(long long int value)
 {
     for (int i = NT_INT64; i >= NT_INT1; i--) {

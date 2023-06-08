@@ -108,6 +108,9 @@ error_t parse_opt(int key, char* arg, struct argp_state* state)
 
 static struct argp argp = {options, parse_opt, args_doc, doc, 0, 0, 0};
 
+/**
+ * @brief Parses command-line arguments via argp
+ */
 void parse_args(PurpleArgs* args, int argc, char* argv[])
 {
     args->logging = LOG_INFO;
@@ -118,6 +121,12 @@ void parse_args(PurpleArgs* args, int argc, char* argv[])
     argp_parse(&argp, argc, argv, 0, 0, args);
 }
 
+/**
+ * @brief Set optimization flags based on a given opt level
+ * 
+ * @param args      PurpleArgs struct to set flags in
+ * @param opt_level Level of optimization to set
+ */
 void set_opt_level(PurpleArgs* args, int opt_level)
 {
     switch (opt_level) {
