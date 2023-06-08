@@ -95,7 +95,7 @@ char $\ast$ \mbox{\hyperlink{llvm_8c_ae242eaaa205d79124b4ab7999d6fae4a}{refstrin
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_ab84adb4dc9169d4795a0325980ac65f1}{llvm\+\_\+dereference}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} reg)
 \begin{DoxyCompactList}\small\item\em Generate a dereference (load) statement. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a94266752d29db5b52848865c0b3fc69b}{llvm\+\_\+store\+\_\+dereference}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} destination, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} value)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generates code to store a value into a dereferenced value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -656,6 +656,17 @@ int Register number value is held in
 \doxysubsubsection{\texorpdfstring{llvm\_store\_dereference()}{llvm\_store\_dereference()}}
 {\footnotesize\ttfamily void llvm\+\_\+store\+\_\+dereference (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{destination,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{value }\end{DoxyParamCaption})}
 
+
+
+Generates code to store a value into a dereferenced value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em destination} & Destination register or variable to store into \\
+\hline
+{\em value} & Value to store \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{llvm_8c_a6290db13d34ed659a7108ad675ee4da5}\label{llvm_8c_a6290db13d34ed659a7108ad675ee4da5}} 
 \index{llvm.c@{llvm.c}!llvm\_store\_global\_variable@{llvm\_store\_global\_variable}}
 \index{llvm\_store\_global\_variable@{llvm\_store\_global\_variable}!llvm.c@{llvm.c}}
