@@ -43,7 +43,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
         out->value.number_value = type.value.number.value;
         out->tree_type.type = type.value.number.type;
         out->is_char_arithmetic = ttype == T_CHAR || ttype == T_CHAR_LITERAL;
-    } else if (TOKENTYPE_IS_IDENTIFIER(ttype) || ttype == T_FUNCTION_CALL) {
+    } else if (ttype == T_IDENTIFIER || ttype == T_FUNCTION_CALL) {
         if (symbol_name == NULL) {
             fatal(RC_COMPILER_ERROR,
                   "Tried to create identifier node, but passed symbol_name is NULL");
@@ -169,7 +169,7 @@ static void ast_debug_current_level(ASTNode* root, int height, LogLevel log_leve
     if (root == NULL) {
         return;
     } else if (height == 1) {
-        if (TOKENTYPE_IS_IDENTIFIER(root->ttype)) {
+        if (root->ttype == T_IDENTIFIER) {
             purple_log(log_level, "%s:%s", tokenStrings[root->ttype], root->value.symbol_name);
         } else if (TOKENTYPE_IS_LITERAL(root->ttype)) {
             purple_log(log_level, "%s:%d", tokenStrings[root->ttype], root->value.number_value);

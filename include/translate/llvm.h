@@ -58,6 +58,8 @@ typedef struct LLVMValue {
     NumberType number_type;
     /**How many pointers deep this LLVMValue is*/
     int pointer_depth;
+    /**Previously-loaded identifier*/
+    char just_loaded[MAX_IDENTIFIER_LENGTH];
     /**Contents of the value returned*/
     union {
         /**Index of a virtual register*/
@@ -136,8 +138,7 @@ typedef struct LLVMValue {
 /**Prefix to prepend to LLVM label indices*/
 #define PURPLE_LABEL_PREFIX "L"
 
-LLVMValue* llvm_ensure_registers_loaded(int n_registers, LLVMValue registers[],
-                                        NumberType number_type, int load_depth);
+LLVMValue* llvm_ensure_registers_loaded(int n_registers, LLVMValue registers[], int load_depth);
 
 void llvm_preamble(void);
 void llvm_postamble(void);
@@ -173,6 +174,7 @@ void llvm_return(LLVMValue virtual_register, char* symbol_name);
 char* refstring(char* buf, int pointer_depth);
 LLVMValue llvm_get_address(char* symbol_name);
 LLVMValue llvm_dereference(LLVMValue reg);
+void llvm_store_dereference(LLVMValue destination, LLVMValue value);
 
 /**
  * @brief Wrapper for _refstring - WARNING - only one call to REFSTRING may be made per statement, due to 

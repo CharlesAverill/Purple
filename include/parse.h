@@ -27,16 +27,16 @@
  * |  1         | `,` | Comma | Left-to-Right | 
  */
 
-#ifndef PARSE_H
-#define PARSE_H
+#ifndef PARSE
+#define PARSE
 
 #include "tree.h"
 #include "types/number.h"
 
 /**
- * Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed
+ * @brief Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed
  */
-static int operatorPrecedence[] = {
+static TokenType operatorPrecedence[] = {
     [T_PLUS] = 12,  [T_MINUS] = 12, [T_STAR] = 13, [T_SLASH] = 13, [T_EXPONENT] = 15,
 
     [T_EQ] = 9,     [T_NEQ] = 9,
@@ -48,6 +48,10 @@ static int operatorPrecedence[] = {
     [T_ASSIGN] = 2,
 };
 
+static TokenType rightAssociativeOperators[TOKENTYPE_MAX + 1] = {
+    [T_ASSIGN] = 1,
+};
+
 ASTNode* parse_binary_expression(void);
 void match_token(TokenType type);
 int match_type(Number* out);
@@ -57,4 +61,4 @@ ASTNode* function_declaration(void);
 ASTNode* function_call_expression(void);
 ASTNode* parse_statements(void);
 
-#endif /* PARSE_H */
+#endif /* PARSE */
