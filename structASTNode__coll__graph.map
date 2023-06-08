@@ -1,4 +1,4 @@
 <map id="ASTNode" name="ASTNode">
-<area shape="rect" id="node1" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,175,159,369"/>
+<area shape="rect" id="node1" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,175,159,384"/>
 <area shape="rect" id="node2" href="$structNumber.html" title="Container for various kinds of number data." alt="" coords="27,5,137,112"/>
 </map>

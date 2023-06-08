@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['value_0',['value',['../structToken.html#aa8cbd23eb93e4c0f3f2627c3e5b5591d',1,'Token::value()'],['../structLLVMValue.html#aa0066a6cd59d069c17214a66ac9d10ca',1,'LLVMValue::value()'],['../structASTNode.html#a6eb3eb28a0e661931fa444b130f86404',1,'ASTNode::value()'],['../structNumber.html#a50ded97f4b78b9de224d51cff81a25eb',1,'Number::value()'],['../structType.html#af6d57ad268d222017f11c099570d378b',1,'Type::value()']]],
-  ['value_5ftype_1',['value_type',['../structLLVMValue.html#af6e542062574556a83ffd8b23bc86fd0',1,'LLVMValue']]],
-  ['valuetypestrings_2',['valueTypeStrings',['../llvm_8h.html#a09865db0b61d893dcdda12ddb4670a2b',1,'llvm.h']]],
-  ['virtual_5fregister_5findex_3',['virtual_register_index',['../structLLVMValue.html#a94c070541eb94e80a2639e53bcb26e04',1,'LLVMValue']]]
+  ['tokenstrings_0',['tokenStrings',['../scan_8h.html#a3cef8f6f6c1a827c5f882dc5ab2024e7',1,'scan.h']]],
+  ['top_1',['top',['../structSymbolTableStack.html#a1134075dbf9ad905ab4494942f8b44aa',1,'SymbolTableStack']]],
+  ['total_5fbuckets_2',['total_buckets',['../structSymbolTable.html#a79d029aed5cb77d5153ace908e59547e',1,'SymbolTable']]],
+  ['tree_5ftype_3',['tree_type',['../structASTNode.html#ad1288942cb053f9169b09237a5ea70aa',1,'ASTNode']]],
+  ['ttype_4',['ttype',['../structASTNode.html#ac71a4bb0085044ea339b9021a8c0c820',1,'ASTNode']]],
+  ['type_5',['type',['../structToken.html#a67919af9f3a80dc0b28a0ab1e6d5bf8a',1,'Token::type()'],['../structSymbolTableEntry.html#a52959839c9d7e016f5bc5a6001545c9a',1,'SymbolTableEntry::type()'],['../structNumber.html#ace28dcb37d2be0e9b881744c1e0c01d1',1,'Number::type()'],['../structType.html#ab90888b18d5dfabe3014052b41282591',1,'Type::type()'],['../structLLVMStackEntryNode.html#aa6c8f96e14ee1679c7ee60f818f02941',1,'LLVMStackEntryNode::type()']]]
 ];

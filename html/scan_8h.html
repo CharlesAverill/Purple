@@ -178,9 +178,6 @@ Macros</h2></td></tr>
 <tr class="memitem:a00b96c3bd6c8744e967fe60cc676fa35"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a00b96c3bd6c8744e967fe60cc676fa35">TOKENTYPE_IS_BOOL_LITERAL</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66901c4f0f0cf6cd9002834b1f8f2075">T_TRUE</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ad04c6fedfc6e82b9cd961d926579f541">T_FALSE</a>)</td></tr>
 <tr class="memdesc:a00b96c3bd6c8744e967fe60cc676fa35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if a TokenType is associated with a boolean literal value.  <a href="scan_8h.html#a00b96c3bd6c8744e967fe60cc676fa35">More...</a><br /></td></tr>
 <tr class="separator:a00b96c3bd6c8744e967fe60cc676fa35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10cb0c84238158232dc389584ea0e2eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a10cb0c84238158232dc389584ea0e2eb">TOKENTYPE_IS_IDENTIFIER</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a">T_IDENTIFIER</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63">T_LVALUE_IDENTIFIER</a>)</td></tr>
-<tr class="memdesc:a10cb0c84238158232dc389584ea0e2eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if a TokenType is associated with an identifier.  <a href="scan_8h.html#a10cb0c84238158232dc389584ea0e2eb">More...</a><br /></td></tr>
-<tr class="separator:a10cb0c84238158232dc389584ea0e2eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d3a55d452378bc39887d9aba3b842ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scan_8h.html#a3d3a55d452378bc39887d9aba3b842ae">TOKENTYPE_IS_COMPARATOR</a>(type)&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad">T_EQ</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a66a427caab1c1fa0e9799929f87785df">T_GE</a>)</td></tr>
 <tr class="memdesc:a3d3a55d452378bc39887d9aba3b842ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if a TokenType is associated with a comparison operator.  <a href="scan_8h.html#a3d3a55d452378bc39887d9aba3b842ae">More...</a><br /></td></tr>
 <tr class="separator:a3d3a55d452378bc39887d9aba3b842ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -264,11 +261,11 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af80c03e581832d0539f935ad06c55644">T_LEFT_BRACE</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a0c4f26d5004adf7f0ae46c972d47c641">T_RIGHT_BRACE</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a">T_IDENTIFIER</a>
-, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63">T_LVALUE_IDENTIFIER</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ab1647682cc68bc1ae29602d185992e7a">T_AST_GLUE</a>
 , <br />
-&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ab1647682cc68bc1ae29602d185992e7a">T_AST_GLUE</a>
-, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340">T_FUNCTION_DECLARATION</a>
+&#160;&#160;<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340">T_FUNCTION_DECLARATION</a>
 , <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ab5fa589fc955a68223a4fa2d68bcfd31">T_FUNCTION_CALL</a>
+, <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a32ed63b84c0e9aa5ecd174c7657f7189">TOKENTYPE_MAX</a>
 <br />
  }</td></tr>
 <tr class="memdesc:aa520fbf142ba1e7e659590c07da31921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types of scannable tokens.  <a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">More...</a><br /></td></tr>
@@ -487,26 +484,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a10cb0c84238158232dc389584ea0e2eb" name="a10cb0c84238158232dc389584ea0e2eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10cb0c84238158232dc389584ea0e2eb">&#9670;&nbsp;</a></span>TOKENTYPE_IS_IDENTIFIER</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TOKENTYPE_IS_IDENTIFIER</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">type</td><td>)</td>
-          <td>&#160;&#160;&#160;(type &gt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a">T_IDENTIFIER</a> &amp;&amp; type &lt;= <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63">T_LVALUE_IDENTIFIER</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Determines if a TokenType is associated with an identifier. </p>
-
-</div>
-</div>
 <a id="a87af1be2659dcfd57ec2e73dcd0470c5" name="a87af1be2659dcfd57ec2e73dcd0470c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87af1be2659dcfd57ec2e73dcd0470c5">&#9670;&nbsp;</a></span>TOKENTYPE_IS_LITERAL</h2>
 
@@ -682,10 +659,10 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921af80c03e581832d0539f935ad06c55644" name="aa520fbf142ba1e7e659590c07da31921af80c03e581832d0539f935ad06c55644"></a>T_LEFT_BRACE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a0c4f26d5004adf7f0ae46c972d47c641" name="aa520fbf142ba1e7e659590c07da31921a0c4f26d5004adf7f0ae46c972d47c641"></a>T_RIGHT_BRACE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a" name="aa520fbf142ba1e7e659590c07da31921a141e88afb82d0cd392318a5c3534c33a"></a>T_IDENTIFIER&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63" name="aa520fbf142ba1e7e659590c07da31921af788b35c45c5e9223b9f303f661b1e63"></a>T_LVALUE_IDENTIFIER&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921ab1647682cc68bc1ae29602d185992e7a" name="aa520fbf142ba1e7e659590c07da31921ab1647682cc68bc1ae29602d185992e7a"></a>T_AST_GLUE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340" name="aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340"></a>T_FUNCTION_DECLARATION&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921ab5fa589fc955a68223a4fa2d68bcfd31" name="aa520fbf142ba1e7e659590c07da31921ab5fa589fc955a68223a4fa2d68bcfd31"></a>T_FUNCTION_CALL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a32ed63b84c0e9aa5ecd174c7657f7189" name="aa520fbf142ba1e7e659590c07da31921a32ed63b84c0e9aa5ecd174c7657f7189"></a>TOKENTYPE_MAX&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -778,7 +755,14 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    <span class="stringliteral">&quot;EOF&quot;</span>, <span class="stringliteral">&quot;+&quot;</span>, <span class="stringliteral">&quot;-&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>, <span class="stringliteral">&quot;/&quot;</span>, <span class="stringliteral">&quot;pow&quot;</span>, <span class="stringliteral">&quot;==&quot;</span>, <span class="stringliteral">&quot;!=&quot;</span>, <span class="stringliteral">&quot;&lt;&quot;</span>, <span class="stringliteral">&quot;&gt;&quot;</span>, <span class="stringliteral">&quot;&lt;=&quot;</span>, <span class="stringliteral">&quot;&gt;=&quot;</span>, <span class="stringliteral">&quot;and&quot;</span>, <span class="stringliteral">&quot;or&quot;</span>, <span class="stringliteral">&quot;xor&quot;</span>, <span class="stringliteral">&quot;nand&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;nor&quot;</span>, <span class="stringliteral">&quot;xnor&quot;</span>, <span class="stringliteral">&quot;&amp;&quot;</span>, <span class="stringliteral">&quot;*&quot;</span>, <span class="stringliteral">&quot;true&quot;</span>, <span class="stringliteral">&quot;false&quot;</span>, <span class="stringliteral">&quot;byte literal&quot;</span>, <span class="stringliteral">&quot;character literal&quot;</span>, <span class="stringliteral">&quot;short literal&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;integer literal&quot;</span>, <span class="stringliteral">&quot;long literal&quot;</span>, <span class="stringliteral">&quot;void&quot;</span>, <span class="stringliteral">&quot;bool&quot;</span>, <span class="stringliteral">&quot;byte&quot;</span>, <span class="stringliteral">&quot;char&quot;</span>, <span class="stringliteral">&quot;short&quot;</span>, <span class="stringliteral">&quot;int&quot;</span>, <span class="stringliteral">&quot;long&quot;</span>, <span class="stringliteral">&quot;=&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;print&quot;</span>, <span class="stringliteral">&quot;if&quot;</span>, <span class="stringliteral">&quot;else&quot;</span>, <span class="stringliteral">&quot;while&quot;</span>, <span class="stringliteral">&quot;for&quot;</span>, <span class="stringliteral">&quot;return&quot;</span>, <span class="stringliteral">&quot;;&quot;</span>, <span class="stringliteral">&quot;(&quot;</span>, <span class="stringliteral">&quot;)&quot;</span>, <span class="stringliteral">&quot;{&quot;</span>, <span class="stringliteral">&quot;}&quot;</span>, <span class="stringliteral">&quot;identifier&quot;</span>,</div>
+<div class="line">    </div>
+<div class="line">    <span class="stringliteral">&quot;ast glue&quot;</span>, <span class="stringliteral">&quot;function&quot;</span>, <span class="stringliteral">&quot;function call&quot;</span>, <span class="stringliteral">&quot;TOKENTYPE_MAX&quot;</span>}</div>
+</div><!-- fragment -->
 <p><a class="el" href="structToken.html" title="Structure containing information about individual scannable tokens.">Token</a> string equivalents. </p>
 
 </div>

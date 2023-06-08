@@ -90,7 +90,7 @@ Collaboration diagram for ASTNode:</div>
 <div class="dyncontent">
 <div class="center"><img src="structASTNode__coll__graph.png" border="0" usemap="#aASTNode_coll__map" alt="Collaboration graph"/></div>
 <map name="aASTNode_coll__map" id="aASTNode_coll__map">
-<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,175,159,369"/>
+<area shape="rect" title="Component of the abstract syntax tree built during parsing." alt="" coords="5,175,159,384"/>
 <area shape="rect" href="structNumber.html" title="Container for various kinds of number data." alt="" coords="27,5,137,112"/>
 </map>
 </div>
@@ -112,6 +112,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a6677f563bdbc8015f5067296bfefc2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62d58599dca37a47743243ae2cebb0e9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#a62d58599dca37a47743243ae2cebb0e9">is_char_arithmetic</a></td></tr>
 <tr class="separator:a62d58599dca37a47743243ae2cebb0e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d0c178a8e1155a0641c7c2bb6253068"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#a6d0c178a8e1155a0641c7c2bb6253068">is_rvalue</a></td></tr>
+<tr class="separator:a6d0c178a8e1155a0641c7c2bb6253068"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa794bc0db32b5488f7e89e0b140a5676"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#aa794bc0db32b5488f7e89e0b140a5676">filename</a> [256]</td></tr>
 <tr class="separator:aa794bc0db32b5488f7e89e0b140a5676"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeaedac691fa3ce352620f2e3534b9dc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structASTNode.html#afeaedac691fa3ce352620f2e3534b9dc">line_number</a></td></tr>
@@ -171,6 +173,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >Whether or not a binary arithmetic node is dealing with chars </p>
+
+</div>
+</div>
+<a id="a6d0c178a8e1155a0641c7c2bb6253068" name="a6d0c178a8e1155a0641c7c2bb6253068"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d0c178a8e1155a0641c7c2bb6253068">&#9670;&nbsp;</a></span>is_rvalue</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ASTNode::is_rvalue</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Whether or not this <a class="el" href="structASTNode.html" title="Component of the abstract syntax tree built during parsing.">ASTNode</a> contains an RValue </p>
 
 </div>
 </div>

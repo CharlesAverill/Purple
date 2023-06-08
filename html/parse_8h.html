@@ -155,8 +155,11 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aceb30c679b898ce21cad0d777c82664b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#aceb30c679b898ce21cad0d777c82664b">operatorPrecedence</a> []</td></tr>
-<tr class="separator:aceb30c679b898ce21cad0d777c82664b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3967a8abc0a77bbfd48d3253f72cb758"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a3967a8abc0a77bbfd48d3253f72cb758">operatorPrecedence</a> []</td></tr>
+<tr class="memdesc:a3967a8abc0a77bbfd48d3253f72cb758"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed.  <a href="parse_8h.html#a3967a8abc0a77bbfd48d3253f72cb758">More...</a><br /></td></tr>
+<tr class="separator:a3967a8abc0a77bbfd48d3253f72cb758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0770abccda135a7dc8915b21f96c9944"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a0770abccda135a7dc8915b21f96c9944">rightAssociativeOperators</a> [<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a32ed63b84c0e9aa5ecd174c7657f7189">TOKENTYPE_MAX</a>+1]</td></tr>
+<tr class="separator:a0770abccda135a7dc8915b21f96c9944"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="structFunction.html" title="Container for function information.">Function</a> headers for parsing and operator precedence values. </p>
@@ -411,8 +414,8 @@ Operator Precedence</h2>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="aceb30c679b898ce21cad0d777c82664b" name="aceb30c679b898ce21cad0d777c82664b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aceb30c679b898ce21cad0d777c82664b">&#9670;&nbsp;</a></span>operatorPrecedence</h2>
+<a id="a3967a8abc0a77bbfd48d3253f72cb758" name="a3967a8abc0a77bbfd48d3253f72cb758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3967a8abc0a77bbfd48d3253f72cb758">&#9670;&nbsp;</a></span>operatorPrecedence</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -421,7 +424,7 @@ Operator Precedence</h2>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int operatorPrecedence[]</td>
+          <td class="memname"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> operatorPrecedence[]</td>
         </tr>
       </table>
   </td>
@@ -459,8 +462,34 @@ Operator Precedence</h2>
 <div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aee13d53546c9358e6b15a455f1c81fb6"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aee13d53546c9358e6b15a455f1c81fb6">T_OR</a></div><div class="ttdeci">@ T_OR</div><div class="ttdef"><b>Definition:</b> scan.h:37</div></div>
 <div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921af7c934b483e2a65d6212722999121c0e"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921af7c934b483e2a65d6212722999121c0e">T_NEQ</a></div><div class="ttdeci">@ T_NEQ</div><div class="ttdef"><b>Definition:</b> scan.h:30</div></div>
 <div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921afbfa3270b32380652502b2d0cb644ccd">T_EXPONENT</a></div><div class="ttdeci">@ T_EXPONENT</div><div class="ttdef"><b>Definition:</b> scan.h:27</div></div>
-</div><!-- fragment --><p >Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed </p>
+</div><!-- fragment -->
+<p>Operator precedence values. Precedence ranges from 0-15, 15 being the first to be computed. </p>
 
+</div>
+</div>
+<a id="a0770abccda135a7dc8915b21f96c9944" name="a0770abccda135a7dc8915b21f96c9944"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0770abccda135a7dc8915b21f96c9944">&#9670;&nbsp;</a></span>rightAssociativeOperators</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> rightAssociativeOperators[<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a32ed63b84c0e9aa5ecd174c7657f7189">TOKENTYPE_MAX</a>+1]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    [<a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720">T_ASSIGN</a>] = 1,</div>
+<div class="line">}</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

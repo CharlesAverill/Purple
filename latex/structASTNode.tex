@@ -36,6 +36,8 @@ struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{structA
 \item 
 bool \mbox{\hyperlink{structASTNode_a62d58599dca37a47743243ae2cebb0e9}{is\+\_\+char\+\_\+arithmetic}}
 \item 
+bool \mbox{\hyperlink{structASTNode_a6d0c178a8e1155a0641c7c2bb6253068}{is\+\_\+rvalue}}
+\item 
 char \mbox{\hyperlink{structASTNode_aa794bc0db32b5488f7e89e0b140a5676}{filename}} \mbox{[}256\mbox{]}
 \item 
 int \mbox{\hyperlink{structASTNode_afeaedac691fa3ce352620f2e3534b9dc}{line\+\_\+number}}
@@ -74,7 +76,13 @@ Filename of this \mbox{\hyperlink{structToken}{Token}} \mbox{\Hypertarget{struct
 \doxysubsubsection{\texorpdfstring{is\_char\_arithmetic}{is\_char\_arithmetic}}
 {\footnotesize\ttfamily bool ASTNode\+::is\+\_\+char\+\_\+arithmetic}
 
-Whether or not a binary arithmetic node is dealing with chars \mbox{\Hypertarget{structASTNode_a6677f563bdbc8015f5067296bfefc2f2}\label{structASTNode_a6677f563bdbc8015f5067296bfefc2f2}} 
+Whether or not a binary arithmetic node is dealing with chars \mbox{\Hypertarget{structASTNode_a6d0c178a8e1155a0641c7c2bb6253068}\label{structASTNode_a6d0c178a8e1155a0641c7c2bb6253068}} 
+\index{ASTNode@{ASTNode}!is\_rvalue@{is\_rvalue}}
+\index{is\_rvalue@{is\_rvalue}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{is\_rvalue}{is\_rvalue}}
+{\footnotesize\ttfamily bool ASTNode\+::is\+\_\+rvalue}
+
+Whether or not this \mbox{\hyperlink{structASTNode}{ASTNode}} contains an RValue \mbox{\Hypertarget{structASTNode_a6677f563bdbc8015f5067296bfefc2f2}\label{structASTNode_a6677f563bdbc8015f5067296bfefc2f2}} 
 \index{ASTNode@{ASTNode}!largest\_number\_type@{largest\_number\_type}}
 \index{largest\_number\_type@{largest\_number\_type}!ASTNode@{ASTNode}}
 \doxysubsubsection{\texorpdfstring{largest\_number\_type}{largest\_number\_type}}
