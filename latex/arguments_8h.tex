@@ -33,7 +33,7 @@ struct \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{arguments_8h_a21c26ef2a3830a77c03dd2bf44d92ea5}{FCONST\+\_\+\+EXPR\+\_\+\+REDUCE\+\_\+\+CODE}}~0x100
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Argument shorthand code for the -\/fconst-\/expr-\/reduce flag. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,9 +43,9 @@ typedef struct \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} \mbox{\hyperlin
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{arguments_8h_a4d7de48bbb1fd1e0943934cd0097f308}{parse\+\_\+args}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
-\item 
+\begin{DoxyCompactList}\small\item\em Parses command-\/line arguments via argp. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{arguments_8h_aa6dd9bce1f6797c4970e40007460cb69}{set\+\_\+opt\+\_\+level}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int opt\+\_\+level)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set optimization flags based on a given opt level. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -68,6 +68,10 @@ Charles\+Averill
 
 
 
+Argument shorthand code for the -\/fconst-\/expr-\/reduce flag. 
+
+
+
 \doxysubsection{Typedef Documentation}
 \mbox{\Hypertarget{arguments_8h_a5b56d2fb6df7bf6bea59b8373b25b068}\label{arguments_8h_a5b56d2fb6df7bf6bea59b8373b25b068}} 
 \index{arguments.h@{arguments.h}!PurpleArgs@{PurpleArgs}}
@@ -84,9 +88,24 @@ Charles\+Averill
 \doxysubsubsection{\texorpdfstring{parse\_args()}{parse\_args()}}
 {\footnotesize\ttfamily void parse\+\_\+args (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$}]{args,  }\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
+
+
+Parses command-\/line arguments via argp. 
+
 \mbox{\Hypertarget{arguments_8h_aa6dd9bce1f6797c4970e40007460cb69}\label{arguments_8h_aa6dd9bce1f6797c4970e40007460cb69}} 
 \index{arguments.h@{arguments.h}!set\_opt\_level@{set\_opt\_level}}
 \index{set\_opt\_level@{set\_opt\_level}!arguments.h@{arguments.h}}
 \doxysubsubsection{\texorpdfstring{set\_opt\_level()}{set\_opt\_level()}}
 {\footnotesize\ttfamily void set\+\_\+opt\+\_\+level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$}]{args,  }\item[{int}]{opt\+\_\+level }\end{DoxyParamCaption})}
 
+
+
+Set optimization flags based on a given opt level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} struct to set flags in \\
+\hline
+{\em opt\+\_\+level} & Level of optimization to set \\
+\hline
+\end{DoxyParams}

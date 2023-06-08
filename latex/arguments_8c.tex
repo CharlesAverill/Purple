@@ -25,9 +25,9 @@ Include dependency graph for arguments.\+c\+:
 error\+\_\+t \mbox{\hyperlink{arguments_8c_a5fb6abc38ef248ec154591e0dd392c1b}{parse\+\_\+opt}} (int key, char $\ast$arg, struct argp\+\_\+state $\ast$state)
 \item 
 void \mbox{\hyperlink{arguments_8c_a4d7de48bbb1fd1e0943934cd0097f308}{parse\+\_\+args}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
-\item 
+\begin{DoxyCompactList}\small\item\em Parses command-\/line arguments via argp. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{arguments_8c_aa6dd9bce1f6797c4970e40007460cb69}{set\+\_\+opt\+\_\+level}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int opt\+\_\+level)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set optimization flags based on a given opt level. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -63,6 +63,10 @@ Charles Averill
 \doxysubsubsection{\texorpdfstring{parse\_args()}{parse\_args()}}
 {\footnotesize\ttfamily void parse\+\_\+args (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$}]{args,  }\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
+
+
+Parses command-\/line arguments via argp. 
+
 \mbox{\Hypertarget{arguments_8c_a5fb6abc38ef248ec154591e0dd392c1b}\label{arguments_8c_a5fb6abc38ef248ec154591e0dd392c1b}} 
 \index{arguments.c@{arguments.c}!parse\_opt@{parse\_opt}}
 \index{parse\_opt@{parse\_opt}!arguments.c@{arguments.c}}
@@ -75,6 +79,17 @@ Charles Averill
 \doxysubsubsection{\texorpdfstring{set\_opt\_level()}{set\_opt\_level()}}
 {\footnotesize\ttfamily void set\+\_\+opt\+\_\+level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$}]{args,  }\item[{int}]{opt\+\_\+level }\end{DoxyParamCaption})}
 
+
+
+Set optimization flags based on a given opt level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} struct to set flags in \\
+\hline
+{\em opt\+\_\+level} & Level of optimization to set \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Variable Documentation}

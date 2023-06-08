@@ -53,7 +53,7 @@ static \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_a2
 void \mbox{\hyperlink{llvm_8c_a6290db13d34ed659a7108ad675ee4da5}{llvm\+\_\+store\+\_\+global\+\_\+variable}} (char $\ast$symbol\+\_\+name, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} rvalue\+\_\+register)
 \begin{DoxyCompactList}\small\item\em Store a value into a global variable. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_af58ce9d63b67961b551dfcbedea598cc}{llvm\+\_\+int\+\_\+resize}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} reg, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} new\+\_\+type)
-\item 
+\begin{DoxyCompactList}\small\item\em Generates an extend or truncate statement to change the bit-\/width of an integer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_af15a12c2755b681ddd1f067daedbb741}{llvm\+\_\+declare\+\_\+global\+\_\+number\+\_\+variable}} (char $\ast$symbol\+\_\+name, \mbox{\hyperlink{structNumber}{Number}} n)
 \begin{DoxyCompactList}\small\item\em Declare a global variable. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a3d975b70508857ae99ff02c02f2712d1}{llvm\+\_\+declare\+\_\+assign\+\_\+global\+\_\+number\+\_\+variable}} (char $\ast$symbol\+\_\+name, \mbox{\hyperlink{structNumber}{Number}} number)
@@ -63,9 +63,9 @@ void \mbox{\hyperlink{llvm_8c_a93722ca744527991108536664139bef2}{llvm\+\_\+print
 void \mbox{\hyperlink{llvm_8c_a78081f32a56e484cb74dfb926be24ac2}{llvm\+\_\+print\+\_\+bool}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} print\+\_\+vr)
 \begin{DoxyCompactList}\small\item\em Generate code to print a boolean value. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{llvm_8c_a67e04922ee0000a791bc90ba8606cc14}{llvm\+\_\+relational\+\_\+compare}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} comparison\+\_\+type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} out\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
-\item 
+\begin{DoxyCompactList}\small\item\em Generates a relational (inline) comparison statement. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{llvm_8c_adb74f0e765d875b31717754d8b9be8a7}{llvm\+\_\+logical\+\_\+compare}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} comparison\+\_\+type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} out\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
-\item 
+\begin{DoxyCompactList}\small\item\em Generates a logical (statement-\/level) comparison statement. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_a2dc07af05a8028e1c21b2822c12c171d}{llvm\+\_\+compare}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} comparison\+\_\+type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register)
 \begin{DoxyCompactList}\small\item\em Generate code to compare two registers. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_af86d3ef1da82cd0973de1009ceebab76}{llvm\+\_\+compare\+\_\+jump}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} comparison\+\_\+type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\+\_\+virtual\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} false\+\_\+label)
@@ -89,11 +89,11 @@ const char $\ast$ \mbox{\hyperlink{llvm_8c_af4ccee4ae68116bfc0860b6d19090bde}{ty
 void \mbox{\hyperlink{llvm_8c_a0db1e84c33f375b218a6010fee7a4b90}{llvm\+\_\+return}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} value, char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Generate a return statement. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{llvm_8c_ae242eaaa205d79124b4ab7999d6fae4a}{refstring}} (char $\ast$buf, int pointer\+\_\+depth)
-\item 
+\begin{DoxyCompactList}\small\item\em Generate a string containing pointer stars. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_acbb7c688b00f276df57c968569ba72de}{llvm\+\_\+get\+\_\+address}} (char $\ast$symbol\+\_\+name)
-\item 
+\begin{DoxyCompactList}\small\item\em Generate an addressing statement. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_ab84adb4dc9169d4795a0325980ac65f1}{llvm\+\_\+dereference}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} reg)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generate a dereference (load) statement. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -306,6 +306,18 @@ Declare a global variable.
 \doxysubsubsection{\texorpdfstring{llvm\_dereference()}{llvm\_dereference()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+dereference (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{reg }\end{DoxyParamCaption})}
 
+
+
+Generate a dereference (load) statement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register to dereference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{structLLVMValue}{LLVMValue}} containing loaded value 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_a29b52e6ace67499b9c741013979b1e48}\label{llvm_8c_a29b52e6ace67499b9c741013979b1e48}} 
 \index{llvm.c@{llvm.c}!llvm\_divide@{llvm\_divide}}
 \index{llvm\_divide@{llvm\_divide}!llvm.c@{llvm.c}}
@@ -391,12 +403,38 @@ Generates the preamble for a function.
 \doxysubsubsection{\texorpdfstring{llvm\_get\_address()}{llvm\_get\_address()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+get\+\_\+address (\begin{DoxyParamCaption}\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
 
+
+
+Generate an addressing statement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol\+\_\+name} & Symbol to take the address of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{structLLVMValue}{LLVMValue}} containing address of symbol 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_af58ce9d63b67961b551dfcbedea598cc}\label{llvm_8c_af58ce9d63b67961b551dfcbedea598cc}} 
 \index{llvm.c@{llvm.c}!llvm\_int\_resize@{llvm\_int\_resize}}
 \index{llvm\_int\_resize@{llvm\_int\_resize}!llvm.c@{llvm.c}}
 \doxysubsubsection{\texorpdfstring{llvm\_int\_resize()}{llvm\_int\_resize()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+int\+\_\+resize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{reg,  }\item[{\mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}}}]{new\+\_\+type }\end{DoxyParamCaption})}
 
+
+
+Generates an extend or truncate statement to change the bit-\/width of an integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register whose contents are to be resized \\
+\hline
+{\em new\+\_\+type} & New Number\+Type to resize to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} Resized \mbox{\hyperlink{structLLVMValue}{LLVMValue}} 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_a4ccd254a599a759033c351b4e7d3d5c9}\label{llvm_8c_a4ccd254a599a759033c351b4e7d3d5c9}} 
 \index{llvm.c@{llvm.c}!llvm\_jump@{llvm\_jump}}
 \index{llvm\_jump@{llvm\_jump}!llvm.c@{llvm.c}}
@@ -451,6 +489,21 @@ Load a global variable\textquotesingle{}s value into a new virtual register.
 \doxysubsubsection{\texorpdfstring{llvm\_logical\_compare()}{llvm\_logical\_compare()}}
 {\footnotesize\ttfamily static void llvm\+\_\+logical\+\_\+compare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{comparison\+\_\+type,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{out\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{left\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{right\+\_\+virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Generates a logical (statement-\/level) comparison statement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comparison\+\_\+type} & What kind of comparison to generate \\
+\hline
+{\em out\+\_\+register} & Register to store output into \\
+\hline
+{\em left\+\_\+virtual\+\_\+register} & Left comparison operand \\
+\hline
+{\em right\+\_\+virtual\+\_\+register} & Right comparison operand \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{llvm_8c_aae1c0bbb7dbb8851ca9e1af41d069ad0}\label{llvm_8c_aae1c0bbb7dbb8851ca9e1af41d069ad0}} 
 \index{llvm.c@{llvm.c}!llvm\_multiply@{llvm\_multiply}}
 \index{llvm\_multiply@{llvm\_multiply}!llvm.c@{llvm.c}}
@@ -527,6 +580,21 @@ Generate code to print an integer.
 \doxysubsubsection{\texorpdfstring{llvm\_relational\_compare()}{llvm\_relational\_compare()}}
 {\footnotesize\ttfamily static void llvm\+\_\+relational\+\_\+compare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}}]{comparison\+\_\+type,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{out\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{left\+\_\+virtual\+\_\+register,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{right\+\_\+virtual\+\_\+register }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Generates a relational (inline) comparison statement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comparison\+\_\+type} & What kind of comparison to generate \\
+\hline
+{\em out\+\_\+register} & Register to store output into \\
+\hline
+{\em left\+\_\+virtual\+\_\+register} & Left comparison operand \\
+\hline
+{\em right\+\_\+virtual\+\_\+register} & Right comparison operand \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{llvm_8c_a0db1e84c33f375b218a6010fee7a4b90}\label{llvm_8c_a0db1e84c33f375b218a6010fee7a4b90}} 
 \index{llvm.c@{llvm.c}!llvm\_return@{llvm\_return}}
 \index{llvm\_return@{llvm\_return}!llvm.c@{llvm.c}}
@@ -623,6 +691,20 @@ Generate code for binary subtraction.
 \doxysubsubsection{\texorpdfstring{refstring()}{refstring()}}
 {\footnotesize\ttfamily char $\ast$ refstring (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{int}]{pointer\+\_\+depth }\end{DoxyParamCaption})}
 
+
+
+Generate a string containing pointer stars. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & Buffer to fill with pointer stars \\
+\hline
+{\em pointer\+\_\+depth} & \mbox{\hyperlink{structNumber}{Number}} of pointer stars to fill \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ Resulting string (for inline use) 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_af4ccee4ae68116bfc0860b6d19090bde}\label{llvm_8c_af4ccee4ae68116bfc0860b6d19090bde}} 
 \index{llvm.c@{llvm.c}!type\_to\_llvm\_type@{type\_to\_llvm\_type}}
 \index{type\_to\_llvm\_type@{type\_to\_llvm\_type}!llvm.c@{llvm.c}}

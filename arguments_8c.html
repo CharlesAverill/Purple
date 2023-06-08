@@ -116,8 +116,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a5fb6abc38ef248ec154591e0dd392c1b"><td class="memItemLeft" align="right" valign="top">error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8c.html#a5fb6abc38ef248ec154591e0dd392c1b">parse_opt</a> (int key, char *arg, struct argp_state *state)</td></tr>
 <tr class="separator:a5fb6abc38ef248ec154591e0dd392c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d7de48bbb1fd1e0943934cd0097f308"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8c.html#a4d7de48bbb1fd1e0943934cd0097f308">parse_args</a> (<a class="el" href="structPurpleArgs.html">PurpleArgs</a> *args, int argc, char *argv[])</td></tr>
+<tr class="memdesc:a4d7de48bbb1fd1e0943934cd0097f308"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses command-line arguments via argp.  <a href="arguments_8c.html#a4d7de48bbb1fd1e0943934cd0097f308">More...</a><br /></td></tr>
 <tr class="separator:a4d7de48bbb1fd1e0943934cd0097f308"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6dd9bce1f6797c4970e40007460cb69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8c.html#aa6dd9bce1f6797c4970e40007460cb69">set_opt_level</a> (<a class="el" href="structPurpleArgs.html">PurpleArgs</a> *args, int opt_level)</td></tr>
+<tr class="memdesc:aa6dd9bce1f6797c4970e40007460cb69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set optimization flags based on a given opt level.  <a href="arguments_8c.html#aa6dd9bce1f6797c4970e40007460cb69">More...</a><br /></td></tr>
 <tr class="separator:aa6dd9bce1f6797c4970e40007460cb69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -171,6 +173,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Parses command-line arguments via argp. </p>
 
 </div>
 </div>
@@ -233,6 +237,15 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set optimization flags based on a given opt level. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td><a class="el" href="structPurpleArgs.html" title="Structure containing command line arguments.">PurpleArgs</a> struct to set flags in </td></tr>
+    <tr><td class="paramname">opt_level</td><td>Level of optimization to set </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -363,7 +376,7 @@ Variables</h2></td></tr>
 <div class="line">    {<span class="stringliteral">&quot;fconst-expr-reduce&quot;</span>, <a class="code hl_define" href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">FCONST_EXPR_REDUCE_CODE</a>, 0, OPTION_HIDDEN, 0, 0},</div>
 <div class="line">    {0},</div>
 <div class="line">}</div>
-<div class="ttc" id="aarguments_8h_html_a21c26ef2a3830a77c03dd2bf44d92ea5"><div class="ttname"><a href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">FCONST_EXPR_REDUCE_CODE</a></div><div class="ttdeci">#define FCONST_EXPR_REDUCE_CODE</div><div class="ttdef"><b>Definition:</b> arguments.h:36</div></div>
+<div class="ttc" id="aarguments_8h_html_a21c26ef2a3830a77c03dd2bf44d92ea5"><div class="ttname"><a href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">FCONST_EXPR_REDUCE_CODE</a></div><div class="ttdeci">#define FCONST_EXPR_REDUCE_CODE</div><div class="ttdoc">Argument shorthand code for the -fconst-expr-reduce flag.</div><div class="ttdef"><b>Definition:</b> arguments.h:39</div></div>
 <div class="ttc" id="ainfo_8h_html_a45cd2cf0df774e6893fe020b85b31ff5"><div class="ttname"><a href="info_8h.html#a45cd2cf0df774e6893fe020b85b31ff5">DEFAULT_CLANG_EXECUTABLE_PATH</a></div><div class="ttdeci">#define DEFAULT_CLANG_EXECUTABLE_PATH</div><div class="ttdef"><b>Definition:</b> info.h:17</div></div>
 </div><!-- fragment -->
 </div>

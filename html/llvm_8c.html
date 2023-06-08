@@ -175,6 +175,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a6290db13d34ed659a7108ad675ee4da5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store a value into a global variable.  <a href="llvm_8c.html#a6290db13d34ed659a7108ad675ee4da5">More...</a><br /></td></tr>
 <tr class="separator:a6290db13d34ed659a7108ad675ee4da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af58ce9d63b67961b551dfcbedea598cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#af58ce9d63b67961b551dfcbedea598cc">llvm_int_resize</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> reg, <a class="el" href="number_8h.html#ae33bf5f4db440a147780b796497d1ef5">NumberType</a> new_type)</td></tr>
+<tr class="memdesc:af58ce9d63b67961b551dfcbedea598cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates an extend or truncate statement to change the bit-width of an integer.  <a href="llvm_8c.html#af58ce9d63b67961b551dfcbedea598cc">More...</a><br /></td></tr>
 <tr class="separator:af58ce9d63b67961b551dfcbedea598cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af15a12c2755b681ddd1f067daedbb741"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#af15a12c2755b681ddd1f067daedbb741">llvm_declare_global_number_variable</a> (char *symbol_name, <a class="el" href="structNumber.html">Number</a> n)</td></tr>
 <tr class="memdesc:af15a12c2755b681ddd1f067daedbb741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare a global variable.  <a href="llvm_8c.html#af15a12c2755b681ddd1f067daedbb741">More...</a><br /></td></tr>
@@ -189,8 +190,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a78081f32a56e484cb74dfb926be24ac2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to print a boolean value.  <a href="llvm_8c.html#a78081f32a56e484cb74dfb926be24ac2">More...</a><br /></td></tr>
 <tr class="separator:a78081f32a56e484cb74dfb926be24ac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67e04922ee0000a791bc90ba8606cc14"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a67e04922ee0000a791bc90ba8606cc14">llvm_relational_compare</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> comparison_type, <a class="el" href="structLLVMValue.html">LLVMValue</a> out_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> left_virtual_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> right_virtual_register)</td></tr>
+<tr class="memdesc:a67e04922ee0000a791bc90ba8606cc14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a relational (inline) comparison statement.  <a href="llvm_8c.html#a67e04922ee0000a791bc90ba8606cc14">More...</a><br /></td></tr>
 <tr class="separator:a67e04922ee0000a791bc90ba8606cc14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb74f0e765d875b31717754d8b9be8a7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#adb74f0e765d875b31717754d8b9be8a7">llvm_logical_compare</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> comparison_type, <a class="el" href="structLLVMValue.html">LLVMValue</a> out_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> left_virtual_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> right_virtual_register)</td></tr>
+<tr class="memdesc:adb74f0e765d875b31717754d8b9be8a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a logical (statement-level) comparison statement.  <a href="llvm_8c.html#adb74f0e765d875b31717754d8b9be8a7">More...</a><br /></td></tr>
 <tr class="separator:adb74f0e765d875b31717754d8b9be8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2dc07af05a8028e1c21b2822c12c171d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a2dc07af05a8028e1c21b2822c12c171d">llvm_compare</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> comparison_type, <a class="el" href="structLLVMValue.html">LLVMValue</a> left_virtual_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> right_virtual_register)</td></tr>
 <tr class="memdesc:a2dc07af05a8028e1c21b2822c12c171d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate code to compare two registers.  <a href="llvm_8c.html#a2dc07af05a8028e1c21b2822c12c171d">More...</a><br /></td></tr>
@@ -226,10 +229,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:a0db1e84c33f375b218a6010fee7a4b90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a return statement.  <a href="llvm_8c.html#a0db1e84c33f375b218a6010fee7a4b90">More...</a><br /></td></tr>
 <tr class="separator:a0db1e84c33f375b218a6010fee7a4b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae242eaaa205d79124b4ab7999d6fae4a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#ae242eaaa205d79124b4ab7999d6fae4a">refstring</a> (char *buf, int pointer_depth)</td></tr>
+<tr class="memdesc:ae242eaaa205d79124b4ab7999d6fae4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a string containing pointer stars.  <a href="llvm_8c.html#ae242eaaa205d79124b4ab7999d6fae4a">More...</a><br /></td></tr>
 <tr class="separator:ae242eaaa205d79124b4ab7999d6fae4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbb7c688b00f276df57c968569ba72de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#acbb7c688b00f276df57c968569ba72de">llvm_get_address</a> (char *symbol_name)</td></tr>
+<tr class="memdesc:acbb7c688b00f276df57c968569ba72de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an addressing statement.  <a href="llvm_8c.html#acbb7c688b00f276df57c968569ba72de">More...</a><br /></td></tr>
 <tr class="separator:acbb7c688b00f276df57c968569ba72de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab84adb4dc9169d4795a0325980ac65f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#ab84adb4dc9169d4795a0325980ac65f1">llvm_dereference</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> reg)</td></tr>
+<tr class="memdesc:ab84adb4dc9169d4795a0325980ac65f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a dereference (load) statement.  <a href="llvm_8c.html#ab84adb4dc9169d4795a0325980ac65f1">More...</a><br /></td></tr>
 <tr class="separator:ab84adb4dc9169d4795a0325980ac65f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -644,6 +650,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Generate a dereference (load) statement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Register to dereference </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> <a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> containing loaded value </dd></dl>
+
 </div>
 </div>
 <a id="a29b52e6ace67499b9c741013979b1e48" name="a29b52e6ace67499b9c741013979b1e48"></a>
@@ -842,6 +857,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Generate an addressing statement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">symbol_name</td><td>Symbol to take the address of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> <a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> containing address of symbol </dd></dl>
+
 </div>
 </div>
 <a id="af58ce9d63b67961b551dfcbedea598cc" name="af58ce9d63b67961b551dfcbedea598cc"></a>
@@ -869,6 +893,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Generates an extend or truncate statement to change the bit-width of an integer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Register whose contents are to be resized </td></tr>
+    <tr><td class="paramname">new_type</td><td>New NumberType to resize to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> Resized <a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> </dd></dl>
 
 </div>
 </div>
@@ -996,6 +1030,17 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Generates a logical (statement-level) comparison statement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">comparison_type</td><td>What kind of comparison to generate </td></tr>
+    <tr><td class="paramname">out_register</td><td>Register to store output into </td></tr>
+    <tr><td class="paramname">left_virtual_register</td><td>Left comparison operand </td></tr>
+    <tr><td class="paramname">right_virtual_register</td><td>Right comparison operand </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1182,6 +1227,17 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Generates a relational (inline) comparison statement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">comparison_type</td><td>What kind of comparison to generate </td></tr>
+    <tr><td class="paramname">out_register</td><td>Register to store output into </td></tr>
+    <tr><td class="paramname">left_virtual_register</td><td>Left comparison operand </td></tr>
+    <tr><td class="paramname">right_virtual_register</td><td>Right comparison operand </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1384,6 +1440,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Generate a string containing pointer stars. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Buffer to fill with pointer stars </td></tr>
+    <tr><td class="paramname">pointer_depth</td><td><a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a> of pointer stars to fill </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char* Resulting string (for inline use) </dd></dl>
 
 </div>
 </div>
