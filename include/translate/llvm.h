@@ -118,6 +118,8 @@ typedef struct LLVMValue {
         .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number, .pointer_depth = 0   \
     }
 
+#define LLVMVALUE_REGMARKER(llvmvalue) (llvmvalue.value_type == LLVMVALUETYPE_CONSTANT ? "" : "%")
+
 /**Prefix to prepend to LLVM label indices*/
 #define PURPLE_LABEL_PREFIX "L"
 
