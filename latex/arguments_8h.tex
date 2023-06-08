@@ -6,13 +6,14 @@
 
 
 {\ttfamily \#include $<$argp.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}info.\+h\char`\"{}}\newline
 Include dependency graph for arguments.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=205pt]{arguments_8h__incl}
+\includegraphics[width=256pt]{arguments_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -28,6 +29,11 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 struct \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}}
 \begin{DoxyCompactList}\small\item\em Structure containing command line arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{arguments_8h_a21c26ef2a3830a77c03dd2bf44d92ea5}{FCONST\+\_\+\+EXPR\+\_\+\+REDUCE\+\_\+\+CODE}}~0x100
+\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,7 +42,9 @@ typedef struct \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} \mbox{\hyperlin
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{arguments_8h_a4d7de48bbb1fd1e0943934cd0097f308}{parse\+\_\+args}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$\mbox{\hyperlink{data_8h_af0b239f72df01c220d263866200ea216}{args}}, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+void \mbox{\hyperlink{arguments_8h_a4d7de48bbb1fd1e0943934cd0097f308}{parse\+\_\+args}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{arguments_8h_aa6dd9bce1f6797c4970e40007460cb69}{set\+\_\+opt\+\_\+level}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int opt\+\_\+level)
 \end{DoxyCompactItemize}
 
 
@@ -49,6 +57,15 @@ Charles\+Averill
 \begin{DoxyDate}{Date}
 12-\/Oct-\/2021 
 \end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{arguments_8h_a21c26ef2a3830a77c03dd2bf44d92ea5}\label{arguments_8h_a21c26ef2a3830a77c03dd2bf44d92ea5}} 
+\index{arguments.h@{arguments.h}!FCONST\_EXPR\_REDUCE\_CODE@{FCONST\_EXPR\_REDUCE\_CODE}}
+\index{FCONST\_EXPR\_REDUCE\_CODE@{FCONST\_EXPR\_REDUCE\_CODE}!arguments.h@{arguments.h}}
+\doxysubsubsection{\texorpdfstring{FCONST\_EXPR\_REDUCE\_CODE}{FCONST\_EXPR\_REDUCE\_CODE}}
+{\footnotesize\ttfamily \#define FCONST\+\_\+\+EXPR\+\_\+\+REDUCE\+\_\+\+CODE~0x100}
+
 
 
 \doxysubsection{Typedef Documentation}
@@ -66,4 +83,10 @@ Charles\+Averill
 \index{parse\_args@{parse\_args}!arguments.h@{arguments.h}}
 \doxysubsubsection{\texorpdfstring{parse\_args()}{parse\_args()}}
 {\footnotesize\ttfamily void parse\+\_\+args (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$}]{args,  }\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{arguments_8h_aa6dd9bce1f6797c4970e40007460cb69}\label{arguments_8h_aa6dd9bce1f6797c4970e40007460cb69}} 
+\index{arguments.h@{arguments.h}!set\_opt\_level@{set\_opt\_level}}
+\index{set\_opt\_level@{set\_opt\_level}!arguments.h@{arguments.h}}
+\doxysubsubsection{\texorpdfstring{set\_opt\_level()}{set\_opt\_level()}}
+{\footnotesize\ttfamily void set\+\_\+opt\+\_\+level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$}]{args,  }\item[{int}]{opt\+\_\+level }\end{DoxyParamCaption})}
 

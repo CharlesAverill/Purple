@@ -1,10 +1,12 @@
 <map id="src/utils/arguments.c" name="src/utils/arguments.c">
-<area shape="rect" id="node1" title="Command line interface logic." alt="" coords="134,5,277,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,69,107"/>
-<area shape="rect" id="node3" href="$info_8h.html" title="CMake config definitions." alt="" coords="89,155,143,181"/>
-<area shape="rect" id="node4" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="145,80,266,107"/>
-<area shape="rect" id="node6" href="$formatting_8h.html" title="Definitions for string formatting." alt="" coords="290,80,409,107"/>
-<area shape="rect" id="node7" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="433,80,535,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="177,155,234,181"/>
-<area shape="rect" id="node8" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="426,155,542,181"/>
+<area shape="rect" id="node1" title="Command line interface logic." alt="" coords="172,5,315,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,68,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="93,80,157,107"/>
+<area shape="rect" id="node4" href="$info_8h.html" title="CMake config definitions." alt="" coords="173,155,226,181"/>
+<area shape="rect" id="node5" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="232,80,353,107"/>
+<area shape="rect" id="node8" href="$formatting_8h.html" title="Definitions for string formatting." alt="" coords="377,80,496,107"/>
+<area shape="rect" id="node9" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="521,80,622,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="255,155,312,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="337,155,411,181"/>
+<area shape="rect" id="node10" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="513,155,629,181"/>
 </map>

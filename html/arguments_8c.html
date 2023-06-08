@@ -87,7 +87,8 @@ $(function() {
 
 <p>Command line interface logic.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;string.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="info_8h_source.html">info.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="arguments_8h_source.html">utils/arguments.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="formatting_8h_source.html">utils/formatting.h</a>&quot;</code><br />
@@ -97,14 +98,16 @@ Include dependency graph for arguments.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="arguments_8c__incl.png" border="0" usemap="#asrc_2utils_2arguments_8c" alt=""/></div>
 <map name="asrc_2utils_2arguments_8c" id="asrc_2utils_2arguments_8c">
-<area shape="rect" title="Command line interface logic." alt="" coords="134,5,277,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,69,107"/>
-<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="89,155,143,181"/>
-<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="145,80,266,107"/>
-<area shape="rect" href="formatting_8h.html" title="Definitions for string formatting." alt="" coords="290,80,409,107"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="433,80,535,107"/>
-<area shape="rect" title=" " alt="" coords="177,155,234,181"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="426,155,542,181"/>
+<area shape="rect" title="Command line interface logic." alt="" coords="172,5,315,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,68,107"/>
+<area shape="rect" title=" " alt="" coords="93,80,157,107"/>
+<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="173,155,226,181"/>
+<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="232,80,353,107"/>
+<area shape="rect" href="formatting_8h.html" title="Definitions for string formatting." alt="" coords="377,80,496,107"/>
+<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="521,80,622,107"/>
+<area shape="rect" title=" " alt="" coords="255,155,312,181"/>
+<area shape="rect" title=" " alt="" coords="337,155,411,181"/>
+<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="513,155,629,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -112,8 +115,10 @@ Include dependency graph for arguments.c:</div>
 Functions</h2></td></tr>
 <tr class="memitem:a5fb6abc38ef248ec154591e0dd392c1b"><td class="memItemLeft" align="right" valign="top">error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8c.html#a5fb6abc38ef248ec154591e0dd392c1b">parse_opt</a> (int key, char *arg, struct argp_state *state)</td></tr>
 <tr class="separator:a5fb6abc38ef248ec154591e0dd392c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d7de48bbb1fd1e0943934cd0097f308"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8c.html#a4d7de48bbb1fd1e0943934cd0097f308">parse_args</a> (<a class="el" href="structPurpleArgs.html">PurpleArgs</a> *<a class="el" href="data_8h.html#af0b239f72df01c220d263866200ea216">args</a>, int argc, char *argv[])</td></tr>
+<tr class="memitem:a4d7de48bbb1fd1e0943934cd0097f308"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8c.html#a4d7de48bbb1fd1e0943934cd0097f308">parse_args</a> (<a class="el" href="structPurpleArgs.html">PurpleArgs</a> *args, int argc, char *argv[])</td></tr>
 <tr class="separator:a4d7de48bbb1fd1e0943934cd0097f308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6dd9bce1f6797c4970e40007460cb69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8c.html#aa6dd9bce1f6797c4970e40007460cb69">set_opt_level</a> (<a class="el" href="structPurpleArgs.html">PurpleArgs</a> *args, int opt_level)</td></tr>
+<tr class="separator:aa6dd9bce1f6797c4970e40007460cb69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -192,6 +197,34 @@ Variables</h2></td></tr>
           <td></td>
           <td class="paramtype">struct argp_state *&#160;</td>
           <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6dd9bce1f6797c4970e40007460cb69" name="aa6dd9bce1f6797c4970e40007460cb69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6dd9bce1f6797c4970e40007460cb69">&#9670;&nbsp;</a></span>set_opt_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_opt_level </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPurpleArgs.html">PurpleArgs</a> *&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>opt_level</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -324,10 +357,13 @@ Variables</h2></td></tr>
 <div class="line">     <span class="stringliteral">&quot;Alternate path to clang executable (default is \&quot;&quot;</span> <a class="code hl_define" href="info_8h.html#a45cd2cf0df774e6893fe020b85b31ff5">DEFAULT_CLANG_EXECUTABLE_PATH</a> <span class="stringliteral">&quot;\&quot;&quot;</span>, 0},</div>
 <div class="line">    {<span class="stringliteral">&quot;cmd&quot;</span>, <span class="charliteral">&#39;c&#39;</span>, <span class="stringliteral">&quot;PROGRAM&quot;</span>, 0, <span class="stringliteral">&quot;Program passed in as a string&quot;</span>, 0},</div>
 <div class="line">    {<span class="stringliteral">&quot;output&quot;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="stringliteral">&quot;FILE&quot;</span>, 0, <span class="stringliteral">&quot;Path to the generated LLVM file&quot;</span>, 0},</div>
+<div class="line">    {<span class="stringliteral">&quot;opt&quot;</span>, <span class="charliteral">&#39;O&#39;</span>, <span class="stringliteral">&quot;OPTLEVEL&quot;</span>, 0, <span class="stringliteral">&quot;Level of optimization to enable (0-3)&quot;</span>},</div>
 <div class="line">    {<span class="stringliteral">&quot;quiet&quot;</span>, <span class="charliteral">&#39;q&#39;</span>, 0, 0, <span class="stringliteral">&quot;Equivalent to --logging=NONE&quot;</span>, 0},</div>
 <div class="line">    {<span class="stringliteral">&quot;verbose&quot;</span>, <span class="charliteral">&#39;v&#39;</span>, 0, 0, <span class="stringliteral">&quot;Equivalent to --logging=DEBUG&quot;</span>, 0},</div>
+<div class="line">    {<span class="stringliteral">&quot;fconst-expr-reduce&quot;</span>, <a class="code hl_define" href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">FCONST_EXPR_REDUCE_CODE</a>, 0, OPTION_HIDDEN, 0, 0},</div>
 <div class="line">    {0},</div>
 <div class="line">}</div>
+<div class="ttc" id="aarguments_8h_html_a21c26ef2a3830a77c03dd2bf44d92ea5"><div class="ttname"><a href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">FCONST_EXPR_REDUCE_CODE</a></div><div class="ttdeci">#define FCONST_EXPR_REDUCE_CODE</div><div class="ttdef"><b>Definition:</b> arguments.h:36</div></div>
 <div class="ttc" id="ainfo_8h_html_a45cd2cf0df774e6893fe020b85b31ff5"><div class="ttname"><a href="info_8h.html#a45cd2cf0df774e6893fe020b85b31ff5">DEFAULT_CLANG_EXECUTABLE_PATH</a></div><div class="ttdeci">#define DEFAULT_CLANG_EXECUTABLE_PATH</div><div class="ttdef"><b>Definition:</b> info.h:17</div></div>
 </div><!-- fragment -->
 </div>

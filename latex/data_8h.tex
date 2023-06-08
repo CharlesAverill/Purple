@@ -5,11 +5,10 @@
 Project-\/wide variables.  
 
 
-{\ttfamily \#include $<$stdio.\+h$>$}\newline
-{\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}scan.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}translate/symbol\+\_\+table.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils/arguments.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils/misc.\+h\char`\"{}}\newline
 Include dependency graph for data.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -68,7 +67,7 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} int \mbox{\hyperlink{data_8h_a05f52f3601bd5b29b20cf4fa58f3ba1f}{D\+\_\+\+DEBUG}}
 \item 
-\mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$ \mbox{\hyperlink{data_8h_af0b239f72df01c220d263866200ea216}{args}}
+\mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$ \mbox{\hyperlink{data_8h_af59026fa8dccb3e5a19163fcc2389aaa}{D\+\_\+\+ARGS}}
 \item 
 \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} struct \mbox{\hyperlink{structToken}{Token}} \mbox{\hyperlink{data_8h_aaa782ad10014ebc3f74c54edfe56d98b}{D\+\_\+\+GLOBAL\+\_\+\+TOKEN}}
 \item 
@@ -99,11 +98,11 @@ Charles Averill
 extern\+\_\+ will be undefined in \mbox{\hyperlink{purple_8c}{purple.\+c}}, causing \mbox{\hyperlink{purple_8c}{purple.\+c}} to \char`\"{}own\char`\"{} these variables 
 
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{data_8h_af0b239f72df01c220d263866200ea216}\label{data_8h_af0b239f72df01c220d263866200ea216}} 
-\index{data.h@{data.h}!args@{args}}
-\index{args@{args}!data.h@{data.h}}
-\doxysubsubsection{\texorpdfstring{args}{args}}
-{\footnotesize\ttfamily \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}}$\ast$ args}
+\mbox{\Hypertarget{data_8h_af59026fa8dccb3e5a19163fcc2389aaa}\label{data_8h_af59026fa8dccb3e5a19163fcc2389aaa}} 
+\index{data.h@{data.h}!D\_ARGS@{D\_ARGS}}
+\index{D\_ARGS@{D\_ARGS}!data.h@{data.h}}
+\doxysubsubsection{\texorpdfstring{D\_ARGS}{D\_ARGS}}
+{\footnotesize\ttfamily \mbox{\hyperlink{purple_8c_a7e774264afdce4a653327473a9563e4d}{extern\+\_\+}} \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}}$\ast$ D\+\_\+\+ARGS}
 
 Command line arguments \mbox{\Hypertarget{data_8h_a6e8c0f29673481c8aba77d0fa151a408}\label{data_8h_a6e8c0f29673481c8aba77d0fa151a408}} 
 \index{data.h@{data.h}!D\_CHAR\_NUMBER@{D\_CHAR\_NUMBER}}

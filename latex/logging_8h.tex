@@ -68,6 +68,7 @@ enum \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ec}{Return\+Code
 \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144eca616c2bf4e696b3b321995bbe1776945b}{RC\+\_\+\+FILE\+\_\+\+ERROR}}
 , \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144ecaa62f5654268c12e7157b106038efc6cb}{RC\+\_\+\+COMPILER\+\_\+\+ERROR}}
 , \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144eca5f4ac2778f1e43b7b205d9dffe5750f5}{RC\+\_\+\+IDENTIFIER\+\_\+\+ERROR}}
+, \mbox{\hyperlink{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144eca07aa2a20fa529cd798c84093cfe7b32b}{RC\+\_\+\+ARG\+\_\+\+ERROR}}
  \}
 \begin{DoxyCompactList}\small\item\em Return codes used in different scenarios. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
@@ -228,6 +229,10 @@ RC\+\_\+\+COMPILER\+\_\+\+ERROR&\\
 RC\+\_\+\+IDENTIFIER\+\_\+\+ERROR&\\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RC\_ARG\_ERROR@{RC\_ARG\_ERROR}!logging.h@{logging.h}}\index{logging.h@{logging.h}!RC\_ARG\_ERROR@{RC\_ARG\_ERROR}}}\mbox{\Hypertarget{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144eca07aa2a20fa529cd798c84093cfe7b32b}\label{logging_8h_a5a2236a3693e3930b2c9fbe1fe7144eca07aa2a20fa529cd798c84093cfe7b32b}} 
+RC\+\_\+\+ARG\+\_\+\+ERROR&\\
+\hline
+
 \end{DoxyEnumFields}
 
 
@@ -346,8 +351,8 @@ Collection of Log\+Infos for standard logging purposes.
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{= \{}
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}OK"{}},         \textcolor{stringliteral}{"{}ERROR"{}},          \textcolor{stringliteral}{"{}SYNTAX ERROR"{}},    \textcolor{stringliteral}{"{}MEMORY ERROR"{}},}
-\DoxyCodeLine{    \textcolor{stringliteral}{"{}FILE ERROR"{}}, \textcolor{stringliteral}{"{}COMPILER ERROR"{}}, \textcolor{stringliteral}{"{}IDENTIFIER ERROR"{}}\}}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}OK"{}},         \textcolor{stringliteral}{"{}ERROR"{}},          \textcolor{stringliteral}{"{}SYNTAX ERROR"{}},     \textcolor{stringliteral}{"{}MEMORY ERROR"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}FILE ERROR"{}}, \textcolor{stringliteral}{"{}COMPILER ERROR"{}}, \textcolor{stringliteral}{"{}IDENTIFIER ERROR"{}}, \textcolor{stringliteral}{"{}ARGUMENT ERROR"{}}\}}
 
 \end{DoxyCode}
 

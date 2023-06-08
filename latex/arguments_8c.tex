@@ -5,6 +5,7 @@
 Command line interface logic.  
 
 
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}info.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils/arguments.\+h\char`\"{}}\newline
@@ -23,7 +24,9 @@ Include dependency graph for arguments.\+c\+:
 \item 
 error\+\_\+t \mbox{\hyperlink{arguments_8c_a5fb6abc38ef248ec154591e0dd392c1b}{parse\+\_\+opt}} (int key, char $\ast$arg, struct argp\+\_\+state $\ast$state)
 \item 
-void \mbox{\hyperlink{arguments_8c_a4d7de48bbb1fd1e0943934cd0097f308}{parse\+\_\+args}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$\mbox{\hyperlink{data_8h_af0b239f72df01c220d263866200ea216}{args}}, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+void \mbox{\hyperlink{arguments_8c_a4d7de48bbb1fd1e0943934cd0097f308}{parse\+\_\+args}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{arguments_8c_aa6dd9bce1f6797c4970e40007460cb69}{set\+\_\+opt\+\_\+level}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int opt\+\_\+level)
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -65,6 +68,12 @@ Charles Averill
 \index{parse\_opt@{parse\_opt}!arguments.c@{arguments.c}}
 \doxysubsubsection{\texorpdfstring{parse\_opt()}{parse\_opt()}}
 {\footnotesize\ttfamily error\+\_\+t parse\+\_\+opt (\begin{DoxyParamCaption}\item[{int}]{key,  }\item[{char $\ast$}]{arg,  }\item[{struct argp\+\_\+state $\ast$}]{state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{arguments_8c_aa6dd9bce1f6797c4970e40007460cb69}\label{arguments_8c_aa6dd9bce1f6797c4970e40007460cb69}} 
+\index{arguments.c@{arguments.c}!set\_opt\_level@{set\_opt\_level}}
+\index{set\_opt\_level@{set\_opt\_level}!arguments.c@{arguments.c}}
+\doxysubsubsection{\texorpdfstring{set\_opt\_level()}{set\_opt\_level()}}
+{\footnotesize\ttfamily void set\+\_\+opt\+\_\+level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$}]{args,  }\item[{int}]{opt\+\_\+level }\end{DoxyParamCaption})}
 
 
 
@@ -114,8 +123,10 @@ Charles Averill
 \DoxyCodeLine{     \textcolor{stringliteral}{"{}Alternate path to clang executable (default is \(\backslash\)"{}"{}} \mbox{\hyperlink{info_8h_a45cd2cf0df774e6893fe020b85b31ff5}{DEFAULT\_CLANG\_EXECUTABLE\_PATH}} \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}, 0\},}
 \DoxyCodeLine{    \{\textcolor{stringliteral}{"{}cmd"{}}, \textcolor{charliteral}{'c'}, \textcolor{stringliteral}{"{}PROGRAM"{}}, 0, \textcolor{stringliteral}{"{}Program passed in as a string"{}}, 0\},}
 \DoxyCodeLine{    \{\textcolor{stringliteral}{"{}output"{}}, \textcolor{charliteral}{'o'}, \textcolor{stringliteral}{"{}FILE"{}}, 0, \textcolor{stringliteral}{"{}Path to the generated LLVM file"{}}, 0\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}opt"{}}, \textcolor{charliteral}{'O'}, \textcolor{stringliteral}{"{}OPTLEVEL"{}}, 0, \textcolor{stringliteral}{"{}Level of optimization to enable (0-\/3)"{}}\},}
 \DoxyCodeLine{    \{\textcolor{stringliteral}{"{}quiet"{}}, \textcolor{charliteral}{'q'}, 0, 0, \textcolor{stringliteral}{"{}Equivalent to -\/-\/logging=NONE"{}}, 0\},}
 \DoxyCodeLine{    \{\textcolor{stringliteral}{"{}verbose"{}}, \textcolor{charliteral}{'v'}, 0, 0, \textcolor{stringliteral}{"{}Equivalent to -\/-\/logging=DEBUG"{}}, 0\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}fconst-\/expr-\/reduce"{}}, \mbox{\hyperlink{arguments_8h_a21c26ef2a3830a77c03dd2bf44d92ea5}{FCONST\_EXPR\_REDUCE\_CODE}}, 0, OPTION\_HIDDEN, 0, 0\},}
 \DoxyCodeLine{    \{0\},}
 \DoxyCodeLine{\}}
 

@@ -7,18 +7,23 @@
 \DoxyCodeLine{9 \textcolor{preprocessor}{\#define ARGUMENTS\_H}}
 \DoxyCodeLine{10 }
 \DoxyCodeLine{11 \textcolor{preprocessor}{\#include <argp.h>}}
-\DoxyCodeLine{12 }
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{info_8h}{info.h}}"{}}}
-\DoxyCodeLine{14 }
-\DoxyCodeLine{19 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structPurpleArgs}{PurpleArgs}} \{}
-\DoxyCodeLine{21     \textcolor{keywordtype}{int} \mbox{\hyperlink{structPurpleArgs_a316d40456cb17fc9bae6a38a347d1161}{logging}};}
-\DoxyCodeLine{23     \textcolor{keywordtype}{char}* \mbox{\hyperlink{structPurpleArgs_a472dbb5a4f9205da6be8af0239e38272}{filenames}}[2];}
-\DoxyCodeLine{25     \textcolor{keywordtype}{char}* \mbox{\hyperlink{structPurpleArgs_abd425bab6fcc362da226d44aacd2d01a}{clang\_executable}};}
-\DoxyCodeLine{27     \textcolor{keywordtype}{char}* \mbox{\hyperlink{structPurpleArgs_a806d1e0611813b1a173887916062d737}{from\_command\_line\_argument}};}
-\DoxyCodeLine{28 \} \mbox{\hyperlink{arguments_8h_a5b56d2fb6df7bf6bea59b8373b25b068}{PurpleArgs}};}
-\DoxyCodeLine{29 }
-\DoxyCodeLine{30 \textcolor{keywordtype}{void} \mbox{\hyperlink{arguments_8h_a4d7de48bbb1fd1e0943934cd0097f308}{parse\_args}}(\mbox{\hyperlink{structPurpleArgs}{PurpleArgs}}* \mbox{\hyperlink{data_8h_af0b239f72df01c220d263866200ea216}{args}}, \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[]);}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* ARGUMENTS\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{info_8h}{info.h}}"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{20 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structPurpleArgs}{PurpleArgs}} \{}
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} \mbox{\hyperlink{structPurpleArgs_a316d40456cb17fc9bae6a38a347d1161}{logging}};}
+\DoxyCodeLine{24     \textcolor{keywordtype}{char}* \mbox{\hyperlink{structPurpleArgs_a472dbb5a4f9205da6be8af0239e38272}{filenames}}[2];}
+\DoxyCodeLine{26     \textcolor{keywordtype}{char}* \mbox{\hyperlink{structPurpleArgs_abd425bab6fcc362da226d44aacd2d01a}{clang\_executable}};}
+\DoxyCodeLine{28     \textcolor{keywordtype}{char}* \mbox{\hyperlink{structPurpleArgs_a806d1e0611813b1a173887916062d737}{from\_command\_line\_argument}};}
+\DoxyCodeLine{30     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structPurpleArgs_a77a19a1fa9ea90b8ee9782e77eb58492}{const\_expr\_reduce}};}
+\DoxyCodeLine{31 \} \mbox{\hyperlink{arguments_8h_a5b56d2fb6df7bf6bea59b8373b25b068}{PurpleArgs}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keywordtype}{void} \mbox{\hyperlink{arguments_8h_a4d7de48bbb1fd1e0943934cd0097f308}{parse\_args}}(\mbox{\hyperlink{structPurpleArgs}{PurpleArgs}}* args, \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[]);}
+\DoxyCodeLine{34 \textcolor{keywordtype}{void} \mbox{\hyperlink{arguments_8h_aa6dd9bce1f6797c4970e40007460cb69}{set\_opt\_level}}(\mbox{\hyperlink{structPurpleArgs}{PurpleArgs}}* args, \textcolor{keywordtype}{int} opt\_level);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define FCONST\_EXPR\_REDUCE\_CODE 0x100}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* ARGUMENTS\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -3,47 +3,45 @@
 \mbox{\hyperlink{data_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef DATA\_H}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define DATA\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef DATA}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define DATA}}
 \DoxyCodeLine{10 }
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <stdio.h>}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <string.h>}}
-\DoxyCodeLine{13 }
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{scan_8h}{scan.h}}"{}}}
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{symbol__table_8h}{translate/symbol\_table.h}}"{}}}
-\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{arguments_8h}{utils/arguments.h}}"{}}}
-\DoxyCodeLine{17 }
-\DoxyCodeLine{19 \textcolor{preprocessor}{\#ifndef extern\_}}
-\DoxyCodeLine{20 \textcolor{preprocessor}{\#define extern\_ extern}}
-\DoxyCodeLine{21 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{22 }
-\DoxyCodeLine{24 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8h_afc1d3028da9120ed3a87cb08c86a20c2}{D\_LINE\_NUMBER}};}
-\DoxyCodeLine{26 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8h_a6e8c0f29673481c8aba77d0fa151a408}{D\_CHAR\_NUMBER}};}
-\DoxyCodeLine{28 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char} \mbox{\hyperlink{data_8h_aecfb2e5af0488a83da058ff5cc29d822}{D\_PUT\_BACK}};}
-\DoxyCodeLine{30 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} FILE* \mbox{\hyperlink{data_8h_a923af85a91125df76be177e4f52adeee}{D\_INPUT\_FILE}};}
-\DoxyCodeLine{32 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} FILE* \mbox{\hyperlink{data_8h_a6739ad08f1684785c7621617a6e8370b}{D\_LLVM\_FILE}};}
-\DoxyCodeLine{34 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} FILE* \mbox{\hyperlink{data_8h_adb9f233c82840e13fa251b97e66b46f5}{D\_LLVM\_GLOBALS\_FILE}};}
-\DoxyCodeLine{36 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char}* \mbox{\hyperlink{data_8h_aee2c492e0cfc03b5bb388e816e6aa07d}{D\_INPUT\_FN}};}
-\DoxyCodeLine{38 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char}* \mbox{\hyperlink{data_8h_a9db47be3c9e243f3a6b2f3e77b30a745}{D\_LLVM\_FN}};}
-\DoxyCodeLine{40 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char}* \mbox{\hyperlink{data_8h_a0a1aa4528f335b35bbb9ca110033d00a}{D\_LLVM\_GLOBALS\_FN}};}
-\DoxyCodeLine{42 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8h_af29dba328a9429eb1dd0172a6fa0bc99}{D\_LLVM\_LOCAL\_VIRTUAL\_REGISTER\_NUMBER}};}
-\DoxyCodeLine{44 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8h_a4611a0186a1325103c0ae89c49343fef}{D\_LABEL\_INDEX}};}
-\DoxyCodeLine{46 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char} \mbox{\hyperlink{data_8h_aefb0f52ec086a5adb8026fc726154ed9}{D\_CURRENT\_FUNCTION\_BUFFER}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}} + 1];}
-\DoxyCodeLine{48 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{data_8h_a2314c61c4f40bf61f512186462ca8eb3}{D\_CURRENT\_FUNCTION\_PREAMBLE\_PRINTED}};}
-\DoxyCodeLine{50 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{data_8h_a06d6e649c3d513c4b9f01824dbf874b5}{D\_CURRENT\_FUNCTION\_HAS\_RETURNED}};}
-\DoxyCodeLine{52 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{data_8h_abc6417a9933a4475be9df54f02beff2c}{D\_SCANNING\_TYPE}};}
-\DoxyCodeLine{53 }
-\DoxyCodeLine{55 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char} \mbox{\hyperlink{data_8h_ace794a026d785b07331f83b432be3b66}{D\_IDENTIFIER\_BUFFER}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}} + 1];}
-\DoxyCodeLine{56 }
-\DoxyCodeLine{58 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8h_a05f52f3601bd5b29b20cf4fa58f3ba1f}{D\_DEBUG}};}
-\DoxyCodeLine{59 }
-\DoxyCodeLine{61 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \mbox{\hyperlink{structPurpleArgs}{PurpleArgs}}* \mbox{\hyperlink{data_8h_af0b239f72df01c220d263866200ea216}{args}};}
-\DoxyCodeLine{62 }
-\DoxyCodeLine{64 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keyword}{struct }\mbox{\hyperlink{structToken}{Token}} \mbox{\hyperlink{data_8h_aaa782ad10014ebc3f74c54edfe56d98b}{D\_GLOBAL\_TOKEN}};}
-\DoxyCodeLine{65 }
-\DoxyCodeLine{67 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* \mbox{\hyperlink{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}{D\_SYMBOL\_TABLE\_STACK}};}
-\DoxyCodeLine{69 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{data_8h_a3d6de1760dedbf060d53166af7599d98}{D\_GLOBAL\_SYMBOL\_TABLE}};}
-\DoxyCodeLine{70 }
-\DoxyCodeLine{71 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* DATA\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{scan_8h}{scan.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{symbol__table_8h}{translate/symbol\_table.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{arguments_8h}{utils/arguments.h}}"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{misc_8h}{utils/misc.h}}"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#ifndef extern\_}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define extern\_ extern}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{22 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8h_afc1d3028da9120ed3a87cb08c86a20c2}{D\_LINE\_NUMBER}};}
+\DoxyCodeLine{24 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8h_a6e8c0f29673481c8aba77d0fa151a408}{D\_CHAR\_NUMBER}};}
+\DoxyCodeLine{26 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char} \mbox{\hyperlink{data_8h_aecfb2e5af0488a83da058ff5cc29d822}{D\_PUT\_BACK}};}
+\DoxyCodeLine{28 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} FILE* \mbox{\hyperlink{data_8h_a923af85a91125df76be177e4f52adeee}{D\_INPUT\_FILE}};}
+\DoxyCodeLine{30 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} FILE* \mbox{\hyperlink{data_8h_a6739ad08f1684785c7621617a6e8370b}{D\_LLVM\_FILE}};}
+\DoxyCodeLine{32 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} FILE* \mbox{\hyperlink{data_8h_adb9f233c82840e13fa251b97e66b46f5}{D\_LLVM\_GLOBALS\_FILE}};}
+\DoxyCodeLine{34 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char}* \mbox{\hyperlink{data_8h_aee2c492e0cfc03b5bb388e816e6aa07d}{D\_INPUT\_FN}};}
+\DoxyCodeLine{36 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char}* \mbox{\hyperlink{data_8h_a9db47be3c9e243f3a6b2f3e77b30a745}{D\_LLVM\_FN}};}
+\DoxyCodeLine{38 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char}* \mbox{\hyperlink{data_8h_a0a1aa4528f335b35bbb9ca110033d00a}{D\_LLVM\_GLOBALS\_FN}};}
+\DoxyCodeLine{40 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8h_af29dba328a9429eb1dd0172a6fa0bc99}{D\_LLVM\_LOCAL\_VIRTUAL\_REGISTER\_NUMBER}};}
+\DoxyCodeLine{42 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8h_a4611a0186a1325103c0ae89c49343fef}{D\_LABEL\_INDEX}};}
+\DoxyCodeLine{44 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char} \mbox{\hyperlink{data_8h_aefb0f52ec086a5adb8026fc726154ed9}{D\_CURRENT\_FUNCTION\_BUFFER}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}} + 1];}
+\DoxyCodeLine{46 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{data_8h_a2314c61c4f40bf61f512186462ca8eb3}{D\_CURRENT\_FUNCTION\_PREAMBLE\_PRINTED}};}
+\DoxyCodeLine{48 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{data_8h_a06d6e649c3d513c4b9f01824dbf874b5}{D\_CURRENT\_FUNCTION\_HAS\_RETURNED}};}
+\DoxyCodeLine{50 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{data_8h_abc6417a9933a4475be9df54f02beff2c}{D\_SCANNING\_TYPE}};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{53 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{char} \mbox{\hyperlink{data_8h_ace794a026d785b07331f83b432be3b66}{D\_IDENTIFIER\_BUFFER}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}} + 1];}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{56 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8h_a05f52f3601bd5b29b20cf4fa58f3ba1f}{D\_DEBUG}};}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{59 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \mbox{\hyperlink{structPurpleArgs}{PurpleArgs}}* \mbox{\hyperlink{data_8h_af59026fa8dccb3e5a19163fcc2389aaa}{D\_ARGS}};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{62 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \textcolor{keyword}{struct }\mbox{\hyperlink{structToken}{Token}} \mbox{\hyperlink{data_8h_aaa782ad10014ebc3f74c54edfe56d98b}{D\_GLOBAL\_TOKEN}};}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{65 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \mbox{\hyperlink{structSymbolTableStack}{SymbolTableStack}}* \mbox{\hyperlink{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}{D\_SYMBOL\_TABLE\_STACK}};}
+\DoxyCodeLine{67 \mbox{\hyperlink{data_8h_a7e774264afdce4a653327473a9563e4d}{extern\_}} \mbox{\hyperlink{structSymbolTable}{SymbolTable}}* \mbox{\hyperlink{data_8h_a3d6de1760dedbf060d53166af7599d98}{D\_GLOBAL\_SYMBOL\_TABLE}};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* DATA */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}
