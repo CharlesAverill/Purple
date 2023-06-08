@@ -107,6 +107,10 @@ ASTNode* prefix_operator_passthrough(void)
         // }
 
         out = create_unary_ast_node(T_DEREFERENCE, out, TYPE_VOID, NULL);
+
+        if (out->left) {
+            out->value = out->left->value;
+        }
     } else {
         purple_log(LOG_DEBUG, "Passing through to parse_terminal_node");
         out = parse_terminal_node();
@@ -173,17 +177,32 @@ static ASTNode* parse_binary_expression_recursive(int previous_token_precedence,
     add_position_info(left, pre_pos);
     current_ttype = D_GLOBAL_TOKEN.type;
     if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {
+        left->is_rvalue = true;
         return left;
     }
 
     // While current Token has greater precedence than previous Token
-    while (get_operator_precedence(D_GLOBAL_TOKEN) > previous_token_precedence) {
+    while (get_operator_precedence(D_GLOBAL_TOKEN) > previous_token_precedence ||
+           (get_operator_precedence(D_GLOBAL_TOKEN) == previous_token_precedence &&
+            rightAssociativeOperators[current_ttype])) {
         // Scan the next Token
         position pos = D_GLOBAL_TOKEN.pos;
         scan();
 
         // Recursively build the right AST subtree
         right = parse_binary_expression_recursive(operatorPrecedence[current_ttype], nt_max);
+
+        if (current_ttype == T_ASSIGN) {
+            // Left and right children must be swapped when assigning
+            // to maintain right-associativity. We also want assignments to be
+            // rvalues themselves.
+            right->is_rvalue = true;
+            ASTNode* temp = left;
+            left = right;
+            right = temp;
+        } else {
+            left->is_rvalue = right->is_rvalue = true;
+        }
 
         // Join right subtree with current left subtree
         left = create_ast_node(current_ttype, left, NULL, right, TYPE_VOID, NULL);
@@ -192,10 +211,12 @@ static ASTNode* parse_binary_expression_recursive(int previous_token_precedence,
         // Update current_ttype and check for EOF
         current_ttype = D_GLOBAL_TOKEN.type;
         if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {
+            left->is_rvalue = true;
             return left;
         }
     }
 
+    left->is_rvalue = true;
     return left;
 }
 

@@ -286,7 +286,7 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
 
     // Generate code for left and right subtrees
     temp_values[0] = ast_to_llvm(root->left, LLVMVALUE_NULL, root->ttype);
-    temp_values[1] = ast_to_llvm(root->right, temp_values[0], root->ttype);
+    temp_values[1] = ast_to_llvm(root->right, LLVMVALUE_NULL, root->ttype);
 
     // Process values from left and right subtrees
     for (int i = 0; i < 2; i++) {
@@ -365,19 +365,33 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
     } else {
         switch (root->ttype) {
         case T_IDENTIFIER:
-            return llvm_load_global_variable(root->value.symbol_name);
-        case T_LVALUE_IDENTIFIER:;
-            symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, root->value.symbol_name);
-            if (symbol == NULL) {
-                fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
-                      root->value.symbol_name);
+            if (root->is_rvalue || parent_operation == T_DEREFERENCE) {
+                return llvm_load_global_variable(root->value.symbol_name);
             }
+            return LLVMVALUE_NULL;
+        // case T_LVALUE_IDENTIFIER:;
+        //     symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, root->value.symbol_name);
+        //     if (symbol == NULL) {
+        //         fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
+        //               root->value.symbol_name);
+        //     }
 
-            llvm_store_global_variable(root->value.symbol_name, llvm_value);
-            return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index,
-                                              symbol->type.value.number.type);
+        //     llvm_store_global_variable(root->value.symbol_name, llvm_value);
+        //     return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index,
+        //                                       symbol->type.value.number.type);
         case T_ASSIGN:
-            return right_vr;
+            if (root->right) {
+                if (root->right->ttype == T_IDENTIFIER) {
+                    llvm_store_global_variable(root->right->value.symbol_name, left_vr);
+                    return left_vr;
+                } else if (root->right->ttype == T_DEREFERENCE) {
+                    llvm_store_dereference(right_vr, left_vr);
+                    return left_vr;
+                }
+                fatal(RC_COMPILER_ERROR, "Expected identifier or dereference but got '%s'",
+                      tokenStrings[root->right->ttype]);
+            }
+            fatal(RC_COMPILER_ERROR, "T_ASSIGN case in ast_to_llvm didn't detect a right child");
         case T_PRINT:
             return print_ast_to_llvm(root, left_vr);
         case T_FUNCTION_CALL:;
@@ -390,7 +404,10 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
         case T_AMPERSAND:
             return llvm_get_address(root->value.symbol_name);
         case T_DEREFERENCE:
-            return llvm_dereference(left_vr);
+            if (root->is_rvalue) {
+                return llvm_dereference(left_vr);
+            }
+            return left_vr;
         case T_RETURN:
             symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, root->value.symbol_name);
             if (symbol == NULL) {

@@ -148,6 +148,12 @@ pointer_test_output="18
 12
 5"
 
+pointer2_test_output="3
+3
+3
+5
+50"
+
 run_test    "Variable"      "$variable_test_output"     "examples/variable_test.prp"
 run_test    "Condition"     "$condition_test_output"    "examples/condition_test.prp"
 run_test    "Type"          "$type_test_output"         "examples/type_test.prp"
@@ -157,6 +163,7 @@ run_test    "Function"      "$function_test_output"     "examples/function_test.
 run_test    "Comparison"    "$comparison_test_output"   "examples/comparison_test.prp"
 run_test    "Empty Program" ""                          "examples/empty_prog.prp"
 run_test    "Pointer"       "$pointer_test_output"      "examples/pointer_test.prp"
+run_test    "Pointer 2"     "$pointer2_test_output"     "examples/pointer_test_2.prp"
 
 rm a.ll
 rm a.out

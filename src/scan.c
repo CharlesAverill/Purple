@@ -359,7 +359,9 @@ static TokenType parse_keyword(char* keyword_string)
             return T_OR;
         }
     case 'p':
-        if (!strcmp(keyword_string, tokenStrings[T_PRINT])) {
+        if (!strcmp(keyword_string, tokenStrings[T_EXPONENT])) {
+            return T_EXPONENT;
+        } else if (!strcmp(keyword_string, tokenStrings[T_PRINT])) {
             return T_PRINT;
         }
         break;
@@ -463,12 +465,13 @@ bool scan()
         t->type = T_MINUS;
         break;
     case '*':
-        if ((c = next()) == '*' && !D_SCANNING_TYPE) {
-            t->type = T_EXPONENT;
-        } else {
-            put_back_into_stream(c);
-            t->type = T_STAR;
-        }
+        // if ((c = next()) == '*' && !D_SCANNING_TYPE) {
+        //     t->type = T_EXPONENT;
+        // } else {
+        //     put_back_into_stream(c);
+        //     t->type = T_STAR;
+        // }
+        t->type = T_STAR;
         break;
     case '/':
         if ((c = next()) == '/') {

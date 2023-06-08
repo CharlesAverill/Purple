@@ -74,10 +74,12 @@ typedef enum
     T_LEFT_BRACE,
     T_RIGHT_BRACE,
     T_IDENTIFIER,
-    T_LVALUE_IDENTIFIER,
+    // T_LVALUE_IDENTIFIER,
     T_AST_GLUE,
     T_FUNCTION_DECLARATION,
     T_FUNCTION_CALL,
+    // Enum End value
+    TOKENTYPE_MAX
 } TokenType;
 
 #define NUMBER_LITERAL_BASE_PREFIX '0'
@@ -92,57 +94,13 @@ typedef enum
 /**
  * @brief Token string equivalents
  */
-static char* tokenStrings[] = {"EOF",
-                               "+",
-                               "-",
-                               "*",
-                               "/",
-                               "**",
-                               "==",
-                               "!=",
-                               "<",
-                               ">",
-                               "<=",
-                               ">=",
-                               "and",
-                               "or",
-                               "xor",
-                               "nand",
-                               "nor",
-                               "xnor",
-                               "&",
-                               "*",
-                               "true",
-                               "false",
-                               "byte literal",
-                               "character literal",
-                               "short literal",
-                               "integer literal",
-                               "long literal",
-                               "void",
-                               "bool",
-                               "byte",
-                               "char",
-                               "short",
-                               "int",
-                               "long",
-                               "=",
-                               "print",
-                               "if",
-                               "else",
-                               "while",
-                               "for",
-                               "return",
-                               ";",
-                               "(",
-                               ")",
-                               "{",
-                               "}",
-                               "identifier",
-                               "lvalue identifier",
-                               "ast glue",
-                               "function",
-                               "function call"};
+static char* tokenStrings[] = {
+    "EOF", "+", "-", "*", "/", "pow", "==", "!=", "<", ">", "<=", ">=", "and", "or", "xor", "nand",
+    "nor", "xnor", "&", "*", "true", "false", "byte literal", "character literal", "short literal",
+    "integer literal", "long literal", "void", "bool", "byte", "char", "short", "int", "long", "=",
+    "print", "if", "else", "while", "for", "return", ";", "(", ")", "{", "}", "identifier",
+    //    "lvalue identifier",
+    "ast glue", "function", "function call", "TOKENTYPE_MAX"};
 
 /**
  * @brief Determines if a TokenType is associated with a binary arithmetic operation
@@ -169,11 +127,6 @@ static char* tokenStrings[] = {"EOF",
  * @brief Determines if a TokenType is associated with a boolean literal value
  */
 #define TOKENTYPE_IS_BOOL_LITERAL(type) (type >= T_TRUE && type <= T_FALSE)
-
-/**
- * @brief Determines if a TokenType is associated with an identifier
- */
-#define TOKENTYPE_IS_IDENTIFIER(type) (type >= T_IDENTIFIER && type <= T_LVALUE_IDENTIFIER)
 
 /**
  * @brief Determines if a TokenType is associated with a comparison operator

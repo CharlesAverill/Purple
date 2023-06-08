@@ -134,7 +134,7 @@ static ASTNode* assignment_statement(void)
     }
 
     // Make a terminal node for the identifier
-    right = create_ast_identifier_leaf(T_LVALUE_IDENTIFIER, found_entry->symbol_name);
+    right = create_ast_identifier_leaf(T_IDENTIFIER, found_entry->symbol_name);
     add_position_info(right, ident_pos);
 
     match_token(T_ASSIGN);
@@ -339,18 +339,18 @@ ASTNode* parse_statements(void)
             case T_PRINT:
                 root = print_statement();
                 break;
-            case T_IDENTIFIER:
-                symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE,
-                                                 D_GLOBAL_TOKEN.value.symbol_name);
-                if (!symbol) {
-                    identifier_error(0, 0, 0, "Use of undeclared identifier \'%s\'",
-                                     D_GLOBAL_TOKEN.value.symbol_name);
-                } else if (symbol->type.is_function) {
-                    root = function_call_expression();
-                } else {
-                    root = assignment_statement();
-                }
-                break;
+            // case T_IDENTIFIER:
+            //     symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE,
+            //                                      D_GLOBAL_TOKEN.value.symbol_name);
+            //     if (!symbol) {
+            //         identifier_error(0, 0, 0, "Use of undeclared identifier \'%s\'",
+            //                          D_GLOBAL_TOKEN.value.symbol_name);
+            //     } else if (symbol->type.is_function) {
+            //         root = function_call_expression();
+            //     } else {
+            //         root = assignment_statement();
+            //     }
+            //     break;
             case T_IF:
                 root = if_statement();
                 match_semicolon = false;
@@ -372,7 +372,8 @@ ASTNode* parse_statements(void)
                 root = return_statement();
                 break;
             default:
-                syntax_error(0, 0, 0, "Unexpected token %s", tokenStrings[D_GLOBAL_TOKEN.type]);
+                // syntax_error(0, 0, 0, "Unexpected token %s", tokenStrings[D_GLOBAL_TOKEN.type]);
+                root = parse_binary_expression();
                 break;
             }
         }

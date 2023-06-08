@@ -5,8 +5,8 @@
  * @date 09-Sep-2022
  */
 
-#ifndef TREE_H
-#define TREE_H
+#ifndef TREE
+#define TREE
 
 #include <stdlib.h>
 
@@ -32,6 +32,8 @@ typedef struct ASTNode {
     NumberType largest_number_type;
     /**Whether or not a binary arithmetic node is dealing with chars*/
     bool is_char_arithmetic;
+    /**Whether or not this ASTNode contains an RValue*/
+    bool is_rvalue;
     /**Filename of this Token*/
     char filename[256];
     /**Line number of this Token*/
@@ -55,4 +57,4 @@ ASTNode* create_ast_identifier_leaf(TokenType ttype, char* symbol_name);
 ASTNode* create_unary_ast_node(TokenType ttype, ASTNode* child, Type type, char* symbol_name);
 void ast_debug_level_order(ASTNode* root, LogLevel log_level);
 
-#endif /* TREE_H */
+#endif /* TREE */
