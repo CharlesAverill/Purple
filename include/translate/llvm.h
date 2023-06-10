@@ -54,10 +54,8 @@ static const char* valueTypeStrings[] = {"None", "Virtual Register", "Label", "C
 typedef struct LLVMValue {
     /**What kind of value is being returned*/
     LLVMValueType value_type;
-    /**If a number is stored*/
-    NumberType number_type;
-    /**How many pointers deep this LLVMValue is*/
-    int pointer_depth;
+    /**To store number_type and pointer_depth*/
+    Number num_info;
     /**Previously-loaded identifier*/
     char just_loaded[MAX_IDENTIFIER_LENGTH];
     /**Whether or not the value has a custom name rather than a register index*/
@@ -92,8 +90,9 @@ typedef struct LLVMValue {
 #define LLVMVALUE_NULL                                                                             \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_NONE, .value = 0, .pointer_depth = 0, .number_type = -1,       \
-        .just_loaded = 0, .has_name = false                                                        \
+        .value_type = LLVMVALUETYPE_NONE, .value = 0,                                              \
+        .num_info = (Number){.number_type = -1, .pointer_depth = 0}, .just_loaded = 0,             \
+        .has_name = false                                                                          \
     }
 
 /**
@@ -102,8 +101,9 @@ typedef struct LLVMValue {
 #define LLVMVALUE_CONSTANT(c)                                                                      \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_CONSTANT, .value.constant = c, .pointer_depth = 0,             \
-        .number_type = max_numbertype_for_val(c), .just_loaded = 0, .has_name = false              \
+        .value_type = LLVMVALUETYPE_CONSTANT, .value.constant = c,                                 \
+        .num_info = (Number){.number_type = max_numbertype_for_val(c), .pointer_depth = 0},        \
+        .just_loaded = 0, .has_name = false                                                        \
     }
 
 /**
@@ -112,9 +112,12 @@ typedef struct LLVMValue {
 #define LLVMVALUE_VIRTUAL_REGISTER(register_number, n_t)                                           \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .pointer_depth = 0,                          \
-        .value.virtual_register_index = register_number, .number_type = n_t, .just_loaded = 0,     \
-        .has_name = false                                                                          \
+        .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER,                                              \
+        .value.virtual_register_index = register_number, .just_loaded = 0, .has_name = false,      \
+        .num_info = (Number)                                                                       \
+        {                                                                                          \
+            .number_type = n_t, .pointer_depth = 0                                                 \
+        }                                                                                          \
     }
 
 /**
@@ -123,9 +126,9 @@ typedef struct LLVMValue {
 #define LLVMVALUE_VIRTUAL_REGISTER_POINTER(register_number, n_t, depth)                            \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .pointer_depth = depth,                      \
-        .value.virtual_register_index = register_number, .number_type = n_t, .just_loaded = 0,     \
-        .has_name = false                                                                          \
+        .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER,                                              \
+        .value.virtual_register_index = register_number, .just_loaded = 0, .has_name = false,      \
+        .num_info = (Number){.number_type = n_t, .pointer_depth = depth},                          \
     }
 
 /**
@@ -134,8 +137,8 @@ typedef struct LLVMValue {
 #define LLVMVALUE_LABEL(label_number)                                                              \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number, .pointer_depth = 0,  \
-        .just_loaded = 0, .has_name = false                                                        \
+        .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number, .just_loaded = 0,    \
+        .has_name = false                                                                          \
     }
 
 /**

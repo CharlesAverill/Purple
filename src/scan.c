@@ -136,7 +136,7 @@ static Number parse_number_literal(char* literal, int length, int base)
     for (NumberType number_type = NT_INT64; number_type >= NT_INT8; number_type--) {
         long long int max_value = numberTypeMaxValues[number_type];
         if (-1 * max_value <= out.value && out.value <= max_value - 1) {
-            out.type = number_type;
+            out.number_type = number_type;
         } else {
             break;
         }
@@ -214,11 +214,11 @@ static Number scan_number_literal(char c)
     out = parse_number_literal(number_buffer, buffer_index, base);
 
     // Check for a long literal
-    if (out.type == NT_INT64 && c != NUMBER_LITERAL_LONG_SUFFIX) {
+    if (out.number_type == NT_INT64 && c != NUMBER_LITERAL_LONG_SUFFIX) {
         syntax_error(0, 0, 0, "Long literals must be suffixed with '%c'",
                      NUMBER_LITERAL_LONG_SUFFIX);
     } else if (c == NUMBER_LITERAL_LONG_SUFFIX) {
-        out.type = NT_INT64;
+        out.number_type = NT_INT64;
     } else {
         // Loop has terminated at a non-integer value, so put it back
         put_back_into_stream(c);
@@ -575,18 +575,19 @@ bool scan()
             c = next();
 
             // Check for a long literal
-            if (parsed.type == NT_INT64 && c != NUMBER_LITERAL_LONG_SUFFIX) {
+            if (parsed.number_type == NT_INT64 && c != NUMBER_LITERAL_LONG_SUFFIX) {
                 syntax_error(0, 0, 0, "Long literals must be suffixed with '%c'",
                              NUMBER_LITERAL_LONG_SUFFIX);
             } else if (c == NUMBER_LITERAL_LONG_SUFFIX) {
-                parsed.type = NT_INT64;
+                parsed.number_type = NT_INT64;
             } else {
                 // Loop has terminated at a non-integer value, so put it back
                 put_back_into_stream(c);
             }
 
             t->value.number_value = parsed;
-            t->type = t->value.number_value.type == NT_INT64 ? T_LONG_LITERAL : T_INTEGER_LITERAL;
+            t->type =
+                t->value.number_value.number_type == NT_INT64 ? T_LONG_LITERAL : T_INTEGER_LITERAL;
         } else {
             // Check if identifier is a keyword
             if ((temp_type = parse_keyword(D_IDENTIFIER_BUFFER))) {

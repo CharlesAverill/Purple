@@ -55,7 +55,7 @@ static const char* numberTypeFormatStrings[] = {"%d", "%d", "%d", "%d", "%ld"};
  */
 typedef struct Number {
     /**Data type of number*/
-    NumberType type;
+    NumberType number_type;
     /**Value of number*/
     long long int value;
     /**How many pointers deep this Number object is*/
@@ -68,7 +68,7 @@ typedef struct Number {
 #define NUMBER_BOOL(v)                                                                             \
     (Number)                                                                                       \
     {                                                                                              \
-        .type = NT_INT1, .value = v                                                                \
+        .number_type = NT_INT1, .value = v                                                         \
     }
 
 /**
@@ -77,7 +77,7 @@ typedef struct Number {
 #define NUMBER_CHAR(v)                                                                             \
     (Number)                                                                                       \
     {                                                                                              \
-        .type = NT_INT8, .value = v                                                                \
+        .number_type = NT_INT8, .value = v                                                         \
     }
 
 /**
@@ -87,7 +87,7 @@ typedef struct Number {
 #define NUMBER_SHORT(v)                                                                            \
     (Number)                                                                                       \
     {                                                                                              \
-        .type = NT_INT16, .value = v                                                               \
+        .number_type = NT_INT16, .value = v                                                        \
     }
 
 /**
@@ -96,7 +96,7 @@ typedef struct Number {
 #define NUMBER_INT(v)                                                                              \
     (Number)                                                                                       \
     {                                                                                              \
-        .type = NT_INT32, .value = v                                                               \
+        .number_type = NT_INT32, .value = v                                                        \
     }
 
 /**
@@ -105,7 +105,7 @@ typedef struct Number {
 #define NUMBER_LONG(v)                                                                             \
     (Number)                                                                                       \
     {                                                                                              \
-        .type = NT_INT64, .value = v                                                               \
+        .number_type = NT_INT64, .value = v                                                        \
     }
 
 /**
@@ -114,18 +114,14 @@ typedef struct Number {
 #define NUMBER_FROM_TYPE_VAL(t, v)                                                                 \
     (Number)                                                                                       \
     {                                                                                              \
-        .type = t, .value = v                                                                      \
+        .number_type = t, .value = v                                                               \
     }
 
 /**
- * @brief Determines the larger NumberType of two
+ * @brief Determines if two Number structs have equivalent types
  */
-#define NT_MAX(a, b) (a > b ? a : b)
-
-/**
- * @brief Determines the smaller NumberType of two
- */
-#define NT_MIN(a, b) (NT_MAX(a, b) == a ? b : a)
+#define NUMBERS_TYPEQUIV(A, B)                                                                     \
+    (A.number_type == B.number_type && A.pointer_depth == B.pointer_depth)
 
 NumberType token_type_to_number_type(int token_type);
 int number_to_token_type(Number number);

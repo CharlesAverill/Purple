@@ -150,7 +150,8 @@ ASTNode* function_call_expression(void)
     // Make a terminal node for the identifier
     root = create_unary_ast_node(T_FUNCTION_CALL, parameters, found_entry->type,
                                  found_entry->symbol_name);
-    root->tree_type.type = token_type_to_number_type(found_entry->type.value.function.return_type);
+    root->tree_type.number_type =
+        token_type_to_number_type(found_entry->type.value.function.return_type);
     add_position_info(root, ident_pos);
 
     return root;
@@ -172,7 +173,7 @@ static ASTNode* parse_binary_expression_recursive(int previous_token_precedence,
     // Get the terminal token (literal, variable identifier, etc) on the left and scan the next Token
     position pre_pos = D_GLOBAL_TOKEN.pos;
     left = prefix_operator_passthrough();
-    *nt_max = NT_MAX(*nt_max, left->tree_type.type);
+    *nt_max = MAX(*nt_max, left->tree_type.number_type);
     add_position_info(left, pre_pos);
     current_ttype = D_GLOBAL_TOKEN.type;
     if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {

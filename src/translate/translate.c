@@ -79,7 +79,7 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
         current->reg = get_next_local_virtual_register();
         prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
 
-        current->type = root->tree_type.type;
+        current->type = root->tree_type.number_type;
         current->align_bytes = numberTypeByteSizes[current->type];
         current->next = NULL;
 
@@ -97,12 +97,12 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
         current->reg = get_next_local_virtual_register();
         prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
 
-        current->type = symbol->type.value.number.type;
+        current->type = symbol->type.value.number.number_type;
         if (current->type == -1) {
             fatal(RC_COMPILER_ERROR, "Symbol number type is ill-formed");
         }
 
-        current->align_bytes = numberTypeByteSizes[symbol->type.value.number.type];
+        current->align_bytes = numberTypeByteSizes[symbol->type.value.number.number_type];
         current->next = NULL;
 
         return current;
@@ -211,13 +211,14 @@ static LLVMValue while_else_ast_to_llvm(ASTNode* n)
  */
 static LLVMValue print_ast_to_llvm(ASTNode* root, LLVMValue virtual_register)
 {
-    if (root->left->tree_type.type == NT_INT1) {
+    if (root->left->tree_type.number_type == NT_INT1) {
         llvm_print_bool(virtual_register);
     } else {
         TokenType print_type = root->left->ttype;
 
         if (print_type == T_IDENTIFIER) {
-            print_type = number_to_token_type((Number){.type = root->left->largest_number_type});
+            print_type =
+                number_to_token_type((Number){.number_type = root->left->largest_number_type});
         }
 
         if (print_type == T_FUNCTION_CALL) {
@@ -227,7 +228,8 @@ static LLVMValue print_ast_to_llvm(ASTNode* root, LLVMValue virtual_register)
         }
 
         if (TOKENTYPE_IS_BINARY_ARITHMETIC(print_type)) {
-            print_type = number_to_token_type((Number){.type = root->left->largest_number_type});
+            print_type =
+                number_to_token_type((Number){.number_type = root->left->largest_number_type});
         }
 
         if (print_type == T_BYTE_LITERAL || root->left->is_char_arithmetic) {
@@ -318,12 +320,13 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
             return llvm_compare(root->ttype, left_vr, right_vr);
         }
     } else if (TOKENTYPE_IS_LOGICAL_OPERATOR(root->ttype)) {
-        if (root->left->tree_type.type != NT_INT1 ||
-            root->left->tree_type.type != root->right->tree_type.type) {
+        if (root->left->tree_type.number_type != NT_INT1 ||
+            root->left->tree_type.number_type != root->right->tree_type.number_type) {
             syntax_error(root->filename, root->line_number, root->char_number,
                          "Cannot perform logical \"%s\" comparison on types %s and %s",
-                         tokenStrings[root->ttype], numberTypeLLVMReprs[root->left->tree_type.type],
-                         numberTypeLLVMReprs[root->right->tree_type.type]);
+                         tokenStrings[root->ttype],
+                         numberTypeLLVMReprs[root->left->tree_type.number_type],
+                         numberTypeLLVMReprs[root->right->tree_type.number_type]);
         }
 
         if (parent_operation == T_IF || parent_operation == T_WHILE) {
@@ -339,7 +342,7 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
     } else if (TOKENTYPE_IS_LITERAL(root->ttype)) {
         if (D_ARGS->const_expr_reduce) {
             LLVMValue out = LLVMVALUE_CONSTANT(root->value.number_value);
-            out.number_type = token_type_to_number_type(root->ttype);
+            out.num_info.number_type = token_type_to_number_type(root->ttype);
             return out;
         }
 

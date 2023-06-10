@@ -45,7 +45,7 @@ NumberType token_type_to_number_type(int token_type)
 
 int number_to_token_type(Number number)
 {
-    switch (number.type) {
+    switch (number.number_type) {
     case NT_INT1:
         return number.value ? T_TRUE : T_FALSE;
     case NT_INT8:

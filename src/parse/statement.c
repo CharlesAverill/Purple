@@ -67,8 +67,9 @@ int match_type(Number* out)
         return 1;
     }
 
-    *out = (Number){
-        .type = token_type_to_number_type(ttype), .pointer_depth = pointer_depth, .value = 0};
+    *out = (Number){.number_type = token_type_to_number_type(ttype),
+                    .pointer_depth = pointer_depth,
+                    .value = 0};
 
     D_SCANNING_TYPE = false;
     return 0;
