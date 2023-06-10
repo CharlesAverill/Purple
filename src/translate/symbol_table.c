@@ -68,8 +68,10 @@ void push_existing_symbol_table(SymbolTableStack* stack, SymbolTable* new_table)
 {
     if (stack->top == NULL) {
         stack->top = new_table;
+        new_table->prev = NULL;
     } else {
         new_table->next = stack->top;
+        stack->top->prev = new_table;
         stack->top = new_table;
     }
     stack->length++;
@@ -168,6 +170,28 @@ SymbolTableEntry* find_symbol_table_entry(SymbolTable* table, char* symbol_name)
     while (found != NULL && strcmp(found->symbol_name, symbol_name)) {
         found = found->next;
     }
+    return found;
+}
+
+/**
+ * @brief Find the entry of a symbol in the provided Symbol Table Stack if it exists, 
+ * working from the top of the stack to the bottom
+ * 
+ * @param stack                 Symbol Table Stack to search
+ * @param symbol_name           Name of symbol to find
+ * @return SymbolTableEntry*    Pointer to entry if it exists, else NULL
+ */
+SymbolTableEntry* find_symbol_table_stack_entry(SymbolTableStack* stack, char* symbol_name)
+{
+    SymbolTableEntry* found = NULL;
+    SymbolTable* current = stack->top;
+
+    for (int i = 0;
+         i < stack->length && (found = find_symbol_table_entry(current, symbol_name)) == NULL;
+         i++) {
+        current = current->prev;
+    }
+
     return found;
 }
 

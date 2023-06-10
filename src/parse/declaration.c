@@ -51,7 +51,7 @@ ASTNode* function_declaration(void)
     ident_pos.char_number -= strlen(D_GLOBAL_TOKEN.value.symbol_name) - 1;
 
     Type function_type = TYPE_FUNCTION(function_return_type, 0, 0);
-    entry = add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER, function_type);
+    entry = add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER, TYPE_VOID);
 
     match_token(T_LEFT_PAREN);
 
@@ -66,17 +66,14 @@ ASTNode* function_declaration(void)
         }
         param_type.pointer_depth++;
 
-        parameters[num_inputs].parameter_type = number_to_token_type(param_type);
+        parameters[num_inputs].parameter_type = param_type;
         if (num_inputs >= parameters_size) {
             parameters_size *= 2;
             parameters = (FunctionParameter*)realloc(parameters, parameters_size);
         }
 
         num_inputs++;
-
-        if (parameters[num_inputs - 1].parameter_type == T_VOID) {
-            continue;
-        }
+        function_type.value.function.num_parameters++;
 
         match_token(T_IDENTIFIER);
         strcpy(parameters[num_inputs - 1].parameter_name, D_IDENTIFIER_BUFFER);
@@ -88,6 +85,7 @@ ASTNode* function_declaration(void)
     }
 
     function_type.value.function.parameters = parameters;
+    entry->type = function_type;
 
     match_token(T_RIGHT_PAREN);
 

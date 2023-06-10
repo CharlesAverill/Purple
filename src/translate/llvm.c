@@ -15,6 +15,13 @@
 #include "utils/formatting.h"
 #include "utils/logging.h"
 
+static char* number_string(Number number)
+{
+    char* out = (char*)calloc(1, sizeof(char) * 300);
+    sprintf(out, "%s%s", numberTypeLLVMReprs[number.type], REFSTRING(number.pointer_depth));
+    return out;
+}
+
 /**
  * @brief Ensure that the values of a set of registers are loaded
  * 
@@ -312,7 +319,6 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
         return out_register;
     }
 
-    PRINT_LLVMVALUE(left_virtual_register);
     LLVMValue* loaded_registers =
         llvm_ensure_registers_fully_loaded(1, (LLVMValue[]){left_virtual_register});
     if (loaded_registers != NULL) {
@@ -330,9 +336,6 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
     }
 
     if (left_virtual_register.number_type != right_virtual_register.number_type) {
-        PRINT_LLVMVALUE(left_virtual_register);
-        PRINT_LLVMVALUE(right_virtual_register);
-        printf("---\n");
         if (left_virtual_register.number_type < right_virtual_register.number_type) {
             left_virtual_register =
                 llvm_int_resize(left_virtual_register, right_virtual_register.number_type);
@@ -405,7 +408,7 @@ LLVMValue llvm_load_global_variable(char* symbol_name)
 {
     type_register out_register_number = get_next_local_virtual_register();
 
-    SymbolTableEntry* symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+    SymbolTableEntry* symbol = STS_FIND(symbol_name);
     if (symbol == NULL) {
         fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
               symbol_name);
@@ -439,7 +442,7 @@ void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register)
         fatal(RC_COMPILER_ERROR, "Non-value passed to llvm_store_global_variable");
     }
 
-    SymbolTableEntry* symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+    SymbolTableEntry* symbol = STS_FIND(symbol_name);
     if (symbol == NULL) {
         fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
               symbol_name);
@@ -913,10 +916,11 @@ void llvm_conditional_jump(LLVMValue condition_register, LLVMValue true_label,
  * @brief Generates the preamble for a function
  * 
  * @param symbol_name   Name of function to generate for
+ * @return LLVMValue*   List of LLVMValues corresponding to the latest_llvmvalues for each function input
  */
-void llvm_function_preamble(char* symbol_name)
+LLVMValue* llvm_function_preamble(char* symbol_name)
 {
-    SymbolTableEntry* entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+    SymbolTableEntry* entry = STS_FIND(symbol_name);
     if (!entry) {
         fatal(RC_COMPILER_ERROR,
               "llvm_call_function received symbol name \"%s\", which is not an identifier",
@@ -927,9 +931,35 @@ void llvm_function_preamble(char* symbol_name)
               symbol_name);
     }
 
-    D_CURRENT_FUNCTION_PREAMBLE_PRINTED = true;
-    fprintf(D_LLVM_FILE, "define dso_local %s @%s() #0 {" NEWLINE,
-            type_to_llvm_type(entry->type.value.function.return_type), symbol_name);
+    // Generate a string containing all arguments, comma-separated by looping
+    // through the expected number of arguments and pulling their types one by
+    // one
+    int args_size = 256;
+    char* args_str = (char*)calloc(1, sizeof(char) * args_size);
+    int write_offset = 0;
+    for (int i = 0; i < entry->type.value.function.num_parameters; i++) {
+        // Sprintf into a temporary buffer first, so that we can make sure it won't
+        // overflow the main buffer
+        char* curr_arg_str = (char*)calloc(1, 300);
+        sprintf(
+            curr_arg_str, "%s%s %%%llu%s",
+            numberTypeLLVMReprs[entry->type.value.function.parameters[i].parameter_type.type],
+            REFSTRING(entry->type.value.function.parameters[i].parameter_type.pointer_depth - 1),
+            get_next_local_virtual_register() - 1,
+            i != entry->type.value.function.num_parameters - 1 ? ", " : "");
+        // If it does want to overflow, resize the main buffer
+        while (write_offset + strlen(curr_arg_str) > args_size) {
+            args_size += 256;
+            args_str = realloc(args_str, args_size);
+        }
+        sprintf(args_str, "%s", curr_arg_str);
+        free(curr_arg_str);
+    }
+
+    fprintf(D_LLVM_FILE, "define dso_local %s @%s(%s) #0 {" NEWLINE,
+            type_to_llvm_type(entry->type.value.function.return_type), symbol_name, args_str);
+
+    free(args_str);
 
     // Print our buffered stack entries
     if (buffered_stack_entries_head != NULL) {
@@ -937,6 +967,35 @@ void llvm_function_preamble(char* symbol_name)
         free_llvm_stack_entry_node_list(buffered_stack_entries_head);
         buffered_stack_entries_head = NULL;
     }
+
+    D_CURRENT_FUNCTION_PREAMBLE_PRINTED = true;
+
+    // Build a list of LLVMValues as they're generated
+    LLVMValue* arguments_llvmvalues =
+        (LLVMValue*)malloc(sizeof(LLVMValue) * entry->type.value.function.num_parameters);
+    for (unsigned long long int i = 0; i < entry->type.value.function.num_parameters; i++) {
+        // fprintf(D_LLVM_FILE, TAB "%%%llu = alloca %s%s, align %d" NEWLINE, current->reg,
+        //         numberTypeLLVMReprs[current->type], REFSTRING(current->pointer_depth),
+        //         current->align_bytes);
+        Number param_num = entry->type.value.function.parameters[i].parameter_type;
+        // char* numstring = number_string(param_num);
+        fprintf(D_LLVM_FILE, TAB "%%%s = alloca %s%s, align %d" NEWLINE,
+                entry->type.value.function.parameters[i].parameter_name,
+                numberTypeLLVMReprs[param_num.type], REFSTRING(param_num.pointer_depth - 1),
+                numberTypeByteSizes[param_num.type]);
+        fprintf(D_LLVM_FILE, TAB "store %s%s %%%llu, %s%s* %%%s" NEWLINE,
+                numberTypeLLVMReprs[param_num.type], REFSTRING(param_num.pointer_depth - 1), i,
+                numberTypeLLVMReprs[param_num.type], _refstring_buf,
+                entry->type.value.function.parameters[i].parameter_name);
+        arguments_llvmvalues[i] = (LLVMValue){.value_type = LLVMVALUETYPE_VIRTUAL_REGISTER,
+                                              .number_type = param_num.type,
+                                              param_num.pointer_depth,
+                                              .has_name = true};
+        strcpy(arguments_llvmvalues[i].value.name,
+               entry->type.value.function.parameters[i].parameter_name);
+    }
+
+    return arguments_llvmvalues;
 }
 
 /**
@@ -965,15 +1024,16 @@ const char* type_to_llvm_type(TokenType type)
 /**
  * @brief Generate a function call statement
  * 
- * @param virtual_register  Currently unused function parameter
+ * @param args              Currently unused function parameter
+ * @param num_args          Number of args passed
  * @param symbol_name       Name of function to call
  * @return LLVMValue        Output of function, or LLVMVALUE_NULL if it is a void function
  */
-LLVMValue llvm_call_function(LLVMValue virtual_register, char* symbol_name)
+LLVMValue llvm_call_function(LLVMValue* args, unsigned long long int num_args, char* symbol_name)
 {
     LLVMValue out = LLVMVALUE_NULL;
 
-    SymbolTableEntry* entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+    SymbolTableEntry* entry = STS_FIND(symbol_name);
     if (!entry) {
         fatal(RC_COMPILER_ERROR,
               "llvm_call_function received symbol name \"%s\", which is not an identifier",
@@ -993,6 +1053,23 @@ LLVMValue llvm_call_function(LLVMValue virtual_register, char* symbol_name)
         fprintf(D_LLVM_FILE, "%%%llu = ", out.value.virtual_register_index);
     }
 
+    // Build the strings for passing in types and values, check passed args against
+    // expected args at the same time
+    if (num_args != entry->type.value.function.num_parameters) {
+        fatal(RC_COMPILER_ERROR,
+              "Incorrect number of arguments to function call allowed to propagate to compilation "
+              "phase, got %llu but expected %llu",
+              num_args, entry->type.value.function.num_parameters);
+    }
+    int passed_types_size, passed_values_size = 256;
+    char* passed_types = (char*)calloc(1, sizeof(char) * passed_types_size);
+    char* passed_values = (char*)calloc(1, sizeof(char) * passed_values_size);
+    for (unsigned long long int i; i < num_args; i++) {
+        FunctionParameter param = entry->type.value.function.parameters[i];
+
+        // TODO : print param stuff to passed_types and passed_values, put them into call statement below
+    }
+
     fprintf(D_LLVM_FILE, "call %s () @%s()" NEWLINE,
             type_to_llvm_type(entry->type.value.function.return_type), symbol_name);
 
@@ -1007,7 +1084,7 @@ LLVMValue llvm_call_function(LLVMValue virtual_register, char* symbol_name)
  */
 void llvm_return(LLVMValue value, char* symbol_name)
 {
-    SymbolTableEntry* entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+    SymbolTableEntry* entry = STS_FIND(symbol_name);
     if (!entry) {
         fatal(RC_COMPILER_ERROR,
               "llvm_call_function received symbol name \"%s\", which is not an identifier",
@@ -1173,4 +1250,13 @@ void llvm_store_dereference(LLVMValue destination, LLVMValue value)
         fprintf(D_LLVM_FILE, "%s%s* @%s" NEWLINE, numberTypeLLVMReprs[destination.number_type],
                 REFSTRING(destination.pointer_depth), destination.just_loaded);
     }
+}
+
+void llvm_store_local(SymbolTableEntry* ste, LLVMValue val)
+{
+    if (!ste) {
+        fatal(RC_COMPILER_ERROR, "Tried to store into NULL SymbolTableEntry in llvm_store_local");
+    }
+
+    ste->latest_llvmvalue = val;
 }

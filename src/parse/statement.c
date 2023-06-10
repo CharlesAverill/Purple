@@ -44,6 +44,12 @@ TokenType match_tokens(TokenType types[], int n_types)
     return 0;
 }
 
+/**
+ * @brief Matches a valid type in the input stream
+ * 
+ * @param out   Pointer to Number struct to fill with parsed data
+ * @return int  0 if out is filled properly, 1 if the scanned type is "void"
+ */
 int match_type(Number* out)
 {
     D_SCANNING_TYPE = true;
@@ -52,7 +58,8 @@ int match_type(Number* out)
         match_tokens((TokenType[]){T_VOID, T_BOOL, T_BYTE, T_CHAR, T_SHORT, T_INT, T_LONG}, 7);
 
     int pointer_depth;
-    for (pointer_depth = 0; D_GLOBAL_TOKEN.type == T_STAR; pointer_depth++) {
+    for (pointer_depth = 0; D_GLOBAL_TOKEN.type == T_STAR && pointer_depth < D_MAX_POINTER_DEPTH;
+         pointer_depth++) {
         scan();
     }
 
@@ -127,8 +134,7 @@ static ASTNode* assignment_statement(void)
 
     // Ensure identifier name has been declared
     purple_log(LOG_DEBUG, "Searching for identifier name in global symbol table");
-    if ((found_entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER)) ==
-        NULL) {
+    if ((found_entry = STS_FIND(D_IDENTIFIER_BUFFER)) == NULL) {
         identifier_error(0, 0, 0, "Identifier name \"%s\" has not been declared",
                          D_IDENTIFIER_BUFFER);
     }
@@ -288,8 +294,7 @@ static ASTNode* return_statement(void)
 {
     ASTNode* out;
 
-    SymbolTableEntry* entry =
-        find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_CURRENT_FUNCTION_BUFFER);
+    SymbolTableEntry* entry = STS_FIND(D_CURRENT_FUNCTION_BUFFER);
     if (!entry) {
         fatal(RC_COMPILER_ERROR,
               "return_statement received symbol name \"%s\", which is not an identifier",

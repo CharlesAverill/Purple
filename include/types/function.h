@@ -5,8 +5,8 @@
  * @date 05-Oct-2022
  */
 
-#ifndef FUNCTION_H
-#define FUNCTION_H
+#ifndef FUNCTION
+#define FUNCTION
 
 #include "scan.h"
 
@@ -15,10 +15,9 @@
  */
 typedef struct FunctionParameter {
     /**Type of this parameter*/
-    TokenType parameter_type;
+    Number parameter_type;
     /**Name of this parameter*/
-    // TODO : fix this MAX_IDENTIFIER_LENGTH drop-in
-    char parameter_name[256];
+    char parameter_name[MAX_IDENTIFIER_LENGTH];
 } FunctionParameter;
 
 /**
@@ -42,4 +41,4 @@ typedef struct Function {
         .return_type = output_type, .parameters = input_list, .num_parameters = num_inputs         \
     }
 
-#endif /* FUNCTION_H */
+#endif /* FUNCTION */

@@ -5,8 +5,8 @@
  * @date 12-Sep-2022
  */
 
-#ifndef NUMBER_H
-#define NUMBER_H
+#ifndef NUMBER
+#define NUMBER
 
 #include <limits.h>
 
@@ -131,4 +131,4 @@ NumberType token_type_to_number_type(int token_type);
 int number_to_token_type(Number number);
 NumberType max_numbertype_for_val(long long int value);
 
-#endif /* NUMBER_H */
+#endif /* NUMBER */

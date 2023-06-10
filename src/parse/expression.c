@@ -127,7 +127,7 @@ ASTNode* prefix_operator_passthrough(void)
 ASTNode* function_call_expression(void)
 {
     ASTNode* root;
-    ASTNode* parameter;
+    ASTNode* parameters;
     SymbolTableEntry* found_entry;
 
     purple_log(LOG_DEBUG, "Parsing function call statement");
@@ -138,18 +138,17 @@ ASTNode* function_call_expression(void)
 
     // Ensure identifier name has been declared
     purple_log(LOG_DEBUG, "Searching for function identifier name in global symbol table");
-    if ((found_entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER)) ==
-        NULL) {
+    if ((found_entry = STS_FIND(D_IDENTIFIER_BUFFER)) == NULL) {
         identifier_error(0, 0, 0, "Function dentifier name \"%s\" has not been declared",
                          D_IDENTIFIER_BUFFER);
     }
 
     match_token(T_LEFT_PAREN);
-    parameter = parse_binary_expression();
+    parameters = parse_binary_expression();
     match_token(T_RIGHT_PAREN);
 
     // Make a terminal node for the identifier
-    root = create_unary_ast_node(T_FUNCTION_CALL, parameter, found_entry->type,
+    root = create_unary_ast_node(T_FUNCTION_CALL, parameters, found_entry->type,
                                  found_entry->symbol_name);
     root->tree_type.type = token_type_to_number_type(found_entry->type.value.function.return_type);
     add_position_info(root, ident_pos);

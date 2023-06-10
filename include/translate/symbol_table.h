@@ -10,6 +10,7 @@
 
 #include <stdbool.h>
 
+#include "translate/llvm.h"
 #include "types/identifier.h"
 #include "types/type.h"
 
@@ -26,8 +27,10 @@ typedef struct SymbolTableEntry {
     unsigned int length;
     /**Index of symbol in Symbol Table*/
     unsigned long int bucket_index;
-    /**Type of entry*/
+    /**Contains information about the type of this symbol*/
     Type type;
+    /**LLVMValue containing the latest information of this symbol during the compile phase*/
+    LLVMValue latest_llvmvalue;
     /**Symbol Tables are a chained Hash Table, this is the chain*/
     struct SymbolTableEntry* next;
     /**Index in chain*/
@@ -46,6 +49,8 @@ typedef struct SymbolTable {
     unsigned long int total_buckets;
     /**Array of entries with length length*/
     SymbolTableEntry** buckets;
+    /**Previous Symbol Table in the scope stack*/
+    struct SymbolTable* prev;
     /**Next Symbol Table in the scope stack*/
     struct SymbolTable* next;
 } SymbolTable;
@@ -73,9 +78,14 @@ SymbolTable* new_symbol_table(void);
 SymbolTable* new_symbol_table_with_length(int length);
 void resize_symbol_table(SymbolTable* table);
 SymbolTableEntry* find_symbol_table_entry(SymbolTable* table, char* symbol_name);
+SymbolTableEntry* find_symbol_table_stack_entry(SymbolTableStack* table, char* symbol_name);
 
 // Symbol Table Entry functions
 SymbolTableEntry* new_symbol_table_entry(char* symbol_name);
 SymbolTableEntry* add_symbol_table_entry(SymbolTable* table, char* symbol_name, Type type);
+
+#include "data.h"
+#define GST_FIND(symbol_name) find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name)
+#define STS_FIND(symbol_name) find_symbol_table_stack_entry(D_SYMBOL_TABLE_STACK, symbol_name)
 
 #endif /* SYMBOL_TABLE */

@@ -60,10 +60,14 @@ typedef struct LLVMValue {
     int pointer_depth;
     /**Previously-loaded identifier*/
     char just_loaded[MAX_IDENTIFIER_LENGTH];
+    /**Whether or not the value has a custom name rather than a register index*/
+    bool has_name;
     /**Contents of the value returned*/
     union {
         /**Index of a virtual register*/
         type_register virtual_register_index;
+        /**Name of virtual register*/
+        char name[MAX_IDENTIFIER_LENGTH];
         /**Constant value*/
         long long int constant;
         /**Index of an LLVM label*/
@@ -88,7 +92,8 @@ typedef struct LLVMValue {
 #define LLVMVALUE_NULL                                                                             \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_NONE, .value = 0, .pointer_depth = 0                           \
+        .value_type = LLVMVALUETYPE_NONE, .value = 0, .pointer_depth = 0, .number_type = -1,       \
+        .just_loaded = 0, .has_name = false                                                        \
     }
 
 /**
@@ -98,7 +103,7 @@ typedef struct LLVMValue {
     (LLVMValue)                                                                                    \
     {                                                                                              \
         .value_type = LLVMVALUETYPE_CONSTANT, .value.constant = c, .pointer_depth = 0,             \
-        .number_type = max_numbertype_for_val(c)                                                   \
+        .number_type = max_numbertype_for_val(c), .just_loaded = 0, .has_name = false              \
     }
 
 /**
@@ -108,7 +113,8 @@ typedef struct LLVMValue {
     (LLVMValue)                                                                                    \
     {                                                                                              \
         .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .pointer_depth = 0,                          \
-        .value.virtual_register_index = register_number, .number_type = n_t                        \
+        .value.virtual_register_index = register_number, .number_type = n_t, .just_loaded = 0,     \
+        .has_name = false                                                                          \
     }
 
 /**
@@ -118,7 +124,8 @@ typedef struct LLVMValue {
     (LLVMValue)                                                                                    \
     {                                                                                              \
         .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .pointer_depth = depth,                      \
-        .value.virtual_register_index = register_number, .number_type = n_t                        \
+        .value.virtual_register_index = register_number, .number_type = n_t, .just_loaded = 0,     \
+        .has_name = false                                                                          \
     }
 
 /**
@@ -127,7 +134,8 @@ typedef struct LLVMValue {
 #define LLVMVALUE_LABEL(label_number)                                                              \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number, .pointer_depth = 0   \
+        .value_type = LLVMVALUETYPE_LABEL, .value.label_index = label_number, .pointer_depth = 0,  \
+        .just_loaded = 0, .has_name = false                                                        \
     }
 
 /**
@@ -166,9 +174,9 @@ void llvm_label(LLVMValue label);
 void llvm_jump(LLVMValue label);
 void llvm_conditional_jump(LLVMValue condition_register, LLVMValue true_label,
                            LLVMValue false_label);
-void llvm_function_preamble(char* symbol_name);
+LLVMValue* llvm_function_preamble(char* symbol_name);
 void llvm_function_postamble(void);
-LLVMValue llvm_call_function(LLVMValue virtual_register, char* symbol_name);
+LLVMValue llvm_call_function(LLVMValue* args, unsigned long long int num_args, char* symbol_name);
 const char* type_to_llvm_type(TokenType type);
 void llvm_return(LLVMValue virtual_register, char* symbol_name);
 char* refstring(char* buf, int pointer_depth);

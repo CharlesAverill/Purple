@@ -400,7 +400,8 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
                 fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
                       root->value.symbol_name);
             }
-            return llvm_call_function(left_vr, root->value.symbol_name);
+            // TODO : Update this call
+            return llvm_call_function(NULL, 0, root->value.symbol_name);
         case T_AMPERSAND:
             return llvm_get_address(root->value.symbol_name);
         case T_DEREFERENCE:
@@ -411,10 +412,9 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
         case T_RETURN:
             symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, root->value.symbol_name);
             if (symbol == NULL) {
-                symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_CURRENT_FUNCTION_BUFFER);
+                symbol = STS_FIND(D_CURRENT_FUNCTION_BUFFER);
                 if (symbol == NULL) {
-                    symbol =
-                        find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_CURRENT_FUNCTION_BUFFER);
+                    symbol = STS_FIND(D_CURRENT_FUNCTION_BUFFER);
                     fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
                           D_CURRENT_FUNCTION_BUFFER);
                 }

@@ -66,4 +66,7 @@ extern_ SymbolTableStack* D_SYMBOL_TABLE_STACK;
 /**Global Symbol Table (pointer to bottom of D_SYMBOL_TABLE_STACK)*/
 extern_ SymbolTable* D_GLOBAL_SYMBOL_TABLE;
 
+/**Maximum parseable pointer depth*/
+#define D_MAX_POINTER_DEPTH 256
+
 #endif /* DATA */

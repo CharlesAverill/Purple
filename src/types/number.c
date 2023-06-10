@@ -6,6 +6,7 @@
  */
 
 #include <math.h>
+#include <stdio.h>
 
 #include "scan.h"
 #include "types/number.h"
