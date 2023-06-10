@@ -446,7 +446,7 @@ void generate_llvm(void)
 
     llvm_preamble();
 
-    while (D_GLOBAL_TOKEN.type != T_EOF) {
+    while (D_GLOBAL_TOKEN.token_type != T_EOF) {
         D_CURRENT_FUNCTION_HAS_RETURNED = false;
         ASTNode* root = function_declaration();
         ast_to_llvm(root, LLVMVALUE_NULL, root->ttype);

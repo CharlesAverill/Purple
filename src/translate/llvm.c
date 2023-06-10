@@ -461,7 +461,7 @@ void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register)
         fatal(RC_COMPILER_ERROR, "Pointer mismatch when trying to save global variable");
     }
 
-    if (TOKENTYPE_IS_NUMBER_TYPE(symbol->type.type) &&
+    if (TOKENTYPE_IS_NUMBER_TYPE(symbol->type.token_type) &&
         rvalue_register.num_info.number_type != symbol->type.value.number.number_type) {
         if (numberTypeBitSizes[rvalue_register.num_info.number_type] !=
             numberTypeBitSizes[symbol->type.value.number.number_type]) {

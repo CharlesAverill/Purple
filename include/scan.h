@@ -166,7 +166,7 @@ typedef struct position {
  */
 typedef struct Token {
     /**Type of Token*/
-    TokenType type;
+    TokenType token_type;
     /**Position of Token*/
     position pos;
     /**Value of Token*/

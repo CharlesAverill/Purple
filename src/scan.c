@@ -456,22 +456,22 @@ bool scan()
     bool switch_matched = true;
     switch (c) {
     case EOF:
-        t->type = T_EOF;
+        t->token_type = T_EOF;
         return false;
     case '+':
-        t->type = T_PLUS;
+        t->token_type = T_PLUS;
         break;
     case '-':
-        t->type = T_MINUS;
+        t->token_type = T_MINUS;
         break;
     case '*':
         // if ((c = next()) == '*' && !D_SCANNING_TYPE) {
-        //     t->type = T_EXPONENT;
+        //     t->token_type = T_EXPONENT;
         // } else {
         //     put_back_into_stream(c);
-        //     t->type = T_STAR;
+        //     t->token_type = T_STAR;
         // }
-        t->type = T_STAR;
+        t->token_type = T_STAR;
         break;
     case '/':
         if ((c = next()) == '/') {
@@ -492,57 +492,57 @@ bool scan()
             scan(t);
         } else {
             put_back_into_stream(c);
-            t->type = T_SLASH;
+            t->token_type = T_SLASH;
         }
         break;
     case ';':
-        t->type = T_SEMICOLON;
+        t->token_type = T_SEMICOLON;
         break;
     case '=':
         if ((c = next()) == '=') {
-            t->type = T_EQ;
+            t->token_type = T_EQ;
         } else {
             put_back_into_stream(c);
-            t->type = T_ASSIGN;
+            t->token_type = T_ASSIGN;
         }
         break;
     case '!':
         if ((c = next()) == '=') {
-            t->type = T_NEQ;
+            t->token_type = T_NEQ;
         } else {
             switch_matched = false;
         }
         break;
     case '<':
         if ((c = next()) == '=') {
-            t->type = T_LE;
+            t->token_type = T_LE;
         } else {
             put_back_into_stream(c);
-            t->type = T_LT;
+            t->token_type = T_LT;
         }
         break;
     case '>':
         if ((c = next()) == '=') {
-            t->type = T_GE;
+            t->token_type = T_GE;
         } else {
             put_back_into_stream(c);
-            t->type = T_GT;
+            t->token_type = T_GT;
         }
         break;
     case '(':
-        t->type = T_LEFT_PAREN;
+        t->token_type = T_LEFT_PAREN;
         break;
     case ')':
-        t->type = T_RIGHT_PAREN;
+        t->token_type = T_RIGHT_PAREN;
         break;
     case '{':
-        t->type = T_LEFT_BRACE;
+        t->token_type = T_LEFT_BRACE;
         break;
     case '}':
-        t->type = T_RIGHT_BRACE;
+        t->token_type = T_RIGHT_BRACE;
         break;
     case '&':
-        t->type = T_AMPERSAND;
+        t->token_type = T_AMPERSAND;
         break;
     case NUMBER_LITERAL_BASE_SEPARATOR:
         syntax_error(0, 0, t->pos.char_number + 2,
@@ -586,26 +586,26 @@ bool scan()
             }
 
             t->value.number_value = parsed;
-            t->type =
+            t->token_type =
                 t->value.number_value.number_type == NT_INT64 ? T_LONG_LITERAL : T_INTEGER_LITERAL;
         } else {
             // Check if identifier is a keyword
             if ((temp_type = parse_keyword(D_IDENTIFIER_BUFFER))) {
-                t->type = temp_type;
+                t->token_type = temp_type;
             } else {
                 // It's an identifier
-                t->type = T_IDENTIFIER;
+                t->token_type = T_IDENTIFIER;
                 strcpy(t->value.symbol_name, D_IDENTIFIER_BUFFER);
             }
         }
     } else if (scan_check_integer_literal(c)) {
         t->pos.char_number = D_CHAR_NUMBER;
         t->value.number_value = scan_number_literal(c);
-        t->type = number_to_token_type(t->value.number_value);
+        t->token_type = number_to_token_type(t->value.number_value);
     } else if (scan_check_char_literal(c)) {
         t->pos.char_number = D_CHAR_NUMBER;
         t->value.number_value = NUMBER_CHAR(scan_char_literal(c));
-        t->type = T_CHAR_LITERAL;
+        t->token_type = T_CHAR_LITERAL;
         if (!scan_check_char_literal(next())) {
             syntax_error(0, 0, 0, "Multichar literals are not permitted, expected \'");
         }
@@ -615,9 +615,9 @@ bool scan()
     }
 
     // Fill boolean literal values
-    if (t->type == T_TRUE) {
+    if (t->token_type == T_TRUE) {
         t->value.number_value = NUMBER_BOOL(1);
-    } else if (t->type == T_FALSE) {
+    } else if (t->token_type == T_FALSE) {
         t->value.number_value = NUMBER_BOOL(0);
     }
 

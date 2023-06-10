@@ -225,7 +225,7 @@ SymbolTableEntry* add_symbol_table_entry(SymbolTable* table, char* symbol_name, 
     SymbolTableEntry* found = find_symbol_table_entry(table, symbol_name);
     if (found != NULL) {
         identifier_error(0, 0, 0, "Identifier \"%s\" already exists with type \"%s\" in this scope",
-                         symbol_name, tokenStrings[found->type.type]);
+                         symbol_name, tokenStrings[found->type.token_type]);
     }
 
     SymbolTableEntry* entry = new_symbol_table_entry(symbol_name);

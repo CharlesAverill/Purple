@@ -39,7 +39,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
     out->left = left;
     out->mid = mid;
     out->right = right;
-    if (TOKENTYPE_IS_LITERAL(ttype) && TOKENTYPE_IS_NUMBER_TYPE(type.type)) {
+    if (TOKENTYPE_IS_LITERAL(ttype) && TOKENTYPE_IS_NUMBER_TYPE(type.token_type)) {
         out->value.number_value = type.value.number.value;
         out->tree_type.number_type = type.value.number.number_type;
         out->is_char_arithmetic = ttype == T_CHAR || ttype == T_CHAR_LITERAL;
@@ -58,8 +58,8 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
         }
 
         out->tree_type.number_type = found_entry->type.value.number.number_type;
-        out->is_char_arithmetic =
-            found_entry->type.type == T_CHAR || found_entry->type.type == T_CHAR_LITERAL;
+        out->is_char_arithmetic = found_entry->type.token_type == T_CHAR ||
+                                  found_entry->type.token_type == T_CHAR_LITERAL;
     } else if (TOKENTYPE_IS_BINARY_ARITHMETIC(ttype)) {
         out->tree_type.number_type = left->tree_type.number_type;
         out->is_char_arithmetic = left->is_char_arithmetic;

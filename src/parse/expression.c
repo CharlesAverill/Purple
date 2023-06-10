@@ -16,10 +16,10 @@
  */
 static int get_operator_precedence(Token t)
 {
-    int prec = operatorPrecedence[t.type];
+    int prec = operatorPrecedence[t.token_type];
 
     if (prec == 0) {
-        syntax_error(0, 0, 0, "Expected operator but got %s", tokenStrings[t.type]);
+        syntax_error(0, 0, 0, "Expected operator but got %s", tokenStrings[t.token_type]);
     }
 
     return prec;
@@ -36,11 +36,11 @@ static ASTNode* parse_terminal_node()
     SymbolTableEntry* entry;
     Token* t = &D_GLOBAL_TOKEN;
 
-    if (TOKENTYPE_IS_LITERAL(t->type)) {
+    if (TOKENTYPE_IS_LITERAL(t->token_type)) {
         out = create_ast_nonidentifier_leaf(
-            t->type, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(t->value.number_value));
+            t->token_type, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(t->value.number_value));
     } else {
-        switch (t->type) {
+        switch (t->token_type) {
         case T_IDENTIFIER:
             if (!(entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, t->value.symbol_name))) {
                 identifier_error(0, 0, 0, "Undeclared identifier %s", t->value.symbol_name);
@@ -58,7 +58,7 @@ static ASTNode* parse_terminal_node()
             break;
         default:
             syntax_error(0, 0, 0, "Unexpected end of expression, got \"%s\"",
-                         tokenStrings[t->type]);
+                         tokenStrings[t->token_type]);
         }
     }
 
@@ -78,7 +78,7 @@ ASTNode* prefix_operator_passthrough(void)
 
     purple_log(LOG_DEBUG, "Checking for prefix operators");
 
-    if (D_GLOBAL_TOKEN.type == T_AMPERSAND) {
+    if (D_GLOBAL_TOKEN.token_type == T_AMPERSAND) {
         purple_log(LOG_DEBUG, "Found address prefix operator");
 
         scan();
@@ -91,7 +91,7 @@ ASTNode* prefix_operator_passthrough(void)
         out->ttype = T_AMPERSAND;
         out->tree_type.pointer_depth++;
 
-    } else if (D_GLOBAL_TOKEN.type == T_STAR) {
+    } else if (D_GLOBAL_TOKEN.token_type == T_STAR) {
         purple_log(LOG_DEBUG, "Found dereference prefix operator");
 
         scan();
@@ -175,7 +175,7 @@ static ASTNode* parse_binary_expression_recursive(int previous_token_precedence,
     left = prefix_operator_passthrough();
     *nt_max = MAX(*nt_max, left->tree_type.number_type);
     add_position_info(left, pre_pos);
-    current_ttype = D_GLOBAL_TOKEN.type;
+    current_ttype = D_GLOBAL_TOKEN.token_type;
     if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {
         left->is_rvalue = true;
         return left;
@@ -209,7 +209,7 @@ static ASTNode* parse_binary_expression_recursive(int previous_token_precedence,
         add_position_info(left, pos);
 
         // Update current_ttype and check for EOF
-        current_ttype = D_GLOBAL_TOKEN.type;
+        current_ttype = D_GLOBAL_TOKEN.token_type;
         if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {
             left->is_rvalue = true;
             return left;

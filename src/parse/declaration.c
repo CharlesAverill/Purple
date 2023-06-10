@@ -59,7 +59,7 @@ ASTNode* function_declaration(void)
     int num_inputs = 0;
     FunctionParameter* parameters =
         (FunctionParameter*)malloc(sizeof(FunctionParameter) * parameters_size);
-    while (D_GLOBAL_TOKEN.type != T_RIGHT_PAREN) {
+    while (D_GLOBAL_TOKEN.token_type != T_RIGHT_PAREN) {
         Number param_type;
         if (match_type(&param_type) == 1) {
             break;

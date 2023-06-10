@@ -17,7 +17,7 @@
  */
 void match_token(TokenType type)
 {
-    if (D_GLOBAL_TOKEN.type == type) {
+    if (D_GLOBAL_TOKEN.token_type == type) {
         scan();
     } else {
         syntax_error(0, 0, 0, "Expected token \"%s\"", tokenStrings[type]);
@@ -33,14 +33,14 @@ TokenType match_tokens(TokenType types[], int n_types)
         sprintf(possible_types + (sizeof(char) * last_type_length), "%s ", tokenStrings[types[i]]);
         last_type_length += strlen(tokenStrings[types[i]]) + 1;
 
-        if (D_GLOBAL_TOKEN.type == types[i]) {
+        if (D_GLOBAL_TOKEN.token_type == types[i]) {
             scan();
             return types[i];
         }
     }
 
     syntax_error(0, 0, 0, "Expected one of: [ %s] but got \'%s\'", possible_types,
-                 tokenStrings[D_GLOBAL_TOKEN.type]);
+                 tokenStrings[D_GLOBAL_TOKEN.token_type]);
     return 0;
 }
 
@@ -58,7 +58,8 @@ int match_type(Number* out)
         match_tokens((TokenType[]){T_VOID, T_BOOL, T_BYTE, T_CHAR, T_SHORT, T_INT, T_LONG}, 7);
 
     int pointer_depth;
-    for (pointer_depth = 0; D_GLOBAL_TOKEN.type == T_STAR && pointer_depth < D_MAX_POINTER_DEPTH;
+    for (pointer_depth = 0;
+         D_GLOBAL_TOKEN.token_type == T_STAR && pointer_depth < D_MAX_POINTER_DEPTH;
          pointer_depth++) {
         scan();
     }
@@ -82,7 +83,7 @@ int match_type(Number* out)
  */
 TokenType check_for_type(void)
 {
-    TokenType ttype = D_GLOBAL_TOKEN.type;
+    TokenType ttype = D_GLOBAL_TOKEN.token_type;
     if (TOKENTYPE_IS_TYPE(ttype)) {
         scan();
     } else {
@@ -187,7 +188,7 @@ static ASTNode* if_statement(void)
 
     true_branch = parse_statements();
 
-    if (D_GLOBAL_TOKEN.type == T_ELSE) {
+    if (D_GLOBAL_TOKEN.token_type == T_ELSE) {
         match_token(T_ELSE);
         false_branch = parse_statements();
     }
@@ -226,7 +227,7 @@ static ASTNode* while_statement(void)
 
     body = parse_statements();
 
-    if (D_GLOBAL_TOKEN.type == T_ELSE) {
+    if (D_GLOBAL_TOKEN.token_type == T_ELSE) {
         purple_log(LOG_DEBUG, "Encountered while-else statement");
 
         match_token(T_ELSE);
@@ -277,7 +278,7 @@ static ASTNode* for_statement(void)
 
     body = parse_statements();
 
-    if (D_GLOBAL_TOKEN.type == T_ELSE) {
+    if (D_GLOBAL_TOKEN.token_type == T_ELSE) {
         purple_log(LOG_DEBUG, "Encountered for-else statement");
 
         match_token(T_ELSE);
@@ -337,11 +338,11 @@ ASTNode* parse_statements(void)
         bool return_left = false;
         bool match_semicolon = true;
 
-        if (TOKENTYPE_IS_TYPE(D_GLOBAL_TOKEN.type)) {
+        if (TOKENTYPE_IS_TYPE(D_GLOBAL_TOKEN.token_type)) {
             variable_declaration();
             root = NULL;
         } else {
-            switch (D_GLOBAL_TOKEN.type) {
+            switch (D_GLOBAL_TOKEN.token_type) {
             case T_PRINT:
                 root = print_statement();
                 break;
@@ -378,7 +379,7 @@ ASTNode* parse_statements(void)
                 root = return_statement();
                 break;
             default:
-                // syntax_error(0, 0, 0, "Unexpected token %s", tokenStrings[D_GLOBAL_TOKEN.type]);
+                // syntax_error(0, 0, 0, "Unexpected token %s", tokenStrings[D_GLOBAL_TOKEN.token_type]);
                 root = parse_binary_expression();
                 break;
             }
