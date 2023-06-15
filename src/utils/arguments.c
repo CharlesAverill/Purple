@@ -19,16 +19,26 @@ static char doc[] = "The standard compiler for the Purple programming language";
 static char args_doc[] = "PROGRAM";
 
 static struct argp_option options[] = {
+    {0, 0, 0, 0, "Informational Options:", 1},
     {"logging", 'l', "LEVEL", 0,
      "Level of log statements to print (NONE, DEBUG, INFO, WARNING, ERROR, CRITICAL)", 0},
-    {"clang-executable", 'g', "PATH", 0,
-     "Alternate path to clang executable (default is \"" DEFAULT_CLANG_EXECUTABLE_PATH "\"", 0},
-    {"cmd", 'c', "PROGRAM", 0, "Program passed in as a string", 0},
-    {"output", 'o', "FILE", 0, "Path to the generated LLVM file", 0},
-    {"opt", 'O', "OPTLEVEL", 0, "Level of optimization to enable (0-3)"},
     {"quiet", 'q', 0, 0, "Equivalent to --logging=NONE", 0},
     {"verbose", 'v', 0, 0, "Equivalent to --logging=DEBUG", 0},
-    {"fconst-expr-reduce", FCONST_EXPR_REDUCE_CODE, 0, OPTION_HIDDEN, 0, 0},
+    {"help-flags", ARGP_HELP_FLAGS, 0, 0, "Show help information for various flags used in Purple",
+     0},
+    {0, 0, 0, 0, "Compiler Options:", 2},
+    {"clang-executable", 'g', "PATH", 0,
+     "Alternate path to clang executable (default is \"" DEFAULT_CLANG_EXECUTABLE_PATH "\"", 0},
+    {"cmd", 'c', "PROGRAM", OPTION_HIDDEN, "Program passed in as a string", 0},
+    {"llvm-output", ARGP_LLVM_OUTPUT, "FILE", 0, "Path to the generated LLVM file", 0},
+    {"output", 'o', "FILE", 0, "Path to compiled binary", 0},
+    {"opt", 'O', "OPTLEVEL", 0, "Level of optimization to enable (0-3)"},
+    {"fconst-expr-reduce", FCONST_EXPR_REDUCE_CODE, 0, OPTION_HIDDEN,
+     "Reduces constant expressions at compile-time", 0},
+    {"fprint-func-annotations", FPRINT_FUNC_ANNOTATIONS, 0, OPTION_HIDDEN,
+     "When generating llvm, prints a comment containing which function in the compiler is printing",
+     0},
+    {0, 0, 0, 0, "Generic Options:", -1},
     {0},
 };
 
@@ -62,8 +72,11 @@ error_t parse_opt(int key, char* arg, struct argp_state* state)
             argp_usage(state);
         }
         break;
-    case 'o':
+    case ARGP_LLVM_OUTPUT:
         arguments->filenames[1] = arg;
+        break;
+    case 'o':
+        arguments->filenames[2] = arg;
         break;
     case 'q':
         arguments->logging = LOG_NONE;
@@ -77,8 +90,14 @@ error_t parse_opt(int key, char* arg, struct argp_state* state)
         }
         set_opt_level(arguments, atoi(arg));
         break;
+    case ARGP_HELP_FLAGS:
+        help_flags();
+        exit(0);
     case FCONST_EXPR_REDUCE_CODE:
         arguments->const_expr_reduce = true;
+        break;
+    case FPRINT_FUNC_ANNOTATIONS:
+        arguments->print_func_annotations = true;
         break;
     case ARGP_KEY_ARG:
         // Check for too many arguments
@@ -115,6 +134,7 @@ void parse_args(PurpleArgs* args, int argc, char* argv[])
 {
     args->logging = LOG_INFO;
     args->filenames[1] = "a.ll";
+    args->filenames[2] = "a.out";
     args->clang_executable = "/usr/bin/clang";
     args->from_command_line_argument = NULL;
 
@@ -139,5 +159,16 @@ void set_opt_level(PurpleArgs* args, int opt_level)
         break;
     default:
         break;
+    }
+}
+
+void help_flags()
+{
+    printf("Compiler flags:\n");
+    for (int i = 0; i < sizeof options / sizeof options[0]; i++) {
+        struct argp_option opt = options[i];
+        if (opt.key > FLAGS_START && opt.key < FLAGS_END) {
+            printf("  --%-30s%s\n", opt.name, opt.doc);
+        }
     }
 }

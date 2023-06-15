@@ -5,6 +5,7 @@
  * @date 12-Sep-2022
  */
 
+#include <stdlib.h>
 #include <string.h>
 
 #include "data.h"
@@ -15,10 +16,43 @@
 #include "utils/formatting.h"
 #include "utils/logging.h"
 
+static void print_function_annotation(const char* function_name)
+{
+    if (D_ARGS->print_func_annotations) {
+        fprintf(D_LLVM_FILE, TAB "; %s" NEWLINE, function_name);
+    }
+}
+
+/**
+ * @brief Gets the LLVM string representation of a Number struct, max length = 300
+ * 
+ * @param number    Number to represent
+ * @return char*    calloc'd string
+ */
 static char* number_string(Number number)
 {
     char* out = (char*)calloc(1, sizeof(char) * 300);
     sprintf(out, "%s%s", numberTypeLLVMReprs[number.number_type], REFSTRING(number.pointer_depth));
+    return out;
+}
+
+/**
+ * @brief Gets the LLVM string representation of an LLVMValue struct, max length = 600
+ * 
+ * @param val       LLVMValue to represent
+ * @return char*    calloc'd string
+ */
+static char* llvmvalue_repr(LLVMValue val)
+{
+    char* out = (char*)calloc(1, sizeof(char) * 600);
+    char* numstring = number_string(val.num_info);
+    sprintf(out, "%s %s", numstring, LLVMVALUE_REGMARKER(val));
+    free(numstring);
+    if (val.has_name) {
+        sprintf(out + strlen(out), "%s", val.value.name);
+    } else {
+        sprintf(out + strlen(out), "%llu", val.value.virtual_register_index);
+    }
     return out;
 }
 
@@ -52,6 +86,7 @@ LLVMValue* llvm_ensure_registers_loaded(int n_registers, LLVMValue registers[], 
     }
 
     // Haven't loaded all of our registers yet
+    print_function_annotation("llvm_ensure_registers_loaded");
     LLVMValue* loaded_registers = (LLVMValue*)malloc(sizeof(LLVMValue) * (n_registers - n_found));
     for (int i = 0; i < n_registers; i++) {
         if (found_registers[i]) {
@@ -67,11 +102,15 @@ LLVMValue* llvm_ensure_registers_loaded(int n_registers, LLVMValue registers[], 
                         loaded_registers[i].value.virtual_register_index,
                         numberTypeLLVMReprs[registers[i].num_info.number_type],
                         REFSTRING(loaded_registers[i].num_info.pointer_depth));
-                fprintf(D_LLVM_FILE, "%s%s %%%llu, align %d" NEWLINE,
-                        numberTypeLLVMReprs[registers[i].num_info.number_type], REFSTRING(j),
-                        has_loaded_once ? last_loaded_reg
-                                        : registers[i].value.virtual_register_index,
-                        numberTypeByteSizes[i]);
+                if (has_loaded_once) {
+                    fprintf(D_LLVM_FILE, "%s%s %%%llu, align %d" NEWLINE,
+                            numberTypeLLVMReprs[registers[i].num_info.number_type], REFSTRING(j),
+                            last_loaded_reg, numberTypeByteSizes[i]);
+                } else {
+                    fprintf(D_LLVM_FILE, "%s%s %s, align %d" NEWLINE,
+                            numberTypeLLVMReprs[registers[i].num_info.number_type], REFSTRING(j),
+                            LLVM_REPR_NOTYPE(registers[i]), numberTypeByteSizes[i]);
+                }
 
                 has_loaded_once = true;
                 last_loaded_reg = new_reg;
@@ -95,6 +134,7 @@ LLVMValue* llvm_ensure_registers_fully_loaded(int n_registers, LLVMValue registe
  */
 void llvm_preamble(void)
 {
+    print_function_annotation("llvm_preamble");
     fprintf(D_LLVM_FILE, "; ModuleID = '%s'" NEWLINE, D_INPUT_FN);
 
     // Target layout
@@ -116,8 +156,6 @@ void llvm_preamble(void)
                          "c\"%%d\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "@print_long_fstring = private unnamed_addr constant [5 x i8] "
                          "c\"%%ld\\0A\\00\", align 1" NEWLINE NEWLINE);
-    fprintf(D_LLVM_FILE, "@print_char_fstring = private unnamed_addr constant [4 x i8] "
-                         "c\"%%c\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "@print_true_fstring = private unnamed_addr constant [6 x i8] "
                          "c\"true\\0A\\00\", align 1" NEWLINE NEWLINE);
     fprintf(D_LLVM_FILE, "@print_false_fstring = private unnamed_addr constant [7 x i8] "
@@ -130,6 +168,7 @@ void llvm_preamble(void)
  */
 void llvm_postamble(void)
 {
+    print_function_annotation("llvm_postamble");
     fprintf(D_LLVM_FILE, "declare i32 @printf(i8*, ...) #1" NEWLINE NEWLINE);
     fprintf(
         D_LLVM_FILE,
@@ -181,6 +220,9 @@ bool llvm_stack_allocation(LLVMStackEntryNode* stack_entries)
         return false;
     }
 
+    if (current) {
+        print_function_annotation("llvm_stack_allocation");
+    }
     while (current) {
         fprintf(D_LLVM_FILE, TAB "%%%llu = alloca %s%s, align %d" NEWLINE, current->reg,
                 numberTypeLLVMReprs[current->type], REFSTRING(current->pointer_depth),
@@ -200,13 +242,11 @@ bool llvm_stack_allocation(LLVMStackEntryNode* stack_entries)
  */
 static LLVMValue llvm_add(LLVMValue left_virtual_register, LLVMValue right_virtual_register)
 {
-    fprintf(D_LLVM_FILE, TAB "%%%llu = add nsw %s %s%lld, %s%lld" NEWLINE,
-            get_next_local_virtual_register(),
+    print_function_annotation("llvm_add");
+    fprintf(D_LLVM_FILE, TAB "%%%llu = add nsw %s %s, ", get_next_local_virtual_register(),
             numberTypeLLVMReprs[left_virtual_register.num_info.number_type],
-            LLVMVALUE_REGMARKER(left_virtual_register),
-            left_virtual_register.value.virtual_register_index,
-            LLVMVALUE_REGMARKER(right_virtual_register),
-            right_virtual_register.value.virtual_register_index);
+            LLVM_REPR_NOTYPE(left_virtual_register));
+    fprintf(D_LLVM_FILE, "%s" NEWLINE, LLVM_REPR_NOTYPE(right_virtual_register));
     return LLVMVALUE_VIRTUAL_REGISTER(D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER - 1,
                                       left_virtual_register.num_info.number_type);
 }
@@ -220,13 +260,11 @@ static LLVMValue llvm_add(LLVMValue left_virtual_register, LLVMValue right_virtu
  */
 static LLVMValue llvm_subtract(LLVMValue left_virtual_register, LLVMValue right_virtual_register)
 {
-    fprintf(D_LLVM_FILE, TAB "%%%llu = sub nsw %s %s%lld, %s%lld" NEWLINE,
-            get_next_local_virtual_register(),
+    print_function_annotation("llvm_subtract");
+    fprintf(D_LLVM_FILE, TAB "%%%llu = sub nsw %s %s, ", get_next_local_virtual_register(),
             numberTypeLLVMReprs[left_virtual_register.num_info.number_type],
-            LLVMVALUE_REGMARKER(left_virtual_register),
-            left_virtual_register.value.virtual_register_index,
-            LLVMVALUE_REGMARKER(right_virtual_register),
-            right_virtual_register.value.virtual_register_index);
+            LLVM_REPR_NOTYPE(left_virtual_register));
+    fprintf(D_LLVM_FILE, "%s" NEWLINE, LLVM_REPR_NOTYPE(right_virtual_register));
     return LLVMVALUE_VIRTUAL_REGISTER(D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER - 1,
                                       left_virtual_register.num_info.number_type);
 }
@@ -240,13 +278,11 @@ static LLVMValue llvm_subtract(LLVMValue left_virtual_register, LLVMValue right_
  */
 static LLVMValue llvm_multiply(LLVMValue left_virtual_register, LLVMValue right_virtual_register)
 {
-    fprintf(D_LLVM_FILE, TAB "%%%llu = mul nsw %s %s%lld, %s%lld" NEWLINE,
-            get_next_local_virtual_register(),
+    print_function_annotation("llvm_multiply");
+    fprintf(D_LLVM_FILE, TAB "%%%llu = mul nsw %s %s, ", get_next_local_virtual_register(),
             numberTypeLLVMReprs[left_virtual_register.num_info.number_type],
-            LLVMVALUE_REGMARKER(left_virtual_register),
-            left_virtual_register.value.virtual_register_index,
-            LLVMVALUE_REGMARKER(right_virtual_register),
-            right_virtual_register.value.virtual_register_index);
+            LLVM_REPR_NOTYPE(left_virtual_register));
+    fprintf(D_LLVM_FILE, "%s" NEWLINE, LLVM_REPR_NOTYPE(right_virtual_register));
     return LLVMVALUE_VIRTUAL_REGISTER(D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER - 1,
                                       left_virtual_register.num_info.number_type);
 }
@@ -260,13 +296,10 @@ static LLVMValue llvm_multiply(LLVMValue left_virtual_register, LLVMValue right_
  */
 static LLVMValue llvm_divide(LLVMValue left_virtual_register, LLVMValue right_virtual_register)
 {
-    fprintf(D_LLVM_FILE, TAB "%%%llu = udiv %s %s%lld, %s%lld" NEWLINE,
-            get_next_local_virtual_register(),
+    fprintf(D_LLVM_FILE, TAB "%%%llu = udiv %s %s, ", get_next_local_virtual_register(),
             numberTypeLLVMReprs[left_virtual_register.num_info.number_type],
-            LLVMVALUE_REGMARKER(left_virtual_register),
-            left_virtual_register.value.virtual_register_index,
-            LLVMVALUE_REGMARKER(right_virtual_register),
-            right_virtual_register.value.virtual_register_index);
+            LLVM_REPR_NOTYPE(left_virtual_register));
+    fprintf(D_LLVM_FILE, "%s" NEWLINE, LLVM_REPR_NOTYPE(right_virtual_register));
     return LLVMVALUE_VIRTUAL_REGISTER(D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER - 1,
                                       left_virtual_register.num_info.number_type);
 }
@@ -287,8 +320,6 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
     if (left_virtual_register.value_type == LLVMVALUETYPE_CONSTANT &&
         right_virtual_register.value_type == LLVMVALUETYPE_CONSTANT) {
         out_register = LLVMVALUE_CONSTANT(0);
-        out_register.num_info.number_type = MAX(left_virtual_register.num_info.number_type,
-                                                right_virtual_register.num_info.number_type);
         switch (operation) {
         case T_PLUS:
             out_register.value.constant =
@@ -316,6 +347,14 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
                   "\'%s\'",
                   tokenStrings[operation]);
         }
+
+        out_register.num_info.number_type = MIN(left_virtual_register.num_info.number_type,
+                                                right_virtual_register.num_info.number_type);
+        while (out_register.value.constant >
+               numberTypeMaxValues[out_register.num_info.number_type]) {
+            out_register.num_info.number_type++;
+        }
+
         return out_register;
     }
 
@@ -381,6 +420,7 @@ LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_reg
 LLVMValue llvm_store_constant(Number value)
 {
     purple_log(LOG_DEBUG, "Storing constant value %ld", value.value);
+    print_function_annotation("llvm_store_constant");
     type_register out_register_number = pop_stack_entry_linked_list(&freeVirtualRegistersHead);
     fprintf(D_LLVM_FILE, TAB "store %s ", numberTypeLLVMReprs[value.number_type]);
     fprintf(D_LLVM_FILE, numberTypeFormatStrings[value.number_type], value.value);
@@ -415,6 +455,8 @@ LLVMValue llvm_load_global_variable(char* symbol_name)
               symbol_name);
     }
 
+    print_function_annotation("llvm_load_global_variable");
+
     fprintf(D_LLVM_FILE, TAB "%%%llu = load %s%s, ", out_register_number,
             numberTypeLLVMReprs[symbol->type.value.number.number_type],
             REFSTRING(symbol->type.value.number.pointer_depth - 1));
@@ -426,8 +468,7 @@ LLVMValue llvm_load_global_variable(char* symbol_name)
                                                        symbol->type.value.number.number_type,
                                                        symbol->type.value.number.pointer_depth - 1);
 
-    memset(out.just_loaded, 0, MAX_IDENTIFIER_LENGTH);
-    sprintf(out.just_loaded, "%s", symbol_name);
+    LLVMVALUE_SET_JUSTLOADED(out, symbol_name);
     return out;
 }
 
@@ -450,15 +491,18 @@ void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register)
               symbol_name);
     }
 
-    LLVMValue* loaded_registers = llvm_ensure_registers_loaded(
-        1, (LLVMValue[]){rvalue_register}, symbol->type.value.number.pointer_depth - 1);
-    if (loaded_registers) {
-        rvalue_register = loaded_registers[0];
-        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_store_global_variable");
-        free(loaded_registers);
-    }
-    if (rvalue_register.num_info.pointer_depth != symbol->type.value.number.pointer_depth - 1) {
-        fatal(RC_COMPILER_ERROR, "Pointer mismatch when trying to save global variable");
+    if (rvalue_register.value_type == LLVMVALUETYPE_VIRTUAL_REGISTER) {
+        LLVMValue* loaded_registers = llvm_ensure_registers_loaded(
+            1, (LLVMValue[]){rvalue_register}, symbol->type.value.number.pointer_depth - 1);
+        if (loaded_registers) {
+            rvalue_register = loaded_registers[0];
+            purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers",
+                       "llvm_store_global_variable");
+            free(loaded_registers);
+        }
+        if (rvalue_register.num_info.pointer_depth != symbol->type.value.number.pointer_depth - 1) {
+            fatal(RC_COMPILER_ERROR, "Pointer mismatch when trying to save global variable");
+        }
     }
 
     if (TOKENTYPE_IS_NUMBER_TYPE(symbol->type.token_type) &&
@@ -470,11 +514,10 @@ void llvm_store_global_variable(char* symbol_name, LLVMValue rvalue_register)
         }
     }
 
-    fprintf(D_LLVM_FILE, TAB "store %s%s %s%lld, ",
+    print_function_annotation("llvm_store_global_variable");
+    fprintf(D_LLVM_FILE, TAB "store %s%s %s, ",
             numberTypeLLVMReprs[symbol->type.value.number.number_type],
-            REFSTRING(rvalue_register.num_info.pointer_depth),
-            rvalue_register.value_type == LLVMVALUETYPE_VIRTUAL_REGISTER ? "%" : "",
-            rvalue_register.value.virtual_register_index);
+            REFSTRING(rvalue_register.num_info.pointer_depth), LLVM_REPR_NOTYPE(rvalue_register));
 
     fprintf(D_LLVM_FILE, "%s%s @%s" NEWLINE,
             numberTypeLLVMReprs[symbol->type.value.number.number_type],
@@ -494,7 +537,11 @@ LLVMValue llvm_int_resize(LLVMValue reg, NumberType new_type)
         reg.value.constant = MIN(reg.value.constant, numberTypeMaxValues[new_type]);
         reg.num_info.number_type = new_type;
         return reg;
+    } else if (reg.value_type == LLVMVALUETYPE_NONE) {
+        fatal(RC_COMPILER_ERROR, "llvm_int_resize tried to resize a null LLVMValue");
     }
+
+    print_function_annotation("llvm_int_resize");
 
     char* method;
 
@@ -558,32 +605,23 @@ void llvm_print_int(LLVMValue print_vr)
         free(loaded_register);
     }
 
+    print_function_annotation("llvm_print_int");
+
     get_next_local_virtual_register();
     switch (print_vr.num_info.number_type) {
     case NT_INT8:
-        fprintf(D_LLVM_FILE,
-                TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
-                    "i8]* @print_char_fstring , i32 0, i32 0), %s %s%lld)" NEWLINE,
-                numberTypeLLVMReprs[NT_INT8],
-                print_vr.value_type == LLVMVALUETYPE_VIRTUAL_REGISTER ? "%" : "",
-                print_vr.value.virtual_register_index);
-        break;
     case NT_INT16:
     case NT_INT32:
         fprintf(D_LLVM_FILE,
                 TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x "
-                    "i8]* @print_int_fstring , i32 0, i32 0), %s %s%lld)" NEWLINE,
-                numberTypeLLVMReprs[print_vr.num_info.number_type],
-                print_vr.value_type == LLVMVALUETYPE_VIRTUAL_REGISTER ? "%" : "",
-                print_vr.value.virtual_register_index);
+                    "i8]* @print_int_fstring , i32 0, i32 0), %s %s)" NEWLINE,
+                numberTypeLLVMReprs[print_vr.num_info.number_type], LLVM_REPR_NOTYPE(print_vr));
         break;
     case NT_INT64:
         fprintf(D_LLVM_FILE,
                 TAB "call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([5 x i8], [5 x "
-                    "i8]* @print_long_fstring , i32 0, i32 0), %s %s%lld)" NEWLINE,
-                numberTypeLLVMReprs[NT_INT64],
-                print_vr.value_type == LLVMVALUETYPE_VIRTUAL_REGISTER ? "%" : "",
-                print_vr.value.virtual_register_index);
+                    "i8]* @print_long_fstring , i32 0, i32 0), %s %s)" NEWLINE,
+                numberTypeLLVMReprs[NT_INT64], LLVM_REPR_NOTYPE(print_vr));
         break;
     default:
         fatal(RC_COMPILER_ERROR, "Unrecognized NumberType %s",
@@ -602,6 +640,8 @@ void llvm_print_bool(LLVMValue print_vr)
     if (loaded_register) {
         print_vr = loaded_register[0];
     }
+
+    print_function_annotation("llvm_print_bool");
 
     LLVMValue compare_register = print_vr;
     LLVMValue true_label, false_label, end_label;
@@ -637,6 +677,7 @@ static void llvm_relational_compare(TokenType comparison_type, LLVMValue out_reg
                                     LLVMValue left_virtual_register,
                                     LLVMValue right_virtual_register)
 {
+    print_function_annotation("llvm_relational_compare");
     fprintf(D_LLVM_FILE, TAB "%%%llu = icmp ", out_register.value.virtual_register_index);
 
     switch (comparison_type) {
@@ -664,12 +705,10 @@ static void llvm_relational_compare(TokenType comparison_type, LLVMValue out_reg
               tokenStrings[comparison_type]);
     }
 
-    fprintf(D_LLVM_FILE, " %s %s%lld, %s%lld" NEWLINE,
+    fprintf(D_LLVM_FILE, " %s %s, ",
             numberTypeLLVMReprs[left_virtual_register.num_info.number_type],
-            LLVMVALUE_REGMARKER(left_virtual_register),
-            left_virtual_register.value.virtual_register_index,
-            LLVMVALUE_REGMARKER(right_virtual_register),
-            right_virtual_register.value.virtual_register_index);
+            LLVM_REPR_NOTYPE(left_virtual_register));
+    fprintf(D_LLVM_FILE, "%s" NEWLINE, LLVM_REPR_NOTYPE(right_virtual_register));
 }
 
 /**
@@ -683,6 +722,7 @@ static void llvm_relational_compare(TokenType comparison_type, LLVMValue out_reg
 static void llvm_logical_compare(TokenType comparison_type, LLVMValue out_register,
                                  LLVMValue left_virtual_register, LLVMValue right_virtual_register)
 {
+    print_function_annotation("llvm_logical_compare");
     fprintf(D_LLVM_FILE, TAB "%%%llu = ", out_register.value.virtual_register_index);
 
     switch (comparison_type) {
@@ -704,12 +744,10 @@ static void llvm_logical_compare(TokenType comparison_type, LLVMValue out_regist
               tokenStrings[comparison_type]);
     }
 
-    fprintf(D_LLVM_FILE, " %s %s%lld, %s%lld" NEWLINE,
+    fprintf(D_LLVM_FILE, " %s %s, ",
             numberTypeLLVMReprs[left_virtual_register.num_info.number_type],
-            LLVMVALUE_REGMARKER(left_virtual_register),
-            left_virtual_register.value.virtual_register_index,
-            LLVMVALUE_REGMARKER(right_virtual_register),
-            right_virtual_register.value.virtual_register_index);
+            LLVM_REPR_NOTYPE(left_virtual_register));
+    fprintf(D_LLVM_FILE, "%s" NEWLINE, LLVM_REPR_NOTYPE(right_virtual_register));
 }
 
 /**
@@ -878,6 +916,8 @@ void llvm_label(LLVMValue label)
               "Tried to generate a label statement, but received a non-label LLVMValue");
     }
 
+    print_function_annotation("llvm_label");
+
     fprintf(D_LLVM_FILE, TAB PURPLE_LABEL_PREFIX "%llu:" NEWLINE, label.value.label_index);
 }
 
@@ -893,6 +933,8 @@ void llvm_jump(LLVMValue label)
               "Tried to generate a label statement, but received a non-label LLVMValue");
     }
 
+    print_function_annotation("llvm_jump");
+
     fprintf(D_LLVM_FILE, TAB "br label %%" PURPLE_LABEL_PREFIX "%llu" NEWLINE,
             label.value.label_index);
 }
@@ -907,12 +949,12 @@ void llvm_jump(LLVMValue label)
 void llvm_conditional_jump(LLVMValue condition_register, LLVMValue true_label,
                            LLVMValue false_label)
 {
+    print_function_annotation("llvm_conditional_jump");
     fprintf(D_LLVM_FILE,
-            TAB "br %s %s%lld, label %%" PURPLE_LABEL_PREFIX "%llu, label %%" PURPLE_LABEL_PREFIX
+            TAB "br %s %s, label %%" PURPLE_LABEL_PREFIX "%llu, label %%" PURPLE_LABEL_PREFIX
                 "%llu" NEWLINE,
             numberTypeLLVMReprs[condition_register.num_info.number_type],
-            LLVMVALUE_REGMARKER(condition_register),
-            condition_register.value.virtual_register_index, true_label.value.label_index,
+            LLVM_REPR_NOTYPE(condition_register), true_label.value.label_index,
             false_label.value.label_index);
 }
 
@@ -927,11 +969,11 @@ LLVMValue* llvm_function_preamble(char* symbol_name)
     SymbolTableEntry* entry = STS_FIND(symbol_name);
     if (!entry) {
         fatal(RC_COMPILER_ERROR,
-              "llvm_call_function received symbol name \"%s\", which is not an identifier",
+              "llvm_function_preamble received symbol name \"%s\", which is not an identifier",
               symbol_name);
     } else if (!entry->type.is_function) {
         fatal(RC_COMPILER_ERROR,
-              "llvm_call_function received an identifier name that is not a function: \"%s\"",
+              "llvm_function_preamble received an identifier name that is not a function: \"%s\"",
               symbol_name);
     }
 
@@ -940,7 +982,6 @@ LLVMValue* llvm_function_preamble(char* symbol_name)
     // one
     int args_size = 256;
     char* args_str = (char*)calloc(1, sizeof(char) * args_size);
-    int write_offset = 0;
     for (int i = 0; i < entry->type.value.function.num_parameters; i++) {
         // Sprintf into a temporary buffer first, so that we can make sure it won't
         // overflow the main buffer
@@ -953,13 +994,15 @@ LLVMValue* llvm_function_preamble(char* symbol_name)
             get_next_local_virtual_register() - 1,
             i != entry->type.value.function.num_parameters - 1 ? ", " : "");
         // If it does want to overflow, resize the main buffer
-        while (write_offset + strlen(curr_arg_str) > args_size) {
+        while (strlen(args_str) + strlen(curr_arg_str) > args_size) {
             args_size += 256;
             args_str = realloc(args_str, args_size);
         }
-        sprintf(args_str, "%s", curr_arg_str);
+        strcat(args_str, curr_arg_str);
         free(curr_arg_str);
     }
+
+    print_function_annotation("llvm_function_preamble");
 
     fprintf(D_LLVM_FILE, "define dso_local %s @%s(%s) #0 {" NEWLINE,
             type_to_llvm_type(entry->type.value.function.return_type), symbol_name, args_str);
@@ -979,11 +1022,9 @@ LLVMValue* llvm_function_preamble(char* symbol_name)
     LLVMValue* arguments_llvmvalues =
         (LLVMValue*)malloc(sizeof(LLVMValue) * entry->type.value.function.num_parameters);
     for (unsigned long long int i = 0; i < entry->type.value.function.num_parameters; i++) {
-        // fprintf(D_LLVM_FILE, TAB "%%%llu = alloca %s%s, align %d" NEWLINE, current->reg,
-        //         numberTypeLLVMReprs[current->type], REFSTRING(current->pointer_depth),
-        //         current->align_bytes);
         Number param_num = entry->type.value.function.parameters[i].parameter_type;
-        // char* numstring = number_string(param_num);
+        // Not needed yet? Not sure why
+        char* numstring = number_string(param_num);
         fprintf(D_LLVM_FILE, TAB "%%%s = alloca %s%s, align %d" NEWLINE,
                 entry->type.value.function.parameters[i].parameter_name,
                 numberTypeLLVMReprs[param_num.number_type], REFSTRING(param_num.pointer_depth - 1),
@@ -992,12 +1033,16 @@ LLVMValue* llvm_function_preamble(char* symbol_name)
                 numberTypeLLVMReprs[param_num.number_type], REFSTRING(param_num.pointer_depth - 1),
                 i, numberTypeLLVMReprs[param_num.number_type], _refstring_buf,
                 entry->type.value.function.parameters[i].parameter_name);
-        arguments_llvmvalues[i] = (LLVMValue){.value_type = LLVMVALUETYPE_VIRTUAL_REGISTER,
-                                              .num_info.number_type = param_num.number_type,
-                                              param_num.pointer_depth,
-                                              .has_name = true};
+        arguments_llvmvalues[i] = (LLVMValue){
+            .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .num_info = param_num, .has_name = true};
+        arguments_llvmvalues[i].num_info.pointer_depth += 1;
         strcpy(arguments_llvmvalues[i].value.name,
                entry->type.value.function.parameters[i].parameter_name);
+
+        SymbolTableEntry* ste = STS_FIND(arguments_llvmvalues[i].value.name);
+        if (ste) {
+            ste->latest_llvmvalue = arguments_llvmvalues[i];
+        }
     }
 
     return arguments_llvmvalues;
@@ -1008,6 +1053,7 @@ LLVMValue* llvm_function_preamble(char* symbol_name)
  */
 void llvm_function_postamble(void)
 {
+    print_function_annotation("llvm_function_postamble");
     fprintf(D_LLVM_FILE, "}" NEWLINE NEWLINE);
 }
 
@@ -1049,15 +1095,6 @@ LLVMValue llvm_call_function(LLVMValue* args, unsigned long long int num_args, c
               symbol_name);
     }
 
-    fprintf(D_LLVM_FILE, TAB);
-
-    if (entry->type.value.function.return_type != T_VOID) {
-        out = LLVMVALUE_VIRTUAL_REGISTER(
-            get_next_local_virtual_register(),
-            token_type_to_number_type(entry->type.value.function.return_type));
-        fprintf(D_LLVM_FILE, "%%%llu = ", out.value.virtual_register_index);
-    }
-
     // Build the strings for passing in types and values, check passed args against
     // expected args at the same time
     if (num_args != entry->type.value.function.num_parameters) {
@@ -1069,15 +1106,68 @@ LLVMValue llvm_call_function(LLVMValue* args, unsigned long long int num_args, c
     int passed_types_size, passed_values_size = 256;
     char* passed_types = (char*)calloc(1, sizeof(char) * passed_types_size);
     char* passed_values = (char*)calloc(1, sizeof(char) * passed_values_size);
-    for (unsigned long long int i; i < num_args; i++) {
+    for (unsigned long long int i = 0; i < num_args; i++) {
         FunctionParameter param = entry->type.value.function.parameters[i];
 
-        // TODO : print param stuff to passed_types and passed_values, put them into call statement below
-        // if (!NUMBERS_TYPEQUIV(param.parameter_type, args[i].))
+        LLVMValue* loaded_param = llvm_ensure_registers_loaded(1, (LLVMValue[]){args[i]},
+                                                               param.parameter_type.pointer_depth);
+        if (loaded_param) {
+            args[i] = loaded_param[0];
+            purple_log(LOG_DEBUG, "Freeing loaded_param in llvm_call_function");
+            free(loaded_param);
+            loaded_param = NULL;
+        }
+
+        if (!NUMBERS_TYPEQUIV(param.parameter_type, args[i].num_info)) {
+            char expectedstrarr[300];
+            char* expectedstr = number_string(param.parameter_type);
+            strcpy(expectedstrarr, expectedstr);
+            free(expectedstr);
+            char gotstrarr[300];
+            char* gotstr = number_string(args[i].num_info);
+            strcpy(gotstrarr, gotstr);
+            free(gotstr);
+
+            fatal(RC_COMPILER_ERROR,
+                  "Function '%s' expected parameter '%s' to have type '%s' but got '%s'",
+                  symbol_name, param.parameter_name, expectedstrarr, gotstrarr);
+        }
+
+        char curr_typ_str[300];
+        char* curr_arg_str = (char*)calloc(1, 300);
+        char* numstring = number_string(param.parameter_type);
+        char* argstring = llvmvalue_repr(args[i]);
+        sprintf(curr_typ_str, "%s%s", numstring, i != num_args - 1 ? ", " : "");
+        sprintf(curr_arg_str, "%s%s", argstring, i != num_args - 1 ? ", " : "");
+        // If it does want to overflow, resize the main buffers
+        while (strlen(passed_types) + strlen(curr_typ_str) > passed_types_size) {
+            passed_types_size += 256;
+            passed_types = realloc(passed_types, passed_types_size);
+        }
+        while (strlen(passed_values) + strlen(curr_arg_str) > passed_values_size) {
+            passed_values_size += 256;
+            passed_values = realloc(passed_values, passed_values_size);
+        }
+        strcat(passed_types, curr_typ_str);
+        strcat(passed_values, curr_arg_str);
+        free(numstring);
+        free(argstring);
     }
 
-    fprintf(D_LLVM_FILE, "call %s () @%s()" NEWLINE,
-            type_to_llvm_type(entry->type.value.function.return_type), symbol_name);
+    print_function_annotation("llvm_call_function");
+
+    fprintf(D_LLVM_FILE, TAB);
+
+    if (entry->type.value.function.return_type != T_VOID) {
+        out = LLVMVALUE_VIRTUAL_REGISTER(
+            get_next_local_virtual_register(),
+            token_type_to_number_type(entry->type.value.function.return_type));
+        fprintf(D_LLVM_FILE, "%%%llu = ", out.value.virtual_register_index);
+    }
+
+    fprintf(D_LLVM_FILE, "call %s (%s) @%s(%s)" NEWLINE,
+            type_to_llvm_type(entry->type.value.function.return_type), passed_types, symbol_name,
+            passed_values);
 
     return out;
 }
@@ -1093,11 +1183,10 @@ void llvm_return(LLVMValue value, char* symbol_name)
     SymbolTableEntry* entry = STS_FIND(symbol_name);
     if (!entry) {
         fatal(RC_COMPILER_ERROR,
-              "llvm_call_function received symbol name \"%s\", which is not an identifier",
-              symbol_name);
+              "llvm_return received symbol name \"%s\", which is not an identifier", symbol_name);
     } else if (!entry->type.is_function) {
         fatal(RC_COMPILER_ERROR,
-              "llvm_call_function received an identifier name that is not a function: \"%s\"",
+              "llvm_return received an identifier name that is not a function: \"%s\"",
               symbol_name);
     }
 
@@ -1112,26 +1201,21 @@ void llvm_return(LLVMValue value, char* symbol_name)
         }
     }
 
-    fprintf(D_LLVM_FILE, TAB "ret %s", type_to_llvm_type(entry->type.value.function.return_type));
+    print_function_annotation("llvm_return");
 
+    fprintf(D_LLVM_FILE, TAB "ret %s", type_to_llvm_type(entry->type.value.function.return_type));
     if (entry->type.value.function.return_type != T_VOID) {
-        switch (value.value_type) {
-        case LLVMVALUETYPE_CONSTANT:
-            fprintf(D_LLVM_FILE, " %llu", value.value.constant);
-            break;
-        case LLVMVALUETYPE_VIRTUAL_REGISTER:
-            fprintf(D_LLVM_FILE, " %%%llu", value.value.virtual_register_index);
-            break;
-        default:
-            fatal(RC_COMPILER_ERROR, "llvm_return got LLVMValueType %d", value.value_type);
-        }
-    } else if (strcmp("main", symbol_name) == 0) {
-        purple_log(LOG_WARNING, "Change \"main\" function return type to int");
+        fprintf(D_LLVM_FILE, " %s", LLVM_REPR_NOTYPE(value));
     }
 
     fprintf(D_LLVM_FILE, NEWLINE);
 
+    if (strcmp("main", symbol_name) == 0 && entry->type.value.function.return_type != T_INT) {
+        purple_log(LOG_WARNING, "Change \"main\" function return type to int");
+    }
+
     D_CURRENT_FUNCTION_HAS_RETURNED = true;
+    get_next_local_virtual_register();
 }
 
 /**
@@ -1156,6 +1240,27 @@ char* refstring(char* buf, int pointer_depth)
     return buf;
 }
 
+char* llvmvalue_repr_notype(char* buf, LLVMValue reg)
+{
+    if (reg.value_type == LLVMVALUETYPE_NONE) {
+        fatal(RC_COMPILER_ERROR, "Tried to generate llvm name for null LLVMValue");
+    }
+
+    buf[0] = '\0';
+    strcat(buf, LLVMVALUE_REGMARKER(reg));
+
+    if (reg.has_name) {
+        strcat(buf, reg.value.name);
+    } else if (reg.value_type == LLVMVALUETYPE_CONSTANT) {
+        sprintf(buf + strlen(buf), "%lld", reg.value.constant);
+    } else if (reg.value_type == LLVMVALUETYPE_VIRTUAL_REGISTER ||
+               reg.value_type == LLVMVALUETYPE_LABEL) {
+        sprintf(buf + strlen(buf), "%llu", reg.value.virtual_register_index);
+    }
+
+    return buf;
+}
+
 /**
  * @brief Generate an addressing statement
  * 
@@ -1164,7 +1269,7 @@ char* refstring(char* buf, int pointer_depth)
  */
 LLVMValue llvm_get_address(char* symbol_name)
 {
-    SymbolTableEntry* entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name);
+    SymbolTableEntry* entry = STS_FIND(symbol_name);
     if (!entry) {
         fatal(RC_COMPILER_ERROR,
               "llvm_get_address received symbol name \"%s\", which is not an identifier",
@@ -1187,6 +1292,8 @@ LLVMValue llvm_get_address(char* symbol_name)
 
     lv.num_info.pointer_depth++;
 
+    print_function_annotation("llvm_get_address");
+
     fprintf(D_LLVM_FILE, TAB "store %s%s @%s, ", numberTypeLLVMReprs[lv.num_info.number_type],
             REFSTRING(entry->type.value.number.pointer_depth), symbol_name);
     fprintf(D_LLVM_FILE, "%s%s %%%lld" NEWLINE, numberTypeLLVMReprs[lv.num_info.number_type],
@@ -1206,6 +1313,8 @@ LLVMValue llvm_dereference(LLVMValue reg)
     LLVMValue out = LLVMVALUE_VIRTUAL_REGISTER_POINTER(get_next_local_virtual_register(),
                                                        reg.num_info.number_type,
                                                        reg.num_info.pointer_depth - 1);
+
+    print_function_annotation("llvm_dereference");
 
     fprintf(D_LLVM_FILE, TAB "%%%lld = load %s%s, ", out.value.virtual_register_index,
             numberTypeLLVMReprs[out.num_info.number_type], REFSTRING(out.num_info.pointer_depth));
@@ -1232,8 +1341,9 @@ void llvm_store_dereference(LLVMValue destination, LLVMValue value)
         loaded_registers = NULL;
     }
 
-    loaded_registers = llvm_ensure_registers_loaded(1, (LLVMValue[]){value},
-                                                    destination.num_info.pointer_depth - 1);
+    loaded_registers = llvm_ensure_registers_loaded(
+        1, (LLVMValue[]){value},
+        destination.num_info.pointer_depth - 1 + (strlen(destination.just_loaded) == 0 ? 0 : 1));
     if (loaded_registers) {
         value = loaded_registers[0];
         purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers (1)", "llvm_store_dereference");
@@ -1241,31 +1351,26 @@ void llvm_store_dereference(LLVMValue destination, LLVMValue value)
         loaded_registers = NULL;
     }
 
-    // I'm actually not sure why we need the second clause in this condition,
-    // but if I take it out we get pointer mismatches
-    if (strlen(destination.just_loaded) == 0 ||
-        destination.num_info.pointer_depth == value.num_info.pointer_depth + 1) {
-        fprintf(D_LLVM_FILE, TAB "store %s%s %s%lld, ",
-                numberTypeLLVMReprs[value.num_info.number_type],
-                REFSTRING(value.num_info.pointer_depth), LLVMVALUE_REGMARKER(value),
-                value.value.virtual_register_index);
-        fprintf(D_LLVM_FILE, "%s%s %%%llu" NEWLINE,
+    print_function_annotation("llvm_store_dereference");
+
+    if (strlen(destination.just_loaded) == 0) {
+        fprintf(D_LLVM_FILE, TAB "store %s%s %s, ", numberTypeLLVMReprs[value.num_info.number_type],
+                REFSTRING(value.num_info.pointer_depth), LLVM_REPR_NOTYPE(value));
+        fprintf(D_LLVM_FILE, "%s%s %s" NEWLINE,
                 numberTypeLLVMReprs[destination.num_info.number_type],
-                REFSTRING(destination.num_info.pointer_depth),
-                destination.value.virtual_register_index);
+                REFSTRING(destination.num_info.pointer_depth), LLVM_REPR_NOTYPE(destination));
     } else {
-        fprintf(D_LLVM_FILE, TAB "store %s%s %s%lld, ",
-                numberTypeLLVMReprs[value.num_info.number_type],
-                REFSTRING(value.num_info.pointer_depth), LLVMVALUE_REGMARKER(value),
-                value.value.virtual_register_index);
+        fprintf(D_LLVM_FILE, TAB "store %s%s %s, ", numberTypeLLVMReprs[value.num_info.number_type],
+                REFSTRING(value.num_info.pointer_depth), LLVM_REPR_NOTYPE(value));
         fprintf(D_LLVM_FILE, "%s%s* @%s" NEWLINE,
                 numberTypeLLVMReprs[destination.num_info.number_type],
                 REFSTRING(destination.num_info.pointer_depth), destination.just_loaded);
     }
 }
 
-void llvm_store_local(SymbolTableEntry* ste, LLVMValue val)
+void llvm_store_local(char* symbol_name, LLVMValue val)
 {
+    SymbolTableEntry* ste = STS_FIND(symbol_name);
     if (!ste) {
         fatal(RC_COMPILER_ERROR, "Tried to store into NULL SymbolTableEntry in llvm_store_local");
     }

@@ -87,5 +87,9 @@ SymbolTableEntry* add_symbol_table_entry(SymbolTable* table, char* symbol_name, 
 #include "data.h"
 #define GST_FIND(symbol_name) find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name)
 #define STS_FIND(symbol_name) find_symbol_table_stack_entry(D_SYMBOL_TABLE_STACK, symbol_name)
+#define STS_INSERT(symbol_name, type)                                                              \
+    add_symbol_table_entry(D_SYMBOL_TABLE_STACK->top, symbol_name, type)
+#define GST_INSERT(symbol_name, type)                                                              \
+    add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, symbol_name, type)
 
 #endif /* SYMBOL_TABLE */

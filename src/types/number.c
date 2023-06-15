@@ -24,8 +24,6 @@ NumberType token_type_to_number_type(int token_type)
     case T_TRUE:
     case T_FALSE:
         return NT_INT1;
-    case T_BYTE:
-    case T_BYTE_LITERAL:
     case T_CHAR:
     case T_CHAR_LITERAL:
         return NT_INT8;
@@ -49,7 +47,7 @@ int number_to_token_type(Number number)
     case NT_INT1:
         return number.value ? T_TRUE : T_FALSE;
     case NT_INT8:
-        return T_BYTE_LITERAL;
+        return T_CHAR_LITERAL;
     case NT_INT16:
         return T_SHORT_LITERAL;
     case NT_INT32:

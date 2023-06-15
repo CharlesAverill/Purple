@@ -185,6 +185,8 @@ void clang_compile_llvm(const char* fn)
     strcat(cmd, D_ARGS->clang_executable);
     strcat(cmd, " ");
     strcat(cmd, fn);
+    strcat(cmd, " -o");
+    strcat(cmd, D_ARGS->filenames[2]);
 
     // Open the process
     purple_log(LOG_DEBUG, "Running clang with \"%s\"", cmd);

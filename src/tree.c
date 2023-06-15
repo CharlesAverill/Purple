@@ -42,7 +42,6 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
     if (TOKENTYPE_IS_LITERAL(ttype) && TOKENTYPE_IS_NUMBER_TYPE(type.token_type)) {
         out->value.number_value = type.value.number.value;
         out->tree_type.number_type = type.value.number.number_type;
-        out->is_char_arithmetic = ttype == T_CHAR || ttype == T_CHAR_LITERAL;
     } else if (ttype == T_IDENTIFIER || ttype == T_FUNCTION_CALL) {
         if (symbol_name == NULL) {
             fatal(RC_COMPILER_ERROR,
@@ -53,16 +52,13 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
 
         SymbolTableEntry* found_entry = STS_FIND(symbol_name);
         if (found_entry == NULL) {
-            fatal(RC_COMPILER_ERROR,
-                  "create_ast_node received identifier name that is not defined in the GST");
+            fatal(RC_COMPILER_ERROR, "create_ast_node received identifier name that is not defined "
+                                     "in the Symbol Table Stack");
         }
 
         out->tree_type.number_type = found_entry->type.value.number.number_type;
-        out->is_char_arithmetic = found_entry->type.token_type == T_CHAR ||
-                                  found_entry->type.token_type == T_CHAR_LITERAL;
     } else if (TOKENTYPE_IS_BINARY_ARITHMETIC(ttype)) {
         out->tree_type.number_type = left->tree_type.number_type;
-        out->is_char_arithmetic = left->is_char_arithmetic;
     } else if (TOKENTYPE_IS_COMPARATOR(ttype)) {
         out->tree_type.number_type = NT_INT1;
     } else if (ttype == T_FUNCTION_DECLARATION) {
@@ -195,5 +191,20 @@ void ast_debug_level_order(ASTNode* root, LogLevel log_level)
     for (int i = 1; i <= height; i++) {
         purple_log(log_level, "[LEVEL %d]", i);
         ast_debug_current_level(root, i, log_level);
+    }
+}
+
+void free_ast_node(ASTNode* root)
+{
+    if (root->left)
+        free_ast_node(root->left);
+    if (root->mid)
+        free_ast_node(root->mid);
+    if (root->right)
+        free_ast_node(root->right);
+
+    for (int i = 0; i < root->num_args; i++) {
+        if (root->function_call_arguments[i])
+            free(root->function_call_arguments[i]);
     }
 }

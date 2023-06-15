@@ -30,7 +30,9 @@ extern LLVMStackEntryNode* freeVirtualRegistersHead;
 /**
  * @brief Temporary buffer used to generate pointer star strings for LLVM code
  */
-static char _refstring_buf[256];
+static char _refstring_buf[REFSTRING_BUF_MAXLEN];
+
+static char _llvm_name_buf[MAX_IDENTIFIER_LENGTH + 3];
 
 /**
  * @brief Types of values possibly returned by ast_to_llvm
@@ -80,9 +82,12 @@ typedef struct LLVMValue {
     printf("LLVMValue Information\n");                                                             \
     printf("---------------------\n");                                                             \
     printf("Value Type: %s\n", valueTypeStrings[val.value_type]);                                  \
-    printf("Number Type: %s\n", numberTypeLLVMReprs[val.number_type]);                             \
-    printf("Pointer Depth: %d\n", val.pointer_depth);                                              \
-    printf("Contents: %lld\n", val.value.constant);
+    printf("Number Type: %s\n", numberTypeLLVMReprs[val.num_info.number_type]);                    \
+    printf("Pointer Depth: %d\n", val.num_info.pointer_depth);                                     \
+    if (val.has_name) {                                                                            \
+        printf("Contents: %s\n", val.value.name);                                                  \
+    } else                                                                                         \
+        printf("Contents: %lld\n", val.value.constant);
 
 /**
  * @brief A standard "null" LLVMValue struct returned in some scenarios
@@ -90,7 +95,7 @@ typedef struct LLVMValue {
 #define LLVMVALUE_NULL                                                                             \
     (LLVMValue)                                                                                    \
     {                                                                                              \
-        .value_type = LLVMVALUETYPE_NONE, .value = 0,                                              \
+        .value_type = LLVMVALUETYPE_NONE, .value.constant = 0,                                     \
         .num_info = (Number){.number_type = -1, .pointer_depth = 0}, .just_loaded = 0,             \
         .has_name = false                                                                          \
     }
@@ -146,6 +151,10 @@ typedef struct LLVMValue {
  */
 #define LLVMVALUE_REGMARKER(llvmvalue) (llvmvalue.value_type == LLVMVALUETYPE_CONSTANT ? "" : "%")
 
+#define LLVMVALUE_SET_JUSTLOADED(llvmvalue, symbol_name)                                           \
+    memset(llvmvalue.just_loaded, 0, MAX_IDENTIFIER_LENGTH);                                       \
+    strcpy(out.just_loaded, symbol_name);
+
 /**Prefix to prepend to LLVM label indices*/
 #define PURPLE_LABEL_PREFIX "L"
 
@@ -183,14 +192,17 @@ LLVMValue llvm_call_function(LLVMValue* args, unsigned long long int num_args, c
 const char* type_to_llvm_type(TokenType type);
 void llvm_return(LLVMValue virtual_register, char* symbol_name);
 char* refstring(char* buf, int pointer_depth);
+char* llvmvalue_repr_notype(char* buf, LLVMValue reg);
 LLVMValue llvm_get_address(char* symbol_name);
 LLVMValue llvm_dereference(LLVMValue reg);
 void llvm_store_dereference(LLVMValue destination, LLVMValue value);
+void llvm_store_local(char* symbol_name, LLVMValue val);
 
 /**
  * @brief Wrapper for _refstring - WARNING - only one call to REFSTRING may be made per statement, due to 
  * _refstring_buf being used in it. Multiple uses will overwrite all but the last occurrance
  */
 #define REFSTRING(depth) refstring(_refstring_buf, depth)
+#define LLVM_REPR_NOTYPE(reg) llvmvalue_repr_notype(_llvm_name_buf, reg)
 
 #endif /* LLVM_H */

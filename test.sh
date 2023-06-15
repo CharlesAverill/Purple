@@ -12,7 +12,7 @@ ANSI_RESET='\033[0m'
 
 function strings_are_okay() {
     printf "${ANSI_RESET}"
-    bin/purple $2 -O$3 > /dev/null
+    bin/purple $2 -O$3 --fprint-func-annotations > /dev/null
     prog_output=$(./a.out)
     prog_rc=$?
     if [ $prog_rc -ne 0 ] ; then
@@ -77,19 +77,19 @@ false
 true"
 
 type_test_output="14
-c
-c
+99
+99
 4294967294
 200
 4294967507"
 
 variable_test_output="15
 35
-a
-b
-c
-d
-e"
+97
+98
+99
+100
+101"
 
 loop_test_output="0
 1
@@ -127,10 +127,11 @@ base_test_output="61455
 61455
 194"
 
-function_test_output="X
-!
+function_test_output="89
+33
 42
-5
+10
+6
 120"
 
 comparison_test_output="1

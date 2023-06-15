@@ -55,7 +55,7 @@ int match_type(Number* out)
     D_SCANNING_TYPE = true;
 
     TokenType ttype =
-        match_tokens((TokenType[]){T_VOID, T_BOOL, T_BYTE, T_CHAR, T_SHORT, T_INT, T_LONG}, 7);
+        match_tokens((TokenType[]){T_VOID, T_BOOL, T_CHAR, T_SHORT, T_INT, T_LONG}, 7);
 
     int pointer_depth;
     for (pointer_depth = 0;
@@ -150,8 +150,6 @@ static ASTNode* assignment_statement(void)
 
     // Parse assignment expression
     left = parse_binary_expression();
-
-    right->is_char_arithmetic = left->is_char_arithmetic;
 
     // Create subtree for assignment statement
     root = create_ast_node(T_ASSIGN, left, NULL, right, TYPE_VOID, NULL);
@@ -346,18 +344,6 @@ ASTNode* parse_statements(void)
             case T_PRINT:
                 root = print_statement();
                 break;
-            // case T_IDENTIFIER:
-            //     symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE,
-            //                                      D_GLOBAL_TOKEN.value.symbol_name);
-            //     if (!symbol) {
-            //         identifier_error(0, 0, 0, "Use of undeclared identifier \'%s\'",
-            //                          D_GLOBAL_TOKEN.value.symbol_name);
-            //     } else if (symbol->type.is_function) {
-            //         root = function_call_expression();
-            //     } else {
-            //         root = assignment_statement();
-            //     }
-            //     break;
             case T_IF:
                 root = if_statement();
                 match_semicolon = false;

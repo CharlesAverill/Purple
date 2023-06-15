@@ -85,8 +85,10 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
 
         return current;
     } else if (root->ttype == T_IDENTIFIER) {
-        SymbolTableEntry* symbol =
-            find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, root->value.symbol_name);
+        if (D_ARGS->const_expr_reduce) {
+            return NULL;
+        }
+        SymbolTableEntry* symbol = STS_FIND(root->value.symbol_name);
         if (symbol == NULL) {
             fatal(RC_COMPILER_ERROR,
                   "Failed to find symbol in determine_binary_expression_stack_allocation");
@@ -222,18 +224,12 @@ static LLVMValue print_ast_to_llvm(ASTNode* root, LLVMValue virtual_register)
         }
 
         if (print_type == T_FUNCTION_CALL) {
-            print_type =
-                find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, root->left->value.symbol_name)
-                    ->type.value.function.return_type;
+            print_type = STS_FIND(root->left->value.symbol_name)->type.value.function.return_type;
         }
 
         if (TOKENTYPE_IS_BINARY_ARITHMETIC(print_type)) {
             print_type =
                 number_to_token_type((Number){.number_type = root->left->largest_number_type});
-        }
-
-        if (print_type == T_BYTE_LITERAL || root->left->is_char_arithmetic) {
-            print_type = T_CHAR_LITERAL;
         }
 
         purple_log(LOG_DEBUG, "Printing int with print_type %d", print_type);
@@ -292,14 +288,8 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
 
     // Process values from left and right subtrees
     for (int i = 0; i < 2; i++) {
-        switch (temp_values[i].value_type) {
-        case LLVMVALUETYPE_VIRTUAL_REGISTER:
-        case LLVMVALUETYPE_CONSTANT:
+        if (temp_values[i].value_type != LLVMVALUETYPE_NONE) {
             virtual_registers[i] = temp_values[i];
-            break;
-        case LLVMVALUETYPE_NONE:
-        default:
-            break;
         }
     }
 
@@ -369,23 +359,27 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
         switch (root->ttype) {
         case T_IDENTIFIER:
             if (root->is_rvalue || parent_operation == T_DEREFERENCE) {
-                return llvm_load_global_variable(root->value.symbol_name);
+                if (GST_FIND(root->value.symbol_name)) {
+                    return llvm_load_global_variable(root->value.symbol_name);
+                } else {
+                    SymbolTableEntry* entry = STS_FIND(root->value.symbol_name);
+                    if (entry) {
+                        return entry->latest_llvmvalue;
+                    } else {
+                        fatal(RC_COMPILER_ERROR,
+                              "Expected STE with LLVMValue but got STE without LLVMValue");
+                    }
+                }
             }
             return LLVMVALUE_NULL;
-        // case T_LVALUE_IDENTIFIER:;
-        //     symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, root->value.symbol_name);
-        //     if (symbol == NULL) {
-        //         fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
-        //               root->value.symbol_name);
-        //     }
-
-        //     llvm_store_global_variable(root->value.symbol_name, llvm_value);
-        //     return LLVMVALUE_VIRTUAL_REGISTER(llvm_value.value.virtual_register_index,
-        //                                       symbol->type.value.number.type);
         case T_ASSIGN:
             if (root->right) {
                 if (root->right->ttype == T_IDENTIFIER) {
-                    llvm_store_global_variable(root->right->value.symbol_name, left_vr);
+                    if (GST_FIND(root->right->value.symbol_name)) {
+                        llvm_store_global_variable(root->right->value.symbol_name, left_vr);
+                    } else {
+                        llvm_store_local(root->right->value.symbol_name, left_vr);
+                    }
                     return left_vr;
                 } else if (root->right->ttype == T_DEREFERENCE) {
                     llvm_store_dereference(right_vr, left_vr);
@@ -398,13 +392,21 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
         case T_PRINT:
             return print_ast_to_llvm(root, left_vr);
         case T_FUNCTION_CALL:;
-            symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, root->value.symbol_name);
+            symbol = GST_FIND(root->value.symbol_name);
             if (symbol == NULL) {
-                fatal(RC_COMPILER_ERROR, "Failed to find symbol \"%s\" in Global Symbol Table",
+                fatal(RC_COMPILER_ERROR, "Failed to find function \"%s\" in Global Symbol Table",
                       root->value.symbol_name);
             }
-            // TODO : Update this call
-            return llvm_call_function(NULL, 0, root->value.symbol_name);
+            unsigned long long int num_parameters = symbol->type.value.function.num_parameters;
+            LLVMValue* passed_llvmvalues = (LLVMValue*)malloc(sizeof(LLVMValue) * num_parameters);
+            for (int i = 0; i < num_parameters; i++) {
+                passed_llvmvalues[i] =
+                    ast_to_llvm(root->function_call_arguments[i], LLVMVALUE_NULL, T_FUNCTION_CALL);
+            }
+            LLVMValue out =
+                llvm_call_function(passed_llvmvalues, num_parameters, root->value.symbol_name);
+            free(passed_llvmvalues);
+            return out;
         case T_AMPERSAND:
             return llvm_get_address(root->value.symbol_name);
         case T_DEREFERENCE:
@@ -413,7 +415,7 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
             }
             return left_vr;
         case T_RETURN:
-            symbol = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, root->value.symbol_name);
+            symbol = GST_FIND(root->value.symbol_name);
             if (symbol == NULL) {
                 symbol = STS_FIND(D_CURRENT_FUNCTION_BUFFER);
                 if (symbol == NULL) {
@@ -448,14 +450,17 @@ void generate_llvm(void)
 
     while (D_GLOBAL_TOKEN.token_type != T_EOF) {
         D_CURRENT_FUNCTION_HAS_RETURNED = false;
+        push_symbol_table(D_SYMBOL_TABLE_STACK);
         ASTNode* root = function_declaration();
         ast_to_llvm(root, LLVMVALUE_NULL, root->ttype);
-        D_CURRENT_FUNCTION_PREAMBLE_PRINTED = false;
+        pop_symbol_table(D_SYMBOL_TABLE_STACK);
 
+        D_CURRENT_FUNCTION_PREAMBLE_PRINTED = false;
         D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 1;
 
         free_llvm_stack_entry_node_list(freeVirtualRegistersHead);
         freeVirtualRegistersHead = NULL;
+        free_ast_node(root);
     }
 
     llvm_postamble();

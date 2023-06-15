@@ -189,7 +189,7 @@ SymbolTableEntry* find_symbol_table_stack_entry(SymbolTableStack* stack, char* s
     for (int i = 0;
          i < stack->length && (found = find_symbol_table_entry(current, symbol_name)) == NULL;
          i++) {
-        current = current->prev;
+        current = current->next;
     }
 
     return found;
@@ -209,6 +209,7 @@ SymbolTableEntry* new_symbol_table_entry(char* symbol_name)
     entry->next = NULL;
     entry->bucket_index = 0;
     entry->chain_index = 0;
+    entry->latest_llvmvalue = LLVMVALUE_NULL;
     return entry;
 }
 

@@ -45,7 +45,6 @@ typedef enum
     // Literals
     T_TRUE,
     T_FALSE,
-    T_BYTE_LITERAL,
     T_CHAR_LITERAL,
     T_SHORT_LITERAL,
     T_INTEGER_LITERAL,
@@ -53,7 +52,6 @@ typedef enum
     // Types
     T_VOID,
     T_BOOL,
-    T_BYTE,
     T_CHAR,
     T_SHORT,
     T_INT,
@@ -74,6 +72,7 @@ typedef enum
     T_LEFT_BRACE,
     T_RIGHT_BRACE,
     T_IDENTIFIER,
+    T_COMMA,
     // T_LVALUE_IDENTIFIER,
     T_AST_GLUE,
     T_FUNCTION_DECLARATION,
@@ -96,9 +95,9 @@ typedef enum
  */
 static char* tokenStrings[] = {
     "EOF", "+", "-", "*", "/", "pow", "==", "!=", "<", ">", "<=", ">=", "and", "or", "xor", "nand",
-    "nor", "xnor", "&", "*", "true", "false", "byte literal", "character literal", "short literal",
-    "integer literal", "long literal", "void", "bool", "byte", "char", "short", "int", "long", "=",
-    "print", "if", "else", "while", "for", "return", ";", "(", ")", "{", "}", "identifier",
+    "nor", "xnor", "&", "*", "true", "false", "character literal", "short literal",
+    "integer literal", "long literal", "void", "bool", "char", "short", "int", "long", "=", "print",
+    "if", "else", "while", "for", "return", ";", "(", ")", "{", "}", "identifier", ",",
     //    "lvalue identifier",
     "ast glue", "function", "function call", "TOKENTYPE_MAX"};
 

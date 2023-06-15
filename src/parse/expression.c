@@ -42,8 +42,8 @@ static ASTNode* parse_terminal_node()
     } else {
         switch (t->token_type) {
         case T_IDENTIFIER:
-            if (!(entry = find_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, t->value.symbol_name))) {
-                identifier_error(0, 0, 0, "Undeclared identifier %s", t->value.symbol_name);
+            if (!(entry = STS_FIND(t->value.symbol_name))) {
+                identifier_error(0, 0, 0, "Undeclared identifier '%s'", t->value.symbol_name);
             }
 
             if (entry->type.is_function) {
@@ -144,12 +144,20 @@ ASTNode* function_call_expression(void)
     }
 
     match_token(T_LEFT_PAREN);
-    parameters = parse_binary_expression();
+    ASTNode** passed_args =
+        (ASTNode**)malloc(sizeof(ASTNode*) * found_entry->type.value.function.num_parameters);
+    for (int i = 0; i < found_entry->type.value.function.num_parameters; i++) {
+        passed_args[i] = parse_binary_expression();
+        if (i != found_entry->type.value.function.num_parameters - 1) {
+            match_token(T_COMMA);
+        }
+    }
     match_token(T_RIGHT_PAREN);
 
     // Make a terminal node for the identifier
-    root = create_unary_ast_node(T_FUNCTION_CALL, parameters, found_entry->type,
-                                 found_entry->symbol_name);
+    root =
+        create_unary_ast_node(T_FUNCTION_CALL, NULL, found_entry->type, found_entry->symbol_name);
+    root->function_call_arguments = passed_args;
     root->tree_type.number_type =
         token_type_to_number_type(found_entry->type.value.function.return_type);
     add_position_info(root, ident_pos);

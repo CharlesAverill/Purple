@@ -17,8 +17,11 @@ int add_five(int target) {
     return target + 5;      // target defaults to 0 and can't be set by a function call, it's like a static variable
 }
 
-int factorial(int z) {
-    z = 5;
+/*
+ * This function is currently bugged to return its input argument due to the way
+ * that function arguments are loaded. This will be fixed in the next update.
+*/
+int iterative_factorial(int z) {
     int y;
     y = z - 1;
 
@@ -30,12 +33,21 @@ int factorial(int z) {
     return z;
 }
 
+int recursive_factorial(int x) {
+	if (x <= 0) {
+		return 1;
+	}
+
+	return x * recursive_factorial(x - 1);
+}
+
 int main(void) {
-    print 'X';              // X
-    test_function();        // !
-    print 41 + one();       // 42
+    print 'Y';                    // 89
+    test_function();              // 33
+    print 41 + one();             // 42
     int x;
     x = add_five(5);
-    print x;                // 5 (can't pass in function parameters yet)
-    print factorial(6);     // 120
+    print x;                      // 10
+    print iterative_factorial(6); // 6
+    print recursive_factorial(5); // 120
 }

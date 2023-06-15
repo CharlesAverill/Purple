@@ -26,8 +26,12 @@ void variable_declaration(void)
     n.pointer_depth++;
 
     match_token(T_IDENTIFIER);
-    add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER,
-                           TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(n));
+
+    GST_INSERT(D_IDENTIFIER_BUFFER, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(n));
+    if (!GST_FIND(D_IDENTIFIER_BUFFER)) {
+        fatal(RC_COMPILER_ERROR, "Failed to insert symbol '%s' into Global Symbol Table",
+              D_IDENTIFIER_BUFFER);
+    }
     llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, n);
 }
 
@@ -50,8 +54,9 @@ ASTNode* function_declaration(void)
     position ident_pos = D_GLOBAL_TOKEN.pos;
     ident_pos.char_number -= strlen(D_GLOBAL_TOKEN.value.symbol_name) - 1;
 
+    // The TYPE_VOID is later overwritten by function_type
     Type function_type = TYPE_FUNCTION(function_return_type, 0, 0);
-    entry = add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER, TYPE_VOID);
+    entry = GST_INSERT(D_IDENTIFIER_BUFFER, TYPE_VOID);
 
     match_token(T_LEFT_PAREN);
 
@@ -64,7 +69,7 @@ ASTNode* function_declaration(void)
         if (match_type(&param_type) == 1) {
             break;
         }
-        param_type.pointer_depth++;
+        // param_type.pointer_depth++;
 
         parameters[num_inputs].parameter_type = param_type;
         if (num_inputs >= parameters_size) {
@@ -79,9 +84,8 @@ ASTNode* function_declaration(void)
         strcpy(parameters[num_inputs - 1].parameter_name, D_IDENTIFIER_BUFFER);
 
         // TODO : Locals
-        add_symbol_table_entry(D_GLOBAL_SYMBOL_TABLE, D_IDENTIFIER_BUFFER,
-                               TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(param_type));
-        llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, param_type);
+        STS_INSERT(D_IDENTIFIER_BUFFER, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(param_type));
+        // llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, param_type);
     }
 
     function_type.value.function.parameters = parameters;

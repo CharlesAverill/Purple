@@ -315,9 +315,6 @@ static TokenType parse_keyword(char* keyword_string)
     case 'b':
         if (!strcmp(keyword_string, tokenStrings[T_BOOL])) {
             return T_BOOL;
-        } else if (!strcmp(keyword_string, tokenStrings[T_BYTE])) {
-            fatal(RC_COMPILER_ERROR, "byte type not yet implemented");
-            return T_BYTE;
         }
         break;
     case 'c':
@@ -543,6 +540,9 @@ bool scan()
         break;
     case '&':
         t->token_type = T_AMPERSAND;
+        break;
+    case ',':
+        t->token_type = T_COMMA;
         break;
     case NUMBER_LITERAL_BASE_SEPARATOR:
         syntax_error(0, 0, t->pos.char_number + 2,
