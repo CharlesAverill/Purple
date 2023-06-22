@@ -39,6 +39,7 @@ static ASTNode* parse_terminal_node()
     if (TOKENTYPE_IS_LITERAL(t->token_type)) {
         out = create_ast_nonidentifier_leaf(
             t->token_type, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(t->value.number_value));
+        out->tree_type = t->value.number_value;
     } else {
         switch (t->token_type) {
         case T_IDENTIFIER:
@@ -50,6 +51,7 @@ static ASTNode* parse_terminal_node()
                 return function_call_expression();
             } else {
                 out = create_ast_identifier_leaf(T_IDENTIFIER, t->value.symbol_name);
+                out->tree_type = entry->type.value.number;
             }
             break;
         case T_RIGHT_PAREN:

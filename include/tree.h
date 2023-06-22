@@ -58,7 +58,8 @@ typedef struct ASTNode {
     printf("Is RValue: %s\n", node->is_rvalue ? "true" : "false");                                 \
     printf("# of Func Call Args: %llu\n", node->num_args);                                         \
     printf("Value (int): %lld\n", node->value.number_value);                                       \
-    printf("Value (str): %s\n", node->value.symbol_name);
+    printf("Value (str): %s\n", node->value.symbol_name);                                          \
+    printf("Tree Type: %s\n", numberTypeNames[node->tree_type.number_type]);
 
 ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* right, Type type,
                          char* symbol_name);

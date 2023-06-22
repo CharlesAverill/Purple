@@ -8,19 +8,15 @@
 #ifndef LLVM_H
 #define LLVM_H
 
+#include <stdio.h>
+
 #include "scan.h"
 #include "types/number.h"
-#include "utils/llvm_stack_entry.h"
 
 /**
  * @brief LLVM-IR representations of data types
  */
 static const char* numberTypeLLVMReprs[] = {"i1", "i8", "i16", "i32", "i64"};
-
-/**
- * @brief Head node of linked list containing register indices that are free to have values stored in them
- */
-extern LLVMStackEntryNode* freeVirtualRegistersHead;
 
 /**
  * @brief Size of buffer for generating refstrings
@@ -33,6 +29,16 @@ extern LLVMStackEntryNode* freeVirtualRegistersHead;
 static char _refstring_buf[REFSTRING_BUF_MAXLEN];
 
 static char _llvm_name_buf[MAX_IDENTIFIER_LENGTH + 3];
+
+/**
+ * @brief A too-big data type for register indices in case of stress testing
+ */
+#define type_register unsigned long long int
+
+/**
+ * @brief A too-big data type for label indices in case of stress testing
+ */
+#define type_label unsigned long long int
 
 /**
  * @brief Types of values possibly returned by ast_to_llvm
@@ -87,7 +93,9 @@ typedef struct LLVMValue {
     if (val.has_name) {                                                                            \
         printf("Contents: %s\n", val.value.name);                                                  \
     } else                                                                                         \
-        printf("Contents: %lld\n", val.value.constant);
+        printf("Contents: %lld\n", val.value.constant);                                            \
+    printf("Has Name: %s\n", val.has_name ? "true" : "false");                                     \
+    printf("Just Loaded: %s\n", val.just_loaded);
 
 /**
  * @brief A standard "null" LLVMValue struct returned in some scenarios
@@ -163,8 +171,6 @@ LLVMValue* llvm_ensure_registers_loaded(int n_registers, LLVMValue registers[], 
 void llvm_preamble(void);
 void llvm_postamble(void);
 
-bool llvm_stack_allocation(LLVMStackEntryNode* stack_entries);
-
 LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_register,
                                  LLVMValue right_virtual_register);
 LLVMValue llvm_store_constant(Number value);
@@ -197,6 +203,8 @@ LLVMValue llvm_get_address(char* symbol_name);
 LLVMValue llvm_dereference(LLVMValue reg);
 void llvm_store_dereference(LLVMValue destination, LLVMValue value);
 void llvm_store_local(char* symbol_name, LLVMValue val);
+LLVMValue llvm_declare_local(char* symbol_name, Number num);
+void llvm_store_local_llvmvalue(LLVMValue destination, LLVMValue val);
 
 /**
  * @brief Wrapper for _refstring - WARNING - only one call to REFSTRING may be made per statement, due to 

@@ -7,6 +7,7 @@
 
 #include "translate/translate.h"
 #include "data.h"
+#include "translate/llvm_stack_entry.h"
 #include "utils/logging.h"
 
 LLVMStackEntryNode* freeVirtualRegistersHead = NULL;
@@ -76,12 +77,11 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
 
         LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
 
-        current->reg = get_next_local_virtual_register();
-        prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
-
-        current->type = root->tree_type.number_type;
-        current->align_bytes = numberTypeByteSizes[current->type];
+        current->reg = LLVMVALUE_VIRTUAL_REGISTER(get_next_local_virtual_register(), NT_MAX);
+        current->reg.num_info = root->tree_type;
+        current->align_bytes = numberTypeByteSizes[current->reg.num_info.number_type];
         current->next = NULL;
+        prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current);
 
         return current;
     } else if (root->ttype == T_IDENTIFIER) {
@@ -96,16 +96,11 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
 
         LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
 
-        current->reg = get_next_local_virtual_register();
-        prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
-
-        current->type = symbol->type.value.number.number_type;
-        if (current->type == -1) {
-            fatal(RC_COMPILER_ERROR, "Symbol number type is ill-formed");
-        }
-
-        current->align_bytes = numberTypeByteSizes[symbol->type.value.number.number_type];
+        current->reg = LLVMVALUE_VIRTUAL_REGISTER(get_next_local_virtual_register(), NT_MAX);
+        current->reg.num_info = root->tree_type;
+        current->align_bytes = numberTypeByteSizes[current->reg.num_info.number_type];
         current->next = NULL;
+        prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current);
 
         return current;
     }
@@ -232,7 +227,10 @@ static LLVMValue print_ast_to_llvm(ASTNode* root, LLVMValue virtual_register)
                 number_to_token_type((Number){.number_type = root->left->largest_number_type});
         }
 
-        purple_log(LOG_DEBUG, "Printing int with print_type %d", print_type);
+        PRINT_ASTNODE(root);
+        PRINT_ASTNODE(root->left)
+
+        purple_log(LOG_DEBUG, "Printing int with print_type %s", tokenStrings[print_type]);
         llvm_print_int(virtual_register);
     }
 
@@ -342,7 +340,7 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
         purple_log(LOG_DEBUG, "Allocating stack space");
         if (llvm_stack_allocation(stack_entries)) {
             purple_log(LOG_DEBUG, "Freeing stack space entries");
-            free_llvm_stack_entry_node_list(stack_entries);
+            free_llvm_stack_entry_node_list(&stack_entries);
             stack_entries = NULL;
         }
 
@@ -357,6 +355,14 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
         return out;
     } else {
         switch (root->ttype) {
+        case T_VAR_DECL:;
+            SymbolTableEntry* ste = STS_FIND(root->value.symbol_name);
+            if (!ste) {
+                fatal(RC_COMPILER_ERROR,
+                      "Failed to find symbol '%s' when generating for variable declaration",
+                      root->value.symbol_name);
+            }
+            ste->latest_llvmvalue = llvm_declare_local(root->value.symbol_name, root->tree_type);
         case T_IDENTIFIER:
             if (root->is_rvalue || parent_operation == T_DEREFERENCE) {
                 if (GST_FIND(root->value.symbol_name)) {
@@ -458,7 +464,7 @@ void generate_llvm(void)
         D_CURRENT_FUNCTION_PREAMBLE_PRINTED = false;
         D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER = 1;
 
-        free_llvm_stack_entry_node_list(freeVirtualRegistersHead);
+        free_llvm_stack_entry_node_list(&freeVirtualRegistersHead);
         freeVirtualRegistersHead = NULL;
         free_ast_node(root);
     }

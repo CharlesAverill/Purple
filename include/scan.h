@@ -77,6 +77,7 @@ typedef enum
     T_AST_GLUE,
     T_FUNCTION_DECLARATION,
     T_FUNCTION_CALL,
+    T_VAR_DECL,
     // Enum End value
     TOKENTYPE_MAX
 } TokenType;
@@ -99,7 +100,7 @@ static char* tokenStrings[] = {
     "integer literal", "long literal", "void", "bool", "char", "short", "int", "long", "=", "print",
     "if", "else", "while", "for", "return", ";", "(", ")", "{", "}", "identifier", ",",
     //    "lvalue identifier",
-    "ast glue", "function", "function call", "TOKENTYPE_MAX"};
+    "ast glue", "function", "function call", "var decl", "TOKENTYPE_MAX"};
 
 /**
  * @brief Determines if a TokenType is associated with a binary arithmetic operation

@@ -39,6 +39,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
     out->left = left;
     out->mid = mid;
     out->right = right;
+    out->tree_type = NUMBER_INT(0);
     if (TOKENTYPE_IS_LITERAL(ttype) && TOKENTYPE_IS_NUMBER_TYPE(type.token_type)) {
         out->value.number_value = type.value.number.value;
         out->tree_type.number_type = type.value.number.number_type;
@@ -204,7 +205,9 @@ void free_ast_node(ASTNode* root)
         free_ast_node(root->right);
 
     for (int i = 0; i < root->num_args; i++) {
-        if (root->function_call_arguments[i])
+        if (root->function_call_arguments[i]) {
+            purple_log(LOG_DEBUG, "Freeing root->function_call_arguments[%d] in free_ast_node", i);
             free(root->function_call_arguments[i]);
+        }
     }
 }

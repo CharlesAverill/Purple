@@ -27,12 +27,20 @@ void variable_declaration(void)
 
     match_token(T_IDENTIFIER);
 
-    GST_INSERT(D_IDENTIFIER_BUFFER, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(n));
-    if (!GST_FIND(D_IDENTIFIER_BUFFER)) {
-        fatal(RC_COMPILER_ERROR, "Failed to insert symbol '%s' into Global Symbol Table",
+    // GST_INSERT(D_IDENTIFIER_BUFFER, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(n));
+    // if (!GST_FIND(D_IDENTIFIER_BUFFER)) {
+    //     fatal(RC_COMPILER_ERROR, "Failed to insert symbol '%s' into Global Symbol Table",
+    //           D_IDENTIFIER_BUFFER);
+    // }
+    // llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, n);
+    STS_INSERT(D_IDENTIFIER_BUFFER, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(n));
+    if (!STS_FIND(D_IDENTIFIER_BUFFER)) {
+        fatal(RC_COMPILER_ERROR, "Failed to insert symbol '%s' into Symbol Table",
               D_IDENTIFIER_BUFFER);
     }
-    llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, n);
+
+    ASTNode* out = create_ast_node(T_VAR_DECL, NULL, NULL, NULL, TYPE_VOID, D_IDENTIFIER_BUFFER);
+    out->tree_type = n;
 }
 
 /**

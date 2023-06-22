@@ -20,35 +20,36 @@ typedef enum
     NT_INT16,
     NT_INT32,
     NT_INT64,
+    NT_MAX,
 } NumberType;
 
 /**
  * @brief Size of each NumberType
  */
 static const int numberTypeByteSizes[] = {
-    1, 1, 2, 4, 8,
+    1, 1, 2, 4, 8, -1,
 };
 
 /**
  * @brief Bit size of each NumberType
  */
-static const int numberTypeBitSizes[] = {1, 8, 16, 32, 64};
+static const int numberTypeBitSizes[] = {1, 8, 16, 32, 64, -1};
 
 /**
  * @brief Max value of each NumberType
  */
-static const unsigned long long int numberTypeMaxValues[] = {1, CHAR_MAX, SHRT_MAX, INT_MAX,
-                                                             LONG_MAX};
+static const unsigned long long int numberTypeMaxValues[] = {1,       CHAR_MAX, SHRT_MAX,
+                                                             INT_MAX, LONG_MAX, -1};
 
 /**
  * @brief Names of each NumberType
  */
-static const char* numberTypeNames[] = {"bool", "char", "short", "int", "long"};
+static const char* numberTypeNames[] = {"bool", "char", "short", "int", "long", "NT_MAX"};
 
 /**
  * @brief Format strings for each data type
  */
-static const char* numberTypeFormatStrings[] = {"%d", "%d", "%d", "%d", "%ld"};
+static const char* numberTypeFormatStrings[] = {"%d", "%d", "%d", "%d", "%ld", "%d"};
 
 /**
  * @brief Container for various kinds of number data

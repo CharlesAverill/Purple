@@ -14,7 +14,7 @@ fi
 
 ${PURPLE_EXECUTABLE} "$@"
 RC=$?
-if [ $RC -eq 139 ]; then 
+if [[ $RC -eq 139 || $RC -eq 134 ]]; then 
     CORE_DUMP="/var/lib/apport/coredump/$(cat /var/log/apport.log | tail -n1 | grep -o -- "core\.[^ ]*")"
     read -p "Segfault occurred, would you like to load $CORE_DUMP in GDB? [Y/n]" yn
     case $yn in 
