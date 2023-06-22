@@ -1332,18 +1332,10 @@ LLVMValue llvm_dereference(LLVMValue reg)
  */
 void llvm_store_dereference(LLVMValue destination, LLVMValue value)
 {
-    LLVMValue* loaded_registers = llvm_ensure_registers_loaded(1, (LLVMValue[]){destination},
-                                                               value.num_info.pointer_depth + 1);
-    if (loaded_registers) {
-        destination = loaded_registers[0];
-        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_store_dereference");
-        free(loaded_registers);
-        loaded_registers = NULL;
-    }
+    fprintf(D_LLVM_FILE, "; LOADING\n");
 
-    loaded_registers = llvm_ensure_registers_loaded(
-        1, (LLVMValue[]){value},
-        destination.num_info.pointer_depth - 1 + (strlen(destination.just_loaded) == 0 ? 0 : 1));
+    LLVMValue* loaded_registers = llvm_ensure_registers_loaded(
+        1, (LLVMValue[]){value}, destination.num_info.pointer_depth - 1);
     if (loaded_registers) {
         value = loaded_registers[0];
         purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers (1)", "llvm_store_dereference");
@@ -1351,9 +1343,19 @@ void llvm_store_dereference(LLVMValue destination, LLVMValue value)
         loaded_registers = NULL;
     }
 
+    loaded_registers = llvm_ensure_registers_loaded(1, (LLVMValue[]){destination},
+                                                    value.num_info.pointer_depth + 1);
+    if (loaded_registers) {
+        destination = loaded_registers[0];
+        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_store_dereference");
+        free(loaded_registers);
+        loaded_registers = NULL;
+    }
+
     print_function_annotation("llvm_store_dereference");
 
-    if (strlen(destination.just_loaded) == 0) {
+    if (strlen(destination.just_loaded) == 0 ||
+        destination.num_info.pointer_depth == value.num_info.pointer_depth + 1) {
         fprintf(D_LLVM_FILE, TAB "store %s%s %s, ", numberTypeLLVMReprs[value.num_info.number_type],
                 REFSTRING(value.num_info.pointer_depth), LLVM_REPR_NOTYPE(value));
         fprintf(D_LLVM_FILE, "%s%s %s" NEWLINE,
