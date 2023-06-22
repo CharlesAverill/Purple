@@ -3,15 +3,15 @@
 \mbox{\hyperlink{type_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef TYPE\_H}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define TYPE\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef TYPE}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define TYPE}}
 \DoxyCodeLine{10 }
 \DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{scan_8h}{scan.h}}"{}}}
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{function_8h}{types/function.h}}"{}}}
 \DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{number_8h}{types/number.h}}"{}}}
 \DoxyCodeLine{14 }
 \DoxyCodeLine{18 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structType}{Type}} \{}
-\DoxyCodeLine{20     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structType_ab90888b18d5dfabe3014052b41282591}{type}};}
+\DoxyCodeLine{20     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structType_afbffa3a80e9fb09ad55724d150dfe2ad}{token\_type}};}
 \DoxyCodeLine{22     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structType_a3a068d21067fcb3e97de0144eb62b0da}{is\_function}};}
 \DoxyCodeLine{24     \textcolor{keyword}{union }\{}
 \DoxyCodeLine{25         \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{structType_a78b8fbf7340e9445efa5bb9731367931}{number}};}
@@ -22,36 +22,37 @@
 \DoxyCodeLine{33 \textcolor{preprocessor}{\#define TYPE\_VOID                                                                                  \(\backslash\)}}
 \DoxyCodeLine{34 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
 \DoxyCodeLine{35 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{36 \textcolor{preprocessor}{        .type = T\_VOID, .is\_function = false                                                       \(\backslash\)}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{        .token\_type = T\_VOID, .is\_function = false                                                 \(\backslash\)}}
 \DoxyCodeLine{37 \textcolor{preprocessor}{    \}}}
 \DoxyCodeLine{38 }
 \DoxyCodeLine{42 \textcolor{preprocessor}{\#define TYPE\_NUMBER\_FROM\_NUMBERTYPE\_FROM\_TOKEN(ttype)                                              \(\backslash\)}}
 \DoxyCodeLine{43 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
 \DoxyCodeLine{44 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{45 \textcolor{preprocessor}{        .type = ttype, .value.number = NUMBER\_FROM\_TYPE\_VAL(token\_type\_to\_number\_type(ttype), 0),  \(\backslash\)}}
-\DoxyCodeLine{46 \textcolor{preprocessor}{        .is\_function = false                                                                       \(\backslash\)}}
-\DoxyCodeLine{47 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{52 \textcolor{preprocessor}{\#define TYPE\_NUMBER\_FROM\_NUMBERTYPE\_FROM\_NUMBER(n)                                                 \(\backslash\)}}
-\DoxyCodeLine{53 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
-\DoxyCodeLine{54 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{55 \textcolor{preprocessor}{        .type = number\_to\_token\_type(n), .value.number = n, .is\_function = false                   \(\backslash\)}}
-\DoxyCodeLine{56 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{61 \textcolor{preprocessor}{\#define TYPE\_NUMBER\_FROM\_NUMBERTYPE(nt)                                                            \(\backslash\)}}
-\DoxyCodeLine{62 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
-\DoxyCodeLine{63 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{64 \textcolor{preprocessor}{        .type = number\_to\_token\_type((Number)\{.type = nt\}), .is\_function = false,                  \(\backslash\)}}
-\DoxyCodeLine{65 \textcolor{preprocessor}{        .value.number = NUMBER\_FROM\_TYPE\_VAL(nt, 0)                                                \(\backslash\)}}
-\DoxyCodeLine{66 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{67 }
-\DoxyCodeLine{68 \textcolor{preprocessor}{\#define TYPE\_FUNCTION(out, input\_list, num\_inputs)                                                 \(\backslash\)}}
-\DoxyCodeLine{69 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
-\DoxyCodeLine{70 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{71 \textcolor{preprocessor}{        .type = T\_FUNCTION\_DECLARATION, .is\_function = true,                                       \(\backslash\)}}
-\DoxyCodeLine{72 \textcolor{preprocessor}{        .value.function = FUNCTION\_FROM\_OUT\_IN(out, input\_list, num\_inputs)                        \(\backslash\)}}
-\DoxyCodeLine{73 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{74 }
-\DoxyCodeLine{75 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TYPE\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{        .token\_type = ttype,                                                                       \(\backslash\)}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{        .value.number = NUMBER\_FROM\_TYPE\_VAL(token\_type\_to\_number\_type(ttype), 0),                 \(\backslash\)}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{        .is\_function = false                                                                       \(\backslash\)}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define TYPE\_NUMBER\_FROM\_NUMBERTYPE\_FROM\_NUMBER(n)                                                 \(\backslash\)}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{        .token\_type = number\_to\_token\_type(n), .value.number = n, .is\_function = false             \(\backslash\)}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define TYPE\_NUMBER\_FROM\_NUMBERTYPE(nt)                                                            \(\backslash\)}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{        .token\_type = number\_to\_token\_type((Number)\{.token\_type = nt\}), .is\_function = false,      \(\backslash\)}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{        .value.number = NUMBER\_FROM\_TYPE\_VAL(nt, 0)                                                \(\backslash\)}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define TYPE\_FUNCTION(out, input\_list, num\_inputs)                                                 \(\backslash\)}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{    (Type)                                                                                         \(\backslash\)}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{        .token\_type = T\_FUNCTION\_DECLARATION, .is\_function = true,                                 \(\backslash\)}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{        .value.function = FUNCTION\_FROM\_OUT\_IN(out, input\_list, num\_inputs)                        \(\backslash\)}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TYPE */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

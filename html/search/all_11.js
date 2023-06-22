@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['scan_0',['scan',['../scan_8c.html#a9a87d682ab4acee4203574e19ed55229',1,'scan():&#160;scan.c'],['../scan_8h.html#a9a87d682ab4acee4203574e19ed55229',1,'scan():&#160;scan.c']]],
+  ['scan_0',['scan',['../scan_8h.html#a9a87d682ab4acee4203574e19ed55229',1,'scan():&#160;scan.c'],['../scan_8c.html#a9a87d682ab4acee4203574e19ed55229',1,'scan():&#160;scan.c']]],
   ['scan_2ec_1',['scan.c',['../scan_8c.html',1,'']]],
   ['scan_2eh_2',['scan.h',['../scan_8h.html',1,'']]],
   ['scan_5fchar_5fliteral_3',['scan_char_literal',['../scan_8c.html#a1ee1bedd421d3170301a832f9da64141',1,'scan.c']]],
@@ -15,12 +15,14 @@ var searchData=
   ['shutdown_2eh_12',['shutdown.h',['../shutdown_8h.html',1,'']]],
   ['skip_5fwhitespace_13',['skip_whitespace',['../scan_8c.html#a86d1f1bccadab31732ccd799bed1abb3',1,'scan.c']]],
   ['statement_2ec_14',['statement.c',['../statement_8c.html',1,'']]],
-  ['symbol_5fname_15',['symbol_name',['../structASTNode.html#a0f5d9c29429ab4a530f6e36ba3d14329',1,'ASTNode::symbol_name()'],['../structSymbolTableEntry.html#a38ee057417f64c55de9d8e1a4c22ae39',1,'SymbolTableEntry::symbol_name()'],['../structToken.html#ababe6c2810ecc25eba4729050e99af0c',1,'Token::symbol_name()']]],
-  ['symbol_5ftable_2ec_16',['symbol_table.c',['../symbol__table_8c.html',1,'']]],
-  ['symbol_5ftable_2eh_17',['symbol_table.h',['../symbol__table_8h.html',1,'']]],
-  ['symbol_5ftable_5fdefault_5flength_18',['SYMBOL_TABLE_DEFAULT_LENGTH',['../symbol__table_8h.html#a79653115fb43c2f3cee6d1b80ec69efb',1,'symbol_table.h']]],
-  ['symboltable_19',['SymbolTable',['../symbol__table_8h.html#a0ef213c033eadd9c99ef43c1df3d9bd5',1,'SymbolTable():&#160;symbol_table.h'],['../structSymbolTable.html',1,'SymbolTable']]],
-  ['symboltableentry_20',['SymbolTableEntry',['../symbol__table_8h.html#a70075dcb3cfa8811d6771d902040ede1',1,'SymbolTableEntry():&#160;symbol_table.h'],['../structSymbolTableEntry.html',1,'SymbolTableEntry']]],
-  ['symboltablestack_21',['SymbolTableStack',['../structSymbolTableStack.html',1,'SymbolTableStack'],['../symbol__table_8h.html#a13eccf949a1c465b7662b74e0d880409',1,'SymbolTableStack():&#160;symbol_table.h']]],
-  ['syntax_5ferror_22',['syntax_error',['../logging_8h.html#ac822358fa02712b5314553d97c5c17c4',1,'syntax_error(char *fn, int line_number, int char_number, const char *fmt,...):&#160;logging.c'],['../logging_8c.html#ac822358fa02712b5314553d97c5c17c4',1,'syntax_error(char *fn, int line_number, int char_number, const char *fmt,...):&#160;logging.c']]]
+  ['sts_5ffind_15',['STS_FIND',['../symbol__table_8h.html#a8057d6d5768295e0b3dea5086570e37a',1,'symbol_table.h']]],
+  ['sts_5finsert_16',['STS_INSERT',['../symbol__table_8h.html#a76c362b6bc106e194869998b4ae9599d',1,'symbol_table.h']]],
+  ['symbol_5fname_17',['symbol_name',['../structASTNode.html#a0f5d9c29429ab4a530f6e36ba3d14329',1,'ASTNode::symbol_name()'],['../structSymbolTableEntry.html#a38ee057417f64c55de9d8e1a4c22ae39',1,'SymbolTableEntry::symbol_name()'],['../structToken.html#ababe6c2810ecc25eba4729050e99af0c',1,'Token::symbol_name()']]],
+  ['symbol_5ftable_2ec_18',['symbol_table.c',['../symbol__table_8c.html',1,'']]],
+  ['symbol_5ftable_2eh_19',['symbol_table.h',['../symbol__table_8h.html',1,'']]],
+  ['symbol_5ftable_5fdefault_5flength_20',['SYMBOL_TABLE_DEFAULT_LENGTH',['../symbol__table_8h.html#a79653115fb43c2f3cee6d1b80ec69efb',1,'symbol_table.h']]],
+  ['symboltable_21',['SymbolTable',['../symbol__table_8h.html#a0ef213c033eadd9c99ef43c1df3d9bd5',1,'SymbolTable():&#160;symbol_table.h'],['../structSymbolTable.html',1,'SymbolTable']]],
+  ['symboltableentry_22',['SymbolTableEntry',['../symbol__table_8h.html#a70075dcb3cfa8811d6771d902040ede1',1,'SymbolTableEntry():&#160;symbol_table.h'],['../structSymbolTableEntry.html',1,'SymbolTableEntry']]],
+  ['symboltablestack_23',['SymbolTableStack',['../structSymbolTableStack.html',1,'SymbolTableStack'],['../symbol__table_8h.html#a13eccf949a1c465b7662b74e0d880409',1,'SymbolTableStack():&#160;symbol_table.h']]],
+  ['syntax_5ferror_24',['syntax_error',['../logging_8h.html#ac822358fa02712b5314553d97c5c17c4',1,'syntax_error(char *fn, int line_number, int char_number, const char *fmt,...):&#160;logging.c'],['../logging_8c.html#ac822358fa02712b5314553d97c5c17c4',1,'syntax_error(char *fn, int line_number, int char_number, const char *fmt,...):&#160;logging.c']]]
 ];

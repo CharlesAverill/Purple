@@ -108,20 +108,25 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="arguments_8h__dep__incl.png" border="0" usemap="#ainclude_2utils_2arguments_8hdep" alt=""/></div>
 <map name="ainclude_2utils_2arguments_8hdep" id="ainclude_2utils_2arguments_8hdep">
-<area shape="rect" title="Function headers for command line argument parsing." alt="" coords="779,5,945,32"/>
-<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="767,80,869,107"/>
-<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="5,155,95,181"/>
-<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="1491,155,1614,181"/>
-<area shape="rect" href="arguments_8c.html" title="Command line interface logic." alt="" coords="945,80,1088,107"/>
-<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="119,155,272,181"/>
-<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="297,155,449,181"/>
-<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="473,155,621,181"/>
-<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="645,155,727,181"/>
-<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="752,155,884,181"/>
-<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="908,155,1067,181"/>
-<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="1091,155,1167,181"/>
-<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="1191,155,1304,181"/>
-<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="1329,155,1467,181"/>
+<area shape="rect" title="Function headers for command line argument parsing." alt="" coords="707,5,874,32"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="695,80,798,107"/>
+<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="317,483,406,509"/>
+<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="1293,162,1416,189"/>
+<area shape="rect" href="arguments_8c.html" title="Command line interface logic." alt="" coords="874,80,1017,107"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="120,155,283,196"/>
+<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="517,483,665,509"/>
+<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="853,483,985,509"/>
+<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="1091,483,1250,509"/>
+<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="170,408,323,435"/>
+<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="705,408,857,435"/>
+<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="593,333,669,360"/>
+<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="784,162,867,189"/>
+<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="891,162,1005,189"/>
+<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="1029,162,1168,189"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="453,251,552,278"/>
+<area shape="rect" href="symbol__table_8c.html" title="Logic for global and local symbol tables." alt="" coords="93,244,232,285"/>
+<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="408,333,517,360"/>
+<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="500,408,681,435"/>
 </map>
 </div>
 </div>
@@ -135,9 +140,18 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a21c26ef2a3830a77c03dd2bf44d92ea5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">FCONST_EXPR_REDUCE_CODE</a>&#160;&#160;&#160;0x100</td></tr>
-<tr class="memdesc:a21c26ef2a3830a77c03dd2bf44d92ea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Argument shorthand code for the -fconst-expr-reduce flag.  <a href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">More...</a><br /></td></tr>
+<tr class="memitem:a4833657071bfead1397ce3ed54279b9d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8h.html#a4833657071bfead1397ce3ed54279b9d">ARGP_HELP_FLAGS</a>&#160;&#160;&#160;0x100</td></tr>
+<tr class="separator:a4833657071bfead1397ce3ed54279b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8314d89b0f2d126808c3fea4df00f09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8h.html#ae8314d89b0f2d126808c3fea4df00f09">ARGP_LLVM_OUTPUT</a>&#160;&#160;&#160;0x101</td></tr>
+<tr class="separator:ae8314d89b0f2d126808c3fea4df00f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af96edef6fcdb7d545cdc8bbaf0ca7e1e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8h.html#af96edef6fcdb7d545cdc8bbaf0ca7e1e">FLAGS_START</a>&#160;&#160;&#160;0x201</td></tr>
+<tr class="separator:af96edef6fcdb7d545cdc8bbaf0ca7e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21c26ef2a3830a77c03dd2bf44d92ea5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">FCONST_EXPR_REDUCE_CODE</a>&#160;&#160;&#160;0x202</td></tr>
 <tr class="separator:a21c26ef2a3830a77c03dd2bf44d92ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5555f36c6e09b80f73d7d9a88d44a416"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8h.html#a5555f36c6e09b80f73d7d9a88d44a416">FPRINT_FUNC_ANNOTATIONS</a>&#160;&#160;&#160;0x203</td></tr>
+<tr class="separator:a5555f36c6e09b80f73d7d9a88d44a416"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92bb294ee731cc3a504f1d53db633f4c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8h.html#a92bb294ee731cc3a504f1d53db633f4c">FLAGS_END</a>&#160;&#160;&#160;0x300</td></tr>
+<tr class="separator:a92bb294ee731cc3a504f1d53db633f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -152,12 +166,42 @@ Functions</h2></td></tr>
 <tr class="memitem:aa6dd9bce1f6797c4970e40007460cb69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8h.html#aa6dd9bce1f6797c4970e40007460cb69">set_opt_level</a> (<a class="el" href="structPurpleArgs.html">PurpleArgs</a> *args, int opt_level)</td></tr>
 <tr class="memdesc:aa6dd9bce1f6797c4970e40007460cb69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set optimization flags based on a given opt level.  <a href="arguments_8h.html#aa6dd9bce1f6797c4970e40007460cb69">More...</a><br /></td></tr>
 <tr class="separator:aa6dd9bce1f6797c4970e40007460cb69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d4f8337fb035087294e86dce696b974"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8h.html#a0d4f8337fb035087294e86dce696b974">help_flags</a> ()</td></tr>
+<tr class="separator:a0d4f8337fb035087294e86dce696b974"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="structFunction.html" title="Container for function information.">Function</a> headers for command line argument parsing. </p>
 <dl class="section author"><dt>Author</dt><dd>CharlesAverill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12-Oct-2021 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a4833657071bfead1397ce3ed54279b9d" name="a4833657071bfead1397ce3ed54279b9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4833657071bfead1397ce3ed54279b9d">&#9670;&nbsp;</a></span>ARGP_HELP_FLAGS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARGP_HELP_FLAGS&#160;&#160;&#160;0x100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae8314d89b0f2d126808c3fea4df00f09" name="ae8314d89b0f2d126808c3fea4df00f09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8314d89b0f2d126808c3fea4df00f09">&#9670;&nbsp;</a></span>ARGP_LLVM_OUTPUT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARGP_LLVM_OUTPUT&#160;&#160;&#160;0x101</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a21c26ef2a3830a77c03dd2bf44d92ea5" name="a21c26ef2a3830a77c03dd2bf44d92ea5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a21c26ef2a3830a77c03dd2bf44d92ea5">&#9670;&nbsp;</a></span>FCONST_EXPR_REDUCE_CODE</h2>
 
@@ -165,12 +209,52 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define FCONST_EXPR_REDUCE_CODE&#160;&#160;&#160;0x100</td>
+          <td class="memname">#define FCONST_EXPR_REDUCE_CODE&#160;&#160;&#160;0x202</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Argument shorthand code for the -fconst-expr-reduce flag. </p>
+</div>
+</div>
+<a id="a92bb294ee731cc3a504f1d53db633f4c" name="a92bb294ee731cc3a504f1d53db633f4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92bb294ee731cc3a504f1d53db633f4c">&#9670;&nbsp;</a></span>FLAGS_END</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAGS_END&#160;&#160;&#160;0x300</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af96edef6fcdb7d545cdc8bbaf0ca7e1e" name="af96edef6fcdb7d545cdc8bbaf0ca7e1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af96edef6fcdb7d545cdc8bbaf0ca7e1e">&#9670;&nbsp;</a></span>FLAGS_START</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAGS_START&#160;&#160;&#160;0x201</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5555f36c6e09b80f73d7d9a88d44a416" name="a5555f36c6e09b80f73d7d9a88d44a416"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5555f36c6e09b80f73d7d9a88d44a416">&#9670;&nbsp;</a></span>FPRINT_FUNC_ANNOTATIONS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FPRINT_FUNC_ANNOTATIONS&#160;&#160;&#160;0x203</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -190,6 +274,23 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a0d4f8337fb035087294e86dce696b974" name="a0d4f8337fb035087294e86dce696b974"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d4f8337fb035087294e86dce696b974">&#9670;&nbsp;</a></span>help_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void help_flags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4d7de48bbb1fd1e0943934cd0097f308" name="a4d7de48bbb1fd1e0943934cd0097f308"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4d7de48bbb1fd1e0943934cd0097f308">&#9670;&nbsp;</a></span>parse_args()</h2>
 

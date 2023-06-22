@@ -110,24 +110,24 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="type_8h__dep__incl.png" border="0" usemap="#ainclude_2types_2type_8hdep" alt=""/></div>
 <map name="ainclude_2types_2type_8hdep" id="ainclude_2types_2type_8hdep">
-<area shape="rect" title="Function headers and defines for." alt="" coords="925,5,1061,32"/>
-<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="448,80,610,121"/>
-<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="1287,408,1419,435"/>
-<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="799,259,902,285"/>
-<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="612,333,766,360"/>
-<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="128,408,218,435"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="273,177,372,203"/>
-<area shape="rect" href="symbol__table_8c.html" title="Logic for global and local symbol tables." alt="" coords="513,169,652,211"/>
-<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="180,333,332,360"/>
-<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="423,408,571,435"/>
-<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="1390,333,1473,360"/>
-<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="850,408,1008,435"/>
-<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="79,333,155,360"/>
-<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="842,333,955,360"/>
-<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="980,333,1102,360"/>
-<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="1126,333,1265,360"/>
-<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="240,259,349,285"/>
-<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="406,333,588,360"/>
+<area shape="rect" title="Function headers and defines for." alt="" coords="534,5,670,32"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="1102,80,1265,121"/>
+<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="5,408,137,435"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="676,259,779,285"/>
+<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="1299,333,1452,360"/>
+<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="1388,408,1477,435"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="1134,177,1233,203"/>
+<area shape="rect" href="symbol__table_8c.html" title="Logic for global and local symbol tables." alt="" coords="1629,169,1767,211"/>
+<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="917,333,1069,360"/>
+<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="1109,408,1257,435"/>
+<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="607,333,690,360"/>
+<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="708,408,867,435"/>
+<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="816,333,892,360"/>
+<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="109,333,223,360"/>
+<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="247,333,370,360"/>
+<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="394,333,533,360"/>
+<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="1225,259,1334,285"/>
+<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="1093,333,1274,360"/>
 </map>
 </div>
 </div>
@@ -200,11 +200,11 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    (<a class="code hl_typedef" href="type_8h.html#a1ac75f8fee198af783521627f1fecfbc">Type</a>)                                                                                         \</div>
 <div class="line">    {                                                                                              \</div>
-<div class="line">        .type = <a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340">T_FUNCTION_DECLARATION</a>, .is_function = <span class="keyword">true</span>,                                       \</div>
+<div class="line">        .token_type = <a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340">T_FUNCTION_DECLARATION</a>, .is_function = <span class="keyword">true</span>,                                 \</div>
 <div class="line">        .value.function = <a class="code hl_define" href="function_8h.html#ae69f7a0edb7bbad52c39bab5abb2d963">FUNCTION_FROM_OUT_IN</a>(out, input_list, num_inputs)                        \</div>
 <div class="line">    }</div>
-<div class="ttc" id="afunction_8h_html_ae69f7a0edb7bbad52c39bab5abb2d963"><div class="ttname"><a href="function_8h.html#ae69f7a0edb7bbad52c39bab5abb2d963">FUNCTION_FROM_OUT_IN</a></div><div class="ttdeci">#define FUNCTION_FROM_OUT_IN(output_type, input_list, num_inputs)</div><div class="ttdoc">Generates a Function struct given an output type and a linked list of input types.</div><div class="ttdef"><b>Definition:</b> function.h:39</div></div>
-<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340">T_FUNCTION_DECLARATION</a></div><div class="ttdeci">@ T_FUNCTION_DECLARATION</div><div class="ttdef"><b>Definition:</b> scan.h:79</div></div>
+<div class="ttc" id="afunction_8h_html_ae69f7a0edb7bbad52c39bab5abb2d963"><div class="ttname"><a href="function_8h.html#ae69f7a0edb7bbad52c39bab5abb2d963">FUNCTION_FROM_OUT_IN</a></div><div class="ttdeci">#define FUNCTION_FROM_OUT_IN(output_type, input_list, num_inputs)</div><div class="ttdoc">Generates a Function struct given an output type and a linked list of input types.</div><div class="ttdef"><b>Definition:</b> function.h:38</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340">T_FUNCTION_DECLARATION</a></div><div class="ttdeci">@ T_FUNCTION_DECLARATION</div><div class="ttdef"><b>Definition:</b> scan.h:78</div></div>
 <div class="ttc" id="atype_8h_html_a1ac75f8fee198af783521627f1fecfbc"><div class="ttname"><a href="type_8h.html#a1ac75f8fee198af783521627f1fecfbc">Type</a></div><div class="ttdeci">struct Type Type</div><div class="ttdoc">Container for type data.</div></div>
 </div><!-- fragment -->
 </div>
@@ -226,10 +226,10 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    (<a class="code hl_typedef" href="type_8h.html#a1ac75f8fee198af783521627f1fecfbc">Type</a>)                                                                                         \</div>
 <div class="line">    {                                                                                              \</div>
-<div class="line">        .type = <a class="code hl_function" href="number_8h.html#a6ba66dfa3fa11b0ccefce0ed54080eef">number_to_token_type</a>((<a class="code hl_struct" href="structNumber.html">Number</a>){.type = nt}), .is_function = <span class="keyword">false</span>,                  \</div>
+<div class="line">        .token_type = <a class="code hl_function" href="number_8h.html#a6ba66dfa3fa11b0ccefce0ed54080eef">number_to_token_type</a>((<a class="code hl_struct" href="structNumber.html">Number</a>){.token_type = nt}), .is_function = <span class="keyword">false</span>,      \</div>
 <div class="line">        .value.number = <a class="code hl_define" href="number_8h.html#add3ecbbfaff5335401b5bd7180e9019b">NUMBER_FROM_TYPE_VAL</a>(nt, 0)                                                \</div>
 <div class="line">    }</div>
-<div class="ttc" id="anumber_8h_html_a6ba66dfa3fa11b0ccefce0ed54080eef"><div class="ttname"><a href="number_8h.html#a6ba66dfa3fa11b0ccefce0ed54080eef">number_to_token_type</a></div><div class="ttdeci">int number_to_token_type(Number number)</div><div class="ttdef"><b>Definition:</b> number.c:45</div></div>
+<div class="ttc" id="anumber_8h_html_a6ba66dfa3fa11b0ccefce0ed54080eef"><div class="ttname"><a href="number_8h.html#a6ba66dfa3fa11b0ccefce0ed54080eef">number_to_token_type</a></div><div class="ttdeci">int number_to_token_type(Number number)</div><div class="ttdef"><b>Definition:</b> number.c:44</div></div>
 <div class="ttc" id="anumber_8h_html_add3ecbbfaff5335401b5bd7180e9019b"><div class="ttname"><a href="number_8h.html#add3ecbbfaff5335401b5bd7180e9019b">NUMBER_FROM_TYPE_VAL</a></div><div class="ttdeci">#define NUMBER_FROM_TYPE_VAL(t, v)</div><div class="ttdoc">Generates a Number struct given a NumberType and a value.</div><div class="ttdef"><b>Definition:</b> number.h:114</div></div>
 <div class="ttc" id="astructNumber_html"><div class="ttname"><a href="structNumber.html">Number</a></div><div class="ttdoc">Container for various kinds of number data.</div><div class="ttdef"><b>Definition:</b> number.h:56</div></div>
 </div><!-- fragment -->
@@ -254,7 +254,7 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    (<a class="code hl_typedef" href="type_8h.html#a1ac75f8fee198af783521627f1fecfbc">Type</a>)                                                                                         \</div>
 <div class="line">    {                                                                                              \</div>
-<div class="line">        .type = <a class="code hl_function" href="number_8h.html#a6ba66dfa3fa11b0ccefce0ed54080eef">number_to_token_type</a>(n), .value.number = n, .is_function = <span class="keyword">false</span>                   \</div>
+<div class="line">        .token_type = <a class="code hl_function" href="number_8h.html#a6ba66dfa3fa11b0ccefce0ed54080eef">number_to_token_type</a>(n), .value.number = n, .is_function = <span class="keyword">false</span>             \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
 <p>Generates a number type struct given a <a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a>. </p>
@@ -278,10 +278,11 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    (<a class="code hl_typedef" href="type_8h.html#a1ac75f8fee198af783521627f1fecfbc">Type</a>)                                                                                         \</div>
 <div class="line">    {                                                                                              \</div>
-<div class="line">        .type = ttype, .value.number = <a class="code hl_define" href="number_8h.html#add3ecbbfaff5335401b5bd7180e9019b">NUMBER_FROM_TYPE_VAL</a>(<a class="code hl_function" href="number_8h.html#a242dd91fc5b139e8048fb50fac323dee">token_type_to_number_type</a>(ttype), 0),  \</div>
+<div class="line">        .token_type = ttype,                                                                       \</div>
+<div class="line">        .value.number = <a class="code hl_define" href="number_8h.html#add3ecbbfaff5335401b5bd7180e9019b">NUMBER_FROM_TYPE_VAL</a>(<a class="code hl_function" href="number_8h.html#a242dd91fc5b139e8048fb50fac323dee">token_type_to_number_type</a>(ttype), 0),                 \</div>
 <div class="line">        .is_function = <span class="keyword">false</span>                                                                       \</div>
 <div class="line">    }</div>
-<div class="ttc" id="anumber_8h_html_a242dd91fc5b139e8048fb50fac323dee"><div class="ttname"><a href="number_8h.html#a242dd91fc5b139e8048fb50fac323dee">token_type_to_number_type</a></div><div class="ttdeci">NumberType token_type_to_number_type(int token_type)</div><div class="ttdoc">Convert a TokenType to a NumberType.</div><div class="ttdef"><b>Definition:</b> number.c:19</div></div>
+<div class="ttc" id="anumber_8h_html_a242dd91fc5b139e8048fb50fac323dee"><div class="ttname"><a href="number_8h.html#a242dd91fc5b139e8048fb50fac323dee">token_type_to_number_type</a></div><div class="ttdeci">NumberType token_type_to_number_type(int token_type)</div><div class="ttdoc">Convert a TokenType to a NumberType.</div><div class="ttdef"><b>Definition:</b> number.c:20</div></div>
 </div><!-- fragment -->
 <p>Generates a number type struct given a TokenType. </p>
 
@@ -300,9 +301,9 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    (<a class="code hl_typedef" href="type_8h.html#a1ac75f8fee198af783521627f1fecfbc">Type</a>)                                                                                         \</div>
 <div class="line">    {                                                                                              \</div>
-<div class="line">        .type = <a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99">T_VOID</a>, .is_function = <span class="keyword">false</span>                                                       \</div>
+<div class="line">        .token_type = <a class="code hl_enumvalue" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99">T_VOID</a>, .is_function = <span class="keyword">false</span>                                                 \</div>
 <div class="line">    }</div>
-<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99">T_VOID</a></div><div class="ttdeci">@ T_VOID</div><div class="ttdef"><b>Definition:</b> scan.h:54</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99">T_VOID</a></div><div class="ttdeci">@ T_VOID</div><div class="ttdef"><b>Definition:</b> scan.h:53</div></div>
 </div><!-- fragment -->
 <p>Generates a void type struct. </p>
 

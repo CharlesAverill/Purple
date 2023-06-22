@@ -30,6 +30,8 @@ unsigned long int \mbox{\hyperlink{structSymbolTable_a79d029aed5cb77d5153ace908e
 \item 
 \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$$\ast$ \mbox{\hyperlink{structSymbolTable_af6e51d297fb314f42872cb61235691bd}{buckets}}
 \item 
+struct \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ \mbox{\hyperlink{structSymbolTable_adcff830f266faa4dab4fe5ad9a3bf067}{prev}}
+\item 
 struct \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$ \mbox{\hyperlink{structSymbolTable_afce59ce70989d0f787d63f192504479c}{next}}
 \end{DoxyCompactItemize}
 
@@ -62,7 +64,13 @@ Array of entries with length length \mbox{\Hypertarget{structSymbolTable_afdf8bf
 \doxysubsubsection{\texorpdfstring{next}{next}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}}$\ast$ Symbol\+Table\+::next}
 
-Next Symbol Table in the scope stack \mbox{\Hypertarget{structSymbolTable_a79d029aed5cb77d5153ace908e59547e}\label{structSymbolTable_a79d029aed5cb77d5153ace908e59547e}} 
+Next Symbol Table in the scope stack \mbox{\Hypertarget{structSymbolTable_adcff830f266faa4dab4fe5ad9a3bf067}\label{structSymbolTable_adcff830f266faa4dab4fe5ad9a3bf067}} 
+\index{SymbolTable@{SymbolTable}!prev@{prev}}
+\index{prev@{prev}!SymbolTable@{SymbolTable}}
+\doxysubsubsection{\texorpdfstring{prev}{prev}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structSymbolTable}{Symbol\+Table}}$\ast$ Symbol\+Table\+::prev}
+
+Previous Symbol Table in the scope stack \mbox{\Hypertarget{structSymbolTable_a79d029aed5cb77d5153ace908e59547e}\label{structSymbolTable_a79d029aed5cb77d5153ace908e59547e}} 
 \index{SymbolTable@{SymbolTable}!total\_buckets@{total\_buckets}}
 \index{total\_buckets@{total\_buckets}!SymbolTable@{SymbolTable}}
 \doxysubsubsection{\texorpdfstring{total\_buckets}{total\_buckets}}

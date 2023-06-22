@@ -87,7 +87,8 @@ $(function() {
 
 <p>LLVM-IR emission.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;string.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="data_8h_source.html">data.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="llvm_8h_source.html">translate/llvm.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="translate_8h_source.html">translate/translate.h</a>&quot;</code><br />
@@ -100,38 +101,46 @@ Include dependency graph for llvm.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="llvm_8c__incl.png" border="0" usemap="#asrc_2translate_2llvm_8c" alt=""/></div>
 <map name="asrc_2translate_2llvm_8c" id="asrc_2translate_2llvm_8c">
-<area shape="rect" title="LLVM&#45;IR emission." alt="" coords="926,5,1058,32"/>
-<area shape="rect" title=" " alt="" coords="5,379,69,405"/>
-<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="510,229,567,256"/>
-<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="732,379,823,405"/>
-<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="918,453,1029,480"/>
-<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="845,80,981,107"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="1004,304,1105,331"/>
-<area shape="rect" href="clang_8h.html" title="Function headers for interacting with clang." alt="" coords="1235,80,1325,107"/>
-<area shape="rect" href="formatting_8h.html" title="Definitions for string formatting." alt="" coords="1350,80,1469,107"/>
-<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="693,528,753,555"/>
-<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="576,304,739,331"/>
-<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="327,304,449,331"/>
-<area shape="rect" href="misc_8h.html" title="Miscellaneous utility functions that don&#39;t fit anywhere else." alt="" coords="143,304,231,331"/>
-<area shape="rect" title=" " alt="" coords="451,603,525,629"/>
-<area shape="rect" href="identifier_8h.html" title="Definitions for identifiers." alt="" coords="617,603,732,629"/>
-<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="825,603,935,629"/>
-<area shape="rect" title=" " alt="" coords="849,677,911,704"/>
-<area shape="rect" href="function_8h.html" title="Struct definitions and macros for functions." alt="" coords="627,453,741,480"/>
-<area shape="rect" title=" " alt="" coords="393,379,450,405"/>
-<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="264,379,317,405"/>
-<area shape="rect" title=" " alt="" coords="179,379,240,405"/>
-<area shape="rect" title=" " alt="" coords="94,379,154,405"/>
-<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="918,528,1077,555"/>
-<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="865,155,929,181"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="842,229,897,256"/>
-<area shape="rect" title=" " alt="" coords="866,304,929,331"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="993,379,1109,405"/>
+<area shape="rect" title="LLVM&#45;IR emission." alt="" coords="848,5,980,32"/>
+<area shape="rect" title=" " alt="" coords="763,304,825,331"/>
+<area shape="rect" title=" " alt="" coords="215,379,279,405"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="517,229,575,256"/>
+<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="932,379,1043,405"/>
+<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="679,379,770,405"/>
+<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="846,80,982,107"/>
+<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="1122,304,1223,331"/>
+<area shape="rect" href="clang_8h.html" title="Function headers for interacting with clang." alt="" coords="1122,80,1213,107"/>
+<area shape="rect" href="formatting_8h.html" title="Definitions for string formatting." alt="" coords="1237,80,1356,107"/>
+<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="711,528,771,555"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="525,304,687,331"/>
+<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="72,304,193,331"/>
+<area shape="rect" href="misc_8h.html" title="Miscellaneous utility functions that don&#39;t fit anywhere else." alt="" coords="347,304,435,331"/>
+<area shape="rect" title=" " alt="" coords="485,603,559,629"/>
+<area shape="rect" href="identifier_8h.html" title="Definitions for identifiers." alt="" coords="645,603,759,629"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="893,603,1004,629"/>
+<area shape="rect" title=" " alt="" coords="917,677,980,704"/>
+<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="869,528,1028,555"/>
+<area shape="rect" href="function_8h.html" title="Struct definitions and macros for functions." alt="" coords="661,453,775,480"/>
+<area shape="rect" title=" " alt="" coords="5,379,63,405"/>
+<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="138,379,191,405"/>
+<area shape="rect" title=" " alt="" coords="389,379,450,405"/>
+<area shape="rect" title=" " alt="" coords="304,379,364,405"/>
+<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="882,155,946,181"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="833,229,888,256"/>
+<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="1123,379,1239,405"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:aa21966d9bf61090cafe2338fc4e1de41"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#aa21966d9bf61090cafe2338fc4e1de41">print_function_annotation</a> (const char *function_name)</td></tr>
+<tr class="separator:aa21966d9bf61090cafe2338fc4e1de41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18b7dfe6e4517c6dbae024ad9f301094"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a18b7dfe6e4517c6dbae024ad9f301094">number_string</a> (<a class="el" href="structNumber.html">Number</a> number)</td></tr>
+<tr class="memdesc:a18b7dfe6e4517c6dbae024ad9f301094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the LLVM string representation of a <a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a> struct, max length = 300.  <a href="llvm_8c.html#a18b7dfe6e4517c6dbae024ad9f301094">More...</a><br /></td></tr>
+<tr class="separator:a18b7dfe6e4517c6dbae024ad9f301094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fbaf3e7a15fe8494588284f3c613d53"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a3fbaf3e7a15fe8494588284f3c613d53">llvmvalue_repr</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> val)</td></tr>
+<tr class="memdesc:a3fbaf3e7a15fe8494588284f3c613d53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the LLVM string representation of an <a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> struct, max length = 600.  <a href="llvm_8c.html#a3fbaf3e7a15fe8494588284f3c613d53">More...</a><br /></td></tr>
+<tr class="separator:a3fbaf3e7a15fe8494588284f3c613d53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52bf868f555d420c10e591b246ed68ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a52bf868f555d420c10e591b246ed68ec">llvm_ensure_registers_loaded</a> (int n_registers, <a class="el" href="structLLVMValue.html">LLVMValue</a> registers[], int load_depth)</td></tr>
 <tr class="memdesc:a52bf868f555d420c10e591b246ed68ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure that the values of a set of registers are loaded.  <a href="llvm_8c.html#a52bf868f555d420c10e591b246ed68ec">More...</a><br /></td></tr>
 <tr class="separator:a52bf868f555d420c10e591b246ed68ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,24 +222,26 @@ Functions</h2></td></tr>
 <tr class="memitem:a492b6193f6cfe59c435bf09ee99f0a54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a492b6193f6cfe59c435bf09ee99f0a54">llvm_conditional_jump</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> condition_register, <a class="el" href="structLLVMValue.html">LLVMValue</a> true_label, <a class="el" href="structLLVMValue.html">LLVMValue</a> false_label)</td></tr>
 <tr class="memdesc:a492b6193f6cfe59c435bf09ee99f0a54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a conditional jump statement.  <a href="llvm_8c.html#a492b6193f6cfe59c435bf09ee99f0a54">More...</a><br /></td></tr>
 <tr class="separator:a492b6193f6cfe59c435bf09ee99f0a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43b3adedb0a09aa7422dd249ee79c9e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a43b3adedb0a09aa7422dd249ee79c9e4">llvm_function_preamble</a> (char *symbol_name)</td></tr>
-<tr class="memdesc:a43b3adedb0a09aa7422dd249ee79c9e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the preamble for a function.  <a href="llvm_8c.html#a43b3adedb0a09aa7422dd249ee79c9e4">More...</a><br /></td></tr>
-<tr class="separator:a43b3adedb0a09aa7422dd249ee79c9e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a593ad831dbb6cdfc156644fed22cbd25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a593ad831dbb6cdfc156644fed22cbd25">llvm_function_preamble</a> (char *symbol_name)</td></tr>
+<tr class="memdesc:a593ad831dbb6cdfc156644fed22cbd25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the preamble for a function.  <a href="llvm_8c.html#a593ad831dbb6cdfc156644fed22cbd25">More...</a><br /></td></tr>
+<tr class="separator:a593ad831dbb6cdfc156644fed22cbd25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53f223d3ffdbcf048fedd7e39a95d7f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a53f223d3ffdbcf048fedd7e39a95d7f3">llvm_function_postamble</a> (void)</td></tr>
 <tr class="memdesc:a53f223d3ffdbcf048fedd7e39a95d7f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the postamble for a function.  <a href="llvm_8c.html#a53f223d3ffdbcf048fedd7e39a95d7f3">More...</a><br /></td></tr>
 <tr class="separator:a53f223d3ffdbcf048fedd7e39a95d7f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4ccee4ae68116bfc0860b6d19090bde"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#af4ccee4ae68116bfc0860b6d19090bde">type_to_llvm_type</a> (<a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type)</td></tr>
 <tr class="memdesc:af4ccee4ae68116bfc0860b6d19090bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a TokenType to the string representation of that type in LLVM.  <a href="llvm_8c.html#af4ccee4ae68116bfc0860b6d19090bde">More...</a><br /></td></tr>
 <tr class="separator:af4ccee4ae68116bfc0860b6d19090bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ceb23c144fc42a3004d62a4cdb4f840"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a1ceb23c144fc42a3004d62a4cdb4f840">llvm_call_function</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> virtual_register, char *symbol_name)</td></tr>
-<tr class="memdesc:a1ceb23c144fc42a3004d62a4cdb4f840"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a function call statement.  <a href="llvm_8c.html#a1ceb23c144fc42a3004d62a4cdb4f840">More...</a><br /></td></tr>
-<tr class="separator:a1ceb23c144fc42a3004d62a4cdb4f840"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad40a82a2f258e138f1cbbc5c49654bc4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#ad40a82a2f258e138f1cbbc5c49654bc4">llvm_call_function</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> *args, unsigned long long int num_args, char *symbol_name)</td></tr>
+<tr class="memdesc:ad40a82a2f258e138f1cbbc5c49654bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a function call statement.  <a href="llvm_8c.html#ad40a82a2f258e138f1cbbc5c49654bc4">More...</a><br /></td></tr>
+<tr class="separator:ad40a82a2f258e138f1cbbc5c49654bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0db1e84c33f375b218a6010fee7a4b90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a0db1e84c33f375b218a6010fee7a4b90">llvm_return</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> value, char *symbol_name)</td></tr>
 <tr class="memdesc:a0db1e84c33f375b218a6010fee7a4b90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a return statement.  <a href="llvm_8c.html#a0db1e84c33f375b218a6010fee7a4b90">More...</a><br /></td></tr>
 <tr class="separator:a0db1e84c33f375b218a6010fee7a4b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae242eaaa205d79124b4ab7999d6fae4a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#ae242eaaa205d79124b4ab7999d6fae4a">refstring</a> (char *buf, int pointer_depth)</td></tr>
 <tr class="memdesc:ae242eaaa205d79124b4ab7999d6fae4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a string containing pointer stars.  <a href="llvm_8c.html#ae242eaaa205d79124b4ab7999d6fae4a">More...</a><br /></td></tr>
 <tr class="separator:ae242eaaa205d79124b4ab7999d6fae4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7355e17403b951ea14fa6e3c80bfcd88"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a7355e17403b951ea14fa6e3c80bfcd88">llvmvalue_repr_notype</a> (char *buf, <a class="el" href="structLLVMValue.html">LLVMValue</a> reg)</td></tr>
+<tr class="separator:a7355e17403b951ea14fa6e3c80bfcd88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbb7c688b00f276df57c968569ba72de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#acbb7c688b00f276df57c968569ba72de">llvm_get_address</a> (char *symbol_name)</td></tr>
 <tr class="memdesc:acbb7c688b00f276df57c968569ba72de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an addressing statement.  <a href="llvm_8c.html#acbb7c688b00f276df57c968569ba72de">More...</a><br /></td></tr>
 <tr class="separator:acbb7c688b00f276df57c968569ba72de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -240,6 +251,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a94266752d29db5b52848865c0b3fc69b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#a94266752d29db5b52848865c0b3fc69b">llvm_store_dereference</a> (<a class="el" href="structLLVMValue.html">LLVMValue</a> destination, <a class="el" href="structLLVMValue.html">LLVMValue</a> value)</td></tr>
 <tr class="memdesc:a94266752d29db5b52848865c0b3fc69b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates code to store a value into a dereferenced value.  <a href="llvm_8c.html#a94266752d29db5b52848865c0b3fc69b">More...</a><br /></td></tr>
 <tr class="separator:a94266752d29db5b52848865c0b3fc69b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedc955f705dc946f2484d374834f76fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="llvm_8c.html#aedc955f705dc946f2484d374834f76fc">llvm_store_local</a> (char *symbol_name, <a class="el" href="structLLVMValue.html">LLVMValue</a> val)</td></tr>
+<tr class="separator:aedc955f705dc946f2484d374834f76fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -384,8 +397,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a1ceb23c144fc42a3004d62a4cdb4f840" name="a1ceb23c144fc42a3004d62a4cdb4f840"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ceb23c144fc42a3004d62a4cdb4f840">&#9670;&nbsp;</a></span>llvm_call_function()</h2>
+<a id="ad40a82a2f258e138f1cbbc5c49654bc4" name="ad40a82a2f258e138f1cbbc5c49654bc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad40a82a2f258e138f1cbbc5c49654bc4">&#9670;&nbsp;</a></span>llvm_call_function()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -393,8 +406,14 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structLLVMValue.html">LLVMValue</a> llvm_call_function </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
-          <td class="paramname"><em>virtual_register</em>, </td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a> *&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long long int&#160;</td>
+          <td class="paramname"><em>num_args</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -413,7 +432,8 @@ Variables</h2></td></tr>
 <p>Generate a function call statement. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">virtual_register</td><td>Currently unused function parameter </td></tr>
+    <tr><td class="paramname">args</td><td>Currently unused function parameter </td></tr>
+    <tr><td class="paramname">num_args</td><td><a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a> of args passed </td></tr>
     <tr><td class="paramname">symbol_name</td><td>Name of function to call </td></tr>
   </table>
   </dd>
@@ -806,14 +826,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a43b3adedb0a09aa7422dd249ee79c9e4" name="a43b3adedb0a09aa7422dd249ee79c9e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43b3adedb0a09aa7422dd249ee79c9e4">&#9670;&nbsp;</a></span>llvm_function_preamble()</h2>
+<a id="a593ad831dbb6cdfc156644fed22cbd25" name="a593ad831dbb6cdfc156644fed22cbd25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a593ad831dbb6cdfc156644fed22cbd25">&#9670;&nbsp;</a></span>llvm_function_preamble()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void llvm_function_preamble </td>
+          <td class="memname"><a class="el" href="structLLVMValue.html">LLVMValue</a> * llvm_function_preamble </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>symbol_name</em></td><td>)</td>
@@ -829,6 +849,7 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>LLVMValue* List of LLVMValues corresponding to the latest_llvmvalues for each function input </dd></dl>
 
 </div>
 </div>
@@ -1397,6 +1418,34 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="aedc955f705dc946f2484d374834f76fc" name="aedc955f705dc946f2484d374834f76fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedc955f705dc946f2484d374834f76fc">&#9670;&nbsp;</a></span>llvm_store_local()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void llvm_store_local </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>symbol_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a821999d4c730d049f8ec77b7c288b6fa" name="a821999d4c730d049f8ec77b7c288b6fa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a821999d4c730d049f8ec77b7c288b6fa">&#9670;&nbsp;</a></span>llvm_subtract()</h2>
 
@@ -1440,6 +1489,130 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> Virtual register holding result </dd></dl>
+
+</div>
+</div>
+<a id="a3fbaf3e7a15fe8494588284f3c613d53" name="a3fbaf3e7a15fe8494588284f3c613d53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fbaf3e7a15fe8494588284f3c613d53">&#9670;&nbsp;</a></span>llvmvalue_repr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char * llvmvalue_repr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the LLVM string representation of an <a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> struct, max length = 600. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td><a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> to represent </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char* calloc'd string </dd></dl>
+
+</div>
+</div>
+<a id="a7355e17403b951ea14fa6e3c80bfcd88" name="a7355e17403b951ea14fa6e3c80bfcd88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7355e17403b951ea14fa6e3c80bfcd88">&#9670;&nbsp;</a></span>llvmvalue_repr_notype()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * llvmvalue_repr_notype </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td>
+          <td class="paramname"><em>reg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18b7dfe6e4517c6dbae024ad9f301094" name="a18b7dfe6e4517c6dbae024ad9f301094"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18b7dfe6e4517c6dbae024ad9f301094">&#9670;&nbsp;</a></span>number_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char * number_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structNumber.html">Number</a>&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the LLVM string representation of a <a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a> struct, max length = 300. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td><a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a> to represent </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char* calloc'd string </dd></dl>
+
+</div>
+</div>
+<a id="aa21966d9bf61090cafe2338fc4e1de41" name="aa21966d9bf61090cafe2338fc4e1de41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa21966d9bf61090cafe2338fc4e1de41">&#9670;&nbsp;</a></span>print_function_annotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void print_function_annotation </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>function_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

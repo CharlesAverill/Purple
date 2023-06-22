@@ -24,13 +24,15 @@ Collaboration diagram for Purple\+Args\+:
 \item 
 int \mbox{\hyperlink{structPurpleArgs_a316d40456cb17fc9bae6a38a347d1161}{logging}}
 \item 
-char $\ast$ \mbox{\hyperlink{structPurpleArgs_a472dbb5a4f9205da6be8af0239e38272}{filenames}} \mbox{[}2\mbox{]}
+char $\ast$ \mbox{\hyperlink{structPurpleArgs_a4c12476bd73de71504355a7b39cfea62}{filenames}} \mbox{[}3\mbox{]}
 \item 
 char $\ast$ \mbox{\hyperlink{structPurpleArgs_abd425bab6fcc362da226d44aacd2d01a}{clang\+\_\+executable}}
 \item 
 char $\ast$ \mbox{\hyperlink{structPurpleArgs_a806d1e0611813b1a173887916062d737}{from\+\_\+command\+\_\+line\+\_\+argument}}
 \item 
 bool \mbox{\hyperlink{structPurpleArgs_a77a19a1fa9ea90b8ee9782e77eb58492}{const\+\_\+expr\+\_\+reduce}}
+\item 
+bool \mbox{\hyperlink{structPurpleArgs_ad6c8c53543d7c645f6b346e0b834abae}{print\+\_\+func\+\_\+annotations}}
 \end{DoxyCompactItemize}
 
 
@@ -50,11 +52,11 @@ Path to clang executable \mbox{\Hypertarget{structPurpleArgs_a77a19a1fa9ea90b8ee
 \doxysubsubsection{\texorpdfstring{const\_expr\_reduce}{const\_expr\_reduce}}
 {\footnotesize\ttfamily bool Purple\+Args\+::const\+\_\+expr\+\_\+reduce}
 
-True if constant expressions should be reduced \mbox{\Hypertarget{structPurpleArgs_a472dbb5a4f9205da6be8af0239e38272}\label{structPurpleArgs_a472dbb5a4f9205da6be8af0239e38272}} 
+True if constant expressions should be reduced \mbox{\Hypertarget{structPurpleArgs_a4c12476bd73de71504355a7b39cfea62}\label{structPurpleArgs_a4c12476bd73de71504355a7b39cfea62}} 
 \index{PurpleArgs@{PurpleArgs}!filenames@{filenames}}
 \index{filenames@{filenames}!PurpleArgs@{PurpleArgs}}
 \doxysubsubsection{\texorpdfstring{filenames}{filenames}}
-{\footnotesize\ttfamily char$\ast$ Purple\+Args\+::filenames\mbox{[}2\mbox{]}}
+{\footnotesize\ttfamily char$\ast$ Purple\+Args\+::filenames\mbox{[}3\mbox{]}}
 
 Input filename followed by output ASM filename \mbox{\Hypertarget{structPurpleArgs_a806d1e0611813b1a173887916062d737}\label{structPurpleArgs_a806d1e0611813b1a173887916062d737}} 
 \index{PurpleArgs@{PurpleArgs}!from\_command\_line\_argument@{from\_command\_line\_argument}}
@@ -68,7 +70,13 @@ Program read from stdin \mbox{\Hypertarget{structPurpleArgs_a316d40456cb17fc9bae
 \doxysubsubsection{\texorpdfstring{logging}{logging}}
 {\footnotesize\ttfamily int Purple\+Args\+::logging}
 
-Logging level to use 
+Logging level to use \mbox{\Hypertarget{structPurpleArgs_ad6c8c53543d7c645f6b346e0b834abae}\label{structPurpleArgs_ad6c8c53543d7c645f6b346e0b834abae}} 
+\index{PurpleArgs@{PurpleArgs}!print\_func\_annotations@{print\_func\_annotations}}
+\index{print\_func\_annotations@{print\_func\_annotations}!PurpleArgs@{PurpleArgs}}
+\doxysubsubsection{\texorpdfstring{print\_func\_annotations}{print\_func\_annotations}}
+{\footnotesize\ttfamily bool Purple\+Args\+::print\+\_\+func\+\_\+annotations}
+
+True if \textquotesingle{}; function\+\_\+name\textquotesingle{} should be printed to llvm file whenver llvm code is written 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

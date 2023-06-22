@@ -1,17 +1,25 @@
 <map id="src/translate/symbol_table.c" name="src/translate/symbol_table.c">
-<area shape="rect" id="node1" title="Logic for global and local symbol tables." alt="" coords="207,5,346,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,65,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="89,95,152,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="177,95,241,121"/>
-<area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="265,95,427,121"/>
-<area shape="rect" id="node13" href="$hash_8h.html" title="Function headers and definitions for hashing algorithms." alt="" coords="451,95,539,121"/>
-<area shape="rect" id="node14" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="563,95,665,121"/>
-<area shape="rect" id="node6" title=" " alt="" coords="221,393,295,420"/>
-<area shape="rect" id="node7" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="333,393,447,420"/>
-<area shape="rect" id="node8" href="$type_8h.html" title="Function headers and defines for." alt="" coords="159,169,250,196"/>
-<area shape="rect" id="node9" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="221,319,281,345"/>
-<area shape="rect" id="node10" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="59,393,169,420"/>
-<area shape="rect" id="node12" href="$function_8h.html" title="Struct definitions and macros for functions." alt="" coords="195,244,308,271"/>
-<area shape="rect" id="node11" title=" " alt="" coords="83,468,145,495"/>
-<area shape="rect" id="node15" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="556,169,672,196"/>
+<area shape="rect" id="node1" title="Logic for global and local symbol tables." alt="" coords="197,5,335,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,319,65,345"/>
+<area shape="rect" id="node3" title=" " alt="" coords="48,95,111,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="103,319,167,345"/>
+<area shape="rect" id="node5" href="$symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="317,95,479,121"/>
+<area shape="rect" id="node21" href="$hash_8h.html" title="Function headers and definitions for hashing algorithms." alt="" coords="503,95,591,121"/>
+<area shape="rect" id="node22" href="$logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="791,95,893,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="303,393,378,420"/>
+<area shape="rect" id="node7" href="$llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="773,244,884,271"/>
+<area shape="rect" id="node9" href="$identifier_8h.html" title="Definitions for identifiers." alt="" coords="815,393,930,420"/>
+<area shape="rect" id="node13" href="$type_8h.html" title="Function headers and defines for." alt="" coords="527,169,618,196"/>
+<area shape="rect" id="node15" href="$data_8h.html" title="Project&#45;wide variables." alt="" coords="369,169,427,196"/>
+<area shape="rect" id="node8" href="$scan_8h.html" title="Lexical Scanner function headers." alt="" coords="589,319,649,345"/>
+<area shape="rect" id="node10" href="$number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="597,393,708,420"/>
+<area shape="rect" id="node12" href="$llvm__stack__entry_8h.html" title=" " alt="" coords="725,319,884,345"/>
+<area shape="rect" id="node11" title=" " alt="" coords="621,468,684,495"/>
+<area shape="rect" id="node14" href="$function_8h.html" title="Struct definitions and macros for functions." alt="" coords="636,244,749,271"/>
+<area shape="rect" id="node16" href="$arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="337,244,459,271"/>
+<area shape="rect" id="node19" href="$misc_8h.html" title="Miscellaneous utility functions that don&#39;t fit anywhere else." alt="" coords="173,244,261,271"/>
+<area shape="rect" id="node17" title=" " alt="" coords="456,319,513,345"/>
+<area shape="rect" id="node18" href="$info_8h.html" title="CMake config definitions." alt="" coords="378,319,431,345"/>
+<area shape="rect" id="node20" title=" " alt="" coords="191,319,253,345"/>
+<area shape="rect" id="node23" href="$shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="960,169,1076,196"/>
 </map>

@@ -42,10 +42,8 @@ struct \mbox{\hyperlink{structNumber}{Number}}
 \begin{DoxyCompactList}\small\item\em Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT64. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{number_8h_add3ecbbfaff5335401b5bd7180e9019b}{NUMBER\+\_\+\+FROM\+\_\+\+TYPE\+\_\+\+VAL}}(t,  v)
 \begin{DoxyCompactList}\small\item\em Generates a \mbox{\hyperlink{structNumber}{Number}} struct given a Number\+Type and a value. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{number_8h_af27aba9ef74b2e40caba03fa303e1f9c}{NT\+\_\+\+MAX}}(a,  b)~(a $>$ b ? a \+: b)
-\begin{DoxyCompactList}\small\item\em Determines the larger Number\+Type of two. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{number_8h_a386856588a76ef3016c00c76047aa4b0}{NT\+\_\+\+MIN}}(a,  b)~(\mbox{\hyperlink{number_8h_af27aba9ef74b2e40caba03fa303e1f9c}{NT\+\_\+\+MAX}}(a, b) == a ? b \+: a)
-\begin{DoxyCompactList}\small\item\em Determines the smaller Number\+Type of two. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\#define \mbox{\hyperlink{number_8h_a6c97695a7ea69a1fd8828260c98d3273}{NUMBERS\+\_\+\+TYPEQUIV}}(A,  B)~    (A.\+number\+\_\+type == B.\+number\+\_\+type \&\& A.\+pointer\+\_\+depth == B.\+pointer\+\_\+depth)
+\begin{DoxyCompactList}\small\item\em Determines if two \mbox{\hyperlink{structNumber}{Number}} structs have equivalent types. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -99,26 +97,6 @@ Charles Averill
 
 
 \doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{number_8h_af27aba9ef74b2e40caba03fa303e1f9c}\label{number_8h_af27aba9ef74b2e40caba03fa303e1f9c}} 
-\index{number.h@{number.h}!NT\_MAX@{NT\_MAX}}
-\index{NT\_MAX@{NT\_MAX}!number.h@{number.h}}
-\doxysubsubsection{\texorpdfstring{NT\_MAX}{NT\_MAX}}
-{\footnotesize\ttfamily \#define NT\+\_\+\+MAX(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~(a $>$ b ? a \+: b)}
-
-
-
-Determines the larger Number\+Type of two. 
-
-\mbox{\Hypertarget{number_8h_a386856588a76ef3016c00c76047aa4b0}\label{number_8h_a386856588a76ef3016c00c76047aa4b0}} 
-\index{number.h@{number.h}!NT\_MIN@{NT\_MIN}}
-\index{NT\_MIN@{NT\_MIN}!number.h@{number.h}}
-\doxysubsubsection{\texorpdfstring{NT\_MIN}{NT\_MIN}}
-{\footnotesize\ttfamily \#define NT\+\_\+\+MIN(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~(\mbox{\hyperlink{number_8h_af27aba9ef74b2e40caba03fa303e1f9c}{NT\+\_\+\+MAX}}(a, b) == a ? b \+: a)}
-
-
-
-Determines the smaller Number\+Type of two. 
-
 \mbox{\Hypertarget{number_8h_a4c1630cccd769649f78764670ce098b8}\label{number_8h_a4c1630cccd769649f78764670ce098b8}} 
 \index{number.h@{number.h}!NUMBER\_BOOL@{NUMBER\_BOOL}}
 \index{NUMBER\_BOOL@{NUMBER\_BOOL}!number.h@{number.h}}
@@ -129,7 +107,7 @@ Determines the smaller Number\+Type of two.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}})                                                                                       \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3}{NT\_INT1}}, .value = v                                                                \(\backslash\)}
+\DoxyCodeLine{        .number\_type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a76651a9b1eca31643cb51026e499b7a3}{NT\_INT1}}, .value = v                                                         \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
@@ -147,7 +125,7 @@ Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT1.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}})                                                                                       \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5ad92aa6b7f4ca8f9ad7a13a98425a249e}{NT\_INT8}}, .value = v                                                                \(\backslash\)}
+\DoxyCodeLine{        .number\_type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5ad92aa6b7f4ca8f9ad7a13a98425a249e}{NT\_INT8}}, .value = v                                                         \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
@@ -165,7 +143,7 @@ Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT8.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}})                                                                                       \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = t, .value = v                                                                      \(\backslash\)}
+\DoxyCodeLine{        .number\_type = t, .value = v                                                               \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
@@ -183,7 +161,7 @@ Generates a \mbox{\hyperlink{structNumber}{Number}} struct given a Number\+Type 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}})                                                                                       \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}{NT\_INT32}}, .value = v                                                               \(\backslash\)}
+\DoxyCodeLine{        .number\_type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a926aa12e8b48c7af7facec6745f96733}{NT\_INT32}}, .value = v                                                        \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
@@ -201,7 +179,7 @@ Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT32.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}})                                                                                       \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a7200d216fc5693b1b59cc4d482c37cb9}{NT\_INT64}}, .value = v                                                               \(\backslash\)}
+\DoxyCodeLine{        .number\_type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a7200d216fc5693b1b59cc4d482c37cb9}{NT\_INT64}}, .value = v                                                        \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
@@ -219,13 +197,23 @@ Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT64.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{number_8h_a3942c9e8f0f4fb3367a4b5631b66f915}{Number}})                                                                                       \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a4a6ef54f4d8481c9b5ee89b0969653e4}{NT\_INT16}}, .value = v                                                               \(\backslash\)}
+\DoxyCodeLine{        .number\_type = \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5a4a6ef54f4d8481c9b5ee89b0969653e4}{NT\_INT16}}, .value = v                                                        \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
 
 
 Generates a \mbox{\hyperlink{structNumber}{Number}} struct with type INT16. 
+
+\mbox{\Hypertarget{number_8h_a6c97695a7ea69a1fd8828260c98d3273}\label{number_8h_a6c97695a7ea69a1fd8828260c98d3273}} 
+\index{number.h@{number.h}!NUMBERS\_TYPEQUIV@{NUMBERS\_TYPEQUIV}}
+\index{NUMBERS\_TYPEQUIV@{NUMBERS\_TYPEQUIV}!number.h@{number.h}}
+\doxysubsubsection{\texorpdfstring{NUMBERS\_TYPEQUIV}{NUMBERS\_TYPEQUIV}}
+{\footnotesize\ttfamily \#define NUMBERS\+\_\+\+TYPEQUIV(\begin{DoxyParamCaption}\item[{}]{A,  }\item[{}]{B }\end{DoxyParamCaption})~    (A.\+number\+\_\+type == B.\+number\+\_\+type \&\& A.\+pointer\+\_\+depth == B.\+pointer\+\_\+depth)}
+
+
+
+Determines if two \mbox{\hyperlink{structNumber}{Number}} structs have equivalent types. 
 
 
 

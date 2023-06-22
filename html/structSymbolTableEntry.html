@@ -90,11 +90,12 @@ Collaboration diagram for SymbolTableEntry:</div>
 <div class="dyncontent">
 <div class="center"><img src="structSymbolTableEntry__coll__graph.png" border="0" usemap="#aSymbolTableEntry_coll__map" alt="Collaboration graph"/></div>
 <map name="aSymbolTableEntry_coll__map" id="aSymbolTableEntry_coll__map">
-<area shape="rect" title="Struct holding data about a symbol." alt="" coords="40,499,167,620"/>
-<area shape="rect" href="structType.html" title="Container for type data." alt="" coords="55,329,151,436"/>
-<area shape="rect" href="structNumber.html" title="Container for various kinds of number data." alt="" coords="5,160,116,267"/>
-<area shape="rect" href="structFunction.html" title="Container for function information." alt="" coords="141,167,271,259"/>
-<area shape="rect" href="structFunctionParameter.html" title="Container for function parameter information." alt="" coords="140,5,272,97"/>
+<area shape="rect" title="Struct holding data about a symbol." alt="" coords="125,804,251,925"/>
+<area shape="rect" href="structType.html" title="Container for type data." alt="" coords="76,635,172,741"/>
+<area shape="rect" href="structNumber.html" title="Container for various kinds of number data." alt="" coords="70,5,181,112"/>
+<area shape="rect" href="structFunctionParameter.html" title="Container for function parameter information." alt="" coords="59,175,191,252"/>
+<area shape="rect" href="structLLVMValue.html" title="Value returned by ast_to_llvm." alt="" coords="199,276,353,456"/>
+<area shape="rect" href="structFunction.html" title="Container for function information." alt="" coords="59,480,189,572"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -108,6 +109,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a0c15e2fc64ead404c914b0fef62eb1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52959839c9d7e016f5bc5a6001545c9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structType.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTableEntry.html#a52959839c9d7e016f5bc5a6001545c9a">type</a></td></tr>
 <tr class="separator:a52959839c9d7e016f5bc5a6001545c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bc9fd5a7adca90bd692317009f984c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLLVMValue.html">LLVMValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTableEntry.html#a9bc9fd5a7adca90bd692317009f984c9">latest_llvmvalue</a></td></tr>
+<tr class="separator:a9bc9fd5a7adca90bd692317009f984c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf808305494a748a34cb14340e90bfe1"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structSymbolTableEntry.html">SymbolTableEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTableEntry.html#adf808305494a748a34cb14340e90bfe1">next</a></td></tr>
 <tr class="separator:adf808305494a748a34cb14340e90bfe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7db3bae7f68630cf192d8f1e57169c20"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTableEntry.html#a7db3bae7f68630cf192d8f1e57169c20">chain_index</a></td></tr>
@@ -143,6 +146,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >Index in chain </p>
+
+</div>
+</div>
+<a id="a9bc9fd5a7adca90bd692317009f984c9" name="a9bc9fd5a7adca90bd692317009f984c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bc9fd5a7adca90bd692317009f984c9">&#9670;&nbsp;</a></span>latest_llvmvalue</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLLVMValue.html">LLVMValue</a> SymbolTableEntry::latest_llvmvalue</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p ><a class="el" href="structLLVMValue.html" title="Value returned by ast_to_llvm.">LLVMValue</a> containing the latest information of this symbol during the compile phase </p>
 
 </div>
 </div>
@@ -202,7 +220,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p ><a class="el" href="structType.html" title="Container for type data.">Type</a> of entry </p>
+<p >Contains information about the type of this symbol </p>
 
 </div>
 </div>

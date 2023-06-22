@@ -1,4 +1,5 @@
 <map id="Function" name="Function">
-<area shape="rect" id="node1" title="Container for function information." alt="" coords="6,160,137,252"/>
-<area shape="rect" id="node2" href="$structFunctionParameter.html" title="Container for function parameter information." alt="" coords="5,5,137,97"/>
+<area shape="rect" id="node1" title="Container for function information." alt="" coords="6,315,137,407"/>
+<area shape="rect" id="node2" href="$structFunctionParameter.html" title="Container for function parameter information." alt="" coords="5,175,137,252"/>
+<area shape="rect" id="node3" href="$structNumber.html" title="Container for various kinds of number data." alt="" coords="16,5,127,112"/>
 </map>

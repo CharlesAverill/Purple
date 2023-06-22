@@ -71,7 +71,7 @@ Charles Averill
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340}{T\_FUNCTION\_DECLARATION}}, .is\_function = \textcolor{keyword}{true},                                       \(\backslash\)}
+\DoxyCodeLine{        .token\_type = \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921aded4e6b55b137619e2c3de4d1c356340}{T\_FUNCTION\_DECLARATION}}, .is\_function = \textcolor{keyword}{true},                                 \(\backslash\)}
 \DoxyCodeLine{        .value.function = \mbox{\hyperlink{function_8h_ae69f7a0edb7bbad52c39bab5abb2d963}{FUNCTION\_FROM\_OUT\_IN}}(out, input\_list, num\_inputs)                        \(\backslash\)}
 \DoxyCodeLine{    \}}
 
@@ -86,7 +86,7 @@ Charles Averill
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{number_8h_a6ba66dfa3fa11b0ccefce0ed54080eef}{number\_to\_token\_type}}((\mbox{\hyperlink{structNumber}{Number}})\{.type = nt\}), .is\_function = \textcolor{keyword}{false},                  \(\backslash\)}
+\DoxyCodeLine{        .token\_type = \mbox{\hyperlink{number_8h_a6ba66dfa3fa11b0ccefce0ed54080eef}{number\_to\_token\_type}}((\mbox{\hyperlink{structNumber}{Number}})\{.token\_type = nt\}), .is\_function = \textcolor{keyword}{false},      \(\backslash\)}
 \DoxyCodeLine{        .value.number = \mbox{\hyperlink{number_8h_add3ecbbfaff5335401b5bd7180e9019b}{NUMBER\_FROM\_TYPE\_VAL}}(nt, 0)                                                \(\backslash\)}
 \DoxyCodeLine{    \}}
 
@@ -105,7 +105,7 @@ Generates a number type struct given a Number\+Type.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{number_8h_a6ba66dfa3fa11b0ccefce0ed54080eef}{number\_to\_token\_type}}(n), .value.number = n, .is\_function = \textcolor{keyword}{false}                   \(\backslash\)}
+\DoxyCodeLine{        .token\_type = \mbox{\hyperlink{number_8h_a6ba66dfa3fa11b0ccefce0ed54080eef}{number\_to\_token\_type}}(n), .value.number = n, .is\_function = \textcolor{keyword}{false}             \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
@@ -123,7 +123,8 @@ Generates a number type struct given a \mbox{\hyperlink{structNumber}{Number}}.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = ttype, .value.number = \mbox{\hyperlink{number_8h_add3ecbbfaff5335401b5bd7180e9019b}{NUMBER\_FROM\_TYPE\_VAL}}(\mbox{\hyperlink{number_8h_a242dd91fc5b139e8048fb50fac323dee}{token\_type\_to\_number\_type}}(ttype), 0),  \(\backslash\)}
+\DoxyCodeLine{        .token\_type = ttype,                                                                       \(\backslash\)}
+\DoxyCodeLine{        .value.number = \mbox{\hyperlink{number_8h_add3ecbbfaff5335401b5bd7180e9019b}{NUMBER\_FROM\_TYPE\_VAL}}(\mbox{\hyperlink{number_8h_a242dd91fc5b139e8048fb50fac323dee}{token\_type\_to\_number\_type}}(ttype), 0),                 \(\backslash\)}
 \DoxyCodeLine{        .is\_function = \textcolor{keyword}{false}                                                                       \(\backslash\)}
 \DoxyCodeLine{    \}}
 
@@ -142,7 +143,7 @@ Generates a number type struct given a Token\+Type.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    (\mbox{\hyperlink{type_8h_a1ac75f8fee198af783521627f1fecfbc}{Type}})                                                                                         \(\backslash\)}
 \DoxyCodeLine{    \{                                                                                              \(\backslash\)}
-\DoxyCodeLine{        .type = \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99}{T\_VOID}}, .is\_function = \textcolor{keyword}{false}                                                       \(\backslash\)}
+\DoxyCodeLine{        .token\_type = \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921a493df832d0a3f3a31634f3a089741c99}{T\_VOID}}, .is\_function = \textcolor{keyword}{false}                                                 \(\backslash\)}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}

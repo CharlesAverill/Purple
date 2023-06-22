@@ -121,6 +121,8 @@ Functions</h2></td></tr>
 <tr class="memitem:aa6dd9bce1f6797c4970e40007460cb69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8c.html#aa6dd9bce1f6797c4970e40007460cb69">set_opt_level</a> (<a class="el" href="structPurpleArgs.html">PurpleArgs</a> *args, int opt_level)</td></tr>
 <tr class="memdesc:aa6dd9bce1f6797c4970e40007460cb69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set optimization flags based on a given opt level.  <a href="arguments_8c.html#aa6dd9bce1f6797c4970e40007460cb69">More...</a><br /></td></tr>
 <tr class="separator:aa6dd9bce1f6797c4970e40007460cb69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d4f8337fb035087294e86dce696b974"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arguments_8c.html#a0d4f8337fb035087294e86dce696b974">help_flags</a> ()</td></tr>
+<tr class="separator:a0d4f8337fb035087294e86dce696b974"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -142,6 +144,23 @@ Variables</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Charles Averill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>08-Sep-2022 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a0d4f8337fb035087294e86dce696b974" name="a0d4f8337fb035087294e86dce696b974"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d4f8337fb035087294e86dce696b974">&#9670;&nbsp;</a></span>help_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void help_flags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4d7de48bbb1fd1e0943934cd0097f308" name="a4d7de48bbb1fd1e0943934cd0097f308"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4d7de48bbb1fd1e0943934cd0097f308">&#9670;&nbsp;</a></span>parse_args()</h2>
 
@@ -364,19 +383,32 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {0, 0, 0, 0, <span class="stringliteral">&quot;Informational Options:&quot;</span>, 1},</div>
 <div class="line">    {<span class="stringliteral">&quot;logging&quot;</span>, <span class="charliteral">&#39;l&#39;</span>, <span class="stringliteral">&quot;LEVEL&quot;</span>, 0,</div>
 <div class="line">     <span class="stringliteral">&quot;Level of log statements to print (NONE, DEBUG, INFO, WARNING, ERROR, CRITICAL)&quot;</span>, 0},</div>
-<div class="line">    {<span class="stringliteral">&quot;clang-executable&quot;</span>, <span class="charliteral">&#39;g&#39;</span>, <span class="stringliteral">&quot;PATH&quot;</span>, 0,</div>
-<div class="line">     <span class="stringliteral">&quot;Alternate path to clang executable (default is \&quot;&quot;</span> <a class="code hl_define" href="info_8h.html#a45cd2cf0df774e6893fe020b85b31ff5">DEFAULT_CLANG_EXECUTABLE_PATH</a> <span class="stringliteral">&quot;\&quot;&quot;</span>, 0},</div>
-<div class="line">    {<span class="stringliteral">&quot;cmd&quot;</span>, <span class="charliteral">&#39;c&#39;</span>, <span class="stringliteral">&quot;PROGRAM&quot;</span>, 0, <span class="stringliteral">&quot;Program passed in as a string&quot;</span>, 0},</div>
-<div class="line">    {<span class="stringliteral">&quot;output&quot;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="stringliteral">&quot;FILE&quot;</span>, 0, <span class="stringliteral">&quot;Path to the generated LLVM file&quot;</span>, 0},</div>
-<div class="line">    {<span class="stringliteral">&quot;opt&quot;</span>, <span class="charliteral">&#39;O&#39;</span>, <span class="stringliteral">&quot;OPTLEVEL&quot;</span>, 0, <span class="stringliteral">&quot;Level of optimization to enable (0-3)&quot;</span>},</div>
 <div class="line">    {<span class="stringliteral">&quot;quiet&quot;</span>, <span class="charliteral">&#39;q&#39;</span>, 0, 0, <span class="stringliteral">&quot;Equivalent to --logging=NONE&quot;</span>, 0},</div>
 <div class="line">    {<span class="stringliteral">&quot;verbose&quot;</span>, <span class="charliteral">&#39;v&#39;</span>, 0, 0, <span class="stringliteral">&quot;Equivalent to --logging=DEBUG&quot;</span>, 0},</div>
-<div class="line">    {<span class="stringliteral">&quot;fconst-expr-reduce&quot;</span>, <a class="code hl_define" href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">FCONST_EXPR_REDUCE_CODE</a>, 0, OPTION_HIDDEN, 0, 0},</div>
+<div class="line">    {<span class="stringliteral">&quot;help-flags&quot;</span>, <a class="code hl_define" href="arguments_8h.html#a4833657071bfead1397ce3ed54279b9d">ARGP_HELP_FLAGS</a>, 0, 0, <span class="stringliteral">&quot;Show help information for various flags used in Purple&quot;</span>,</div>
+<div class="line">     0},</div>
+<div class="line">    {0, 0, 0, 0, <span class="stringliteral">&quot;Compiler Options:&quot;</span>, 2},</div>
+<div class="line">    {<span class="stringliteral">&quot;clang-executable&quot;</span>, <span class="charliteral">&#39;g&#39;</span>, <span class="stringliteral">&quot;PATH&quot;</span>, 0,</div>
+<div class="line">     <span class="stringliteral">&quot;Alternate path to clang executable (default is \&quot;&quot;</span> <a class="code hl_define" href="info_8h.html#a45cd2cf0df774e6893fe020b85b31ff5">DEFAULT_CLANG_EXECUTABLE_PATH</a> <span class="stringliteral">&quot;\&quot;&quot;</span>, 0},</div>
+<div class="line">    {<span class="stringliteral">&quot;cmd&quot;</span>, <span class="charliteral">&#39;c&#39;</span>, <span class="stringliteral">&quot;PROGRAM&quot;</span>, OPTION_HIDDEN, <span class="stringliteral">&quot;Program passed in as a string&quot;</span>, 0},</div>
+<div class="line">    {<span class="stringliteral">&quot;llvm-output&quot;</span>, <a class="code hl_define" href="arguments_8h.html#ae8314d89b0f2d126808c3fea4df00f09">ARGP_LLVM_OUTPUT</a>, <span class="stringliteral">&quot;FILE&quot;</span>, 0, <span class="stringliteral">&quot;Path to the generated LLVM file&quot;</span>, 0},</div>
+<div class="line">    {<span class="stringliteral">&quot;output&quot;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="stringliteral">&quot;FILE&quot;</span>, 0, <span class="stringliteral">&quot;Path to compiled binary&quot;</span>, 0},</div>
+<div class="line">    {<span class="stringliteral">&quot;opt&quot;</span>, <span class="charliteral">&#39;O&#39;</span>, <span class="stringliteral">&quot;OPTLEVEL&quot;</span>, 0, <span class="stringliteral">&quot;Level of optimization to enable (0-3)&quot;</span>},</div>
+<div class="line">    {<span class="stringliteral">&quot;fconst-expr-reduce&quot;</span>, <a class="code hl_define" href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">FCONST_EXPR_REDUCE_CODE</a>, 0, OPTION_HIDDEN,</div>
+<div class="line">     <span class="stringliteral">&quot;Reduces constant expressions at compile-time&quot;</span>, 0},</div>
+<div class="line">    {<span class="stringliteral">&quot;fprint-func-annotations&quot;</span>, <a class="code hl_define" href="arguments_8h.html#a5555f36c6e09b80f73d7d9a88d44a416">FPRINT_FUNC_ANNOTATIONS</a>, 0, OPTION_HIDDEN,</div>
+<div class="line">     <span class="stringliteral">&quot;When generating llvm, prints a comment containing which function in the compiler is printing&quot;</span>,</div>
+<div class="line">     0},</div>
+<div class="line">    {0, 0, 0, 0, <span class="stringliteral">&quot;Generic Options:&quot;</span>, -1},</div>
 <div class="line">    {0},</div>
 <div class="line">}</div>
-<div class="ttc" id="aarguments_8h_html_a21c26ef2a3830a77c03dd2bf44d92ea5"><div class="ttname"><a href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">FCONST_EXPR_REDUCE_CODE</a></div><div class="ttdeci">#define FCONST_EXPR_REDUCE_CODE</div><div class="ttdoc">Argument shorthand code for the -fconst-expr-reduce flag.</div><div class="ttdef"><b>Definition:</b> arguments.h:39</div></div>
+<div class="ttc" id="aarguments_8h_html_a21c26ef2a3830a77c03dd2bf44d92ea5"><div class="ttname"><a href="arguments_8h.html#a21c26ef2a3830a77c03dd2bf44d92ea5">FCONST_EXPR_REDUCE_CODE</a></div><div class="ttdeci">#define FCONST_EXPR_REDUCE_CODE</div><div class="ttdef"><b>Definition:</b> arguments.h:45</div></div>
+<div class="ttc" id="aarguments_8h_html_a4833657071bfead1397ce3ed54279b9d"><div class="ttname"><a href="arguments_8h.html#a4833657071bfead1397ce3ed54279b9d">ARGP_HELP_FLAGS</a></div><div class="ttdeci">#define ARGP_HELP_FLAGS</div><div class="ttdef"><b>Definition:</b> arguments.h:42</div></div>
+<div class="ttc" id="aarguments_8h_html_a5555f36c6e09b80f73d7d9a88d44a416"><div class="ttname"><a href="arguments_8h.html#a5555f36c6e09b80f73d7d9a88d44a416">FPRINT_FUNC_ANNOTATIONS</a></div><div class="ttdeci">#define FPRINT_FUNC_ANNOTATIONS</div><div class="ttdef"><b>Definition:</b> arguments.h:46</div></div>
+<div class="ttc" id="aarguments_8h_html_ae8314d89b0f2d126808c3fea4df00f09"><div class="ttname"><a href="arguments_8h.html#ae8314d89b0f2d126808c3fea4df00f09">ARGP_LLVM_OUTPUT</a></div><div class="ttdeci">#define ARGP_LLVM_OUTPUT</div><div class="ttdef"><b>Definition:</b> arguments.h:43</div></div>
 <div class="ttc" id="ainfo_8h_html_a45cd2cf0df774e6893fe020b85b31ff5"><div class="ttname"><a href="info_8h.html#a45cd2cf0df774e6893fe020b85b31ff5">DEFAULT_CLANG_EXECUTABLE_PATH</a></div><div class="ttdeci">#define DEFAULT_CLANG_EXECUTABLE_PATH</div><div class="ttdef"><b>Definition:</b> info.h:17</div></div>
 </div><!-- fragment -->
 </div>

@@ -90,21 +90,33 @@ $(function() {
 <p><a class="el" href="structFunction.html" title="Container for function information.">Function</a> headers and definitions for the global and local symbol tables.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="llvm_8h_source.html">translate/llvm.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="identifier_8h_source.html">types/identifier.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="type_8h_source.html">types/type.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="data_8h_source.html">data.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for symbol_table.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="symbol__table_8h__incl.png" border="0" usemap="#ainclude_2translate_2symbol__table_8h" alt=""/></div>
 <map name="ainclude_2translate_2symbol__table_8h" id="ainclude_2translate_2symbol__table_8h">
-<area shape="rect" title="Function headers and definitions for the global and local symbol tables." alt="" coords="99,5,261,47"/>
-<area shape="rect" title=" " alt="" coords="5,319,80,345"/>
-<area shape="rect" href="identifier_8h.html" title="Definitions for identifiers." alt="" coords="257,319,372,345"/>
-<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="135,95,225,121"/>
-<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="150,244,210,271"/>
-<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="111,319,222,345"/>
-<area shape="rect" href="function_8h.html" title="Struct definitions and macros for functions." alt="" coords="123,169,237,196"/>
-<area shape="rect" title=" " alt="" coords="135,393,198,420"/>
+<area shape="rect" title="Function headers and definitions for the global and local symbol tables." alt="" coords="404,5,567,47"/>
+<area shape="rect" title=" " alt="" coords="474,319,548,345"/>
+<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="60,169,170,196"/>
+<area shape="rect" href="identifier_8h.html" title="Definitions for identifiers." alt="" coords="335,319,450,345"/>
+<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="302,95,392,121"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="549,95,606,121"/>
+<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="362,244,422,271"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="106,319,217,345"/>
+<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="24,244,182,271"/>
+<area shape="rect" title=" " alt="" coords="130,393,193,420"/>
+<area shape="rect" href="function_8h.html" title="Struct definitions and macros for functions." alt="" coords="258,169,372,196"/>
+<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="600,169,721,196"/>
+<area shape="rect" href="misc_8h.html" title="Miscellaneous utility functions that don&#39;t fit anywhere else." alt="" coords="788,169,876,196"/>
+<area shape="rect" title=" " alt="" coords="600,244,657,271"/>
+<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="682,244,735,271"/>
+<area shape="rect" title=" " alt="" coords="759,244,820,271"/>
+<area shape="rect" title=" " alt="" coords="845,244,905,271"/>
+<area shape="rect" title=" " alt="" coords="930,244,994,271"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -112,23 +124,23 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="symbol__table_8h__dep__incl.png" border="0" usemap="#ainclude_2translate_2symbol__table_8hdep" alt=""/></div>
 <map name="ainclude_2translate_2symbol__table_8hdep" id="ainclude_2translate_2symbol__table_8hdep">
-<area shape="rect" title="Function headers and definitions for the global and local symbol tables." alt="" coords="202,5,364,47"/>
-<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="822,184,925,211"/>
-<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="32,259,185,285"/>
-<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="57,333,146,360"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="234,102,332,129"/>
-<area shape="rect" href="symbol__table_8c.html" title="Logic for global and local symbol tables." alt="" coords="407,95,546,136"/>
-<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="466,259,618,285"/>
-<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="277,333,425,360"/>
-<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="794,259,876,285"/>
-<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="684,333,816,360"/>
-<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="957,333,1116,360"/>
-<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="642,259,718,285"/>
-<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="952,259,1065,285"/>
-<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="1191,259,1314,285"/>
-<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="1338,259,1476,285"/>
-<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="178,184,287,211"/>
-<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="260,259,442,285"/>
+<area shape="rect" title="Function headers and definitions for the global and local symbol tables." alt="" coords="363,5,525,47"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="827,184,930,211"/>
+<area shape="rect" href="declaration_8c.html" title="Logic for declaration statements." alt="" coords="25,259,178,285"/>
+<area shape="rect" href="purple_8c.html" title="Compiler entrypoint and setup." alt="" coords="190,333,279,360"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="345,102,444,129"/>
+<area shape="rect" href="symbol__table_8c.html" title="Logic for global and local symbol tables." alt="" coords="543,95,681,136"/>
+<area shape="rect" href="expression_8c.html" title="Logic for parsing expressions into an AST." alt="" coords="509,259,661,285"/>
+<area shape="rect" href="statement_8c.html" title="Logic for parsing statements into an AST." alt="" coords="321,333,469,360"/>
+<area shape="rect" href="scan_8c.html" title="Functions for lexical scanning from input source files." alt="" coords="837,259,920,285"/>
+<area shape="rect" href="llvm_8c.html" title="LLVM&#45;IR emission." alt="" coords="727,333,859,360"/>
+<area shape="rect" href="translate_8c.html" title="Functions for LLVM&#45;IR translation." alt="" coords="1001,333,1159,360"/>
+<area shape="rect" href="tree_8c.html" title="Logic for constructing an Abstract Syntax Tree (AST)" alt="" coords="686,259,762,285"/>
+<area shape="rect" href="clang_8c.html" title="Functions for interacting with clang." alt="" coords="995,259,1109,285"/>
+<area shape="rect" href="logging_8c.html" title="Warnings and fatal error handling." alt="" coords="1235,259,1357,285"/>
+<area shape="rect" href="shutdown_8c.html" title="Functions for shutting down the compiler safely." alt="" coords="1381,259,1520,285"/>
+<area shape="rect" href="parse_8h.html" title="Function headers for parsing and operator precedence values." alt="" coords="231,184,340,211"/>
+<area shape="rect" href="translate_8h.html" title="Function headers and definitions for translation of an AST into LLVM&#45;IR." alt="" coords="304,259,485,285"/>
 </map>
 </div>
 </div>
@@ -150,6 +162,14 @@ Classes</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a79653115fb43c2f3cee6d1b80ec69efb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="symbol__table_8h.html#a79653115fb43c2f3cee6d1b80ec69efb">SYMBOL_TABLE_DEFAULT_LENGTH</a>&#160;&#160;&#160;1024</td></tr>
 <tr class="separator:a79653115fb43c2f3cee6d1b80ec69efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad43ea8f02a5564b5ba0c356324422dc3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="symbol__table_8h.html#ad43ea8f02a5564b5ba0c356324422dc3">GST_FIND</a>(symbol_name)&#160;&#160;&#160;<a class="el" href="symbol__table_8c.html#a8cee987c629bab7017e0eea921e4ab1f">find_symbol_table_entry</a>(<a class="el" href="data_8h.html#a3d6de1760dedbf060d53166af7599d98">D_GLOBAL_SYMBOL_TABLE</a>, symbol_name)</td></tr>
+<tr class="separator:ad43ea8f02a5564b5ba0c356324422dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8057d6d5768295e0b3dea5086570e37a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="symbol__table_8h.html#a8057d6d5768295e0b3dea5086570e37a">STS_FIND</a>(symbol_name)&#160;&#160;&#160;<a class="el" href="symbol__table_8c.html#a6052055e1a639f22f026d9a808f2e971">find_symbol_table_stack_entry</a>(<a class="el" href="data_8h.html#a1b776b58bc391d4b2b0ad9110d862f1c">D_SYMBOL_TABLE_STACK</a>, symbol_name)</td></tr>
+<tr class="separator:a8057d6d5768295e0b3dea5086570e37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76c362b6bc106e194869998b4ae9599d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="symbol__table_8h.html#a76c362b6bc106e194869998b4ae9599d">STS_INSERT</a>(symbol_name,  type)&#160;&#160;&#160;    <a class="el" href="symbol__table_8c.html#ab32fb47ae26126a5117952900b892751">add_symbol_table_entry</a>(<a class="el" href="data_8h.html#a1b776b58bc391d4b2b0ad9110d862f1c">D_SYMBOL_TABLE_STACK</a>-&gt;top, symbol_name, type)</td></tr>
+<tr class="separator:a76c362b6bc106e194869998b4ae9599d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee308cd0b0278015c8b9c22e38e9ce66"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="symbol__table_8h.html#aee308cd0b0278015c8b9c22e38e9ce66">GST_INSERT</a>(symbol_name,  type)&#160;&#160;&#160;    <a class="el" href="symbol__table_8c.html#ab32fb47ae26126a5117952900b892751">add_symbol_table_entry</a>(<a class="el" href="data_8h.html#a3d6de1760dedbf060d53166af7599d98">D_GLOBAL_SYMBOL_TABLE</a>, symbol_name, type)</td></tr>
+<tr class="separator:aee308cd0b0278015c8b9c22e38e9ce66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -201,6 +221,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8cee987c629bab7017e0eea921e4ab1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSymbolTableEntry.html">SymbolTableEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="symbol__table_8h.html#a8cee987c629bab7017e0eea921e4ab1f">find_symbol_table_entry</a> (<a class="el" href="structSymbolTable.html">SymbolTable</a> *table, char *symbol_name)</td></tr>
 <tr class="memdesc:a8cee987c629bab7017e0eea921e4ab1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the entry of a symbol in the provided Symbol Table if it exists.  <a href="symbol__table_8h.html#a8cee987c629bab7017e0eea921e4ab1f">More...</a><br /></td></tr>
 <tr class="separator:a8cee987c629bab7017e0eea921e4ab1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06f74df6263a1c137c34d8fe5dbe6a78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSymbolTableEntry.html">SymbolTableEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="symbol__table_8h.html#a06f74df6263a1c137c34d8fe5dbe6a78">find_symbol_table_stack_entry</a> (<a class="el" href="structSymbolTableStack.html">SymbolTableStack</a> *table, char *symbol_name)</td></tr>
+<tr class="memdesc:a06f74df6263a1c137c34d8fe5dbe6a78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the entry of a symbol in the provided Symbol Table Stack if it exists, working from the top of the stack to the bottom.  <a href="symbol__table_8h.html#a06f74df6263a1c137c34d8fe5dbe6a78">More...</a><br /></td></tr>
+<tr class="separator:a06f74df6263a1c137c34d8fe5dbe6a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19902129ff999624837d473ed4d77674"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSymbolTableEntry.html">SymbolTableEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="symbol__table_8h.html#a19902129ff999624837d473ed4d77674">new_symbol_table_entry</a> (char *symbol_name)</td></tr>
 <tr class="memdesc:a19902129ff999624837d473ed4d77674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to new Symbol Table Entry.  <a href="symbol__table_8h.html#a19902129ff999624837d473ed4d77674">More...</a><br /></td></tr>
 <tr class="separator:a19902129ff999624837d473ed4d77674"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,6 +236,98 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Charles Averill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>16-Sep-2022 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ad43ea8f02a5564b5ba0c356324422dc3" name="ad43ea8f02a5564b5ba0c356324422dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad43ea8f02a5564b5ba0c356324422dc3">&#9670;&nbsp;</a></span>GST_FIND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GST_FIND</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">symbol_name</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="symbol__table_8c.html#a8cee987c629bab7017e0eea921e4ab1f">find_symbol_table_entry</a>(<a class="el" href="data_8h.html#a3d6de1760dedbf060d53166af7599d98">D_GLOBAL_SYMBOL_TABLE</a>, symbol_name)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee308cd0b0278015c8b9c22e38e9ce66" name="aee308cd0b0278015c8b9c22e38e9ce66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee308cd0b0278015c8b9c22e38e9ce66">&#9670;&nbsp;</a></span>GST_INSERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GST_INSERT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">symbol_name, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    <a class="el" href="symbol__table_8c.html#ab32fb47ae26126a5117952900b892751">add_symbol_table_entry</a>(<a class="el" href="data_8h.html#a3d6de1760dedbf060d53166af7599d98">D_GLOBAL_SYMBOL_TABLE</a>, symbol_name, type)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8057d6d5768295e0b3dea5086570e37a" name="a8057d6d5768295e0b3dea5086570e37a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8057d6d5768295e0b3dea5086570e37a">&#9670;&nbsp;</a></span>STS_FIND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STS_FIND</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">symbol_name</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="symbol__table_8c.html#a6052055e1a639f22f026d9a808f2e971">find_symbol_table_stack_entry</a>(<a class="el" href="data_8h.html#a1b776b58bc391d4b2b0ad9110d862f1c">D_SYMBOL_TABLE_STACK</a>, symbol_name)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76c362b6bc106e194869998b4ae9599d" name="a76c362b6bc106e194869998b4ae9599d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76c362b6bc106e194869998b4ae9599d">&#9670;&nbsp;</a></span>STS_INSERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STS_INSERT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">symbol_name, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    <a class="el" href="symbol__table_8c.html#ab32fb47ae26126a5117952900b892751">add_symbol_table_entry</a>(<a class="el" href="data_8h.html#a1b776b58bc391d4b2b0ad9110d862f1c">D_SYMBOL_TABLE_STACK</a>-&gt;top, symbol_name, type)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a79653115fb43c2f3cee6d1b80ec69efb" name="a79653115fb43c2f3cee6d1b80ec69efb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a79653115fb43c2f3cee6d1b80ec69efb">&#9670;&nbsp;</a></span>SYMBOL_TABLE_DEFAULT_LENGTH</h2>
 
@@ -354,6 +469,44 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">table</td><td>Table to search in </td></tr>
     <tr><td class="paramname">symbol_name</td><td>Name of symbol to search for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>SymbolTableEntry* Pointer to entry if it exists, else NULL </dd></dl>
+
+</div>
+</div>
+<a id="a06f74df6263a1c137c34d8fe5dbe6a78" name="a06f74df6263a1c137c34d8fe5dbe6a78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06f74df6263a1c137c34d8fe5dbe6a78">&#9670;&nbsp;</a></span>find_symbol_table_stack_entry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSymbolTableEntry.html">SymbolTableEntry</a> * find_symbol_table_stack_entry </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSymbolTableStack.html">SymbolTableStack</a> *&#160;</td>
+          <td class="paramname"><em>stack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>symbol_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find the entry of a symbol in the provided Symbol Table Stack if it exists, working from the top of the stack to the bottom. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stack</td><td>Symbol Table Stack to search </td></tr>
+    <tr><td class="paramname">symbol_name</td><td>Name of symbol to find </td></tr>
   </table>
   </dd>
 </dl>

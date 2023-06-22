@@ -32,8 +32,18 @@ struct \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{arguments_8h_a21c26ef2a3830a77c03dd2bf44d92ea5}{FCONST\+\_\+\+EXPR\+\_\+\+REDUCE\+\_\+\+CODE}}~0x100
-\begin{DoxyCompactList}\small\item\em Argument shorthand code for the -\/fconst-\/expr-\/reduce flag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\#define \mbox{\hyperlink{arguments_8h_a4833657071bfead1397ce3ed54279b9d}{ARGP\+\_\+\+HELP\+\_\+\+FLAGS}}~0x100
+\item 
+\#define \mbox{\hyperlink{arguments_8h_ae8314d89b0f2d126808c3fea4df00f09}{ARGP\+\_\+\+LLVM\+\_\+\+OUTPUT}}~0x101
+\item 
+\#define \mbox{\hyperlink{arguments_8h_af96edef6fcdb7d545cdc8bbaf0ca7e1e}{FLAGS\+\_\+\+START}}~0x201
+\item 
+\#define \mbox{\hyperlink{arguments_8h_a21c26ef2a3830a77c03dd2bf44d92ea5}{FCONST\+\_\+\+EXPR\+\_\+\+REDUCE\+\_\+\+CODE}}~0x202
+\item 
+\#define \mbox{\hyperlink{arguments_8h_a5555f36c6e09b80f73d7d9a88d44a416}{FPRINT\+\_\+\+FUNC\+\_\+\+ANNOTATIONS}}~0x203
+\item 
+\#define \mbox{\hyperlink{arguments_8h_a92bb294ee731cc3a504f1d53db633f4c}{FLAGS\+\_\+\+END}}~0x300
+\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -45,7 +55,9 @@ typedef struct \mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} \mbox{\hyperlin
 void \mbox{\hyperlink{arguments_8h_a4d7de48bbb1fd1e0943934cd0097f308}{parse\+\_\+args}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Parses command-\/line arguments via argp. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{arguments_8h_aa6dd9bce1f6797c4970e40007460cb69}{set\+\_\+opt\+\_\+level}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int opt\+\_\+level)
-\begin{DoxyCompactList}\small\item\em Set optimization flags based on a given opt level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set optimization flags based on a given opt level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arguments_8h_a0d4f8337fb035087294e86dce696b974}{help\+\_\+flags}} ()
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -60,15 +72,41 @@ Charles\+Averill
 
 
 \doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{arguments_8h_a4833657071bfead1397ce3ed54279b9d}\label{arguments_8h_a4833657071bfead1397ce3ed54279b9d}} 
+\index{arguments.h@{arguments.h}!ARGP\_HELP\_FLAGS@{ARGP\_HELP\_FLAGS}}
+\index{ARGP\_HELP\_FLAGS@{ARGP\_HELP\_FLAGS}!arguments.h@{arguments.h}}
+\doxysubsubsection{\texorpdfstring{ARGP\_HELP\_FLAGS}{ARGP\_HELP\_FLAGS}}
+{\footnotesize\ttfamily \#define ARGP\+\_\+\+HELP\+\_\+\+FLAGS~0x100}
+
+\mbox{\Hypertarget{arguments_8h_ae8314d89b0f2d126808c3fea4df00f09}\label{arguments_8h_ae8314d89b0f2d126808c3fea4df00f09}} 
+\index{arguments.h@{arguments.h}!ARGP\_LLVM\_OUTPUT@{ARGP\_LLVM\_OUTPUT}}
+\index{ARGP\_LLVM\_OUTPUT@{ARGP\_LLVM\_OUTPUT}!arguments.h@{arguments.h}}
+\doxysubsubsection{\texorpdfstring{ARGP\_LLVM\_OUTPUT}{ARGP\_LLVM\_OUTPUT}}
+{\footnotesize\ttfamily \#define ARGP\+\_\+\+LLVM\+\_\+\+OUTPUT~0x101}
+
 \mbox{\Hypertarget{arguments_8h_a21c26ef2a3830a77c03dd2bf44d92ea5}\label{arguments_8h_a21c26ef2a3830a77c03dd2bf44d92ea5}} 
 \index{arguments.h@{arguments.h}!FCONST\_EXPR\_REDUCE\_CODE@{FCONST\_EXPR\_REDUCE\_CODE}}
 \index{FCONST\_EXPR\_REDUCE\_CODE@{FCONST\_EXPR\_REDUCE\_CODE}!arguments.h@{arguments.h}}
 \doxysubsubsection{\texorpdfstring{FCONST\_EXPR\_REDUCE\_CODE}{FCONST\_EXPR\_REDUCE\_CODE}}
-{\footnotesize\ttfamily \#define FCONST\+\_\+\+EXPR\+\_\+\+REDUCE\+\_\+\+CODE~0x100}
+{\footnotesize\ttfamily \#define FCONST\+\_\+\+EXPR\+\_\+\+REDUCE\+\_\+\+CODE~0x202}
 
+\mbox{\Hypertarget{arguments_8h_a92bb294ee731cc3a504f1d53db633f4c}\label{arguments_8h_a92bb294ee731cc3a504f1d53db633f4c}} 
+\index{arguments.h@{arguments.h}!FLAGS\_END@{FLAGS\_END}}
+\index{FLAGS\_END@{FLAGS\_END}!arguments.h@{arguments.h}}
+\doxysubsubsection{\texorpdfstring{FLAGS\_END}{FLAGS\_END}}
+{\footnotesize\ttfamily \#define FLAGS\+\_\+\+END~0x300}
 
+\mbox{\Hypertarget{arguments_8h_af96edef6fcdb7d545cdc8bbaf0ca7e1e}\label{arguments_8h_af96edef6fcdb7d545cdc8bbaf0ca7e1e}} 
+\index{arguments.h@{arguments.h}!FLAGS\_START@{FLAGS\_START}}
+\index{FLAGS\_START@{FLAGS\_START}!arguments.h@{arguments.h}}
+\doxysubsubsection{\texorpdfstring{FLAGS\_START}{FLAGS\_START}}
+{\footnotesize\ttfamily \#define FLAGS\+\_\+\+START~0x201}
 
-Argument shorthand code for the -\/fconst-\/expr-\/reduce flag. 
+\mbox{\Hypertarget{arguments_8h_a5555f36c6e09b80f73d7d9a88d44a416}\label{arguments_8h_a5555f36c6e09b80f73d7d9a88d44a416}} 
+\index{arguments.h@{arguments.h}!FPRINT\_FUNC\_ANNOTATIONS@{FPRINT\_FUNC\_ANNOTATIONS}}
+\index{FPRINT\_FUNC\_ANNOTATIONS@{FPRINT\_FUNC\_ANNOTATIONS}!arguments.h@{arguments.h}}
+\doxysubsubsection{\texorpdfstring{FPRINT\_FUNC\_ANNOTATIONS}{FPRINT\_FUNC\_ANNOTATIONS}}
+{\footnotesize\ttfamily \#define FPRINT\+\_\+\+FUNC\+\_\+\+ANNOTATIONS~0x203}
 
 
 
@@ -82,6 +120,12 @@ Argument shorthand code for the -\/fconst-\/expr-\/reduce flag.
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{arguments_8h_a0d4f8337fb035087294e86dce696b974}\label{arguments_8h_a0d4f8337fb035087294e86dce696b974}} 
+\index{arguments.h@{arguments.h}!help\_flags@{help\_flags}}
+\index{help\_flags@{help\_flags}!arguments.h@{arguments.h}}
+\doxysubsubsection{\texorpdfstring{help\_flags()}{help\_flags()}}
+{\footnotesize\ttfamily void help\+\_\+flags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{arguments_8h_a4d7de48bbb1fd1e0943934cd0097f308}\label{arguments_8h_a4d7de48bbb1fd1e0943934cd0097f308}} 
 \index{arguments.h@{arguments.h}!parse\_args@{parse\_args}}
 \index{parse\_args@{parse\_args}!arguments.h@{arguments.h}}

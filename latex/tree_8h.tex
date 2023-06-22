@@ -30,6 +30,11 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 struct \mbox{\hyperlink{structASTNode}{ASTNode}}
 \begin{DoxyCompactList}\small\item\em Component of the abstract syntax tree built during parsing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tree_8h_a3c29919463609c7161e605370b000fb8}{PRINT\+\_\+\+ASTNODE}}(node)
+\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -49,7 +54,9 @@ void \mbox{\hyperlink{tree_8h_a6858dde9b0e6e9c9d944349265bc5614}{add\+\_\+positi
 \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{tree_8h_ac1d69b08f6735f2b4f802a58e6dd4fc8}{create\+\_\+unary\+\_\+ast\+\_\+node}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} ttype, \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$child, \mbox{\hyperlink{structType}{Type}} type, char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Constructs a new AST Unary Parent Node with the provided values. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{tree_8h_a5a2821d5f8274f595c2057a9ead90fa9}{ast\+\_\+debug\+\_\+level\+\_\+order}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root, \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} log\+\_\+level)
-\begin{DoxyCompactList}\small\item\em Print out an AST\textquotesingle{}s level order traversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Print out an AST\textquotesingle{}s level order traversal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tree_8h_a1ee4aadcd8cf7e9c242350ab967a727d}{free\+\_\+ast\+\_\+node}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -61,6 +68,26 @@ Charles Averill
 \begin{DoxyDate}{Date}
 09-\/Sep-\/2022 
 \end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{tree_8h_a3c29919463609c7161e605370b000fb8}\label{tree_8h_a3c29919463609c7161e605370b000fb8}} 
+\index{tree.h@{tree.h}!PRINT\_ASTNODE@{PRINT\_ASTNODE}}
+\index{PRINT\_ASTNODE@{PRINT\_ASTNODE}!tree.h@{tree.h}}
+\doxysubsubsection{\texorpdfstring{PRINT\_ASTNODE}{PRINT\_ASTNODE}}
+{\footnotesize\ttfamily \#define PRINT\+\_\+\+ASTNODE(\begin{DoxyParamCaption}\item[{}]{node }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"{}ASTNode Information\(\backslash\)n-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}});                                          \(\backslash\)}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"{}TokenType: \%s\(\backslash\)nLeft: \%d\(\backslash\)nMiddle: \%d\(\backslash\)nRight: \%d\(\backslash\)n"{}}, \mbox{\hyperlink{scan_8h_a3cef8f6f6c1a827c5f882dc5ab2024e7}{tokenStrings}}[node-\/>ttype],          \(\backslash\)}
+\DoxyCodeLine{           (\textcolor{keywordtype}{int})node-\/>left, (\textcolor{keywordtype}{int})node-\/>mid, (\textcolor{keywordtype}{int})node-\/>right);                                     \(\backslash\)}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"{}Is RValue: \%s\(\backslash\)n"{}}, node-\/>is\_rvalue ? \textcolor{stringliteral}{"{}true"{}} : \textcolor{stringliteral}{"{}false"{}});                                 \(\backslash\)}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"{}\# of Func Call Args: \%llu\(\backslash\)n"{}}, node-\/>num\_args);                                         \(\backslash\)}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"{}Value (int): \%lld\(\backslash\)n"{}}, node-\/>value.number\_value);                                       \(\backslash\)}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"{}Value (str): \%s\(\backslash\)n"{}}, node-\/>value.symbol\_name);}
+
+\end{DoxyCode}
 
 
 \doxysubsection{Typedef Documentation}
@@ -203,3 +230,9 @@ Constructs a new AST Unary Parent Node with the provided values.
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ The pointer to a new AST Unary Parent Node with the provided values 
 \end{DoxyReturn}
+\mbox{\Hypertarget{tree_8h_a1ee4aadcd8cf7e9c242350ab967a727d}\label{tree_8h_a1ee4aadcd8cf7e9c242350ab967a727d}} 
+\index{tree.h@{tree.h}!free\_ast\_node@{free\_ast\_node}}
+\index{free\_ast\_node@{free\_ast\_node}!tree.h@{tree.h}}
+\doxysubsubsection{\texorpdfstring{free\_ast\_node()}{free\_ast\_node()}}
+{\footnotesize\ttfamily void free\+\_\+ast\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root }\end{DoxyParamCaption})}
+

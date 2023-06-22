@@ -16,7 +16,7 @@ Collaboration diagram for Symbol\+Table\+Entry\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=289pt]{structSymbolTableEntry__coll__graph}
+\includegraphics[height=550pt]{structSymbolTableEntry__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Attributes}
@@ -29,6 +29,8 @@ unsigned int \mbox{\hyperlink{structSymbolTableEntry_aa0a12eb25f232b048883c09c44
 unsigned long int \mbox{\hyperlink{structSymbolTableEntry_a0c15e2fc64ead404c914b0fef62eb1ea}{bucket\+\_\+index}}
 \item 
 \mbox{\hyperlink{structType}{Type}} \mbox{\hyperlink{structSymbolTableEntry_a52959839c9d7e016f5bc5a6001545c9a}{type}}
+\item 
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{structSymbolTableEntry_a9bc9fd5a7adca90bd692317009f984c9}{latest\+\_\+llvmvalue}}
 \item 
 struct \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{structSymbolTableEntry_adf808305494a748a34cb14340e90bfe1}{next}}
 \item 
@@ -52,7 +54,13 @@ Index of symbol in Symbol Table \mbox{\Hypertarget{structSymbolTableEntry_a7db3b
 \doxysubsubsection{\texorpdfstring{chain\_index}{chain\_index}}
 {\footnotesize\ttfamily unsigned int Symbol\+Table\+Entry\+::chain\+\_\+index}
 
-Index in chain \mbox{\Hypertarget{structSymbolTableEntry_aa0a12eb25f232b048883c09c4457f960}\label{structSymbolTableEntry_aa0a12eb25f232b048883c09c4457f960}} 
+Index in chain \mbox{\Hypertarget{structSymbolTableEntry_a9bc9fd5a7adca90bd692317009f984c9}\label{structSymbolTableEntry_a9bc9fd5a7adca90bd692317009f984c9}} 
+\index{SymbolTableEntry@{SymbolTableEntry}!latest\_llvmvalue@{latest\_llvmvalue}}
+\index{latest\_llvmvalue@{latest\_llvmvalue}!SymbolTableEntry@{SymbolTableEntry}}
+\doxysubsubsection{\texorpdfstring{latest\_llvmvalue}{latest\_llvmvalue}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} Symbol\+Table\+Entry\+::latest\+\_\+llvmvalue}
+
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} containing the latest information of this symbol during the compile phase \mbox{\Hypertarget{structSymbolTableEntry_aa0a12eb25f232b048883c09c4457f960}\label{structSymbolTableEntry_aa0a12eb25f232b048883c09c4457f960}} 
 \index{SymbolTableEntry@{SymbolTableEntry}!length@{length}}
 \index{length@{length}!SymbolTableEntry@{SymbolTableEntry}}
 \doxysubsubsection{\texorpdfstring{length}{length}}
@@ -76,7 +84,7 @@ Name of symbol \mbox{\Hypertarget{structSymbolTableEntry_a52959839c9d7e016f5bc5a
 \doxysubsubsection{\texorpdfstring{type}{type}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structType}{Type}} Symbol\+Table\+Entry\+::type}
 
-\mbox{\hyperlink{structType}{Type}} of entry 
+Contains information about the type of this symbol 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

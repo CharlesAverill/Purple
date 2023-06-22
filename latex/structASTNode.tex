@@ -16,7 +16,7 @@ Collaboration diagram for ASTNode\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=238pt]{structASTNode__coll__graph}
+\includegraphics[width=328pt]{structASTNode__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Attributes}
@@ -34,8 +34,6 @@ struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{structA
 \item 
 \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{Number\+Type}} \mbox{\hyperlink{structASTNode_a6677f563bdbc8015f5067296bfefc2f2}{largest\+\_\+number\+\_\+type}}
 \item 
-bool \mbox{\hyperlink{structASTNode_a62d58599dca37a47743243ae2cebb0e9}{is\+\_\+char\+\_\+arithmetic}}
-\item 
 bool \mbox{\hyperlink{structASTNode_a6d0c178a8e1155a0641c7c2bb6253068}{is\+\_\+rvalue}}
 \item 
 char \mbox{\hyperlink{structASTNode_aa794bc0db32b5488f7e89e0b140a5676}{filename}} \mbox{[}256\mbox{]}
@@ -43,6 +41,10 @@ char \mbox{\hyperlink{structASTNode_aa794bc0db32b5488f7e89e0b140a5676}{filename}
 int \mbox{\hyperlink{structASTNode_afeaedac691fa3ce352620f2e3534b9dc}{line\+\_\+number}}
 \item 
 int \mbox{\hyperlink{structASTNode_abd58f049a6109a8ae058eb8f0d01dd01}{char\+\_\+number}}
+\item 
+unsigned long long int \mbox{\hyperlink{structASTNode_aeef5cc23922387b2958be41937cebcf0}{num\+\_\+args}}
+\item 
+struct \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$$\ast$ \mbox{\hyperlink{structASTNode_a1aefb2389f918172c878a31707c23904}{function\+\_\+call\+\_\+arguments}}
 \item 
 \begin{tabbing}
 xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
@@ -70,13 +72,13 @@ Character number of this \mbox{\hyperlink{structToken}{Token}} \mbox{\Hypertarge
 \doxysubsubsection{\texorpdfstring{filename}{filename}}
 {\footnotesize\ttfamily char ASTNode\+::filename\mbox{[}256\mbox{]}}
 
-Filename of this \mbox{\hyperlink{structToken}{Token}} \mbox{\Hypertarget{structASTNode_a62d58599dca37a47743243ae2cebb0e9}\label{structASTNode_a62d58599dca37a47743243ae2cebb0e9}} 
-\index{ASTNode@{ASTNode}!is\_char\_arithmetic@{is\_char\_arithmetic}}
-\index{is\_char\_arithmetic@{is\_char\_arithmetic}!ASTNode@{ASTNode}}
-\doxysubsubsection{\texorpdfstring{is\_char\_arithmetic}{is\_char\_arithmetic}}
-{\footnotesize\ttfamily bool ASTNode\+::is\+\_\+char\+\_\+arithmetic}
+Filename of this \mbox{\hyperlink{structToken}{Token}} \mbox{\Hypertarget{structASTNode_a1aefb2389f918172c878a31707c23904}\label{structASTNode_a1aefb2389f918172c878a31707c23904}} 
+\index{ASTNode@{ASTNode}!function\_call\_arguments@{function\_call\_arguments}}
+\index{function\_call\_arguments@{function\_call\_arguments}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{function\_call\_arguments}{function\_call\_arguments}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structASTNode}{ASTNode}}$\ast$$\ast$ ASTNode\+::function\+\_\+call\+\_\+arguments}
 
-Whether or not a binary arithmetic node is dealing with chars \mbox{\Hypertarget{structASTNode_a6d0c178a8e1155a0641c7c2bb6253068}\label{structASTNode_a6d0c178a8e1155a0641c7c2bb6253068}} 
+Array of arguments for a function call node \mbox{\Hypertarget{structASTNode_a6d0c178a8e1155a0641c7c2bb6253068}\label{structASTNode_a6d0c178a8e1155a0641c7c2bb6253068}} 
 \index{ASTNode@{ASTNode}!is\_rvalue@{is\_rvalue}}
 \index{is\_rvalue@{is\_rvalue}!ASTNode@{ASTNode}}
 \doxysubsubsection{\texorpdfstring{is\_rvalue}{is\_rvalue}}
@@ -106,7 +108,13 @@ Line number of this \mbox{\hyperlink{structToken}{Token}} \mbox{\Hypertarget{str
 \doxysubsubsection{\texorpdfstring{mid}{mid}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structASTNode}{ASTNode}}$\ast$ ASTNode\+::mid}
 
-The middle child of the AST Node \mbox{\Hypertarget{structASTNode_ad4fae0832953dd1d0598a3c9ec85429f}\label{structASTNode_ad4fae0832953dd1d0598a3c9ec85429f}} 
+The middle child of the AST Node \mbox{\Hypertarget{structASTNode_aeef5cc23922387b2958be41937cebcf0}\label{structASTNode_aeef5cc23922387b2958be41937cebcf0}} 
+\index{ASTNode@{ASTNode}!num\_args@{num\_args}}
+\index{num\_args@{num\_args}!ASTNode@{ASTNode}}
+\doxysubsubsection{\texorpdfstring{num\_args}{num\_args}}
+{\footnotesize\ttfamily unsigned long long int ASTNode\+::num\+\_\+args}
+
+Size of function\+\_\+call\+\_\+arguments \mbox{\Hypertarget{structASTNode_ad4fae0832953dd1d0598a3c9ec85429f}\label{structASTNode_ad4fae0832953dd1d0598a3c9ec85429f}} 
 \index{ASTNode@{ASTNode}!number\_value@{number\_value}}
 \index{number\_value@{number\_value}!ASTNode@{ASTNode}}
 \doxysubsubsection{\texorpdfstring{number\_value}{number\_value}}

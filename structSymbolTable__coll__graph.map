@@ -1,8 +1,9 @@
 <map id="SymbolTable" name="SymbolTable">
-<area shape="rect" id="node1" title="Holds data for symbols within a scope." alt="" coords="48,683,159,789"/>
-<area shape="rect" id="node2" href="$structSymbolTableEntry.html" title="Struct holding data about a symbol." alt="" coords="40,499,167,620"/>
-<area shape="rect" id="node3" href="$structType.html" title="Container for type data." alt="" coords="55,329,151,436"/>
-<area shape="rect" id="node4" href="$structNumber.html" title="Container for various kinds of number data." alt="" coords="5,160,116,267"/>
-<area shape="rect" id="node5" href="$structFunction.html" title="Container for function information." alt="" coords="141,167,271,259"/>
-<area shape="rect" id="node6" href="$structFunctionParameter.html" title="Container for function parameter information." alt="" coords="140,5,272,97"/>
+<area shape="rect" id="node1" title="Holds data for symbols within a scope." alt="" coords="133,988,243,1095"/>
+<area shape="rect" id="node2" href="$structSymbolTableEntry.html" title="Struct holding data about a symbol." alt="" coords="125,804,251,925"/>
+<area shape="rect" id="node3" href="$structType.html" title="Container for type data." alt="" coords="76,635,172,741"/>
+<area shape="rect" id="node4" href="$structNumber.html" title="Container for various kinds of number data." alt="" coords="70,5,181,112"/>
+<area shape="rect" id="node6" href="$structFunctionParameter.html" title="Container for function parameter information." alt="" coords="59,175,191,252"/>
+<area shape="rect" id="node7" href="$structLLVMValue.html" title="Value returned by ast_to_llvm." alt="" coords="199,276,353,456"/>
+<area shape="rect" id="node5" href="$structFunction.html" title="Container for function information." alt="" coords="59,480,189,572"/>
 </map>

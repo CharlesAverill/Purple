@@ -35,7 +35,9 @@ static int \mbox{\hyperlink{tree_8c_ab6c2c2c6938ab1abcc61eca99cb85394}{ast\+\_\+
 static void \mbox{\hyperlink{tree_8c_a21971a3ce9a67483f03a909ed0ab9a8d}{ast\+\_\+debug\+\_\+current\+\_\+level}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root, int height, \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} log\+\_\+level)
 \begin{DoxyCompactList}\small\item\em Print out a single level of an AST in order from left to right. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{tree_8c_a5a2821d5f8274f595c2057a9ead90fa9}{ast\+\_\+debug\+\_\+level\+\_\+order}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root, \mbox{\hyperlink{logging_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} log\+\_\+level)
-\begin{DoxyCompactList}\small\item\em Print out an AST\textquotesingle{}s level order traversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Print out an AST\textquotesingle{}s level order traversal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tree_8c_a1ee4aadcd8cf7e9c242350ab967a727d}{free\+\_\+ast\+\_\+node}} (\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$root)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -213,3 +215,9 @@ Constructs a new AST Unary Parent Node with the provided values.
 \begin{DoxyReturn}{Returns}
 ASTNode$\ast$ The pointer to a new AST Unary Parent Node with the provided values 
 \end{DoxyReturn}
+\mbox{\Hypertarget{tree_8c_a1ee4aadcd8cf7e9c242350ab967a727d}\label{tree_8c_a1ee4aadcd8cf7e9c242350ab967a727d}} 
+\index{tree.c@{tree.c}!free\_ast\_node@{free\_ast\_node}}
+\index{free\_ast\_node@{free\_ast\_node}!tree.c@{tree.c}}
+\doxysubsubsection{\texorpdfstring{free\_ast\_node()}{free\_ast\_node()}}
+{\footnotesize\ttfamily void free\+\_\+ast\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$}]{root }\end{DoxyParamCaption})}
+

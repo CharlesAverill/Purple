@@ -31,7 +31,7 @@ This graph shows which files directly or indirectly include this file\+:
 void \mbox{\hyperlink{parse_8h_a50272a0b5fea28f10f872dda4641d1a4}{match\+\_\+token}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Ensure current token is of a given type, and scan the next token if so. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{parse_8h_ac45ec4bf4da312ba03500cd5d6be33d6}{match\+\_\+type}} (\mbox{\hyperlink{structNumber}{Number}} $\ast$out)
-\item 
+\begin{DoxyCompactList}\small\item\em Matches a valid type in the input stream. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \mbox{\hyperlink{parse_8h_a3cff6fe0533cdb002d50a1a1ca48e404}{check\+\_\+for\+\_\+type}} (void)
 \begin{DoxyCompactList}\small\item\em Ensure current token is a type token, and scan the next token if so. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{parse_8h_a5975acb392673971cc8f96e720e23de7}{variable\+\_\+declaration}} (void)
@@ -191,6 +191,18 @@ Ensure current token is of a given type, and scan the next token if so.
 \doxysubsubsection{\texorpdfstring{match\_type()}{match\_type()}}
 {\footnotesize\ttfamily int match\+\_\+type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structNumber}{Number}} $\ast$}]{out }\end{DoxyParamCaption})}
 
+
+
+Matches a valid type in the input stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Pointer to \mbox{\hyperlink{structNumber}{Number}} struct to fill with parsed data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if out is filled properly, 1 if the scanned type is \char`\"{}void\char`\"{} 
+\end{DoxyReturn}
 \mbox{\Hypertarget{parse_8h_ac8d04db5938aa126d0a5e6b9bbeca016}\label{parse_8h_ac8d04db5938aa126d0a5e6b9bbeca016}} 
 \index{parse.h@{parse.h}!parse\_binary\_expression@{parse\_binary\_expression}}
 \index{parse\_binary\_expression@{parse\_binary\_expression}!parse.h@{parse.h}}

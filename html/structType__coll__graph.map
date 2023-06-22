@@ -1,6 +1,6 @@
 <map id="Type" name="Type">
-<area shape="rect" id="node1" title="Container for type data." alt="" coords="55,329,151,436"/>
-<area shape="rect" id="node2" href="$structNumber.html" title="Container for various kinds of number data." alt="" coords="5,160,116,267"/>
-<area shape="rect" id="node3" href="$structFunction.html" title="Container for function information." alt="" coords="141,167,271,259"/>
-<area shape="rect" id="node4" href="$structFunctionParameter.html" title="Container for function parameter information." alt="" coords="140,5,272,97"/>
+<area shape="rect" id="node1" title="Container for type data." alt="" coords="13,469,109,576"/>
+<area shape="rect" id="node2" href="$structNumber.html" title="Container for various kinds of number data." alt="" coords="5,5,116,112"/>
+<area shape="rect" id="node4" href="$structFunctionParameter.html" title="Container for function parameter information." alt="" coords="77,175,209,252"/>
+<area shape="rect" id="node3" href="$structFunction.html" title="Container for function information." alt="" coords="77,315,207,407"/>
 </map>

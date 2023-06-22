@@ -3,29 +3,28 @@
 \mbox{\hyperlink{function_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef FUNCTION\_H}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#define FUNCTION\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef FUNCTION}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define FUNCTION}}
 \DoxyCodeLine{10 }
 \DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{scan_8h}{scan.h}}"{}}}
 \DoxyCodeLine{12 }
 \DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structFunctionParameter}{FunctionParameter}} \{}
-\DoxyCodeLine{18     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structFunctionParameter_a04a4c819339988e3987bdbc15195cd53}{parameter\_type}};}
-\DoxyCodeLine{20     \textcolor{comment}{// TODO : fix this MAX\_IDENTIFIER\_LENGTH drop-\/in}}
-\DoxyCodeLine{21     \textcolor{keywordtype}{char} \mbox{\hyperlink{structFunctionParameter_adf41f618740a3496e78ce1f605e88a08}{parameter\_name}}[256];}
-\DoxyCodeLine{22 \} \mbox{\hyperlink{function_8h_a2fa94693cb3efe32c507426552b27f21}{FunctionParameter}};}
-\DoxyCodeLine{23 }
-\DoxyCodeLine{27 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structFunction}{Function}} \{}
-\DoxyCodeLine{29     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structFunction_ae499301ee2bc3d6c690b293a7971fe24}{return\_type}};}
-\DoxyCodeLine{31     \mbox{\hyperlink{structFunctionParameter}{FunctionParameter}}* \mbox{\hyperlink{structFunction_a2ecc4077c115f740ecdc4fd2c4c8b509}{parameters}};}
-\DoxyCodeLine{33     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structFunction_a9c1aa0d59283307ae000849c4179b76c}{num\_parameters}};}
-\DoxyCodeLine{34 \} \mbox{\hyperlink{function_8h_a04df4dd659c1b87b4ebf9624bec6cea1}{Function}};}
-\DoxyCodeLine{35 }
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#define FUNCTION\_FROM\_OUT\_IN(output\_type, input\_list, num\_inputs)                                  \(\backslash\)}}
-\DoxyCodeLine{40 \textcolor{preprocessor}{    (Function)                                                                                     \(\backslash\)}}
-\DoxyCodeLine{41 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{42 \textcolor{preprocessor}{        .return\_type = output\_type, .parameters = input\_list, .num\_parameters = num\_inputs         \(\backslash\)}}
-\DoxyCodeLine{43 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* FUNCTION\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{18     \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{structFunctionParameter_a5fcdfdf1a380b47f20f6ec44eca77e9e}{parameter\_type}};}
+\DoxyCodeLine{20     \textcolor{keywordtype}{char} \mbox{\hyperlink{structFunctionParameter_a89832b60a4535ff57a572c6e3c013937}{parameter\_name}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}}];}
+\DoxyCodeLine{21 \} \mbox{\hyperlink{function_8h_a2fa94693cb3efe32c507426552b27f21}{FunctionParameter}};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structFunction}{Function}} \{}
+\DoxyCodeLine{28     \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} \mbox{\hyperlink{structFunction_ae499301ee2bc3d6c690b293a7971fe24}{return\_type}};}
+\DoxyCodeLine{30     \mbox{\hyperlink{structFunctionParameter}{FunctionParameter}}* \mbox{\hyperlink{structFunction_a2ecc4077c115f740ecdc4fd2c4c8b509}{parameters}};}
+\DoxyCodeLine{32     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structFunction_a9c1aa0d59283307ae000849c4179b76c}{num\_parameters}};}
+\DoxyCodeLine{33 \} \mbox{\hyperlink{function_8h_a04df4dd659c1b87b4ebf9624bec6cea1}{Function}};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define FUNCTION\_FROM\_OUT\_IN(output\_type, input\_list, num\_inputs)                                  \(\backslash\)}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{    (Function)                                                                                     \(\backslash\)}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{        .return\_type = output\_type, .parameters = input\_list, .num\_parameters = num\_inputs         \(\backslash\)}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* FUNCTION */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

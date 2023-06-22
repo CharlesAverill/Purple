@@ -46,6 +46,8 @@ void \mbox{\hyperlink{symbol__table_8c_ace4eaeafa7e20975b8dc696cf7705b1f}{resize
 \begin{DoxyCompactList}\small\item\em Double the size of a Symbol Table\textquotesingle{}s buckets array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8c_a8cee987c629bab7017e0eea921e4ab1f}{find\+\_\+symbol\+\_\+table\+\_\+entry}} (\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$table, char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Find the entry of a symbol in the provided Symbol Table if it exists. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8c_a6052055e1a639f22f026d9a808f2e971}{find\+\_\+symbol\+\_\+table\+\_\+stack\+\_\+entry}} (\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$stack, char $\ast$symbol\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Find the entry of a symbol in the provided Symbol Table Stack if it exists, working from the top of the stack to the bottom. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8c_a19902129ff999624837d473ed4d77674}{new\+\_\+symbol\+\_\+table\+\_\+entry}} (char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Get pointer to new Symbol Table Entry. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8c_ab32fb47ae26126a5117952900b892751}{add\+\_\+symbol\+\_\+table\+\_\+entry}} (\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$table, char $\ast$symbol\+\_\+name, \mbox{\hyperlink{structType}{Type}} type)
@@ -101,6 +103,26 @@ Find the entry of a symbol in the provided Symbol Table if it exists.
 {\em table} & Table to search in \\
 \hline
 {\em symbol\+\_\+name} & Name of symbol to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Symbol\+Table\+Entry$\ast$ Pointer to entry if it exists, else NULL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{symbol__table_8c_a6052055e1a639f22f026d9a808f2e971}\label{symbol__table_8c_a6052055e1a639f22f026d9a808f2e971}} 
+\index{symbol\_table.c@{symbol\_table.c}!find\_symbol\_table\_stack\_entry@{find\_symbol\_table\_stack\_entry}}
+\index{find\_symbol\_table\_stack\_entry@{find\_symbol\_table\_stack\_entry}!symbol\_table.c@{symbol\_table.c}}
+\doxysubsubsection{\texorpdfstring{find\_symbol\_table\_stack\_entry()}{find\_symbol\_table\_stack\_entry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ find\+\_\+symbol\+\_\+table\+\_\+stack\+\_\+entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$}]{stack,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Find the entry of a symbol in the provided Symbol Table Stack if it exists, working from the top of the stack to the bottom. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Symbol Table Stack to search \\
+\hline
+{\em symbol\+\_\+name} & Name of symbol to find \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

@@ -27,7 +27,9 @@ error\+\_\+t \mbox{\hyperlink{arguments_8c_a5fb6abc38ef248ec154591e0dd392c1b}{pa
 void \mbox{\hyperlink{arguments_8c_a4d7de48bbb1fd1e0943934cd0097f308}{parse\+\_\+args}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Parses command-\/line arguments via argp. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{arguments_8c_aa6dd9bce1f6797c4970e40007460cb69}{set\+\_\+opt\+\_\+level}} (\mbox{\hyperlink{structPurpleArgs}{Purple\+Args}} $\ast$args, int opt\+\_\+level)
-\begin{DoxyCompactList}\small\item\em Set optimization flags based on a given opt level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set optimization flags based on a given opt level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arguments_8c_a0d4f8337fb035087294e86dce696b974}{help\+\_\+flags}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -57,6 +59,12 @@ Charles Averill
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{arguments_8c_a0d4f8337fb035087294e86dce696b974}\label{arguments_8c_a0d4f8337fb035087294e86dce696b974}} 
+\index{arguments.c@{arguments.c}!help\_flags@{help\_flags}}
+\index{help\_flags@{help\_flags}!arguments.c@{arguments.c}}
+\doxysubsubsection{\texorpdfstring{help\_flags()}{help\_flags()}}
+{\footnotesize\ttfamily void help\+\_\+flags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{arguments_8c_a4d7de48bbb1fd1e0943934cd0097f308}\label{arguments_8c_a4d7de48bbb1fd1e0943934cd0097f308}} 
 \index{arguments.c@{arguments.c}!parse\_args@{parse\_args}}
 \index{parse\_args@{parse\_args}!arguments.c@{arguments.c}}
@@ -132,16 +140,26 @@ Set optimization flags based on a given opt level.
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{= \{}
+\DoxyCodeLine{    \{0, 0, 0, 0, \textcolor{stringliteral}{"{}Informational Options:"{}}, 1\},}
 \DoxyCodeLine{    \{\textcolor{stringliteral}{"{}logging"{}}, \textcolor{charliteral}{'l'}, \textcolor{stringliteral}{"{}LEVEL"{}}, 0,}
 \DoxyCodeLine{     \textcolor{stringliteral}{"{}Level of log statements to print (NONE, DEBUG, INFO, WARNING, ERROR, CRITICAL)"{}}, 0\},}
-\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}clang-\/executable"{}}, \textcolor{charliteral}{'g'}, \textcolor{stringliteral}{"{}PATH"{}}, 0,}
-\DoxyCodeLine{     \textcolor{stringliteral}{"{}Alternate path to clang executable (default is \(\backslash\)"{}"{}} \mbox{\hyperlink{info_8h_a45cd2cf0df774e6893fe020b85b31ff5}{DEFAULT\_CLANG\_EXECUTABLE\_PATH}} \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}, 0\},}
-\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}cmd"{}}, \textcolor{charliteral}{'c'}, \textcolor{stringliteral}{"{}PROGRAM"{}}, 0, \textcolor{stringliteral}{"{}Program passed in as a string"{}}, 0\},}
-\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}output"{}}, \textcolor{charliteral}{'o'}, \textcolor{stringliteral}{"{}FILE"{}}, 0, \textcolor{stringliteral}{"{}Path to the generated LLVM file"{}}, 0\},}
-\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}opt"{}}, \textcolor{charliteral}{'O'}, \textcolor{stringliteral}{"{}OPTLEVEL"{}}, 0, \textcolor{stringliteral}{"{}Level of optimization to enable (0-\/3)"{}}\},}
 \DoxyCodeLine{    \{\textcolor{stringliteral}{"{}quiet"{}}, \textcolor{charliteral}{'q'}, 0, 0, \textcolor{stringliteral}{"{}Equivalent to -\/-\/logging=NONE"{}}, 0\},}
 \DoxyCodeLine{    \{\textcolor{stringliteral}{"{}verbose"{}}, \textcolor{charliteral}{'v'}, 0, 0, \textcolor{stringliteral}{"{}Equivalent to -\/-\/logging=DEBUG"{}}, 0\},}
-\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}fconst-\/expr-\/reduce"{}}, \mbox{\hyperlink{arguments_8h_a21c26ef2a3830a77c03dd2bf44d92ea5}{FCONST\_EXPR\_REDUCE\_CODE}}, 0, OPTION\_HIDDEN, 0, 0\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}help-\/flags"{}}, \mbox{\hyperlink{arguments_8h_a4833657071bfead1397ce3ed54279b9d}{ARGP\_HELP\_FLAGS}}, 0, 0, \textcolor{stringliteral}{"{}Show help information for various flags used in Purple"{}},}
+\DoxyCodeLine{     0\},}
+\DoxyCodeLine{    \{0, 0, 0, 0, \textcolor{stringliteral}{"{}Compiler Options:"{}}, 2\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}clang-\/executable"{}}, \textcolor{charliteral}{'g'}, \textcolor{stringliteral}{"{}PATH"{}}, 0,}
+\DoxyCodeLine{     \textcolor{stringliteral}{"{}Alternate path to clang executable (default is \(\backslash\)"{}"{}} \mbox{\hyperlink{info_8h_a45cd2cf0df774e6893fe020b85b31ff5}{DEFAULT\_CLANG\_EXECUTABLE\_PATH}} \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}, 0\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}cmd"{}}, \textcolor{charliteral}{'c'}, \textcolor{stringliteral}{"{}PROGRAM"{}}, OPTION\_HIDDEN, \textcolor{stringliteral}{"{}Program passed in as a string"{}}, 0\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}llvm-\/output"{}}, \mbox{\hyperlink{arguments_8h_ae8314d89b0f2d126808c3fea4df00f09}{ARGP\_LLVM\_OUTPUT}}, \textcolor{stringliteral}{"{}FILE"{}}, 0, \textcolor{stringliteral}{"{}Path to the generated LLVM file"{}}, 0\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}output"{}}, \textcolor{charliteral}{'o'}, \textcolor{stringliteral}{"{}FILE"{}}, 0, \textcolor{stringliteral}{"{}Path to compiled binary"{}}, 0\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}opt"{}}, \textcolor{charliteral}{'O'}, \textcolor{stringliteral}{"{}OPTLEVEL"{}}, 0, \textcolor{stringliteral}{"{}Level of optimization to enable (0-\/3)"{}}\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}fconst-\/expr-\/reduce"{}}, \mbox{\hyperlink{arguments_8h_a21c26ef2a3830a77c03dd2bf44d92ea5}{FCONST\_EXPR\_REDUCE\_CODE}}, 0, OPTION\_HIDDEN,}
+\DoxyCodeLine{     \textcolor{stringliteral}{"{}Reduces constant expressions at compile-\/time"{}}, 0\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}fprint-\/func-\/annotations"{}}, \mbox{\hyperlink{arguments_8h_a5555f36c6e09b80f73d7d9a88d44a416}{FPRINT\_FUNC\_ANNOTATIONS}}, 0, OPTION\_HIDDEN,}
+\DoxyCodeLine{     \textcolor{stringliteral}{"{}When generating llvm, prints a comment containing which function in the compiler is printing"{}},}
+\DoxyCodeLine{     0\},}
+\DoxyCodeLine{    \{0, 0, 0, 0, \textcolor{stringliteral}{"{}Generic Options:"{}}, -\/1\},}
 \DoxyCodeLine{    \{0\},}
 \DoxyCodeLine{\}}
 

@@ -6,8 +6,10 @@
 
 
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}translate/llvm.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}types/identifier.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}types/type.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
 Include dependency graph for symbol\+\_\+table.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -37,6 +39,14 @@ struct \mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}{SYMBOL\+\_\+\+TABLE\+\_\+\+DEFAULT\+\_\+\+LENGTH}}~1024
+\item 
+\#define \mbox{\hyperlink{symbol__table_8h_ad43ea8f02a5564b5ba0c356324422dc3}{GST\+\_\+\+FIND}}(symbol\+\_\+name)~\mbox{\hyperlink{symbol__table_8c_a8cee987c629bab7017e0eea921e4ab1f}{find\+\_\+symbol\+\_\+table\+\_\+entry}}(\mbox{\hyperlink{data_8h_a3d6de1760dedbf060d53166af7599d98}{D\+\_\+\+GLOBAL\+\_\+\+SYMBOL\+\_\+\+TABLE}}, symbol\+\_\+name)
+\item 
+\#define \mbox{\hyperlink{symbol__table_8h_a8057d6d5768295e0b3dea5086570e37a}{STS\+\_\+\+FIND}}(symbol\+\_\+name)~\mbox{\hyperlink{symbol__table_8c_a6052055e1a639f22f026d9a808f2e971}{find\+\_\+symbol\+\_\+table\+\_\+stack\+\_\+entry}}(\mbox{\hyperlink{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}{D\+\_\+\+SYMBOL\+\_\+\+TABLE\+\_\+\+STACK}}, symbol\+\_\+name)
+\item 
+\#define \mbox{\hyperlink{symbol__table_8h_a76c362b6bc106e194869998b4ae9599d}{STS\+\_\+\+INSERT}}(symbol\+\_\+name,  type)~    \mbox{\hyperlink{symbol__table_8c_ab32fb47ae26126a5117952900b892751}{add\+\_\+symbol\+\_\+table\+\_\+entry}}(\mbox{\hyperlink{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}{D\+\_\+\+SYMBOL\+\_\+\+TABLE\+\_\+\+STACK}}-\/$>$top, symbol\+\_\+name, type)
+\item 
+\#define \mbox{\hyperlink{symbol__table_8h_aee308cd0b0278015c8b9c22e38e9ce66}{GST\+\_\+\+INSERT}}(symbol\+\_\+name,  type)~    \mbox{\hyperlink{symbol__table_8c_ab32fb47ae26126a5117952900b892751}{add\+\_\+symbol\+\_\+table\+\_\+entry}}(\mbox{\hyperlink{data_8h_a3d6de1760dedbf060d53166af7599d98}{D\+\_\+\+GLOBAL\+\_\+\+SYMBOL\+\_\+\+TABLE}}, symbol\+\_\+name, type)
 \end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -74,6 +84,8 @@ void \mbox{\hyperlink{symbol__table_8h_ace4eaeafa7e20975b8dc696cf7705b1f}{resize
 \begin{DoxyCompactList}\small\item\em Double the size of a Symbol Table\textquotesingle{}s buckets array. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8h_a8cee987c629bab7017e0eea921e4ab1f}{find\+\_\+symbol\+\_\+table\+\_\+entry}} (\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$table, char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Find the entry of a symbol in the provided Symbol Table if it exists. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8h_a06f74df6263a1c137c34d8fe5dbe6a78}{find\+\_\+symbol\+\_\+table\+\_\+stack\+\_\+entry}} (\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$table, char $\ast$symbol\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Find the entry of a symbol in the provided Symbol Table Stack if it exists, working from the top of the stack to the bottom. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8h_a19902129ff999624837d473ed4d77674}{new\+\_\+symbol\+\_\+table\+\_\+entry}} (char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Get pointer to new Symbol Table Entry. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ \mbox{\hyperlink{symbol__table_8h_ab32fb47ae26126a5117952900b892751}{add\+\_\+symbol\+\_\+table\+\_\+entry}} (\mbox{\hyperlink{structSymbolTable}{Symbol\+Table}} $\ast$table, char $\ast$symbol\+\_\+name, \mbox{\hyperlink{structType}{Type}} type)
@@ -92,6 +104,30 @@ Charles Averill
 
 
 \doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{symbol__table_8h_ad43ea8f02a5564b5ba0c356324422dc3}\label{symbol__table_8h_ad43ea8f02a5564b5ba0c356324422dc3}} 
+\index{symbol\_table.h@{symbol\_table.h}!GST\_FIND@{GST\_FIND}}
+\index{GST\_FIND@{GST\_FIND}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{GST\_FIND}{GST\_FIND}}
+{\footnotesize\ttfamily \#define GST\+\_\+\+FIND(\begin{DoxyParamCaption}\item[{}]{symbol\+\_\+name }\end{DoxyParamCaption})~\mbox{\hyperlink{symbol__table_8c_a8cee987c629bab7017e0eea921e4ab1f}{find\+\_\+symbol\+\_\+table\+\_\+entry}}(\mbox{\hyperlink{data_8h_a3d6de1760dedbf060d53166af7599d98}{D\+\_\+\+GLOBAL\+\_\+\+SYMBOL\+\_\+\+TABLE}}, symbol\+\_\+name)}
+
+\mbox{\Hypertarget{symbol__table_8h_aee308cd0b0278015c8b9c22e38e9ce66}\label{symbol__table_8h_aee308cd0b0278015c8b9c22e38e9ce66}} 
+\index{symbol\_table.h@{symbol\_table.h}!GST\_INSERT@{GST\_INSERT}}
+\index{GST\_INSERT@{GST\_INSERT}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{GST\_INSERT}{GST\_INSERT}}
+{\footnotesize\ttfamily \#define GST\+\_\+\+INSERT(\begin{DoxyParamCaption}\item[{}]{symbol\+\_\+name,  }\item[{}]{type }\end{DoxyParamCaption})~    \mbox{\hyperlink{symbol__table_8c_ab32fb47ae26126a5117952900b892751}{add\+\_\+symbol\+\_\+table\+\_\+entry}}(\mbox{\hyperlink{data_8h_a3d6de1760dedbf060d53166af7599d98}{D\+\_\+\+GLOBAL\+\_\+\+SYMBOL\+\_\+\+TABLE}}, symbol\+\_\+name, type)}
+
+\mbox{\Hypertarget{symbol__table_8h_a8057d6d5768295e0b3dea5086570e37a}\label{symbol__table_8h_a8057d6d5768295e0b3dea5086570e37a}} 
+\index{symbol\_table.h@{symbol\_table.h}!STS\_FIND@{STS\_FIND}}
+\index{STS\_FIND@{STS\_FIND}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{STS\_FIND}{STS\_FIND}}
+{\footnotesize\ttfamily \#define STS\+\_\+\+FIND(\begin{DoxyParamCaption}\item[{}]{symbol\+\_\+name }\end{DoxyParamCaption})~\mbox{\hyperlink{symbol__table_8c_a6052055e1a639f22f026d9a808f2e971}{find\+\_\+symbol\+\_\+table\+\_\+stack\+\_\+entry}}(\mbox{\hyperlink{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}{D\+\_\+\+SYMBOL\+\_\+\+TABLE\+\_\+\+STACK}}, symbol\+\_\+name)}
+
+\mbox{\Hypertarget{symbol__table_8h_a76c362b6bc106e194869998b4ae9599d}\label{symbol__table_8h_a76c362b6bc106e194869998b4ae9599d}} 
+\index{symbol\_table.h@{symbol\_table.h}!STS\_INSERT@{STS\_INSERT}}
+\index{STS\_INSERT@{STS\_INSERT}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{STS\_INSERT}{STS\_INSERT}}
+{\footnotesize\ttfamily \#define STS\+\_\+\+INSERT(\begin{DoxyParamCaption}\item[{}]{symbol\+\_\+name,  }\item[{}]{type }\end{DoxyParamCaption})~    \mbox{\hyperlink{symbol__table_8c_ab32fb47ae26126a5117952900b892751}{add\+\_\+symbol\+\_\+table\+\_\+entry}}(\mbox{\hyperlink{data_8h_a1b776b58bc391d4b2b0ad9110d862f1c}{D\+\_\+\+SYMBOL\+\_\+\+TABLE\+\_\+\+STACK}}-\/$>$top, symbol\+\_\+name, type)}
+
 \mbox{\Hypertarget{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}\label{symbol__table_8h_a79653115fb43c2f3cee6d1b80ec69efb}} 
 \index{symbol\_table.h@{symbol\_table.h}!SYMBOL\_TABLE\_DEFAULT\_LENGTH@{SYMBOL\_TABLE\_DEFAULT\_LENGTH}}
 \index{SYMBOL\_TABLE\_DEFAULT\_LENGTH@{SYMBOL\_TABLE\_DEFAULT\_LENGTH}!symbol\_table.h@{symbol\_table.h}}
@@ -171,6 +207,26 @@ Find the entry of a symbol in the provided Symbol Table if it exists.
 {\em table} & Table to search in \\
 \hline
 {\em symbol\+\_\+name} & Name of symbol to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Symbol\+Table\+Entry$\ast$ Pointer to entry if it exists, else NULL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{symbol__table_8h_a06f74df6263a1c137c34d8fe5dbe6a78}\label{symbol__table_8h_a06f74df6263a1c137c34d8fe5dbe6a78}} 
+\index{symbol\_table.h@{symbol\_table.h}!find\_symbol\_table\_stack\_entry@{find\_symbol\_table\_stack\_entry}}
+\index{find\_symbol\_table\_stack\_entry@{find\_symbol\_table\_stack\_entry}!symbol\_table.h@{symbol\_table.h}}
+\doxysubsubsection{\texorpdfstring{find\_symbol\_table\_stack\_entry()}{find\_symbol\_table\_stack\_entry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSymbolTableEntry}{Symbol\+Table\+Entry}} $\ast$ find\+\_\+symbol\+\_\+table\+\_\+stack\+\_\+entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSymbolTableStack}{Symbol\+Table\+Stack}} $\ast$}]{stack,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Find the entry of a symbol in the provided Symbol Table Stack if it exists, working from the top of the stack to the bottom. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Symbol Table Stack to search \\
+\hline
+{\em symbol\+\_\+name} & Name of symbol to find \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

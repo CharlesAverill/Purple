@@ -25,7 +25,7 @@ void \mbox{\hyperlink{statement_8c_a50272a0b5fea28f10f872dda4641d1a4}{match\+\_\
 \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \mbox{\hyperlink{statement_8c_ab8449cecc9d2a09f9a5a8f0ccddab291}{match\+\_\+tokens}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} types\mbox{[}$\,$\mbox{]}, int n\+\_\+types)
 \item 
 int \mbox{\hyperlink{statement_8c_ac45ec4bf4da312ba03500cd5d6be33d6}{match\+\_\+type}} (\mbox{\hyperlink{structNumber}{Number}} $\ast$out)
-\item 
+\begin{DoxyCompactList}\small\item\em Matches a valid type in the input stream. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} \mbox{\hyperlink{statement_8c_a3cff6fe0533cdb002d50a1a1ca48e404}{check\+\_\+for\+\_\+type}} (void)
 \begin{DoxyCompactList}\small\item\em Ensure current token is a type token, and scan the next token if so. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{structASTNode}{ASTNode}} $\ast$ \mbox{\hyperlink{statement_8c_a5dcc808163fdfc0d3d90b2764cb7b4e0}{print\+\_\+statement}} (void)
@@ -135,6 +135,18 @@ Ensure current token is of a given type, and scan the next token if so.
 \doxysubsubsection{\texorpdfstring{match\_type()}{match\_type()}}
 {\footnotesize\ttfamily int match\+\_\+type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structNumber}{Number}} $\ast$}]{out }\end{DoxyParamCaption})}
 
+
+
+Matches a valid type in the input stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Pointer to \mbox{\hyperlink{structNumber}{Number}} struct to fill with parsed data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if out is filled properly, 1 if the scanned type is \char`\"{}void\char`\"{} 
+\end{DoxyReturn}
 \mbox{\Hypertarget{statement_8c_a72e124e2436e13e1d8c09a0616245c12}\label{statement_8c_a72e124e2436e13e1d8c09a0616245c12}} 
 \index{statement.c@{statement.c}!parse\_statements@{parse\_statements}}
 \index{parse\_statements@{parse\_statements}!statement.c@{statement.c}}

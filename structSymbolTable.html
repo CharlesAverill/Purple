@@ -90,12 +90,13 @@ Collaboration diagram for SymbolTable:</div>
 <div class="dyncontent">
 <div class="center"><img src="structSymbolTable__coll__graph.png" border="0" usemap="#aSymbolTable_coll__map" alt="Collaboration graph"/></div>
 <map name="aSymbolTable_coll__map" id="aSymbolTable_coll__map">
-<area shape="rect" title="Holds data for symbols within a scope." alt="" coords="48,683,159,789"/>
-<area shape="rect" href="structSymbolTableEntry.html" title="Struct holding data about a symbol." alt="" coords="40,499,167,620"/>
-<area shape="rect" href="structType.html" title="Container for type data." alt="" coords="55,329,151,436"/>
-<area shape="rect" href="structNumber.html" title="Container for various kinds of number data." alt="" coords="5,160,116,267"/>
-<area shape="rect" href="structFunction.html" title="Container for function information." alt="" coords="141,167,271,259"/>
-<area shape="rect" href="structFunctionParameter.html" title="Container for function parameter information." alt="" coords="140,5,272,97"/>
+<area shape="rect" title="Holds data for symbols within a scope." alt="" coords="133,988,243,1095"/>
+<area shape="rect" href="structSymbolTableEntry.html" title="Struct holding data about a symbol." alt="" coords="125,804,251,925"/>
+<area shape="rect" href="structType.html" title="Container for type data." alt="" coords="76,635,172,741"/>
+<area shape="rect" href="structNumber.html" title="Container for various kinds of number data." alt="" coords="70,5,181,112"/>
+<area shape="rect" href="structFunctionParameter.html" title="Container for function parameter information." alt="" coords="59,175,191,252"/>
+<area shape="rect" href="structLLVMValue.html" title="Value returned by ast_to_llvm." alt="" coords="199,276,353,456"/>
+<area shape="rect" href="structFunction.html" title="Container for function information." alt="" coords="59,480,189,572"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -109,6 +110,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a79d029aed5cb77d5153ace908e59547e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6e51d297fb314f42872cb61235691bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSymbolTableEntry.html">SymbolTableEntry</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTable.html#af6e51d297fb314f42872cb61235691bd">buckets</a></td></tr>
 <tr class="separator:af6e51d297fb314f42872cb61235691bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcff830f266faa4dab4fe5ad9a3bf067"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structSymbolTable.html">SymbolTable</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTable.html#adcff830f266faa4dab4fe5ad9a3bf067">prev</a></td></tr>
+<tr class="separator:adcff830f266faa4dab4fe5ad9a3bf067"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afce59ce70989d0f787d63f192504479c"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structSymbolTable.html">SymbolTable</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSymbolTable.html#afce59ce70989d0f787d63f192504479c">next</a></td></tr>
 <tr class="separator:afce59ce70989d0f787d63f192504479c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -172,6 +175,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >Next Symbol Table in the scope stack </p>
+
+</div>
+</div>
+<a id="adcff830f266faa4dab4fe5ad9a3bf067" name="adcff830f266faa4dab4fe5ad9a3bf067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcff830f266faa4dab4fe5ad9a3bf067">&#9670;&nbsp;</a></span>prev</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structSymbolTable.html">SymbolTable</a>* SymbolTable::prev</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Previous Symbol Table in the scope stack </p>
 
 </div>
 </div>

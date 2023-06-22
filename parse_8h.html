@@ -94,19 +94,29 @@ Include dependency graph for parse.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="parse_8h__incl.png" border="0" usemap="#ainclude_2parse_8h" alt=""/></div>
 <map name="ainclude_2parse_8h" id="ainclude_2parse_8h">
-<area shape="rect" title="Function headers for parsing and operator precedence values." alt="" coords="345,5,454,32"/>
-<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="303,80,357,107"/>
-<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="300,453,411,480"/>
-<area shape="rect" title=" " alt="" coords="5,155,68,181"/>
-<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="200,379,260,405"/>
-<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="93,155,255,181"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="279,155,381,181"/>
-<area shape="rect" title=" " alt="" coords="179,453,254,480"/>
-<area shape="rect" href="identifier_8h.html" title="Definitions for identifiers." alt="" coords="34,453,149,480"/>
-<area shape="rect" title=" " alt="" coords="324,528,387,555"/>
-<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="153,229,243,256"/>
-<area shape="rect" href="function_8h.html" title="Struct definitions and macros for functions." alt="" coords="153,304,267,331"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="268,229,384,256"/>
+<area shape="rect" title="Function headers for parsing and operator precedence values." alt="" coords="908,5,1018,32"/>
+<area shape="rect" href="tree_8h.html" title="Function headers for abstract syntax tree parsing." alt="" coords="838,80,893,107"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="741,453,852,480"/>
+<area shape="rect" title=" " alt="" coords="834,155,897,181"/>
+<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="582,379,642,405"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="424,155,587,181"/>
+<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="922,155,1023,181"/>
+<area shape="rect" title=" " alt="" coords="468,453,543,480"/>
+<area shape="rect" href="identifier_8h.html" title="Definitions for identifiers." alt="" coords="130,453,244,480"/>
+<area shape="rect" title=" " alt="" coords="765,528,828,555"/>
+<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="834,304,945,331"/>
+<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="575,229,666,256"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="410,229,468,256"/>
+<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="834,379,993,405"/>
+<area shape="rect" href="function_8h.html" title="Struct definitions and macros for functions." alt="" coords="594,304,708,331"/>
+<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="296,304,417,331"/>
+<area shape="rect" href="misc_8h.html" title="Miscellaneous utility functions that don&#39;t fit anywhere else." alt="" coords="138,304,226,331"/>
+<area shape="rect" title=" " alt="" coords="360,379,417,405"/>
+<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="282,379,335,405"/>
+<area shape="rect" title=" " alt="" coords="23,379,84,405"/>
+<area shape="rect" title=" " alt="" coords="109,379,169,405"/>
+<area shape="rect" title=" " alt="" coords="194,379,258,405"/>
+<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="906,229,1022,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -136,6 +146,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a50272a0b5fea28f10f872dda4641d1a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure current token is of a given type, and scan the next token if so.  <a href="parse_8h.html#a50272a0b5fea28f10f872dda4641d1a4">More...</a><br /></td></tr>
 <tr class="separator:a50272a0b5fea28f10f872dda4641d1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac45ec4bf4da312ba03500cd5d6be33d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#ac45ec4bf4da312ba03500cd5d6be33d6">match_type</a> (<a class="el" href="structNumber.html">Number</a> *out)</td></tr>
+<tr class="memdesc:ac45ec4bf4da312ba03500cd5d6be33d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matches a valid type in the input stream.  <a href="parse_8h.html#ac45ec4bf4da312ba03500cd5d6be33d6">More...</a><br /></td></tr>
 <tr class="separator:ac45ec4bf4da312ba03500cd5d6be33d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cff6fe0533cdb002d50a1a1ca48e404"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html#a3cff6fe0533cdb002d50a1a1ca48e404">check_for_type</a> (void)</td></tr>
 <tr class="memdesc:a3cff6fe0533cdb002d50a1a1ca48e404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure current token is a type token, and scan the next token if so.  <a href="parse_8h.html#a3cff6fe0533cdb002d50a1a1ca48e404">More...</a><br /></td></tr>
@@ -349,6 +360,15 @@ Operator Precedence</h2>
       </table>
 </div><div class="memdoc">
 
+<p>Matches a valid type in the input stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>Pointer to <a class="el" href="structNumber.html" title="Container for various kinds of number data.">Number</a> struct to fill with parsed data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int 0 if out is filled properly, 1 if the scanned type is "void" </dd></dl>
+
 </div>
 </div>
 <a id="ac8d04db5938aa126d0a5e6b9bbeca016" name="ac8d04db5938aa126d0a5e6b9bbeca016"></a>
@@ -455,7 +475,7 @@ Operator Precedence</h2>
 <div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aab6fe980d9e636005e0c90080985645a">T_SLASH</a></div><div class="ttdeci">@ T_SLASH</div><div class="ttdef"><b>Definition:</b> scan.h:26</div></div>
 <div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aaf1a365950bce3b45aec63de01c5d096"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aaf1a365950bce3b45aec63de01c5d096">T_XNOR</a></div><div class="ttdeci">@ T_XNOR</div><div class="ttdef"><b>Definition:</b> scan.h:41</div></div>
 <div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ab7d851f556edd050fb517b60fd31a1ad">T_EQ</a></div><div class="ttdeci">@ T_EQ</div><div class="ttdef"><b>Definition:</b> scan.h:29</div></div>
-<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720">T_ASSIGN</a></div><div class="ttdeci">@ T_ASSIGN</div><div class="ttdef"><b>Definition:</b> scan.h:62</div></div>
+<div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921abfcd8d771490f5e44b29e69cad5bf720">T_ASSIGN</a></div><div class="ttdeci">@ T_ASSIGN</div><div class="ttdef"><b>Definition:</b> scan.h:60</div></div>
 <div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921ac869f90f0fc081ae0e4a1c7746c11f3d"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ac869f90f0fc081ae0e4a1c7746c11f3d">T_GT</a></div><div class="ttdeci">@ T_GT</div><div class="ttdef"><b>Definition:</b> scan.h:32</div></div>
 <div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921ad7d408f184b5312670748bbddf0077d2">T_PLUS</a></div><div class="ttdeci">@ T_PLUS</div><div class="ttdef"><b>Definition:</b> scan.h:23</div></div>
 <div class="ttc" id="ascan_8h_html_aa520fbf142ba1e7e659590c07da31921aeabbf9419f82ec47ab35d6931784dfb4"><div class="ttname"><a href="scan_8h.html#aa520fbf142ba1e7e659590c07da31921aeabbf9419f82ec47ab35d6931784dfb4">T_MINUS</a></div><div class="ttdeci">@ T_MINUS</div><div class="ttdef"><b>Definition:</b> scan.h:24</div></div>

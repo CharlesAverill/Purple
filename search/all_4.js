@@ -18,12 +18,13 @@ var searchData=
   ['d_5fllvm_5fglobals_5ffile_15',['D_LLVM_GLOBALS_FILE',['../data_8h.html#adb9f233c82840e13fa251b97e66b46f5',1,'data.h']]],
   ['d_5fllvm_5fglobals_5ffn_16',['D_LLVM_GLOBALS_FN',['../data_8h.html#a0a1aa4528f335b35bbb9ca110033d00a',1,'data.h']]],
   ['d_5fllvm_5flocal_5fvirtual_5fregister_5fnumber_17',['D_LLVM_LOCAL_VIRTUAL_REGISTER_NUMBER',['../data_8h.html#af29dba328a9429eb1dd0172a6fa0bc99',1,'data.h']]],
-  ['d_5fput_5fback_18',['D_PUT_BACK',['../data_8h.html#aecfb2e5af0488a83da058ff5cc29d822',1,'data.h']]],
-  ['d_5fscanning_5ftype_19',['D_SCANNING_TYPE',['../data_8h.html#abc6417a9933a4475be9df54f02beff2c',1,'data.h']]],
-  ['d_5fsymbol_5ftable_5fstack_20',['D_SYMBOL_TABLE_STACK',['../data_8h.html#a1b776b58bc391d4b2b0ad9110d862f1c',1,'data.h']]],
-  ['data_2eh_21',['data.h',['../data_8h.html',1,'']]],
-  ['declaration_2ec_22',['declaration.c',['../declaration_8c.html',1,'']]],
-  ['default_5fclang_5fexecutable_5fpath_23',['DEFAULT_CLANG_EXECUTABLE_PATH',['../info_8h.html#a45cd2cf0df774e6893fe020b85b31ff5',1,'info.h']]],
-  ['determine_5fbinary_5fexpression_5fstack_5fallocation_24',['determine_binary_expression_stack_allocation',['../translate_8h.html#a7abbf5b5f5d3fc9d561f7e080077bb9e',1,'determine_binary_expression_stack_allocation(ASTNode *root):&#160;translate.c'],['../translate_8c.html#a7abbf5b5f5d3fc9d561f7e080077bb9e',1,'determine_binary_expression_stack_allocation(ASTNode *root):&#160;translate.c']]],
-  ['doc_25',['doc',['../arguments_8c.html#af6164deb8a824f8cb2b9147cfc3174f5',1,'arguments.c']]]
+  ['d_5fmax_5fpointer_5fdepth_18',['D_MAX_POINTER_DEPTH',['../data_8h.html#a84a8f329321c8d2fc7993100be195f4d',1,'data.h']]],
+  ['d_5fput_5fback_19',['D_PUT_BACK',['../data_8h.html#aecfb2e5af0488a83da058ff5cc29d822',1,'data.h']]],
+  ['d_5fscanning_5ftype_20',['D_SCANNING_TYPE',['../data_8h.html#abc6417a9933a4475be9df54f02beff2c',1,'data.h']]],
+  ['d_5fsymbol_5ftable_5fstack_21',['D_SYMBOL_TABLE_STACK',['../data_8h.html#a1b776b58bc391d4b2b0ad9110d862f1c',1,'data.h']]],
+  ['data_2eh_22',['data.h',['../data_8h.html',1,'']]],
+  ['declaration_2ec_23',['declaration.c',['../declaration_8c.html',1,'']]],
+  ['default_5fclang_5fexecutable_5fpath_24',['DEFAULT_CLANG_EXECUTABLE_PATH',['../info_8h.html#a45cd2cf0df774e6893fe020b85b31ff5',1,'info.h']]],
+  ['determine_5fbinary_5fexpression_5fstack_5fallocation_25',['determine_binary_expression_stack_allocation',['../translate_8h.html#a7abbf5b5f5d3fc9d561f7e080077bb9e',1,'determine_binary_expression_stack_allocation(ASTNode *root):&#160;translate.c'],['../translate_8c.html#a7abbf5b5f5d3fc9d561f7e080077bb9e',1,'determine_binary_expression_stack_allocation(ASTNode *root):&#160;translate.c']]],
+  ['doc_26',['doc',['../arguments_8c.html#af6164deb8a824f8cb2b9147cfc3174f5',1,'arguments.c']]]
 ];

@@ -80,6 +80,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">tree.h File Reference</div></div>
@@ -97,18 +98,28 @@ Include dependency graph for tree.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="tree_8h__incl.png" border="0" usemap="#ainclude_2tree_8h" alt=""/></div>
 <map name="ainclude_2tree_8h" id="ainclude_2tree_8h">
-<area shape="rect" title="Function headers for abstract syntax tree parsing." alt="" coords="257,5,356,32"/>
-<area shape="rect" title=" " alt="" coords="79,80,142,107"/>
-<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="151,304,211,331"/>
-<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="167,80,329,107"/>
-<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="408,80,509,107"/>
-<area shape="rect" title=" " alt="" coords="5,379,80,405"/>
-<area shape="rect" href="identifier_8h.html" title="Definitions for identifiers." alt="" coords="111,379,225,405"/>
-<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="255,379,366,405"/>
-<area shape="rect" title=" " alt="" coords="279,453,342,480"/>
-<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="211,155,301,181"/>
-<area shape="rect" href="function_8h.html" title="Struct definitions and macros for functions." alt="" coords="114,229,227,256"/>
-<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="405,155,521,181"/>
+<area shape="rect" title="Function headers for abstract syntax tree parsing." alt="" coords="617,5,716,32"/>
+<area shape="rect" title=" " alt="" coords="401,80,463,107"/>
+<area shape="rect" href="scan_8h.html" title="Lexical Scanner function headers." alt="" coords="609,304,669,331"/>
+<area shape="rect" href="symbol__table_8h.html" title="Function headers and definitions for the global and local symbol tables." alt="" coords="488,80,651,107"/>
+<area shape="rect" href="logging_8h.html" title="Function headers, ANSI defines, and enums for raising internal warnings and errors." alt="" coords="837,80,939,107"/>
+<area shape="rect" title=" " alt="" coords="335,379,409,405"/>
+<area shape="rect" href="identifier_8h.html" title="Definitions for identifiers." alt="" coords="499,379,613,405"/>
+<area shape="rect" href="number_8h.html" title="Definitions and function headers for the internal &quot;Number&quot; type." alt="" coords="715,379,826,405"/>
+<area shape="rect" title=" " alt="" coords="739,453,802,480"/>
+<area shape="rect" href="llvm_8h.html" title="Function headers for LLVM&#45;IR emission." alt="" coords="834,229,945,256"/>
+<area shape="rect" href="type_8h.html" title="Function headers and defines for." alt="" coords="571,155,661,181"/>
+<area shape="rect" href="data_8h.html" title="Project&#45;wide variables." alt="" coords="410,155,467,181"/>
+<area shape="rect" href="llvm__stack__entry_8h.html" title=" " alt="" coords="834,304,993,331"/>
+<area shape="rect" href="function_8h.html" title="Struct definitions and macros for functions." alt="" coords="543,229,657,256"/>
+<area shape="rect" href="arguments_8h.html" title="Function headers for command line argument parsing." alt="" coords="295,229,417,256"/>
+<area shape="rect" href="misc_8h.html" title="Miscellaneous utility functions that don&#39;t fit anywhere else." alt="" coords="139,229,227,256"/>
+<area shape="rect" title=" " alt="" coords="410,304,467,331"/>
+<area shape="rect" href="info_8h.html" title="CMake config definitions." alt="" coords="281,304,335,331"/>
+<area shape="rect" title=" " alt="" coords="196,304,257,331"/>
+<area shape="rect" title=" " alt="" coords="23,304,83,331"/>
+<area shape="rect" title=" " alt="" coords="108,304,172,331"/>
+<area shape="rect" href="shutdown_8h.html" title="Function headers for shutting down the compiler." alt="" coords="834,155,950,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -137,6 +148,11 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Component of the abstract syntax tree built during parsing.  <a href="structASTNode.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a3c29919463609c7161e605370b000fb8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a3c29919463609c7161e605370b000fb8">PRINT_ASTNODE</a>(node)</td></tr>
+<tr class="separator:a3c29919463609c7161e605370b000fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a6b9026f45e950e06b76db629f9563f3a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structASTNode.html">ASTNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a6b9026f45e950e06b76db629f9563f3a">ASTNode</a></td></tr>
@@ -163,12 +179,41 @@ Functions</h2></td></tr>
 <tr class="memitem:a5a2821d5f8274f595c2057a9ead90fa9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a5a2821d5f8274f595c2057a9ead90fa9">ast_debug_level_order</a> (<a class="el" href="structASTNode.html">ASTNode</a> *root, <a class="el" href="logging_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> log_level)</td></tr>
 <tr class="memdesc:a5a2821d5f8274f595c2057a9ead90fa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out an AST's level order traversal.  <a href="tree_8h.html#a5a2821d5f8274f595c2057a9ead90fa9">More...</a><br /></td></tr>
 <tr class="separator:a5a2821d5f8274f595c2057a9ead90fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ee4aadcd8cf7e9c242350ab967a727d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a1ee4aadcd8cf7e9c242350ab967a727d">free_ast_node</a> (<a class="el" href="structASTNode.html">ASTNode</a> *root)</td></tr>
+<tr class="separator:a1ee4aadcd8cf7e9c242350ab967a727d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="structFunction.html" title="Container for function information.">Function</a> headers for abstract syntax tree parsing. </p>
 <dl class="section author"><dt>Author</dt><dd>Charles Averill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>09-Sep-2022 </dd></dl>
-</div><h2 class="groupheader">Typedef Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a3c29919463609c7161e605370b000fb8" name="a3c29919463609c7161e605370b000fb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c29919463609c7161e605370b000fb8">&#9670;&nbsp;</a></span>PRINT_ASTNODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PRINT_ASTNODE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">node</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    printf(<span class="stringliteral">&quot;ASTNode Information\n-------------------\n&quot;</span>);                                          \</div>
+<div class="line">    printf(<span class="stringliteral">&quot;TokenType: %s\nLeft: %d\nMiddle: %d\nRight: %d\n&quot;</span>, <a class="code hl_variable" href="scan_8h.html#a3cef8f6f6c1a827c5f882dc5ab2024e7">tokenStrings</a>[node-&gt;ttype],          \</div>
+<div class="line">           (<span class="keywordtype">int</span>)node-&gt;left, (<span class="keywordtype">int</span>)node-&gt;mid, (<span class="keywordtype">int</span>)node-&gt;right);                                     \</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Is RValue: %s\n&quot;</span>, node-&gt;is_rvalue ? <span class="stringliteral">&quot;true&quot;</span> : <span class="stringliteral">&quot;false&quot;</span>);                                 \</div>
+<div class="line">    printf(<span class="stringliteral">&quot;# of Func Call Args: %llu\n&quot;</span>, node-&gt;num_args);                                         \</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Value (int): %lld\n&quot;</span>, node-&gt;value.number_value);                                       \</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Value (str): %s\n&quot;</span>, node-&gt;value.symbol_name);</div>
+<div class="ttc" id="ascan_8h_html_a3cef8f6f6c1a827c5f882dc5ab2024e7"><div class="ttname"><a href="scan_8h.html#a3cef8f6f6c1a827c5f882dc5ab2024e7">tokenStrings</a></div><div class="ttdeci">static char * tokenStrings[]</div><div class="ttdoc">Token string equivalents.</div><div class="ttdef"><b>Definition:</b> scan.h:96</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
 <a id="a6b9026f45e950e06b76db629f9563f3a" name="a6b9026f45e950e06b76db629f9563f3a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6b9026f45e950e06b76db629f9563f3a">&#9670;&nbsp;</a></span>ASTNode</h2>
 
@@ -451,6 +496,24 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ASTNode* The pointer to a new AST Unary Parent Node with the provided values </dd></dl>
+
+</div>
+</div>
+<a id="a1ee4aadcd8cf7e9c242350ab967a727d" name="a1ee4aadcd8cf7e9c242350ab967a727d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ee4aadcd8cf7e9c242350ab967a727d">&#9670;&nbsp;</a></span>free_ast_node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_ast_node </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structASTNode.html">ASTNode</a> *&#160;</td>
+          <td class="paramname"><em>root</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

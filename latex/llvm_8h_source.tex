@@ -16,115 +16,137 @@
 \DoxyCodeLine{24 }
 \DoxyCodeLine{28 \textcolor{preprocessor}{\#define REFSTRING\_BUF\_MAXLEN 256}}
 \DoxyCodeLine{29 }
-\DoxyCodeLine{33 \textcolor{keyword}{static} \textcolor{keywordtype}{char} \mbox{\hyperlink{llvm_8h_ac035a1ce076e8351aac99071ca62beab}{\_refstring\_buf}}[256];}
+\DoxyCodeLine{33 \textcolor{keyword}{static} \textcolor{keywordtype}{char} \mbox{\hyperlink{llvm_8h_a308fdcbcc4889052bc8aa8326a11fe71}{\_refstring\_buf}}[\mbox{\hyperlink{llvm_8h_ab88c0778319b329b14d3dd9cec653247}{REFSTRING\_BUF\_MAXLEN}}];}
 \DoxyCodeLine{34 }
-\DoxyCodeLine{38 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
-\DoxyCodeLine{39 \{}
-\DoxyCodeLine{40     \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79ca904a5cacf68c6ec7a9f9685372a334f0}{LLVMVALUETYPE\_NONE}},}
-\DoxyCodeLine{41     \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f}{LLVMVALUETYPE\_VIRTUAL\_REGISTER}},}
-\DoxyCodeLine{42     \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79cad1194c945875d78e7a7a1a3070447333}{LLVMVALUETYPE\_LABEL}},}
-\DoxyCodeLine{43     \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79cadb9c7f30dce13521152fe4850cce7fbd}{LLVMVALUETYPE\_CONSTANT}},}
-\DoxyCodeLine{44 \} \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79c}{LLVMValueType}};}
-\DoxyCodeLine{45 }
-\DoxyCodeLine{49 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{llvm_8h_a09865db0b61d893dcdda12ddb4670a2b}{valueTypeStrings}}[] = \{\textcolor{stringliteral}{"{}None"{}}, \textcolor{stringliteral}{"{}Virtual Register"{}}, \textcolor{stringliteral}{"{}Label"{}}, \textcolor{stringliteral}{"{}Constant"{}}\};}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{54 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \{}
-\DoxyCodeLine{56     \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79c}{LLVMValueType}} \mbox{\hyperlink{structLLVMValue_af6e542062574556a83ffd8b23bc86fd0}{value\_type}};}
-\DoxyCodeLine{58     \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} \mbox{\hyperlink{structLLVMValue_ab861347e6821dd7531d9d2c5c8240cae}{number\_type}};}
-\DoxyCodeLine{60     \textcolor{keywordtype}{int} \mbox{\hyperlink{structLLVMValue_a31b54f4125f185f3d69dfec82d47a60b}{pointer\_depth}};}
+\DoxyCodeLine{35 \textcolor{keyword}{static} \textcolor{keywordtype}{char} \mbox{\hyperlink{llvm_8h_a82f466c28bf23c857d7189ee04e0f417}{\_llvm\_name\_buf}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}} + 3];}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{40 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{41 \{}
+\DoxyCodeLine{42     \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79ca904a5cacf68c6ec7a9f9685372a334f0}{LLVMVALUETYPE\_NONE}},}
+\DoxyCodeLine{43     \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79ca3d15537fe736623a45ac31740e5cac1f}{LLVMVALUETYPE\_VIRTUAL\_REGISTER}},}
+\DoxyCodeLine{44     \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79cad1194c945875d78e7a7a1a3070447333}{LLVMVALUETYPE\_LABEL}},}
+\DoxyCodeLine{45     \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79cadb9c7f30dce13521152fe4850cce7fbd}{LLVMVALUETYPE\_CONSTANT}},}
+\DoxyCodeLine{46 \} \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79c}{LLVMValueType}};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{51 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{llvm_8h_a09865db0b61d893dcdda12ddb4670a2b}{valueTypeStrings}}[] = \{\textcolor{stringliteral}{"{}None"{}}, \textcolor{stringliteral}{"{}Virtual Register"{}}, \textcolor{stringliteral}{"{}Label"{}}, \textcolor{stringliteral}{"{}Constant"{}}\};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{56 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \{}
+\DoxyCodeLine{58     \mbox{\hyperlink{llvm_8h_a87c282050b6f3fea6f889ca66bf0b79c}{LLVMValueType}} \mbox{\hyperlink{structLLVMValue_af6e542062574556a83ffd8b23bc86fd0}{value\_type}};}
+\DoxyCodeLine{60     \mbox{\hyperlink{structNumber}{Number}} \mbox{\hyperlink{structLLVMValue_a22c46586aa936088fecf12921c26e1f9}{num\_info}};}
 \DoxyCodeLine{62     \textcolor{keywordtype}{char} \mbox{\hyperlink{structLLVMValue_a5d4f4024a8f1711a47999940ada2e150}{just\_loaded}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}}];}
-\DoxyCodeLine{64     \textcolor{keyword}{union }\{}
-\DoxyCodeLine{66         \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\_register}} \mbox{\hyperlink{structLLVMValue_a94c070541eb94e80a2639e53bcb26e04}{virtual\_register\_index}};}
-\DoxyCodeLine{68         \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structLLVMValue_a7853d4ef2cd03fbafa9e32eea1956df9}{constant}};}
-\DoxyCodeLine{70         \mbox{\hyperlink{llvm__stack__entry_8h_a5a55d7544c78159d2429f84d79a87b6c}{type\_label}} \mbox{\hyperlink{structLLVMValue_a84a2f77617a9e2700e328bccb5aaf48b}{label\_index}};}
-\DoxyCodeLine{71     \} \mbox{\hyperlink{structLLVMValue_aa0066a6cd59d069c17214a66ac9d10ca}{value}};}
-\DoxyCodeLine{72 \} \mbox{\hyperlink{llvm_8h_a996ef903919a3c100bb6c98f81a47a48}{LLVMValue}};}
-\DoxyCodeLine{73 }
-\DoxyCodeLine{77 \textcolor{preprocessor}{\#define PRINT\_LLVMVALUE(val)                                                                       \(\backslash\)}}
-\DoxyCodeLine{78 \textcolor{preprocessor}{    printf("{}LLVMValue Information\(\backslash\)n"{}});                                                             \(\backslash\)}
-\DoxyCodeLine{79     printf("{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{});                                                             \(\backslash\)}
-\DoxyCodeLine{80     printf("{}Value Type: \%s\(\backslash\)n"{}, valueTypeStrings[val.value\_type]);                                  \(\backslash\)}
-\DoxyCodeLine{81     printf("{}Number Type: \%s\(\backslash\)n"{}, numberTypeLLVMReprs[val.number\_type]);                             \(\backslash\)}
-\DoxyCodeLine{82     printf("{}Pointer Depth: \%d\(\backslash\)n"{}, val.pointer\_depth);                                              \(\backslash\)}
-\DoxyCodeLine{83     printf("{}Contents: \%lld\(\backslash\)n"{}, val.value.constant);}
-\DoxyCodeLine{84 }
-\DoxyCodeLine{88 \textcolor{preprocessor}{\#define LLVMVALUE\_NULL                                                                             \(\backslash\)}}
-\DoxyCodeLine{89 \textcolor{preprocessor}{    (LLVMValue)                                                                                    \(\backslash\)}}
-\DoxyCodeLine{90 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{91 \textcolor{preprocessor}{        .value\_type = LLVMVALUETYPE\_NONE, .value = 0, .pointer\_depth = 0                           \(\backslash\)}}
-\DoxyCodeLine{92 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{93 }
-\DoxyCodeLine{97 \textcolor{preprocessor}{\#define LLVMVALUE\_CONSTANT(c)                                                                      \(\backslash\)}}
-\DoxyCodeLine{98 \textcolor{preprocessor}{    (LLVMValue)                                                                                    \(\backslash\)}}
-\DoxyCodeLine{99 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{100 \textcolor{preprocessor}{        .value\_type = LLVMVALUETYPE\_CONSTANT, .value.constant = c, .pointer\_depth = 0,             \(\backslash\)}}
-\DoxyCodeLine{101 \textcolor{preprocessor}{        .number\_type = max\_numbertype\_for\_val(c)                                                   \(\backslash\)}}
-\DoxyCodeLine{102 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{103 }
-\DoxyCodeLine{107 \textcolor{preprocessor}{\#define LLVMVALUE\_VIRTUAL\_REGISTER(register\_number, n\_t)                                           \(\backslash\)}}
-\DoxyCodeLine{108 \textcolor{preprocessor}{    (LLVMValue)                                                                                    \(\backslash\)}}
-\DoxyCodeLine{109 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{110 \textcolor{preprocessor}{        .value\_type = LLVMVALUETYPE\_VIRTUAL\_REGISTER, .pointer\_depth = 0,                          \(\backslash\)}}
-\DoxyCodeLine{111 \textcolor{preprocessor}{        .value.virtual\_register\_index = register\_number, .number\_type = n\_t                        \(\backslash\)}}
+\DoxyCodeLine{64     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structLLVMValue_a8fef04895705bc7988014034671701d6}{has\_name}};}
+\DoxyCodeLine{66     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{68         \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\_register}} \mbox{\hyperlink{structLLVMValue_a94c070541eb94e80a2639e53bcb26e04}{virtual\_register\_index}};}
+\DoxyCodeLine{70         \textcolor{keywordtype}{char} \mbox{\hyperlink{structLLVMValue_a0857e3cb73b08fb1b076b037c7fa8ac1}{name}}[\mbox{\hyperlink{identifier_8h_a3d5a3c317dcfbb56869875ed4a91ddcc}{MAX\_IDENTIFIER\_LENGTH}}];}
+\DoxyCodeLine{72         \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \mbox{\hyperlink{structLLVMValue_a7853d4ef2cd03fbafa9e32eea1956df9}{constant}};}
+\DoxyCodeLine{74         \mbox{\hyperlink{llvm__stack__entry_8h_a5a55d7544c78159d2429f84d79a87b6c}{type\_label}} \mbox{\hyperlink{structLLVMValue_a84a2f77617a9e2700e328bccb5aaf48b}{label\_index}};}
+\DoxyCodeLine{75     \} \mbox{\hyperlink{structLLVMValue_aa0066a6cd59d069c17214a66ac9d10ca}{value}};}
+\DoxyCodeLine{76 \} \mbox{\hyperlink{llvm_8h_a996ef903919a3c100bb6c98f81a47a48}{LLVMValue}};}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#define PRINT\_LLVMVALUE(val)                                                                       \(\backslash\)}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{    printf("{}LLVMValue Information\(\backslash\)n"{}});                                                             \(\backslash\)}
+\DoxyCodeLine{83     printf("{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{});                                                             \(\backslash\)}
+\DoxyCodeLine{84     printf("{}Value Type: \%s\(\backslash\)n"{}, valueTypeStrings[val.value\_type]);                                  \(\backslash\)}
+\DoxyCodeLine{85     printf("{}Number Type: \%s\(\backslash\)n"{}, numberTypeLLVMReprs[val.num\_info.number\_type]);                    \(\backslash\)}
+\DoxyCodeLine{86     printf("{}Pointer Depth: \%d\(\backslash\)n"{}, val.num\_info.pointer\_depth);                                     \(\backslash\)}
+\DoxyCodeLine{87     if (val.has\_name) \{                                                                            \(\backslash\)}
+\DoxyCodeLine{88         printf("{}Contents: \%s\(\backslash\)n"{}, val.value.name);                                                  \(\backslash\)}
+\DoxyCodeLine{89     \} else                                                                                         \(\backslash\)}
+\DoxyCodeLine{90         printf("{}Contents: \%lld\(\backslash\)n"{}, val.value.constant);}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#define LLVMVALUE\_NULL                                                                             \(\backslash\)}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{    (LLVMValue)                                                                                    \(\backslash\)}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{        .value\_type = LLVMVALUETYPE\_NONE, .value.constant = 0,                                     \(\backslash\)}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{        .num\_info = (Number)\{.number\_type = -\/1, .pointer\_depth = 0\}, .just\_loaded = 0,             \(\backslash\)}}
+\DoxyCodeLine{100 \textcolor{preprocessor}{        .has\_name = false                                                                          \(\backslash\)}}
+\DoxyCodeLine{101 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#define LLVMVALUE\_CONSTANT(c)                                                                      \(\backslash\)}}
+\DoxyCodeLine{107 \textcolor{preprocessor}{    (LLVMValue)                                                                                    \(\backslash\)}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{109 \textcolor{preprocessor}{        .value\_type = LLVMVALUETYPE\_CONSTANT, .value.constant = c,                                 \(\backslash\)}}
+\DoxyCodeLine{110 \textcolor{preprocessor}{        .num\_info = (Number)\{.number\_type = max\_numbertype\_for\_val(c), .pointer\_depth = 0\},        \(\backslash\)}}
+\DoxyCodeLine{111 \textcolor{preprocessor}{        .just\_loaded = 0, .has\_name = false                                                        \(\backslash\)}}
 \DoxyCodeLine{112 \textcolor{preprocessor}{    \}}}
 \DoxyCodeLine{113 }
-\DoxyCodeLine{117 \textcolor{preprocessor}{\#define LLVMVALUE\_VIRTUAL\_REGISTER\_POINTER(register\_number, n\_t, depth)                            \(\backslash\)}}
+\DoxyCodeLine{117 \textcolor{preprocessor}{\#define LLVMVALUE\_VIRTUAL\_REGISTER(register\_number, n\_t)                                           \(\backslash\)}}
 \DoxyCodeLine{118 \textcolor{preprocessor}{    (LLVMValue)                                                                                    \(\backslash\)}}
 \DoxyCodeLine{119 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{120 \textcolor{preprocessor}{        .value\_type = LLVMVALUETYPE\_VIRTUAL\_REGISTER, .pointer\_depth = depth,                      \(\backslash\)}}
-\DoxyCodeLine{121 \textcolor{preprocessor}{        .value.virtual\_register\_index = register\_number, .number\_type = n\_t                        \(\backslash\)}}
-\DoxyCodeLine{122 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{123 }
-\DoxyCodeLine{127 \textcolor{preprocessor}{\#define LLVMVALUE\_LABEL(label\_number)                                                              \(\backslash\)}}
-\DoxyCodeLine{128 \textcolor{preprocessor}{    (LLVMValue)                                                                                    \(\backslash\)}}
-\DoxyCodeLine{129 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
-\DoxyCodeLine{130 \textcolor{preprocessor}{        .value\_type = LLVMVALUETYPE\_LABEL, .value.label\_index = label\_number, .pointer\_depth = 0   \(\backslash\)}}
-\DoxyCodeLine{131 \textcolor{preprocessor}{    \}}}
-\DoxyCodeLine{132 }
-\DoxyCodeLine{136 \textcolor{preprocessor}{\#define LLVMVALUE\_REGMARKER(llvmvalue) (llvmvalue.value\_type == LLVMVALUETYPE\_CONSTANT ? "{}"{}} : "{}\%"{})}
-\DoxyCodeLine{137 }
-\DoxyCodeLine{139 \textcolor{preprocessor}{\#define PURPLE\_LABEL\_PREFIX "{}L"{}}}
-\DoxyCodeLine{140 }
-\DoxyCodeLine{141 \mbox{\hyperlink{structLLVMValue}{LLVMValue}}* \mbox{\hyperlink{llvm_8h_a52bf868f555d420c10e591b246ed68ec}{llvm\_ensure\_registers\_loaded}}(\textcolor{keywordtype}{int} n\_registers, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} registers[], \textcolor{keywordtype}{int} load\_depth);}
-\DoxyCodeLine{142 }
-\DoxyCodeLine{143 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a76498db4c0864f14519dad7627a3cb16}{llvm\_preamble}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{144 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a29f6abda9d506deee8732fd4c558fc15}{llvm\_postamble}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{145 }
-\DoxyCodeLine{146 \textcolor{keywordtype}{bool} \mbox{\hyperlink{llvm_8h_a74810a264e58860726fc4838a0e9c286}{llvm\_stack\_allocation}}(\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}* stack\_entries);}
-\DoxyCodeLine{147 }
-\DoxyCodeLine{148 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a97aad8c45b9a419a7ff7475921996a3a}{llvm\_binary\_arithmetic}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} operation, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\_virtual\_register,}
-\DoxyCodeLine{149                                  \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\_virtual\_register);}
-\DoxyCodeLine{150 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a408ac9e98b8ae3637789a3bc92275246}{llvm\_store\_constant}}(\mbox{\hyperlink{structNumber}{Number}} value);}
-\DoxyCodeLine{151 \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\_register}} \mbox{\hyperlink{llvm_8h_acf6ffab57a0d67bd99dc3caa06a9e1d6}{get\_next\_local\_virtual\_register}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{152 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_af6c6071ec265809fb6669298c71f6b09}{get\_next\_label}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{120 \textcolor{preprocessor}{        .value\_type = LLVMVALUETYPE\_VIRTUAL\_REGISTER,                                              \(\backslash\)}}
+\DoxyCodeLine{121 \textcolor{preprocessor}{        .value.virtual\_register\_index = register\_number, .just\_loaded = 0, .has\_name = false,      \(\backslash\)}}
+\DoxyCodeLine{122 \textcolor{preprocessor}{        .num\_info = (Number)                                                                       \(\backslash\)}}
+\DoxyCodeLine{123 \textcolor{preprocessor}{        \{                                                                                          \(\backslash\)}}
+\DoxyCodeLine{124 \textcolor{preprocessor}{            .number\_type = n\_t, .pointer\_depth = 0                                                 \(\backslash\)}}
+\DoxyCodeLine{125 \textcolor{preprocessor}{        \}                                                                                          \(\backslash\)}}
+\DoxyCodeLine{126 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{131 \textcolor{preprocessor}{\#define LLVMVALUE\_VIRTUAL\_REGISTER\_POINTER(register\_number, n\_t, depth)                            \(\backslash\)}}
+\DoxyCodeLine{132 \textcolor{preprocessor}{    (LLVMValue)                                                                                    \(\backslash\)}}
+\DoxyCodeLine{133 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{134 \textcolor{preprocessor}{        .value\_type = LLVMVALUETYPE\_VIRTUAL\_REGISTER,                                              \(\backslash\)}}
+\DoxyCodeLine{135 \textcolor{preprocessor}{        .value.virtual\_register\_index = register\_number, .just\_loaded = 0, .has\_name = false,      \(\backslash\)}}
+\DoxyCodeLine{136 \textcolor{preprocessor}{        .num\_info = (Number)\{.number\_type = n\_t, .pointer\_depth = depth\},                          \(\backslash\)}}
+\DoxyCodeLine{137 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{142 \textcolor{preprocessor}{\#define LLVMVALUE\_LABEL(label\_number)                                                              \(\backslash\)}}
+\DoxyCodeLine{143 \textcolor{preprocessor}{    (LLVMValue)                                                                                    \(\backslash\)}}
+\DoxyCodeLine{144 \textcolor{preprocessor}{    \{                                                                                              \(\backslash\)}}
+\DoxyCodeLine{145 \textcolor{preprocessor}{        .value\_type = LLVMVALUETYPE\_LABEL, .value.label\_index = label\_number, .just\_loaded = 0,    \(\backslash\)}}
+\DoxyCodeLine{146 \textcolor{preprocessor}{        .has\_name = false                                                                          \(\backslash\)}}
+\DoxyCodeLine{147 \textcolor{preprocessor}{    \}}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{152 \textcolor{preprocessor}{\#define LLVMVALUE\_REGMARKER(llvmvalue) (llvmvalue.value\_type == LLVMVALUETYPE\_CONSTANT ? "{}"{}} : "{}\%"{})}
 \DoxyCodeLine{153 }
-\DoxyCodeLine{154 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a01ecfb327d3aaac5bc133e922d18a4ef}{llvm\_load\_global\_variable}}(\textcolor{keywordtype}{char}* symbol\_name);}
-\DoxyCodeLine{155 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a6290db13d34ed659a7108ad675ee4da5}{llvm\_store\_global\_variable}}(\textcolor{keywordtype}{char}* symbol\_name, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} rvalue\_register);}
-\DoxyCodeLine{156 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_af15a12c2755b681ddd1f067daedbb741}{llvm\_declare\_global\_number\_variable}}(\textcolor{keywordtype}{char}* symbol\_name, \mbox{\hyperlink{structNumber}{Number}} n);}
-\DoxyCodeLine{157 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_ad5e091c74bb34c44ff7b7f7155ed0e6b}{llvm\_int\_resize}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} reg, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} new\_tye);}
-\DoxyCodeLine{158 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a3d975b70508857ae99ff02c02f2712d1}{llvm\_declare\_assign\_global\_number\_variable}}(\textcolor{keywordtype}{char}* symbol\_name, \mbox{\hyperlink{structNumber}{Number}} number);}
-\DoxyCodeLine{159 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a93722ca744527991108536664139bef2}{llvm\_print\_int}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} print\_vr);}
-\DoxyCodeLine{160 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a78081f32a56e484cb74dfb926be24ac2}{llvm\_print\_bool}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} print\_vr);}
-\DoxyCodeLine{161 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a2dc07af05a8028e1c21b2822c12c171d}{llvm\_compare}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} comparison\_type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\_virtual\_register,}
-\DoxyCodeLine{162                        \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\_virtual\_register);}
-\DoxyCodeLine{163 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_af86d3ef1da82cd0973de1009ceebab76}{llvm\_compare\_jump}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} comparison\_type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\_virtual\_register,}
-\DoxyCodeLine{164                             \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\_virtual\_register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} false\_label);}
-\DoxyCodeLine{165 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a4643c393615f57dcf851e5f0acf0b514}{llvm\_label}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} label);}
-\DoxyCodeLine{166 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a4ccd254a599a759033c351b4e7d3d5c9}{llvm\_jump}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} label);}
-\DoxyCodeLine{167 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a492b6193f6cfe59c435bf09ee99f0a54}{llvm\_conditional\_jump}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} condition\_register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} true\_label,}
-\DoxyCodeLine{168                            \mbox{\hyperlink{structLLVMValue}{LLVMValue}} false\_label);}
-\DoxyCodeLine{169 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a43b3adedb0a09aa7422dd249ee79c9e4}{llvm\_function\_preamble}}(\textcolor{keywordtype}{char}* symbol\_name);}
-\DoxyCodeLine{170 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a53f223d3ffdbcf048fedd7e39a95d7f3}{llvm\_function\_postamble}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{171 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a1ceb23c144fc42a3004d62a4cdb4f840}{llvm\_call\_function}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} virtual\_register, \textcolor{keywordtype}{char}* symbol\_name);}
-\DoxyCodeLine{172 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{llvm_8h_af4ccee4ae68116bfc0860b6d19090bde}{type\_to\_llvm\_type}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} type);}
-\DoxyCodeLine{173 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_ae0eb304222b073e4a66a650d63e69207}{llvm\_return}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} virtual\_register, \textcolor{keywordtype}{char}* symbol\_name);}
-\DoxyCodeLine{174 \textcolor{keywordtype}{char}* \mbox{\hyperlink{llvm_8h_ae242eaaa205d79124b4ab7999d6fae4a}{refstring}}(\textcolor{keywordtype}{char}* buf, \textcolor{keywordtype}{int} pointer\_depth);}
-\DoxyCodeLine{175 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_acbb7c688b00f276df57c968569ba72de}{llvm\_get\_address}}(\textcolor{keywordtype}{char}* symbol\_name);}
-\DoxyCodeLine{176 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_ab84adb4dc9169d4795a0325980ac65f1}{llvm\_dereference}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} reg);}
-\DoxyCodeLine{177 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a94266752d29db5b52848865c0b3fc69b}{llvm\_store\_dereference}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} destination, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} value);}
-\DoxyCodeLine{178 }
-\DoxyCodeLine{183 \textcolor{preprocessor}{\#define REFSTRING(depth) refstring(\_refstring\_buf, depth)}}
-\DoxyCodeLine{184 }
-\DoxyCodeLine{185 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* LLVM\_H */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#define LLVMVALUE\_SET\_JUSTLOADED(llvmvalue, symbol\_name)                                           \(\backslash\)}}
+\DoxyCodeLine{155 \textcolor{preprocessor}{    memset(llvmvalue.just\_loaded, 0, MAX\_IDENTIFIER\_LENGTH);                                       \(\backslash\)}}
+\DoxyCodeLine{156 \textcolor{preprocessor}{    strcpy(out.just\_loaded, symbol\_name);}}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{159 \textcolor{preprocessor}{\#define PURPLE\_LABEL\_PREFIX "{}L"{}}}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 \mbox{\hyperlink{structLLVMValue}{LLVMValue}}* \mbox{\hyperlink{llvm_8h_a52bf868f555d420c10e591b246ed68ec}{llvm\_ensure\_registers\_loaded}}(\textcolor{keywordtype}{int} n\_registers, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} registers[], \textcolor{keywordtype}{int} load\_depth);}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a76498db4c0864f14519dad7627a3cb16}{llvm\_preamble}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{164 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a29f6abda9d506deee8732fd4c558fc15}{llvm\_postamble}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166 \textcolor{keywordtype}{bool} \mbox{\hyperlink{llvm_8h_a74810a264e58860726fc4838a0e9c286}{llvm\_stack\_allocation}}(\mbox{\hyperlink{structLLVMStackEntryNode}{LLVMStackEntryNode}}* stack\_entries);}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a97aad8c45b9a419a7ff7475921996a3a}{llvm\_binary\_arithmetic}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} operation, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\_virtual\_register,}
+\DoxyCodeLine{169                                  \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\_virtual\_register);}
+\DoxyCodeLine{170 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a408ac9e98b8ae3637789a3bc92275246}{llvm\_store\_constant}}(\mbox{\hyperlink{structNumber}{Number}} value);}
+\DoxyCodeLine{171 \mbox{\hyperlink{llvm__stack__entry_8h_a03da1d5061280400be8365177df15c4e}{type\_register}} \mbox{\hyperlink{llvm_8h_acf6ffab57a0d67bd99dc3caa06a9e1d6}{get\_next\_local\_virtual\_register}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{172 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_af6c6071ec265809fb6669298c71f6b09}{get\_next\_label}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a01ecfb327d3aaac5bc133e922d18a4ef}{llvm\_load\_global\_variable}}(\textcolor{keywordtype}{char}* symbol\_name);}
+\DoxyCodeLine{175 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a6290db13d34ed659a7108ad675ee4da5}{llvm\_store\_global\_variable}}(\textcolor{keywordtype}{char}* symbol\_name, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} rvalue\_register);}
+\DoxyCodeLine{176 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_af15a12c2755b681ddd1f067daedbb741}{llvm\_declare\_global\_number\_variable}}(\textcolor{keywordtype}{char}* symbol\_name, \mbox{\hyperlink{structNumber}{Number}} n);}
+\DoxyCodeLine{177 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_ad5e091c74bb34c44ff7b7f7155ed0e6b}{llvm\_int\_resize}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} reg, \mbox{\hyperlink{number_8h_ae33bf5f4db440a147780b796497d1ef5}{NumberType}} new\_tye);}
+\DoxyCodeLine{178 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a3d975b70508857ae99ff02c02f2712d1}{llvm\_declare\_assign\_global\_number\_variable}}(\textcolor{keywordtype}{char}* symbol\_name, \mbox{\hyperlink{structNumber}{Number}} number);}
+\DoxyCodeLine{179 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a93722ca744527991108536664139bef2}{llvm\_print\_int}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} print\_vr);}
+\DoxyCodeLine{180 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a78081f32a56e484cb74dfb926be24ac2}{llvm\_print\_bool}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} print\_vr);}
+\DoxyCodeLine{181 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_a2dc07af05a8028e1c21b2822c12c171d}{llvm\_compare}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} comparison\_type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\_virtual\_register,}
+\DoxyCodeLine{182                        \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\_virtual\_register);}
+\DoxyCodeLine{183 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_af86d3ef1da82cd0973de1009ceebab76}{llvm\_compare\_jump}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} comparison\_type, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} left\_virtual\_register,}
+\DoxyCodeLine{184                             \mbox{\hyperlink{structLLVMValue}{LLVMValue}} right\_virtual\_register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} false\_label);}
+\DoxyCodeLine{185 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a4643c393615f57dcf851e5f0acf0b514}{llvm\_label}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} label);}
+\DoxyCodeLine{186 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a4ccd254a599a759033c351b4e7d3d5c9}{llvm\_jump}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} label);}
+\DoxyCodeLine{187 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a492b6193f6cfe59c435bf09ee99f0a54}{llvm\_conditional\_jump}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} condition\_register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} true\_label,}
+\DoxyCodeLine{188                            \mbox{\hyperlink{structLLVMValue}{LLVMValue}} false\_label);}
+\DoxyCodeLine{189 \mbox{\hyperlink{structLLVMValue}{LLVMValue}}* \mbox{\hyperlink{llvm_8h_a593ad831dbb6cdfc156644fed22cbd25}{llvm\_function\_preamble}}(\textcolor{keywordtype}{char}* symbol\_name);}
+\DoxyCodeLine{190 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a53f223d3ffdbcf048fedd7e39a95d7f3}{llvm\_function\_postamble}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{191 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_ad40a82a2f258e138f1cbbc5c49654bc4}{llvm\_call\_function}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}}* args, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} num\_args, \textcolor{keywordtype}{char}* symbol\_name);}
+\DoxyCodeLine{192 \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{llvm_8h_af4ccee4ae68116bfc0860b6d19090bde}{type\_to\_llvm\_type}}(\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{TokenType}} type);}
+\DoxyCodeLine{193 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_ae0eb304222b073e4a66a650d63e69207}{llvm\_return}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} virtual\_register, \textcolor{keywordtype}{char}* symbol\_name);}
+\DoxyCodeLine{194 \textcolor{keywordtype}{char}* \mbox{\hyperlink{llvm_8h_ae242eaaa205d79124b4ab7999d6fae4a}{refstring}}(\textcolor{keywordtype}{char}* buf, \textcolor{keywordtype}{int} pointer\_depth);}
+\DoxyCodeLine{195 \textcolor{keywordtype}{char}* \mbox{\hyperlink{llvm_8h_a7355e17403b951ea14fa6e3c80bfcd88}{llvmvalue\_repr\_notype}}(\textcolor{keywordtype}{char}* buf, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} reg);}
+\DoxyCodeLine{196 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_acbb7c688b00f276df57c968569ba72de}{llvm\_get\_address}}(\textcolor{keywordtype}{char}* symbol\_name);}
+\DoxyCodeLine{197 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8h_ab84adb4dc9169d4795a0325980ac65f1}{llvm\_dereference}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} reg);}
+\DoxyCodeLine{198 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_a94266752d29db5b52848865c0b3fc69b}{llvm\_store\_dereference}}(\mbox{\hyperlink{structLLVMValue}{LLVMValue}} destination, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} value);}
+\DoxyCodeLine{199 \textcolor{keywordtype}{void} \mbox{\hyperlink{llvm_8h_aedc955f705dc946f2484d374834f76fc}{llvm\_store\_local}}(\textcolor{keywordtype}{char}* symbol\_name, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} val);}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{205 \textcolor{preprocessor}{\#define REFSTRING(depth) refstring(\_refstring\_buf, depth)}}
+\DoxyCodeLine{206 \textcolor{preprocessor}{\#define LLVM\_REPR\_NOTYPE(reg) llvmvalue\_repr\_notype(\_llvm\_name\_buf, reg)}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* LLVM\_H */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

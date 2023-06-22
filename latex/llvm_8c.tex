@@ -5,6 +5,7 @@
 LLVM-\/\+IR emission.  
 
 
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}translate/llvm.\+h\char`\"{}}\newline
@@ -24,6 +25,12 @@ Include dependency graph for llvm.\+c\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+static void \mbox{\hyperlink{llvm_8c_aa21966d9bf61090cafe2338fc4e1de41}{print\+\_\+function\+\_\+annotation}} (const char $\ast$function\+\_\+name)
+\item 
+static char $\ast$ \mbox{\hyperlink{llvm_8c_a18b7dfe6e4517c6dbae024ad9f301094}{number\+\_\+string}} (\mbox{\hyperlink{structNumber}{Number}} number)
+\begin{DoxyCompactList}\small\item\em Gets the LLVM string representation of a \mbox{\hyperlink{structNumber}{Number}} struct, max length = 300. \end{DoxyCompactList}\item 
+static char $\ast$ \mbox{\hyperlink{llvm_8c_a3fbaf3e7a15fe8494588284f3c613d53}{llvmvalue\+\_\+repr}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} val)
+\begin{DoxyCompactList}\small\item\em Gets the LLVM string representation of an \mbox{\hyperlink{structLLVMValue}{LLVMValue}} struct, max length = 600. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} $\ast$ \mbox{\hyperlink{llvm_8c_a52bf868f555d420c10e591b246ed68ec}{llvm\+\_\+ensure\+\_\+registers\+\_\+loaded}} (int n\+\_\+registers, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} registers\mbox{[}$\,$\mbox{]}, int load\+\_\+depth)
 \begin{DoxyCompactList}\small\item\em Ensure that the values of a set of registers are loaded. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} $\ast$ \mbox{\hyperlink{llvm_8c_a6867a17220227511de58a27ab50c3041}{llvm\+\_\+ensure\+\_\+registers\+\_\+fully\+\_\+loaded}} (int n\+\_\+registers, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} registers\mbox{[}$\,$\mbox{]})
@@ -78,24 +85,28 @@ void \mbox{\hyperlink{llvm_8c_a4ccd254a599a759033c351b4e7d3d5c9}{llvm\+\_\+jump}
 \begin{DoxyCompactList}\small\item\em Generate an unconditional jump statement. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a492b6193f6cfe59c435bf09ee99f0a54}{llvm\+\_\+conditional\+\_\+jump}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} condition\+\_\+register, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} true\+\_\+label, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} false\+\_\+label)
 \begin{DoxyCompactList}\small\item\em Generate a conditional jump statement. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{llvm_8c_a43b3adedb0a09aa7422dd249ee79c9e4}{llvm\+\_\+function\+\_\+preamble}} (char $\ast$symbol\+\_\+name)
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} $\ast$ \mbox{\hyperlink{llvm_8c_a593ad831dbb6cdfc156644fed22cbd25}{llvm\+\_\+function\+\_\+preamble}} (char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Generates the preamble for a function. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a53f223d3ffdbcf048fedd7e39a95d7f3}{llvm\+\_\+function\+\_\+postamble}} (void)
 \begin{DoxyCompactList}\small\item\em Generates the postamble for a function. \end{DoxyCompactList}\item 
 const char $\ast$ \mbox{\hyperlink{llvm_8c_af4ccee4ae68116bfc0860b6d19090bde}{type\+\_\+to\+\_\+llvm\+\_\+type}} (\mbox{\hyperlink{scan_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Convert a Token\+Type to the string representation of that type in LLVM. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_a1ceb23c144fc42a3004d62a4cdb4f840}{llvm\+\_\+call\+\_\+function}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} virtual\+\_\+register, char $\ast$symbol\+\_\+name)
+\mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_ad40a82a2f258e138f1cbbc5c49654bc4}{llvm\+\_\+call\+\_\+function}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} $\ast$args, unsigned long long int num\+\_\+args, char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Generate a function call statement. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a0db1e84c33f375b218a6010fee7a4b90}{llvm\+\_\+return}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} value, char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Generate a return statement. \end{DoxyCompactList}\item 
 char $\ast$ \mbox{\hyperlink{llvm_8c_ae242eaaa205d79124b4ab7999d6fae4a}{refstring}} (char $\ast$buf, int pointer\+\_\+depth)
 \begin{DoxyCompactList}\small\item\em Generate a string containing pointer stars. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{llvm_8c_a7355e17403b951ea14fa6e3c80bfcd88}{llvmvalue\+\_\+repr\+\_\+notype}} (char $\ast$buf, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} reg)
+\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_acbb7c688b00f276df57c968569ba72de}{llvm\+\_\+get\+\_\+address}} (char $\ast$symbol\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Generate an addressing statement. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} \mbox{\hyperlink{llvm_8c_ab84adb4dc9169d4795a0325980ac65f1}{llvm\+\_\+dereference}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} reg)
 \begin{DoxyCompactList}\small\item\em Generate a dereference (load) statement. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{llvm_8c_a94266752d29db5b52848865c0b3fc69b}{llvm\+\_\+store\+\_\+dereference}} (\mbox{\hyperlink{structLLVMValue}{LLVMValue}} destination, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} value)
-\begin{DoxyCompactList}\small\item\em Generates code to store a value into a dereferenced value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generates code to store a value into a dereferenced value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{llvm_8c_aedc955f705dc946f2484d374834f76fc}{llvm\+\_\+store\+\_\+local}} (char $\ast$symbol\+\_\+name, \mbox{\hyperlink{structLLVMValue}{LLVMValue}} val)
+\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -183,11 +194,11 @@ Generates LLVM-\/\+IR for various binary arithmetic expressions.
 \begin{DoxyReturn}{Returns}
 int \mbox{\hyperlink{structNumber}{Number}} of virtual register in which the result is stored 
 \end{DoxyReturn}
-\mbox{\Hypertarget{llvm_8c_a1ceb23c144fc42a3004d62a4cdb4f840}\label{llvm_8c_a1ceb23c144fc42a3004d62a4cdb4f840}} 
+\mbox{\Hypertarget{llvm_8c_ad40a82a2f258e138f1cbbc5c49654bc4}\label{llvm_8c_ad40a82a2f258e138f1cbbc5c49654bc4}} 
 \index{llvm.c@{llvm.c}!llvm\_call\_function@{llvm\_call\_function}}
 \index{llvm\_call\_function@{llvm\_call\_function}!llvm.c@{llvm.c}}
 \doxysubsubsection{\texorpdfstring{llvm\_call\_function()}{llvm\_call\_function()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+call\+\_\+function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{virtual\+\_\+register,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} llvm\+\_\+call\+\_\+function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}} $\ast$}]{args,  }\item[{unsigned long long int}]{num\+\_\+args,  }\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
 
 
 
@@ -195,7 +206,9 @@ Generate a function call statement.
 
 
 \begin{DoxyParams}{Parameters}
-{\em virtual\+\_\+register} & Currently unused function parameter \\
+{\em args} & Currently unused function parameter \\
+\hline
+{\em num\+\_\+args} & \mbox{\hyperlink{structNumber}{Number}} of args passed \\
 \hline
 {\em symbol\+\_\+name} & Name of function to call \\
 \hline
@@ -384,11 +397,11 @@ LLVMValue$\ast$ If the registers were not loaded, this array contains the loaded
 
 Generates the postamble for a function. 
 
-\mbox{\Hypertarget{llvm_8c_a43b3adedb0a09aa7422dd249ee79c9e4}\label{llvm_8c_a43b3adedb0a09aa7422dd249ee79c9e4}} 
+\mbox{\Hypertarget{llvm_8c_a593ad831dbb6cdfc156644fed22cbd25}\label{llvm_8c_a593ad831dbb6cdfc156644fed22cbd25}} 
 \index{llvm.c@{llvm.c}!llvm\_function\_preamble@{llvm\_function\_preamble}}
 \index{llvm\_function\_preamble@{llvm\_function\_preamble}!llvm.c@{llvm.c}}
 \doxysubsubsection{\texorpdfstring{llvm\_function\_preamble()}{llvm\_function\_preamble()}}
-{\footnotesize\ttfamily void llvm\+\_\+function\+\_\+preamble (\begin{DoxyParamCaption}\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLLVMValue}{LLVMValue}} $\ast$ llvm\+\_\+function\+\_\+preamble (\begin{DoxyParamCaption}\item[{char $\ast$}]{symbol\+\_\+name }\end{DoxyParamCaption})}
 
 
 
@@ -399,6 +412,9 @@ Generates the preamble for a function.
 {\em symbol\+\_\+name} & Name of function to generate for \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+LLVMValue$\ast$ List of LLVMValues corresponding to the latest\+\_\+llvmvalues for each function input 
+\end{DoxyReturn}
 \mbox{\Hypertarget{llvm_8c_acbb7c688b00f276df57c968569ba72de}\label{llvm_8c_acbb7c688b00f276df57c968569ba72de}} 
 \index{llvm.c@{llvm.c}!llvm\_get\_address@{llvm\_get\_address}}
 \index{llvm\_get\_address@{llvm\_get\_address}!llvm.c@{llvm.c}}
@@ -684,6 +700,12 @@ Store a value into a global variable.
 {\em rvalue\+\_\+register} & Register number of statement\textquotesingle{}s RValue to store \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{llvm_8c_aedc955f705dc946f2484d374834f76fc}\label{llvm_8c_aedc955f705dc946f2484d374834f76fc}} 
+\index{llvm.c@{llvm.c}!llvm\_store\_local@{llvm\_store\_local}}
+\index{llvm\_store\_local@{llvm\_store\_local}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvm\_store\_local()}{llvm\_store\_local()}}
+{\footnotesize\ttfamily void llvm\+\_\+store\+\_\+local (\begin{DoxyParamCaption}\item[{char $\ast$}]{symbol\+\_\+name,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{val }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{llvm_8c_a821999d4c730d049f8ec77b7c288b6fa}\label{llvm_8c_a821999d4c730d049f8ec77b7c288b6fa}} 
 \index{llvm.c@{llvm.c}!llvm\_subtract@{llvm\_subtract}}
 \index{llvm\_subtract@{llvm\_subtract}!llvm.c@{llvm.c}}
@@ -704,6 +726,54 @@ Generate code for binary subtraction.
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{structLLVMValue}{LLVMValue}} Virtual register holding result 
 \end{DoxyReturn}
+\mbox{\Hypertarget{llvm_8c_a3fbaf3e7a15fe8494588284f3c613d53}\label{llvm_8c_a3fbaf3e7a15fe8494588284f3c613d53}} 
+\index{llvm.c@{llvm.c}!llvmvalue\_repr@{llvmvalue\_repr}}
+\index{llvmvalue\_repr@{llvmvalue\_repr}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvmvalue\_repr()}{llvmvalue\_repr()}}
+{\footnotesize\ttfamily static char $\ast$ llvmvalue\+\_\+repr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the LLVM string representation of an \mbox{\hyperlink{structLLVMValue}{LLVMValue}} struct, max length = 600. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \mbox{\hyperlink{structLLVMValue}{LLVMValue}} to represent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ calloc\textquotesingle{}d string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{llvm_8c_a7355e17403b951ea14fa6e3c80bfcd88}\label{llvm_8c_a7355e17403b951ea14fa6e3c80bfcd88}} 
+\index{llvm.c@{llvm.c}!llvmvalue\_repr\_notype@{llvmvalue\_repr\_notype}}
+\index{llvmvalue\_repr\_notype@{llvmvalue\_repr\_notype}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{llvmvalue\_repr\_notype()}{llvmvalue\_repr\_notype()}}
+{\footnotesize\ttfamily char $\ast$ llvmvalue\+\_\+repr\+\_\+notype (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{\mbox{\hyperlink{structLLVMValue}{LLVMValue}}}]{reg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{llvm_8c_a18b7dfe6e4517c6dbae024ad9f301094}\label{llvm_8c_a18b7dfe6e4517c6dbae024ad9f301094}} 
+\index{llvm.c@{llvm.c}!number\_string@{number\_string}}
+\index{number\_string@{number\_string}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{number\_string()}{number\_string()}}
+{\footnotesize\ttfamily static char $\ast$ number\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structNumber}{Number}}}]{number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the LLVM string representation of a \mbox{\hyperlink{structNumber}{Number}} struct, max length = 300. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & \mbox{\hyperlink{structNumber}{Number}} to represent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ calloc\textquotesingle{}d string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{llvm_8c_aa21966d9bf61090cafe2338fc4e1de41}\label{llvm_8c_aa21966d9bf61090cafe2338fc4e1de41}} 
+\index{llvm.c@{llvm.c}!print\_function\_annotation@{print\_function\_annotation}}
+\index{print\_function\_annotation@{print\_function\_annotation}!llvm.c@{llvm.c}}
+\doxysubsubsection{\texorpdfstring{print\_function\_annotation()}{print\_function\_annotation()}}
+{\footnotesize\ttfamily static void print\+\_\+function\+\_\+annotation (\begin{DoxyParamCaption}\item[{const char $\ast$}]{function\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \mbox{\Hypertarget{llvm_8c_ae242eaaa205d79124b4ab7999d6fae4a}\label{llvm_8c_ae242eaaa205d79124b4ab7999d6fae4a}} 
 \index{llvm.c@{llvm.c}!refstring@{refstring}}
 \index{refstring@{refstring}!llvm.c@{llvm.c}}
