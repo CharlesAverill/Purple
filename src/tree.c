@@ -42,7 +42,7 @@ ASTNode* create_ast_node(TokenType ttype, ASTNode* left, ASTNode* mid, ASTNode* 
     if (TOKENTYPE_IS_LITERAL(ttype) && TOKENTYPE_IS_NUMBER_TYPE(type.token_type)) {
         out->value.number_value = type.value.number.value;
         out->tree_type.number_type = type.value.number.number_type;
-    } else if (ttype == T_IDENTIFIER || ttype == T_FUNCTION_CALL) {
+    } else if (ttype == T_IDENTIFIER || ttype == T_FUNCTION_CALL || ttype == T_VAR_DECL) {
         if (symbol_name == NULL) {
             fatal(RC_COMPILER_ERROR,
                   "Tried to create identifier node, but passed symbol_name is NULL");

@@ -67,6 +67,8 @@ static char* llvmvalue_repr(LLVMValue val)
  */
 LLVMValue* llvm_ensure_registers_loaded(int n_registers, LLVMValue registers[], int load_depth)
 {
+    load_depth = MAX(0, load_depth);
+
     bool found_registers[n_registers];
     int n_found = 0;
     for (int i = 0; i < n_registers; i++) {
@@ -85,8 +87,8 @@ LLVMValue* llvm_ensure_registers_loaded(int n_registers, LLVMValue registers[], 
         }
     }
 
-    // Haven't loaded all of our registers yet
     print_function_annotation("llvm_ensure_registers_loaded");
+    // Haven't loaded all of our registers yet
     LLVMValue* loaded_registers = (LLVMValue*)malloc(sizeof(LLVMValue) * (n_registers - n_found));
     for (int i = 0; i < n_registers; i++) {
         if (found_registers[i]) {
@@ -224,9 +226,17 @@ bool llvm_stack_allocation(LLVMStackEntryNode* stack_entries)
         print_function_annotation("llvm_stack_allocation");
     }
     while (current) {
-        fprintf(D_LLVM_FILE, TAB "%%%llu = alloca %s%s, align %d" NEWLINE, current->reg,
-                numberTypeLLVMReprs[current->type], REFSTRING(current->pointer_depth),
-                current->align_bytes);
+        if (current->reg.has_name) {
+            fprintf(D_LLVM_FILE, TAB "%%%s = alloca %s%s, align %d" NEWLINE,
+                    current->reg.value.name, numberTypeLLVMReprs[current->reg.num_info.number_type],
+                    REFSTRING(current->reg.num_info.pointer_depth), current->align_bytes);
+        } else {
+            fprintf(D_LLVM_FILE, TAB "%%%llu = alloca %s%s, align %d" NEWLINE,
+                    current->reg.value.virtual_register_index,
+                    numberTypeLLVMReprs[current->reg.num_info.number_type],
+                    REFSTRING(current->reg.num_info.pointer_depth), current->align_bytes);
+        }
+
         current = current->next;
     }
 
@@ -421,7 +431,8 @@ LLVMValue llvm_store_constant(Number value)
 {
     purple_log(LOG_DEBUG, "Storing constant value %ld", value.value);
     print_function_annotation("llvm_store_constant");
-    type_register out_register_number = pop_stack_entry_linked_list(&freeVirtualRegistersHead);
+    type_register out_register_number =
+        pop_stack_entry_linked_list(&freeVirtualRegistersHead).value.virtual_register_index;
     fprintf(D_LLVM_FILE, TAB "store %s ", numberTypeLLVMReprs[value.number_type]);
     fprintf(D_LLVM_FILE, numberTypeFormatStrings[value.number_type], value.value);
     fprintf(D_LLVM_FILE, ", %s* %%%llu, align %d" NEWLINE, numberTypeLLVMReprs[value.number_type],
@@ -541,8 +552,6 @@ LLVMValue llvm_int_resize(LLVMValue reg, NumberType new_type)
         fatal(RC_COMPILER_ERROR, "llvm_int_resize tried to resize a null LLVMValue");
     }
 
-    print_function_annotation("llvm_int_resize");
-
     char* method;
 
     if (reg.num_info.number_type < new_type) {
@@ -552,6 +561,8 @@ LLVMValue llvm_int_resize(LLVMValue reg, NumberType new_type)
     } else {
         return reg;
     }
+
+    print_function_annotation("llvm_int_resize");
 
     LLVMValue out = LLVMVALUE_VIRTUAL_REGISTER(get_next_local_virtual_register(), new_type);
 
@@ -577,6 +588,24 @@ void llvm_declare_global_number_variable(char* symbol_name, Number n)
     } else {
         fprintf(D_LLVM_GLOBALS_FILE, "null" NEWLINE);
     }
+}
+
+LLVMValue llvm_declare_local_number_variable(char* symbol_name, Number num)
+{
+    LLVMValue out = (LLVMValue){
+        .value_type = LLVMVALUETYPE_VIRTUAL_REGISTER, .has_name = true, .num_info = num};
+    strcpy(out.value.name, symbol_name);
+
+    llvm_stack_allocation((LLVMStackEntryNode[]){(LLVMStackEntryNode){
+        .reg = out, .next = NULL, .align_bytes = numberTypeByteSizes[out.num_info.number_type]}});
+
+    out.num_info.pointer_depth++;
+
+    if (num.value != 0) {
+        llvm_store_local_llvmvalue(out, LLVMVALUE_CONSTANT(num.value));
+    }
+
+    return out;
 }
 
 /**
@@ -1281,23 +1310,22 @@ LLVMValue llvm_get_address(char* symbol_name)
     }
 
     type_register free_reg = get_next_local_virtual_register();
-    LLVMValue lv = LLVMVALUE_VIRTUAL_REGISTER_POINTER(
-        free_reg, entry->type.value.number.number_type, entry->type.value.number.pointer_depth);
+    LLVMValue lv =
+        LLVMVALUE_VIRTUAL_REGISTER_POINTER(free_reg, entry->latest_llvmvalue.num_info.number_type,
+                                           entry->latest_llvmvalue.num_info.pointer_depth);
 
-    llvm_stack_allocation(
-        (LLVMStackEntryNode[]){(LLVMStackEntryNode){.reg = free_reg,
-                                                    .type = lv.num_info.number_type,
-                                                    .align_bytes = 4,
-                                                    .pointer_depth = lv.num_info.pointer_depth}});
-
-    lv.num_info.pointer_depth++;
+    lv.num_info.pointer_depth--;
 
     print_function_annotation("llvm_get_address");
 
-    fprintf(D_LLVM_FILE, TAB "store %s%s @%s, ", numberTypeLLVMReprs[lv.num_info.number_type],
-            REFSTRING(entry->type.value.number.pointer_depth), symbol_name);
-    fprintf(D_LLVM_FILE, "%s%s %%%lld" NEWLINE, numberTypeLLVMReprs[lv.num_info.number_type],
-            REFSTRING(lv.num_info.pointer_depth), free_reg);
+    fprintf(D_LLVM_FILE, TAB "%s = getelementptr inbounds %s%s, ", LLVM_REPR_NOTYPE(lv),
+            numberTypeLLVMReprs[lv.num_info.number_type], REFSTRING(lv.num_info.pointer_depth));
+    fprintf(D_LLVM_FILE, "%s%s %s" NEWLINE,
+            numberTypeLLVMReprs[entry->latest_llvmvalue.num_info.number_type],
+            REFSTRING(entry->latest_llvmvalue.num_info.pointer_depth),
+            LLVM_REPR_NOTYPE(entry->latest_llvmvalue));
+
+    lv.num_info.pointer_depth++;
 
     return lv;
 }
@@ -1318,8 +1346,8 @@ LLVMValue llvm_dereference(LLVMValue reg)
 
     fprintf(D_LLVM_FILE, TAB "%%%lld = load %s%s, ", out.value.virtual_register_index,
             numberTypeLLVMReprs[out.num_info.number_type], REFSTRING(out.num_info.pointer_depth));
-    fprintf(D_LLVM_FILE, "%s%s %%%lld" NEWLINE, numberTypeLLVMReprs[reg.num_info.number_type],
-            REFSTRING(reg.num_info.pointer_depth), reg.value.virtual_register_index);
+    fprintf(D_LLVM_FILE, "%s%s %s" NEWLINE, numberTypeLLVMReprs[reg.num_info.number_type],
+            REFSTRING(reg.num_info.pointer_depth), LLVM_REPR_NOTYPE(reg));
 
     return out;
 }
@@ -1332,15 +1360,18 @@ LLVMValue llvm_dereference(LLVMValue reg)
  */
 void llvm_store_dereference(LLVMValue destination, LLVMValue value)
 {
-    fprintf(D_LLVM_FILE, "; LOADING\n");
+    LLVMValue* loaded_registers;
 
-    LLVMValue* loaded_registers = llvm_ensure_registers_loaded(
-        1, (LLVMValue[]){value}, destination.num_info.pointer_depth - 1);
-    if (loaded_registers) {
-        value = loaded_registers[0];
-        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers (1)", "llvm_store_dereference");
-        free(loaded_registers);
-        loaded_registers = NULL;
+    if (LLVMVALUE_IS_LIKELY_LOCAL_VARIABLE(value)) {
+        loaded_registers =
+            llvm_ensure_registers_loaded(1, (LLVMValue[]){value}, value.num_info.pointer_depth - 1);
+        if (loaded_registers) {
+            value = loaded_registers[0];
+            purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers (1)",
+                       "llvm_store_dereference");
+            free(loaded_registers);
+            loaded_registers = NULL;
+        }
     }
 
     loaded_registers = llvm_ensure_registers_loaded(1, (LLVMValue[]){destination},
@@ -1378,4 +1409,25 @@ void llvm_store_local(char* symbol_name, LLVMValue val)
     }
 
     ste->latest_llvmvalue = val;
+}
+
+void llvm_store_local_llvmvalue(LLVMValue destination, LLVMValue val)
+{
+    LLVMValue* loaded_registers =
+        llvm_ensure_registers_loaded(1, (LLVMValue[]){val}, destination.num_info.pointer_depth - 1);
+    if (loaded_registers) {
+        val = loaded_registers[0];
+        purple_log(LOG_DEBUG, "Freeing %s in %s", "loaded_registers", "llvm_store_local_llvmvalue");
+        free(loaded_registers);
+        loaded_registers = NULL;
+    }
+    val = llvm_int_resize(val, destination.num_info.number_type);
+
+    print_function_annotation("llvm_store_local_llvmvalue");
+    char** val_dest_reprs = (char*[]){llvmvalue_repr(val), llvmvalue_repr(destination)};
+    fprintf(D_LLVM_FILE, TAB "store %s, %s" NEWLINE, val_dest_reprs[0], val_dest_reprs[1]);
+
+    purple_log(LOG_DEBUG, "Freeing val_dest_reprs in llvm_store_local_llvmvalue");
+    free(val_dest_reprs[1]);
+    free(val_dest_reprs[0]);
 }

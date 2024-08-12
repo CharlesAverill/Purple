@@ -56,7 +56,7 @@ ASTNode* parse_binary_expression(void);
 void match_token(TokenType type);
 int match_type(Number* out);
 TokenType check_for_type(void);
-void variable_declaration(void);
+ASTNode* variable_declaration(void);
 ASTNode* function_declaration(void);
 ASTNode* function_call_expression(void);
 ASTNode* parse_statements(void);

@@ -16,7 +16,7 @@ function strings_are_okay() {
     prog_output=$(./a.out)
     prog_rc=$?
     if [ $prog_rc -ne 0 ] ; then
-        printf "Exited with code $ANSI_RED$ANSI_BOLD$prog_rc\n"
+        printf "Exited with code $ANSI_RED$ANSI_BOLD$prog_rc$ANSI_RESET\n"
         return 1
     fi
 
@@ -48,7 +48,7 @@ function run_test() {
         [ -f a.out ] && rm a.out
         TEST_OUTPUT=$(strings_are_okay "$2" "$3" "$OPTLEVEL")
         if [ $? -ne 0 ] ; then 
-            printf "%s " "$TEST_OUTPUT"
+            printf "[-O$OPTLEVEL] %s \n" "$TEST_OUTPUT"
             exit 1
         else
             printf "%s " "$TEST_OUTPUT"
@@ -131,8 +131,9 @@ function_test_output="89
 33
 42
 10
-6
-120"
+720
+120
+66"
 
 comparison_test_output="1
 true

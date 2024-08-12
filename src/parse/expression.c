@@ -184,7 +184,8 @@ static ASTNode* parse_binary_expression_recursive(int previous_token_precedence,
     *nt_max = MAX(*nt_max, left->tree_type.number_type);
     add_position_info(left, pre_pos);
     current_ttype = D_GLOBAL_TOKEN.token_type;
-    if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {
+    if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN ||
+        current_ttype == T_COMMA) {
         left->is_rvalue = true;
         return left;
     }
@@ -218,7 +219,8 @@ static ASTNode* parse_binary_expression_recursive(int previous_token_precedence,
 
         // Update current_ttype and check for EOF
         current_ttype = D_GLOBAL_TOKEN.token_type;
-        if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN) {
+        if (current_ttype == T_SEMICOLON || current_ttype == T_RIGHT_PAREN ||
+            current_ttype == T_COMMA) {
             left->is_rvalue = true;
             return left;
         }

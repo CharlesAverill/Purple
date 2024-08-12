@@ -337,8 +337,7 @@ ASTNode* parse_statements(void)
         bool match_semicolon = true;
 
         if (TOKENTYPE_IS_TYPE(D_GLOBAL_TOKEN.token_type)) {
-            variable_declaration();
-            root = NULL;
+            root = variable_declaration();
         } else {
             switch (D_GLOBAL_TOKEN.token_type) {
             case T_PRINT:

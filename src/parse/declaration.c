@@ -15,7 +15,7 @@
 /**
  * @brief Parse a variable declaration statement into an AST
  */
-void variable_declaration(void)
+ASTNode* variable_declaration(void)
 {
     purple_log(LOG_DEBUG, "Parsing variable declaration statement");
 
@@ -23,16 +23,19 @@ void variable_declaration(void)
     if (match_type(&n) > 1) {
         fatal(RC_COMPILER_ERROR, "Failed to match variable type in variable_declaration");
     }
-    n.pointer_depth++;
 
     match_token(T_IDENTIFIER);
 
-    GST_INSERT(D_IDENTIFIER_BUFFER, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(n));
-    if (!GST_FIND(D_IDENTIFIER_BUFFER)) {
-        fatal(RC_COMPILER_ERROR, "Failed to insert symbol '%s' into Global Symbol Table",
+    STS_INSERT(D_IDENTIFIER_BUFFER, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(n));
+    if (!STS_FIND(D_IDENTIFIER_BUFFER)) {
+        fatal(RC_COMPILER_ERROR, "Failed to insert symbol '%s' into Symbol Table",
               D_IDENTIFIER_BUFFER);
     }
-    llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, n);
+
+    ASTNode* out = create_ast_identifier_leaf(T_VAR_DECL, D_IDENTIFIER_BUFFER);
+    out->tree_type = n;
+
+    return out;
 }
 
 /**
@@ -42,6 +45,8 @@ void variable_declaration(void)
  */
 ASTNode* function_declaration(void)
 {
+    purple_log(LOG_DEBUG, "Parsing function declaration");
+
     ASTNode* out;
     SymbolTableEntry* entry;
 
@@ -83,9 +88,11 @@ ASTNode* function_declaration(void)
         match_token(T_IDENTIFIER);
         strcpy(parameters[num_inputs - 1].parameter_name, D_IDENTIFIER_BUFFER);
 
-        // TODO : Locals
         STS_INSERT(D_IDENTIFIER_BUFFER, TYPE_NUMBER_FROM_NUMBERTYPE_FROM_NUMBER(param_type));
-        // llvm_declare_global_number_variable(D_IDENTIFIER_BUFFER, param_type);
+
+        if (D_GLOBAL_TOKEN.token_type != T_RIGHT_PAREN) {
+            match_token(T_COMMA);
+        }
     }
 
     function_type.value.function.parameters = parameters;

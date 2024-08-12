@@ -5,22 +5,26 @@
  * @date 10-Sep-2022
  */
 
-#ifndef LLVM_H
-#define LLVM_H
+#ifndef LLVM
+#define LLVM
 
 #include "scan.h"
 #include "types/number.h"
-#include "utils/llvm_stack_entry.h"
+
+/**
+ * @brief A too-big data type for register indices in case of stress testing
+ */
+#define type_register unsigned long long int
+
+/**
+ * @brief A too-big data type for label indices in case of stress testing
+ */
+#define type_label unsigned long long int
 
 /**
  * @brief LLVM-IR representations of data types
  */
 static const char* numberTypeLLVMReprs[] = {"i1", "i8", "i16", "i32", "i64"};
-
-/**
- * @brief Head node of linked list containing register indices that are free to have values stored in them
- */
-extern LLVMStackEntryNode* freeVirtualRegistersHead;
 
 /**
  * @brief Size of buffer for generating refstrings
@@ -62,6 +66,7 @@ typedef struct LLVMValue {
     char just_loaded[MAX_IDENTIFIER_LENGTH];
     /**Whether or not the value has a custom name rather than a register index*/
     bool has_name;
+    bool is_likely_local_variable;
     /**Contents of the value returned*/
     union {
         /**Index of a virtual register*/
@@ -87,7 +92,8 @@ typedef struct LLVMValue {
     if (val.has_name) {                                                                            \
         printf("Contents: %s\n", val.value.name);                                                  \
     } else                                                                                         \
-        printf("Contents: %lld\n", val.value.constant);
+        printf("Contents: %lld\n", val.value.constant);                                            \
+    printf("Just Loaded: %s\n", val.just_loaded);
 
 /**
  * @brief A standard "null" LLVMValue struct returned in some scenarios
@@ -155,6 +161,9 @@ typedef struct LLVMValue {
     memset(llvmvalue.just_loaded, 0, MAX_IDENTIFIER_LENGTH);                                       \
     strcpy(out.just_loaded, symbol_name);
 
+#define LLVMVALUE_IS_LIKELY_LOCAL_VARIABLE(reg)                                                    \
+    (reg.value_type == LLVMVALUETYPE_VIRTUAL_REGISTER && reg.has_name)
+
 /**Prefix to prepend to LLVM label indices*/
 #define PURPLE_LABEL_PREFIX "L"
 
@@ -162,8 +171,6 @@ LLVMValue* llvm_ensure_registers_loaded(int n_registers, LLVMValue registers[], 
 
 void llvm_preamble(void);
 void llvm_postamble(void);
-
-bool llvm_stack_allocation(LLVMStackEntryNode* stack_entries);
 
 LLVMValue llvm_binary_arithmetic(TokenType operation, LLVMValue left_virtual_register,
                                  LLVMValue right_virtual_register);
@@ -197,6 +204,8 @@ LLVMValue llvm_get_address(char* symbol_name);
 LLVMValue llvm_dereference(LLVMValue reg);
 void llvm_store_dereference(LLVMValue destination, LLVMValue value);
 void llvm_store_local(char* symbol_name, LLVMValue val);
+LLVMValue llvm_declare_local_number_variable(char* symbol_name, Number num);
+void llvm_store_local_llvmvalue(LLVMValue destination, LLVMValue val);
 
 /**
  * @brief Wrapper for _refstring - WARNING - only one call to REFSTRING may be made per statement, due to 
@@ -205,4 +214,4 @@ void llvm_store_local(char* symbol_name, LLVMValue val);
 #define REFSTRING(depth) refstring(_refstring_buf, depth)
 #define LLVM_REPR_NOTYPE(reg) llvmvalue_repr_notype(_llvm_name_buf, reg)
 
-#endif /* LLVM_H */
+#endif /* LLVM */

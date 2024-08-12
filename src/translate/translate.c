@@ -76,11 +76,11 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
 
         LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
 
-        current->reg = get_next_local_virtual_register();
-        prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
+        current->reg.value.virtual_register_index = get_next_local_virtual_register();
+        prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current);
 
-        current->type = root->tree_type.number_type;
-        current->align_bytes = numberTypeByteSizes[current->type];
+        current->reg.num_info.number_type = root->tree_type.number_type;
+        current->align_bytes = numberTypeByteSizes[current->reg.num_info.number_type];
         current->next = NULL;
 
         return current;
@@ -96,11 +96,11 @@ LLVMStackEntryNode* determine_binary_expression_stack_allocation(ASTNode* root)
 
         LLVMStackEntryNode* current = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
 
-        current->reg = get_next_local_virtual_register();
-        prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current->reg);
+        current->reg.value.virtual_register_index = get_next_local_virtual_register();
+        prepend_stack_entry_linked_list(&freeVirtualRegistersHead, current);
 
-        current->type = symbol->type.value.number.number_type;
-        if (current->type == -1) {
+        current->reg.num_info.number_type = symbol->type.value.number.number_type;
+        if (current->reg.num_info.number_type == -1) {
             fatal(RC_COMPILER_ERROR, "Symbol number type is ill-formed");
         }
 
@@ -372,23 +372,36 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
                 }
             }
             return LLVMVALUE_NULL;
-        case T_ASSIGN:
-            if (root->right) {
-                if (root->right->ttype == T_IDENTIFIER) {
-                    if (GST_FIND(root->right->value.symbol_name)) {
-                        llvm_store_global_variable(root->right->value.symbol_name, left_vr);
-                    } else {
-                        llvm_store_local(root->right->value.symbol_name, left_vr);
-                    }
-                    return left_vr;
-                } else if (root->right->ttype == T_DEREFERENCE) {
-                    llvm_store_dereference(right_vr, left_vr);
-                    return left_vr;
-                }
-                fatal(RC_COMPILER_ERROR, "Expected identifier or dereference but got '%s'",
-                      tokenStrings[root->right->ttype]);
+        case T_VAR_DECL:;
+            SymbolTableEntry* ste = STS_FIND(root->value.symbol_name);
+            if (!ste) {
+                fatal(RC_COMPILER_ERROR,
+                      "Failed to find symbol '%s' when generating for variable declaration",
+                      root->value.symbol_name);
             }
-            fatal(RC_COMPILER_ERROR, "T_ASSIGN case in ast_to_llvm didn't detect a right child");
+            ste->latest_llvmvalue =
+                llvm_declare_local_number_variable(root->value.symbol_name, root->tree_type);
+            return LLVMVALUE_NULL;
+        case T_ASSIGN:
+            if (!root->right) {
+                fatal(RC_COMPILER_ERROR,
+                      "T_ASSIGN case in ast_to_llvm didn't detect a right child");
+            }
+            if (root->right->ttype == T_IDENTIFIER) {
+                if (GST_FIND(root->right->value.symbol_name)) {
+                    llvm_store_global_variable(root->right->value.symbol_name, left_vr);
+                } else {
+                    // llvm_store_local(root->right->value.symbol_name, left_vr);
+                    SymbolTableEntry* ste = STS_FIND(root->right->value.symbol_name);
+                    llvm_store_local_llvmvalue(ste->latest_llvmvalue, left_vr);
+                }
+                return left_vr;
+            } else if (root->right->ttype == T_DEREFERENCE) {
+                llvm_store_dereference(right_vr, left_vr);
+                return left_vr;
+            }
+            fatal(RC_COMPILER_ERROR, "Expected identifier or dereference but got '%s'",
+                  tokenStrings[root->right->ttype]);
         case T_PRINT:
             return print_ast_to_llvm(root, left_vr);
         case T_FUNCTION_CALL:;
@@ -411,7 +424,7 @@ LLVMValue ast_to_llvm(ASTNode* root, LLVMValue llvm_value, TokenType parent_oper
             return llvm_get_address(root->value.symbol_name);
         case T_DEREFERENCE:
             if (root->is_rvalue) {
-                return llvm_dereference(left_vr);
+                return llvm_dereference(llvm_dereference(left_vr));
             }
             return left_vr;
         case T_RETURN:
@@ -448,10 +461,14 @@ void generate_llvm(void)
 
     llvm_preamble();
 
+    unsigned int passes = 0;
     while (D_GLOBAL_TOKEN.token_type != T_EOF) {
         D_CURRENT_FUNCTION_HAS_RETURNED = false;
         push_symbol_table(D_SYMBOL_TABLE_STACK);
+
+        purple_log(LOG_DEBUG, "Start parse phase pass %u", passes);
         ASTNode* root = function_declaration();
+        purple_log(LOG_DEBUG, "Start generation phase pass %u", passes);
         ast_to_llvm(root, LLVMVALUE_NULL, root->ttype);
         pop_symbol_table(D_SYMBOL_TABLE_STACK);
 
@@ -461,6 +478,8 @@ void generate_llvm(void)
         free_llvm_stack_entry_node_list(freeVirtualRegistersHead);
         freeVirtualRegistersHead = NULL;
         free_ast_node(root);
+
+        passes++;
     }
 
     llvm_postamble();

@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 
-#include "utils/llvm_stack_entry.h"
+#include "translate/llvm_stack_entry.h"
 #include "utils/logging.h"
 
 /**
@@ -26,13 +26,14 @@ void initialize_stack_entry_linked_list(LLVMStackEntryNode** head)
  * @param head Head of linked list
  * @param register_index Register number to push onto list
  */
-void prepend_stack_entry_linked_list(LLVMStackEntryNode** head, type_register register_index)
+void prepend_stack_entry_linked_list(LLVMStackEntryNode** head, LLVMStackEntryNode* reg)
 {
     LLVMStackEntryNode* temp = (LLVMStackEntryNode*)malloc(sizeof(LLVMStackEntryNode));
-    temp->reg = register_index;
-    temp->next = NULL;
+    temp->reg = reg->reg;
+    temp->align_bytes = reg->align_bytes;
 
     if (*head == NULL) {
+        temp->next = NULL;
         *head = temp;
     } else {
         temp->next = *head;
@@ -46,7 +47,7 @@ void prepend_stack_entry_linked_list(LLVMStackEntryNode** head, type_register re
  * @param head Head of linked list to pop from
  * @return type_register Register number from first entry in linked list
  */
-type_register pop_stack_entry_linked_list(LLVMStackEntryNode** head)
+LLVMValue pop_stack_entry_linked_list(LLVMStackEntryNode** head)
 {
     LLVMStackEntryNode* temp;
 
@@ -54,7 +55,7 @@ type_register pop_stack_entry_linked_list(LLVMStackEntryNode** head)
         fatal(RC_COMPILER_ERROR, "Tried to pop from an LLVMStackEntryNode List when it was empty");
     }
 
-    type_register out = (*head)->reg;
+    LLVMValue out = (*head)->reg;
     temp = (*head)->next;
     free(*head);
     *head = temp;
